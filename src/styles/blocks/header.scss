@@ -1,0 +1,92 @@
+.header {
+  @extend %background-img-position;
+  background-image: url(../images/header.jpg);
+
+  @include onPlanshet {
+    background-image: url(../images/back.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: $headerTopPadding 0 94px;
+    height: 100vh;
+
+    @include onPlanshet {
+      padding: 52px 0 40px;
+    }
+
+    @include onDekstop {
+      padding: 52px 0 64px;
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDekstop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -40%);
+        display: block;
+        padding-right: 12px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        width: max-content;
+        opacity: 0;
+        pointer-events: none;
+        color: $main-dark-color;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 100%;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+
+    @include onPlanshet {
+      font-size: 40px;
+    }
+
+    @include onDekstop() {
+      font-size: 48px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 32px;
+      height: 27px;
+      background-image: url(../images/snake.png);
+      @extend %background-img-position;
+      margin-bottom: 16px;
+
+      @include onPlanshet {
+        background-image: url(../images/sound-waves.png);
+        margin-bottom: 40px;
+        width: 63px;
+        height: 76px;
+      }
+
+      @include onDekstop {
+        background-image: url(../images/sound.png);
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
