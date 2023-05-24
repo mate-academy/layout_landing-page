@@ -1,0 +1,52 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onPlanshet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDekstop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &--planshet {
+    display: block;
+
+    @include onPlanshet {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDekstop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @include onPlanshet {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--planshet--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @include onDekstop {
+      @for $start from 1 through 12 {
+        @for $end from $start through 12 {
+          &--desktop--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
