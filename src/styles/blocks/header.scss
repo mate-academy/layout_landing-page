@@ -1,0 +1,90 @@
+.header {
+  background-image: url("../images/header-img.png");
+  @include background(no-repeat, center, cover);
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    @include flex(flex, false, space-between, column);
+    padding: $header-padding-top 24px 348px;
+
+    @include onTablet {
+      padding: $header-padding-top-big 72px 456px;
+    }
+
+    @include onDesktop {
+      padding: $header-padding-top-big 120px 482px;
+    }
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__wrapper {
+    @include flex(flex, false, flex-end, row);
+  }
+
+  &__call {
+    margin-right: 30px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+
+    @include onTablet {
+      margin-right: 63px;
+    }
+
+    @include onDesktop {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        display: block;
+        @include sizes(185px, 54px);
+        font-weight: 700;
+        text-align: right;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        color: $color-white;
+        padding-right: 20px;
+        margin-right: 63px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%, -80%);
+      }
+
+      &::after {
+        content: "The Met Cloisters +1 212-923-3700";
+        display: block;
+        @include sizes(175px, 54px);
+        font-weight: 700;
+        text-align: right;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        color: $color-white;
+        padding-right: 20px;
+        margin-right: 63px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%, -70%);
+      }
+
+      &:hover::before,
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    @include fonts(40px, 40px, 700);
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: $color-white;
+
+    @include onTablet {
+      @include fonts(64px, 64px, 700);
+    }
+
+    @include onDesktop {
+      @include fonts(80px, 80px, 700);
+    }
+  }
+}
