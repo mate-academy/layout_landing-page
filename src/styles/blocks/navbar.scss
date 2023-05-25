@@ -1,0 +1,115 @@
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  &__logo {
+    position: relative;
+    display: flex;
+    width: 188px;
+    transition: opacity $base-duration;
+
+    @include onMobile {
+      width: 130px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__img {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 40px;
+
+    @include onMobile {
+      width: 18px;
+      margin-right: 30px;
+    }
+
+    &--type-phone {
+      display: flex;
+      align-items: center;
+      background-image: url(../images/phone.svg);
+
+      &::before {
+        position: absolute;
+        content: "+1 234 555-55-55";
+        right: calc(100% + 8px);
+        width: max-content;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        color: $color-white;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(20px);
+        will-change: transform;
+        transition: opacity $base-duration, transform $base-duration;
+
+        @include onMobile {
+          display: none;
+        }
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(0);
+        }
+      }
+
+      @include onMobile {
+        transition: opacity $base-duration;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &--type-burger {
+      background-image: url(../images/menu.svg);
+      transition: background-image $base-duration;
+
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+      }
+    }
+
+    &--type-close {
+      background-image: url(../images/close.svg);
+      transition: opacity $base-duration;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
