@@ -1,0 +1,94 @@
+.header {
+  box-sizing: border-box;
+  background-image: url(../images/cover_photo.jpg);
+  background-size: cover;
+  background-position: right;
+
+  @include onTablets {
+    background-position: center;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 29px 0 88px;
+
+    @include onTablets {
+      padding-top: 34px;
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      padding-top: 36px;
+      padding-bottom: 203px;
+    }
+
+  }
+
+  &__nav {
+
+    &--call {
+      background-image: url(../images/call.svg);
+      text-decoration: none;
+
+      @include onDesktop {
+        &::before {
+          content: "+1 234 555-55-55";
+          position: relative;
+          top: 50%;
+          transform: translate(-100%, -50%);
+          display: block;
+          width: max-content;
+          padding-right: 8px;
+          color: #fff;
+          opacity: 0;
+
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          pointer-events: none;
+          transition: opacity, 0.5s;
+        }
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    &--menu {
+      background-image: url(../images/menu-opener.svg);
+      background-color: transparent;
+      transition: 0.5s background-image ease-out;
+
+      &:hover {
+        background-image: url(../images/menu-hover.svg);
+        transition: 0.5s background-image ease-in;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 auto;
+    color: #fff;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablets {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
