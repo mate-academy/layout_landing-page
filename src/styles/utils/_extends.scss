@@ -1,0 +1,131 @@
+%headerTop {
+  padding-block: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    padding-block: 36px;
+  }
+}
+
+%sectionTitle {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+
+  @include onTablet {
+    font-size: 40px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
+
+%gridPage {
+  --cols-count: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--cols-count), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --cols-count: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --cols-count: 12;
+  }
+}
+
+%pseudoTextDecoration {
+  content: "";
+  position: absolute;
+  inset-block-end: 0;
+  display: block;
+  width: 0%;
+  height: 1px;
+  background-color: $color-main;
+  transition: width $effectDuration;
+}
+
+%menuBurgerDecor {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: $color-main;
+  border-radius: 2px;
+}
+
+%sectionButton {
+  padding-block: 14px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  background-color: $color-main;
+  border: 3px solid $color-main;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: background-color $effectDuration,
+    color $effectDuration;
+
+  &:hover {
+    background-color: transparent;
+    color: $color-main;
+  }
+  &:active {
+    background-color: #111;
+    color: #fff;
+  }
+}
+
+%formField {
+  display: block;
+  padding-inline: 16px;
+  padding-block: 14px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #f8f8fa;
+  color: $color-main;
+  font-family: $font-family-secondary;
+  font-size: 14px;
+  line-height: 140%;
+  cursor: pointer;
+  transition: border-color $effectDuration;
+
+  &:hover {
+    border-color: #d5d7de;
+  }
+
+  &:focus {
+    border-color: $color-main;
+  }
+}
+
+%hoverEffectForPhoto {
+  transition: transform $effectDuration;
+
+  &:before {
+    content: "";
+    @include square(100%);
+    position: absolute;
+    z-index: 20;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    display: block;
+    opacity: 0;
+    background-color: #000;
+    transition: opacity $effectDuration;
+  }
+
+  &:hover:before {
+    opacity: 0.2;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 10;
+  }
+}
