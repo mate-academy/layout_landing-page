@@ -1,13 +1,41 @@
 .menu {
   height: 100vh;
+  width: 100%;
   box-sizing: border-box;
   background: #c2c2c2;
   @include setDefaultPadding;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+  color: $sidemenuLinksColor;
+  font-weight: 600;
+  pointer-events: none;
+  overflow: scroll;
+
+  &__grid {
+    @include setGridCell;
+  }
+
+  &__content {
+    grid-column: span 12;
+  }
+
+  &__topbar {
+    grid-column: span 2;
+    grid-row: 1px;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
 
   &__icons {
     display: flex;
     height: fit-content;
-    margin: auto 0;
     gap: 24px;
   }
 
@@ -22,27 +50,44 @@
     color: $sidemenuLinksColor;
     text-transform: uppercase;
     font-style: normal;
-    font-weight: 600;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
     width: fit-content;
-    cursor: default;
 
     &::after {
-      content: "";
-      display: block;
-      margin-top: 8px;
-      height: 1px;
-      width: 0;
-      background: $sidemenuLinksColor;
+      @include sideMenuAfter(0);
     }
 
     &:hover {
 
       &::after {
-        width: 100%;
+        scale: 1;
       }
     }
+  }
+
+  &__contact {
+    display: block;
+    color: $sidemenuLinksColor;
+    font-size: 16px;
+    line-height: 27px;
+    margin-top: 40px;
+  }
+
+  &__footertext {
+    display: block;
+    width: fit-content;
+    margin-top: 16px;
+
+    &::after {
+      @include sideMenuAfter(1);
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
   }
 }

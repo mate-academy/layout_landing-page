@@ -1,58 +1,76 @@
 .details {
-  @include setDefaultPadding;
-  margin-top: 92px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  @include setGridCell;
+  row-gap: 32px;
 
   &__title {
-    text-align: center;
-    margin-bottom: 8px;
+    grid-column: 1 / -1;
   }
 
-  &__images {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: $detailsImageGap;
+  &__item {
+    grid-column: 1 / -1;
+    @include setGridCell;
   }
 
   &__image {
-    display: block;
-    max-width: calc(50% - #{$detailsImageGap});
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    grid-column: span 1;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
   }
 
-  &__subtitle {
-    margin-top: 16px;
-    font-weight: 700;
+  &__info {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 8 ;
+    }
   }
 
   &__text {
     margin-top: 8px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
   }
 
   &__button {
-    display: block;
-    text-align: center;
-    width: 100%;
-    padding: 14.5px 0;
-    background: #fff;
-    border-radius: 40px;
-    color: #1d1d1d;
-    text-decoration: none;
-    @include buttonText;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    grid-column: 1 / -1;
 
-    &:hover {
-      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+    @include onTablet {
+      grid-column: 2 / 6;
     }
 
-    &:active {
-      box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+    @include onDesktop {
+      grid-column: 5 / 9;
     }
+  }
+
+  @include onTablet {
+    row-gap: 64px;
+  }
+
+  @include onDesktop {
+    row-gap: 48px;
   }
 }
