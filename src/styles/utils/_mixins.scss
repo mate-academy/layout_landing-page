@@ -1,0 +1,113 @@
+@mixin container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet() {
+  @media (min-width: 480px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin notMobile {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin bottom-distinct {
+  margin-bottom: 100px;
+
+  @include onDesktop {
+    margin-bottom: 140px;
+  }
+
+  @include onTablet {
+    margin-bottom: 140px;
+  }
+}
+
+@mixin title {
+  font-size: 32px;
+  line-height: 32px;
+
+  letter-spacing: -1.5px;
+
+  position: relative;
+  width: fit-content;
+
+  @include notMobile {
+    font-size: 48px;
+    line-height: 48px;
+    width: fit-content;
+  }
+}
+
+@mixin picture-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(105%);
+  }
+}
+
+@mixin button-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+
+  border: none;
+  background-color: $main-color;
+
+  cursor: pointer;
+
+  transition: background-color $transition-duration;
+
+  &:hover {
+    background-color: #ae1c23;
+  }
+
+  &:active {
+    background-color: #eb343d;
+  }
+}
+
+@mixin columns($tablet-start, $tablet-end, $desktop-start, $desktop-end) {
+  @include onTablet {
+    grid-column: #{$tablet-start} / #{$tablet-end + 1};
+  }
+
+  @include onDesktop {
+    grid-column: #{$desktop-start} / #{$desktop-end + 1};
+  }
+}
