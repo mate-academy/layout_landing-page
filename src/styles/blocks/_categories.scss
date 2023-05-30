@@ -21,7 +21,6 @@
 
   &__button {
     @extend %sectionButton;
-    align-self: center;
     width: 100%;
 
     @include onDesktop {
@@ -45,11 +44,20 @@
 
   &__link {
     position: relative;
+    display: block;
+    height: 100%;
+    transition: transform $effectDuration;
     z-index: 1;
-    @extend %hoverEffectForPhoto;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
   }
 
   &__link--size--wide {
+    grid-column: span 1;
+
     @include onTablet {
       grid-column: span 4;
     }
@@ -72,13 +80,21 @@
 
   &__img {
     @include square(100%);
-    object-fit: cover;
     position: absolute;
+    object-fit: cover;
   }
 
-  &__title {
+  &__btn {
+    font-weight: 700;
     font-size: 18px;
     line-height: 140%;
+    color: $color-main;
+    text-decoration: none;
+    transition: color $effectDuration;
+
+    &:hover {
+      color: $color-grey;
+    }
 
     @include onTablet {
       font-size: 24px;

@@ -4,7 +4,7 @@
   inset-block-start: 0;
   inset-inline-start: -200%;
   height: 100vh;
-  background-color: #e5e5e5;
+  background-color: $color-light;
   transition: inset-inline $effectDuration;
 
   &:target {
@@ -18,10 +18,14 @@
 
   &__top {
     @extend %headerTop;
-    margin-bottom: 32px;
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    background-color: $color-light;
+    margin-block-end: 32px;
 
     @include onTablet {
-      margin-bottom: 56px;
+      margin-block-end: 56px;
     }
   }
 
@@ -52,12 +56,21 @@
     row-gap: 36px;
   }
 
-  &__num {
+  &__number {
+    display: block;
+    margin-block-end: 16px;
+    color: $color-main;
     font-weight: 700;
     font-size: 16px;
-    line-height: 27px;
+    line-height: 140%;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color $effectDuration;
+
+    &:hover {
+      color: $color-grey;
+    }
   }
 
   &__btn-call {
