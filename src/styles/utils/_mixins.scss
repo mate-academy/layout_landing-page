@@ -1,0 +1,105 @@
+@mixin fontStyle(
+  $font-size: 16px,
+  $font-weight: 400,
+  $line-height: 140%,
+  $color: $main-color
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin linkHoverUnderline($property, $fromValue, $toValue) {
+  & {
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: 1.5px;
+      width: 100%;
+      background-color: $dark-color;
+      left: 0;
+      bottom: 0;
+      transform-origin: left;
+      transition: $property 0.3s ease;
+
+      #{$property}: $fromValue;
+    }
+
+    &:hover::after {
+      #{$property}: $toValue;
+    }
+  }
+}
+
+@mixin onTablet {
+  @media screen and (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media screen and (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    --columns: 12;
+  }
+}
+
+@mixin gridRows {
+  margin-top: 48px;
+  grid-column: 1 / -1;
+  row-gap: 40px;
+}
+
+@mixin photoHover {
+  position: relative;
+
+  &::after {
+    transition: opacity 0.3s ease;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $dark-color;
+    opacity: 0;
+  }
+
+  &:hover::after {
+    opacity: 0.5;
+  }
+}
+
+@mixin responsiveBackground($mobile-bg, $tablet-bg, $desctop-bg) {
+  background: url(../images/#{$mobile-bg}) right / cover no-repeat;
+
+  @include onTablet {
+    background-image: url(../images/#{$tablet-bg});
+    background-position: center;
+  }
+
+  @include onDesctop {
+    background-image: url(../images/#{$desctop-bg});
+    background-position: center;
+  }
+}
