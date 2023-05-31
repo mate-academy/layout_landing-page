@@ -1,4 +1,5 @@
 .icon {
+  position: relative;
   display: block;
   width: 24px;
   height: 24px;
@@ -11,6 +12,35 @@
   @include onTablet {
     width: 32px;
     height: 32px;
+  }
+
+  &__tooltip {
+    display: none;
+    @include onDesktop {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+      transition: $effect-duration;
+    }
+  }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
   }
 
   &--phone {
