@@ -1,34 +1,58 @@
-.categories__title {
-  margin-bottom: 48px;
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
 
-  font-weight: $medium-font-weight;
-  font-size: 32px;
-  line-height: 32px;
-  text-align: center;
+  &__title {
+    margin-bottom: 64px;
+  }
 }
 
-.categories__content {
-  @extend %globalSettings-display;
-}
+.category {
+  &__photos {
+    @include gridPage;
+    margin-bottom: 16px;
+  }
 
-.categories__selection {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 16px;
-}
+  &__link {
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
 
-.category__description {
-  display: flex;
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
 
-  font-weight: $medium-font-weight;
-  font-size: 16px;
-  line-height: 140%;
-  color: $color-shadow;
+    &--squer {
+      @include onTablet {
+        grid-column: span 2;
+      }
 
-  margin-bottom: 40px;
-}
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
 
-.categories-page {
-  width: 130px;
-  height: 130px;
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-weight: $medium-font-weight;
+    font-size: 16px;
+    line-height: 140%;
+    color: $color-shadow;
+    text-align: left;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+  }
 }
