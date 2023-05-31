@@ -1,0 +1,65 @@
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onIpad {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onIpad {
+    margin-inline: auto;
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1024px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onIpad {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --colums: 12;
+    column-gap: 24px;
+  }
+}
+
+@mixin pFont {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: $ColorTextWhite;
+}
+
+@mixin h3Font {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  color: $ColorTextWhite;
+}
+
+@mixin fontPlaceholder {
+  text-indent: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7e7e83;
+}
