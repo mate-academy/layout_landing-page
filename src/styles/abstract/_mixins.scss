@@ -1,0 +1,26 @@
+@mixin gridColumns {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+
+  @include onLaptop {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onMobile {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 743px) {
+    @content;
+  }
+}
