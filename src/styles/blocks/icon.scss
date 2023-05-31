@@ -1,0 +1,55 @@
+.icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__text {
+    position: absolute;
+    left: -100%;
+    top: 50%;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $color-font;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url("../images/icons/icon-phone-call.svg");
+
+    @include onDeskTop {
+      &:hover .icon__text {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--burger {
+    background-image: url("../images/icons/icon-burger-menu.svg");
+
+    @include hover(
+      background-image,
+      url("../images/icons/icon-burger-menu-hover.svg")
+    );
+  }
+
+  &--close {
+    background-image: url("../images/icons/icon-close.svg");
+  }
+}
