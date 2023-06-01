@@ -2,26 +2,29 @@
   font-family: Cinzel, "Times New Roman", Times, serif;
   font-size: 16px;
   line-height: 1;
-  color: #000;
+  color: $page-text-color;
 
   scroll-behavior: smooth;
-}
 
-.page__body {
-  margin: 0;
-}
+  &__body {
+    min-width: 320px;
+  }
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
-  opacity: 0;
-  pointer-events: none;
-}
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: opacity $transition-duration, transform $transition-duration;
 
-.page__menu:target {
-  opacity: 1;
-  pointer-events: auto;
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
 }
