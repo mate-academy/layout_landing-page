@@ -1,0 +1,151 @@
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: -1.5px;
+  line-height: 100%;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 48px;
+
+  &--align--left {
+    text-align: left;
+  }
+
+  @include onTablet {
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 64px;
+  }
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.logo {
+  display: block;
+  width: 130px;
+  height: 38px;
+
+  @include onTablet {
+    width: 187px;
+    height: 56px;
+  }
+}
+
+.icon {
+  display: block;
+  --icon-size: 24px;
+  height: var(--icon-size);
+  width: var(--icon-size);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &--phone {
+    background-image: url(../icons/icon-phone.svg);
+    position: relative;
+
+    @include onTablet {
+      &::after {
+        content: "+1 234 555-55-55";
+        display: block;
+        position: absolute;
+        opacity: 0;
+        top: 50%;
+        transform: translate(calc(-100% - 12px), -50%);
+        min-width: max-content;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--burger {
+    background-image: url(../icons/icon-burger.svg);
+
+    &:hover {
+      rotate: 180deg;
+      background-image: url(../icons/icon-burger-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.svg);
+  }
+
+  @include onTablet {
+    --icon-size: 32px;
+  }
+}
+
+.input {
+  background: #f8f8fa;
+  border: 1px solid #f8f8fa;
+  border-radius: 40px;
+  font-family: $textFont;
+  padding: 14px 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid #d5d7de;
+  }
+
+  &:focus-visible {
+    outline: 1px solid #292929;
+  }
+}
+
+.link {
+  color: $mainTextColor;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.text {
+  font-style: normal;
+  font-size: 16px;
+}
+
+.image {
+  width: 100%;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.button {
+  text-align: center;
+  width: 100%;
+  padding: 14.5px 0;
+  background: #fff;
+  border-radius: 40px;
+  color: #1d1d1d;
+  text-decoration: none;
+  @include buttonText;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}

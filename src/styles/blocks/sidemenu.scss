@@ -1,0 +1,102 @@
+.menu {
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  background: $sidemenuBgColor;
+  @include setDefaultPadding;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+  color: $sidemenuLinksColor;
+  font-weight: 600;
+  pointer-events: none;
+  overflow: auto;
+
+  &__grid {
+    @include setGridCell;
+  }
+
+  &__content {
+    grid-column: span 12;
+  }
+
+  &__topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $sidemenuBgColor;
+    grid-column: span 2;
+    grid-row: 1px;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    height: fit-content;
+    gap: 24px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $sidemenuLinksColor;
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    width: fit-content;
+
+    &::after {
+      @include sideMenuAfter(0);
+    }
+
+    &:hover {
+
+      &::after {
+        scale: 1;
+      }
+    }
+  }
+
+  &__contact {
+    display: block;
+    color: $sidemenuLinksColor;
+    font-size: 16px;
+    line-height: 27px;
+    margin-top: 40px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #582f2f;
+    }
+  }
+
+  &__footertext {
+    display: block;
+    width: fit-content;
+    margin-top: 16px;
+
+    &::after {
+      @include sideMenuAfter(1);
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
