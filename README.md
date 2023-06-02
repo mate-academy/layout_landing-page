@@ -6,6 +6,7 @@
   - Sass
 - [DEMO LINK](https://jandrus-lviv.github.io/layout_landing-page/) 
 - [DESIGN LINK](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version)
+- [REPOSITORY COPY](https://github.com/jandrus-lviv/layout_landing-page--my-bike)
 - Comments:
   - Hided phone number tooltip for mobile version, because it collapsed with logo after clicking on phone icon.
   - Replaced grid to margins for gaps between sections, because these gaps are not the same on each of the designs (mobile, tablet, desktop).
