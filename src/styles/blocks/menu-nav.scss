@@ -1,0 +1,45 @@
+.menu__nav {
+  box-sizing: border-box;
+  margin-top: 44px;
+  margin-bottom: 40px;
+
+  @include onDesktop {
+    margin-top: 48px;
+  }
+
+  &-list {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    list-style: none;
+
+    @include onDesktop {
+      font-weight: 700;
+    }
+  }
+
+  &-item:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  &-link {
+    position: relative;
+    text-decoration: none;
+    color: $dark-color;
+
+    &::after {
+      @include menuAfter;
+
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform $animation-duration linear;
+    }
+
+    &:hover::after {
+      transform-origin: bottom left;
+      transform: scaleX(1);
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin limitationPage {
+  padding-inline: 20px;
+
+  @include onTablet {
+    max-width: 600px;
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin menuAfter {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: $dark-color;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin pageGrid {
+  --column: 2;
+
+  display: grid;
+  gap: 0 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    --column: 6;
+    gap: 0 24px;
+  }
+
+  @include onDesktop {
+    --column: 12;
+  }
+}
+
+@mixin buttonPage {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: $light-color;
+  border-radius: 40px;
+  height: $button-height;
+
+  text-align: center;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: $button-height;
+
+  transition: box-shadow $animation-duration;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}

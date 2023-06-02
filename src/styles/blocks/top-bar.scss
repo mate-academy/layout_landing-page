@@ -1,0 +1,117 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  &__logo-link {
+    padding-top: 29px;
+    height: 38px;
+    width: 130px;
+
+    transition: transform $animation-duration;
+    animation: moveLogo $animation-duration linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes moveLogo {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @include onTablet {
+      padding-top: 34px;
+      height: 56px;
+      width: 187px;
+    }
+
+    @include onDesktop {
+      padding-top: 36px;
+      height: 56px;
+      width: 187px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+
+    animation: opacity $animation-duration linear;
+
+      @keyframes opacity {
+          from {
+            opacity: 0;
+            transform: scale(0);
+          }
+
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+      }
+
+    &-phone {
+      position: relative;
+      background: url(./../image/Icon-Phone-call.svg)  bottom no-repeat;
+      background-size: contain;
+
+      margin-top: 36px;
+      height: 24px;
+      width: 24px;
+
+      @include onTablet {
+        margin-top: 46px;
+        height: 32px;
+        width: 32px;
+
+        transition: background-image
+          $animation-duration,
+          content $animation-duration;
+
+        &:hover::after {
+          content: "";
+          position: absolute;
+          height: 16px;
+          width: 138px;
+          background: url(./../image/number.svg) bottom no-repeat;
+          right: 36px;
+        }
+      }
+
+      @include onDesktop {
+        margin-top: 48px;
+      }
+    }
+
+    &-menu {
+      background: url(./../image/Icon-Burger-menu.svg) bottom no-repeat;
+
+      background-size: contain;
+
+      width: 24px;
+      height: 24px;
+
+      margin-top: 36px;
+      margin-left: 27px;
+      transition: background-image $animation-duration;
+
+      &:hover {
+        background-image: url(./../image/Icon-Burger-menu-hover.svg);
+      }
+
+      @include onTablet {
+        height: 32px;
+        width: 32px;
+        margin-top: 48px;
+        margin-left: 36px;
+      }
+    }
+  }
+}
