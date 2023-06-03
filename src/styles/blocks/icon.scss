@@ -16,6 +16,50 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+
+    position: relative;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      color: $main-text-color;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 133%;
+
+      position: absolute;
+      text-transform: uppercase;
+      width: 100%;
+      top: 4px;
+      right: 16px;
+
+      @include onTablet {
+        top: 8px;
+        right: 24px;
+      }
+
+      @include onDesktop {
+        top: 8px;
+        right: 24px;
+      }
+      transition: all 1s;
+      display: none;
+    }
+
+    &:hover::before {
+      width: max-content;
+      display: block;
+      animation: textMove 0.3s forwards;
+    }
+
+    @keyframes textMove {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-12px);
+      }
+    }
   }
 
   &--menu {
