@@ -1,0 +1,50 @@
+
+@mixin onTab {
+  @media (min-width: $tabWidth) {
+    @content;
+  }
+}
+
+@mixin onDesk {
+  @media (min-width: $deskWidth) {
+    @content;
+  }
+}
+
+@mixin grid {
+  --col: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--col),1fr);
+
+  @include onTab {
+    --col: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesk {
+    --col: 12;
+  }
+}
+
+@mixin container {
+  padding-inline: 20px;
+  @include onTab {
+    padding-inline: 72px;
+  }
+
+  @include onDesk {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover ($property, $toValue) {
+
+  transition: #{$property} 0.2s;
+
+  &:hover {
+
+  #{$property}:$toValue;
+
+  }
+}
