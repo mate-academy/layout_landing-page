@@ -1,9 +1,12 @@
-Design for landing page:
+# Landing page
 
-[MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+Choose a design for your landing page:
 
-Demo link a MET:
+- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 
-[DEMO LINK](https://Duster-1.github.io/layout_landing/)
+Follow the videos in this and next lessons to implement the page block by block
 
-I used in this project such technologies as: scss, html, BEM, JS.
+- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
+- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
+- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
+- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing/)
