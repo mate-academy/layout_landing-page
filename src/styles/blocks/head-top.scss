@@ -1,22 +1,49 @@
 .head-top {
+  padding-top: 28px;
+  padding-bottom: 28px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  @include onTab {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
   &__icons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__tube {
-    background-image: url(../images/tube.svg);
+    position: relative;
     width: 18px;
     height: 18px;
     margin-right: 30px;
+    background-image: url(../images/tube.svg);
     background-size: 100%;
     @include onTab {
       width: 24px;
       height: 24px;
       margin-right: 30px;
     }
+
+    @include onDesk {
+      &:hover .head-top__tube-number {
+        opacity: 1;
+      }
+    }
+
+  }
+
+  &__tube-number {
+    position: absolute;
+    right: 150%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    width: max-content;
+    color: #292929;
   }
 
   &__burger {
@@ -29,5 +56,34 @@
       height: 16px;
     }
     @include hover (background-image, url(../images/burger-hover.svg));
+  }
+
+  &__cross {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/cross.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &__cross-link {
+    display: none;
+  }
+
+  &--side {
+    & .head-top__cross-link {
+      display: block;
+    }
+
+    & .head-top__tube-link {
+      display: none;
+    }
+
+    & .head-top__burger-link {
+      display: none;
+    }
   }
 }
