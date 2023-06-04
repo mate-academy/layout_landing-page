@@ -4,12 +4,30 @@
   }
 }
 
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline() {
   padding-inline: 20px;
 
   @include onTablet {
     padding-inline: 72px;
+    max-width: 600px;
+    margin-inline: auto;
   }
+
+  @include onDesktop {
+    max-width: 1020px;
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
 }
 
 @mixin hover($property, $toValue) {
@@ -19,4 +37,41 @@
   }
 }
 
+@mixin timelessBG($height, $bgUrl) {
+  height: #{$height};
+  background: url(#{$bgUrl});
+  background-size: cover;
+  background-position: center;
+}
 
+@mixin pageGrid {
+  --numOfColumns: 2;
+  display: grid;
+  grid-template-columns: repeat((var(--numOfColumns), 1fr));
+  column-gap: 20px;
+
+  @include onTablet {
+    --numOfColumns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --numOfColumns: 12;
+  }
+}
+
+@mixin contactsInfo {
+  margin: 0;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  color: #191919;
+  margin-block: 8px 24px;
+}
+
+@mixin contactsInfoLabel {
+  letter-spacing: 0.15px;
+  color: #9393a3;
+  font-size: 14px;
+  line-height: 140%;
+}

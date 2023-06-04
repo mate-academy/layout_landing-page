@@ -1,5 +1,3 @@
-
-
 .icon {
   display: block;
   height: 24px;
@@ -16,14 +14,34 @@
 
   &--phone {
     background-image: url(../assets/icons/icon-phone.svg);
+    position: relative;
+    &::before {
+      content: "+1 234 5555-55-55";
+      position: absolute;
+      text-decoration: none;
+      color: #1b2129;
+      font-weight: 700;
+      top: 5px;
+      left: -150px;
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    @include onDesktop {
+      &:hover {
+        &:before {
+          transform: scale(1);
+        }
+      }
+    }
   }
 
   &--menu {
     background-image: url(../assets/icons/icon-burger-menu.svg);
+    transition: all $effectDuration;
 
-    &:hover {
-      background-image: url(../assets/icons/icon-burger-menu-hover.svg);
-    }
+    @include hover(background-image, url(../assets/icons/icon-burger-menu-hover.svg));
   }
 
   &--close {
