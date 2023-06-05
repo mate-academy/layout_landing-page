@@ -20,7 +20,6 @@
 
   @include onDesktop() {
     padding-inline: 120px;
-    min-width: 1024px;
   }
 }
 
@@ -32,8 +31,7 @@
   }
 }
 
-
-@mixin backgroundSizePosition{
+@mixin backgroundSizePosition {
   background-size: cover;
   background-position: center;
 }
@@ -44,7 +42,6 @@
     #{$property}: $toValue;
   }
 }
-
 
 @mixin contentGrid {
   display: grid;
@@ -58,5 +55,32 @@
 
   @include onDesktop {
     grid-template-columns: repeat($coloms-dekstop, 1fr);
+  }
+}
+
+@mixin widthDekstop {
+  @include onDesktop {
+    max-width: 1260px;
+    margin: 0 auto;
+  }
+}
+
+@mixin borderBottom {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: $color-text-white;
+
+    transition: transform $transition-time ease-in;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
   }
 }
