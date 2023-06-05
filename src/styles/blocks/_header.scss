@@ -1,0 +1,115 @@
+.header {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../images/header-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__wrapper {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    @extend %headerTop;
+  }
+
+  &__logo {
+    flex: 0 0 125px;
+
+    @include onTablet {
+      flex-basis: 172px;
+    }
+  }
+
+  &__logo-img {
+    width: 100%;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+
+    @include onTablet {
+      column-gap: 40px;
+    }
+  }
+
+  &__call {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    column-gap: 12px;
+    color: $color-grey-1;
+    text-decoration: none;
+
+    @include onTablet {
+      &:hover .header__call-number {
+        opacity: 1;
+      }
+
+      &:active .header__call-icon {
+        transform: scale(0.9);
+      }
+    }
+  }
+
+  &__call-number {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    color: inherit;
+    transition: opacity $effectDuration,
+      color $effectDuration;
+
+    &:hover {
+      color: $color-grey-2;
+    }
+  }
+
+  &__call-icon {
+    flex: 0 0 24px;
+  }
+
+  &__icon-menu {
+    @include square(24px);
+    background-image: url(../images/icons/icon-burger-menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image $effectDuration;
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &__bottom {
+    margin-block-end: 40px;
+
+    @include onTablet {
+      margin-block-end: 64px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    font-family: $font-family-main;
+    line-height: 100%;
+
+    @include onTablet {
+      font-size: 48px;
+    }
+
+    @include onDesktop {
+      font-size: 56px;
+    }
+  }
+}

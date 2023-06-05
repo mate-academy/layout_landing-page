@@ -1,0 +1,104 @@
+.menu {
+  overflow: auto;
+  position: fixed;
+  z-index: 10;
+  inset-block-start: 0;
+  inset-inline-start: -200%;
+  height: 100vh;
+  background-color: $color-light-4;
+  transition: inset-inline $effectDuration;
+
+  &:target {
+    inset-inline: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    @extend %headerTop;
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    background-color: $color-light-4;
+    margin-block-end: 32px;
+
+    @include onTablet {
+      margin-block-end: 56px;
+    }
+  }
+
+  &__logo {
+    flex: 0 0 125px;
+    transition: transform $effectDuration;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include onTablet {
+      flex-basis: 172px;
+    }
+
+    &:active .header__call-icon {
+      transform: scale(0.95);
+    }
+  }
+
+  &__icon-close:active {
+    transform: scale(0.95);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 36px;
+  }
+
+  &__number {
+    position: relative;
+    display: block;
+    margin-block-end: 16px;
+    color: $color-grey-1;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color $effectDuration;
+
+    &:hover {
+      color: $color-grey-2;
+    }
+  }
+
+  &__btn-call {
+    position: relative;
+    display: inline-block;
+    padding-block-end: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color-grey-1;
+    text-decoration: none;
+
+    &::after {
+      @extend %pseudoTextDecoration;
+      transition: width $effectDuration,
+        transform $effectDuration;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
