@@ -9,4 +9,4 @@
 - The mockup and demo are below.
 
 - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [DEMO LINK](https://VladyslavKolisnyk.github.io/layout_landing/)
+- [DEMO LINK](https://vladyslavkolisnyk.github.io/layout_landing-page/)
