@@ -1,14 +1,23 @@
 .header {
-  box-sizing: border-box;
-  height: 100vh;
-  background-image: url(../images/header_bg.png);
+  background-image: url(../images/header_bg_mobile.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: center;
+  @include onTablet {
+    background-image: url(../images/header_bg_tablet.png);
+  }
+  @include onDesktop {
+    background-image: url(../images/header_bg.png);
+  }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  &__content {
+    @include contentPaddingInline;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   &__title {
     margin: 0;
@@ -18,11 +27,13 @@
     font-size: 36px;
     line-height: 100%;
     letter-spacing: -1.5px;
+    @include onTablet {
+      font-size: 64px;
+    }
   }
 
   &__bottom {
     padding-bottom: 88px;
-    @include contentPaddingInline;
 
     @include onTablet {
       padding-bottom: 130px;
