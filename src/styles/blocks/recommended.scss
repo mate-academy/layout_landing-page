@@ -1,0 +1,158 @@
+.recommended {
+  margin-top: 64px;
+
+  @include pageGrid;
+  @include padding;
+
+  @include onTablet {
+    margin-top: 120px;
+  }
+
+  &__title {
+    margin: 0;
+    grid-column: 1 / -1;
+
+    font-size: 3.2rem;
+    line-height: 3.2rem;
+
+    @include onTablet {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+
+    @include onDesktop {
+      font-size: 4.8rem;
+      line-height: 4.8rem;
+    }
+  }
+
+  &__block {
+    margin-top: 40px;
+    grid-column: 1 / -1;
+    width: 100%;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+
+    @include onDesktop {
+      grid-column: span 4;
+    }
+  }
+
+  &__block:first-child {
+    margin-top: 48px;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+  }
+
+  &__image {
+    position: relative;
+
+    color: inherit;
+    text-decoration: inherit;
+
+    &::before {
+      content: "Order now";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+
+      opacity: 0;
+
+      text-transform: uppercase;
+      font-size: 4.8rem;
+      line-height: 4.8rem;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+
+      @include onTablet {
+        font-size: 5.6rem;
+        line-height: 5.6rem;
+      }
+
+      @include onDesktop {
+        font-size: 4.8rem;
+        line-height: 4.8rem;
+      }
+
+      transition: opacity $effect-duration $effect-function;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+
+    transition: filter $effect-duration $effect-function;
+  }
+
+  &__image:hover &__img {
+    filter: blur(3px);
+  }
+
+  &__text {
+    margin-top: 24px;
+
+    &-title {
+      position: relative;
+      width: max-content;
+
+      margin: 0;
+
+      font-size: 1.8rem;
+      line-height: 2.52rem;
+
+      &-link {
+        color: inherit;
+        text-decoration: inherit;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+
+        width: 0;
+        height: 2px;
+        border-radius: 1px;
+
+        background-color: $main-text-color;
+
+        transition: width $effect-duration $effect-function;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    &-description {
+      margin: 0;
+      margin-top: 8px;
+
+      font-size: 1.6rem;
+      line-height: 2.24rem;
+      font-family: $font-family-secondary;
+      font-weight: 400;
+    }
+
+    &-price {
+      margin: 0;
+      margin-top: 12px;
+
+      font-size: 1.6rem;
+      line-height: 2.24rem;
+    }
+  }
+}
