@@ -1,20 +1,9 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menu__toggle');
-  const menuLinks = document.querySelectorAll('.menu__box a');
+const menuBtn = document.querySelector('.menu-btn');
+const burger = document.querySelector('.menu');
 
-  menuToggle.addEventListener('change', function() {
-    if (!this.checked) {
-      return;
-    }
-
-    menuLinks.forEach(function(link) {
-      link.addEventListener('click', function() {
-        setTimeout(function() {
-          menuToggle.checked = false;
-        }, 300);
-      });
-    });
-  });
+menuBtn.addEventListener('click', function() {
+  menuBtn.classList.toggle('active');
+  burger.classList.toggle('active');
 });
