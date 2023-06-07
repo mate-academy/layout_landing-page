@@ -1,0 +1,77 @@
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #1d1d1d;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #cecece;
+  height: 10em;
+  border-radius: 10px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  scroll-behavior: smooth;
+
+  font-family: "Poppins", sans-serif;
+  line-height: 140%;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: right;
+    transform: translateX(20px);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+      overflow: hidden;
+    }
+  }
+}
+
+
+.heading {
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+
+  @include onLaptop {
+    font-size: 48px;
+  }
+
+  @include onMobile {
+    font-size: 32px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.paragraph {
+  font-weight: 400;
+  font-size: 16px;
+}
