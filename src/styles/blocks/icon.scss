@@ -1,0 +1,84 @@
+.icon {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 24px;
+  height: 24px;
+
+  @include onTablet {
+    width: 30px;
+    height: 30px;
+  }
+
+  @include onDesktop {
+    width: 30px;
+    height: 30px;
+  }
+
+  &_phone {
+    background-image: url("../assets/phoneIcon.svg");
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size: contain;
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        line-height: 30px;
+        left: -160px;
+        color: #fff;
+        transition-duration: 0.5s;
+        opacity: 0;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &_menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    flex-direction: column;
+
+    &::before {
+      content: "";
+      top: 0;
+
+      @include burgerIconLine;
+    }
+
+    &::after {
+      content: "";
+      bottom: 0;
+
+      @include burgerIconLine;
+    }
+
+    &:hover {
+      &::before {
+        width: 50%;
+      }
+
+      &::after {
+        width: 75%;
+      }
+    }
+  }
+
+  &__burger-line {
+    @include burgerIconLine;
+  }
+
+  &_close {
+    background-image: url("../assets/closeIcon.svg");
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size: contain;
+  }
+}

@@ -1,0 +1,118 @@
+.menu {
+  @include setDefaultPadding;
+
+  &__wrapper {
+    align-content: start;
+  }
+
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transition-duration: 0.7s;
+  background-color: #c2c2c2;
+
+  &:target {
+    transform: translateX(0%);
+  }
+
+  &__logo {
+    background-image: url("../assets/MyBiKEblack.svg");
+
+    @include onTablet {
+      background-image: url("../assets/MyBiKEblack-large.svg");
+    }
+
+    @include onDesktop {
+      background-image: url("../assets/MyBiKEblack-large.svg");
+    }
+  }
+
+  &__nav {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__list {
+    margin-top: 12px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    color: $darkColorMain;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: $darkColorMain;
+      transition: width 0.5s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__bottom {
+    grid-column: span 2;
+    margin-top: 40px;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    &-link {
+      text-decoration: none;
+      display: block;
+      color: $darkColorMain;
+      font-weight: 700;
+      margin-bottom: 16px;
+
+      &:hover {
+        color: #0f8e03;
+      }
+    }
+
+    &-text {
+      display: inline;
+      position: relative;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 22px;
+      color: $darkColorMain;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: $darkColorMain;
+        bottom: -8px;
+        left: 0;
+      }
+    }
+  }
+}

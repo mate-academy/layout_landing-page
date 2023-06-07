@@ -1,0 +1,62 @@
+@mixin setDefaultPadding {
+  padding-inline: $defaultPadding;
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletWidth) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin gridSettings {
+  display: grid;
+  grid-template-columns: repeat($gridColumnsDefault, 1fr);
+  grid-column-gap: $gridGapDefault;
+  max-width: 480px;
+  margin: 0 auto;
+
+  @include onTablet {
+    grid-template-columns: repeat($gridColumnsTablet, 1fr);
+    grid-column-gap: $gridGapLarge;
+    max-width: $tabletWidth;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat($gridColumnsDesktop, 1fr);
+    grid-column-gap: $gridGapLarge;
+    max-width: $desktopWidth;
+  }
+}
+
+@mixin burgerIconLine {
+  display: block;
+  height: 13%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  transition-duration: 0.3s;
+}
+
+@mixin topBar {
+  display: flex;
+  padding-block: 30px;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: span 2;
+
+  @include onTablet {
+    padding-block: 34px;
+    grid-column: span 6;
+  }
+
+  @include onDesktop {
+    padding-block: 36px;
+    grid-column: span 12;
+  }
+}
