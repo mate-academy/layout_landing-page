@@ -1,58 +1,76 @@
 .menu {
+  height: 100vh;
   background-color: #d12d35;
   transition-duration: 1s;
   overflow: hidden;
 
-  opacity: 0;
   transform: translateX(100%);
   pointer-events: none;
 
-&:target {
-  transform: translateX(0);
-  opacity: 1;
-  pointer-events: all;
-}
+    &:target {
+      transform: translateX(0);
+      pointer-events: all;
+    }
 
   &__content {
     height: 100vh;
     box-sizing: border-box;
+    margin-left: 20px;
+
+    @include onTablet {
+      margin-left: 72px;
+    }
+
+    @include onDesktop {
+      margin-left: 120px;
+    }
   }
 
   &__top {
-    margin-bottom: 54px;
+    margin-bottom: 40px;
+
+    @include onDesktop {
+      margin-bottom: 54px;
+    }
   }
 
   &__list {
-    margin-bottom: 0 0 40px;
     padding: 0;
     list-style: none;
   }
 
   &__item {
-    margin-bottom: 24px;
+    color: $white-font-color;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 32px;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include onDesktop {
+      &:last-child {
+        margin-bottom: 48px;
+      }
     }
   }
 
   &__link {
-    display: inline-block;
+    position: relative;
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
 
     font-weight: 700;
     font-size: 22px;
     line-height: 22px;
-    color: $main-color;
+    color: $white-font-color;
     text-decoration: none;
     letter-spacing: 2px;
     text-transform: uppercase;
 
-    transition: border-color 0.3s;
+    transition: border-color 0.5s;
 
     &:hover {
-      border-color: #d12d35;
+      border-bottom: 1px solid $white-font-color;
     }
   }
 
@@ -60,12 +78,19 @@
     display: block;
     width: max-content;
 
-    transition: color 0.3s;
+    transition: color 0.5s;
 
     font-weight: 700;
     color: $main-color;
     text-transform: uppercase;
     text-decoration: none;
+
+    &-link {
+      border-bottom: 1px solid $white-font-color;
+      color: $white-font-color;
+      margin-bottom: 8px;
+
+    }
 
     &--phone {
       font-size: 16px;
