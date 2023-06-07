@@ -1,0 +1,112 @@
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: auto;
+
+  &:target {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+.menu {
+  height: 100vh;
+  @include contentPaddingInLine;
+  padding-block: 25px 31px;
+  // box-sizing: border-box;
+  opacity: 0;
+  color: $header-color;
+  background-color: $accent-color;
+  @include onTablet {
+    padding-block: 50px 0;
+
+  }
+  @include onDesktop {
+    padding-block: 52px 0;
+  }
+
+  &__control {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    display: flex;
+
+    justify-content: space-between;
+  }
+  &__close {
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-image: url("../images/icons/icon-close.svg");
+    @include onTablet {
+      width: 36px;
+      height: 36px;
+    }
+  }
+  &__nav {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  &__list {
+    margin: 40px 0 0;
+  }
+  &__item {
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+
+  }
+  &__link {
+    color: inherit;
+  }
+  &__contacts {
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 27px;
+  }
+  &__call {
+    position: relative;
+    margin-top: 16px;
+    display: flex;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      width: 0;
+      visibility: hidden;
+      margin-top: 8px;
+      border: 1px solid $header-color;
+      @include transition (width, 700ms);
+    }
+    &:hover {
+      &::after {
+        width: 126px;
+        visibility: visible;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

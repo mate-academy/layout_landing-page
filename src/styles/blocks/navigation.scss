@@ -1,0 +1,60 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    width: 64px;
+    height: 46px;
+    box-sizing: border-box;
+    background-image: url("../images/icons/the_met.svg");
+
+  }
+
+  &__call {
+    position: absolute;
+    top: 24px;
+    right: 220px;
+    opacity: 0;
+    pointer-events: none;
+    color: $header-color;
+    text-align: end;
+    @include transition (opacity, 700ms);
+    & > :not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+  }
+
+  &__icons {
+    display: flex;
+
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    color: $header-color;
+    background-size: contain;
+    &--phone {
+      background-image: url("../images/icons/icon-phone-call.svg");
+      @include onDesktop {
+        &:hover > .nav__call {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--burger {
+      margin-left: 24px;
+      background-image: url("../images/icons/icon-burger-menu.svg");
+      @include transition (background-image, 700ms);
+      &:hover {
+        background-image: url("../images/icons/icon-burger-menu-hover.svg");
+      }
+    }
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+}

@@ -1,0 +1,109 @@
+@mixin onTablet {
+  @media screen and (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media screen and (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin align-width () {
+  max-width: 280px;
+  @include onTablet() {
+    max-width: 392px;
+  }
+  @include onDesktop() {
+    max-width: 498px;
+  }
+}
+
+@mixin titleFont () {
+
+  color: $main-color;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: -1.5px;
+  @include onTablet() {
+    max-width: 392px;
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin contentWidth () {
+  max-width: 280px;
+  @include onTablet() {
+    max-width: 600px;
+  }
+  @include onDesktop() {
+    max-width: 1020px;
+  }
+}
+
+@mixin contentPaddingTop() {
+  padding-top: 100px;
+  @include onTablet() {
+    padding-top: 140px;
+  }
+}
+
+@mixin contentPaddingInLine () {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+  }
+}
+
+@mixin pageGrid () {
+  &__shift-group {
+    --columns: 2;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    @include onTablet() {
+      --columns: 6;
+      column-gap: 24px;
+    }
+    @include onDesktop {
+      --columns: 12;
+    }
+  }
+}
+
+@mixin buttonHover {
+  background-color: $hover-color;
+}
+
+@mixin buttonPressed {
+  background-color: $pressed-color;
+}
+
+@mixin transition ($name, $duration) {
+  transition: $name $duration;
+}
+
+@mixin formStatus {
+
+  &:focus {
+    border-radius: 0;
+    color: $main-color;
+  }
+  &:hover > & {
+    color: $main-color;
+  }
+}
+@mixin collection {
+  &:hover {
+    transform: scale(120%);
+  }
+}
