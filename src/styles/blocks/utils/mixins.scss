@@ -1,0 +1,67 @@
+@mixin resetMargin {
+  margin: 0;
+}
+
+@mixin getSpaceGroteskFont(
+  $font-size,
+  $line-height,
+  $font-weight: false
+) {
+  font-family: "Space Grotesk", Arial, sans-serif,;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  @if $font-weight {
+    font-weight: $font-weight;
+  }
+}
+
+@mixin backgroundImageStyle {
+  background-repeat: no-repeat;
+  background-position: center ;
+  background-size: contain;
+}
+
+@mixin onTablet {
+  @media (min-width: ($tablet-min-width + 24px)) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: ($desktop-min-width + 240px)) {
+    @content;
+  }
+}
+
+@mixin hoverEffect($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin getGrid {
+  --columns: 2;
+  --column-width: 130px;
+  --column-gap: 20px;
+
+  align-items: center;
+  justify-content: center;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--column-width));
+  column-gap: var(--column-gap);
+
+  @include onTablet {
+    --columns: 6;
+    --column-width: 80px;
+    --column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+    --column-width: 63px;
+  }
+}

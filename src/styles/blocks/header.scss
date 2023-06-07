@@ -1,0 +1,62 @@
+.header {
+  height: 100vh;
+
+  box-sizing: border-box;
+
+  background-image: url(../img/header-bg-mobile.png);
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include onTablet {
+    background-image: url(../img/header-bg-tablet.png);
+  }
+
+  @include onDesktop {
+    background-image: url(../img/header-bg-desktop.png);
+  }
+
+  &__top {
+    @include getGrid;
+  }
+
+  &__top-bar {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__bottom {
+    @include getGrid;
+    padding-bottom: $padding-for-header-mobile;
+
+    @include onTablet {
+      padding-bottom: $padding-for-header-tablet;
+    }
+  }
+
+  &__title {
+    @include resetMargin;
+    @include getSpaceGroteskFont(36px, 100%, 700);
+    grid-column: span 2;
+
+    @include onTablet {
+      @include getSpaceGroteskFont(48px, 100%, 700);
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      @include getSpaceGroteskFont(56px, 100%, 700);
+      grid-column: span 12;
+    }
+  }
+}

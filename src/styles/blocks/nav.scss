@@ -1,0 +1,48 @@
+.nav {
+  &__list {
+    @include resetMargin;
+    padding: 0;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+  }
+
+  &__item {
+    @include getSpaceGroteskFont(22px, 22px, 700);
+    list-style: none;
+    letter-spacing: 2px;
+
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      display: block;
+
+      position: absolute;
+      bottom: -4px;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: $main-color;
+      border-radius: 50px;
+
+      transition: transform 0.3s;
+      transform-origin: left;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

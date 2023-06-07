@@ -1,0 +1,57 @@
+.page {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-color;
+
+  background-color: $main-background;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    @include resetMargin;
+    min-width: $phone-min-width;
+
+    text-align: left;
+
+    @include onTablet {
+      min-width: $tablet-min-width;
+    }
+
+    @include onDesktop {
+      min-width: $desktop-min-width;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.3s;
+    transform: translateX(100%);
+
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__main {
+    padding-top: 64px;
+    padding-bottom: 96px;
+
+    @include onTablet {
+      padding-block: 120px;
+    }
+  }
+}
