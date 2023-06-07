@@ -17,36 +17,51 @@
     width: 24px;
   }
 
-  transition: transform $effectDuration;
-
-  @include hover(transform, scale(1.3));
+  transition-delay: $effectDuration;
+  transition-duration: $effectDuration;
 
   &--phone {
     background-image: url(../images/icons/icon-phone-call.svg);
+
+    &:hover {
+      @include hover (transform, scale(1.3));
+    }
+
+    &:hover::before {
+      content: "+1 234 5555-55-55";
+      text-shadow: 2px 0 2px #fff;
+      position: absolute;
+      transform: translateX(-150px);
+      width: 100vh;
+      color: $main-text-color;
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.svg);
 
     &:hover {
-      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+      transition-property: width, scale;
+      scale: 1.3;
 
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
       width: 30px;
-      // transform: translateX(12px);
 
       @include onTablet {
         width: 36px;
-        // transform: translateX(12px);
       }
 
       @include onDesktop {
         width: 36px;
-        // transform: translateX(12px);
       }
     }
   }
 
   &--close-tab {
     background-image: url(../images/icons/icon-close.svg);
+
+    &:hover {
+      @include hover (transform, scale(1.3));
+    }
   }
 }
