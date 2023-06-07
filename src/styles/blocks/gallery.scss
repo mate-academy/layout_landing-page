@@ -1,0 +1,116 @@
+.gallery {
+  &__heading {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  &__title {
+    @include font($font-bold, 48px, 100%);
+    letter-spacing: -1.5px;
+
+    @include phone {
+      font-size: 32px;
+    }
+  }
+
+  &__desc {
+    line-height: $lh-regular;
+    padding-top: 8px;
+  }
+
+  &__art-pictures {
+    grid-column: 1 / -1;
+    padding-top: 48px;
+
+    @include gridContainer;
+  }
+
+  &__info {
+    grid-column: 1 / 8;
+    padding-top: 24px;
+
+    @include tablet {
+      grid-column: span 4;
+    }
+
+    @include phone {
+      grid-column: span 2;
+    }
+  }
+
+  &__images-container {
+    @include gridContainer;
+    grid-column: 1 / -1;
+
+    @include phone {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transiton-duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--img-wide {
+      grid-column: span 8;
+
+      @include tablet {
+        grid-column: span 4;
+      }
+
+      @include phone {
+        grid-column: span 1;
+        object-position: left;
+      }
+    }
+
+    &--img-square {
+      grid-column: span 4;
+
+      @include tablet {
+        grid-column: span 2;
+      }
+
+      @include phone {
+        grid-column: span 1;
+      }
+    }
+
+    &--img-row {
+      grid-column: span 4;
+
+      @include tablet {
+        grid-column: span 3;
+      }
+
+      @include phone {
+        grid-column: span 1;
+      }
+    }
+
+    &--img-d-none {
+      @include tablet {
+        display: none;
+      }
+
+      @include phone {
+        display: block;
+      }
+    }
+  }
+
+  &__pictures-title {
+    @include font($font-bold, 16px, $lh-regular, $accent-main);
+  }
+
+  &__pictures-desc {
+    line-height: $lh-regular;
+  }
+}

@@ -1,0 +1,72 @@
+@mixin desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 774px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 440px) {
+    @content;
+  }
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin gridContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include phone {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@mixin shadow {
+  text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+}
+
+@mixin hover-line {
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: -7px;
+    height: 1px;
+    background-color: $accent-default;
+    transform: scale(0);
+    transition: transform $transiton-duration;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin font(
+  $weight,
+  $size: 16px,
+  $line-height: $lh-regular,
+  $color: $main-dark
+) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+}
