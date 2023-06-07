@@ -1,0 +1,79 @@
+.top-bar {
+  @include contentPaddingInline();
+  @include contentPaddingBlock();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0;
+
+  &__hover {
+    position: absolute;
+    top: 70px;
+    right: calc(50% - 30%);
+
+    text-align: right;
+    visibility: hidden;
+    opacity: 0;
+    color: #fff;
+
+    @media (min-width: 400px) {
+      top: 30px;
+    }
+
+    @include onTablet {
+      right: calc(50% - 23%);
+    }
+
+    @include onLaptop {
+      right: calc(50% - 25%);
+    }
+
+    @media (min-width: 1300px) {
+      right: calc(50% - 32%);
+    }
+
+    &-title,
+    &-phone {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      letter-spacing: normal;
+    }
+
+    &-phone {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 50px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+    @include hover(transform, scale(1.2));
+
+    &__image {
+      height: 46px;
+      width: 64px;
+
+      @include onTablet {
+        height: 65px;
+        width: 87px;
+      }
+    }
+  }
+}
+
+.icon--phone:hover ~ .top-bar__hover {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
+}

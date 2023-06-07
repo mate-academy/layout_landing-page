@@ -1,0 +1,70 @@
+.page {
+  font-family: "Cinzel", serif;
+  scroll-behavior: smooth;
+  color: #fff;
+  background-color: #fff;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  &__menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    transition: all 0.5s;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+
+  &__main {
+    padding-block: 100px;
+    padding-inline: 20px;
+    background-color: #fff;
+
+    @include onTablet {
+      padding-block: 140px;
+    }
+
+    @include contentPaddingInline;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+    height: 180px;
+    width: 100%;
+    background-image: url("../images/footer.png");
+    background-size: cover;
+    background-position: center;
+
+    @include onTablet {
+      height: 360px;
+    }
+  }
+}
+
+.phone-number {
+  text-decoration: none;
+  color: #fff;
+}
+
+.adress {
+  text-decoration: none;
+  color: inherit;
+}
