@@ -1,0 +1,61 @@
+.detail {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    margin-bottom: 16px;
+
+    transition: transform $effect-duration;
+    z-index: 1;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &:hover {
+      transform: scale($image-scale);
+      z-index: 2;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  &__description {
+    margin: 0;
+  }
+}
