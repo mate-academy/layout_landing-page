@@ -1,0 +1,151 @@
+.details {
+  &-title {
+    margin-bottom: 48px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__wrapper {
+    margin-bottom: 40px;
+
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      margin-bottom: 48px;
+      row-gap: 48px;
+    }
+  }
+
+  &__button {
+    margin-bottom: 80px;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    $columns: 2;
+    grid-template-columns: repeat($columns, 1fr);
+
+    @include onTablet {
+      margin-bottom: 120px;
+
+      $columns: 6;
+      grid-template-columns: repeat($columns, 1fr);
+    }
+
+    @include onDesktop {
+      margin-bottom: 180px;
+
+      $columns: 12;
+      grid-template-columns: repeat($columns, 1fr);
+    }
+    &--explore {
+      display: grid;
+      border: 0;
+      padding: 0;
+      border-radius: 40px;
+
+      height: 56px;
+
+      background: $main-text-color;
+      color: $dark-text-color;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-align: center;
+      align-content: center;
+      text-decoration: none;
+
+      grid-column: 1 / -1;
+
+      @include onTablet {
+        grid-column: 2 / 6;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / 9;
+      }
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    display: grid;
+    column-gap: 20px;
+    $columns: 2;
+    grid-template-columns: repeat($columns, 1fr);
+    margin-bottom: 16px;
+
+    @include onTablet {
+      column-gap: 24px;
+      $columns: 6;
+      grid-template-columns: repeat($columns, 1fr);
+    }
+
+    @include onDesktop {
+      $columns: 12;
+      grid-template-columns: repeat($columns, 1fr);
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__description {
+    margin: 8px 0 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
