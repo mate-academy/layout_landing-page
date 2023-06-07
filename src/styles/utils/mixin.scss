@@ -1,0 +1,52 @@
+@mixin setDefaultPadding {
+  padding: 0 calc(2vw + 2vh);
+}
+
+@mixin buttonText {
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+}
+
+@mixin menuAfter($value) {
+  content: "";
+  display: block;
+  margin-top: 8px;
+  height: 1px;
+  width: 100%;
+  scale: $value;
+  background: $menu-links-color;
+  transition: all 0.5s ease;
+}
+
+@mixin setGridCell {
+  width: 100%;
+  --colums: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--colums), 1fr);
+  grid-column-gap: 20px;
+  margin-inline: auto;
+
+  @include onTablet {
+    --colums: 6;
+    grid-column-gap: 24px;
+    max-width: 600px;
+  }
+
+  @include onDesktop {
+    --colums: 12;
+    max-width: 1020px;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}

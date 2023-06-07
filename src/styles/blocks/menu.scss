@@ -1,0 +1,114 @@
+.menu {
+  @include setDefaultPadding;
+
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+
+  background: $menu-BGC;
+  color: $menu-links-color;
+  font-weight: 600;
+
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+
+
+  pointer-events: none;
+  overflow: auto;
+
+  &__grid {
+    @include setGridCell;
+  }
+
+  &__content {
+    grid-column: span 12;
+  }
+
+  &__topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    grid-column: span 2;
+    grid-row: 1px;
+
+    background-color: $menu-BGC;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    height: fit-content;
+    gap: 24px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    width: fit-content;
+
+    font-style: normal;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: $menu-links-color;
+
+
+
+    &::after {
+      @include menuAfter(0);
+    }
+
+    &:hover {
+
+      &::after {
+        scale: 1;
+      }
+    }
+  }
+
+  &__contact {
+    display: block;
+    color: $menu-links-color;
+    font-size: 16px;
+    line-height: 27px;
+    margin-top: 40px;
+
+    transition: color 0.5s ease;
+
+    &:hover {
+      color: #582f2f;
+    }
+  }
+
+  &__bottomtext {
+    display: block;
+    width: fit-content;
+    margin-top: 16px;
+
+    &::after {
+      @include menuAfter(1);
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
