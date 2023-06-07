@@ -1,13 +1,57 @@
 .details {
+  &__content {
+    margin-top: 48px;
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      margin-top: 64px;
+      row-gap: 48px;
+    }
+
+    @include onDesktop {
+      margin-top: 48px;
+    }
+  }
+
   &__images-box {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    margin-top: 48px;
+
+    @include pageGrid;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__image {
-    width: 100%;
+    &--square {
+      grid-column: span 1;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      grid-column: span 1;
+
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
   }
 
   &__name {
