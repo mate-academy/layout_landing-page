@@ -1,10 +1,31 @@
 .icon {
   display: block;
+
   height: 24px;
   width: 24px;
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  &__text {
+    position: absolute;
+    left: -100%;
+    top: 50%;
+    width: 179px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $main-text-color;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-75%, -125%);
+
+    transition: opacity 0.3s;
+  }
 
   @include hover(transform, scale(1.2));
 
@@ -15,6 +36,12 @@
 
   &--phone {
     background-image: url(../images/icons/Icon-Phone-call.svg);
+
+    @include onDesktop {
+      &:hover .icon__text {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
