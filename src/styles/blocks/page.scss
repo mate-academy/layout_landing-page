@@ -1,0 +1,82 @@
+.page {
+  font-family: "Manrope", Arial, Helvetica, sans-serif;
+  line-height: 140%;
+  font-size: 16px;
+  color: $main-text-color;
+  @include theme-transition;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &--theme--dark {
+    color: $background-color-page;
+    @include theme-transition;
+
+    & .main {
+      background-color: $main-text-color;
+      @include theme-transition;
+    }
+
+    & .menu {
+      color: $main-text-color;
+    }
+
+    & .information {
+      color: $main-text-color;
+      @include theme-transition;
+    }
+
+    & .contacts {
+      background-color: $main-text-color;
+      @include theme-transition;
+
+      &__info {
+        &-phone {
+          color: $background-color-page;
+        }
+
+        &-email {
+          color: $background-color-page;
+        }
+
+        &-address {
+          color: $background-color-page;
+        }
+      }
+    }
+
+    & .btn:hover {
+      background: $background-color-page;
+      color: $main-text-color;
+    }
+  }
+
+  &__body {
+    margin: 0;
+    box-sizing: border-box;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: all 0.3s;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+

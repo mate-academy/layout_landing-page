@@ -1,0 +1,129 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline();
+}
+
+@mixin hover($property, $toValue) {
+  transition: all 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin theme-transition {
+  transition: background-color 1s ease-in-out,
+  color 1s ease-in-out;
+}
+
+@mixin infobg($heigh, $bg-path) {
+  height: $heigh;
+  background: url(#{$bg-path});
+  background-position: center;
+  background-size: cover;
+}
+
+.btn {
+    display: block;
+    background-color: $button-color;
+    color: $background-color-page;
+    font-size: 16px;
+    line-height: 27px;
+    padding-block: 13.5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+
+  &:hover {
+    background-color: $background-color-page;
+    background: $main-text-color;
+  }
+}
+
+@mixin input-behavior {
+  box-sizing: border-box;
+  background: #F9F9F9;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 14px 16px;
+  border-radius: 8px;
+  color: #1B2129;
+  line-height: 140%;
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+
+  &:hover {
+    border: 1px solid #DBDBDB;
+  }
+
+  &:active,
+  &:focus {
+    outline: 2px solid $button-color;
+    border: 1px solid transparent;
+  }
+}
+
+@mixin contacts-text {
+  text-decoration: none;
+  margin: 0;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  color: #191919;
+  margin-block: 8px 24px;
+
+  @include hover(color, $button-color);
+
+  &--label {
+    letter-spacing: 0.15px;
+    color: #9393a3;
+    font-size: 14px;
+    line-height: 140%;
+  }
+}
+
+.theme-switcher {
+  cursor: pointer;
+}
+
+.animated {
+  animation: text-color 1s ease-in-out;
+}
+
+@keyframes text-color {
+  0% {
+    color: $background-color-page;
+  }
+  50% {
+    color: $button-color;
+  }
+  100% {
+    color: $background-color-page;
+  }
+}
