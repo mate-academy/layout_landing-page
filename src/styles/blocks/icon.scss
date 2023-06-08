@@ -1,3 +1,7 @@
+.top-bar__icon {
+  position: relative;
+}
+
 .icon {
   display: block;
   width: 24px;
@@ -13,8 +17,33 @@
     width: 24px;
   }
 
+  @include onDesktop {
+    height: 32px;
+    width: 32px;
+  }
+
   &--phone {
     background-image: url(../images/icons/Icon-Phone-call.png);
+
+    @include onTablet {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        width: 190px;
+        right: 0;
+        top: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+        color: #fff;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
