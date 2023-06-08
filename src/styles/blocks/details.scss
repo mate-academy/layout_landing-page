@@ -1,0 +1,133 @@
+.details {
+  @include pageGrid(40px);
+  padding: 60px 20px;
+
+  &__title {
+    grid-column: span 2;
+    margin-bottom: 8px;
+
+    @include fonts(500, $title-text-size, 100%);
+    text-align: center;
+
+    @media (min-width: 744px) {
+      grid-column: 1 / -1;
+      margin-bottom: 16px;
+
+      font-size: 48px;
+    }
+
+    @media (min-width: 1260px) {
+      margin-bottom: 0;
+
+      font-size: 64px;
+    }
+  }
+
+  &__advantage {
+    grid-column: span 2;
+    @include pageGrid(20px);
+    row-gap: 8px;
+
+    @for $i from 1 through 6 {
+      &__image--#{$i} {
+        background-image: url(../images/details-#{$i}.png);
+      }
+    }
+
+    &__image {
+      grid-column: span 1;
+      display: grid;
+      height: 130px;
+      margin-right: 0;
+
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &--wide {
+        @media (min-width: 744px) {
+          grid-column: span 4;
+        }
+
+        @media (min-width: 1260px) {
+          grid-column: span 8;
+        }
+      }
+
+      &--short {
+        @media (min-width: 744px) {
+          grid-column: span 2;
+        }
+
+        @media (min-width: 1260px) {
+          grid-column: span 4;
+        }
+      }
+
+      @media (min-width: 744px) {
+        height: 187px;
+      }
+
+      @media (min-width: 1260px) {
+        height: 321px;
+      }
+    }
+
+    &__subtitle {
+      grid-column: span 2;
+      margin-top: 8px;
+
+      @include fonts(700, 24px, 140%);
+
+      @media (min-width: 744px) {
+        grid-column: 1 / -1;
+      }
+
+      @media (min-width: 1260px) {
+        grid-column: span 8;
+      }
+    }
+
+    &__text {
+      grid-column: span 2;
+
+      @include fonts(400, 16px, 140%);
+
+      @media (min-width: 744px) {
+        grid-column: 1 / -1;
+      }
+
+      @media (min-width: 1260px) {
+        grid-column: span 8;
+      }
+    }
+
+    @media (min-width: 744px) {
+      grid-column: 1 / -1;
+      @include tablet(24px);
+      row-gap: 8px;
+    }
+
+    @media (min-width: 1260px) {
+      grid-column: 1 / -1;
+      @include desctop(24px);
+      row-gap: 8px;
+    }
+  }
+
+  @media (min-width: 744px) {
+    @include tablet(48px);
+    padding: 48px 72px 60px;
+  }
+
+  @media (min-width: 1260px) {
+    @include desctop(24px);
+    row-gap: 48px;
+    padding: 120px;
+  }
+}
