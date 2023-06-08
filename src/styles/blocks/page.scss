@@ -2,7 +2,7 @@
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #292929;
+  color: $mainTextColor;
 
   &__content {
     max-width: 1260px;
@@ -10,8 +10,20 @@
   }
 
   &__header-container {
-    height: 100vh;
     @include container;
+  }
+
+  &__header-content {
+    height: 100vh;
+    &--main {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 27px;
+      justify-content: space-between;
+      @include onTab {
+        padding-bottom: 64px;
+      }
+    }
   }
 
   &__menu {
@@ -22,14 +34,14 @@
     max-width: 1260px;
     background-color: #e5e5e5;
     opacity: 0;
-    @include act (left);
-    @include act (opacity);
+    @include actDuration (left);
+    @include actDuration (opacity);
     &:target {
       left: 50%;
       transform: translateX(-50%);
       opacity: 1;
-      @include act (left);
-      @include act (opacity);
+      @include actDuration (left);
+      @include actDuration (opacity);
     }
   }
 
