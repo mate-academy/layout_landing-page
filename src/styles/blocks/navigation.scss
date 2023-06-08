@@ -9,19 +9,51 @@
 
   }
 
+  &__phone {
+    position: relative;
+    display: flex;
+    @include onDesktop {
+
+      &:hover > .nav__call {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
   &__call {
     position: absolute;
-    top: 24px;
-    right: 220px;
+    top: -40px;
+    right: 20px;
     opacity: 0;
+    width: 220px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
     pointer-events: none;
     color: $header-color;
     text-align: end;
+    scroll-behavior: unset;
     @include transition (opacity, 700ms);
     & > :not(:last-child) {
       margin-bottom: 8px;
     }
+    &:hover {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 
+  &__description {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    &--important {
+      @include transition (color, 700ms);
+      &:hover {
+        color: $accent-color;
+      }
+    }
   }
 
   &__icons {
@@ -36,11 +68,7 @@
     background-size: contain;
     &--phone {
       background-image: url("../images/icons/icon-phone-call.svg");
-      @include onDesktop {
-        &:hover > .nav__call {
-          opacity: 1;
-        }
-      }
+
     }
 
     &--burger {

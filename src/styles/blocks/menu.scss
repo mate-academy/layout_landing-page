@@ -5,8 +5,7 @@
   right: 0;
   z-index: 1;
   pointer-events: none;
-  overflow: auto;
-
+  @include transition (opacity, 700ms);
   &:target {
     pointer-events: all;
     opacity: 1;
@@ -17,8 +16,10 @@
   height: 100vh;
   @include contentPaddingInLine;
   padding-block: 25px 31px;
-  // box-sizing: border-box;
+  overflow: auto;
   opacity: 0;
+  font-weight: 700;
+  text-transform: uppercase;
   color: $header-color;
   background-color: $accent-color;
   @include onTablet {
@@ -30,11 +31,10 @@
   }
 
   &__control {
-    position: sticky; /* to keep cross always visible */
+    position: sticky;
     top: 0;
     z-index: 1;
     display: flex;
-
     justify-content: space-between;
   }
   &__close {
@@ -45,18 +45,16 @@
     background-repeat: no-repeat;
     background-image: url("../images/icons/icon-close.svg");
     @include onTablet {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
     }
   }
   &__nav {
-    font-weight: 700;
     font-size: 22px;
     line-height: 22px;
     display: flex;
     align-items: center;
     letter-spacing: 2px;
-    text-transform: uppercase;
   }
   &__list {
     margin: 40px 0 0;
@@ -69,6 +67,7 @@
   }
   &__link {
     color: inherit;
+    @include underLine;
   }
   &__contacts {
     margin-top: 32px;
@@ -76,37 +75,23 @@
     line-height: 27px;
   }
   &__call {
-    position: relative;
     margin-top: 16px;
-    display: flex;
-    font-weight: 700;
+
     font-size: 12px;
     line-height: 16px;
-    align-items: center;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      width: 0;
-      visibility: hidden;
-      margin-top: 8px;
-      border: 1px solid $header-color;
-      @include transition (width, 700ms);
-    }
+
+    @include underLine;
+
+  }
+  &__description {
+    margin-top: 4px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    @include transition (color, 700ms);
     &:hover {
-      &::after {
-        width: 126px;
-        visibility: visible;
-        cursor: pointer;
-      }
+      color: $main-color;
     }
   }
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
