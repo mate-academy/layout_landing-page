@@ -14,6 +14,10 @@
   }
 
   &--tel {
+    position: absolute;
+    left: -450%;
+    top: -300%;
+
     display: none;
     width: fit-content;
 
@@ -21,9 +25,14 @@
     font-size: 12px;
     line-height: 32px;
 
-    transform: scaleX(0);
+    opacity: 0;
+
+    transform: translateY(-100%);
     transform-origin: right;
-    transition: transform $effectDuration, color $effectDuration;
+    transition:
+      transform $effectDuration,
+      color $effectDuration,
+      opacity $effectDuration;
 
     @include onDesktop {
       display: block;
@@ -51,12 +60,14 @@
   }
 
   &-tel-phone {
+    position: relative;
     display: flex;
     gap: 24px;
 
     &:hover .icon--tel {
-      transform: scaleX(1);
+      position: static;
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
-/* #endregion */
