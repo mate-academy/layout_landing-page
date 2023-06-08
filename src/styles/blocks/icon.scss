@@ -1,0 +1,73 @@
+/* #region icon */
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--tel {
+    position: absolute;
+    left: -450%;
+    top: -300%;
+
+    display: none;
+    width: fit-content;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 32px;
+
+    opacity: 0;
+
+    transform: translateY(-100%);
+    transform-origin: right;
+    transition:
+      transform $effectDuration,
+      color $effectDuration,
+      opacity $effectDuration;
+
+    @include onDesktop {
+      display: block;
+    }
+
+    &:hover {
+      color: $contacts-text-hover-color;
+    }
+  }
+
+  &--phone {
+    background-image: url("../images/icons/icon-phone.svg");
+  }
+
+  &--menu {
+    background-image: url("../images/icons/icon-burger-menu.svg");
+
+    &:hover {
+      background-image: url("../images/icons/icon-burger-menu-hover.svg");
+    }
+  }
+
+  &--close {
+    background-image: url("../images/icons/icon-close.svg");
+  }
+
+  &-tel-phone {
+    position: relative;
+    display: flex;
+    gap: 24px;
+
+    &:hover .icon--tel {
+      position: static;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
