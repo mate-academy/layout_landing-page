@@ -5,17 +5,34 @@
   background-color: $accent-color;
   font-weight: 700;
   text-transform: uppercase;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transition: all 0.3s;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+
+  overflow: auto; /* to scroll the menu if needed */
+
+  &:target {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
 
   &__top{
     margin-bottom: 32px;
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+
   }
 
   &__nav {
     margin-bottom: 40px;
-  }
-
-  &__content{
-    @include contentPaddingInLine;
   }
 
   &__phone-number--1,

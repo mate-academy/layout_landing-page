@@ -12,13 +12,25 @@
     @content;
   }
 }
-// PADDINGS
-@mixin contentPaddingInLine() {
-  padding-inline: 20px;
 
-  @include onTablet() {
-    padding-inline: 72px;
+@mixin pageGrid {
+  $columns:2; // Variable of grid columns
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(#{$columns},1fr);
+
+  @include onTablet {
+    $columns:6;
+    column-gap: 24px;
+    grid-template-columns: repeat(#{$columns},1fr);
   }
+
+  @include onDesktop {
+    $columns:12;
+    grid-template-columns: repeat(#{$columns},1fr);
+  }
+
 }
 
 // HOVER EFFECT TRANSITION
