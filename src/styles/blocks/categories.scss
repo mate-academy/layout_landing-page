@@ -1,0 +1,91 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+
+  }
+
+  &__link {
+    position: relative;
+
+    @include hover(transform, scale(1.1));
+    &:hover {
+      z-index: 1;
+      box-shadow: $main-text-color 0 0 5px;
+      border-radius: 8px;
+    }
+
+    &--wide {
+
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesctop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesctop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 140%;
+    margin-bottom: 0;
+  }
+
+  &__button {
+    @include pageGrid;
+  }
+
+  &__first-button {
+
+    @include onDesctop {
+      grid-column: 4 span;
+    }
+    grid-column: 1 / -1;
+
+    transition: all $effectDuration;
+
+    &:hover {
+      background-color: #f8f8fa;
+      color: #292929;
+      border: 1px solid #d5d7de;
+    }
+
+    &:active {
+      background-color: #111;
+      color: #f8f8fa;
+    }
+  }
+}
