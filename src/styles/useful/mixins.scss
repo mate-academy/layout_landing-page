@@ -1,0 +1,33 @@
+@mixin gridColumns {
+  --columns: 12;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 24px;
+
+  @include onLaptop {
+    --columns: 6;
+  }
+
+  @include onMobile {
+    --columns: 2;
+    column-gap: 20px;
+  }
+}
+
+@mixin gridRows {
+  display: grid;
+  grid-template-rows: auto;
+  row-gap: 48px;
+}
+
+@mixin onLaptop {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 743px) {
+    @content;
+  }
+}
