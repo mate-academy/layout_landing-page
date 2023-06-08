@@ -1,0 +1,96 @@
+.now-on-view {
+  padding-bottom: 100px;
+
+  &__title {
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  &__subtitle {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  &__gallery {
+    position: relative;
+    display: grid;
+    column-gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .gallery--1,
+  .gallery--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery--2 {
+    grid-template-columns: repeat(3, 1fr);
+
+    @include onTablet {
+      grid-template-columns: 1fr 1fr;
+
+      img:last-child {
+        display: none;
+      }
+    }
+
+    @include onDesktop {
+      grid-template-columns: 1fr 1fr 1fr;
+
+      img:last-child {
+        display: initial;
+      }
+    }
+  }
+
+  .gallery--1 {
+    @include onTablet {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .gallery--3 {
+    @include onTablet {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include onTablet {
+      object-fit: inherit;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 16px;
+    color: $Accent-main;
+  }
+
+  &__button {
+    height: 56px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 56px;
+
+    @include onTablet {
+      width: 392px;
+      margin: 0 auto;
+    }
+  }
+}
