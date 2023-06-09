@@ -13,7 +13,39 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(/images/icons/icon-phone-2x.png);
+
+    &::before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      color: $main-text-color;
+      font-family: "Space Mono", monospace;
+      font-size: 8px;
+      line-height: 12px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      width: max-content;
+      visibility: hidden;
+      opacity: 0;
+
+      transform: translate(-110%, 60%);
+    }
+
+    &:hover:before {
+      visibility: visible;
+      opacity: 1;
+
+      @include onTablet {
+        font-size: 10px;
+        line-height: 14px;
+      }
+
+      @include onDesktop {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
   }
 
   &--menu {
