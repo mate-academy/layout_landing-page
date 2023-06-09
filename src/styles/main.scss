@@ -23,7 +23,10 @@
 
 .page__menu:target {
   opacity: 1;
+  position: fixed;
   pointer-events: all;
+  overflow: hidden;
+  z-index: 1;
 }
 
 /* #endregion */
@@ -68,6 +71,7 @@
 
 /* #region menu */
 .menu {
+  position: fixed;
   height: 100vh;
   background-color: #f9f9f9;
 }
@@ -135,23 +139,23 @@
 /* #region icons*/
 .icon {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .icon--phone {
-  background-image: url(../images/icons/mobile/icon-phone-mobile.png);
+  background-image: url(../images/icons/icon-phone.svg);
 }
 
 .icon--menu {
-  background-image: url(../images/icons/mobile/icon-burger-menu-mobile.png);
+  background-image: url(../images/icons/icon-burger-menu.svg);
 }
 
 .icon--close {
-  background-image: url(../images/icons/mobile/icon-close-mobile.png);
-  background-repeat: no-repeat;
+  background-image: url(../images/icons/icon-close.svg);
 }
 /* #endregion */
 
@@ -203,7 +207,7 @@
   line-height: 27px;
   width: 100%;
   height: 56px;
-
+  cursor: pointer;
 }
 
 .button:link {
@@ -237,7 +241,35 @@
 }
 
 .product__image {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  border-radius: 4px;
   width: 100%;
+  transition: all 144ms;
+}
+
+.product__image::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.product__image:hover {
+  background-size: 120%;
+}
+
+.product__image--1 {
+  background-image: url(../images/products/mobile/beosound_a5-mobile.png);
+}
+
+.product__image--2 {
+  background-image: url(../images/products/mobile/beoplay_hx-mobile.png);
+}
+
+.product__image--3 {
+  background-image: url(../images/products/mobile/beosound_theatre-mobile.png);
 }
 
 .product__name {
@@ -274,15 +306,48 @@
 
 .multimedia__img-cover {
   width: 100%;
-  height: auto;
 }
 
 .multimedia__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 0 0;
-  border-radius: 4px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transition: all 144ms;
+}
+
+.multimedia__image:hover {
+  background-size: 120%;
+}
+
+.multimedia__image::before {
+  content: "";
+  display: block;
+  padding-top: 70%;
+}
+
+.multimedia__image--1 {
+  background-image: url(../images/products/mobile/speaker-1-mobile.png);
+}
+
+.multimedia__image--2 {
+  background-image: url(../images/products/mobile/speaker-2-mobile.png);
+}
+
+.multimedia__image--3 {
+  background-image: url(../images/products/mobile/earphones-1-mobile.png);
+}
+
+.multimedia__image--4 {
+  background-image: url(../images/products/mobile/earphones-2-mobile.png);
+}
+
+.multimedia__image--5 {
+  background-image: url(../images/products/mobile/smarthome-1-mobile.png);
+}
+
+.multimedia__image--6 {
+  background-image: url(../images/products/mobile/smarthome-2-mobile.png);
 }
 
 .multimedia__category {
@@ -292,10 +357,6 @@
 .multimedia__category:last-child {
   margin: 16px 0 0;
 }
-
-.multimedia__button {
-  margin-bottom: 40px;
-}
 /* #endregion*/
 
 /* #region about*/
@@ -303,12 +364,17 @@
   background-color: #fcfaef;
 }
 
-.about__img-container {
-
+.about__image {
+  background-image: url(../images/vinyl-player.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
 }
 
-.about__image {
-  width: 100%;
+.about__image::before {
+  content: "";
+  display: block;
+  padding-bottom: 55%;
 }
 
 .about__text {
@@ -336,10 +402,15 @@
   font-size: 14px;
   line-height: 140%;
   letter-spacing: 0.15px;
+  outline: #f98921;
 }
 
 .footer__fields:hover {
   border: 1px solid #dbdbdb;
+}
+
+.footer__fields:active {
+  border: 1px solid #f98921;
 }
 
 .footer__fields:focus-visible {
@@ -347,6 +418,7 @@
 }
 
 .footer__textarea {
+  color: #7e7e83;
   height: 148px;
   resize: none;
 }
@@ -421,8 +493,16 @@
 
 /* #region tablet */
 @media all and (min-width: 744px) {
+  .header {
+    background-image: url(../images/header-background-tablet.png);
+  }
+
   .top-bar {
     padding: 36px 0;
+  }
+
+  .top-bar__icons {
+    gap: 40px;
   }
 
   .top-bar,
@@ -446,19 +526,6 @@
     height: 32px;
   }
 
-  .icon--phone {
-    background-image: url(../images/icons/tablet/icon-phone-tablet.png);
-  }
-
-  .icon--menu {
-    background-image: url(../images/icons/tablet/icon-burger-menu-tablet.png);
-  }
-
-  .icon--close {
-    background-image: url(../images/icons/tablet/icon-close-tablet.png);
-    background-repeat: no-repeat;
-  }
-
   .multimedia__container {
     gap: 24px;
   }
@@ -471,7 +538,7 @@
   .title--multimedia,
   .title--about,
   .title--footer {
-    margin: 56px 0 8px 0;
+    margin: 56px 0 8px;
     font-size: 40px;
     line-height: 100%;
   }
@@ -488,6 +555,18 @@
 
   .about__text {
     width: fit-content;
+  }
+
+  .product__image--1 {
+    background-image: url(../images/products/desktop/beosound_a5_desktop.png);
+  }
+
+  .product__image--2 {
+    background-image: url(../images/products/desktop/beoplay_hx_desktop.png);
+  }
+
+  .product__image--3 {
+    background-image: url(../images/products/desktop/beosound_theatre_desktop.png);
   }
 
   .multimedia__category {
@@ -517,20 +596,15 @@
     padding-inline: 120px;
   }
 
-  .icon--phone {
-    position: relative;
-    background-image: url(../images/icons/desktop/icon-phone-desktop.png);
-  }
-
   .icon--phone:hover::before {
-    content: '+1 234 555-55-55';
+    content: "+1 234 555-55-55";
     text-decoration: none;
     display: block;
     position: absolute;
-    top: 8px;
-    left: -146px;
+    top: 44px;
+    right: 240px;
     color: #1b2129;
-    font-family: 'Inter';
+    font-family: Inter, Roboto, Arial, sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
@@ -539,17 +613,8 @@
     text-transform: uppercase;
   }
 
-  .icon--menu {
-    background-image: url(../images/icons/desktop/icon-burger-menu-desktop.png);
-  }
-
   .icon--menu:hover {
-    background-image: url(../images/icons/desktop/icon-burger-menu-hover-desktop.png);
-  }
-
-  .icon--close {
-    background-image: url(../images/icons/desktop/icon-close-desktop.png);
-    background-repeat: no-repeat;
+    background-image: url(../images/icons/icon-burger-menu-hover.svg);
   }
 
   .title--header {
@@ -580,15 +645,39 @@
   }
 
   .product {
-    flex-basis: fit-content;
-  }
-
-  .product__image {
-    height: 100%;
+    flex: 1;
   }
 
   .multimedia__category {
     margin: 16px 0 56px;
+  }
+
+  .multimedia__image::before {
+    padding-top: 65%;
+  }
+
+  .multimedia__image--1 {
+    background-image: url(../images/products/desktop/speaker-1-desktop.png);
+  }
+
+  .multimedia__image--2 {
+    background-image: url(../images/products/desktop/speaker-2-desktop.png);
+  }
+
+  .multimedia__image--3 {
+    background-image: url(../images/products/desktop/earphones-1-desktop.png);
+  }
+
+  .multimedia__image--4 {
+    background-image: url(../images/products/desktop/earphones-2-desktop.png);
+  }
+
+  .multimedia__image--5 {
+    background-image: url(../images/products/desktop/smarthome-1-desktop.png);
+  }
+
+  .multimedia__image--6 {
+    background-image: url(../images/products/desktop/smarthome-2-desktop.png);
   }
 
   .multimedia__button {
@@ -597,19 +686,31 @@
 
   .about > .frame {
     margin-top: 120px;
-    padding-bottom: 120px
+    padding-bottom: 120px;
   }
 
   .about__img-container {
     width: 100%;
     height: 460px;
+    margin-top: 120px;
     text-align: center;
     overflow: hidden;
   }
 
   .about__image {
-    position:relative;
+    background-image: url(../images/vinyl-player-desktop.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    position: relative;
+    width: 100%;
     top: -50%;
+  }
+
+  .about__image::before {
+    content: "";
+    display: block;
+    padding-top: 25%;
   }
 
   .title--about {
