@@ -3,8 +3,15 @@
     display: grid;
     row-gap: 48px;
   }
+}
+
+.now-on-view-item {
+  &__wrapper {
+    @include pageGrid;
+  }
 
   &__button {
+    display: grid;
     grid-column: 1 / -1;
     background-color: $secondTextColor;
     color: $headerTextColor;
@@ -12,14 +19,20 @@
     line-height: 56px;
     cursor: pointer;
     text-align: center;
-  }
-}
+    transition: all linear $effectDuration;
 
-.now-on-view-item {
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include onTablet {
+      grid-column: 2 / -2;
+    }
+  }
+
   &__photos {
     @include pageGrid;
-
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   &__link {
@@ -72,6 +85,7 @@
   &__describtion {
     font-size: 16px;
     line-height: 27px;
+    margin-bottom: 24px;
   }
 
   &__name {
