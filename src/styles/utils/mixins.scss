@@ -1,0 +1,102 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline () {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover ($property, $toVelue) {
+  transition: #{$property} $efectDuration;
+
+  &:hover {
+    #{$property}: $toVelue;
+  }
+}
+
+@mixin productTitleAndPriceSettings () {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+@mixin paragraph {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+@mixin pageGrid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin moveFireGrid {
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@mixin buttonStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  color: $main-text-color;
+  background-color: #fff;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  cursor: pointer;
+}
+
+@mixin buttonHoverShadow {
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+}
+
+@mixin buttonActiveShadow {
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+}
+
