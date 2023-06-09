@@ -1,6 +1,3 @@
-$first-shadow: #000 0 0 5px;
-$second-shadow: #000 0 0 10px;
-
 @mixin onTablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -14,7 +11,7 @@ $second-shadow: #000 0 0 10px;
 }
 
 @mixin hover ($property, $toValue) {
-  transition: #{$property} 0.3s;
+  transition: #{$property} $duration;
   &:hover {
     #{$property}: $toValue;
   }
@@ -24,10 +21,6 @@ $second-shadow: #000 0 0 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-@mixin text-shadow {
-  text-shadow: $first-shadow, $second-shadow;
 }
 
 @mixin paddings {
@@ -69,5 +62,21 @@ $second-shadow: #000 0 0 10px;
   @include onDesktop {
     padding-left: 120px;
     padding-right: 120px;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
   }
 }
