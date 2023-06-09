@@ -1,4 +1,6 @@
 .category {
+  position: relative;
+
   &__images {
     margin-bottom: 16px;
     @include gridLayout;
@@ -6,6 +8,7 @@
 
   &__image {
     width: 100%;
+    transition: transform $t-transition;
   }
 
   &__title {
@@ -13,5 +16,30 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 140%;
+    position: relative;
+  }
+
+  &__title::after {
+    content: "";
+    display: block;
+    margin-top: 10px;
+    width: 0;
+    height: 1px;
+    position: absolute;
+    background-color: $c-black;
+
+    transition: width $t-transition;
+  }
+  
+  &:hover &__title::after {
+    width: 100px;
+  }
+
+  &:hover &__image:nth-child(n) {
+    transform: rotate(-5deg);
+  }
+
+  &:hover &__image:nth-child(2n) {
+    transform: rotate(5deg);
   }
 }

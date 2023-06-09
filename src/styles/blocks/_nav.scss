@@ -6,9 +6,32 @@
     margin: 0 0 48px;
     padding: 0;
   }
+
+  &__item {
+    width: fit-content;
+    position: relative;
+  }
   
+  &__item::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: $c-orange;
+    transform-origin: left;
+    transition: $t-transition;
+  }
+
+  &__item:hover::after {
+    width: 100%;
+  }
+
   &__item:not(:last-child) {
-    margin-bottom: 32px;
+    margin-bottom: 30px;
   }
 
   &__link {
@@ -17,5 +40,16 @@
     font-weight: bold;
     font-size: 22px;
     line-height: 22px;
+
+    @include hover(
+      filter,
+      brightness(0)
+      saturate(100%)
+      invert(57%)
+      sepia(82%)
+      saturate(1184%)
+      hue-rotate(344deg)
+      brightness(99%) contrast(97%)
+    );
   }
 }
