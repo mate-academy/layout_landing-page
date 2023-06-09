@@ -10,27 +10,68 @@
   }
 }
 
-@mixin contentPaddingInline() {
-  padding-inline: 20px;
-
-  @include onTablet() {
-    padding-inline: 72px;
-  }
-
-  @include onDesktop() {
-    max-width: 1020px;
-    margin-inline: auto;
-    padding-inline: 120px;
-  }
-}
-
-.container {
-  @include contentPaddingInline;
-}
-
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.2s;
+  transition: #{$property} $smooth-animation;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin active($property, $toValue) {
+  transition: #{$property} $smooth-animation;
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+    column-gap: 24px;
+  }
+}
+
+@mixin buttonProp {
+  box-sizing: border-box;
+  height: 56px;
+  padding: 14px 48px;
+  font-weight: 700;
+  font-size: 16px;
+  color: $dark-text;
+  line-height: 27px;
+  background: $button-color;
+  border-radius: 40px;
+
+  @include hover(box-shadow, 1px 4px 16px rgba(232, 232, 240, 0.4));
+
+  @include active(box-shadow, 1px 4px 16px rgba(232, 232, 240, 0.64));
+}
+
+@mixin inputStyling {
+  padding-block: 14px;
+  box-sizing: border-box;
+  padding-left: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #292929;
+
+  &::placeholder {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+
+    &:hover {
+      @include hover(color, #292929);
+    }
   }
 }
