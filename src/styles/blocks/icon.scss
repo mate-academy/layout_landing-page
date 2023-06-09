@@ -12,37 +12,31 @@
     width: 32px;
   }
 
-  &--phone--number {
-    margin: 0;
-    width: 0;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0;
-  }
-
-  &__wrapper {
-    height: 24px;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    cursor: $cursor;
-
-    @include onTablet {
-      height: 32px;
-    }
-
-    &:hover .icon--phone--number {
-      opacity: 1;
-      margin-right: 12px;
-      width: fit-content;
-      transition-delay: 0.3s;
-    }
-  }
-
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+    position: relative;
+
+    &::before {
+      content: "+1 234 5555-55-55";
+      position: absolute;
+      top: 8px;
+      left: -150px;
+
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    &:hover {
+      &::before {
+        transform: scale(1);
+      }
+    }
   }
 
   &--menu {
