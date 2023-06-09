@@ -19,7 +19,7 @@
     background-image: url(../images/icons/Icon-phone.png);
 
     @include onDesctop {
-      &:hover::before {
+      &::before {
         position: absolute;
         top: 8px;
         right: 34px;
@@ -30,9 +30,17 @@
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
-        color: #292929;
+        color: $main-text-color;
         letter-spacing: 2px;
         text-transform: uppercase;
+
+        transition: all $effectDuration;
+        transform: scale(0);
+        transform-origin: right;
+      }
+
+      &:hover::before {
+        transform: scale(1);
       }
     }
   }
@@ -40,9 +48,7 @@
   &--menu {
     background-image: url(../images/icons/Icon-burger-menu.png);
 
-    &:hover {
-      background-image: url(../images/icons/Icon-burger-menu-hover.png);
-    }
+    @include hover(background-image, url(../images/icons/Icon-burger-menu-hover.png));
   }
 
   &--close {
