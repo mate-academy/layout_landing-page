@@ -1,0 +1,73 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+
+  @include hover(transform, scale(1.05));
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--close {
+    background-image: url("../images/icons/icon-close.svg");
+    @include icon-position;
+  }
+
+  &--phone {
+    background-image: url("../images/icons/icon-phone.svg");
+    @include icon-position;
+  }
+
+  &--menu {
+    background-image: url("../images/icons/icon-burger-menu.svg");
+    transition: all $duration;
+    @include icon-position;
+
+    &:hover {
+      background-image: url("../images/icons/icon-burger-menu-hover.svg");
+    }
+  }
+
+  &--tooltip {
+    color: #fff;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+
+    opacity: 0;
+
+    & > div:first-of-type {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 1259px) {
+      display: none;
+    }
+
+    @include onDesktop {
+      width: 201px;
+      padding-right: 16px;
+
+      position: absolute;
+      right: 100%;
+      top: -130%;
+
+      pointer-events: none;
+      text-transform: uppercase;
+      background: radial-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+      transition: all $duration;
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    }
+  }
+
+  &--phone:hover ~ &--tooltip {
+    opacity: 1;
+  }
+}

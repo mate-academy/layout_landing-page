@@ -1,0 +1,82 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} $duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin icon-position {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin paddings {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include onTablet {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include onDesktop {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+@mixin block-paddings {
+  padding: 25px 20px;
+
+  @include onTablet {
+    padding: 50px 72px;
+  }
+
+  @include onDesktop {
+    padding: 50px 120px;
+  }
+}
+
+@mixin side-block-paddings {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include onTablet {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
+  @include onDesktop {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}

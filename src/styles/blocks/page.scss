@@ -1,0 +1,74 @@
+.page {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: $Main-dark;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    min-width: $mobile-min-width;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all $duration;
+    transform: translateX(100%);
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+
+  &__nav {
+    margin-top: 40px;
+    margin-bottom: 32px;
+
+    @include onDesktop {
+      margin-top: 55px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__main {
+    background-color: #fff;
+    @include side-block-paddings;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    background-color: $Accent-main;
+    color: #fff;
+    font-weight: 700;
+
+    @include hover(transform, scale(1.05));
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+
+    &:active {
+      background-color: #eb343d;
+    }
+  }
+}
