@@ -1,7 +1,11 @@
 .icon {
   display: block;
-  height: $iconSize;
-  width: $iconSize;
+  height: $iconMobileSize;
+  width: $iconMobileSize;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform $effectDuration;
 
   &--phone {
     background-image: url("../images/icon-phone-call__small.svg");
@@ -9,10 +13,25 @@
 
   &--menu {
     background-image: url("../images/icon-burger-menu__small.svg");
-    transition-duration: all linear 1.3s;
+
+    &:hover {
+      background-image: url("../images/Icon-Burger-menu-hover.svg");
+    }
   }
 
   &--close {
     background-image: url("../images/Icon-Close.svg");
+  }
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: $iconTabletSize;
+    width: $iconTabletSize;
+  }
+
+  @include onDesktop {
+    height: $iconDesktopSize;
+    width: $iconDesktopSize;
   }
 }

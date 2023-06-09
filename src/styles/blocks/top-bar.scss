@@ -1,14 +1,45 @@
 .top-bar {
-  box-sizing: border-box;
-  padding: 24px 20px;
+  padding-block: 24px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  flex-shrink: 0;
+
+  @include onTablet {
+    padding-block: 50px;
+  }
+
+  @include onDesktop() {
+    padding-block: 50px;
+  }
 
   &__icons {
     display: flex;
-    gap: $iconSize;
+    align-items: center;
+    gap: $iconMobileSize;
+
+    @media (min-width: $tabletMinWidth) {
+      gap: $iconTabletSize;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+    transition: transform $effectDuration;
+
+    @include onTablet {
+      height: 64px;
+    }
+
+    @include onDesktop {
+      height: 64px;
+    }
+
+    @include hover(transform, scale(1.2));
   }
 }
