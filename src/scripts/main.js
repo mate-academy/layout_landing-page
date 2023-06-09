@@ -2,15 +2,14 @@
 
 let currentUrl = window.location.href;
 
-const page = document.querySelector(".page");
+const page = document.querySelector('.page');
 
-document.addEventListener("click", () => {
+document.addEventListener('click', () => {
   currentUrl = window.location.href;
-  console.log(currentUrl);
 
-  if (currentUrl.includes("menu")) {
-    page.classList.remove("hide-scroll");
+  if (currentUrl.includes('menu')) {
+    page.classList.remove('hide-scroll');
   } else {
-    page.classList.add("hide-scroll");
+    page.classList.add('hide-scroll');
   }
 });
