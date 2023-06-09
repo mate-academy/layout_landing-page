@@ -3,6 +3,7 @@
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu');
 const menuLinks = document.querySelectorAll('.menu__item');
+const form = document.querySelector('.contacts__form');
 
 menuBtn.addEventListener('click', function() {
   menuBtn.classList.toggle('active');
@@ -13,6 +14,11 @@ menuBtn.addEventListener('click', function() {
   } else {
     document.body.classList.remove('menu-active');
   }
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  form.reset();
 });
 
 menuLinks.forEach(function(link) {
