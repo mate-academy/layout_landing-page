@@ -24,6 +24,18 @@
         grid-column: 4 / -1;
       }
     }
+    
+    @include desktopLayout {
+      max-height: 324px;
+
+      &:nth-child(1) {
+        grid-column: 1 / 7;
+      }
+  
+      &:nth-child(2) {
+        grid-column: 7 / -1;
+      }
+    }
   }
 
   &__title {
@@ -45,5 +57,20 @@
 
   &:hover &__image:nth-child(2n) {
     transform: rotate(5deg);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 0;
+    position: absolute;
+    margin-top: 5px;
+    background-color: $c-dark-black;
+    transition: width $t-transition;
+  }
+
+  &:hover::after {
+    width: 30%;
   }
 }
