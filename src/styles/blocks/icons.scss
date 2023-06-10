@@ -1,27 +1,3 @@
-.icon-phone__hover {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  font-size: 22px;
-  color: white;
-  // transition: all 0.3s;
-  // // transform: translateY(-100%);
-  // opacity: 0;
-  display: none;
-  // pointer-events: none;
-
-  // overflow: auto; /* to scroll the menu if needed */
-
-  &-title {
-    color: $white-color;
-  }
-
-  &-tel {
-    text-decoration: none;
-    color: $white-color;
-  }
-}
 
 .icon {
   display: block;
@@ -40,11 +16,15 @@
   &--phone {
     background-image: url(../images/icon-phone-call.svg);
 
-    &:hover {
-      .icon-phone__hover {
-        display: block;
+
+    @include onDesktop {
+      &:hover ~ .icon-phone__hover {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
       }
-     }
+    }
+
   }
 
   &--menu {
@@ -60,4 +40,31 @@
   }
 }
 
+.icon-phone__hover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 25vmax;
+
+  line-height: 27px;
+  text-align: right;
+  transition: all 0.3s;
+  transform: translateY(-100%);
+  opacity: 0;
+
+  pointer-events: none;
+
+
+
+  &-title {
+    margin: 25px 0 0 0;
+    padding: 0;
+    color: $white-color;
+  }
+
+  &-tel {
+    text-decoration: none;
+    color: $white-color;
+  }
+}
 
