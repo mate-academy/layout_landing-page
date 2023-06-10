@@ -9,17 +9,16 @@
     margin-inline: auto;
   }
 
-  &__header-container {
+  &__header-container,
+  &__main-container {
     @include container;
   }
 
   &__header-content {
+    position: relative;
     height: 100vh;
     &--main {
-      display: flex;
-      flex-direction: column;
       padding-bottom: 27px;
-      justify-content: space-between;
       @include onTab {
         padding-bottom: 64px;
       }
@@ -27,12 +26,32 @@
   }
 
   &__head-top {
+    position: fixed;
+    @include head-top-width;
+    z-index: 1;
     &--menu {
       margin-bottom: 32px;
       @include onTab {
         margin-bottom: 56px;
       }
     }
+  }
+
+  &__info-block {
+    position: absolute;
+    top: 104px;
+    @include onTab {
+      top: 152px;
+    }
+  }
+
+  &__header-bottom {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 27px;
+      @include onTab {
+        margin-bottom: 64px;
+      }
   }
 
   &__menu {
@@ -49,6 +68,7 @@
       left: 50%;
       transform: translateX(-50%);
       opacity: 1;
+      z-index: 2;
       @include actDuration (left);
       @include actDuration (opacity);
     }
