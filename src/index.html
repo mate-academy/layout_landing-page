@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/main.scss">
   </head>
+
   <body class="page__body">
     <header class="header">
       <div class="container">
@@ -81,7 +82,7 @@
                 <a href="#explore-online" class="nav__link">explore online</a>
               </li>
               <li class="nav__item">
-                <a href="contacts" class="nav__link">contacts</a>
+                <a href="#contacts" class="nav__link">contacts</a>
               </li>
             </ul>
           </nav>
@@ -369,9 +370,10 @@
               </div>
               <form
                 class="contact-us__form-wrapper"
-                action="https://www.somesite.com"
+                action="post"
                 name="form"
                 method="post"
+                onsubmit="this.reset(); return false"
               >
                 <fieldset class="contact-us__form">
                   <input
@@ -380,6 +382,7 @@
                     name="name"
                     id="name"
                     placeholder="Name"
+                    required=""
                   >
                   <input
                     class="contact-us__form-field"
@@ -387,23 +390,24 @@
                     name="email"
                     id="email"
                     placeholder="Email"
+                    required=""
                   >
-                  <input
+                  <textarea
                     class="contact-us__form-field contact-us__form-field-message"
-                    type="textarea"
+                    type="text"
                     name="message"
                     id="message"
                     placeholder="Message"
+                    required=""
                   >
+                  </textarea>
                 </fieldset>
-                <textarea
-                  form="form"
+                <input
                   class="contact-us__button"
                   type="submit"
-                  value="submit"
-                  title="send"
+                  value="send"
+                  id="form_submit_button"
                 >
-                </textarea>
               </form>
             </div>
 
@@ -411,7 +415,17 @@
         </div>
       </div>
     </main>
-
+    <!-- <script type="text/javascript">
+      function success() {
+        if (document.getElementById('name').value === ''
+        || document.getElementById('email').value === ''
+        || document.getElementById('message').value === '') {
+          document.getElementById('form_submit_button').disabled = true;
+        } else {
+          document.getElementById('form_submit_button').disabled = false;
+        }
+      }
+    </script> -->
     <footer class="footer"></footer>
   </body>
 </html>
