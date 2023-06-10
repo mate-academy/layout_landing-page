@@ -56,3 +56,19 @@ homeLink.addEventListener('click', function() {
     document.body.classList.remove('menu-active');
   }
 });
+
+function checkOrientation() {
+  if (window.innerWidth > window.innerHeight) {
+    // Альбомная ориентация
+    document.body.classList.add('landscape');
+  } else {
+    // Портретная ориентация
+    document.body.classList.remove('landscape');
+  }
+}
+
+// Проверка ориентации при загрузке страницы
+checkOrientation();
+
+// Проверка ориентации при изменении размеров окна
+window.addEventListener('resize', checkOrientation);
