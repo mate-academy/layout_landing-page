@@ -1,3 +1,548 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin cinstentPaddingInLine() {
+  padding: 24px 20px;
+
+  @include onTablet {
+    padding: 36px 72px;
+  }
+
+  @include onDesctop() {
+    padding: 36px 120px;
+  }
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    --colums: 12;
+  }
+}
+
+$tablet-min-width: 576px;
+$desctop-min-width: 1024px;
+
+$main-text-color: #1d1d1d;
+$second-text-color: #fff;
+
 body {
   margin: 0;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  line-height: 140%;
+  font-size: 16px;
+  color: $second-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.header {
+  background-image: url(../images/header-bg-mobile-2x.png);
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet() {
+    background-image: url(../images/header-bg-tablet-2x.png);
+  }
+
+  @include onDesctop {
+    background-image: url(../images/header-bg-pc-2x.png);
+  }
+
+  &_title {
+    margin: 0;
+  }
+
+  &__content {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 88px;
+    font-size: 25px;
+    font-style: bold;
+    font-weight: 700;
+    line-height: 200%;
+    width: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+      font-size: 30px;
+    }
+
+    @include onDesctop {
+      padding-bottom: 203px;
+      font-size: 50px;
+    }
+  }
+}
+
+.top-bar {
+  @include cinstentPaddingInLine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+    transition: transform 0.3s;
+
+    @include onTablet {
+      height: 56px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #e5e5e5;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &__top {
+    margin-bottom: 48px;
+
+    @include onTablet {
+      margin-bottom: 44;
+    }
+
+    @include onTablet {
+      margin-bottom: 60;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    padding: 20px;
+
+    @include onTablet {
+      padding: 72px;
+    }
+
+    @include onDesctop() {
+      padding: 121px;
+    }
+  }
+
+  &__phone-number {
+    display: block;
+    margin-bottom: 16px;
+    color: $main-text-color;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+  }
+
+  &_call-to-order {
+    display: block;
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #1d1d1d;
+
+    color: $main-text-color;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    line-height: 67%;
+  }
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: #1d1d1d;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 67%;
+    letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transform: scale(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.icon {
+  display: block;
+  background-size: cover;
+  height: 18px;
+  width: 18px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include onTablet {
+    height: 24px;
+    width: 24px;
+  }
+
+  &--phone {
+    background-image: url(../icons/icon-phone.png);
+
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.png);
+  }
+
+}
+
+.main {
+  display: grid;
+  row-gap: 92px;
+  padding-block: 92px;
+  background-color: #1d1d1d;
+
+  @include cinstentPaddingInLine;
+
+  @include onTablet {
+    padding-block: 100px;
+    row-gap: 100px;
+  }
+
+  @include onDesctop() {
+    padding-block: 164px;
+    row-gap: 100px;
+  }
+}
+
+.section-title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 67%;
+  text-align: left;
+  letter-spacing: 1.5;
+  padding-block: 48px;
+
+  @include onTablet {
+    font-size: 30px;
+  }
+
+  @include onDesctop {
+    font-size: 48px;
+  }
+
+  &--align--center {
+    text-align: center;
+  }
+}
+
+.compare-bikes {
+
+  &__products {
+    @include pageGrid;
+    row-gap: 40px;
+  }
+}
+
+.compare-bike {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 2 / -2;
+  }
+
+  @include onDesctop {
+    grid-column: span 4;
+  }
+}
+
+.about-us {
+  @include pageGrid;
+
+  &__title {
+    padding: 0;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesctop {
+      grid-column: span 5;
+    }
+  }
+  &__content {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 4/ 7;
+    }
+
+    @include onDesctop {
+      grid-column: span 5;
+    }
+  }
+
+  &__description {
+    display: grid;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.product__photo {
+  max-width: 100%;
+}
+
+.product__photo:hover {
+  transform: scale(2);
+  transition: transform 0.3s;
+
+}
+
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &-wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesctop {
+        grid-column: span 8;
+      }
+    }
+
+    &-square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesctop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__photo:hover {
+    transform: scale(1.4);
+    transition: transform 0.3s;
+  }
+}
+
+.photo__explore {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: span 2;
+  }
+
+  @include onDesctop {
+    grid-column: span 4;
+  }
+}
+
+.form {
+  background-color: #1d1d1d;
+
+  &__input {
+    padding: 16px;
+  }
+
+  @include onTablet {
+    width: 288px;
+  }
+
+  @include onDesctop {
+    grid-column: span 4;
+  }
+}
+
+.width {
+  width: 100;
+}
+
+.input {
+  border-radius: 40px;
+  height: 48px;
+  width: 100%;
+  left: 0;
+}
+
+.textarea {
+  border-radius: 16px;
+  height: 96px;
+  width: 100%;
+}
+
+.button {
+  border-radius: 40px;
+  height: 56px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 113%;
+}
+
+.explore {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block__contacts {
+
+  @include onTablet {
+    display: flex;
+  }
+
+}
+
+.image {
+  max-width: 100%;
+}
+
+.contact {
+
+  &__list {
+    list-style: none;
+    color: $second-text-color;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $second-text-color;
+  }
+}
+
+.footer {
+  background-color: $main-text-color;
 }
