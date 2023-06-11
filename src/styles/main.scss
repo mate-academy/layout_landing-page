@@ -10,6 +10,13 @@
   }
 }
 
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
 @mixin cinstentPaddingInLine() {
   padding: 24px 20px;
 
@@ -270,7 +277,7 @@ body {
   transition: transform 0.3s;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
 
   @include onTablet {
@@ -397,20 +404,9 @@ body {
 }
 
 .product__photo:hover {
-  transform: scale(2);
+  transform: scale(1.05);
   transition: transform 0.3s;
 
-}
-
-.categories {
-  &__wrapper {
-    display: grid;
-    row-gap: 40px;
-
-    @include onTablet {
-      row-gap: 64px;
-    }
-  }
 }
 
 .category {
@@ -453,63 +449,98 @@ body {
   }
 
   &__photo:hover {
-    transform: scale(1.4);
+    transform: scale(1.05);
     transition: transform 0.3s;
-  }
-}
-
-.photo__explore {
-  grid-column: 1 / -1;
-
-  @include onTablet {
-    grid-column: span 2;
-  }
-
-  @include onDesctop {
-    grid-column: span 4;
   }
 }
 
 .form {
   background-color: #1d1d1d;
-
-  &__input {
-    padding: 16px;
-  }
+  grid-column: 1/-1;
+  display: grid;
+  row-gap: 16px;
 
   @include onTablet {
-    width: 288px;
+    grid-column: 1/4;
   }
 
   @include onDesctop {
-    grid-column: span 4;
+    grid-column: span 5;
+  }
+
+  &__input {
+    grid-column: 1/-1;
+  }
+
+  @include onTablet {
+    grid-column: 1/4;
+  }
+
+  @include onDesctop {
+    grid-column: 1/5;
   }
 }
 
-.width {
-  width: 100;
+.field__input {
+  padding: 14px 16px;
+  height: 148px;
+  margin-bottom: 16px;
+  border: 1px solid #f8f8fa;
+  background: #f8f8fa;
+  border-radius: 16px;
 }
 
 .input {
-  border-radius: 40px;
-  height: 48px;
   width: 100%;
-  left: 0;
+  height: 48px;
+  border-radius: 40px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  outline: none;
+  background: #f8f8fa;
+  border: 1px transparent;
 }
 
 .textarea {
-  border-radius: 16px;
-  height: 96px;
+  font-family: inherit;
+  background-color: transparent;
+  resize: none;
+  outline: none;
   width: 100%;
+  height: 120px;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px transparent;
+  color: #292929;
 }
 
 .button {
-  border-radius: 40px;
-  height: 56px;
   width: 100%;
-  font-size: 16px;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 48px;
+  background-color: #fff;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
   font-weight: 700;
-  line-height: 113%;
+  font-size: 16px;
+  line-height: 27px;
+  color: #1d1d1d;
+  transition: 0.3s;
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
+
+  @include onDesctop {
+    margin-bottom: 62px;
+  }
 }
 
 .explore {
@@ -519,28 +550,70 @@ body {
 }
 
 .block__contacts {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns),1fr);
 
   @include onTablet {
-    display: flex;
+    margin-top: -16px;
+    --columns: 6;
+    column-gap: 24px;
   }
 
+  @include onDesctop {
+    --columns: 12;
+    margin-top: 0;
+  }
+}
+
+.contacts__content {
+  grid-column: 1/-1;
+
+  @include onTablet {
+    grid-column: 4/7;
+  }
+
+  @include onDesctop {
+    grid-column: 8/12;
+  }
+}
+
+.contacts__field {
+  display: grid;
+  row-gap: 8px;
+}
+
+.contacts__field:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+h4 {
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  font-weight: bold;
+}
+
+.contacts__title {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.contacts__view {
+  margin: 0;
 }
 
 .image {
   max-width: 100%;
-}
-
-.contact {
-
-  &__list {
-    list-style: none;
-    color: $second-text-color;
-  }
-
-  &__link {
-    text-decoration: none;
-    color: $second-text-color;
-  }
 }
 
 .footer {
