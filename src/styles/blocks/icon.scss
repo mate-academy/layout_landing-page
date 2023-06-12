@@ -2,13 +2,41 @@
   display: block;
   background-size: cover;
   background-position: center;
-  transition: transform 300ms;
+  transition: all 300ms;
   @include iconsSize;
 
   @include hover(transform, scale(1.2));
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/phone-icon.png);
+
+    &::after {
+      display: block;
+      align-items: center;
+      padding-right: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: absolute;
+      content: "+1 234 555-55-55";
+      color: $main-text-color;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 32px;
+      right: 100%;
+      width: 138px;
+      height: 32px;
+      white-space: nowrap;
+      text-decoration: none;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &--menu {
