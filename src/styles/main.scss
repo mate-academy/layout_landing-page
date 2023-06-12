@@ -18,14 +18,14 @@
 }
 
 @mixin cinstentPaddingInLine() {
-  padding: 24px 20px;
+  padding: 24px 20px 48px;
 
   @include onTablet {
-    padding: 36px 72px;
+    padding: 36px 72px 44px;
   }
 
   @include onDesctop() {
-    padding: 36px 120px;
+    padding: 36px 120px 60px;
   }
 }
 
@@ -73,16 +73,16 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    overflow: hidden;
 
     opacity: 0;
-    transition: all 0.3s;
+    transition: 0.3s;
     transform: translateX(-100%);
     pointer-events: none;
 
     &:target {
       opacity: 1;
       transform: translateX(0);
+      transition: 0.3s;
       pointer-events: all;
     }
   }
@@ -101,7 +101,7 @@ body {
     background-image: url(../images/header-bg-pc-2x.png);
   }
 
-  &_title {
+  &__title {
     margin: 0;
   }
 
@@ -158,7 +158,7 @@ body {
 
   &__logo {
     height: 38px;
-    transition: transform 0.3s;
+    transition: 0.3s;
 
     @include onTablet {
       height: 56px;
@@ -166,6 +166,7 @@ body {
 
     &:hover {
       transform: scale(1.2);
+      transition: 0.3s;
     }
   }
 }
@@ -176,17 +177,13 @@ body {
   background-color: #e5e5e5;
   text-transform: uppercase;
   font-weight: 600;
+  overflow: auto;
 
   &__top {
-    margin-bottom: 48px;
-
-    @include onTablet {
-      margin-bottom: 44;
-    }
-
-    @include onTablet {
-      margin-bottom: 60;
-    }
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #e5e5e5;
   }
 
   &__nav {
@@ -194,14 +191,14 @@ body {
   }
 
   &__content {
-    padding: 20px;
+    padding-left:20px;
 
     @include onTablet {
-      padding: 72px;
+      padding-left: 72px;
     }
 
     @include onDesctop() {
-      padding: 121px;
+      padding-left: 121px;
     }
   }
 
@@ -228,6 +225,10 @@ body {
     font-weight: 600;
     line-height: 67%;
   }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
 
 .nav {
@@ -259,12 +260,13 @@ body {
       background-color: $main-text-color;
 
       transform: scale(0);
-      transition: transform 0.3s;
+      transition: 0.3s;
       transform-origin: left;
     }
 
     &:hover::after {
       transform: scale(1);
+      transition: 0.3s;
     }
   }
 }
@@ -274,10 +276,11 @@ body {
   background-size: cover;
   height: 18px;
   width: 18px;
-  transition: transform 0.3s;
+  transition: 0.3s;
 
   &:hover {
     transform: scale(1.05);
+    transition: 0.3s;
   }
 
   @include onTablet {
@@ -287,7 +290,7 @@ body {
 
   &--phone {
     background-image: url(../icons/icon-phone.png);
-
+    position: relative;
   }
 
   &--menu {
@@ -309,6 +312,7 @@ body {
   row-gap: 92px;
   padding-block: 92px;
   background-color: #1d1d1d;
+
 
   @include cinstentPaddingInLine;
 
@@ -369,7 +373,7 @@ body {
   @include pageGrid;
 
   &__title {
-    padding: 0;
+    padding: 32px 0;
     grid-column: 1 / -1;
 
     @include onTablet {
@@ -401,11 +405,12 @@ body {
 
 .product__photo {
   max-width: 100%;
+  transition: 0.3s;
 }
 
 .product__photo:hover {
   transform: scale(1.05);
-  transition: transform 0.3s;
+  transition: 0.3s;
 
 }
 
@@ -446,11 +451,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: 0.3s;
   }
 
   &__photo:hover {
     transform: scale(1.05);
-    transition: transform 0.3s;
+    transition: 0.3s;
   }
 }
 
@@ -519,20 +525,17 @@ body {
 .button {
   width: 100%;
   text-align: center;
-  border: 1px solid #fff;
   border-radius: 40px;
   padding-top: 14px;
   padding-bottom: 14px;
   margin-bottom: 48px;
-  background-color: #fff;
-  font-family: inherit;
+  font-family: "Poppins", sans-serif;
   text-decoration: none;
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
-  color: #1d1d1d;
-  transition: 0.3s;
+  border: #fff;
 
   @include onTablet {
     margin-bottom: 0;
@@ -542,6 +545,15 @@ body {
     margin-bottom: 62px;
   }
 }
+
+.button:active {
+  filter: drop-shadow(0px 0px 10px $second-text-color);
+}
+
+.button:hover {
+  filter: drop-shadow(0px 0px 5px $second-text-color);
+}
+
 
 .explore {
   display: block;
@@ -617,10 +629,24 @@ p {
   color: #fff;
 }
 
+.contact__link:hover {
+  color: blue;
+}
+
 .image {
   max-width: 100%;
 }
 
 .footer {
   background-color: $main-text-color;
+}
+
+a[title]:hover:after {
+  content: "+1 234 5555-55-55";
+  position: relative;
+  display: inline-flex;
+  right: 175px;
+  background-color: transparent;
+  color: #fff;
+  white-space: nowrap;
 }
