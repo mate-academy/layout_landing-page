@@ -79,6 +79,10 @@
     display: block;
     width: 155px;
     margin-bottom: 16px;
+
+    &:hover {
+      color: #7e7e83;
+    }
   }
 
   &__number,
@@ -127,12 +131,28 @@
 
   &__link {
     display: inline-block;
+    position: relative;
     font-weight: 600;
     font-size: 22px;
     text-transform: uppercase;
     line-height: 22px;
     text-decoration: none;
     color: $background-color;
+
+    &::after {
+      content: "";
+      height: 1px;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      background-color: $background-color;
+      transition: width 0.5s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
 
     @media (min-width: 1260px) {
       font-weight: 700;
