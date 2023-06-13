@@ -1,0 +1,89 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: -100%;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 29px 20px 88px;
+
+  overflow: auto;
+
+  pointer-events: none;
+
+  background-color: #e5e5e5;
+  opacity: 0;
+  transition: all 0.3s;
+
+  box-sizing: border-box;
+
+  &:target {
+    pointer-events: all;
+
+    opacity: 1;
+    left: 0;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__picture {
+      display: block;
+      width: 130px;
+      height: 38px;
+
+      @media (min-width: 744px) {
+        width: 187px;
+        height: 56px;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+
+    @include fonts(600, 22px, 22px);
+    letter-spacing: 2px;
+    color: $background-color;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__number {
+    margin-bottom: 16px;
+
+    @include fonts(600, 16px, 27px);
+    color: $background-color;
+    text-decoration: none;
+  }
+
+  &__booking {
+    position: relative;
+
+    display: inline;
+    align-self: flex-start;
+    text-decoration: none;
+
+    @include fonts(600, 12px, 16px);
+    color: $background-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+
+      border: 1px solid $background-color;
+    }
+  }
+
+  @media (min-width: 744px) {
+    padding: 34px 120px 88px;
+  }
+}
