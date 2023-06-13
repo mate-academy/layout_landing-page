@@ -1,22 +1,35 @@
 .compare-bikes {
+  --columns: 2;
+  display: grid;
+  gap: 48px;
+  row-gap: 56px;
+  grid-template-columns: repeat(var(--columns), 1fr);
   margin-bottom: 92px;
 
   @media (min-width: 744px) and (max-width: 1259px) {
-    padding: 0 104px;
+    --columns: 6;
+    display: grid;
+    gap: 24px;
+    row-gap: 48px;
+    grid-template-columns: repeat(var(--columns), 1fr);
     margin-bottom: 120px;
   }
 
   @media (min-width: 1260px) {
+    --columns: 12;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(var(--columns), 1fr);
     padding: 0;
     margin-bottom: 144px;
   }
 
   &__title {
-    margin-bottom: 48px;
+    grid-column: 1/-1;
     text-align: center;
     font-weight: 500;
     font-size: 32px;
-    line-height: 67%;
+    line-height: 100%;
     letter-spacing: -1.5px;
 
     @media (min-width: 744px) and (max-width: 1259px) {
@@ -32,9 +45,10 @@
 }
 
 .catalog {
-  --columns: 2;
   display: grid;
-  gap: 48px;
+  --columns: 2;
+  grid-column: 1/-1;
+  gap: 40px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @media (min-width: 744px) and (max-width: 1259px) {
@@ -70,6 +84,7 @@
     width: 280px;
     height: 228px;
     margin-bottom: 32px;
+    place-self: center;
     transition: transform 0.5s;
     cursor: pointer;
 
