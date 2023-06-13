@@ -1,0 +1,74 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: span 4;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include hover(transform, scale($photo-scale));
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include hover(transform, scale($photo-scale));
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+
+    @include onTablet {
+      font-size: 24px;
+    }
+  }
+}
