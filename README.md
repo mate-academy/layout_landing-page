@@ -6,22 +6,22 @@ The Met's collection encompasses various forms of art, including paintings, scul
 
 As a cultural institution of global significance, The Met museum serves as a hub for artistic inspiration, historical knowledge, and cultural exchange, inviting visitors to immerse themselves in the world of art and discover the beauty and creativity of human achievements throughout history.
 
-## [DEMO LINK](https://MariaSnegireva.github.io/layout_landing/)
+#### [DEMO LINK](https://mariasnegireva.github.io/the-met-landing/)
 
-### [Figma Design](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?type=design&node-id=8590-537&t=Mb11dFaUUH48PuET-0)
+#### [Figma Design](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?type=design&node-id=8590-537&t=Mb11dFaUUH48PuET-0)
 
 #### Used
 
-Sass
-BEM
-Grid
-Flexbox
-Transformations and Animations
-[Figma](https://www.figma.com/)
-[Google Fonts](https://fonts.google.com/)
-[Google Maps](https://www.google.com.ua/maps)
+- Sass
+- BEM
+- Grid
+- Flexbox
+- Transformations and Animations
+- [Figma](https://www.figma.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [Google Maps](https://www.google.com.ua/maps)
 
-## Run Locally
+#### Run Locally
 
 Clone the project
 
