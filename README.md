@@ -8,7 +8,7 @@ As a cultural institution of global significance, The Met museum serves as a hub
 
 ## [DEMO LINK](https://MariaSnegireva.github.io/layout_landing/)
 
-### [Figma Design] (https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?type=design&node-id=8590-537&t=Mb11dFaUUH48PuET-0)
+### [Figma Design](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?type=design&node-id=8590-537&t=Mb11dFaUUH48PuET-0)
 
 #### Used
 
@@ -17,16 +17,16 @@ BEM
 Grid
 Flexbox
 Transformations and Animations
-[Figma] (https://www.figma.com/)
-[Google Fonts] (https://fonts.google.com/)
-[Google Maps] (https://www.google.com.ua/maps)
+[Figma](https://www.figma.com/)
+[Google Fonts](https://fonts.google.com/)
+[Google Maps](https://www.google.com.ua/maps)
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone 
+  git clone
 ```
 
 Go to the project directory
