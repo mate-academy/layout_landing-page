@@ -1,0 +1,101 @@
+.block-now-on-view {
+  &__images {
+    @include pageGrid;
+    margin-bottom: 24px;
+  }
+
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+    margin-bottom: 24px;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+
+    }
+  }
+
+  &__photo {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+
+    &--hide {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__photo img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__image {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    color: $redColor;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0;
+
+    &:hover {
+      color: #AE1C23;
+    }
+  }
+}
