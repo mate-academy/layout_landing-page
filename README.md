@@ -1,14 +1,48 @@
-# Landing page
+# THE MET
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+The Metropolitan Museum of Art, commonly referred to as The Met, is one of the world's largest and most renowned art museums. Located in New York City, it houses a vast collection of artworks and artifacts spanning over 5,000 years of human history.
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing/)
+The Met's collection encompasses various forms of art, including paintings, sculptures, decorative arts, photography, textiles, and more. It features works from diverse cultures and civilizations, representing ancient civilizations, European masters, American art, Islamic art, Asian art, and African art, among others.
+
+As a cultural institution of global significance, The Met museum serves as a hub for artistic inspiration, historical knowledge, and cultural exchange, inviting visitors to immerse themselves in the world of art and discover the beauty and creativity of human achievements throughout history.
+
+## [DEMO LINK](https://MariaSnegireva.github.io/layout_landing/)
+
+### [Figma Design] (https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET?type=design&node-id=8590-537&t=Mb11dFaUUH48PuET-0)
+
+#### Used
+
+Sass
+BEM
+Grid
+Flexbox
+Transformations and Animations
+[Figma] (https://www.figma.com/)
+[Google Fonts] (https://fonts.google.com/)
+[Google Maps] (https://www.google.com.ua/maps)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone 
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```

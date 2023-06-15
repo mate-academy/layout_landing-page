@@ -1,0 +1,89 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin dayAndHoursDisplay {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin pageGridSmall {
+  --columns: 3;
+  display: grid;
+  column-gap: 8px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin blockAppearance {
+  position: relative;
+  left: -100px;
+  opacity: 0;
+  transition: $effectDuration cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@mixin menuPhoneDisplay {
+  display: block;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none;
+}
