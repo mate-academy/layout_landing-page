@@ -1,40 +1,96 @@
 .contacts {
-  &__content {
-    display: grid;
-    padding-bottom: 120px;
+  &__address {
+    grid-column: 1 / -1;
+    @include onTablet {
+      grid-column: span 6;
+    }
 
     @include onDesktop {
-      display: flex;
-      flex-direction: row;
-      gap: 111px;
+      grid-column: 8 / 12;
+    }
+  }
+  padding-bottom: 64px;
 
-      justify-content: space-between;
+  &__form__message {
+    margin-bottom: 32px;
+    padding-left: 16px;
+    height: 148px;
+    font-family: Manrope, Roboto, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.15px;
+    resize: none;
+    padding-block: 14px;
+    background-color: $main-form-color;
+    border-radius: 8px;
+    border: 1px solid $main-form-color;
+    text-align: start;
+
+    &:hover {
+      border: 1px solid $hover-form-color;
+    }
+
+    &:focus,
+    &:focus-visible {
+      border: 2px solid $orange-color;
+      outline: none;
     }
   }
 
+  &__content {
+    @include pageGrid;
+    justify-content: center;
+    align-items: start;
+    row-gap: 48px;
+  }
+
   &__form {
-    width: 278px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    grid-column: 1 / -1;
 
     @include onTablet {
-      width: 600px;
+      grid-column: span 6;
     }
 
     @include onDesktop {
-      width: 498px;
+      grid-column: span 6;
     }
-    &__message {
-      background-color: #f9f9f9;
+
+    .input {
+      height: 48px;
+      box-sizing: border-box;
+      border: 1px solid $main-form-color;
+
+      background: $main-form-color;
       border-radius: 8px;
-      border: none;
+
+      padding-left: 16px;
+      margin-bottom: 16px;
+
+      font-family: Manrope, Roboto, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.15px;
+
+      &:hover {
+        box-sizing: border-box;
+        border: 1px solid $hover-form-color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        box-sizing: border-box;
+        border: 2px solid $orange-color;
+        outline: none;
+
+        @include onDesktop;
+        @include onTablet;
+      }
     }
 
     &__button {
-      margin: 0;
+      margin: 32px 0 0;
       padding: 0;
-      border: 0;
+      border: none;
 
       text-decoration: none;
       justify-content: center;
@@ -44,46 +100,27 @@
 
       cursor: pointer;
       color: #fff;
-      background-color: #f98921;
+      background-color: $orange-color;
 
       border-radius: 8px;
       font-weight: 700;
       font-size: 16px;
       line-height: 27px;
 
-      width: 280px;
       height: 56px;
       transition-duration: 0.3s;
 
-      @include onTablet {
-        width: 600px;
-      }
-
       @include onDesktop {
-        width: 498px;
+        grid-column: span 6;
       }
     }
 
     &__button:hover {
-      background-color: #1b2129;
+      background-color: $hover-button-color;
     }
 
     &__button:active {
-      background-color: #010810;
-    }
-
-    &__address {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-
-      @include onTablet {
-        margin-top: 80px;
-      }
-
-      @include onDesktop {
-        left: 111px;
-      }
+      background-color: $active-button-color;
     }
 
     &__box {
@@ -93,55 +130,30 @@
     }
   }
 
-  .contacts__title {
+  &__title {
     width: 280px;
     height: 20px;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.15px;
-    color: #9393a3;
+    color: $address-color;
     font-style: normal;
   }
 
-  .contacts__links {
+  &__links {
     width: 280px;
     height: 22px;
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    letter-spacing: 0.15px;
-    color: #191919;
+
+    color: $link-color;
     text-decoration: none;
-  }
+    font-style: normal;
 
-  .input {
-    width: 280px;
-    height: 48px;
-    box-sizing: border-box;
-    border: 1px solid #f9f9f9;
+    letter-spacing: 0.15px;
 
-    background: #f9f9f9;
-    border-radius: 8px;
-
-    @include onTablet {
-      width: 600px;
+    &:hover {
+      color: $address-color;
     }
-
-    @include onDesktop {
-      width: 498px;
-    }
-  }
-
-  .input:hover {
-    box-sizing: border-box;
-    border: 1px solid #dbdbdb;
-  }
-
-  .input:active {
-    box-sizing: border-box;
-    border: 2px solid #f98921;
-
-    @include onDesktop;
-    @include onTablet;
   }
 }
