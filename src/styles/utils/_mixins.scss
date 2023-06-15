@@ -1,0 +1,30 @@
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin topActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin grid {
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat($count-columns-tablet, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat($count-columns-desktop, 1fr);
+  }
+}
+
