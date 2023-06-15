@@ -1,81 +1,50 @@
 .header {
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  overflow: auto;
   background-image: url(../images/header-bg-mobile-2x.png);
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: top center;
 
   @include onTablet {
+    background-image: url(../images/header-bg-tablet-2x.png);
+  }
+
+
+  @include onDesktop {
     background-image: url(../images/header-bg-2x.png);
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100vh;
-  }
-
-  &__icons {
-    position: relative;
-  }
-
-  &__calls {
-    display: none;
-
-    @include onDesktop {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      width: 200px;
-      right: 120px;
-      top: -52px;
-      padding-right: 20px;
-      font-weight: 700;
-      color: $color-main;
-      text-align: end;
-      opacity: 0;
-      transition: all 0.5s linear;
-
-      &:hover {
-        opacity: 1;
-        pointer-events: all;
-        transition-duration: 0.5s;
-      }
-    }
-  }
-
-  &__call:hover ~ &__calls {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  &__phone-name:not(:last-child) {
-    margin-top: 8px;
-  }
-
-  &__phone-number {
-    @include hover(color, $color-secondary);
-  }
-
   &__title {
-    padding-top: 129px;
-    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    color: $color-main;
+    text-shadow: 2px 2px 2px #000;
     font-size: 40px;
     line-height: 100%;
-    text-align: center;
     letter-spacing: -1.5px;
-    color: $color-main;
-    filter: drop-shadow(0 4px 4px #000);
 
     @include onTablet {
-      padding-top: 141px;
       font-size: 64px;
     }
 
     @include onDesktop {
-      padding-top: 83px;
       font-size: 80px;
+    }
+  }
+
+  &__bottom {
+    padding-top: 104px;
+    padding-bottom: 30px;
+
+    @include onTablet {
+      padding-top: 91px;
+    }
+
+    @include onDesktop {
+      padding-top: 32px;
     }
   }
 }
