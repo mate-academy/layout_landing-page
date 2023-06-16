@@ -1,0 +1,42 @@
+.nav {
+  &__item {
+    display: block;
+
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: fit-content;
+
+    position: relative;
+    padding-bottom: 8px;
+
+    font-size: 22px;
+    line-height: 1em;
+    letter-spacing: 2px;
+
+    @include onDesktop {
+      @include hover(scale, 1.1);
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+
+        content: "";
+        display: block;
+        width: 0;
+        height: 1px;
+
+        background-color: $color-dark-primary;
+        transition: width $effect-duration ease-out;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
