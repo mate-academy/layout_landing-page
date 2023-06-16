@@ -44,10 +44,26 @@
     font-size: 18px;
     line-height: 140%;
     position: relative;
+    display: inline-block;
 
     @include tabletLayout {
       font-size: 24px;
       line-height: 140%;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 0;
+      position: absolute;
+      margin-top: 5px;
+      background-color: $c-dark-black;
+      transition: width $t-transition;
+    }
+
+    &:hover::after {
+      width: 100%;
     }
   }
 
@@ -57,20 +73,5 @@
 
   &:hover &__image:nth-child(2n) {
     transform: rotate(5deg);
-  }
-
-  &::after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 0;
-    position: absolute;
-    margin-top: 5px;
-    background-color: $c-dark-black;
-    transition: width $t-transition;
-  }
-
-  &:hover::after {
-    width: 30%;
   }
 }
