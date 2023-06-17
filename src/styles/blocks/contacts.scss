@@ -1,0 +1,83 @@
+.contacts {
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include onTablet {
+      column-gap: 24px;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__form-content {
+    grid-column: 1 / -1;
+
+    display: grid;
+    row-gap: 32px;
+    margin-bottom: 36px;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__text-content {
+    @include onTablet {
+      grid-column: 4 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / -1;
+    }
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+
+    font-weight: 400;
+    font-size: 14px;
+    color: #9fadc2;
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 400;
+    line-height: 140%;
+    color: #3e3e3e;
+    text-decoration: none;
+
+    @include hover (color, $main-text-color);
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background-color: $main-text-color;
+
+      transition: transform, $transition-duraction;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,92 @@
+.top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 24px;
+
+  @include onTablet {
+    padding-block: 32px;
+  }
+
+  &__icons {
+    display: flex;
+    column-gap: 24px;
+
+    @include onTablet {
+      column-gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    height: 16px;
+    width: 125px;
+
+    @include onTablet {
+      width: 190px;
+      height: 24px;
+    }
+
+    @include hover(transform, scale(1.25));
+  }
+
+  &__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+    @include background(center, cover);
+
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include hover(transform, scale(1.25));
+  }
+
+  &__icon--phone {
+    background-image: url(../images/icons/icon-phone-call.png);
+
+    &::before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      transform: translate(-100%, -50%);
+
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $main-text-color;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-duraction ease;
+
+      @include onDesktop {
+        color: #fff;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__icon--close {
+    background-image: url(../images/icons/icon-close.png);
+  }
+
+  &__icon--menu {
+    background-image: url(../images/icons/icon-burger-menu.png);
+
+    @include hover (background-image, url(../images/icons/icon-burger-menu-hover.png));
+  }
+}

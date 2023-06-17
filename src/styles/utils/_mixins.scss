@@ -1,0 +1,43 @@
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin background($position, $size) {
+  background-repeat: no-repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin image($position, $size) {
+  width: 100%;
+  height: 100%;
+  object-position: $position;
+  object-fit: $size;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin adaptive-property($property, $min-size, $max-size, $max-width ) {
+  #{$property}: calc(#{$min-size + px} + (#{$max-size} - #{$min-size}) *
+  ((100vw - 320px) / #{$max-width - 320}));
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-duraction;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
