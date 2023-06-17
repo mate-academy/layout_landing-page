@@ -1,0 +1,135 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddinginline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin contentPaddingBlock {
+  padding-block: 28px;
+  @include onTablet {
+    padding-block: 36px;
+  }
+}
+
+@mixin contentPaddingTop {
+  padding-top: 64px;
+
+  @include onTablet {
+    padding-top: 120px;
+  }
+}
+
+@mixin navMarginTop {
+  margin-top: 48px;
+
+  @include onTablet {
+    margin-top: 56px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --column: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    --column: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --column: 12;
+  }
+}
+
+@mixin titleStyle {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  padding-bottom: 48px;
+
+  @include onTablet {
+    font-size: 40px;
+    padding-bottom: 56px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin buttonStyle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: #fff;
+  border: none;
+  height: 56px;
+  background-color: #f98921;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #1b2129;
+  }
+
+  &:active {
+    background-color: #010810;
+  }
+}
+
+@mixin formStyle {
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: none;
+  padding: 14px 0 14px 16px;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+  }
+
+  &:focus {
+    border: 2px solid #f98921;
+  }
+
+  &::placeholder {
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    width: 100%;
+    color: #7e7e83;
+  }
+}
