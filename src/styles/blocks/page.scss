@@ -1,0 +1,81 @@
+.page {
+  font-size: 16px;
+  font-family: "Manrope", Helvetica, sans-serif;
+  font-weight: 400;
+  color: $main-font-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    width: 100vw;
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 100%;
+    transition: all $transition-time;
+    padding-bottom: 48px;
+
+    &:target {
+      top: 0;
+      left: 0;
+      right: 0;
+
+      & .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: #e5e5e5;
+      }
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__main {
+    padding-bottom: 64px;
+
+    @include onTablet {
+      padding-bottom: 120px;
+    }
+  }
+
+  &__section-title {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__section-content {
+    margin-top: $section-content-margin-top-mobile;
+
+    @include onTablet {
+      margin-top: $section-content-margin-top-tablet;
+    }
+  }
+
+  &__product-img {
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  &__section-paragraph {
+    margin-top: 8px;
+    line-height: 22.4px;
+    letter-spacing: 0.15px;
+  }
+}
