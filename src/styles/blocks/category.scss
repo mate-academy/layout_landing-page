@@ -1,0 +1,120 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    transition: all 0.3s linear;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        z-index: 2;
+        box-shadow: rgb(101, 101, 101) 3px 3px 10px;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      &:hover {
+        transform: scale(1.1);
+        z-index: 2;
+        box-shadow: rgb(101, 101, 101) -3px 3px 10px;
+      }
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+
+    @include onTablet {
+      font-size: 24px;
+    }
+  }
+
+  &__button {
+    @include pageGrid;
+
+    &-view-all {
+      box-sizing: border-box;
+      background: $main-text-color;
+      border: 1px solid transparent;
+      border-radius: 8px;
+
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      height: 56px;
+      text-decoration: none;
+      color: #fff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      grid-column: 1 / -1;
+      transition: all 0.3s linear;
+
+      @include onTablet {
+        grid-column: span 6;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+      &:hover {
+        color: $main-text-color;
+        background: #f9f9fb;
+        border: 2px solid #f0f1f4;
+      }
+
+      &:active {
+        color: #fff;
+        background: #111;
+      }
+    }
+  }
+}
