@@ -1,0 +1,95 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover ($property, $toValue) {
+  transition: transform $effectDuration ease-in-out;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hoverColor ($color) {
+  transition: color $effectDuration ease-in-out;
+  &:hover {
+    color: $color;
+  }
+}
+
+@function gridTemplateColumns($columns) {
+  @return repeat($columns, 1fr);
+}
+
+@mixin pageGrid($columns) {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: gridTemplateColumns($columns);
+
+  @include onTablet {
+    grid-template-columns: gridTemplateColumns(6);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: gridTemplateColumns(12);
+  }
+}
+
+@mixin menuLink {
+  display: block;
+  color: $color-white;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@mixin input-styles($height) {
+  box-sizing: border-box;
+  font-family: 'Cinzel', serif;
+  border: none;
+  font-weight: $font-weight-regular;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-form;
+  background-color: #f8f8fa;
+  width: 100%;
+  height: $height;
+}
+
+@mixin contact-us-style {
+  font-weight: $font-weight-bold;
+  color: $color-link;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+@mixin animationSlide ($direction) {
+    animation: slideTo#{$direction} 2s ease-in-out;
+  }
+
