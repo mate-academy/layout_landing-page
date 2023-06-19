@@ -1,5 +1,27 @@
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include positionOnTablet() {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include positionOnDesktop() {
+    --columns: 12;
+  }
+}
+
 @mixin positionOnTablet {
   @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin positionOnDesktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
@@ -9,6 +31,10 @@
 
   @include positionOnTablet() {
     padding: 72px;
+  }
+
+  @include positionOnDesktop() {
+    padding: 120px;
   }
 }
 
