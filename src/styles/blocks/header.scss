@@ -1,6 +1,26 @@
 .header {
   background: url(../images/girl.png) center/cover no-repeat;
 
+  &__container {
+    @include container;
+  }
+
+  &__head-top {
+    position: fixed;
+    @include head-top-width;
+    z-index: 1;
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 27px;
+
+    @include onTab {
+      margin-bottom: 64px;
+    }
+  }
+
   &__content {
     position: relative;
     height: 100vh;
@@ -11,7 +31,9 @@
       }
     }
   }
+
   &__waves {
+    margin-bottom: 30px;
     width: 48px;
     height: 58px;
     @include onTab {
@@ -20,9 +42,136 @@
     }
   }
 
-  &__title {
-    @include fontTitleSize;
-    font-style: italic;
-    font-weight: 800;
+  &__info-block {
+    position: absolute;
+    top: 104px;
+    @include onTab {
+      top: 152px;
+    }
+  }
+
+}
+
+.head-top {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include onTab {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__tube {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin-right: 30px;
+    background-image: url(../images/tube.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesk {
+      &:hover .head-top__tube-number {
+        opacity: 1;
+      }
+    }
+
+  }
+
+  &__tube-number {
+    position: absolute;
+    right: 150%;
+    opacity: 0;
+    transition: opacity 0.2s;
+    width: max-content;
+    color: $mainTextColor;
+  }
+
+  &__burger {
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/burger.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 24px;
+      height: 16px;
+    }
+    @include hover (background-image, url(../images/burger-hover.svg));
+  }
+
+  &__cross {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/cross.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 1260px;
+  background-color: #e5e5e5;
+  opacity: 0;
+  @include actDuration (left);
+  @include actDuration (opacity);
+  &:target {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    z-index: 2;
+    @include actDuration (left);
+    @include actDuration (opacity);
+  }
+
+}
+
+.info-block {
+
+  &__nav-item {
+    margin-bottom: 32px;
+    &:nth-child(5) {
+      margin-bottom: 40px;
+    }
+    &:nth-child(6) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    color: $mainTextColor;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+      letter-spacing: unset;
+    }
+
+    &--call {
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 }
