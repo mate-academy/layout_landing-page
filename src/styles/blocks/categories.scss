@@ -1,0 +1,103 @@
+.categories {
+  &__wraper {
+
+    box-sizing: border-box;
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.category {
+  display: grid;
+  &__photos {
+    @include pagrGrid;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.2));
+  }
+  &__title {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+  }
+}
+
+.button-container {
+  @include pagrGrid;
+}
+
+.category__button-field {
+  grid-column: 1 / 3;
+
+  @include onTablet {
+    grid-column: 2 / 6;
+  }
+
+  @include onDesktop {
+    grid-column: 5 / 9;
+  }
+
+  .category__button {
+    box-sizing: border-box;
+    display: flex;
+    color: #fff;
+    background: $main-text-color;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    height: 56px;
+    text-decoration: none;
+    text-transform: uppercase;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: 0.3s;
+
+    &:hover {
+      background: $hover-bgc-button;
+      border: solid 2px $main-text-color;
+      color: $main-text-color;
+    }
+  }
+}
