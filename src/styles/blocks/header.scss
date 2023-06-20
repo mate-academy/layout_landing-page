@@ -1,5 +1,31 @@
 .header {
-  background: url(../images/girl.png) center/cover no-repeat;
+
+  &__item {
+
+    &--img {
+      background: url(../images/girl.png) center/cover no-repeat;
+    }
+
+    &--menu {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      opacity: 0;
+      @include actDuration (left);
+      @include actDuration (opacity);
+      &:target {
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+        z-index: 2;
+        @include actDuration (left);
+        @include actDuration (opacity);
+      }
+      background-color: #e5e5e5;
+    }
+
+  }
 
   &__container {
     @include container;
@@ -22,14 +48,7 @@
   }
 
   &__content {
-    position: relative;
     height: 100vh;
-    &--main {
-      padding-bottom: 27px;
-      @include onTab {
-        padding-bottom: 64px;
-      }
-    }
   }
 
   &__waves {
@@ -120,27 +139,6 @@
       width: 22px;
       height: 22px;
     }
-  }
-
-}
-
-.menu {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  max-width: 1260px;
-  background-color: #e5e5e5;
-  opacity: 0;
-  @include actDuration (left);
-  @include actDuration (opacity);
-  &:target {
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 1;
-    z-index: 2;
-    @include actDuration (left);
-    @include actDuration (opacity);
   }
 
 }
