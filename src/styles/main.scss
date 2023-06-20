@@ -1,4 +1,5 @@
-@import url("./header.scss");
+@import "./mixins.scss";
+@import "./header.scss";
 
 :root {
   --white-color: #fff;
@@ -25,6 +26,10 @@ body {
   font-size: 16px;
   font-weight: 400;
   min-width: 320px;
+}
+
+body:has(.header-navbar.open) {
+  overflow: hidden;
 }
 
 .container {
@@ -55,6 +60,14 @@ body {
     width: 100%;
     height: auto;
     margin-bottom: 24px;
+    transform: scale(1);
+    @include transition;
+    box-shadow: 0 0 5px -5px lightgray;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 5px 0 lightgray;
+    }
   }
 
   &_item {
@@ -87,8 +100,25 @@ body {
     gap: 20px;
     margin-bottom: 16px;
 
-    img {
+    a {
       width: calc(50% - 10px);
+      display: block;
+
+      &:hover {
+        z-index: 1;
+      }
+    }
+
+    img {
+      width: 100%;
+      transform: scale(1);
+      @include transition;
+      box-shadow: 0 0 5px -5px lightgray;
+
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 5px 0 lightgray;
+      }
     }
   }
 
@@ -195,14 +225,14 @@ textarea {
       flex-direction: column;
       gap: 24px;
 
-      &_visit {
-        display: block;
-      }
-
-      & a {
+      .link {
         line-height: 140%;
         color: var(--black-color);
         text-decoration: none;
+
+        &:hover {
+          color: var(--orange-color);
+        }
       }
 
       .text {
@@ -243,6 +273,11 @@ textarea {
 
   .media-image {
     height: 400px;
+  }
+
+  .header-icon_phone_text {
+    right: -8px;
+    top: 35px;
   }
 }
 
@@ -327,6 +362,10 @@ textarea {
 
     &_image {
       margin-bottom: 40px;
+    }
+
+    &_image:hover {
+      transform: scale(1.2);
     }
   }
 
