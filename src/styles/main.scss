@@ -90,7 +90,9 @@ body {
 }
 
 .header {
+  display: block;
   background-image: url(../images/header-bg-mobile-3x.png);
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 
@@ -147,6 +149,7 @@ body {
   &__icons {
     display: flex;
     gap: 30px;
+    align-items: center;
 
     @include onTablet {
       gap: 40px;
@@ -275,27 +278,42 @@ body {
 .icon {
   display: block;
   background-size: cover;
-  height: 18px;
-  width: 18px;
+  background-position: 50%;
+  height: 24px;
+  width: 24px;
   transition: 0.3s;
+
+  @include onTablet {
+    height: 36px;
+    width: 36px;
+  }
 
   &:hover {
     transform: scale(1.05);
     transition: 0.3s;
   }
 
-  @include onTablet {
-    height: 24px;
-    width: 24px;
-  }
-
   &--phone {
+    height: 18px;
+    width: 18px;
     background-image: url(../icons/icon-phone.png);
-    position: relative;
+    transition: 0.3s;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
   }
 
   &--menu {
+    height: 12px;
+    width: 18px;
     background-image: url(../icons/icon-burger-menu.png);
+
+    @include onTablet {
+      height: 16px;
+      width: 24px;
+    }
 
     &:hover {
       background-image: url(../icons/icon-burger-menu-hover.png);
@@ -311,20 +329,18 @@ body {
 
 .main {
   display: grid;
-  row-gap: 92px;
+  padding: 60px 20px 120px;
   padding-block: 92px;
   background-color: #1d1d1d;
 
-  @include cinstentPaddingInLine;
-
   @include onTablet {
     padding-block: 100px;
-    row-gap: 100px;
+    padding: 120px 72px 120px;
   }
 
   @include onDesctop() {
     padding-block: 164px;
-    row-gap: 100px;
+    padding: 120px 120px 182px;
   }
 }
 
@@ -332,17 +348,20 @@ body {
   margin: 0;
   font-weight: 500;
   font-size: 32px;
-  line-height: 67%;
+  line-height: 75%;
   text-align: left;
-  letter-spacing: 1.5;
-  padding-block: 48px;
+  letter-spacing: -1.5px;
+  padding-top: 92px;
+  padding-bottom: 48px;
 
   @include onTablet {
     font-size: 30px;
+    padding-top: 120px;
   }
 
   @include onDesctop {
     font-size: 48px;
+    padding-top: 160px;
   }
 
   &--align--center {
@@ -378,6 +397,7 @@ body {
     grid-column: 1 / -1;
 
     @include onTablet {
+      padding-top: 0;
       grid-column: 1 / 4;
     }
 
@@ -558,12 +578,6 @@ body {
   transition: 0.3s;
 }
 
-.explore {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .block__contacts {
   --columns: 2;
   display: grid;
@@ -653,6 +667,7 @@ p {
   }
 
   @include onDesctop {
+    height: 555px;
     background-image: url(../images/footer-desctop.png);
   }
 }
@@ -661,6 +676,7 @@ p {
   content: "+1 234 555-55-55";
   position: absolute;
   top: 0;
+  opacity: 1;
   padding: 5px;
   right: 24px;
   width: 148px;
@@ -669,45 +685,21 @@ p {
   line-height: 16px;
   letter-spacing: 2px;
   color: #fff;
+  transition: 0.3s;
+}
+
+.icon--phone:active {
+  opacity: 1;
 }
 
 .category__button {
-  grid-column: 1/-1;
-  width: 100%;
-  text-align: center;
-  background-color: #fff;
-  border-radius: 40px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  margin-bottom: -12px;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 27px;
-  color: #1d1d1d;
-  transition: 0.3s;
-
-  @include onTablet {
-    width: 392px;
-    grid-column: 3/5;
-  }
-
-  @include onDesctop {
-    width: 324px;
-    margin-bottom: 60px;
-    grid-column: 5/9;
-  }
-}
-
-.category__block-button {
   --columns: 2;
   display: grid;
-  column-gap: 20px;
+  gap: 20px;
   grid-template-columns: repeat(var(--columns),1fr);
-  margin-bottom: 16px;
 
   @include onTablet {
-    padding-top: 48px;
     --columns: 6;
     column-gap: 24px;
   }
@@ -715,4 +707,57 @@ p {
   @include onDesctop {
     --columns: 12;
   }
+}
+
+.explore-button {
+  margin-top: 32px;
+  grid-column: span 2;
+  height: 56px;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: bold;
+  border-radius: 40px;
+  border: #fff;
+
+  @include onTablet {
+    margin-top: 40px;
+    grid-column: 2/-2;
+  }
+
+  @include onDesctop {
+    grid-column: 5/-5;
+  }
+}
+
+.explore-button:active {
+  filter: drop-shadow(0 0 10px $second-text-color);
+  transition: 0.3s;
+}
+
+.explore-button:hover {
+  filter: drop-shadow(0 0 5px $second-text-color);
+  transition: 0.3s;
+}
+
+.content {
+  margin: 8px 0 48px;
+
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: 1/-1;
+  }
+
+  @include onDesctop {
+    grid-column: 1/9;
+  }
+}
+
+.cover__content {
+  @include pageGrid;
+
+}
+
+h3 {
+  margin: 0;
 }
