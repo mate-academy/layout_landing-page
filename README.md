@@ -1,18 +1,27 @@
-# Landing page
+# Description
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## BOSE landing page
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+  This is the homepage of the online shop. It includes a title page, navigation page and sections:
+ 1. Product price list;
+ 2. Photo gallery of new BOSE product samples.
+ 3. Promotional guide.
+ 4. Contact details.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+The landing page is designed with adaptive layout which allows this website to be viewed on a variety of devices. From ultra-small mobile phone screens to widescreen monitors and tabloids.
+
+## Technology
+
+- HTLM
+- CSS
+- SCSS
+- BEM
+- JavaScript
+
+:white_check_mark:- [DEMO LINK Landing page](https://github.com/EvgenyNikitinEvgeny/project_miami_landing)
+
+:white_check_mark:- [Link to original layout](https://github.com/EvgenyNikitinEvgeny/project_miami_landing](https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?type=design&node-id=26-51&t=fO1NgopoJFdCyVZZ-0)https://www.figma.com/file/OMjQNb3hg1LKMV4OwyQ3Ao/BOSE?type=design&node-id=26-51&t=fO1NgopoJFdCyVZZ-0)
+
+## Developer
+
+### Nikitin Yevhenii
