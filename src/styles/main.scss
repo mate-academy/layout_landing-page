@@ -1,3 +1,786 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin cinstentPaddingInLine() {
+  padding: 24px 20px 48px;
+
+  @include onTablet {
+    padding: 36px 72px 44px;
+  }
+
+  @include onDesctop() {
+    padding: 36px 120px 60px;
+  }
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    --colums: 12;
+  }
+}
+
+$tablet-min-width: 576px;
+$desctop-min-width: 1024px;
+
+$main-text-color: #1d1d1d;
+$second-text-color: #fff;
+
 body {
   margin: 0;
+  overflow-x: hidden;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  line-height: 140%;
+  font-size: 16px;
+  color: $second-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      transition: 0.3s;
+      pointer-events: all;
+    }
+  }
+}
+
+.header {
+  display: block;
+  background-image: url(../images/header-bg-mobile-3x.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet() {
+    background-image: url(../images/header-bg-tablet-3x.png);
+  }
+
+  @include onDesctop {
+    background-image: url(../images/header-bg-pc-3x.png);
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    width: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesctop {
+      font-size: 80px;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    bottom: 0;
+    padding-bottom: 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+      font-size: 30px;
+    }
+
+    @include onDesctop {
+      padding-bottom: 203px;
+      font-size: 50px;
+    }
+  }
+}
+
+.top-bar {
+  @include cinstentPaddingInLine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+    transition: 0.3s;
+
+    @include onTablet {
+      height: 56px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.3s;
+    }
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #c2c2c2;
+  text-transform: uppercase;
+  font-weight: 600;
+  overflow: auto;
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #c2c2c2;
+  }
+
+  &__nav {
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    padding-left: 20px;
+
+    @include onTablet {
+      padding-left: 72px;
+    }
+
+    @include onDesctop() {
+      padding-left: 121px;
+    }
+  }
+
+  &__phone-number {
+    display: block;
+    margin-bottom: 16px;
+    color: $main-text-color;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+  }
+
+  &_call-to-order {
+    display: block;
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #1d1d1d;
+
+    color: $main-text-color;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    line-height: 67%;
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: #1d1d1d;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 67%;
+    letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transform: scale(0);
+      transition: 0.3s;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transition: 0.3s;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  background-size: cover;
+  background-position: 50%;
+  height: 24px;
+  width: 24px;
+  transition: 0.3s;
+
+  @include onTablet {
+    height: 36px;
+    width: 36px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+
+  &--phone {
+    height: 18px;
+    width: 18px;
+    background-image: url(../icons/icon-phone.svg);
+    transition: 0.3s;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &--menu {
+    height: 12px;
+    width: 18px;
+    background-image: url(../icons/icon-burger-menu.svg);
+
+    @include onTablet {
+      height: 16px;
+      width: 24px;
+    }
+
+    &:hover {
+      background-image: url(../icons/icon-burger-menu-hover.svg);
+      transition: 0.3s;
+    }
+  }
+
+  &--close {
+    height: 16px;
+    width: 16px;
+    background-image: url(../icons/icon-close.svg);
+
+    @include onTablet {
+      height: 21px;
+      width: 21px;
+    }
+  }
+
+}
+
+.main {
+  display: grid;
+  padding: 60px 20px 120px;
+  background-color: #1d1d1d;
+
+  @include onTablet {
+    padding: 120px 72px;
+  }
+
+  @include onDesctop() {
+    padding: 120px 120px 182px;
+  }
+}
+
+.section-title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 75%;
+  text-align: left;
+  letter-spacing: -1.5px;
+  padding-top: 92px;
+  padding-bottom: 48px;
+
+  @include onTablet {
+    font-size: 30px;
+    padding-top: 120px;
+  }
+
+  @include onDesctop {
+    font-size: 48px;
+    padding-top: 160px;
+  }
+
+  &--align--center {
+    text-align: center;
+  }
+}
+
+.compare-bikes {
+
+  &__products {
+    @include pageGrid;
+    row-gap: 40px;
+  }
+}
+
+.compare-bike {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 2 / -2;
+  }
+
+  @include onDesctop {
+    grid-column: span 4;
+  }
+}
+
+.about-us {
+  @include pageGrid;
+
+  &__title {
+    padding: 0 0 32px;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesctop {
+      grid-column: span 5;
+    }
+  }
+  &__content {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 4/ 7;
+    }
+
+    @include onDesctop {
+      grid-column: span 5;
+    }
+  }
+
+  &__description {
+    display: grid;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.product__photo {
+  max-width: 100%;
+  transition: 0.3s;
+}
+
+.product__photo:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &-wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesctop {
+        grid-column: span 8;
+      }
+    }
+
+    &-square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesctop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+  }
+
+  &__photo:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+}
+
+.form {
+  background-color: #1d1d1d;
+  grid-column: 1/-1;
+  display: grid;
+  row-gap: 16px;
+
+  @include onTablet {
+    grid-column: 1/4;
+  }
+
+  @include onDesctop {
+    grid-column: span 5;
+  }
+
+  &__input {
+    grid-column: 1/-1;
+  }
+
+  @include onTablet {
+    grid-column: 1/4;
+  }
+
+  @include onDesctop {
+    grid-column: 1/5;
+  }
+}
+
+.field__input {
+  padding: 14px 16px;
+  height: 148px;
+  margin-bottom: 16px;
+  border: 1px solid #f8f8fa;
+  background-color: #f8f8fa;
+  border-radius: 16px;
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  border-radius: 40px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  font-style: normal;
+  color: #7e7e83;
+  outline: none;
+  border: 1px transparent;
+}
+
+.input:hover {
+  color: #292929;
+}
+
+.textarea {
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  width: 100%;
+  height: 120px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  font-style: normal;
+  border: 1px transparent;
+  color: #7e7e83;
+}
+
+.textarea:hover {
+  color: #292929;
+}
+
+.button {
+  width: 100%;
+  text-align: center;
+  border-radius: 40px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  border: #fff;
+  transition: 0.3s;
+}
+
+.button:active {
+  filter: drop-shadow(0 0 10px $second-text-color);
+  transition: 0.3s;
+}
+
+.button:hover {
+  filter: drop-shadow(0 0 5px $second-text-color);
+  transition: 0.3s;
+}
+
+.block__contacts {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns),1fr);
+
+  @include onTablet {
+    margin-top: -16px;
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    --columns: 12;
+    margin-top: 0;
+  }
+}
+
+.contacts__content {
+  padding-top: 48px;
+  grid-column: 1/-1;
+
+  @include onTablet {
+    padding-top: 0;
+    grid-column: 4/7;
+  }
+
+  @include onDesctop {
+    grid-column: 8/12;
+  }
+}
+
+.contacts__field {
+  display: grid;
+  row-gap: 8px;
+}
+
+.contacts__field:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+h4 {
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  font-weight: bold;
+}
+
+.contacts__title {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.contacts__view {
+  margin: 0;
+}
+
+.contact__link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.contact__link:hover {
+  color: blue;
+  transition: 0.3s;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  height: 300px;
+  background-image: url(../images/footer-mobile.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include onTablet {
+    height: 600px;
+    background-image: url(../images/footer-tablet.png);
+  }
+
+  @include onDesctop {
+    height: 555px;
+    background-image: url(../images/footer-desctop.png);
+  }
+}
+
+.icon--phone:hover:after {
+
+  @include onDesctop {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    top: 0;
+    padding: 5px;
+    right: 24px;
+    width: 148px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+    transition: 0.3s;
+  }
+}
+
+.icon--phone:active {
+  opacity: 1;
+}
+
+.category__button {
+  text-decoration: none;
+  --columns: 2;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns),1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    --columns: 12;
+  }
+}
+
+.explore-button {
+  margin-top: 32px;
+  grid-column: span 2;
+  height: 56px;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: bold;
+  border-radius: 40px;
+  border: #fff;
+  cursor: pointer;
+
+  @include onTablet {
+    margin-top: 40px;
+    grid-column: 2/-2;
+  }
+
+  @include onDesctop {
+    grid-column: 5/-5;
+  }
+}
+
+.explore-button:active {
+  filter: drop-shadow(0 0 10px $second-text-color);
+  transition: 0.3s;
+}
+
+.explore-button:hover {
+  filter: drop-shadow(0 0 5px $second-text-color);
+  transition: 0.3s;
+}
+
+.content {
+  margin: 8px 0 48px;
+
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: 1/-1;
+  }
+
+  @include onDesctop {
+    grid-column: 1/9;
+  }
+}
+
+.cover__content {
+  @include pageGrid;
+
+}
+
+h3 {
+  margin: 0;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
 }
