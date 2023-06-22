@@ -23,16 +23,19 @@
     transition-duration: $effectDuration;
 
     &:hover {
+      transition-delay: $effectDuration;
       @include hover (transform, scale(1.2));
-    }
-
-    &:hover::before {
-      content: "+1 234 5555-55-55";
-      text-shadow: 2px 0 2px #fff;
+      width: auto;
       position: absolute;
-      transform: translateX(-170px);
-      width: max-content;
-      color: $main-text-color;
+
+      &::before {
+        content: "+1 234 5555-55-55";
+        text-shadow: 2px 0 2px #fff;
+        position: absolute;
+        transform: translateX(-170px);
+        width: max-content;
+        color: $main-text-color;
+      }
     }
   }
 
@@ -42,7 +45,15 @@
     transition: width $effectDuration, scale $effectDuration;
     transition-delay: $effectDuration;
     transition-duration: $effectDuration;
-    width: 36px;
+    width: 24px;
+
+    @include onTablet {
+      width: 36px;
+    }
+
+    @include onDesktop {
+      width: 36px;
+    }
 
     &:hover {
       scale: 1.2;
@@ -51,10 +62,19 @@
   }
 
   &--close-tab {
-    width: 50px;
+    width: 36px;
     background-image: url(../images/icons/icon-close.svg);
     background-repeat: no-repeat;
     background-size: 50%;
+
+    @include onTablet {
+      width: 50px;
+    }
+
+    @include onDesktop {
+      width: 50px;
+    }
+
     &:hover {
       @include hover (transform, scale(1.2));
     }
