@@ -1,0 +1,45 @@
+@mixin onDesktop {
+  max-width: 1260px;
+
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin cursorCustom {
+  cursor: url(../icons/cursor.png), pointer;
+}
+
+@mixin contentPaddingInline () {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin sizeTwoItems ($part) {
+  &:first-child {
+    grid-column: 1/#{$part};
+  }
+
+  &:nth-child(2) {
+    grid-column: #{$part}/-1;
+  }
+}
+
+@mixin textBold16 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+}

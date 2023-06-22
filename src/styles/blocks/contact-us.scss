@@ -1,0 +1,120 @@
+.contact-us {
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__article {
+    margin-top: 48px;
+    margin-inline: 0;
+    grid-column: 1/-1;
+
+    @include onTablet {
+      grid-column: 1/2;
+    }
+  }
+
+  &__title {
+    text-align: left;
+    margin-top: 0;
+  }
+
+  &__address-item {
+    font-style: inherit;
+    margin-top: 16px;
+
+    &--value {
+      font-weight: 700;
+    }
+  }
+
+  &__form {
+    margin-top: 48px;
+    grid-column: 1/-1;
+    text-align: center;
+  }
+
+  &__form-field {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 16px;
+    position: relative;
+
+    &--message {
+      height: 144px;
+    }
+
+    &:focus {
+      background: $color-input-bg-focus;
+      outline: 1px;
+      outline-style: solid;
+      outline-color: $main-text-color;
+    }
+
+    &::placeholder {
+      position: absolute;
+      font-family: "Cinzel", serif;
+      font-size: 14px;
+      left: 12px;
+      top: 14px;
+      color: $color-placeholder;
+    }
+
+    &:hover {
+      @include cursorCustom;
+
+      &::placeholder {
+        color: $main-text-color;
+      }
+    }
+  }
+
+  &__button {
+    @include textBold16;
+    width: 280px;
+    height: 58px;
+    margin-top: 32px;
+    font-family: "Cinzel", serif;
+    border: none;
+    color: $color-button-text;
+    background-color: $color-button-defalt;
+
+    &:hover {
+      @include cursorCustom;
+      background-color: $color-button-hover;
+    }
+
+    &:active {
+      background-color: $color-button-pressed;
+    }
+  }
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+
+    &__contacts-block {
+      grid-column: 1/4;
+    }
+
+    &__form {
+      grid-column: 4/-1;
+    }
+  }
+
+  @include onDesktop {
+    &__contacts-block {
+      display: grid;
+      .contact-us__article:first-child {
+        grid-column: 1/4;
+      }
+
+      .contact-us__article:nth-child(2) {
+        grid-column: 4/8;
+      }
+    }
+
+    &__form-field:first-child {
+      margin-top: 0;
+    }
+  }
+}
