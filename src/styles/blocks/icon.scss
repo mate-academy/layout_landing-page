@@ -1,0 +1,62 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width:32px;
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+  
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &__number {
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    align-self: center;
+
+    width: max-content;
+    margin-right: 12px;
+
+    transition: opacity 0.3s;
+    opacity: 0;
+    pointer-events: none;
+
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &--phone {
+    background-image: url(../images/call.svg);
+
+    &:hover {
+      @include onDesktop {
+        .icon__number {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../images/cross.svg);
+  }
+}
