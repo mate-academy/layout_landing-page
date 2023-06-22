@@ -1,5 +1,11 @@
 @mixin onTablet {
-  @media (min-width: 576px) {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
@@ -10,18 +16,8 @@
   @include onTablet {
     padding-inline: 72px;
   }
-}
 
-@mixin onPc {
-  @media (min-width: 1198px) {
-    @content;
-  }
-}
-
-@mixin constentPaddingInLine() {
-  padding-inline: 20px;
-
-  @include onPc {
+  @include onDesktop {
     padding-inline: 120px;
   }
 }
@@ -31,4 +27,15 @@
   &:hover {
     #{$property}: $toValue;
   }
+}
+
+@mixin smallText {
+  font-weight: $min-text;
+  line-height: 169%;
+}
+
+@mixin titleText {
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
 }

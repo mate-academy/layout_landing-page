@@ -1,79 +1,80 @@
 .main {
   &__container {
-    max-width: 1020px;
-    margin: 0 auto;
+    margin-bottom: 100px;
   }
 
   &__content {
-    margin: 100px 20px 0;
-  }
-
-  &__item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-content: center;
+    gap: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-evenly;
+      gap: 24px;
+    }
   }
 
   &__title {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    margin-bottom: 32px;
+    @include titleText;
 
-    &-small {
+    &-text--red {
+      font-size: 12px;
+      line-height: 1.4;
       color: $red-color;
+      word-spacing: 2px;
+      letter-spacing: 0.6px;
       margin-bottom: 2px;
     }
+
+    &-text--align--left {
+      text-align: left;
+      width: 100%;
+
+      @include onTablet {
+        font-size: 48px;
+        line-height: 100%;
+      }
+    }
   }
 
-  &__layout {
+  &__block {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-
-    &-block {
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: start;
-    }
-
-    &-title {
-      font-size: 24px;
-      line-height: 93%;
-      margin-bottom: 16px;
-    }
-
-    &-text {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 16px;
-    }
-
-    &-holiday {
-      margin-bottom: 24px;
-    }
+    gap: 24px;
+    max-width: 516px;
+    width: 100%;
+    overflow: auto;
   }
-}
 
-.layout {
-  &__time:not(:last-child) {
-    margin-bottom: 8px;
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__blocks {
+    display: flex;
+    column-gap: 25px;
+    @include smallText;
+  }
+
+  &__time {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    font-weight: 700;
   }
 
   &__day {
-    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
   }
 
-  &__day:not(:last-child) {
-    margin-bottom: 8px;
+  &__holidays {
+    &-text--small {
+      @include smallText;
+    }
   }
-}
-
-.title {
-  font-size: 32px;
-  line-height: 74%;
 }
