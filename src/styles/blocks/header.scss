@@ -12,8 +12,10 @@
       left: -100%;
       width: 100%;
       opacity: 0;
+      background-color: #e5e5e5;
       @include actDuration (left);
       @include actDuration (opacity);
+
       &:target {
         left: 50%;
         transform: translateX(-50%);
@@ -22,7 +24,7 @@
         @include actDuration (left);
         @include actDuration (opacity);
       }
-      background-color: #e5e5e5;
+
     }
 
   }
@@ -81,6 +83,15 @@
   @include onTab {
     padding-top: 36px;
     padding-bottom: 36px;
+  }
+
+  &__logo {
+    transform: scale(1);
+    @include actDuration (transform);
+    &:hover {
+      transform: scale(1.5);
+      @include actDuration (transform);
+    }
   }
 
   &__icons {
@@ -156,11 +167,30 @@
   }
 
   &__link {
+    position: relative;
     font-size: 22px;
     line-height: 22px;
+    display: inline-block;
     color: $mainTextColor;
     text-transform: uppercase;
     letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 1px;
+      width: 0;
+      background-color: $mainTextColor;
+    }
+
+    &:hover.info-block__link::after{
+      width: 100%;
+      @include actDuration (width);
+    }
+
     &--phone {
       font-size: 16px;
       line-height: 27px;
