@@ -6,6 +6,10 @@ body {
   scroll-behavior: smooth;
 }
 
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
 .header {
   background-image: url(../images/backgroundimgPhone3.jpg);
   background-size: cover;
@@ -62,6 +66,11 @@ body {
   .header__bottom-text {
     font-size: 72px;
   }
+}
+
+.menu {
+  overflow: hidden;
+  position: fixed;
 }
 
 .top-bar {
@@ -299,6 +308,16 @@ h3 {
   letter-spacing: -1.5px;
   margin: 0;
 }
+@media (min-width: 576px) {
+  h3 {
+    font-size: 48px;
+  }
+}
+@media (min-width: 1024px) {
+  h3 {
+    font-size: 64px;
+  }
+}
 
 h4 {
   font-weight: 400;
@@ -425,7 +444,6 @@ h5 {
 @media (min-width: 576px) {
   .compare-bikes__products {
     display: grid;
-    padding: 0 72px;
     grid-template-columns: repeat(6, 1fr);
     grid-column-gap: 24px;
     padding-bottom: 120px;
@@ -434,7 +452,6 @@ h5 {
 @media (min-width: 1024px) {
   .compare-bikes__products {
     display: grid;
-    padding: 0 120px;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 24px;
     padding-bottom: 144px;
@@ -443,16 +460,6 @@ h5 {
 .compare-bikes-title {
   line-height: 32px;
   padding-bottom: 48px;
-}
-@media (min-width: 576px) {
-  .compare-bikes-title {
-    font-size: 48px;
-  }
-}
-@media (min-width: 1024px) {
-  .compare-bikes-title {
-    font-size: 64px;
-  }
 }
 .compare-bikes__img {
   width: 100%;
@@ -605,6 +612,7 @@ h5 {
 }
 @media (min-width: 1024px) {
   .contacts--title {
+    font-size: 48px;
     padding-top: 180px;
   }
 }
@@ -627,13 +635,14 @@ h5 {
 }
 .contacts__form {
   width: 100%;
+  display: block;
   margin-bottom: 16px;
   border-radius: 40px;
   border: 0;
-  padding: 0;
+  padding: 14px 16px;
+  box-sizing: border-box;
   background-color: #f8f8fa;
   color: #292929;
-  text-indent: 16px;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -644,6 +653,27 @@ h5 {
 .contacts__message {
   height: 148px;
   border-radius: 16px;
+  overflow: auto;
+  resize: none;
+  position: relative;
+}
+.contacts__message::placeholder {
+  font-family: Poppins, sans-serif;
+}
+.contacts__message::-webkit-scrollbar {
+  width: 8px;
+}
+.contacts__message::-webkit-scrollbar-track {
+  cursor: pointer;
+}
+.contacts__message::-webkit-scrollbar-thumb {
+  transition: 0.3s;
+  background: #545454;
+  border-radius: 20px;
+}
+.contacts__message::-webkit-scrollbar-thumb:hover {
+  background: #3b3b3b;
+  transform: scaleX(1.2);
 }
 .contacts__button {
   width: 100%;
@@ -695,6 +725,7 @@ h5 {
 .contacts__info-address-link, .contacts__info-email-link, .contacts__info-phone-link {
   text-decoration: none;
   color: #f8f8fa;
+  transition: 0.3s;
 }
 .contacts__info-address-link:hover, .contacts__info-email-link:hover, .contacts__info-phone-link:hover {
   color: #857979;
@@ -706,6 +737,8 @@ h5 {
   background-size: cover;
   background-position: center;
   bottom: 0;
+  position: sticky;
+  z-index: -1;
 }
 @media (min-width: 576px) {
   .footer {

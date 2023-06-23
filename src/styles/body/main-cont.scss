@@ -10,6 +10,14 @@ h3 {
   letter-spacing: -1.5px;
   margin: 0;
 
+  @include onTablet {
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 64px;
+  }
+
 }
 
 h4 {
@@ -142,7 +150,6 @@ h5 {
     padding-bottom: 92px;
     @include onTablet {
       display: grid;
-      padding: 0 72px;
       grid-template-columns: repeat(6, 1fr);
       grid-column-gap: 24px;
       padding-bottom: 120px;
@@ -150,7 +157,6 @@ h5 {
 
     @include onDesktop {
         display: grid;
-        padding: 0 120px;
         grid-template-columns: repeat(12, 1fr);
         grid-column-gap: 24px;
         padding-bottom: 144px;
@@ -162,14 +168,6 @@ h5 {
   &-title {
     line-height: 32px;
     padding-bottom: 48px;
-
-    @include onTablet {
-      font-size: 48px;
-    }
-
-    @include onDesktop {
-      font-size: 64px;
-    }
 
   }
 
@@ -351,6 +349,7 @@ h5 {
   }
 
   @include onDesktop {
+    font-size: 48px;
     padding-top: 180px;
   }
 }
@@ -372,13 +371,14 @@ h5 {
 
   &__form {
     width: 100%;
+    display: block;
     margin-bottom: 16px;
     border-radius: 40px;
     border: 0;
-    padding: 0;
+    padding: 14px 16px;
+    box-sizing: border-box;
     background-color: #f8f8fa;
     color: #292929;
-    text-indent: 16px;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -391,9 +391,61 @@ h5 {
 
   }
 
+
+      // ::-webkit-scrollbar {
+      //   width: 10px;
+      // }
+
+      // /* Track */
+      // ::-webkit-scrollbar-track {
+      //   background: #f1f1f1;
+      // }
+
+      // /* Handle */
+      // ::-webkit-scrollbar-thumb {
+      //   background: #888;
+      // }
+
+      // /* Handle on hover */
+      // ::-webkit-scrollbar-thumb:hover {
+      //   background: #555;
+      // }
+
   &__message {
     height: 148px;
     border-radius: 16px;
+    overflow: auto;
+    resize: none;
+    position: relative;
+
+
+    &::placeholder {
+      font-family: Poppins, sans-serif;
+
+
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+
+    }
+
+    &::-webkit-scrollbar-track {
+      cursor: pointer;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+      transition: 0.3s;
+      background: #545454;
+      border-radius: 20px;
+
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #3b3b3b;
+      transform: scaleX(1.2);
+    }
   }
 
   &__button {
@@ -455,13 +507,12 @@ h5 {
   &__info-phone-link {
     text-decoration: none;
     color: #f8f8fa;
+    transition: 0.3s;
 
     &:hover {
       color: #857979;
     }
-
   }
-
 }
 
 .footer {
@@ -470,6 +521,8 @@ h5 {
   background-size: cover;
   background-position: center;
   bottom: 0;
+  position: sticky;
+  z-index: -1;
 
   @include onTablet {
     height: 480px;
