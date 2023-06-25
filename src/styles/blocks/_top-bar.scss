@@ -1,0 +1,61 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 25px;
+
+  @include onTablet {
+    padding-top: 64px;
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    @include hover(transform, scale(1.2));
+    height: 46px;
+
+    @include onTablet {
+      height: 65px;
+    }
+  }
+
+  &__tooltip {
+    display: none;
+
+    @include onDesktop {
+      position: absolute;
+      right: 100%;
+      top: -35px;
+
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+
+      transition: opacity $effectDuration;
+    }
+  }
+
+  &__tooltip-content {
+    display: flex;
+    flex-direction: column;
+    min-width: max-content;
+
+    font-weight: 700;
+    text-align: right;
+    text-transform: uppercase;
+    color: $accent-white;
+
+    &--call {
+      @include hover(color, $accent-hover);
+      @include active(color, $accent-active);
+    }
+  }
+}
