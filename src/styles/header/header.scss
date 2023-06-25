@@ -1,0 +1,132 @@
+.header {
+  padding: 28px 0 40px;
+  min-height: 100vh;
+  background: url("../images/img/header-bg.jpg") center center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  @include onDesktop {
+    padding: 28px 0 64px;
+  }
+
+  &__content {
+    height: calc(100vh - 28px - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktop {
+      height: calc(100vh - 28px - 64px);
+    }
+  }
+
+  &__wrapper-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 2;
+    height: 16px;
+
+    @include onTablet {
+      height: 24px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: "+1 234 555-55-55";
+      color: $text-color;
+      font-size: 14px;
+      font-weight: 700;
+      width: max-content;
+      letter-spacing: 2px;
+      position: absolute;
+      left: -170px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__burger-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: $text-color;
+    border-radius: 2px;
+    margin-bottom: 3px;
+    transition: transform 0.2s ease-in-out,
+      margin-bottom 0.2s ease-in-out,
+      width 0.2s ease-in-out;
+    transform-origin: right;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__burger-menu {
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+
+    &--active {
+      .header__burger-line:last-child {
+        transform-origin: left;
+        transform: rotate(-45deg);
+      }
+
+      .header__burger-line:nth-child(2) {
+        display: none;
+      }
+
+      .header__burger-line:first-child {
+        transform-origin: left;
+        transform: rotate(45deg);
+        margin-bottom: 11px;
+      }
+    }
+  }
+
+  &__wrapper-icons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__title {
+    display: block;
+    width: 320px;
+    font-size: 36px;
+    line-height: 100%;
+    color: $text-color;
+
+    @include onTablet {
+      font-size: 48px;
+      width: 400px;
+    }
+
+    @include onDesktop {
+      font-size: 56px;
+      width: 450px;
+    }
+  }
+}
