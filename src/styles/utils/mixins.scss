@@ -12,6 +12,11 @@
   letter-spacing: 2px;
 }
 
+@mixin titleFontStyle {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+}
+
 @mixin onTablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -25,17 +30,17 @@
 }
 
 @mixin pageGrid {
-  $columns: 2;
+  --columns: 2;
   display: grid;
   column-gap: 20px;
-  grid-template-columns: repeat($columns, 1fr);
+  grid-template-columns: repeat(var(--columns), 1fr);
 
   @include onTablet {
-    $columns: 6;
+    --columns: 6;
     column-gap: 24px;
   }
 
   @include onDesktop {
-    $columns: 12;
+    --columns: 12;
   }
 }
