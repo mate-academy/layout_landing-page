@@ -1,0 +1,115 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15px 0;
+  margin-top: 40px;
+  border: 3px solid $main-text-color;
+  border-radius: 40px;
+  background-color: $main-text-color;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: $transform, background-color 0.3s;
+
+  &:hover {
+    @include hover (transform, scale(1.08));
+    color: $main-text-color;
+    background-color: #fff;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #111;
+  }
+}
+
+@mixin formHover {
+  &::placeholder {
+    color: $placeholder-color;
+  }
+
+  &:hover {
+    background: $form-color;
+    border: 1px solid $border-color;
+    &::placeholder {
+      color: $main-text-color;
+    }
+
+    @include hover (transform, scale(1.08));
+  }
+
+  &:active {
+    background: $form-color;
+    border: 1px solid $main-text-color;
+  }
+}
+
+@mixin contactsTitles {
+  margin: 0;
+  margin-bottom: 8px;
+  line-height: 20px;
+  color: $contact-title-color;
+}
+
+@mixin contactsInfo {
+  margin: 0;
+  font-size: 16px;
+  line-height: 140%;
+  color: $contact-adress-color;
+}
