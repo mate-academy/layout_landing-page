@@ -9,8 +9,27 @@
   }
 
   &__link {
+    position: relative;
     text-decoration: none;
     color: $text-color-dark;
     @include fontSizeWithLineHeight(22px);
+
+    &::after {
+      position: absolute;
+      bottom: -4px;
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $text-color-dark;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }

@@ -4,19 +4,22 @@
   }
 }
 
-@mixin headerBackground {
-  background-image: url("../images/header-background.jpg");
-}
-
-@mixin menuBackground {
-  background-color: $background-color-secondary;
-}
-
 @mixin constantPaddingInline {
   padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
 }
 
 @mixin fontSizeWithLineHeight($fontSize) {
   font-size: $fontSize;
   line-height: $fontSize;
+}
+
+@mixin hover($prop, $toValue) {
+  transition: #{$prop} $transition-duration;
+  &:hover {
+    #{$prop}: $toValue;
+  }
 }
