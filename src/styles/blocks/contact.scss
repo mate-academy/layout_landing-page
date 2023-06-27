@@ -1,0 +1,135 @@
+.contact {
+  &__boxes {
+    @include onTablet {
+      @include grid;
+    }
+  }
+
+  &__box-wraper {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      grid-column: span 3;
+
+      @include onDesktop {
+        display: grid;
+        grid-template-columns: repeat(6, 63px);
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__box {
+    &--column-1 {
+      @include onDesktop {
+        grid-column: 1 / 4;
+      }
+    }
+
+    &--column-2 {
+      @include onDesktop {
+        grid-column: 4 / 7;
+      }
+    }
+
+    &--span-5 {
+      @include onTablet {
+        grid-column: 4 / -1;
+        grid-row: 1;
+      }
+
+      @include onDesktop {
+        grid-column: 9 / -1;
+      }
+    }
+  }
+
+  &__main-title {
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    font-size: $size16;
+    font-weight: 700;
+    @include hover(transform, scale(1.1));
+    @include hover(color, 1.5);
+
+    &--margin-8 {
+      margin-bottom: 8px;
+    }
+
+    &--margin-48 {
+      margin-bottom: 48px;
+    }
+
+    &:hover {
+      color: #ae1c23;
+    }
+
+    @include onTablet {
+      &--margin-none {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &__text {
+    margin-bottom: 4px;
+    font-size: $size14;
+  }
+  
+  &__form-text {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 14px;
+    
+    font-family: inherit;
+    font-size: $size14;
+
+    background-color: #f8f8fa;
+    border: none;
+    &::placeholder {
+      font-size: $size14;
+      color: #7e7e83;
+    }
+    
+    &:hover::placeholder {
+      color: $colorBlack;
+    }
+
+    &:hover {
+      border: #d5d7de solid 1px;
+    }
+
+    &:focus {
+      border: 1px solid $colorBlack;
+    }
+
+    &--textarea {
+      resize: none;
+      height: 144px;
+      margin-bottom: 32px;
+
+      text-align: left;
+      font-size: $size14;
+    }
+  }
+  
+  &__button {
+    width: 100%;
+    padding: 15px 0;
+    
+    font-family: inherit;
+    font-weight: 700;
+    color: $colorWhite;
+    background-color: #d12d35;
+    border: none;
+    @include hover (background-color, #ae1c23);
+
+    &:active {
+      @include hover (background-color, #eb343d);
+    }
+  }
+}

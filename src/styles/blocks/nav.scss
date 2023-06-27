@@ -9,10 +9,41 @@
   }
 
   &__link {
+    position: relative;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
     text-decoration: none;
     color: $colorWhite;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $colorWhite;
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__item--desktop-no {
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__item--desktop-yes {
+    display: none;
+    @include onDesktop {
+      display: block;
+    }
   }
 }

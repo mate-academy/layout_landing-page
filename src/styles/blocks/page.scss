@@ -1,6 +1,6 @@
 .page {
   font-family: "Cinzel", serif;
-  font-size: 16px;
+  font-size: $size16;
   font-weight: 400;
   line-height: 27px;
   color: $colorBlack;
@@ -9,6 +9,12 @@
   
   &__body {
     margin: 0;
+    min-width: 320px;
+
+    &--with-menu {
+      overflow: hidden;
+
+    }
   }
 
   &__menu {
@@ -18,10 +24,13 @@
     left: 0;
 
     opacity: 0;
+    transition: all $effectDuration;
+    transform: translateX(-100%);
     pointer-events: none;
 
     &:target {
       opacity: 1;
+      transform: translateX(0);
       pointer-events: all;
     }
   }
