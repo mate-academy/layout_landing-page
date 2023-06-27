@@ -79,7 +79,6 @@
   }
 
   &__input {
-
     font-family: "Cinzel", serif;
     padding: 16px 14px;
     height: 48px;
@@ -90,12 +89,10 @@
     font-size: 14px;
     line-height: 20px;
     color: $color-text-black;
-    background: #f8f8fa;
+    background-color: $backgraund-color;
     margin-bottom: 16px;
-
-    @include onDesktop {
-      margin-bottom: 30px;
-    }
+    transition: all $transition-time;
+    cursor: pointer;
 
     &::placeholder {
       color: $color-text-grey;
@@ -105,6 +102,12 @@
       color: $color-text-black;
       padding: 16px 14px;
       border: 1px solid $color-text-black;
+    }
+
+    &:-webkit-autofill {
+      -webkit-text-fill-color: $color-text-black;
+      background-color: $backgraund-color;
+      transition: all $transition-time;
     }
 
     &:focus::-webkit-input-placeholder {
@@ -123,10 +126,24 @@
       opacity: 0;
     }
 
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: $color-text-black;
+      border: 1px solid $color-text-black;
+      background-color: $backgraund-color;
+      transition: all $transition-time;
+    }
+
+    @include onDesktop {
+      margin-bottom: 30px;
+    }
+
     &--textarea {
+      resize: none;
       display: block;
       margin-bottom: 32px;
       height: 144px;
+
     }
   }
 }
