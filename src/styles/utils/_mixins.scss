@@ -1,0 +1,29 @@
+@mixin onDesctop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin hover ($_property, $_toValue) {
+  transition: #{$_property} 0.5s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin hoverAfter ($_property, $_toValue) {
+  &::after {
+    @extend %after-underline;
+    transform: scale(0);
+    transition: #{$_property} 0.5s;
+  }
+  &:hover::after {
+    #{$_property}: $_toValue;
+  }
+}
