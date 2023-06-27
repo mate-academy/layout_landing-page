@@ -1,9 +1,16 @@
 .section-4 {
-  display: grid;
-  justify-content: center;
-  padding: 0 20px;
-  height: 100vh;
-  margin-bottom: 200px;
+  &__container {
+    margin: 0 auto;
+    margin-bottom: 200px;
+    width: 100%;
+    min-width: 320px;
+    @media (min-width: 768px) {
+      min-width: 768px;
+    }
+    @media (min-width: 1280px) {
+      min-width: 1280px;
+    }
+  }
 
   &__title {
     margin: 0 auto 48px;
@@ -11,17 +18,24 @@
 
   &__form {
     display: grid;
+    width: calc(100vw - 40px);
+    margin: 0 auto;
+    row-gap: 16px;
+    padding: 0 20px;
   }
 
   &__button {
     @include size(280px, 56px);
+    @media (max-width: 767px) {
+      margin: 0 auto;
+    }
   }
 
   &__input {
-    @include size(278px, 48px);
+    @include size(100%, 48px);
+    min-width: 278px;
     border-radius: 40px;
     border: none;
-    margin-bottom: 16px;
     padding: 14px;
     background: #f8f8fa;
 
@@ -35,8 +49,9 @@
   &__message {
     padding: 14px;
     margin-bottom: 24px;
+    min-width: 278px;
 
-    @include size(278px, 148px);
+    @include size(100%, 148px);
     background: #f8f8fa;
     border-radius: 16px;
     border: none;
@@ -49,8 +64,13 @@
     }
   }
 
+  &__contact-box {
+    padding: 0 20px;
+  }
+
   &__contact {
     margin: 24px 0 8px;
+    width: 100%;
     font-size: 14px;
     line-height: 140%;
     color: #9fadc2;
@@ -61,16 +81,12 @@
     line-height: 140%;
     color: #3e3e3e;
     text-decoration: none;
+    &:hover {
+      color: #055692  ;
+    }
   }
 
   @media (min-width: 744px) {
-    & {
-      grid-template-columns: repeat(6,80px);
-      grid-template-rows: 2;
-      gap: 24px;
-      margin: 0 auto;
-    }
-
     &__title {
       grid-row: 1;
       grid-column: 3/6;
@@ -79,6 +95,7 @@
     &__form {
       grid-row: 2;
       grid-column: 1/4;
+      width: 100%;
     }
 
     &__contact-box {
@@ -93,18 +110,10 @@
 
     &__button {
       margin-bottom: 120px;
-      cursor: pointer;
     }
   }
 
   @media (min-width: 1260px) {
-    & {
-      grid-template-columns: repeat(12,63px);
-      grid-template-rows: 2;
-      gap: 24px;
-      margin: 0 auto;
-    }
-
     &__title {
       grid-row: 1;
       grid-column: 1/12;
@@ -112,17 +121,17 @@
 
     &__form {
       grid-row: 2;
-      grid-column: 1/7;
+      grid-column: 1/6;
     }
 
     &__contact-box {
       grid-row: 2;
-      grid-column: 7/12;
+      grid-column: 8/12;
     }
 
     &__input,
     &__message {
-      width: 408px;
+      min-width: 408px;
     }
 
     &__button {
