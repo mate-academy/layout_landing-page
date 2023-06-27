@@ -43,9 +43,9 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
-    document.body.classList.add('page-menu');
+    document.body.classList.add('page');
   } else {
-    document.body.classList.remove('page-menu');
+    document.body.classList.remove('page');
   }
 });
 
