@@ -15,9 +15,11 @@ burgerMenu.addEventListener('click', () => {
 
 navLinkHeader.forEach((link) => {
   link.addEventListener('click', () => {
-    burgerMenu.classList.toggle('header__burger-menu--active');
-    menu.classList.toggle('menu--active');
-    html.classList.toggle('block-scroll');
+    if (menu.classList.contains('menu--active')) {
+      burgerMenu.classList.toggle('header__burger-menu--active');
+      menu.classList.toggle('menu--active');
+      html.classList.toggle('block-scroll');
+    }
   });
 });
 
