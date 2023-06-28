@@ -1,0 +1,76 @@
+.menu {
+  position: absolute;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  right: 0;
+  top: 0;
+  background-color: #e5e6e8;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow: auto;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  border-top: 50px solid #e5e6e8;
+
+  @include onTablet {
+    padding-top: 152px;
+  }
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__link {
+    width: max-content;
+    color: #292929;
+    font-size: 16px;
+    font-family: "Space Grotesk", "Arial", sans-serif;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    grid-column: 1 / -1;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1.5px;
+      background-color: $text-color;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover {
+
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-top: 48px;
+    }
+
+    &:nth-child(3) {
+      margin-top: 16px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        display: block;
+        background-color: $text-color;
+        width: 100%;
+        height: 1px;
+      }
+    }
+  }
+
+}
