@@ -1,0 +1,62 @@
+.icon {
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: $icon-size;
+  height: $icon-size;
+
+  @include onTablet {
+    width: $icon-size-tablet;
+    height: $icon-size-tablet;
+  }
+
+  &--menu {
+    background-image: url(../images/icons/menu.svg);
+    transition-duration: $transition-duration;
+
+    @include onDesktop {
+      &:hover {
+        background-image: url(../images/icons/menu-hover.svg);
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/icons/phone.svg);
+  }
+
+  &--call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        transition-duration: $transition-duration;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: $text-color-dark;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--cross {
+    background-image: url(../images/icons/cross.svg);
+  }
+}

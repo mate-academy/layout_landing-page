@@ -1,0 +1,77 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__photos {
+    @include pageGrid;
+    row-gap: 16px;
+  }
+
+  &__link {
+    position: relative;
+    cursor: pointer;
+    transition: transform $transition-duration linear;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+
+    @include onTablet {
+      font-size: 24px;
+      line-height: 140%;
+    }
+
+    &-link {
+      color: $text-color-dark;
+      text-decoration: none;
+
+      padding-bottom: 8px;
+      border-bottom: 1px solid transparent;
+      transition: border-color $transition-duration;
+
+      &:hover {
+        border-color: $text-color-dark;
+      }
+    }
+  }
+
+  &__button {
+    @include pageGrid;
+  }
+}
