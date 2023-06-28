@@ -1,0 +1,90 @@
+@mixin onTablet {
+  @media (min-width: $tablet-screen-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-screen-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline () {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+    margin-inline: auto;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1260px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin underline {
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $font-color;
+    @content;
+  }
+}
+
+@mixin contacts {
+  position: absolute;
+  right: 100%;
+  top: -100%;
+  display: flex;
+  padding-right: 20px;
+
+  content: "The Met Fifth Avenue \A +1 212-535-7710 \A \A The Met Cloisters \A +1 212-923-3700";
+  white-space: pre-wrap;
+  width: max-content;
+
+  color: $font-color;
+  font-family: $font-style1;
+  text-align: right;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+
+  @content;
+}
+
+@mixin pageGrid {
+  $column: 2;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat($column, 1fr);
+
+  @include onTablet {
+    $column: 6;
+    column-gap: 24px;
+    grid-template-columns: repeat($column, 1fr);
+  }
+
+  @include onDesktop {
+    $column: 12;
+    grid-template-columns: repeat($column, 1fr);
+  }
+}

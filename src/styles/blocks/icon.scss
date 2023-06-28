@@ -1,0 +1,46 @@
+.icon {
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover (transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--call {
+    background-image: url(../images/phone.svg);
+
+    @include onDesktop {
+      position: relative;
+
+      &::after {
+        @include contacts;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all 0.3s;
+      }
+
+      &:hover::after {
+        @include contacts;
+        opacity: 1;
+        transform: scale(1) translateX(0);
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/close.svg);
+  }
+}
