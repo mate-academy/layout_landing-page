@@ -33,37 +33,50 @@
   }
 
   &__tooltip {
-    display: none;
+    min-width: max-content;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    display: block;
+    text-decoration: none;
+    color: $color-white;
 
-    @include onDesktop {
-      position: absolute;
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-right: 20px;
-      opacity: 0;
-      pointer-events: none;
-
-      transition: opacity 0.3s;
-    }
-
-    &--text {
-      min-width: max-content;
-      font-weight: 700;
-      font-size: $font-size-main;
-      line-height: $line-height-main;
-      text-transform: uppercase;
-      color: $color-white;
+    &--hover {
       text-align: right;
-      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
-    }
-  }
+      margin-bottom: 0;
+      padding-right: 16px;
+      position: absolute;
+      transform: translateX(-100%) translateY(-35%);
 
-  &:hover &__tooltip {
-    opacity: 1;
-    pointer-events: all;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &--margin {
+      margin-bottom: 8px;
+    }
+
+    &__margin-none {
+      margin-bottom: 0;
+    }
+
+    &__hover {
+      text-decoration: none;
+      box-sizing: content-box;
+      text-decoration-style: solid;
+      color: inherit;
+
+      opacity: 1;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   }
 }
