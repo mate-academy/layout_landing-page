@@ -4,7 +4,7 @@
   display: block;
   background-size: cover;
 
-  @include hover (transform, scale(1.2));
+  @include hover(transform, scale(1.2));
 
   @include onTablet {
     height: 32px;
@@ -13,6 +13,20 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+
+    @include onTablet {
+      &:hover {
+        &::before {
+          content: "+1 234 5555-55-55";
+          font-size: 14px;
+          color: $main-color;
+          width: max-content;
+          position: absolute;
+          text-shadow: 2px 0 2px $secondary-color;
+          transform: translateX(-130px);
+        }
+      }
+    }
   }
 
   &--menu {
