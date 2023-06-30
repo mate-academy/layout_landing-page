@@ -16,6 +16,10 @@
   @include onTablet {
     padding-inline: $page-margin-inline-md;
   }
+
+  @include onDesktop {
+    padding-inline: $page-margin-inline-lg;
+  }
 }
 
 @mixin constantMarginInline {
@@ -23,6 +27,10 @@
 
   @include onTablet {
     margin-inline: $page-margin-inline-md;
+  }
+
+  @include onDesktop {
+    margin-inline: $page-margin-inline-lg;
   }
 }
 
@@ -38,17 +46,25 @@
   }
 }
 
-@mixin mainTextStyle {
+@mixin basicTextStyle {
   font-size: 16px;
   line-height: 140%;
+}
 
+@mixin mainTextStyle {
+  @include basicTextStyle;
+  
   @include onTablet {
     font-size: 18px;
+  }
+
+  @include onDesktop {
+    font-size: 24px;
   }
 }
 
 @mixin secondTextStyle {
-  @include mainTextStyle;
+  @include basicTextStyle;
   font-weight: 400;
   letter-spacing: 0.15px;
 }
@@ -62,6 +78,10 @@
     @include fontSizeWithLineHeight(40px);
     margin-bottom: 56px;
   }
+
+  @include onDesktop {
+    @include fontSizeWithLineHeight(56px);
+  }
 }
 
 @mixin equalFlexItems {
@@ -73,4 +93,10 @@
 @mixin flexContainer($direction) {
   display: flex;
   flex-direction: $direction;
+}
+
+@mixin constantDesktopGrid {
+  display: grid;
+  grid-template-columns: 498px 411px;
+  justify-content: space-between;
 }

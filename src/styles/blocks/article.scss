@@ -1,16 +1,19 @@
 .article {
   &__content {
-    display: flex;
-    flex-direction: column;
+    @include flexContainer(column);
+    @include constantMarginInline;
     gap: 24px;
-    margin: 48px 20px;
+    margin-block: 48px;
 
     @include onTablet {
       flex-direction: row;
-      margin: 120px 72px;
+      margin-block: 120px;
+      @include equalFlexItems;
     }
 
-    @include equalFlexItems;
+    @include onDesktop {
+      @include constantDesktopGrid;
+    }
   }
 
   &__title {
@@ -21,10 +24,17 @@
     @include secondTextStyle;
   }
 
-  &__header-image {
+  &__media {
     height: 200px;
-    width: 100%;
-    object-fit: cover;
+
+    @include onTablet {
+      height: 400px;
+    }
+
+    @include onDesktop {
+      height: 460px;
+    }
+
   }
 
   &--highlight {
