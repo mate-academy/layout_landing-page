@@ -14,18 +14,24 @@
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
 
+    &::before {
+      content: "+1 234 5555-55-55";
+      font-weight: 700;
+      font-size: 14px;
+      color: $main-color;
+      width: max-content;
+      position: absolute;
+      text-shadow: 2px 0 2px $secondary-color;
+      right: 100%;
+      top: 20%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
     @include onTablet {
-      &:hover {
-        &::before {
-          content: "+1 234 5555-55-55";
-          font-weight: 700;
-          font-size: 14px;
-          color: $main-color;
-          width: max-content;
-          position: absolute;
-          text-shadow: 2px 0 2px $secondary-color;
-          transform: translateX(-130px);
-        }
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
       }
     }
   }
