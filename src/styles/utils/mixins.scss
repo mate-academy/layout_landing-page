@@ -1,0 +1,108 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-size) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-size) {
+    @content;
+  }
+}
+
+@mixin constantPaddingInline {
+  padding-inline: $page-margin-inline-sm;
+
+  @include onTablet {
+    padding-inline: $page-margin-inline-md;
+  }
+
+  @include onDesktop {
+    padding-inline: $page-margin-inline-lg;
+  }
+}
+
+@mixin constantMarginInline {
+  margin-inline: $page-margin-inline-sm;
+
+  @include onTablet {
+    margin-inline: $page-margin-inline-md;
+  }
+
+  @include onDesktop {
+    margin-inline: $page-margin-inline-lg;
+  }
+}
+
+@mixin fontSizeWithLineHeight($fontSize) {
+  font-size: $fontSize;
+  line-height: $fontSize;
+}
+
+@mixin hover($prop, $toValue) {
+  transition: #{$prop} $transition-duration;
+  &:hover {
+    #{$prop}: $toValue;
+  }
+}
+
+@mixin active($prop, $toValue) {
+  transition: #{$prop} $transition-duration;
+  &:active {
+    #{$prop}: $toValue;
+  }
+}
+
+@mixin basicTextStyle {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+@mixin mainTextStyle {
+  @include basicTextStyle;
+  font-size: 18px;
+}
+
+@mixin secondTextStyle {
+  @include basicTextStyle;
+  font-weight: 400;
+  letter-spacing: 0.15px;
+}
+
+@mixin titleTextStyle {
+  @include fontSizeWithLineHeight(32px);
+  font-weight: 700;
+  margin-bottom: 48px;
+
+  @include onTablet {
+    @include fontSizeWithLineHeight(40px);
+    margin-bottom: 56px;
+  }
+
+  @include onDesktop {
+    @include fontSizeWithLineHeight(56px);
+  }
+}
+
+@mixin equalFlexItems {
+  & > * {
+    flex: 1 1;
+  }
+}
+
+@mixin flexContainer($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin constantDesktopGrid {
+  display: grid;
+  grid-template-columns: 498px 411px;
+  justify-content: space-between;
+}
+
+@mixin customCursor {
+  &:hover {
+    cursor: url(../images/icons/cursor-icon.svg), auto;
+  }
+}
