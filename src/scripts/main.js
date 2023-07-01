@@ -7,10 +7,12 @@ function initApp() {
 
   openBtn.addEventListener('click', () => {
     nav.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
   });
 
   closeBtn.addEventListener('click', () => {
     nav.classList.remove('is-active');
+    document.body.style.overflow = 'auto';
   });
 }
 
