@@ -53,6 +53,7 @@
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
   }
 
   &__button {
@@ -63,6 +64,24 @@
     &:hover {
       transform: scale(1.1);
       transition: all 0.1s;
+    }
+
+    &.icon-phone::after {
+      content: "+1 234 555-55-55";
+      display: block;
+      font-size: 16px;
+      position: absolute;
+      font-weight: 700;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 150px;
+    }
+
+    &.icon-phone:hover {
+      &::after {
+        display: block;
+      }
     }
 
     &--burger {
@@ -98,12 +117,10 @@
 
   @media screen and (min-width: 744px) {
     height: $bannerMidHeight;
-    //padding: $midPadding;
   }
 
   @media screen and(min-width: 1260px) {
     height: $bannerMidHeight;
-    //padding: $maxPadding;
   }
 
   &__content {
