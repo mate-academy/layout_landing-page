@@ -1,0 +1,218 @@
+.header {
+
+  &__item {
+
+    &--img {
+      background: url(../images/nothing_header_girl.png) center/cover no-repeat;
+    }
+
+    &--menu {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100vh;
+      opacity: 0;
+      background-color: #e5e5e5;
+      @include actDuration (left);
+      @include actDuration (opacity);
+
+      &:target {
+        left: 0;
+        opacity: 1;
+        @include actDuration (left);
+        @include actDuration (opacity);
+        height: 100vh;
+        position: static;
+        overflow: hidden;
+      }
+
+    }
+
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__head-top {
+    position: absolute;
+    @include head-top-width;
+    z-index: 1;
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: $paddBottSecTitleMedium;
+
+    @include onTab {
+      padding-bottom: $paddBottSecTitleMedium * 1.63;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+  }
+
+  &__waves {
+    margin-bottom: 30px;
+    width: 48px;
+    height: 58px;
+    @include onTab {
+      width: 63px;
+      height: 76px;
+    }
+  }
+
+  &__info-block {
+    position: absolute;
+    top: 104px;
+    @include onTab {
+      top: 152px;
+    }
+  }
+
+}
+
+.head-top {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include onTab {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  &__logo {
+    transform: scale(1);
+    @include actDuration (transform);
+    &:hover {
+      transform: scale(1.5);
+      @include actDuration (transform);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__tube {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin-right: 30px;
+    background-image: url(../images/tube.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include onDesk {
+      &:hover .head-top__tube-number {
+        display: block;
+        opacity: 1;
+        @include actDuration (opacity);
+      }
+    }
+
+  }
+
+  &__tube-number {
+    position: absolute;
+    right: 120%;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    width: max-content;
+    color: $mainTextColor;
+    transition: opacity $transition;
+    top: 60%;
+    transform: translateY(-50%);
+  }
+
+  &__burger {
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/burger.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 24px;
+      height: 16px;
+    }
+    @include hover (background-image, url(../images/burger-hover.svg));
+  }
+
+  &__cross {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/cross.svg);
+    background-size: 100%;
+    @include onTab {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+}
+
+.info-block {
+
+  &__nav-item {
+    margin-bottom: 32px;
+
+    &:nth-child(4) {
+      margin-bottom: 48px;
+    }
+
+    &:nth-child(5) {
+      margin-bottom: 16px;
+    }
+
+    &:nth-child(6) {
+      margin-bottom: 0;
+      text-transform: uppercase;
+    }
+
+    &:nth-child(5) > a,
+    &:nth-child(6) > a {
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    display: inline-block;
+    color: $mainTextColor;
+    letter-spacing: 2px;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 1px;
+      width: 0;
+      background-color: $mainTextColor;
+    }
+
+    &:hover.info-block__link::after {
+      width: 100%;
+      @include actDuration (width);
+    }
+
+  }
+}
