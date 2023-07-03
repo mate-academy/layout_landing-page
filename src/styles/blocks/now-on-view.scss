@@ -1,0 +1,141 @@
+.now-on-view {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__title-bottom {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__img-block {
+    @include pageGrid;
+
+    &--three {
+      display: grid;
+      --now-on-view-column: 3;
+      grid-template-columns: repeat(var(--now-on-view-column), 1fr);
+
+      @include onTablet {
+        --now-on-view-column: 2;
+      }
+
+      @include onDesktop {
+        --now-on-view-column: 3;
+      }
+    }
+  }
+  
+  &__link {
+    position: relative;
+
+    &:nth-of-type(3) {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &--wide {
+      height: 100%;
+      
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+      &-3 {
+        grid-column: span 1;
+      }
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover (transform, scale(1.07));
+
+    &--wide {
+      object-position: left top;
+
+      @include hover (transform, scale(1.05));
+    }
+  }
+
+  &__text-title {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 27px;
+    text-align: left;
+    color: $menu-color;
+  }
+
+  &__text-data {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    color: $font-color2;
+  }
+
+  &__bottom {
+    @include pageGrid;
+    grid-template-areas: "a a";
+
+    @include onTablet {
+      grid-template-areas: ". a a a a .";
+    }
+
+    @include onDesktop {
+      grid-template-areas: ". . . . a a a a . . . .";
+    }
+
+    &__button {
+      grid-area: a;
+    }
+  }
+}
