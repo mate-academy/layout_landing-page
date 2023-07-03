@@ -6,4 +6,4 @@ At the initial stage, I created blocks related to the main page and the menu. Th
 
 When checking at this stage, please pay attention only to the main page and the menu.
 
-- [DEMO LINK](https://msukhovych.github.io/layout_landing/)
+- [DEMO LINK](https://msukhovych.github.io/layout_landing-page/)
