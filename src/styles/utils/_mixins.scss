@@ -1,0 +1,87 @@
+// ------------------------ flex ------------------------
+@mixin flex-sb-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-sb-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+@mixin flex-all-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ------------------------ grid ------------------------
+
+@mixin page-grid {
+  --columns: 2;
+  --column-gap: 20px;
+  display: grid;
+  column-gap: var(--column-gap);
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include media-tablet {
+    --columns: 6;
+    --column-gap: 24px;
+  }
+
+  @include media-desktop {
+    --columns: 12;
+  }
+}
+
+// ------------------------ hover ------------------------
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $transition-duration;
+  @media (any-hover: hover) {
+    &:hover {
+      #{$property}: $to-value;
+    }
+  }
+}
+
+// ------------------------ size ------------------------
+
+@mixin size($width: "auto", $height: $width) {
+  @if $width == "auto" {
+    width: $width;
+    height: $height;
+  }
+  @else {
+    width: #{$width}px;
+    height: #{$height}px;
+  }
+}
+
+// ------------------------ font ------------------------
+
+@mixin font-face($font-name, $file-name, $weight, $style: normal) {
+  @font-face {
+    font-family: $font-name;
+    src: url("../fonts/#{$font-name}-#{$file-name}.woff2") format("woff2");
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+// ------------------------ media ------------------------
+
+@mixin media-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
