@@ -8,7 +8,7 @@ Design:
 
 Demo:
 
-- [DEMO LINK](https://ZakZh.github.io/layout_landing/)
+- [DEMO LINK](https://zakzh.github.io/layout_landing-page/)
 
 Run "npm start" for development
 Run "npm test" for check
