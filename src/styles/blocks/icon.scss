@@ -1,7 +1,7 @@
 .icon {
   display: block;
   height: 24px;
-  width: 24px;
+  width: $icon-width;
   background-size: cover;
 
   @include hover(transform, scale(1.2));
@@ -13,6 +13,25 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @include onDesktop {
+      &:hover::before {
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        white-space: nowrap;
+        right: $icon-width + 8px;
+        color: $main-text-color;
+        font-size: 12px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
   }
 
   &--menu {
