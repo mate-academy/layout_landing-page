@@ -1,0 +1,80 @@
+.products {
+  @include pageGrid;
+  @include sectionCommonStyleWithHeader;
+
+  &__image {
+    border-radius: 4px;
+    grid-column: span 1;
+    transition: transform $transition-duration linear;
+
+    @include onTablet {
+      &--tab-rect {
+        grid-column: span 4;
+      }
+
+      &--tab-square {
+        grid-column: span 2;
+      }
+    }
+
+    @include onDesktop {
+      &--tab-rect {
+        grid-column: span 8;
+      }
+
+      &--tab-square {
+        grid-column: span 4;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    & img {
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__list-link {
+    text-decoration: none;
+    color: $second-color;
+    font-size: 18px;
+    font-family: $secondary-font-style;
+    font-weight: 700;
+    width: fit-content;
+    margin-top: -24px;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      font-size: 24px;
+      margin-top: -40px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      transform: scaleX(0);
+      transition: transform $transition-duration ease;
+    }
+
+    &:hover {
+      &::after {
+        background-color: $second-color;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__link-to-list {
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: span 4;
+    }
+  }
+}

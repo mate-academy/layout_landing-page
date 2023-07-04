@@ -1,0 +1,54 @@
+@mixin onTablet {
+  @media screen and (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media screen and (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --column: 2;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 40px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    --column: 6;
+    column-gap: 24px;
+    row-gap: 56px;
+  }
+
+  @include onDesktop {
+    --column: 12;
+  }
+}
+
+@mixin sectionCommonStyleWithHeader {
+  margin-bottom: 96px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+
+  &__header {
+    margin: 0;
+    color: #292929;
+    font-size: 32px;
+    font-family: $secondary-font-style;
+    font-weight: 700;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+    }
+  }
+}
