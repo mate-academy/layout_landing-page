@@ -1,26 +1,33 @@
-.button {
-  &--explore,
-  &--send {
-    background-color: #fff;
-    height: 56px;
-    width: 100%;
-    border-radius: 40px;
-    font-weight: 700;
-    line-height: 27px;
-  }
+.buttons {
+  @include pageGrid;
+}
 
-  // &--send,
-  // &--explore {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
+.button {
+  background-color: #fff;
+  height: 56px;
+  border-radius: 40px;
+  font-weight: 700;
+  line-height: 27px;
+
+  grid-column: 1 / -1;
+
+  &--explore {
+
+    @include onTablet {
+      grid-column: 2 / -2;
+    }
+
+    @include onDescktop {
+      grid-column: 5 / -5;
+    }
+  }
 
   &:hover {
     cursor: pointer;
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
   }
 
   &:active {
-    background-color: #fdff83;
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
   }
 }
