@@ -44,6 +44,20 @@
   }
 }
 
+@mixin active($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin focus($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:focus {
+    #{$property}: $toValue;
+  }
+}
+
 @mixin hover1($property, $toValue, $zIndex: inherit) {
   transition: #{$property} $effectDuration;
   &:hover {
@@ -102,15 +116,16 @@
   border: 1px solid $bacground-input-color;
   border-radius: 40px;
 
-  &:hover {
-    border: 1px solid #d5d7de;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus, 
+  &:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px $bacground-input-color inset;
   }
 
-  &:active {
-    border: 1px solid $main-text-color;
-  }
+  @include hover(border, 1px solid #d5d7de);
 
-  &:focus {
-    border: 1px solid $main-text-color;
-  }
+  @include active(border, 1px solid $main-text-color);
+
+  @include focus(border, 1px solid $main-text-color);
 }
