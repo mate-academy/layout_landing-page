@@ -1,0 +1,61 @@
+@mixin onTablet {
+  @media (min-width: $tabletMinWidth) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktopMaxWidth) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat( var(--columns), 1fr);
+
+  @include onTablet() {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop() {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  width: 100%;
+  height: 56px;
+  border: none;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  line-height: 27px;
+
+  border-radius: 40px;
+  background: $colorText;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{property} $efectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

@@ -1,0 +1,72 @@
+.icons {
+  display: flex;
+  justify-content: space-between;
+
+  &--call {
+    background-image: url(../images/icon-phone.svg);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        color: $colorText;
+
+        display: block;
+        position: relative;
+        width: max-content;
+        pointer-events: none;
+        opacity: 0;
+        transition: 0.3s;
+
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 8px;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--menu-opener {
+    background-image: url(../images/icon-menu.svg);
+    background-color: transparent;
+    transition: scale(0.3s);
+
+    &:hover {
+      background-image: url(../images/icon-menu-hover.svg);
+      transition: scale(0.3s);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.svg);
+  }
+}
+
+.icon {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  width: 24px;
+  height: 24px;
+
+  @include onDesktop {
+    height: 32px;
+    width: 32px;
+  }
+
+  :hover {
+    transform: rotate(2);
+  }
+}
