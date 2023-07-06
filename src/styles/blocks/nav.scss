@@ -1,13 +1,6 @@
 /*#region nav*/
 .nav {
-  &__link {
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    color: #1d1d1d;
-  }
-
-  &_list {
+  &__list {
     display: flex;
     margin: 0;
     padding: 0;
@@ -16,10 +9,31 @@
     gap: 32px;
   }
 
-  &_item a {
-    color: #1d1d1d;
+  &__link {
+    position: relative;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: $main-text-color;
     text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
-
 /*#endregion*/
