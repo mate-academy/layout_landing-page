@@ -10,6 +10,12 @@
   }
 }
 
+@mixin onMobile {
+  @media (max-width: $tablet-min-width) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline() {
   padding-inline: 20px;
 
@@ -19,12 +25,34 @@
 
   @include onDesktop {
     padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1260px;
   }
+}
+
+.container {
+  @include contentPaddingInline;
 }
 
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
   }
 }
