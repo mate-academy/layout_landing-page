@@ -3,11 +3,8 @@
   display: grid;
   @include columns;
 
-  &__photo {
-    width: 100%;
-    height: 100%;
+  &__link {
     grid-column: span 1;
-    object-fit: cover;
 
     &--square {
       @include onTablet {
@@ -27,6 +24,38 @@
       @include onDesktop {
         grid-column: span 8;
       }
+    }
+  }
+    
+  &__photo {
+    width: 100%;
+    height: 100%;
+    grid-column: span 1;
+    object-fit: cover;
+    transition: transform $effectDuration;
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--oblong {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &:hover {
+      transform: scale(105%);
     }
   }
 
