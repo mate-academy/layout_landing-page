@@ -25,11 +25,9 @@
   }
 
   &__call-to-order__link {
+    position: relative;
     display: block;
     width: fit-content;
-
-    padding-bottom: 7px;
-    border-bottom: 1px solid $color-white;
 
     color: $color-white;
     text-decoration: none;
@@ -37,5 +35,23 @@
     line-height: 16px;
     letter-spacing: 2px;
     margin-top: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-white;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }

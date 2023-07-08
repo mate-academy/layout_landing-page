@@ -1,0 +1,90 @@
+.now-on-view {
+  &__content {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__title {
+    color: $color-red;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+
+  &__subtitle {
+    line-height: 22px;
+  }
+
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+  }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__link {
+    &--show-on-desktop {
+      display: none;
+
+      @include onDesktop {
+        display: inline;
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+      &--big {
+        @include onTablet {
+          grid-column: span 3;
+        }
+
+        @include onDesktop {
+          grid-column: span 4;
+        }
+      }
+    }
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+    height: 56px;
+    width: 280px;
+    background-color: $color-red;
+    color: $color-white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700;
+    line-height: 56px;
+
+    @include onTablet {
+      width: 324px;
+    }
+
+    @include hover(background-color, $color-red-hover);
+
+    &:active {
+      background-color: $color-red-pressed;
+    }
+  }
+}
