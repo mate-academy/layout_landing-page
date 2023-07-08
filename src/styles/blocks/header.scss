@@ -1,0 +1,73 @@
+.header {
+  background: url(../images/header-bg-mobile.png);
+  background-size: cover;
+  background-position: right;
+
+  @include onDesktop {
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__content {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    --padding-bottom: 85px;
+    padding-bottom: var(--padding-bottom);
+
+    @include onTablet {
+      --padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      --padding-bottom: 200px;
+    }
+
+    animation: 2s ease move;
+
+    @include onTablet {
+      animation: 3s ease move;
+    }
+
+    @keyframes move {
+      0% {
+        padding-bottom: 0;
+        opacity: 0;
+      }
+
+      50% {
+        padding-bottom: calc(2 * var(--padding-bottom));
+        opacity: 1;
+      }
+
+      100% {
+        padding-bottom: var(--padding-bottom);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+    
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
