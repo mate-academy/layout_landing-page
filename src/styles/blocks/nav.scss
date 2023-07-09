@@ -10,9 +10,31 @@
   }
 
   &__link {
+    position: relative;
+
     color: inherit;
     font-size: 22px;
     line-height: 1;
     text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+
+      display: block;
+      block-size: 1px;
+      inline-size: 100%;
+
+      background-color: $main-text-color;
+
+      transition: transform $transition-duration;
+      transform-origin: left;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
