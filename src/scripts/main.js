@@ -10,8 +10,6 @@ function onScrollAnimation() {
 
     if (elementTop < windowHeight - elementVisible) {
       animated[i].classList.add('active');
-    } else {
-      animated[i].classList.remove('active');
     }
   }
 }
