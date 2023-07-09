@@ -4,6 +4,7 @@
   width: 24px;
   background-size: cover;
   transition: transform 0.3s;
+  text-decoration: none;
 
   @include hover(transform, scale(1.2));
 
@@ -14,6 +15,35 @@
 
   &--phone {
     background-image: url(../images/Icon-Phone-call.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        display: block;
+        width: max-content;
+        padding-right: 12px;
+
+        transition: 0.3s;
+  
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+  
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 
   &--menu {
