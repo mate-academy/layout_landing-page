@@ -1,8 +1,7 @@
 .contact-us {
 
-  &__sections{
+  &__sections {
     @include pageGrid;
-
   }
 }
 
@@ -11,10 +10,15 @@
     grid-column: 1 / -1;
 
     @include onTablet {
-      &--5th,
-      &--cloister{
+      &--5th {
         grid-column: 1 / 4;
       }
+
+      &--cloister{
+        margin-top: -130px;
+        grid-column: 1 / 4;
+      }
+
       &--form {
         grid-row-start: 1;
         grid-column-start: 4;
@@ -26,9 +30,12 @@
       &--5th {
         grid-column: 1 / 4;
       }
+
       &--cloister {
         grid-column: 4 / 7;
+        margin-top: 0;
       }
+
       &--form {
         grid-column: 8 / 13;
       }
@@ -36,7 +43,7 @@
 
     &--name {
       margin: 0;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       font-weight: 700;
     }
 
@@ -48,6 +55,7 @@
       font-weight: 700;
       color: $additional-text-color;
       line-height: 140%;
+      text-decoration: none;
     }
 
     &--form{
@@ -56,14 +64,24 @@
       }
     }
   }
+}
 
-  &__contact-form {
-    padding: 0;
-    margin-bottom: 16px;
-    height: 48px;
-    width: 100%;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__input {
     background-color: $form-background-color;
+    width: 100%;
     border: none;
+    padding: 14px;
+    box-sizing: border-box;
+
+    &:focus {
+     outline: 1px solid black;
+    }
+
 
     &::placeholder {
       color: $placeholder-color;
@@ -72,24 +90,16 @@
       font-size: 14px;
       line-height: 20px;
     }
+
+    &--textarea {
+      margin-bottom: 16px;
+    }
   }
 
-  &__contact-form--message {
+  &__button {
     width: 100%;
-    height: 144px;
-    margin-bottom: 32px;
-    padding-top: 14px;
+    background-color: $accent-text-color;
+    color: $main-text-color;
+    @include button;
   }
-}
-
-
-
-input
-
-input:focus {
-  outline: 2px solid black !important;
-}
-
-.input {
-  background-color: $form-background-color;
 }
