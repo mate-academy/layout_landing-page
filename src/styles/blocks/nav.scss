@@ -9,15 +9,27 @@
   }
 
   &__link {
+    position: relative;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
     text-decoration: none;
     color: $menu-text-color;
 
-    &:hover {
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 100%;
       border-bottom: 1px solid $menu-text-color;
       padding-bottom: 7px;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
 }
