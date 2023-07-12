@@ -1,35 +1,48 @@
-1. Use logo as a favicon
-2. Use landing name as a page title
-3. All logos should be links to the top of the page
+1. Add a favicon
+2. Don’t forget to add a title for the whole web page (it could be the name of your landing)
+3. All Logos on the page should be links to home page
 4. Change text color on hover for phone, email and address
-5. Make sure phone icons and phone numbers are real link to start a call
-6. All addresses should be links to some location on Google Maps. Open then in a new tab with `target="_blank"`.
-7. Increase all images on hover (make them links to #, if there is no better option)
-8. Make sure everything looks neat on mobile and without horizontal scrolling
-9. The speed of animations should be the same throughout the page (for example, increasing when hovering or moving blocks when scrolling)
-10. Ensure that all `nav__links` work smoothly
-11. Disable page scrolling under the menu using the next code:
-    ```css
-    .page:has(.page__menu:target) {
-      overflow: hidden; /* not to scroll the page */
-    }
-    ```
-12. Make it possible to scroll the menu if it is higher than the viewport;
+5. When you click on phone icon or phone number in contacts section, make sure that there is no 404 error, make it a real link to start a call on device
+6. Same when you click on logo. There shouldn't be any error.
+7. When clicking on any location / address - prevent errors and make it to open location in Google Maps
+8. Pictures in Gallery should increase on hover
+9. Location-related addresses / links should open google maps in a new tab `target="_blank"`
+10. Apply `:hover` effect for images on page (testimonials / gallery, other sections).
+11. Make sure everything looks neat on mobile and without horizontal scrolling
+12. The speed of animations is the same throughout the landing page (for example, increasing when hovering or moving blocks when scrolling)
+13. Placeholders in the forms suggest what to enter; apply validation of the form fields (`required`, `email / tel etc.`), then it is clear in what format to enter the data
+14. Form shouldn't be submitted if some of the fields are not filled
+15. Page shouldn't be reloaded on form submit (https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+16. Add a smooth scroll for the whole page
+17. Fix menu for small screens (if there is not enough space for all the menu items)
     ```css
     .menu {
-      overflow: auto; /* to scroll the menu if needed */
-    }
-    .menu__top {
-      position: sticky; /* to keep cross always visible */
-      top: 0;
-      z-index: 1;
-      background-color: #e5e5e5;
+      /* Move these rules from .menu__content */
+      box-sizing: border-box;
+      height: 100vh;
+      padding: 24px 0;
+
+      background-color: #0075ff;
+
+      /* Add this rule to add scroll when there is not enough space */
+      overflow-y: auto;
+
+      ...
+    ```
+18. To disable page scrolling under the menu add the next code
+    ```css
+    .page__body--with-menu {
+      overflow: hidden;
     }
     ```
-13. All form fields should be required and have correct types (`email`, `tel`, etc.)
-14. Placeholders should give exaples of what should be added, to make the expected format clear
-15. Page shouldn't be reloaded on form submit, but the fields should be cleared. Use:
-    ```html
-    <form onsubmit="this.reset(); return false;">
+    ```js
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash === '#menu') {
+        document.body.classList.add('page__body--with-menu');
+      } else {
+        document.body.classList.remove('page__body--with-menu');
+      }
+    });
     ```
-16. Make `footer` sticky at the bottom with `z-index: -1` to get fixed background effect.
+19. Remember to reset default margins for headings (h1, h2, h3, etc.).
+* Only for Miami: Make sure that ```<h1>``` is positioned exactly 80px from the bottom of the header.
