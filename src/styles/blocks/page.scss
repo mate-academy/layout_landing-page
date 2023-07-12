@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  color: $page-text-color;
+
+  font-family: "Cinzel", "Roboto", serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+
+    }
+  }
+
+  .page:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 32px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+}
