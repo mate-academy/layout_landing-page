@@ -6,34 +6,42 @@
   &__form {
     display: flex;
     flex-direction: column;
-  }
 
-  &__form-content {
-    grid-column: 1 / -1;
+    &-content {
+      grid-column: 1 / -1;
 
-    @include onDesktop {
-      grid-column: 1 / 6;
+      @include onDesktop {
+        grid-column: 1 / 6;
+      }
     }
   }
 
   &__info {
     margin-bottom: 24px;
-  }
 
-  &__info-content {
-    grid-column: 1 / -1;
+    &-content {
+      grid-column: 1 / -1;
 
-    @include onDesktop {
-      grid-column: 7 / 13;
+      @include onDesktop {
+        grid-column: 7 / 13;
+      }
+    }
+
+    &-title {
+      color: #9393a3;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      margin-bottom: 8px;
     }
   }
 
   &__button {
     margin-bottom: 48px;
     border-radius: 8px;
-    border: 2px solid #292929;;
-    background: #292929;;
-    color: #fff;
+    color: $secondary-color;
 
     @include onTablet {
       margin-bottom: 80px;
@@ -42,30 +50,35 @@
 
   &__input {
     margin-bottom: 16px;
-    color: #7e7e83;
+    color: $main-text-color;
     font-family: "Space Mono", sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
     height: 48px;
-    background-color: #f8f8fa;
+    background-color: $white-color;
     border-radius: 8px;
-    border-color: #f8f8fa;
+    border-color: $white-color;
     border-style: none;
     padding: 14px 16px;
     outline: none;
     box-sizing: border-box;
-    color: #292929;
+
+    @include transition (color,border,color, $effectDuration);
 
     &:focus {
-      color: #292929;
-      border: 1px solid #292929;
+      color: $main-text-color;
+      border: 1px solid $main-text-color;
     }
 
     &:hover {
-      border: 1px solid #D5D7DE;
-      color: #292929;
+      border: 1px solid #d5d7de;
+      color: $main-text-color;
+    }
+
+    &::placeholder {
+      color:#7e7e83;
     }
 
     &--message {
@@ -75,15 +88,7 @@
 
   }
 
-  &__info-title {
-    color: #9393a3;
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    margin-bottom: 8px;
-  }
+
 
   &__link {
     color: #191919;
@@ -93,6 +98,29 @@
     font-weight: 400;
     line-height: 140%;
     text-decoration: none;
+    position: relative;
+
+    &:hover {
+      color: $main-text-color;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      background-color: $main-text-color;
+
+      transform: scale(0);
+      transition: transform $effectDuration;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &:last-child {
