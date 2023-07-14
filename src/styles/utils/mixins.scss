@@ -10,22 +10,53 @@
   }
 }
 
+@mixin textFont {
+  font-family: "Space Mono", monospace;
+  @content;
+}
+
+@mixin titleFont {
+  font-family: "Space Grotesk", sans-serif;
+  @content;
+}
+
 @mixin contentPadddingInline() {
   padding-inline: 20px;
 
   @include onTablet {
     padding-inline: 72px;
   }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPadddingInline;
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+  transition: #{$property} $effectDuration;
   &:hover {
     #{$property}: $toValue;
   }
 }
 
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
 
-@mixin cursorHover {
-  cursor: url(../images/icons/cursor.png), auto;
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
 }
