@@ -1,0 +1,66 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+.container-limitations {
+  padding-inline: 20px;
+  transition: padding, $trans-duration;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+
+}
+
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+
+@mixin linkHoverEffect {
+  position: relative;
+  display: inline-block;
+  &::after {
+    transition: transform $trans-duration;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    width: 100%;
+    height: 1px;
+    background-color: $main-text-col;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
