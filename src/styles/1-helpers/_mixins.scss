@@ -1,6 +1,6 @@
-@mixin flex-centering($just-cont) {
+@mixin flex-centering($just-pos) {
   display: flex;
-  justify-content: $just-cont;
+  justify-content: $just-pos;
   align-items: center;
 }
 
@@ -18,8 +18,11 @@
 
 @mixin hover ($property, $toValue) {
   transition: #{$property} $effectDuration $effectFunc;
-  &:hover {
-    #{$property}: $toValue;
+  @media (hover:hover) {
+    &:hover {
+      #{$property}: $toValue;
+      @content;
+    }
   }
 }
 
@@ -51,5 +54,51 @@
 
   @include onDesktop {
     --columns: 12;
+  }
+}
+
+@mixin title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+@mixin btn-sqr ($size, $color) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: $size + px;
+    height: $size + px;
+    background-color: $color;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50.5%);
+    bottom: 0;
+
+    @include onTablet {
+      transform: translateY(-50.5%);
+      right: -71px;
+    }
+
+  }
+
+  &::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+
+    border-top: 3px solid #d7dde3;
+    border-left: 3px solid #d7dde3;
+
+    position: absolute;
+    right: -32px;
+    top: 50%;
+    transform: rotate(134deg) translateY(50%);
+
+    @include onTablet {
+      right: -43px;
+    }
   }
 }

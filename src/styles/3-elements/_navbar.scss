@@ -1,4 +1,150 @@
-// to be continued
-.nav {
-  font-size: rem(20);
+.nav-bar {
+  background-color: $green;
+  padding: 27px 20px;
+  color: $white;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transition: transform $effectDuration $effectFunc 0s,
+    opacity $effectDuration $effectFunc 0s;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+
+  @include onTablet {
+    padding: 40px 35px;
+  }
+
+  @include onDesktop {
+    padding-inline: 56px;
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+}
+
+.nav-bar__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    justify-content: space-around;
+  }
+
+}
+
+.nav-bar__nav {
+  padding-left: 52px;
+  font-size: 16px;
+  padding-bottom: 24px;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+
+    @include onTablet {
+      width: 1px;
+      height: 100%;
+      right: -20px;
+      top: 0;
+      bottom: 0;
+      left: initial;
+    }
+
+    @media (min-width:900px) {
+      right: -60px;
+    }
+
+    @include onDesktop {
+      right: -100px;
+    }
+
+  }
+
+  @media (min-width:600px) {
+    padding-left: 62px;
+  }
+
+  @media (min-width:900px) {
+    font-size: 22px;
+  }
+
+}
+
+.nav-bar__close-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+
+  top: 0;
+
+  @include onDesktop {
+    left: -73px;
+  }
+}
+
+.nav-bar__nav-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 28px;
+
+  @include onDesktop {
+    grid-template-columns: repeat(2, 169px);
+  }
+}
+
+.nav-bar__nav-item--container-100 {
+  max-width: 100px;
+
+  @include onDesktop {
+    max-width: 170px;
+  }
+}
+
+.nav-bar__schedule {
+  line-height: 21px;
+  margin-top: 24px;
+
+  @include onDesktop {
+    margin-top: 0;
+  }
+}
+
+.nav-bar__title {
+  margin-bottom: 20px;
+}
+
+.nav-bar__text--fweight-bold {
+  font-weight: 700;
+}
+
+.nav-bar__note {
+  margin-top: 16px;
+
+  @include onTablet {
+    max-width: 144px;
+    margin: 0;
+    line-height: 21px;
+    align-self: flex-end;
+  }
 }
