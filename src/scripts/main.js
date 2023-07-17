@@ -6,6 +6,6 @@ document.querySelector('.icon--burger').addEventListener('click', () => {
   html.classList.toggle('unscroll');
 });
 
-document.querySelector('.icon--close').addEventListener('click', () => {
+document.querySelector('.nav__list').addEventListener('click', () => {
   html.classList.toggle('unscroll');
 });
