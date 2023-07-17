@@ -1,1 +1,82 @@
-// to be continued
+.header {
+  background-image: url("../images/header/bg-mobile-2x.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  padding-bottom: 40px;
+
+  @media (min-width: 500px) {
+    background-image: url("../images/header/bg-tablet.jpg");
+  }
+
+  @media (min-width: 1070px) {
+    background-image: url("../images/header/bg-desktop-x4.jpg");
+  }
+}
+
+.header__grid-wrapper {
+  @include pageGrid;
+  align-items: center;
+  grid-template-rows: 1fr calc(100vh - 264px) 1fr;
+}
+
+.header__top {
+  padding-block: 24px;
+  @include flex-centering(space-between);
+}
+
+.header__top-logo-link {
+  display: block;
+}
+
+.header__icons-box {
+  grid-column: 2 / 3;
+  text-align: right;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+
+  @include onTablet {
+    gap: 32px;
+    grid-column: 5 / 7;
+  }
+
+  @include onDesktop {
+    gap: 32px;
+    grid-column: 10 / 12;
+  }
+}
+
+.header__icons-phone,
+.header__icons-burger {
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.header__icons-phone-link,
+.header__icons-burger-link {
+  display: block;
+
+}
+
+.header__title {
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  max-width: 280px;
+
+  @include onTablet {
+    max-width: initial;
+    grid-column: 1 / 4;
+  }
+
+  @include onDesktop {
+    grid-column: 1 / 6;
+  }
+}
