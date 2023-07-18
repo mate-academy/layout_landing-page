@@ -1,5 +1,5 @@
 # Landing page
-
+Technologies used: HTML5, CSS3, BEM, SCSS, flexbox, grid, media queries
 
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
 
