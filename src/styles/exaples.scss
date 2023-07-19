@@ -1,5 +1,9 @@
 .examples {
 
+  &__container {
+    @include differentPaddingInline;
+  }
+
   &__top {
     text-align: center;
     margin-bottom: 48px;
@@ -28,6 +32,16 @@
       margin-bottom: 48px;
     }
 
+    @media (max-width: 744.98px) {
+      &:nth-child(2) {
+        grid-template-columns: 1fr 1fr;
+
+        & .item-examples__image:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+
     @media (max-width: 467.98px) {
       &:not(:nth-child(2)) {
         grid-template-columns: 1fr 1fr;
@@ -36,6 +50,11 @@
       &:nth-child(2) {
         column-gap: 8px;
         row-gap: 24px;
+        grid-template-columns: repeat(3, 1fr);
+
+        & .item-examples__image:nth-child(2) {
+          display: block;
+        }
 
         & .item-examples__description {
           grid-column: 1 / -1;
