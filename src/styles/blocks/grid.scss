@@ -1,0 +1,45 @@
+.grid {
+  @include onTablet {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+
+    &__tablet {
+      @for $i from 1 through 6 {
+        @for $j from $i through 6 {
+          &--#{$i}-#{$j} {
+            grid-column: #{$i} / #{$j + 1};
+          }
+        }
+      }
+    }
+  }
+
+  @include onDesktop {
+    display: grid;
+    justify-content: center;
+    flex-wrap: nowrap;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+
+    &__desktop {
+      @for $i from 1 through 12 {
+        @for $j from $i through 12 {
+          &--#{$i}-#{$j} {
+            grid-column: #{$i} / #{$j + 1};
+          }
+        }
+      }
+    }
+  }
+}
+
+@include onMobile {
+  .mobile {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
