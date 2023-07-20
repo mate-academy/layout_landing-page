@@ -99,7 +99,7 @@
       </aside>
 
       <main class="page">
-        <section class="page__schedule schedule">
+        <section id="about-us" class="page__schedule schedule">
           <div class="schedule__container">
             <div class="schedule__text">
               <div class="schedule__sub-title">Plan your visit</div>
@@ -140,7 +140,7 @@
           </div>
         </section>
 
-        <section class="page__examples examples">
+        <section id="gallery" class="page__examples examples">
           <div class="examples__container">
             <div class="examples__top">
               <h2 class="examples__title title">Now On View</h2>
@@ -193,7 +193,7 @@
           </div>
         </section>
 
-        <section class="page__more-online more-online">
+        <section id="explore-online" class="page__more-online more-online">
           <div class="more-online__container">
             <h2 class="more-online__title title">More to Explore Online</h2>
 
@@ -223,7 +223,7 @@
           </div>
         </section>
 
-        <section class="page__contact-us contact-us">
+        <section id="contacts" class="page__contact-us contact-us">
           <div class="contact-us__container">
             <h2 class="contact-us__title title">Contact us</h2>
 
@@ -237,7 +237,13 @@
                   </div>
                   <div class="contact-us__unit">
                     <div class="contact-us__header">Address</div>
-                    <a href="#" class="contact-us__text">1000 Fifth Avenue New York, NY 10028</a>
+                    <a
+                      href="http://maps.google.com/?q=1000 Fifth Avenue New York, NY 10028"
+                      target="_blank"
+                      class="contact-us__text"
+                     >
+                      1000 Fifth Avenue New York, NY 10028
+                    </a>
                   </div>
                 </div>
                 <div class="contact-us__item">
@@ -248,7 +254,13 @@
                   </div>
                   <div class="contact-us__unit">
                     <div class="contact-us__header">Address</div>
-                    <a href="#" class="contact-us__text">99 Margaret Corbin Drive Fort Tryon Park New York, NY 10040</a>
+                    <a
+                      href="http://maps.google.com/?q=99 Margaret Corbin Drive Fort Tryon Park New York, NY 10040"
+                      target="_blank"
+                      class="contact-us__text"
+                     >
+                      99 Margaret Corbin Drive Fort Tryon Park New York, NY 10040
+                    </a>
                   </div>
                 </div>
               </div>
@@ -292,15 +304,20 @@
       <footer class="footer"></footer>
       <script>
         const getOpenMenuButtonElement = document.querySelector('.header__menu');
-        const getCloseMenuButtonElement = document.querySelector('.menu__close');
+        const getMenuELement = document.querySelector('.menu');
+        const getMenuLinkElements = getMenuELement.querySelectorAll('a');
         const getBodyElement = document.body;
 
         getOpenMenuButtonElement.addEventListener("click", function(event) {
           getBodyElement.classList.add('hide-scroll');
         });
 
-        getCloseMenuButtonElement.addEventListener("click", function(event) {
-          getBodyElement.classList.remove('hide-scroll');
+        getMenuLinkElements.forEach(function(element) {
+          element.addEventListener("click", function(event) {
+            if (!event.target.closest('.content-phone__number')) {
+              getBodyElement.classList.remove('hide-scroll');
+            }
+          });
         });
       </script>
     </div>
