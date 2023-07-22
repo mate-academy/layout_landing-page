@@ -266,7 +266,8 @@
               </div>
 
               <form
-                action="#"
+                onsubmit="return false"
+                action="#contacts"
                 method="get"
                 class="contact-us__form form-contact"
               >
@@ -305,6 +306,7 @@
       <script>
         const getOpenMenuButtonElement = document.querySelector('.header__menu');
         const getMenuELement = document.querySelector('.menu');
+        const getFormELement = document.querySelector('.contact-us__form');
         const getMenuLinkElements = getMenuELement.querySelectorAll('a');
         const getBodyElement = document.body;
 
@@ -318,6 +320,14 @@
               getBodyElement.classList.remove('hide-scroll');
             }
           });
+        });
+
+        getFormELement.addEventListener('submit', function () {
+          const inputs = getFormELement.nameInput;
+          const textArea = getFormELement.nameTextArea;
+
+          inputs.forEach((element) => element.value = '');
+          textArea.value = '';
         });
       </script>
     </div>
