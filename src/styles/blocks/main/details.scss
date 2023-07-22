@@ -1,0 +1,106 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      column-gap: 48px;
+    }
+  }
+
+  &__button {
+    @include buttonStyle;
+
+    margin-top: 40px;
+    width: 100%;
+
+    @include onTablet {
+      margin-top: 48px;
+      width: 392px;
+    }
+
+    @include onDesktop {
+      width: 324px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+
+    transition: $transition-speed;
+
+    @include hover(transform, scale(1.04));
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #141414;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+  }
+
+  &__info {
+    @include pageGrid;
+  }
+
+  &__description {
+    grid-column: $grid-full-stretch;
+
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+
+    @include onDesktop {
+      grid-column: 1 / 10;
+    }
+  }
+}
