@@ -1,0 +1,108 @@
+.header {
+  @include tablet {
+    height: 995px;
+  }
+  @include desktop {
+    height: 719px;
+  }
+  @include background-image("../images/header.png");
+  position: relative;
+  padding: 36px 20px 0;
+  height: 568px;
+  width: 100%;
+  &__title {
+    @include tablet {
+      bottom: 67px;
+      left: 69px;
+      width: 400px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+    @include desktop {
+      font-size: 56px;
+      left: 117px;
+      bottom: 74px;
+      width: 461px;
+    }
+    position: absolute;
+    bottom: 42px;
+    left: 18px;
+    width: 282px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    z-index: 1;
+  }
+}
+
+.navigation {
+  @include tablet {
+    padding: 33px 73px;
+  }
+  @include desktop {
+    padding: 33px 121px;
+  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 21px;
+  z-index: 2;
+  &__logo {
+    @include tablet {
+      width: 172px;
+    }
+    width: 125px;
+  }
+  &__icons {
+    display: none;
+    &--active {
+      display: flex;
+    }
+  }
+  &__icon {
+    @include tablet {
+      width: 32px;
+      height: 32px;
+    }
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    &--call {
+      position: relative;
+      @include background-image("../images/icons/call.svg");
+      &:hover::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        left: -165px;
+        transform: translateY(-50%);
+        display: block;
+        width: 162px;
+        color: $color-dark;
+        z-index: 1;
+      }
+    }
+
+    &--burger {
+      @include tablet {
+        margin-left: 31px;
+      }
+      @include background-image("../images/icons/burgermenu.svg");
+      margin-left: 23px;
+      &:hover {
+        background-image: url(../images/icons/burgemen-hover.svg);
+      }
+    }
+  }
+
+  &__close {
+    display: none;
+    @include background-image("../images/icons/close.svg");
+    &--active {
+      display: block;
+    }
+  }
+}
