@@ -44,6 +44,35 @@
     align-items: center;
     gap: 24px;
 
+    position: relative;
+
+    &-number {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      overflow-x: hidden;
+      box-sizing: border-box;
+
+      span {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.47);
+        transition: all 0.3s ease 0s;
+        border-radius: 5px;
+        padding: 2px;
+        transform: translateX(100%);
+      }
+    }
+
+    .header__icons-phone-link:hover + &-number span {
+      transform: translateX(0);
+    }
+
     @include onTablet {
       gap: 32px;
       grid-column: 5 / 7;
@@ -51,7 +80,7 @@
 
     @include onDesktop {
       gap: 32px;
-      grid-column: 10 / 12;
+      grid-column: 10 / -1;
     }
   }
 
@@ -69,8 +98,11 @@
   }
 
   &__icons-phone-link {
+    position: relative;
+
     svg {
       display: block;
+
       &:hover {
         animation-name: phone-call;
         animation-duration: 0.3s;
@@ -100,7 +132,9 @@
     width: 24px;
     height: 20px;
 
-    span {
+    &--border-top,
+    &--border-mid,
+    &--border-bot {
       height: 4px;
       border-radius: 5px;
       background-color: $black;
@@ -113,7 +147,6 @@
 
     &--border-top {
       top: 0;
-      background-color: red;
     }
 
     &--border-mid {
