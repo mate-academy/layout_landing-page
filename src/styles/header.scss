@@ -1,0 +1,152 @@
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 25px 20px;
+
+  @include onTablet {
+    padding: 50px 40px;
+  }
+
+  @include onDesktop {
+    padding: 50px 40px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(../images/menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu_hover.svg);
+    }
+  }
+
+  &--phone {
+    background-image: url(../images/phone.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/cross.svg);
+  }
+}
+
+.top-actions {
+  display: grid;
+  grid-template-columns: 1fr 18px 18px;
+  justify-content: end;
+  align-items: center;
+  column-gap: 30px;
+
+  @include onDesktop {
+    grid-template-columns: 1fr 24px 24px;
+    column-gap: 63px;
+  }
+}
+
+.header {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/header/header.svg);
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop() {
+      &::before {
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        display: block;
+        position: absolute;
+        width: 201px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+        padding-right: 20px;
+        color: $white-color;
+        text-align: right;
+        text-transform: uppercase;
+        transform: translate(-100%, -80%);
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: "The Met Cloisters +1 212-923-3700";
+        display: block;
+        position: absolute;
+        width: 201px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+        padding-right: 20px;
+        color: $white-color;
+        text-align: right;
+        text-transform: uppercase;
+        transform: translate(-100%, 30%);
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before,
+      &:hover::after {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: "Cinzel", serif;
+    font-size: 62px;
+    font-weight: 700;
+    margin-top: 160px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+      margin-top: 130px;
+    }
+    
+    @include onTablet {
+      font-size: 62px;
+      margin-top: 128px;
+    }
+  }
+}
+
+.logo--img {
+  width: 64px;
+  height: 46px;
+
+  @include onDesktop {
+    width: 87px;
+    height: 65px;
+  }
+
+  @include onTablet {
+    width: 87px;
+    height: 65px;
+  }
+}
