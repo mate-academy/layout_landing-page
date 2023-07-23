@@ -4,7 +4,7 @@
 
 .burger-navbar {
   font-family: $addition-font-family-2, sans-serif;
-  overflow: auto;
+  overflow-y: auto;
   z-index: 1;
   background-color: $burger-menu-color;
 
@@ -21,9 +21,10 @@
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
 
   @include onTablet {
-    padding-top: 32px;
+    padding-top: 45px;
   }
 
   &:target {
@@ -47,10 +48,39 @@
     align-self: center;
     width: 24px;
     height: 24px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
 
-    &__close-icon {
-      display: block;
+    &-element-left {
+      transform: rotate(-45deg);
+      background-color: $close-icon-left;
     }
+
+    &-element-right {
+      transform: rotate(45deg);
+      background-color: $close-icon-right;
+    }
+
+    &-element-left,
+    &-element-right {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 5px;
+      transition: transform $effectDuration $effectFunc 0s;
+    }
+
+    &:hover &-element-left {
+      transform: rotate(45deg);
+    }
+
+    &:hover &-element-right {
+      transform: rotate(-45deg);
+    }
+
   }
 
   &__list {
