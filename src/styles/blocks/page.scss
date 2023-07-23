@@ -33,7 +33,7 @@
 
     opacity: 0;
     transition: $transition-speed;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     pointer-events: none;
 
     &:target {
@@ -45,5 +45,18 @@
 
   &:has(.page__menu:target) {
     overflow: hidden;
+
+    @for $item from 1 through 5 {
+      .nav__list :nth-child(#{$item}) {
+        animation: menu 0.3s ease #{$item/10}s 1 normal none running;
+      }
+    }
+  }
+
+  &:has(.section__title:target) {
+    .section__title {
+      animation: sectionTitle 1000ms ease forwards;
+      @include textAnimation(sectionTitle, 100%, 0);
+    }
   }
 }
