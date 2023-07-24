@@ -48,7 +48,7 @@
 
     @for $item from 1 through 5 {
       .nav__list :nth-child(#{$item}) {
-        animation: menu 0.3s ease #{$item/5}s 1 normal none running;
+        animation: menu 0.3s ease #{$item/5}s 1 normal forwards running;
       }
     }
   }
@@ -58,5 +58,20 @@
       animation: sectionTitle 1000ms ease forwards;
       @include textAnimation(sectionTitle, 100%, 0);
     }
+  }
+}
+
+@keyframes menu {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-3%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
