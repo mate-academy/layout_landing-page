@@ -1,17 +1,18 @@
 @import "variables";
+@import "mixins";
 
 .header {
-  font-family: $subFont;
+  font-family: $secondaryFont;
   background: url("../images/upBanner.png") 50% 50% no-repeat;
   background-size: cover;
   height: $bannerMinHeight;
   margin-bottom: 46px;
 
-  @media screen and (min-width: 744px) {
+  @include for-tablet {
     height: $bannerMidHeight;
   }
 
-  @media screen and(min-width: 1260px) {
+  @include for-desktop {
     height: $bannerMidHeight;
   }
 
@@ -24,11 +25,11 @@
     margin: 0 auto;
     padding: $minPadding;
 
-    @media screen and (min-width: 744px) {
+    @include for-tablet {
       padding: $midPadding;
     }
 
-    @media screen and(min-width: 1260px) {
+    @include for-desktop {
       padding: $maxPadding;
     }
   }
@@ -61,9 +62,11 @@
     text-decoration: none;
     color: inherit;
 
-    &:hover {
-      transform: scale(1.1);
-      transition: all 0.1s;
+    @include for-tablet {
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.1s;
+      }
     }
 
     &.icon-phone::after {
@@ -94,132 +97,14 @@
         display: block;
       }
 
-      &:hover {
-        cursor: pointer;
-        &:after {
-          content: "\e900";
+      @include for-tablet {
+        &:hover {
+          cursor: pointer;
+          &:after {
+            content: "\e900";
+          }
         }
       }
-    }
-  }
-}
-
-.menu {
-  position: fixed;
-  background-color: #e5e6e8;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  letter-spacing: 2px;
-  opacity: 0;
-  z-index: -1;
-
-  @media screen and (min-width: 744px) {
-    height: $bannerMidHeight;
-  }
-
-  @media screen and(min-width: 1260px) {
-    height: $bannerMidHeight;
-  }
-
-  &__content {
-    max-width: 1260px;
-    margin: 0 auto;
-    padding: $minPadding;
-    overflow: auto;
-
-    @media screen and (min-width: 744px) {
-      padding: $midPadding;
-    }
-
-    @media screen and(min-width: 1260px) {
-      padding: $maxPadding;
-    }
-  }
-
-  &.is-active {
-    z-index: 1;
-    opacity: 1;
-    transition: all 0.2s;
-  }
-
-  &__controls {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 24px;
-  }
-
-  &__close-button {
-    font-size: 20px;
-    padding-right: 5px;
-    position: sticky;
-    z-index: 1;
-    background-color: #e5e5e5;
-
-    &:hover {
-      cursor: pointer;
-      transition: all 0.1s;
-      transform: scale(1.1);
-    }
-  }
-
-  &__number {
-    text-decoration: none;
-    font-size: 22px;
-    color: inherit;
-    font-weight: 700;
-
-    &:hover {
-      transition: all 0.2s;
-      color: $hoverColor;
-    }
-
-    span {
-      text-transform: uppercase;
-      margin-top: 16px;
-      display: block;
-      text-decoration: underline;
-    }
-  }
-}
-
-.logo {
-  position: relative;
-
-  &__img {
-    width: 125px;
-    height: 16px;
-  }
-}
-
-.nav {
-
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 80px 0 0;
-  }
-
-  &__item {
-    margin-bottom: 30px;
-
-    &:last-child {
-      margin-bottom: 50px;
-    }
-  }
-
-  &__link {
-    font-weight: 700;
-    font-family: $subFont;
-    font-size: 22px;
-    text-decoration: none;
-    color: inherit;
-    line-height: 22px;
-    transition: all 0.2s;
-
-    &:hover {
-      color: $hoverColor;
     }
   }
 }

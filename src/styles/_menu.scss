@@ -1,0 +1,84 @@
+@import "mixins";
+@import "variables";
+
+.menu {
+  position: fixed;
+  background-color: #e5e6e8;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  letter-spacing: 2px;
+  opacity: 0;
+  z-index: -1;
+
+  @include for-tablet {
+    height: $bannerMidHeight;
+  }
+
+  @include for-desktop {
+    height: $bannerMidHeight;
+  }
+
+  &__content {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: $minPadding;
+    overflow: auto;
+
+    @include for-tablet {
+      padding: $midPadding;
+    }
+
+    @include for-desktop {
+      padding: $maxPadding;
+    }
+  }
+
+  &.is-active {
+    z-index: 1;
+    opacity: 1;
+    transition: all 0.2s;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+  }
+
+  &__close-button {
+    font-size: 20px;
+    padding-right: 5px;
+    position: sticky;
+    z-index: 1;
+    background-color: #e5e5e5;
+
+    &:hover {
+      cursor: pointer;
+      transition: all 0.1s;
+      transform: scale(1.1);
+    }
+  }
+
+  &__number {
+    text-decoration: none;
+    font-size: 22px;
+    color: inherit;
+    font-weight: 700;
+
+    @include for-tablet {
+      &:hover {
+        transition: all 0.2s;
+        color: $hoverColor;
+      }
+    }
+  }
+
+  &__text {
+    text-transform: uppercase;
+    margin-top: 16px;
+    display: block;
+    text-decoration: underline;
+  }
+}

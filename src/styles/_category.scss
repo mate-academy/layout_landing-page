@@ -1,8 +1,9 @@
 @import "variables";
+@import "mixins";
 
 .category {
   max-width: 100%;
-  font-family: $subFont;
+  font-family: $secondaryFont;
 
   &__list {
     list-style: none;
@@ -13,7 +14,7 @@
   &__item {
     margin-bottom: 40px;
 
-    @media screen and (min-width: 744px) {
+    @include for-tablet {
       &:nth-child(odd) {
         a:first-child {
           width: 66%;
@@ -41,7 +42,7 @@
     justify-content: space-between;
   }
 
-  &__img-link {
+  &__product-link {
     width: calc(50% - 10px);
     overflow: hidden;
     display: block;
@@ -63,19 +64,25 @@
     object-position: 50% 50%;
     border-radius: 4px;
     margin: 0;
+    transition: 0.2s all ease-in-out;
 
-    &:hover {
-      transition: 0.2s all ease-in-out;
-      transform: scale(1.1);
-      -webkit-filter: invert(0.9);
-      filter: invert(0.2);
+    @include for-tablet {
+      &:hover {
+        transform: scale(1.1);
+        -webkit-filter: invert(0.9);
+        filter: invert(0.2);
+      }
     }
 
-    @media screen and (min-width: 744px) {
+    @include for-tablet {
       height: 184px;
     }
 
-    @media screen and (min-width: 1260px) {
+    @include for-laptop {
+      height: 300px;
+    }
+
+    @include for-desktop {
       height: 324px;
     }
   }
@@ -86,8 +93,10 @@
     font-size: 18px;
     line-height: 25px;
 
-    &:hover {
-      text-decoration: underline;
+    @include for-tablet {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

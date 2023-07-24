@@ -5,9 +5,34 @@
 @import "category";
 @import "about";
 @import "contact";
+@import "info";
+@import "logo";
+@import "menu";
+@import "nav";
+@import "recommended";
 
 html {
   color: $textColor;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    position: absolute;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #dcdcdc;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $textColor;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }
 
 body {
@@ -28,7 +53,7 @@ body {
   margin-bottom: 96px;
 
   &--split {
-    @media screen and (min-width: 744px) {
+    @include for-tablet {
       display: flex;
 
       & > h2 {
@@ -46,11 +71,11 @@ body {
     }
   }
 
-  @media screen and (min-width: 744px) {
+  @include for-tablet {
     padding: $midPadding;
   }
 
-  @media screen and (min-width: 1260px) {
+  @include for-desktop {
     padding: $maxPadding;
   }
 
@@ -59,7 +84,7 @@ body {
   }
 
   &__title {
-    font-family: $subFont;
+    font-family: $secondaryFont;
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 48px;
@@ -80,20 +105,22 @@ body {
   border-radius: 8px;
   font-weight: 700;
   border: 2px solid $textColor;
-  font-family: $subFont;
-
-  &:hover {
-    cursor: pointer;
-    transition: all 0.2s;
-    background-color: #f8f8fa;
-    color: $textColor;
-    border-color: #f0f1f4;
-  }
+  font-family: $secondaryFont;
 
   &:active {
     background-color: #111;
     color: #fff;
     border-color: #111;
+  }
+
+  @include for-tablet {
+    &:hover {
+      cursor: pointer;
+      transition: all 0.2s;
+      background-color: #f8f8fa;
+      color: $textColor;
+      border-color: #f0f1f4;
+    }
   }
 }
 
@@ -103,7 +130,7 @@ body {
   background-size: cover;
   margin-bottom: 56px;
 
-  @media screen and (min-width: 744px) {
+  @include for-tablet {
     height: 400px;
   }
 }
@@ -115,10 +142,12 @@ body {
   padding: 14px 16px;
   margin-bottom: 16px;
   border-radius: 8px;
-  font-family: $mainFont;
+  font-family: $primaryFont;
 
-  &:hover {
-    border-color: #d5d7de;
+  @include for-tablet {
+    &:hover {
+      border-color: #d5d7de;
+    }
   }
 
   &:focus {
@@ -133,5 +162,5 @@ body {
 }
 
 .header:has(.menu:target) {
-  overflow: hidden; /* not to scroll the page */
+  overflow: hidden;
 }

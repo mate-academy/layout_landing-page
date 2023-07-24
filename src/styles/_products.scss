@@ -1,24 +1,20 @@
 @import "variables";
-
-.recommended {
-  @media screen and (min-width: 1260px) {
-    display: flex;
-    justify-content: space-between;
-  }
-}
+@import "mixins";
 
 .product {
-  font-family: $mainFont;
+  font-family: $primaryFont;
 
   &:not(:last-child) {
     margin-bottom: 40px;
   }
 
-  &:hover {
-    color: $hoverColor;
+  @include for-tablet {
+    &:hover {
+      color: $hoverColor;
+    }
   }
 
-  @media screen and (min-width: 1260px) {
+  @include for-desktop {
     flex-basis: 33%;
     margin-bottom: 40px;
 
@@ -27,30 +23,35 @@
     }
   }
 
-  &__img-wrapper {
+  &__content {
     overflow: hidden;
+    width: 100%;
   }
 
   &__img {
-    max-width: 100%;
+    width: 100%;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+    transition: 0.2s all ease-in-out;
 
-    &:hover {
-      transition: 0.2s all ease-in-out;
-      transform: scale(1.1);
-      -webkit-filter: invert(0.9);
-      filter: invert(0.2);
+    @include for-tablet {
+
+      &:hover {
+        transform: scale(1.1);
+        -webkit-filter: invert(0.9);
+        filter: invert(0.2);
+      }
     }
 
-    @media screen and (min-width: 1260px) {
+    @include for-desktop {
       max-width: 324px;
       margin: 0;
     }
   }
 
   &__description {
-    @media screen and (min-width: 1260px) {
+
+    @include for-desktop {
       min-height: 100px;
     }
   }
@@ -63,7 +64,7 @@
   &__name {
     font-weight: 700;
     font-size: 18px;
-    font-family: $subFont;
+    font-family: $secondaryFont;
   }
 
   &__price {
