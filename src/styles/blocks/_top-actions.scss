@@ -1,0 +1,115 @@
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0 0;
+
+  @include mediaQueryDesktop {
+    padding: 50px 0 0;
+  }
+
+  &__logo-container {
+    width: 64px;
+    display: flex;
+
+    @include mediaQueryTablet {
+      width: 87px;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+
+    @include mediaQueryTablet {
+      gap: 63px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all $duration-transition;
+
+    @include mediaQueryTablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    &--phone {
+      position: relative;
+      background-image: url("../images/phone-icon.svg");
+
+    }
+
+    &--menu {
+      background-image: url("../images/icon-burger.svg");
+    }
+
+    &--menu:hover {
+      background-image: url("../images/icon-burger-hover.svg");
+    }
+
+    &--cross {
+      background-image: url("../images/icon-cross.svg");
+    }
+
+  }
+
+  &__icon--phone:hover &__phones {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.items-phones {
+  position: absolute;
+  top: -100%;
+  right: 0;
+  transform: translate(0, 0);
+  width: 160px;
+  padding: 0 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all $duration-transition;
+
+  @include mediaQueryTablet {
+    top: 100%;
+    right: 0;
+    width: 250px;
+    transform: translate(0, -50%);
+  }
+
+  @include mediaQueryDesktop {
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    width: max-content;
+  }
+}
+
+.item-phones {
+
+  &__title {
+    @media (max-width: $breakpoint-tablet) {
+      margin: 0 0 3px;
+    }
+  }
+  &__title,
+  &__phone {
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}
