@@ -1,0 +1,103 @@
+.category {
+  &__link {
+    position: relative;
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--hide-on-tablet {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__photos {
+    @include pageGrid;
+    // margin-bottom: 16px;
+    column-gap: 20px;
+
+    &--three-in-row {
+      --columns: 3;
+      column-gap: 8px;
+
+      @include onTablet {
+        --columns: 6;
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        --columns: 6;
+        column-gap: 24px;
+      }
+
+      & .category__link--square {
+        @include onTablet {
+          grid-column: span 3;
+        }
+        @include onDesktop {
+          grid-column: span 2;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    position: absolute;
+
+    &:hover {
+      z-index: 1;
+    }
+
+    @include hover(transform, scale(120%));
+  }
+
+  &__title {
+    margin-top: 24px;
+  }
+
+  &__buttons {
+    margin-top: 40px;
+    @include pageGrid;
+  }
+
+  &__button {
+    grid-column: 1/ -1;
+
+    @include onTablet {
+      grid-column: 2/ -2;
+    }
+
+    @include onDesktop {
+      grid-column: 5/ -5;
+    }
+  }
+}
