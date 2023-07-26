@@ -1,40 +1,54 @@
 .desktop-contact {
   display: flex;
-  justify-content: end;
+  transform: $effectDuration;
 
   &__tooltips {
+    display: none;
     position: absolute;
-    right: 26px;
-    top: -5px;
+    right: 90px;
+    top: 0;
+    z-index: 1;
 
-    @include onDesktop {
-      display: flex;
-      margin-right: 16px;
-      flex-direction: column;
-      align-items: flex-end;
-
-      line-height: 27px;
-      font-weight: bold;
-      color: $colorTextHeader;
-      letter-spacing: 1px;
-      opacity: 0;
-      pointer-events: none;
+    & a {
+      text-decoration: none;
     }
   }
+
   &__link {
     margin-right: 55px;
     transform: scale($scale);
   }
 
   &__text {
-    display: inline-flex;
+    display: flex;
+    justify-content: flex-end;
     width: max-content;
     color: $colorTextHeader;
-    text-align: end;
     text-decoration: none;
 
     &:nth-child(2) {
       margin-bottom: 8px;
+    }
+  }
+}
+
+.wrapper__tooltips {
+  position: relative;
+  display: inline-block;
+
+  &:hover .desktop-contact__tooltips {
+    display: none;
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: block;
+      line-height: 27px;
+      font-weight: bold;
+      color: $colorTextHeader;
+      letter-spacing: 1px;
     }
   }
 }
