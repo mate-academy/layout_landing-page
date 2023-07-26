@@ -1,0 +1,94 @@
+.details {
+  margin-top: 92px;
+
+  @include onTable {
+    margin-top: 120px;
+  }
+
+  @include onDesktop {
+    margin-top: 144px;
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTable {
+      row-gap: 48px;
+    }
+  }
+
+  &__button {
+    display: grid;
+    @include pageGrid;
+
+    &-link {
+      @include button;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-column: 1 / -1;
+
+      @include onTable {
+        grid-column: 2 / 6;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / 9;
+      }
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTable {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTable {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    @include hover(transform, scale(1.05));
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__text {
+    font-weight: 400;
+  }
+}
