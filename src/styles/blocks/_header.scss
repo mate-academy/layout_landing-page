@@ -1,0 +1,140 @@
+.header {
+  &__container {
+    @include small-container;
+  }
+
+  &__top {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 32px;
+
+    @include onMobile-S {
+      padding-block: 24px;
+    }
+  }
+
+  &__logo {
+    @include imgage-style;
+    width: 172px;
+    height: 24px;
+    overflow: visible;
+
+    @include onMobile-S {
+      width: 125px;
+      height: 16px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
+    @include onMobile-S {
+      gap: 24px;
+    }
+  }
+  &__link {
+    @include imgage-style;
+    width: 32px;
+    height: 32px;
+
+    @include onMobile-S {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.menu-header {
+  position: relative;
+
+  &__phone {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+    align-items: center;
+
+    @media (any-hover: hover) {
+      &:hover {
+        .menu-header__number {
+          transform: rotateX(0);
+          opacity: 1;
+          visibility: visible;
+        }
+        img {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
+  &__number {
+    font-size: 12px;
+    background-color: #e5e6e885;
+    padding: 10px;
+
+    border-radius: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transform: rotateX(90deg);
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-time;
+    @include onMobile-S {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: grid;
+    align-content: space-evenly;
+
+    @media (any-hover: hover) {
+      &:hover {
+        & span:nth-child(1) {
+          width: 80%;
+          background-color: goldenrod;
+        }
+
+        & span:nth-child(3) {
+          width: 60%;
+        }
+      }
+    }
+  }
+
+  &__line-burger {
+    display: block;
+    transition: all $transition-time;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: $main-color;
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    position: relative;
+
+    img {
+      transition: all $transition-time;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+
+    @include onMobile-S {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

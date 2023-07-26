@@ -1,0 +1,62 @@
+@import "./utils/_variables";
+@import "./utils/_mixins";
+@import "./utils/_reset";
+
+@import "./blocks/_header";
+@import "./blocks/_hide-menu";
+@import "./blocks/_top";
+@import "./blocks/_main";
+@import "./blocks/_recommended";
+@import "./blocks/_category";
+@import "./blocks/_about-us";
+@import "./blocks/_footer";
+
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Space+Grotesk:regular&display=swap");
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: $main-color;
+
+  &:has(.hide-menu:target) {
+    overflow: hidden;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+  min-height: 100%;
+
+  &__header {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__main {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    flex: 1 1 auto;
+
+    &:not(:last-child) {
+      margin-bottom: 120px;
+      @include onMobile-S {
+        margin-bottom: 104px;
+      }
+    }
+  }
+
+  &__footer {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+  }
+}
