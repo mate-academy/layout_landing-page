@@ -32,6 +32,7 @@ function onEntry(entry) {
 }
 
 const options = { threshold: [1] };
+// eslint-disable-next-line no-undef
 const observer = new IntersectionObserver(onEntry, options);
 const elements = document.querySelectorAll('.element-with-animation');
 
