@@ -9,11 +9,36 @@
 
   justify-content: center;
 
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   &__image-left {
     display: block;
     grid-column: 1/2;
+    object-fit: cover;
     width: 100%;
     height: 100%;
+
+    @include onTablet {
+      grid-column: 1/5;
+
+      &--minor {
+        grid-column: 1/3;
+      }
+    }
+
+    @include onDesktop {
+      grid-column: 1/9;
+
+      &--minor {
+        grid-column: 1/5;
+      }
+    }
   }
 
   &__image-right {
@@ -21,17 +46,44 @@
     grid-column: 2/-1;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+
+    @include onTablet {
+      grid-column: 5/-1;
+
+      &--main {
+        grid-column: 3/-1;
+      }
+    }
+
+    @include onDesktop {
+      grid-column: 9/-1;
+
+      &--main {
+        grid-column: 5/-1;
+      }
+    }
   }
 
   &__title {
     grid-column: 1/-1;
     margin-top: 16px;
+    @include fontLabel;
   }
 
   &__content {
     grid-column: 1/-1;
     margin-top: 8px;
     margin-bottom: 40px;
+    @include fontContent;
+
+    @include onTablet {
+      margin-bottom: 48px;
+    }
+
+    @include onDesktop {
+      grid-column: 1/9;
+    }
   }
 
   &__button {
@@ -39,17 +91,18 @@
     border-radius: 40px;
     background: #fff;
     height: 56px;
-  }
-
-  &__link {
-    display: block;
-    height: 56px;
-    width: 278px;
-    color: #1d1d1d;
     text-align: center;
     font-size: 16px;
     font-weight: 700;
-    line-height: 56px;
-    text-decoration: none;
+    line-height: 27px;
+    color: #1d1d1d;
+
+    @include onTablet {
+      grid-column: 2/-2;
+    }
+
+    @include onDesktop {
+      grid-column: 5/9;
+    }
   }
 }
