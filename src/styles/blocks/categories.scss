@@ -1,43 +1,100 @@
 .categories {
-  display: flex;
-  flex-direction: column;
-  margin-top: 96px;
+  @include pageGrid;
+
+  &__items {
+    @include pageGrid;
+
+    display: grid;
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &--title {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      line-height: 40px;
+    }
+
+    @include onDesktop {
+      line-height: 48px;
+    }
+  }
+
+  &__item {
+    &--img {
+      width: 100%;
+      height: 100%;
+
+      @include onTablet {
+        width: 100%;
+        height: 100%;
+      }
+
+      @include onDesktop {
+        width: 90%;
+        height: 324px;
+      }
+    }
+
+    &--conf {
+      display: grid;
+      justify-content: center;
+    }
+
+    &-1 {
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 6;
+      }
+    }
+
+    &-2 {
+      @include onTablet {
+        grid-column: 4 / -1;
+      }
+
+      @include onDesktop {
+        grid-column: 7 / -1;
+      }
+    }
+  }
 
   &__list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    grid-column: 1 / -1;
     margin-bottom: 16px;
   }
 
-  &__img {
-    width: 130px;
-    height: 130px;
-  }
-
   &__name {
+    margin-top: 16px;
     margin-bottom: 40px;
-    width: fit-content;
-    height: fit-content;
-  }
 
-  &__button {
-    display: flex;
-    height: 56px;
-    padding: 0 15%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 96px;
-    border-radius: 8px;
-    background: #f98921;
-  }
+    color: #1b2129;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
 
-  &__button:hover {
-    background-color: #1b2129;
-  }
+    grid-column: span 2;
 
-  &__button:active {
-    background-color: #010810;
+    @include onTablet {
+      grid-column: span 6;
+
+      font-size: 24px;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
   }
 }

@@ -1,42 +1,69 @@
 .contact {
-  margin-top: 112px;
+  box-sizing: border-box;
+
+  @include pageGrid;
+
+  &--footer {
+    display: none;
+  }
+
+  @include onDesktop {
+    width: 50%;
+    &--main {
+      display: none;
+    }
+    &--footer {
+      display: inherit;
+      width: 100%;
+    }
+    --columns: 6;
+  }
 
   &--title {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
     margin-bottom: 48px;
   }
 
   &__info {
-    display: flex;
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: 1 / 7;
+    }
+
+    @include pageGrid;
+
+    @include onDesktop {
+      --columns: 6;
+    }
     flex-direction: column;
   }
 
   &__area {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    box-sizing: border-box;
     height: fit-content;
     padding: 14px 16px;
     margin-bottom: 16px;
-  }
-
-  &__button {
-    position: relative;
-    display: flex;
-    height: 56px;
-    padding: 0 48px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    margin-bottom: 0;
     border-radius: 8px;
-    background: #1b2129;
+
+    &:first-child {
+      padding-top: 0;
+    }
   }
 
-  &__mice {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    position: absolute;
-    top: 43px;
-    right: 112px;
-    object-fit: cover;
+  &--text-area {
+    height: auto;
+    margin-bottom: 32px;
   }
 }
