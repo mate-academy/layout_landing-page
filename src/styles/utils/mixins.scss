@@ -1,3 +1,15 @@
+@mixin onTablet {
+  @media (min-width: 668px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1080px) {
+    @content;
+  }
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.5s;
 
@@ -6,21 +18,8 @@
   }
 }
 
-@mixin onTablet {
-  @media (min-width: 576px) {
-    @content;
-  }
-}
-
-@mixin onPc {
-  @media (min-width: 1024px) {
-    @content;
-  }
-}
-
+/* #region header */
 @mixin HeaderBackgroundImagePosition {
-  background-position: right;
-
   @include onTablet {
     background-position: center;
   }
@@ -52,7 +51,7 @@
     padding-bottom: 130px;
   }
 
-  @include onPc {
+  @include onDesktop {
     padding-bottom: 200px;
   }
 }
@@ -63,6 +62,10 @@
   @include onTablet {
     padding-block: 36px;
   }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
 }
 
 @mixin contentPaddingInline {
@@ -72,7 +75,7 @@
     padding-inline: 72px;
   }
 
-  @include onPc {
+  @include onDesktop {
     padding-inline: 130px;
   }
 }
@@ -84,19 +87,53 @@
     margin-bottom: 8px;
   }
 
-  @include onPc {
+  @include onDesktop {
     margin-bottom: 24px;
   }
 }
 
-@mixin headerTitleFontSize {
-  font-size: 36px;
+/* #endregion */
+
+/* #region main */
+@mixin detailsLargeImgProps {
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin detailsSmallImgProps {
+  background-size: cover;
+}
+
+@mixin compareBikesSmallImg {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
 
   @include onTablet {
-    font-size: 64px;
+    width: 184px;
+    height: 184px;
   }
 
-  @include onPc {
-    font-size: 80px;
+  @include onDesktop {
+    width: 320px;
+    height: 320px;
   }
 }
+
+@mixin compareBikesLargeImg {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+
+  @include onTablet {
+    width: 392px;
+    height: 184px;
+  }
+
+  @include onDesktop {
+    width: 672px;
+    height: 320px;
+    object-fit: contain;
+  }
+}
+/* #endregion */
