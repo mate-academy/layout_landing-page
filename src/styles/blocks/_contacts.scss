@@ -1,104 +1,104 @@
-.contacts {
-
-  &__content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__form {
-    grid-column: 1 / -1;
-    margin-bottom: 48px;
-
-    @include onTablet {
-      grid-column: 1 / 4;
-    }
-
-    @include onDesktop {
-      grid-column: span 6;
-    }
-
-    &-field {
-      margin-bottom: 10px;
-      border: 1px solid #F8F8FA;
-
-      background: #F8F8FA;
-      justify-content: start;
+.content {
+    @include pageGrid;
 
 
-      width: 280px;
-      height: 48px;
-      border-radius: 40px;
+    &__form {
+      grid-column: 1 / -1;
+      margin-bottom: 48px;
 
-      font-family: inherit;
-      font-size: inherit;
+      @include onTablet {
+        grid-column: 1 / 4;
+      }
 
-      &:hover {
-        border: 1px solid #D5D7DE;
+      @include onDesktop {
+        grid-column: span 6;
+      }
+
+      &-field {
+        margin-bottom: 16px;
+        border: 1px solid $field-text-color;
+
+        background: $field-text-color;
+        justify-content: start;
+
+        width: 262px;
+        height: 48px;
+        border-radius: 40px;
+        padding-left: 16px;
+
+        font-family: inherit;
+        font-size: inherit;
+
+        &:hover {
+          border: 1px solid #d5d7de;
+          cursor: pointer;
+        }
+
+        &:active {
+          border: 1px solid #292929;
+          color: #292929;
+        }
+
+        @include onTablet {
+          width: 272px;
+        }
+
+        @include onDesktop {
+          width: 395px;
+        }
+
+        &--message-size {
+          resize: none;
+
+          width: 246px;
+          height: 120px;
+          border-radius: 16px;
+
+          padding: 14px 16px;
+
+          @include onTablet {
+            width: 256px;
+          }
+
+          @include onDesktop {
+            width: 379px;
+          }
+        }
+      }
+
+      &-button {
+        height: 56px;
+        width: 280px;
+        border-radius: 40px;
+
+        background: $main-text-color;
+        color: $menu-text-color;
+
+        text-align: center;
+
+        font-weight: 700;
+        font-size: 16px;
         cursor: pointer;
-      }
 
-      &:active {
-        border: 1px solid #292929;
-        color: #292929;
-      }
+        &:hover {
+          box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
+        }
 
-      @include onTablet {
-        width: 256px;
-      }
+        &:active {
+          box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.64);
+        }
 
-      @include onDesktop {
-        width: 411px;
-      }
+        @include onTablet {
+          width: 288px;
+        }
 
-      &--message-size {
-        resize: none;
+        @include onDesktop {
+          width: 411px;
+        }
 
-        width: 246px;
-        height: 120px;
-        border-radius: 16px;
-
-        padding: 14px 16px;
+        @include hover(transform, scale(1.2));
       }
     }
-
-    &-button {
-      height: 56px;
-      width: 280px;
-      border-radius: 40px;
-      border: 3px solid #292929;
-
-      background: #292929;
-      color: #ffffff;
-      text-align: center;
-
-      font-weight: 700;
-      font-size: 16px;
-      cursor: pointer;
-
-      &:hover {
-        background: #ffffff;
-        color: #292929;
-      }
-
-      &:active{
-        border: 3px solid #111111;
-        color: #111111;
-      }
-
-      @include onTablet {
-        width: 288px;
-      }
-
-      @include onDesktop {
-        width: 411px;
-      }
-
-      @include hover(transform, scale(1.2));
-    }
-  }
-
-
 
   &__info {
     grid-column: 1 / -1;
@@ -120,11 +120,10 @@
     padding: 0;
     font-weight: bold;
 
-
     &-name {
       margin: 0;
 
-      color: #9FADC2;
+      color: $main-text-color;
       font-size: 14px;
       font-weight: 400;
     }
@@ -133,18 +132,35 @@
       margin: 0;
       margin-top: 8px;
 
-      color: #3E3E3E;
+      color: $main-text-color;
       font-size: 16px;
       font-weight: 400;
 
       cursor: pointer;
 
       &--link {
-        color: #3E3E3E;
+        position: relative;
+        color: $main-text-color;
         text-decoration: none;
-      }
 
-      @include hover(transform, scale(1.2));
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          display: block;
+          height: 1px;
+          width: 100%;
+          background-color: $main-text-color;
+
+          transition: transform 0.3s;
+          transform: scale(0);
+          transform-origin: left;
+        }
+
+        &:hover::after {
+          transform: scale(1);
+        }
+      }
     }
   }
 }
