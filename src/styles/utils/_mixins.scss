@@ -1,0 +1,84 @@
+@mixin tablet {
+  @media (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 484.98px) {
+    @content;
+  }
+}
+
+@mixin small-container {
+  max-width: 1020px;
+  padding-inline: 20px;
+  margin: 0 auto;
+  @include mobile {
+    max-width: 640px;
+  }
+}
+
+@mixin section-title() {
+  &:not(:last-child) {
+    margin-bottom: 56px;
+  }
+
+  @include mobile {
+    font-size: 40px;
+  }
+
+  @include tablet {
+    font-size: 32px;
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+@mixin link-hover() {
+  display: inline-block;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: $main-color;
+    transition: all $transition-time;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@mixin image-style {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    transition: all $transition-time;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
