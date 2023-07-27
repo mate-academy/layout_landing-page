@@ -1,0 +1,78 @@
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--number {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 50px;
+    padding: 5px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  &--phone {
+    background-image: url(img/Icon-Phone-call.svg);
+
+    @include onDesktop() {
+      &::before {
+        content: attr(data-hover);
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: white;
+        font-size: 12px;
+        height: 32px;
+        line-height: 32px;
+        white-space: nowrap;
+
+        text-align: right;
+        text-transform: uppercase;
+
+        width: 140px;
+
+        transition: all $effectDuration;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        right: 200%;
+        z-index: 1;
+        transform: translateX(20%);
+
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(img/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(img/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(img/Icon-Close.svg);
+  }
+}
