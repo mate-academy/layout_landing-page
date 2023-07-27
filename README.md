@@ -13,11 +13,11 @@
 
 # Done Landing page MyBIKE DESCRIBE technlogy
 
-Whats technology i used for this project?
+What technology did I use for this project?
 - HTML + CSS
 - BEM structure on HTML
 - SCSS files on styles project
-- :hover effects with transform, scale, animation duration
-- Grid for positions blocks on page
-- Call back for telephone, email, adress
+-: hover effects with transform, scale, animation duration
+- Grid for positions blocks on the page
+- Call back for telephone, email, address
 - Mixins, variables, and structure SCSS
