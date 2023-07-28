@@ -1,0 +1,80 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin text-field {
+  font-family: inherit;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  color: $form-text-main;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+
+  &::placeholder {
+    color: $secondary-text;
+  }
+
+  &:hover {
+    border: 1px solid $form-field-hover;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $form-text-main;
+  }
+}
