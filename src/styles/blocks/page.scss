@@ -1,48 +1,43 @@
-:root {
-  --main-clr: #292929;
-  --fw-bold: 700;
+* {
+  margin: 0;
 }
 
 .title {
-  font-weight: var(--fw-bold);
+  font-weight: $fw-bold;
 }
 
 .page {
   font-family: "Space Grotesk", sans-serif;
-  color: var(--main-clr);
-}
+  color: $main-clr;
 
-.page__body {
-  margin: 0;
-}
+  &__body {
+    min-width: 280px;
+  }
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s;
-}
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s;
 
-.page__menu:target {
-  opacity: 1;
-  pointer-events: all;
+    transform: translateX(100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
 }
 
 .page:has(.page__menu:target) {
-  overflow: hidden; /* not to scroll the page when menu is open */
-}
-@media (min-width: 744px) {
-  .container {
-    padding: 0 72px;
-  }
+  overflow: hidden; /*disable scrolling the page when menu is open */
 }
 
-@media (min-width: 1260px) {
-  .container {
-    padding: 0 120px;
-  }
+.container {
+  @include contentPaddingInline;
 }
