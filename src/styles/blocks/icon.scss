@@ -17,19 +17,42 @@
     background-image: url(../img/icons/icon-phone.svg);
     animation: appear $effect-duration;
 
-    &:hover::before {
+    &:before {
       position: absolute;
-      top: 50%;
+      right: 120%;
+      top: 7px;
       content: "+1 234 555-55-55";
-      width: 160px;
-
       color: $main-text-color;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-
-      transform: translate(-100%, -50%);
+      width: 0;
+      overflow: hidden;
+      transition: width 0s;
+      white-space: nowrap;
+      z-index: 2;
     }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      right: 120%;
+      width: 0;
+      height: 20px;
+      z-index: 1;
+      background: #fff;
+      border-radius: 2px;
+      transition: width $effect-duration;
+      opacity: 0.8;
+    }
+
+    &:hover::before {
+      width: 160px;
+      transition: width 1s;
+    }
+
+    &:hover::after {
+      width: 170px;
+    }
+
   }
 
   &--menu {
