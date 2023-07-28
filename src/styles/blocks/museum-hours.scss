@@ -1,38 +1,62 @@
 .museum-hours {
-  &__action {
+  @include pageGrid;
+
+  &__titles {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
     font-size: 12px;
     line-height: 140%;
     color: $accent-main-color;
   }
 
-  &__title {
-    @include title;
-    text-align: left;
-  }
+  &__content {
+    grid-column: 1 / -1;
 
-  &__sub-title {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 125%;
-    color: $main-text-color;
-    margin-top: 24px;
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 6 / 13;
+    }
   }
 
   &__table {
-    padding-bottom: 16px;
-
-    &--hours {
-      display: inline-block;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 27px;
-      color: $main-text-color;
-      padding-right: 25px;
+    &-columns {
+      display: flex;
+      column-gap: 24px;
+      padding-bottom: 16px;
     }
 
-    &--days {
-      display: inline-block;
-      @include text;
+    &-items {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &--hours {
+        font-weight: bold;
+        padding-bottom: 8px;
+      }
+    }
+  }
+
+  &__table--sub-title {
+    margin: 0;
+    padding-bottom: 16px;
+
+    &--margin-top {
+      margin-top: 25px;
     }
   }
 }
