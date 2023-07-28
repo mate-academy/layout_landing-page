@@ -1,22 +1,34 @@
 .products {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
-  margin: 104px auto 96px;
-
   box-sizing: border-box;
+  @include contentPaddingInline;
 
-  // @media (min-width: 744px) { // add better img
-  //   width: 600px;
-  // }
+  &__header--top {
+    margin-top: 104px;
+    padding-bottom: 48px;
+  }
 
-  // @media (min-width: 1260px) { // add img in row + gap
-  //   gap: 24px;
-  // }
+  &__wrap {
+    @include onTablet {
+      margin-bottom: 120px;
+
+    }
+
+    @include onDesctop {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+    }
+  }
 
   &__header {
-    font-size: 32px;
-    line-height: 32px;
+    @include titleSize;
+
+    @include onTablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
   }
 
   &__photo {
@@ -28,7 +40,6 @@
     font-size: 18px;
     line-height: 25px;
     padding: 24px 0 8px;
-
   }
 
   &__descr {
@@ -41,6 +52,6 @@
     font-size: 16px;
     line-height: 22px;
     padding-top: 12px;
+    margin-bottom: 40px;
   }
-
 }
