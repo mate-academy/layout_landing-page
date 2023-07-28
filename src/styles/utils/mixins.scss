@@ -54,3 +54,26 @@
     --columns: 12;
   }
 }
+
+@mixin underLine($bottom, $color) {
+  width: fit-content;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: $bottom;
+    height: 1px;
+    background-color: $color;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
