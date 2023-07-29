@@ -5,6 +5,7 @@
   background-image: url(/images/icons/icon-burger-menu-default.svg);
   background-size: cover;
 
+  @include inheritLinkCursorStyle();
   @include hover(transform, scale(1.2));
 
   @include onTablet() {
@@ -13,7 +14,34 @@
   }
 
   &--phone--color--default {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
     background-image: url(/images/icons/icon-phone-default.svg);
+
+    &::after {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      right: calc(100% + 20px);
+      width: max-content;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $color-main-light;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &--menu--color--default {
