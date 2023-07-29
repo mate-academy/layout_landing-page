@@ -10,13 +10,30 @@
   }
 
   &--phone {
+    border-radius: 25%;
     @include transitionPage;
     @include iconBackground(url(../img/Icon-Phone-Call.svg));
-    animation: phone 1s infinite;
 
     @include onDesktop {
+
       &:hover {
-        transform: scale(1.2);
+        animation: phone 1s infinite;
+        transform: scale(1);
+        padding: 2px;
+        background-color: $color-placeholder;
+        border-radius: 50%;
+
+        &::before {
+          content: '';
+          position: absolute;
+          border: 1px solid $color-placeholder;
+          left: -20px;
+          right: -20px;
+          top: -20px;
+          bottom: -20px;
+          border-radius: 50%;
+          animation: pulse 1.8s linear infinite;
+        }
       }
     }
   }
@@ -35,10 +52,21 @@
 }
 
 @keyframes phone {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse {
   0% {
-    transform: rotate(-20deg);
+    transform: scale(0.5);
+    opacity: 0;
   }
   50% {
-    transform: rotate(21deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
   }
 }
