@@ -1,10 +1,10 @@
 1. Use logo as a favicon
 2. Use landing name as a page title
-3. All logos should be links to the top of the page
-4. Change text color on hover for phone, email and address
+3. All logos should be links to the top of the page 
+4. Change text color on hover for phone, email and address !!!!!!!!!!!!!!!!!!1
 5. Make sure phone icons and phone numbers are real link to start a call
-6. All addresses should be links to some location on Google Maps. Open then in a new tab with `target="_blank"`.
-7. Increase all images on hover (make them links to #, if there is no better option)
+6. All addresses should be links to some location on Google Maps. Open then in a new tab with `target="_blank"`. !!!!!!!!!!!!
+7. Increase all images on hover (make them links to #, if there is no better option)!!!!!!!
 8. Make sure everything looks neat on mobile and without horizontal scrolling
 9. The speed of animations should be the same throughout the page (for example, increasing when hovering or moving blocks when scrolling)
 10. Ensure that all `nav__links` work smoothly
