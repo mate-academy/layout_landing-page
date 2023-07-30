@@ -5,18 +5,51 @@
 
   &__content {
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
+  &__icon-phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        display: block;
+        width: max-content;
+        font-family: $title-font;
+        color: $main-text-color;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        line-height: 16px;
+        opacity: 0;
+        text-transform: uppercase;
+        transform: translateX(-100%);
+        pointer-events: none;
+
+        transition: opacity 300ms,
+          transform 300ms;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: translateX(-105%);
+        pointer-events: all;
+      }
+    }
+  }
+
   &__title {
-    font-family: "Space Grotesk", sans-serif;
-    margin: 0;
+    font-family: $title-font;
     font-size: 36px;
     font-weight: 700;
     line-height: 100%;
+    pointer-events: none;
 
     @include onTablet {
       font-size: 48px;
