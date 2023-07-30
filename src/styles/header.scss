@@ -1,6 +1,3 @@
-@import "variables";
-@import "mixins";
-
 .header {
   background-image: url(../image/girl.png);
   background-size: cover;
@@ -77,16 +74,27 @@
 
     opacity: 0;
     transition: opopacity 0.3s;
+
+    @include onDesktop {
+      position: absolute;
+      right: 30px;
+      width: 146px;
+      top: 10px;
+    }
   }
 
-  &:hover {
-    opacity: 1;
-
-  }
   &--phone {
     margin-left: 8px;
     background-image: url(../image/icons/icon-phone.png);
     background-repeat: no-repeat;
+
+    @include onDesktop {
+      &:hover {
+        .icon__phone-number {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &--menu {
@@ -144,7 +152,7 @@
     margin-bottom: 32px;
     position: sticky;
     z-index: 1;
-    background-color: #e5e5e5;
+    background-color: $menu-bg-color;
   }
 
   &__icons {
