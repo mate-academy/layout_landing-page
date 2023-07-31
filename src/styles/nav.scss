@@ -1,0 +1,33 @@
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    @include menu-link-style;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    @include big-screen {
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
