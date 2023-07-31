@@ -24,12 +24,8 @@
   }
 }
 
-.container {
-  @include contentPaddingInline();
-}
-
-@mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+@mixin hoverTransition($property, $toValue) {
+  transition: #{$property} $transition-time;
   &:hover {
     #{$property}: $toValue;
   }
@@ -51,12 +47,15 @@
   }
 }
 
-@mixin inheritLinkCursorStyle() {
-  &:link,
-  &:visited,
-  &:hover,
+@mixin linkHoverShadow() {
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+}
+
+@mixin linkActiveShadow() {
   &:active {
-    cursor: inherit;
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
   }
 }
 
@@ -78,19 +77,15 @@
   line-height: 27px;
   text-decoration: none;
 
-  @include inheritLinkCursorStyle();
-  @include hover(transform, scale(1.2));
+  cursor: pointer;
+
+  @include hoverTransition(transform, scale($hover-scale));
 
   &:link,
   &:visited {
     color: $color-main-dark;
   }
 
-  &:hover {
-    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
-  }
-
-  &:active {
-    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
-  }
+  @include linkHoverShadow();
+  @include linkActiveShadow();
 }
