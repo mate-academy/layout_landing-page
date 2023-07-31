@@ -1,0 +1,54 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDeskTop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  justify-content: center;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDeskTop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  display: block;
+  padding-block: 15px;
+  width: 100%;
+  background-color: $accent-color;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+
+  &:hover {
+    background-color: #ae1c23;
+  }
+
+  &:active {
+    background-color: #eb343d;
+  }
+}

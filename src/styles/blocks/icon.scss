@@ -1,0 +1,55 @@
+.icon {
+  height: 24px;
+  width: 24px;
+  display: block;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icons/icon-phone.svg);
+
+    @include onDeskTop {
+      &::before {
+        content: "The Met Fifth Avenue\A +1 212 535 77 10";
+        white-space: pre-wrap;
+        position: absolute;
+        top: 0;
+        left: -200px;
+        width: max-content;
+        display: block;
+        text-align: right;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        transition: transform 0.2s;
+        transform: scale(0);
+      }
+
+      &:hover::before {
+        transform: scale(1);
+        transform-origin: right;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
