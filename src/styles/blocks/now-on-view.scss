@@ -1,103 +1,119 @@
 .now-on-view {
-
   &__title {
-    @include title;
-
-    @include onTablet {
-      font-size: 48px;
-    }
-
-    &--about {
-      @include text;
-      text-align: center;
-      margin-bottom: 48px;
-    }
+    margin-bottom: 8px;
   }
 
-  &__category {
-    margin-bottom: 48px;
+  &__subtitle {
+    margin: 0 0 48px;
+    font-weight: 400;
+    text-align: center;
+  }
 
-    &__photo-container {
-      position: relative;
-      box-sizing: border-box;
-      width: 100%;
-      max-height: 130px;
-      overflow: hidden;
-      margin-bottom: 25px;
-
-      &::after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
-  
-      @include onTablet {
-        max-height: 186px;
-      }
-
-      &--2 {
-        max-height: 87px;
-
-        @include onTablet {
-          max-height: 284px;
-        }
-      }
-  
-      @include onDesktop {
-        max-height: 320px;
-      }
-
-      &__img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        margin-bottom: 25px;
-    
-        object-fit: cover;
-        object-position: center;
-        transition: 0.3s;
-          
-        &:hover {
-          transform: scale(1.1);
-          z-index: 1;
-        }
-  
-        &--1 {
-          height: 140%;
-          object-position: -60px -20px;
-
-          @include onTablet {
-            height: 100%;
-            object-position: center;
-          }
-        }
-
-        &--7 {
-          object-position: right;
-        }
-      }
-    }
-
-    &__title {
-      &-link {
-
-        @include category__title;
-      }
-
-      &-subtitle {
-        font-weight: 400;
-        color: $main-text-color;
-      }
-    }
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
   }
 }
 
-.none {
-  @include onTablet {
-    display: none;
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--row--nr2 {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+
+      @include onTablet {
+        @include pageGrid;
+      }
+    }
   }
 
-  @include onDesktop {
-    display: block;
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--row2 {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+
+      &--none {
+
+        @include onTablet {
+          display: none;
+        }
+
+        @include onDesktop {
+          display: block;
+        }
+      }
+    }
+
+    &--right {
+
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--position {
+      &--left {
+        object-position: top left;
+      }
+
+      &--right {
+        object-position: bottom right;
+      }
+    }
+  }
+
+  &__about {
+    font-size: 16px;
+    line-height: 170%;
+
+    &--title {
+      margin: 0;
+      color: $accent-main-color;
+    }
+
+    &--dates {
+      margin: 0;
+    }
   }
 }
