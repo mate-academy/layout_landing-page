@@ -1,0 +1,33 @@
+.page {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform, opacity $transform-duration;
+
+    &:target {
+      transform: translate(0);
+      opacity: 1;
+      pointer-events: all;
+      z-index: 1;
+    }
+  }
+}

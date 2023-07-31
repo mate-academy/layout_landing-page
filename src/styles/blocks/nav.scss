@@ -1,0 +1,42 @@
+.nav {
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+    list-style: none;
+    flex-direction: column;
+  }
+
+  &__link {
+    position: relative;
+    width: fit-content;
+    color: $main-text-color;
+    font-size: 22px;
+    line-height: 22px;
+    text-decoration: none;
+
+    &::after {
+      position: absolute;
+      bottom: -4px;
+      display: block;
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+      opacity: 0;
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform $transform-duration;
+    }
+
+    @include onDesktop {
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
