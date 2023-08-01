@@ -13,9 +13,35 @@
 
   &__link {
     @include flex-all-center;
+    position: relative;
 
-    &:hover::before {
-      content: "";
+    color: #fff;
+    font-weight: 700;
+    text-align: right;
+
+    &-text {
+      position: absolute;
+      top: - 40px;
+      right: 40px;
+
+      overflow: hidden;
+      height: 140px;
+      width: 200px;
+      max-height: 0;
+
+      opacity: 0;
+
+      transition: all $transition-duration;
+    }
+
+    @include onLaptop {
+      &:hover {
+        .icons-container__link-text {
+          max-height: 140px;
+
+          opacity: 1;
+        }
+      }
     }
   }
 
@@ -27,6 +53,11 @@
   &__img-burger,
   &__img-close {
     @include header_icon-size;
+  }
+
+  &__phone {
+    display: block;
+    margin-bottom: 8px;
   }
 
 }

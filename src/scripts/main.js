@@ -5,6 +5,7 @@ const openMenuButton = document.querySelector('#menu-open');
 const closeMenuButton = document.querySelector('#menu-close');
 const menu = document.querySelector('#page-menu');
 const menuNavLinks = document.querySelectorAll('.menu__link');
+const menuLogo = document.querySelector('#menu-logo');
 
 // clicks
 const toClickOnMenu = () => {
@@ -15,6 +16,7 @@ const toClickOnMenu = () => {
 openMenuButton.addEventListener('click', toClickOnMenu);
 
 closeMenuButton.addEventListener('click', toClickOnMenu);
+menuLogo.addEventListener('click', toClickOnMenu);
 
 const navLinks = Array.from(menuNavLinks);
 
