@@ -1,0 +1,84 @@
+@mixin onMobile-L {
+  @media (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin onMobile-S {
+  @media (max-width: 484.98px) {
+    @content;
+  }
+}
+
+@mixin small-container {
+  max-width: 1020px;
+  padding-inline: 20px;
+  margin: 0 auto;
+  @include onMobile-S {
+    max-width: 640px;
+  }
+}
+
+@mixin section-title() {
+  &:not(:last-child) {
+    margin-bottom: 56px;
+  }
+
+  @include onMobile-S {
+    font-size: 40px;
+  }
+
+  @include onMobile-L {
+    font-size: 32px;
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+@mixin link-hover() {
+  display: inline-block;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: $main-color;
+    transition: all $transition-time;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@mixin imgage-style {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    transition: all $transition-time;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
