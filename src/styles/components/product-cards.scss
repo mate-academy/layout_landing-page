@@ -2,8 +2,21 @@
   display: flex;
   flex-direction: column;
   grid-column: 1 / -1;
+  align-items: center;
   box-sizing: border-box;
   border-radius: 4px;
+
+  &:not(:first-of-type) {
+    margin-top: 40px;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+
+    @include onDesktop {
+      margin-top: 0;
+    }
+  }
 
   &__grid--phone {
     @include gridProductCardsDesktopProperties(1, 5);
@@ -20,6 +33,14 @@
   &__photo {
     margin-bottom: 24px;
     width: 100%;
+
+    @include onTablet {
+      width: 70%;
+    }
+
+    @include onDesktop {
+      width: 100%;
+    }
   }
 
   &__photo-img {
@@ -27,10 +48,12 @@
   }
 
   &__title {
+    margin-bottom: 8px;
     font-size: 18px;
   }
 
   &__description {
+    margin-bottom: 12px;
     font-family: $secondaryFontFamily;
     position: relative;
     font-size: 16px;
