@@ -1,0 +1,97 @@
+@mixin header-space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: $main-text-color;
+}
+
+@mixin btn-style {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: $button-text-color;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin text-space-mono {
+  font-family: "Space Mono", monospace;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+@mixin menu-link-style {
+  color: $main-text-color;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 2px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin section-title-styles {
+  color: $main-text-color;
+  font-family: "Space Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  font-size: 32px;
+
+  @include onTablet {
+    font-size: 40px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{property} $duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
