@@ -1,48 +1,38 @@
 .icon {
   display: block;
-  height: 24px;
-  width: 24px;
+  height: var(--size);
+  width: var(--size);
+  --size: 24px;
   background-size: cover;
   background-position: center;
 
-  &--contact {
-    display: none;
-  }
-
-  @include hover(transform, scale(1.2));
+  @include hover(transform, scale($hoverScale));
 
   @include onTablet {
-    height: 32px;
-    width: 32px;
-
-    &--contact {
-      display: none;
-    }
+    --size: 32px;
   }
 
-  @include onDesktop {
-    &--contact {
-      display: flex;
-      height: 32px;
-      width: 170px;
-      align-items: center;
-      text-decoration: none;
-
-      text-align: right;
-
-      &-number {
-        color: $main-text-color;
-        letter-spacing: 2px;
-
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 16px;
-      }
-    }
+  &__more-info {
+    position: absolute;
+    right: calc(var(--size) + 20px);
+    display: none;
+    width: max-content;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: var(--size);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main-text-color;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+
+    &:hover {
+      .icon__more-info {
+        display: block;
+      }
+    }
   }
 
   &--menu {

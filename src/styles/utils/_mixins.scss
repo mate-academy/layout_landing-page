@@ -10,7 +10,7 @@
   }
 }
 
-@mixin contentPaddingInline() {
+@mixin contentPaddingInline {
   padding-inline: 20px;
 
   @include onTablet {
@@ -28,11 +28,10 @@
   @include contentPaddingInline;
 }
 
-@mixin hover($property, $toValue, $origin: center) {
-  transition: #{$property} 0.3s;
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
   &:hover {
     #{$property}: $toValue;
-    transform-origin: $origin;
   }
 }
 
@@ -49,6 +48,48 @@
 
   @include onDesktop {
     --columns: 12;
-    column-gap: 24px;
   }
+}
+
+@mixin linkHoverShadow() {
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+}
+
+@mixin linkActiveShadow() {
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin buttonStyle() {
+  height: 56px;
+  padding: 0 48px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 40px;
+  background-color: $main-text-color;
+
+  color: $menu-text-color;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  @include hover(transform, scale($hoverScale));
+
+  &:link,
+  &:visited {
+    color: $menu-text-color;
+  }
+
+  @include linkHoverShadow();
+  @include linkActiveShadow();
 }
