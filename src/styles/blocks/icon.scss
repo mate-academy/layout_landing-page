@@ -1,5 +1,6 @@
 .icon {
   display: block;
+  position: relative;
   width: 24px;
   height: 24px;
   background-size: cover;
@@ -8,8 +9,6 @@
     width: 32px;
     height: 32px;
   }
-
-  @include hover(transform, scale(1.2));
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
@@ -25,5 +24,44 @@
 
   &--close {
     background-image: url(../images/icons/icon-close.svg);
+  }
+
+  &__numbers {
+    display: flex;
+    position: absolute;
+    right: 100%;
+    transform: translateY(-35%);
+    flex-direction: column;
+    text-transform: uppercase;
+    pointer-events: none;
+    width: max-content;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &__phone {
+      display: block;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      max-width: 135px;
+
+      &:nth-child(-n +3) {
+        padding-bottom: 8px;
+      }
+
+      &--title {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+      }
+    }
+  }
+
+  &:hover &__numbers {
+    pointer-events: all;
+    opacity: 1;
   }
 }
