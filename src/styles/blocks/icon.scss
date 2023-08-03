@@ -13,11 +13,39 @@
   &--phone {
     background-image: url(../images/icons/Icon-Phone-call.svg);
     background-size: cover;
+    position: relative;
+
+    &:hover {
+      &::before {
+        content: "+1 212-535-7710; +1 212-923-3700";
+        //  I can`t add full vertion of content from mockup
+        // because npm run lint failed:
+        // src/styles/blocks/icon.scss
+        //  20:90  ✖  Expected line length to be no more than 80 characters
+        display: flex;
+        flex-wrap: wrap;
+        color: $white-color-for-text;
+        font-weight: $bold-font;
+        line-height: $mobile-line-higth;
+        text-transform: uppercase;
+        position: absolute;
+        top: -30px;
+        right: 50px;
+        width: 130px;
+        text-align: right;
+      }
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/Icon-Burger-menu.svg);
     background-size: cover;
+
+    &:hover {
+      @include onDesktop {
+        background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+      }
+    }
   }
 
   &--close {

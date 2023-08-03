@@ -1,20 +1,18 @@
-.section {
-  padding-inline: $mobile-inline-padding;
-  // margin: 100px 0;
-  @include contentPaddingInline();
-  @include marginSections();
-}
-
 .about-us {
-  display: flex;
-  flex-direction: column;
-  color: $main-dark-color;
   font-weight: $bold-font;
+  color: $main-dark-color;
+  @include pageGrid;
 
   &__title {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+    @include onTablet {
+      grid-column: span 3;
+      grid-row: 1 / 2;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+      grid-row: 1 / 2;
+    }
   }
 
   &__subtitle {
@@ -24,35 +22,53 @@
     margin: 0;
   }
 
-  &__head-title {
-    font-size: 2rem;
-    line-height: 32px;
-    letter-spacing: -1.5px;
+  &__article {
+    grid-column: span 2;
+    display: grid;
+    row-gap: 16px;
+    padding-bottom: 24px;
     margin: 0;
-  }
-}
 
-.fifth-avenue {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+    &__title {
+      font-size: 1.5rem;
+      line-height: 30px;
+    }
 
-  &__title {
-    font-size: 1.5rem;
-    line-height: 30px;
+    @include onTablet {
+      grid-column: 4 / 7;
+      grid-row: 1 / 2;
+    }
+
+    @include onDesktop {
+      grid-column: 6 / -1;
+      grid-row: 1 / 2;
+    }
+
+    &--second {
+      @include onTablet {
+        grid-column: 4 / 7;
+        grid-row: 2 / 3;
+      }
+
+      @include onDesktop {
+        grid-column: 6 / -1;
+        grid-row: 2 / 3;
+      }
+    }
   }
 }
 
 .timetable {
-  display: flex;
-  gap: 24px;
+  // display: flex;
+  // gap: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
 
   &__hours {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 38%;
-    margin: 16px 0;
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 8px;
     line-height: $mobile-line-higth;
 
     &__item {
@@ -61,11 +77,9 @@
   }
 
   &__days {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 61%;
-    margin: 16px 0;
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 8px;
     font-weight: $regular-font-weight;
     line-height: $mobile-line-higth;
 
@@ -73,6 +87,13 @@
       margin: 0;
     }
   }
+}
+
+.article__title {
+  font-size: 1.5rem;
+  font-weight: $bold-font;
+  line-height: 30px;
+  margin: 0;
 }
 
 .closed-on {

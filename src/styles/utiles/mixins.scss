@@ -4,11 +4,44 @@
   }
 }
 
+@mixin onDesktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline() {
   padding-inline: $mobile-inline-padding;
 
   @include onTablet {
+    max-width: 1020px;
     padding-inline: $tablet-inline-padding;
+  }
+
+  @include onDesktop() {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: $desctop-inline-padding;
+  }
+}
+
+.container {
+  @include contentPaddingInline();
+}
+
+@mixin pageGrid {
+  --column: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --column: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --column: 12;
   }
 }
 
