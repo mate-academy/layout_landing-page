@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 140%;
+  font-family: "Poppins", sans-serif;
+  color: $white-color;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: all $effectDuration;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  & img {
+    @include hover(transform, scale(1.03));
+  }
+}
