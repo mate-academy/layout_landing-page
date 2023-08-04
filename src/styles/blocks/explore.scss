@@ -1,32 +1,42 @@
 .explore {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   line-height: 27px;
   text-align: center;
   color: #161616;
+  padding-bottom: 100px;
+
+  @include onTablet {
+    padding-bottom: 140px;
+  }
 
   &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-
-    @include onDesktop {
-      flex-direction: row;
-      margin-top: 48px;
-    }
+    @include pageGrid;
   }
-  
+
   &__content {
     display: flex;
     flex-direction: column;
     margin: 0;
+    padding-block: 40px;
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: 2 / -2;
+      padding-block: 48px;
+    }
+
+    @include onDesktop {
+      grid-column: span 4;
+      padding-block: 48px;
+    }
   }
 
   &__photo {
-    display: grid;
-    grid-template-columns: 1fr;
-    // width: 280px;
-    // height: 277px;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__subtitle {
