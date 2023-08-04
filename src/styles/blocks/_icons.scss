@@ -28,9 +28,29 @@
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
 
-    &:hover {
-      .icon__more-info {
-        display: block;
+    @include onDesktop {
+      &::before {
+        display: inline-block;
+
+        position: absolute;
+        left: -150px;
+        top: 10px;
+
+        color: white;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        content: $phone-number;
+
+        opacity: 0;
+        cursor: pointer;
+      }
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
       }
     }
   }
