@@ -1,4 +1,5 @@
 .form {
+  border: none;
   &-box {
     margin-top: 48px;
     height: 396px;
@@ -15,21 +16,46 @@
 
   &-field {
     margin-bottom: 16px;
-    padding: 14px 16px;
-    background-color: #f8f8fa;
+  }
 
-    &--message {
-      height: 100px;
+  &__input,
+  &__textarea {
+    @include formSetting;
+    @include formFont;
+    color: $mainFontColor;
+    cursor: pointer;
+    outline: none;
+
+    &::placeholder {
+      color: #7e7e83;
     }
+  }
+
+  &__textarea {
+    height: 140px;
+    overflow: auto;
   }
 }
 
-input {
-  border: none;
-  background-color: #f8f8fa;
+.form__input:hover,
+.form__textarea:hover {
+  color: $mainFontColor;
+}
 
-  &::placeholder {
-    @include sectionFont;
-    color: #7e7e83;
-  }
+.form__input:focus,
+.form__textarea:focus {
+  color: $mainFontColor;
+  border: 1px solid $mainFontColor;
+}
+
+.form__input:active,
+.form__textarea:active {
+  color: $mainFontColor;
+  border: 1px solid $mainFontColor;
+}
+
+.form__input:default,
+.form__textarea:default {
+  color: $mainFontColor;
+  border: none;
 }
