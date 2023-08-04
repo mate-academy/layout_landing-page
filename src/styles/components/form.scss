@@ -4,7 +4,6 @@
     padding: 14px 16px;
     display: block;
     width: 100%;
-    box-sizing: border-box;
 
     border-radius: 8px;
     border: 1px solid #f8f8fa;
@@ -18,14 +17,18 @@
       font-family: $secondaryFontFamily;
       color: $thirdaryFontColor;
       opacity: 1;
-      transition: all $effectDuration;
+
+      transition: opacity $effectDuration, color $effectDuration;
     }
 
-    &:hover {
-      border: 1px solid #d5d7de;
+    @include onDesktop {
 
-      &::placeholder {
-        color: $mainFontColor;
+      @include hover(border, 1px solid #d5d7de);
+      &:hover {
+
+        &::placeholder {
+          color: $mainFontColor;
+        }
       }
     }
 
