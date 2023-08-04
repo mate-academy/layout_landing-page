@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: $whiteAccent;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: $mainAccent;
+  }
+
+  &__header {
+    @include page-padding-inline;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    pointer-events: none;
+
+    @include page-padding-inline;
+
+    transition: all 0.4s;
+    opacity: 0;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+
+      transform: translateX(0);
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__top-bar {
+    @include top-bar_padding-block;
+  }
+
+  &__main-content {
+    @include page-padding-inline;
+    @include main-content_padding-block;
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+  }
+}
