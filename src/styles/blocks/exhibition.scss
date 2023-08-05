@@ -1,0 +1,72 @@
+.exhibition {
+  color: $secondary-text-color;
+
+  &__imgs {
+    @include pageGrid;
+
+    &--2 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      column-gap: 8px;
+
+      @include onTablet {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        column-gap: 24px;
+        .exhibition__link--trio--3 {
+          display: none;
+        }
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+
+        .exhibition__link--trio--3 {
+          display: grid;
+        }
+      }
+    }
+  }
+
+  &__link {
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__img {
+    @include hover (transform, scale(1.1));
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__subtitle {
+    display: inline-block;
+    padding-top: 24px;
+    color: $accent-color;
+    @include hoverLinksUnderlines ($accent-color, -1px);
+  }
+
+  &__view-time {
+    font-weight: $font-weight-normal;
+  }
+}

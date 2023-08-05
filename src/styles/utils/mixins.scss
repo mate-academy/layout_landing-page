@@ -1,0 +1,110 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin inlinePaddindControl {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+    padding: 0;
+  }
+}
+
+@mixin hover ($property, $property-value) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $property-value;
+    @content;
+  }
+}
+
+//OMG. I`m so proud of this mixin
+// so I added this effect for more elements then mockup has
+@mixin hoverLinksUnderlines($color-value, $bottom-value) {
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    bottom: $bottom-value;
+    background-color: $color-value;
+    transition: transform $effect-duration;
+    transform: scale(0);
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 24px;
+  color: $secondary-text-color;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet {
+    --colums: 6;
+  }
+
+  @include onDesktop {
+    --colums: 12;
+  }
+}
+
+@mixin placeholder {
+  &::placeholder {
+    color: $form-color;
+    font-size: $font-size-main-text-smaller;
+    line-height: 20px;
+  }
+
+  // I dont use @include hover(border, 1px solid #d5d7de);
+  // cos duration looks here strange.
+  &:hover {
+    border: 1px solid #d5d7de;
+  }
+
+  &:focus {
+    border: 1px solid $secondary-text-color;
+  }
+}
+
+@mixin btn {
+  width: 280px;
+  height: 56px;
+  text-align: center;
+  border: none;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: $main-text-color;
+  font-family: $font-family;
+  background-color: $accent-color;
+  font-size: $font-size-main-text;
+  font-weight: $font-weight-bold;
+  @include hover (background-color, $accent-color-hover);
+
+  &:focus {
+    background-color: $accent-color-active;
+  }
+}
