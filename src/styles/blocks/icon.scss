@@ -14,10 +14,6 @@
     width: $tablet-length;
   }
 
-  &--phone {
-    background-image: url(../images/icons/icon-phone.svg);
-  }
-
   &--menu {
     background-image: url(../images/icons/icon-menu.svg);
 
@@ -28,5 +24,35 @@
 
   &--close {
     background-image: url(../images/icons/icon-close.svg);
+  }
+
+  &--phone {
+    position: relative;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $main-clr;
+    text-decoration: none;
+    background-image: url(../images/icons/icon-phone.svg);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -139px;
+      top: 8px;
+      display: block;
+      height: 16px;
+      width: 139px;
+
+      transition: $transition-time;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    &:hover::before {
+      content: "+1 234 555-55-55";
+      transform: scale(1);
+    }
   }
 }
