@@ -1,15 +1,22 @@
 'use strict';
 
-const modal = document.getElementById('modalMenu');
+let modal;
 
-function toggleModal() {
+function toggleModal(event) {
+  // Prevent the click event from propagating to the modal
+  event.stopPropagation();
   modal.classList.toggle('show');
 }
 
 function closeModal() {
-
   modal.classList.remove('show');
 }
 
-modal.addEventListener('click', toggleModal);
-modal.addEventListener('click', closeModal);
+document.addEventListener('DOMContentLoaded', function() {
+  modal = document.getElementById('modalMenu');
+  modal.addEventListener('click', closeModal);
+
+  const menuOpener = document.querySelector('.menu__opener');
+
+  menuOpener.addEventListener('click', toggleModal);
+});
