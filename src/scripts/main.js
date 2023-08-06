@@ -1,13 +1,15 @@
 'use strict';
 
-function toggleModal() {
-  const modal = document.getElementById('modalMenu');
+const modal = document.getElementById('modalMenu');
 
+function toggleModal() {
   modal.classList.toggle('show');
 }
 
 function closeModal() {
-  const modal = document.getElementById('modalMenu');
 
   modal.classList.remove('show');
 }
+
+modal.addEventListener('click', toggleModal);
+modal.addEventListener('click', closeModal);
