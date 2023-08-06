@@ -19,3 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   menuOpener.addEventListener('click', toggleModal);
 });
+
+document.getElementById('sendButton').addEventListener('click', function() {
+  clearForm();
+});
+
+function clearForm() {
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email');
+  const messageTextarea = document.getElementById('message');
+
+  usernameInput.value = '';
+  emailInput.value = '';
+  messageTextarea.value = '';
+}
