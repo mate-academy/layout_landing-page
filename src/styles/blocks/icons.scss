@@ -23,19 +23,24 @@
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
     position: relative;
+    @include flex-align-center;
+    justify-content: flex-end;
 
     @include onTablet {
-      &:hover {
-        @include flex-align-center;
-        justify-content: flex-end;
+      &::before {
+        padding-right: $icon-width-onTablet + 20px;
+        padding-block: 5px;
+        position: absolute;
+        width: max-content;
+        content: "+1 234 5555-55-55";
+        color: $whiteAccent;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
 
+      &:hover {
         &::before {
-          padding-right: $icon-width-onTablet + 20px;
-          padding-block: 5px;
-          position: absolute;
-          width: max-content;
-          content: "+1 234 5555-55-55";
-          color: $whiteAccent;
+          opacity: 1;
         }
       }
     }
