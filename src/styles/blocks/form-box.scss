@@ -1,5 +1,4 @@
 .form {
-  border: none;
   &-box {
     margin-top: 48px;
     height: 396px;
@@ -18,44 +17,46 @@
     margin-bottom: 16px;
   }
 
+  &__textarea {
+    height: 140px;
+    overflow: auto;
+    resize: none;
+  }
+
   &__input,
   &__textarea {
-    @include formSetting;
-    @include formFont;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    width: 100%;
+    @include sectionFont;
     color: $mainFontColor;
+    background-color: #f8f8fa;
     cursor: pointer;
+    border: none;
     outline: none;
 
     &::placeholder {
       color: #7e7e83;
     }
+
+    &:hover {
+      color: $mainFontColor;
+      border: 1px solid #d5d7de;
+    }
+
+    &:focus,
+    &:active {
+      color: $mainFontColor;
+      border: 1px solid $mainFontColor;
+    }
   }
-
-  &__textarea {
-    height: 140px;
-    overflow: auto;
-  }
 }
 
-.form__input:hover,
-.form__textarea:hover {
-  color: $mainFontColor;
-}
-
-.form__input:focus,
-.form__textarea:focus {
-  color: $mainFontColor;
-  border: 1px solid $mainFontColor;
-}
-
-.form__input:active,
-.form__textarea:active {
-  color: $mainFontColor;
-  border: 1px solid $mainFontColor;
-}
-
-.form__input:default,
-.form__textarea:default {
-  color: $mainFontColor;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
   border: none;
+  -webkit-text-fill-color: $mainFontColor;
+  -webkit-box-shadow: 0 1000px #f8f8fa inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
