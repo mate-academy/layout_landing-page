@@ -2,52 +2,54 @@
   display: block;
   height: 24px;
   width: 24px;
-}
 
-.icon:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s;
-}
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+    background-repeat: no-repeat;
+  }
 
-.icon--phone {
-  background-image: url(/images/Phone-number.png);
-  text-decoration: none;
-}
+  @include hover(transform, scale(1.2));
 
-.icon--menu {
-  background-image: url(/images/Icon-Burger-menu.png);
-}
+  &--phone {
+    background-image: url(/images/Phone-number.png);
+    text-decoration: none;
+    &:before {
+      content: "+1 234 555-55-55";
+      position: relative;
+      top: 50%;
+      display: block;
+      width: max-content;
+      padding-right: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: $main-text-color;
+      opacity: 0;
+      transform: translate(-100%,-50%);
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
 
-.icon--menu:hover {
-  background-image: url(/images/Icon-Burger-menu-hover.png);
-  transition: transform 0.3s;
-}
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+      position: center;
+    }
+  }
 
-.icon--close {
-  background-image: url(/images/Icon-Close.png);
-}
+  &--menu {
+    background-image: url(/images/Icon-Burger-menu.png);
 
-.icon--phone:before {
-  content: "+1 234 555-55-55";
-  position: relative;
-  top: 50%;
-  display: block;
-  width: max-content;
-  padding-right: 8px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 2px;
-  color: #292929;
-  opacity: 0;
-  transform: translate(-100%,-50%);
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
+    &:hover {
+      background-image: url(/images/Icon-Burger-menu-hover.png);
+      transition: transform 0.3s;
+    }
+  }
 
-.icon--phone:hover::before {
-  opacity: 1;
-  pointer-events: all;
-  position: center;
+  &--close {
+    background-image: url(/images/Icon-Close.png);
+  }
 }
