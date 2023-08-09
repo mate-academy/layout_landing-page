@@ -11,6 +11,7 @@
     font-size: 16px;
     line-height: 27px;
     margin-top: 16px;
+    cursor: pointer;
   }
 
   &__wrapper {
@@ -42,21 +43,21 @@
       width: 100%;
       height: 50px;
 
+      &:hover {
+        border: 2px solid #dbdbdb;
+      }
+
+      &:focus {
+        border: 2px solid $button-color;
+      }
+
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus,
       &:-webkit-autofill:active {
-        -webkit-text-fill-color: #000000;
+        -webkit-text-fill-color: #000;
         box-shadow: inset 0 0 20px 20px #fff;
       }
-    }
-
-    &__info:hover {
-      border: 2px solid #dbdbdb;
-    }
-
-    &__info:focus {
-      border: 2px solid $button-color;
     }
 
     &__field {
@@ -105,13 +106,26 @@
     }
 
     &__href {
+      position: relative;
       text-decoration: none;
       color: #191919;
       line-height: 140%;
       transition: all 0.3s;
 
-      &:hover {
-        color: black;
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        position: absolute;
+        height: 1px;
+        background-color: $main-text-color;
+
+        transition: transform 0.3s;
+        transform: scale(0);
+      }
+
+      &:hover::after {
+        transform: scale(1);
       }
     }
 
