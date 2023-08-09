@@ -24,13 +24,46 @@
     padding-inline: 72px;
   }
 
-  @include onDesktop{
+  @include onDesktop {
     padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
   }
 }
+
 @mixin hoverMouseMenu {
   cursor: url("../images/cursor-hover-menu.svg"), auto;
 }
+
 @mixin hoverMouseHeader {
-cursor: url("../images/cursor-hover.svg"), auto;
+  cursor: url("../images/cursor-hover.svg"), auto;
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin pageGrid {
+  display: grid;
+  --column: 2;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    --column: 6;
+  }
+
+  @include onDesktop {
+    --column: 12;
+  }
+}
+
+@mixin hoverButton {
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+  &:focus {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
 }
