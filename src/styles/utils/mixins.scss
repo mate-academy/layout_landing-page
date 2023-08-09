@@ -1,0 +1,92 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin linkHover {
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: $header-text-color;
+    transition: all $effectDuration;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin photoHover {
+  transition: transform $effectDuration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin contactHoverDark {
+  transition: color $effectDuration;
+
+  &:hover {
+    color: $main-text-color;
+  }
+}
+
+@mixin contactHoverRed {
+  transition: color $effectDuration;
+
+  &:hover {
+    color: $main-red-color;
+  }
+}
+
+@mixin form-placeholder-and-action {
+  &::placeholder {
+    font-size: 14px;
+    line-height: 1.42;
+    color: $placeholder-color;
+  }
+
+  &:hover {
+    border-color: #d5d7de;
+  }
+
+  &:focus {
+    outline: 1px solid $main-text-color;
+  }
+}
