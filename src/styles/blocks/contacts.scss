@@ -1,0 +1,157 @@
+.contacts {
+  --columns: 2;
+  &__wrapper {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    @include onTablet {
+      --columns: 6;
+      column-gap: 24px;
+    }
+    @include onDesktop {
+      --columns: 12;
+    }
+  }
+}
+
+.contacts__container {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 1 / 4;
+  }
+
+  @include onDesktop {
+    grid-column: span 5;
+  }
+
+}
+
+.contacts__form {
+  display: grid;
+  row-gap: 16px;
+
+  &__input {
+    box-sizing: border-box;
+    border-radius: 40px;
+    background: #f8f8fa;
+    border: 1px solid #fff;
+    max-height: 48px;
+    width: 100%;
+    padding: 14px 16px;
+
+    &::placeholder {
+      color: #837e7e;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    &:hover {
+      border: 1px solid #d5d7de;
+      background: #f8f8fa;
+
+    }
+
+    &:focus {
+      border: 1px solid $main-text-color;
+    }
+  }
+
+  &__textarea {
+    min-width: 280px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f5f6;
+    outline: none;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 14px;
+    resize: none;
+    font-size: 16px;
+    height: 148px;
+
+    &::placeholder {
+      color: #837e7e;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &:hover {
+      border: 1px solid #d5d7de;
+    }
+
+    &:focus {
+      color: #000;
+      border: 3px solid $main-text-color;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 56px;
+    padding: 0 48px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 32px;
+
+    border: 3px solid $main-text-color;
+    border-radius: 40px;
+    background: $main-text-color;
+
+    transition: background-color 300ms;
+
+    &:hover {
+      border: 3px solid $main-text-color;
+      background: #fff;
+      color: $main-text-color;
+    }
+
+    &:focus {
+      background: #111;
+      color: #fff;
+    }
+  }
+
+}
+
+.contacts__information {
+  margin-top: 48px;
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    margin-top: 0;
+    grid-column: 5 / 7;
+  }
+
+  @include onDesktop {
+    grid-column: 8 / 11;
+  }
+
+  display: grid;
+  row-gap: 24px;
+}
+
+.contacts__item {
+  margin: 0;
+  padding: 0;
+
+  &__name {
+    margin: 0 0 8px;
+    color: #9fadc2;
+    font-size: 14px;
+  }
+
+  &__value {
+    text-decoration: none;
+    color: #3e3e3e;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #9fadc2;
+    }
+  }
+}
