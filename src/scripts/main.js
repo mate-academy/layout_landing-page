@@ -1,5 +1,7 @@
 'use strict';
 
+window.addEventListener('load', applyStylesOnScroll);
+
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#menu') {
     document.body.classList.add('page__body--with-menu');
@@ -8,8 +10,8 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-const phone = document.getElementById('icon-phone');
-const headerContacts = document.getElementById('header-contacts');
+const phone = document.querySelector('#icon-phone');
+const headerContacts = document.querySelector('#header-contacts');
 
 phone.addEventListener('mouseover', () => {
   headerContacts.classList.add('header__contacts--active');
@@ -29,9 +31,21 @@ headerContacts.addEventListener('mouseleave', () => {
   headerContacts.classList.remove('header__contacts--active');
 });
 
-const form = document.getElementById('contacts-form');
+const form = document.querySelector('#contacts-form');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   form.reset();
 });
+
+window.addEventListener('scroll', applyStylesOnScroll);
+
+const nowOnViewPictures = document.querySelectorAll('.now-on-view__picture');
+
+function applyStylesOnScroll() {
+  nowOnViewPictures.forEach(picture => {
+    if (window.scrollY + window.innerHeight >= picture.offsetTop) {
+      picture.classList.add('animated');
+    }
+  });
+}
