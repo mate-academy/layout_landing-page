@@ -15,8 +15,8 @@
     margin-top: 140px;
   }
 
-  @include onLaptop {
-    width: 1020px;
+  @media (min-width: 1400px) {
+    width: 1160px;
     margin-inline: auto;
   }
 
@@ -37,25 +37,19 @@
   &__box {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 
     &--aboutUs {
       gap: 24px;
-      margin-inline: auto;
+    }
+
+    @media (min-width: 1300px) {
+      gap: 0;
+      justify-content: space-between;
     }
 
     &--gallery {
-      display: block;
-      margin-inline: auto;
-      width: 280px;
-
-      @media (min-width: 640px) {
-        width: 600px;
-      }
-
-      @include onLaptop {
-        width: 1020px;
-      }
+      flex-direction: column;
     }
 
     &--explore-online {
@@ -64,21 +58,18 @@
 
       @include onLaptop {
         flex-direction: row;
-        gap: 24px;
-        margin-inline: auto;
+        margin-inline: 0;
+        justify-content: space-between;
       }
     }
 
     &--contacts {
       gap: 24px;
-      margin-inline: auto;
 
       @include onLaptop {
-        gap: 0;
         margin-inline: 0;
         justify-content: space-between;
       }
-
     }
   }
 
@@ -87,34 +78,30 @@
     flex-wrap: wrap;
     padding-top: 48px;
 
+    &--gallery {
+      flex-direction: column;
+    }
+
     &--one,
     &--three {
       gap: 20px;
-      margin-bottom: 24px;
-
-      @include onTablet {
-        gap: 24px;
-      }
     }
 
     &--two {
       gap: 8px;
+    }
+
+    &--one,
+    &--three,
+    &--two {
+      flex-direction: row;
       margin-bottom: 24px;
-
-      @media (min-width: 640px) {
-        gap: 24px;
-        margin-bottom: 0;
-      }
-
-      @include onLaptop {
-        margin-bottom: 24px;
-      }
+      justify-content: space-between;
     }
 
     &--four,
     &--five,
     &--six {
-      margin-inline: auto;
       flex-direction: column;
       text-align: center;
       width: 280px;
@@ -133,37 +120,36 @@
       gap: 24px;
       width: 280px;
 
-      @include onLaptop {
+      @media (min-width: 1000px) {
         width: 498px;
       }
     }
   }
 
-  &__picture {
-    display: inline-block;
-    overflow: hidden;
+  &__link--5 {
+    @media (min-width: 640px) {
+      display: none;
+    }
 
-    &--5 {
-      box-sizing: content-box;
-
-      @media (min-width: 640px) {
-        width: 0.05px;
-        height: 0.05px;
-        display: none;
-      }
-
-      @include onLaptop {
-        display: contents;
-      }
+    @include onLaptop {
+      display: contents;
     }
   }
 
-  &__picture img {
+  &__picture,
+  &__picture--5 {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &__picture img,
+  &__picture--5 img {
     display: block;
     transition: 1s;
   }
 
-  &__picture img:hover {
+  &__picture img:hover,
+  &__picture--5 img:hover {
     @include modeHover;
   }
 }
