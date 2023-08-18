@@ -1,18 +1,49 @@
-# Landing page
+# Landing page B&O
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+This is a landing page B&O that includes a brief information about main products of the company.
+The main goal is to expand the target audience and to get the feedback from customers.
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+The landing has three parts: a header, a main block and a footer.
+The page has a favicon
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+The header includes a logotype of the company, an icon-phone link, 
+an icon-menu link at the top of the page and main title at the bottom 
+When the user clicks the menu link, the sidebar opens.
+
+The menu has a top bar, a nav bar and phone link that let to call the specified phone number.
+The top bar repeats the logotype of the company and has a close-menu icon.
+The nav bar includes text links to the appropriate places in the page.
+
+There are three sections in the main block:
+- Recommended includes some information about products that may be of interest to customers
+- Categories shows main groups goods with links for more detailed product reviews
+- Beosystem, this device combines the design of the last century with modern technology 
+emphasizing the stability and reliability of the company for long time
+
+Footer offers visitors to send their contacts data and messages.
+Besides it includes the company contact information: the phone, email, address.
+
+This landing page was created using technologies HTML and CSS. 
+Javascript wasn't applying.
+
+The project used:
+- BEM methodology
+- Flexbox a one-dimensional layout method
+- SASS pre-processor
+- Grid a two-dimensional layout method
+- Media queries
+- HTML Forms
+- Transformations
+- Class "container" as a usual DOM element, but not a BEM block
+
+To view the landing page, type its address in the browser address bar:
+  https://gboreyko.github.io/layout_landing-page/
+
+To open the menu, click on the icon in the upper right corner of the page.
+To close the menu, click on the icon in the upper right corner of the opened side bar.
+You should enter your name, correct email and a message at least 12 characters long to send the information to the recipient
+To call the owner, click on the phone number field "+1 234 5555-55-55" or on the phone tube icon in the upper right corner of the page or on the text "Call to order" on the menu.
+If you want to find the location of the company on the map click on its address field.
+
+Page layout is available at:
+  https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0

@@ -1,0 +1,40 @@
+
+.category {
+  @include markupGrid;
+  row-gap: 16px;
+
+  &__link {
+    position: relative;
+    display: block;
+    grid-column: span 1;
+
+    height: 0;
+    padding-bottom: 100%;
+
+    @include onTablet {
+      grid-column: span 3;
+      padding-bottom: 184px / 288px * 100%;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+      padding-bottom: 324px / 498px * 100%;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include hover(transform, scale($ratio));
+  }
+
+  &__article-title {
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: span 4;
+    }
+  }
+}

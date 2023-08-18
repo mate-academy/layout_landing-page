@@ -1,0 +1,51 @@
+
+.menu {
+  @include secondaryFontWeight;
+  height: 100vh;
+  background-color: #f9f9f9;
+  overflow: auto; /* to scroll the menu if needed */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ddd;
+    border-left: 1px solid $menu-scrollbar-thumb-color;
+
+    &-thumb {
+      background: $menu-scrollbar-thumb-color;
+    }
+  }
+
+  &__top-bar {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: #f9f9f9;
+    margin-bottom: 32px;
+    padding-right: 18px;
+
+    @include onTablet {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__phone-number {
+    display: inline-block;
+    @include menuPhoneCallText;
+    margin-bottom: 16px;
+
+    @include hover(transform, scale($ratio));
+  }
+
+  &__call-to-order {
+    display: block;
+    /* set border width fit content */
+    width: fit-content;
+    padding-bottom: 7px;
+    @include menuPhoneCallText;
+    border-bottom: 1px solid $main-text-color;
+  }
+}
