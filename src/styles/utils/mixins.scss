@@ -1,0 +1,71 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    padding-inline: 120px;
+    max-width: 1020px;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    padding-inline: 120px;
+    max-width: 1020px;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin hover($property: all, $toValue: 1s, $inTime: $effectDuration) {
+  transition: #{$property} #{$inTime};
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin target($property: all, $toValue: 1s, $inTime: $effectDuration) {
+  transition: #{$property} #{$inTime};
+
+  &:target {
+    #{$property}: #{$toValue};
+  }
+}
