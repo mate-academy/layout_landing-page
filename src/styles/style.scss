@@ -1,0 +1,58 @@
+@import "utils/variables";
+@import "utils/mixins";
+@import "blocks/header";
+@import "blocks/menu";
+@import "blocks/icon";
+@import "blocks/main";
+@import "blocks/about-us";
+@import "blocks/compare-bikes";
+@import "blocks/details";
+@import "blocks/contact-us";
+
+.page {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  color: $color__white;
+  scroll-behavior: smooth;
+
+  &__menu {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    background-color: $color__dark-grey;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__top {
+    position: fixed;
+    display: block;
+    bottom: 24px;
+    right: 20px;
+    z-index: 1;
+  }
+
+  &__go-top {
+    color: $color__white;
+  }
+}
