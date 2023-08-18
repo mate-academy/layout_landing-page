@@ -22,13 +22,32 @@
   }
   
   &__phone-number {
-    display: block;
+    display: inline-block;
+    position: relative;
     margin-bottom: 16px;
     color: inherit;
     text-decoration: none;
     font-size: 16px;
     line-height: 27px;
     letter-spacing: 2px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $c-dark;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
   
   &__book-a-test-ride {
