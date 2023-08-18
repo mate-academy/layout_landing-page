@@ -1,47 +1,55 @@
-/* #region icon */
-
 .icon {
+  display: block;
   height: 24px;
   width: 24px;
-  background-repeat: no-repeat;
-  display: block;
   background-size: cover;
+  background-position: center;
 
-  @include hover(transform, scale(1.2));
+  @include hover (transform, scale(1.2));
 
   @include onTablet {
     height: 32px;
     width: 32px;
   }
 
-  &-phone {
-    background-image: url(../img/icon-phone-call.svg);
+  &--phone {
     position: relative;
-    display: flex;
-    align-items: center;
+
+    background-image: url(../img/icon-phone-call.svg);
+
+    @include onTablet {
+      &::after {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        left: -180px;
+        top: 8px;
+        white-space: nowrap;
+        display: block;
+        height: 16px;
+        width: 145px;
+        color: $main-color-text;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        transition: transform $duration_effect;
+        transform: scale(0);
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
   }
 
-  &-phone:hover::after {
-    content: "+1 234 5555-55-55";
-    position: absolute;
-
-    top: 0;
-    right: 100%;
-    padding: 5px 24px;
-    color: $main-color-text;
-    white-space: nowrap;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-  }
-
-  &-menu {
+  &--menu {
     background-image: url(../img/icon_burger_menu.svg);
-  }
 
-  &-menu:hover {
-    background-image: url(../img/icon-burger-menu-hover.svg);
+    &:hover {
+      background-image: url(../img/icon-burger-menu-hover.svg);
+    }
   }
 
   &--close {
@@ -50,4 +58,3 @@
     width: 21.33px;
   }
 }
-/* #endregion */
