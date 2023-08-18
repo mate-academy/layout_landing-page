@@ -1,0 +1,85 @@
+.header {
+  background-image: url("../images/header--bg-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 85%;
+
+  margin-bottom: 60px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+    background-position: center;
+  }
+
+  &__logo {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: fadeInFromLeft 2s ease-out forwards;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding-bottom: 35vh;
+  }
+
+  &__top {
+    @include topActionsPadding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__call {
+    @include onDesktop {
+      position: relative;
+
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: absolute;
+        padding-right: 20px;
+        top: 50%;
+        color: white;
+        opacity: 0;
+        pointer-events: none;
+        transition: $a-duration opacity ease-out;
+
+        transform: translate(-100%,-50%);
+      }
+
+      &:hover {
+        &::before {
+          pointer-events: all;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+}
