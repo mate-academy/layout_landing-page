@@ -1,0 +1,48 @@
+.page {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    height: 100%;
+    min-width: 320px;
+    margin: 0;
+    position: relative;
+    padding-bottom: 200px;
+
+    @include onTablet {
+      padding-bottom: 400px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 460px;
+    }
+
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+  .page:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+}
+
