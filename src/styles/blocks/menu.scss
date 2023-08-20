@@ -2,9 +2,14 @@
   box-sizing: border-box;
   height: 100vh;
   background-color: $menu-bg-color;
+  overflow: auto;
 
   &__top-bar {
     margin-bottom: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $menu-bg-color;
 
     @include onTablet {
       margin-bottom: 56px;
@@ -28,6 +33,9 @@
   &__phone-number,
   &__call-to-order {
     display: block;
+    position: relative;
+
+    width: fit-content;
     margin-bottom: 16px;
 
     font-size: 16px;
@@ -37,13 +45,30 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: inherit;
+
+    @include hover(color, $menu-bg-color);
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 38px;
+      bottom: -8px;
+      background-color: $main-color;
+
+      transition: all $effectDuration;
+      transform-origin: left;
+      transform:scaleX(0);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      z-index: -1;
+    }
   }
 
   &__call-to-order {
     margin-bottom: 0;
-    padding-bottom: 8px;
-    width: fit-content;
-
-    border-bottom: 1px solid $main-color;
   }
 }
