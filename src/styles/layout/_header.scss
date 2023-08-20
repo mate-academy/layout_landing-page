@@ -1,0 +1,56 @@
+.header {
+  background-image: url(../images/header.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+
+  &__top {
+    @extend %top-actions;
+    grid-template-columns: 1fr 24px 24px;
+    margin-bottom: 129px;
+
+    @include onTablet {
+      grid-template-columns: 1fr 32px 32px;
+      margin-bottom: 140px;
+    }
+    @include onDesktop {
+      margin-bottom: 84px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__phones {
+    display: none;
+    transition: all $transition;
+
+    &__link {
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    }
+
+    @include onDesktop {
+      display: flex;
+      position: absolute;
+      transform: translate(-109%, -70%);
+      text-align: end;
+      text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__phone {
+    &:hover > .header__phones {
+      @include onDesktop {
+        opacity: 1;
+        width: max-content;
+        pointer-events: all;
+        z-index: 1;
+      }
+    }
+  }
+}
