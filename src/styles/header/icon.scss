@@ -4,8 +4,6 @@
   height: 24px;
   background-repeat: no-repeat;
 
-  @include hover(transform, scale(1.2));
-
   @include onTablet {
     width: 32px;
     height: 32px;
@@ -22,19 +20,24 @@
     font-weight: 700;
     letter-spacing: 2px;
     line-height: 16px;
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: right;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone-call.svg);
 
-    &:hover .icon__hover-number:first-child {
+    &:hover + .icon__hover-number {
       opacity: 1;
+      transform: scale(1);
     }
 
   }
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.svg);
+    @include hover(transform, scale(1.2));
 
     &:hover {
       background-image: url(../images/icons/icon-burger-menu-hover.svg);
@@ -43,5 +46,6 @@
 
   &--close {
     background-image: url(../images/icons/icon-close.svg);
+    @include hover(transform, scale(1.2));
   }
 }
