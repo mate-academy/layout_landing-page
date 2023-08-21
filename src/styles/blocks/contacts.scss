@@ -26,7 +26,12 @@
     }
 
     &--input {
-      padding-left: 16px;
+      &:-webkit-autofill {
+        outline: 1px solid black;
+        transition: background-color 5000s;
+        -webkit-text-fill-color: $main-text-color;
+      }
+      padding-inline: 16px;
       box-sizing: border-box;
       margin-bottom: 16px;
       height: 48px;
@@ -35,7 +40,7 @@
       background: $grey-back-color;
       width: 100%;
 
-      color: $grey-text-color;
+      color: $main-text-color;
       font-family: $mono;
       font-size: 14px;
       font-weight: 400;
@@ -48,14 +53,21 @@
         border: 1px solid #d5d7de;
         background: $grey-back-color;
       }
+
+      &:focus {
+        outline: 1px solid black;
+      }
+
       &::placeholder {
         font-family: $mono;
+        color: $grey-text-color;
         background: $grey-back-color;
       }
     }
   }
 
   textarea {
+    resize: none;
     height: 120px;
     margin-bottom: 0;
     padding: 14px 16px;
