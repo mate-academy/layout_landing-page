@@ -1,3 +1,154 @@
-body {
-  margin: 0;
+@use "sass:math";
+
+@import "utils";
+
+$pc: em($containerWidth);
+$tablet: em(991.98);
+$mobile: em(576);
+$toMobile: em(744);
+$fromMobile: em(744.02);
+$mobileSmall: em(479.98);
+
+@import "fonts";
+@import "blocks";
+
+[class*="__container"] {
+
+  @if ($maxWidthContainer>0) {
+    // max-width: rem($containerWidth);
+    // margin: 0 auto;
+
+    $containerWidth: $maxWidthContainer +$containerPaddingTo;
+    max-width: rem($containerWidth);
+    margin: 0 auto;
+
+    @media (min-width: $mobile) {
+      $containerWidth: $maxWidthContainer +$containerPaddingFrom;
+      max-width: rem($containerWidth);
+    }
+  }
+
+  @if ($containerPaddingTo>0 && $containerPaddingFrom>0) {
+    @if ($maxWidthContainer>0) {
+
+      @media (max-width: $mobile) {
+        padding: 0 rem(math.div($containerPaddingTo, 2));
+      }
+
+      @media (min-width: $mobile) {
+        padding: 0 rem(math.div($containerPaddingFrom, 2));
+      }
+    }
+
+    @else {
+      @include adaptiveValue("padding-left", math.div(
+        $containerPaddingFrom, 2), $containerPaddingTo);
+      @include adaptiveValue("padding-right", math.div(
+        $containerPaddingFrom, 2), $containerPaddingTo);
+    }
+  }
+
+  // @if ($containerPadding>0) {
+  //   @if ($maxWidthContainer>0) {
+  //     padding: 0 rem(math.div($containerPadding, 2));
+  //   }
+
+  //   @else {
+  //     @include adaptiveValue("padding-left", math.div(
+  //       $containerPadding, 2), 15);
+  //     @include adaptiveValue("padding-right", math.div(
+  //       $containerPadding, 2), 15);
+  //   }
+  // }
 }
+
+[class*="-ibg"] {
+  position: relative;
+
+  img,
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+}
+
+[class*="-ibg-contain"] {
+  img {
+    object-fit: contain;
+  }
+}
+
+//#region page
+.page {
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  &__body {
+    height: 100%;
+    font-family: $fontFamily;
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: 1.4;
+    color: $white;
+    background-color: $colorBg;
+
+    > * {
+      min-width: 0;
+    }
+
+    &._lock {
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: fixed;
+        z-index: 5;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+
+  &__wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    @include adaptiveValue("margin-bottom", 120, 60);
+  }
+
+  &__menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    pointer-events: none;
+    transition: left 0.3s;
+
+    &:target {
+      pointer-events: all;
+      left: 0;
+    }
+  }
+
+  &__main {
+    flex: 1 1 auto;
+  }
+
+  &__section {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 164, 92);
+    }
+  }
+}
+
+//#endregion
