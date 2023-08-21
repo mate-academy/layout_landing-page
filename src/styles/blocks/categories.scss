@@ -1,36 +1,66 @@
 .categories {
-  @include constentPaddinInline;
-  &__title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 100%;
-
-    margin-block: 96px 8px;
-  }
-}
-
-.category {
-  display: grid;
-  grid-template-columns: repeat(2, 130px);
-  grid-template-rows: auto;
-  column-gap: 20px;
-  justify-content: center;
-
-  &__image {
-    margin-top: 40px;
-    height: 130px;
-    width: 130px;
-  }
+  @include pageGrid;
 
   &__title {
+    grid-column: 1 /-1;
+
     font-size: 18px;
     font-weight: 700;
     line-height: 140%;
 
     margin-top: 16px;
+
+    @include onDesktop {
+      font-size: 24px;
+
+    }
+  }
+
+  &__category {
+    grid-column: 1 / -1;
+
+    @for $i from 1 through 6 {
+      &-#{$i} {
+        grid-column: span 1;
+      }
+    }
+
+    @include onTablet {
+      &-1, &-5, &-4 {
+        grid-column: span 4;
+      }
+
+      &-2, &-3, &-6 {
+        grid-column: span 2;
+        align-self: center ;
+      }
+    }
+
+    @include onDesktop {
+      &-1, &-5, &-4 {
+        grid-column: span 8;
+      }
+
+      &-2, &-3, &-6 {
+        grid-column: span 4;
+      }
+    }
+
+    &-image {
+      display: block;
+      margin-top: 40px;
+      object-fit: cover;
+      height: auto;
+      width: 100%;
+
+      @include onTablet {
+        margin-top: 56px;
+      }
+    }
   }
 
   &__button {
+    grid-column: 1 / -1;
     font-size: 16px;
     font-weight: 700;
     line-height: 27px;
@@ -44,6 +74,13 @@
     height: 56px;
     align-items: center;
     box-sizing: border-box;
+    transition: all 500ms;
+
+    @include onDesktop {
+      grid-column: span;
+    }
+
+
 
     &:hover {
       border: 2px solid #f0f1f4;
