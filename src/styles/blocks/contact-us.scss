@@ -11,31 +11,25 @@
 
   &__wrapper {
     grid-column: 1 / -1;
-    grid-auto-flow: row;
 
     @include onTablet {
       grid-column: 1 / 4;
     }
 
     @include onDesktop {
-
+      display: grid;
+      column-gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: column;
+      grid-column: 1 / 7;
     }
   }
 
   &__address {
-    // &--fifth-avenue {
 
-    //   @include onDesktop {
-    //     grid-column: 4 / 7;
-    //   }
-    // }
-
-    // &--cloisters {
-
-    //   @include onDesktop {
-    //     grid-column-start: 5;
-    //   }
-    // }
+    &--fifth-avenue {
+      margin-bottom: 48px;
+    }
 
     &__title {
       margin: 0;
@@ -58,7 +52,6 @@
         }
       }
     }
-
   }
 
   &__forms {
@@ -76,39 +69,36 @@
 
   &__form {
     display: block;
+    width: 100%;
+    height: 48px;
+    background-color: $main-forms-background-color;
+    border: 1px solid $main-forms-background-color;
+    margin-bottom: 16px;
+    padding-left: 16px;
 
-    &-input {
-      width: 100%;
-      height: 48px;
-      background-color: $main-forms-background-color;
-      border: 1px solid $main-forms-background-color;
-      margin-bottom: 16px;
-      padding-left: 11px;
+    &:hover {
+      border: 1px solid $main-forms-border-hover;
+    }
+
+    &:focus {
+      border: 1px solid $main-text-color-grey;
+    }
+
+    &::placeholder {
+      color: $main-forms-color;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
 
       &:hover {
-        border: 1px solid $main-forms-border-hover;
+        color: $main-text-color-grey;
       }
+    }
 
-      &::placeholder {
-        text-align: start;
-        color: $main-forms-color;
-        font-family: Cinzel;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 20px;
-
-        &:hover {
-          color: $main-text-color-grey;
-        }
-
-        &:active {
-          border: 1px solid $main-text-color-grey;
-        }
-      }
-
-      &--message {
-        height: 144px;
-      }
+    &--message {
+      height: 144px;
+      padding-top: 14px;
     }
   }
 }
