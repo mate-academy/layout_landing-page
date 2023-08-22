@@ -13,7 +13,36 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/icon-phone-call-3x.png);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        color: #292929;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: 155px;
+        height: 100%;
+
+        transition: all 0.3s;
+        transform: translateX(0);
+        opacity: 0;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+        transform: translateX(-100%);
+      }
+    }
+
   }
 
   &--menu {
