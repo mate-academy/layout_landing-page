@@ -1,0 +1,105 @@
+@mixin onTablet () {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onLaptop () {
+  @media (min-width: $laptop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover ($property,$toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+    z-index: 1;
+  }
+
+}
+
+@mixin hoverline ($property,$start,$toValue) {
+  &::after {
+    transition: #{$property} 0.3s;
+    transform-origin: $start;
+    #{$property}: scale(0);
+  }
+
+  &:hover::after {
+    #{$property}: $toValue;
+  }
+
+}
+
+@mixin contentPaddingInline () {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onLaptop() {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+
+}
+
+@mixin iconsParameters () {
+  height: 24px;
+  width: 24px;
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+}
+
+@mixin headerTitle () {
+  font-size: 36px;
+  padding-bottom: 88px;
+
+  @include onTablet {
+    font-size: 64px;
+    padding-bottom: 130px;
+  }
+
+  @include onLaptop() {
+    font-size: 80px;
+    padding-bottom: 203px;
+  }
+
+}
+
+@mixin logoSize () {
+  height: 38px;
+
+  @include onTablet {
+    height: 56px;
+  }
+
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin pagegrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+
+  }
+
+  @include onLaptop {
+    --columns: 12;
+  }
+}
