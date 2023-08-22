@@ -13,7 +13,31 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/icon-phone-call.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        display: block;
+        position: absolute;
+        left: -160px;
+        height: 32px;
+        line-height: 32px;
+
+        color: $color-white;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        transition: transform 0.3s;
+        transform: scale(0);
+        transform-origin: right;
+      }
+      &:hover::before {
+        transform: scale(1);
+      }
+    }
   }
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.svg);
