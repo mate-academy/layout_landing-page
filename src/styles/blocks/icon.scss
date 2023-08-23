@@ -1,0 +1,58 @@
+@import "./utils/variables";
+@import "./utils/mixins";
+
+.icon {
+  display: block;
+  height: $iconSize;
+  width: $iconSize;
+  background-size: cover;
+  transition: $transitionTime;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: $iconSizeTablet;
+    width: $iconSizeTablet;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/Icon-Phone-call.svg);
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        left: -145px;
+        top: 10px;
+        color: $mainColor;
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        transition: $transitionTime;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/Icon-Close.svg);
+
+  }
+}

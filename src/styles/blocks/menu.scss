@@ -1,0 +1,54 @@
+@import "./utils/variables";
+@import "./utils/mixins";
+
+.menu {
+  box-sizing: border-box;
+  background-color: $backgroundColor;
+  height: 100vh;
+
+  transition: $transitionTime;
+  font-weight: 700;
+  font-size: 22px;
+
+  &__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: #f9f9f9;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__content {
+    @include contentPaddingInline;
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__phone-number {
+    @include menu-style();
+    @include call-to-order-style();
+    margin-bottom: 16px;
+    transition: $transitionTime;
+
+    &:hover {
+      color: $accentColor;
+
+    }
+  }
+
+  &__call-to-order {
+    @include menu-style();
+    @include call-to-order-style();
+    padding-bottom: 4px;
+    border-bottom: 1px solid $mainColor;
+    width: fit-content;
+  }
+
+  overflow: auto;
+}

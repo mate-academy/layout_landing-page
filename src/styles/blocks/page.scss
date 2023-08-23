@@ -1,0 +1,40 @@
+@import "./utils/variables";
+@import "./utils/mixins";
+
+.page {
+  font-family: $fontFamily;
+  color: $mainColor;
+  font-size: 16px;
+  line-height: 140%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all $transitionTime;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transition: all $transitionTime;
+      transform: translateX(0);
+    }
+  }
+
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+}
