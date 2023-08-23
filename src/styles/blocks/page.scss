@@ -9,6 +9,7 @@
 
   &__body {
     margin: 0;
+    min-width: 320px;
   }
 
   &__menu {
@@ -17,12 +18,84 @@
     right: 0;
     left: 0;
 
+    transition: all 0.3s;
     opacity: 0;
+    transform: translateX(-100%);
     pointer-events: none;
 
     &:target {
       opacity: 1;
+      transform: translateX(0);
       pointer-events: all;
+    }
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+.primary-button {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  height: 56px;
+  background-color: $main-text-color;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  transition: border, background-color, color, 0.3s;
+
+  &:hover {
+    border: 2px solid #f0f1f4;
+    background: #f8f8fa;
+    color: #292929;
+  }
+
+  &:active {
+    transition: none;
+    background-color: #111;
+    color: #fff;
+  }
+}
+
+.main {
+  &__content {
+    padding-block: 64px;
+
+    @include onTablet {
+      padding-block: 120px;
+    }
+
+    &-sector {
+      @include contentPaddingInline;
+      display: grid;
+      row-gap: 64px;
+
+      @include onTablet {
+        row-gap: 120px;
+      }
+    }
+
+    &-between-image {
+      margin-block: 96px 48px;
+      display: block;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      @include onTablet {
+        height: 400px;
+        margin-block: 120px 56px;
+      }
+
+      @include onDesktop {
+        height: 460px;
+      }
     }
   }
 }
