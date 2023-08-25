@@ -1,0 +1,97 @@
+@mixin hover ($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover (transform, scale(1.2));
+
+  // @include onTablet {
+  //   height: 32px;
+  //   width: 32px;
+  // }
+
+  &__tooltip {
+    position: absolute;
+    padding: 24px 16px 0 0;
+    width: max-content;
+    color: $white-color;
+    text-align: end;
+    text-transform: uppercase;
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    pointer-events: none;
+    transition: all $effectDuration;
+    font-weight: bold;
+
+    &-first-block {
+      padding-bottom: 8px;
+    }
+  }
+
+  @include onDesktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  // &__tooltip-info:nth-child(2) {
+  //   padding-bottom: 8px;
+  // } 
+  // &__tooltip {
+  //   position: relative;
+
+  //   &:hover .icon__tooltip {
+  //     display: block;
+  //   }
+  // }
+
+  // &__tooltip {
+  //   display: none;
+  //   position: absolute;
+  //   right: 90px;
+  //   top: 0;
+  //   z-index: 1;
+  // }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+
+    &:hover .icon__tooltip {
+      display: block;
+      top: 0;
+      left: 0;
+    }
+
+    // &:hover::before {
+    //   content: '&-number--fifth-avenue &-number--cloisters';
+    //   display: flex;
+    //   flex-direction: row;
+    //   flex-wrap: nowrap;
+    //   color: $white-color;
+    //   text-decoration: none;
+    // }
+  }
+  
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+  
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+
+}
