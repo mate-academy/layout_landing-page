@@ -1,0 +1,78 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin formElements {
+  box-sizing: border-box;
+  border-radius: 40px;
+  background: $form-bg-color;
+  width: 100%;
+  border: none;
+  color: #292929;
+  font-family: "Poppins", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin formPlaceholder {
+  padding: 14px 16px;
+  &::placeholder {
+    font-family: "Poppins", Helvetica, sans-serif;
+    color: #7e7e83;
+    line-height: 20px;
+  }
+}
+
+@mixin hoverUnderline {
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -7px;
+    background-color: $dark-color;
+    transition: all $effectDuration;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,56 @@
+.details-item {
+  &__images {
+    @include pageGrid;
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all $effectDuration;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 1px 1px 8px #fff,
+          -1px -1px 8px #fff;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 16px;
+    line-height: 140%;
+  }
+
+  &__descr {
+    margin-top: 8px;
+  }
+}
