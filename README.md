@@ -1,10 +1,12 @@
-# Landing page
+BANG & OLUFSEN
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Створена лендінг-сторінка інтернет-магазину Bang & Olufsen. Посилання на макет: https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&mode=design&t=SkoXR4KivBc6lPcr-0
+
+Цей проект написаний з використанням HTML та CSS.
+Були використані такі основні технології:
+ - CSS препроцесор Sass
+ - CSS Grid
+ - SVG (масштабовані векторні графічні зображення) - для іконок та інше
 
 Follow the videos in this and next lessons to implement the page block by block
 - Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
@@ -13,6 +15,8 @@ Follow the videos in this and next lessons to implement the page block by block
 - When done check yourself using the [CHECKLIST](./checklist.md) when finished;
 - Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Також, проект написаний за методологією BEM.
+
+Посилання на нього: https://DariaSydorenko.github.io/layout_landing-page/
+
+Приємного перегляду!
