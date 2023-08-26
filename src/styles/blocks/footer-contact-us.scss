@@ -15,6 +15,13 @@
     padding-left: 16px;
     cursor: pointer;
 
+    color: $main-text-color;
+    font-family: "Space Mono";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    transition-duration: 0.5s;
+
     @include onTablet {
       grid-column: span 6;
     }
@@ -58,24 +65,36 @@
       margin-bottom: 24px;
     }
   }
+}
 
-  .main__link {
-    text-decoration: none;
-    color: #191919;
+.main__link {
+  position: relative;
+  color: $main-text-color;
+  text-decoration: none;
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $main-text-color;
+
+    transition: transform 0.5s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
   }
 }
 
-.form__input,
-.form__textarea {
-  color: $main-text-color;
-  font-family: "Space Mono";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
+.form__input:hover,
+.form__textarea:hover {
+  transition-duration: 0.5s;
+  border: 1px solid #d5d7de;
 }
 
 .form__input:focus,
@@ -96,12 +115,6 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 140%;
-}
-
-.form__input:hover,
-.form__textarea:hover {
-  transition-duration: 0.5s;
-  border: 1px solid #d5d7de;
 }
 
 .form__contacts {
