@@ -1,5 +1,8 @@
 # Landing page
 
+> ❗❗ You will complete this task in the topic **Landing**.
+> Now just choose a design and do the parts from the videos
+
 Choose a design for your landing page:
 - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
