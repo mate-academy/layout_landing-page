@@ -1,0 +1,81 @@
+.exhibition {
+  grid-column: 1 /-1;
+
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--3fr {
+      grid-template-columns: repeat(3, 3fr);
+
+      @include onTablet {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--wide {
+      object-position: right;
+
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      object-position: right;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+      &-big {
+        @include onTablet {
+          grid-column: span 3;
+        }
+
+        @include onDesktop {
+          grid-column: span 4;
+        }
+      }
+    }
+
+    &--remove {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__title {
+    color: $accent-color;
+    margin-top: 24px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &__date {
+    font-weight: 400;
+  }
+}
