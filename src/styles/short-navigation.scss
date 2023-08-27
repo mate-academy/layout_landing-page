@@ -1,36 +1,79 @@
 .short-navigation {
-  &__logo {
-    position: absolute;
-    width: 130px;
-    top: 24px;
-    left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px;
+
+  @include onTablet {
+    padding: 36px 72px;
   }
 
-  &__icons-block {
+  @include onDesktop {
+    padding: 36px 120px;
+  }
+
+  &__image {
+    width: 130px;
+
+    @include onTablet {
+      width: 187px;
+    }
+  }
+
+  &__right-block {
     display: flex;
-    position: absolute;
-    top: 31px;
-    right: 20px;
+    align-items: center;
     column-gap: 24px;
     height: 24px;
+
+    @include onTablet {
+      height: 32px;
+      column-gap: 32px;
+    }
   }
 
   &__icon {
+    position: relative;
     width: 24px;
     height: 24px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transition-duration: 500ms;
     cursor: default;
+
+    @include onTablet {
+      height: 32px;
+      width: 32px;
+    }
 
     &--phone-number {
       background-image: url(../images/icons/menu-phone.png);
+
+      @include onDesktop {
+        &:hover {
+          background-position: 100%;
+          padding-left: 160px;
+
+          &::before {
+            content: "+1 234 555-55-55";
+            display: block;
+            width: 140px;
+            right: 40px;
+            top: 10px;
+            position: absolute;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 2px;
+          }
+        }
+      }
     }
 
     &--open {
       background-image: url(../images/icons/menu-open.png);
-
+      transition-duration: 500ms;
       &:hover {
         background-image: url(../images/icons/menu-hover.png);
       }
