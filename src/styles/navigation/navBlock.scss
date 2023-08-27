@@ -8,7 +8,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
   width: 100%;
 
   @include onTablet {
@@ -38,14 +37,21 @@
   }
 
   &__phone {
+    &::before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 300ms;
+      padding: 5px 10px;
+      white-space: nowrap;
+      transform-origin: right;
+    }
 
     &:hover {
       &::before {
-        content: "+1 234 555-55-55";
-        position: absolute;
         transform: translateX(-100%);
-        padding: 5px 10px;
-        white-space: nowrap;
+        opacity: 1;
       }
     }
   }
