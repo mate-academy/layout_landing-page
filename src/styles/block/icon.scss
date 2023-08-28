@@ -4,6 +4,10 @@
   display: block;
   background-size: cover;
 
+  &:hover {
+    transition: transform $time-transition;
+  }
+
   @include transformHover(transform,scale(1.2));
 
   @include onTablet {
@@ -13,10 +17,27 @@
 
   &--phone {
     background-image: url(../images/icon-phone-call.svg);
+    transition: transform $time-transition;
+
+    &:hover::after {
+      content: "+1 234 555-55-55";
+      min-width: max-content;
+      color: $color-black;
+      position: absolute;
+      right: 32px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      font-family: "Inter", sans-serif;
+      text-transform: uppercase;
+      bottom: 5px;
+      display: flex;
+    }
   }
 
   &--menu {
     background-image: url(../images/icon-burger-menu.svg);
+    transition: transform $time-transition;
 
     &:hover {
       background-image: url(../images/Icon-Burger-menu-hover.svg);
