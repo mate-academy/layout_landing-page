@@ -1,0 +1,112 @@
+.header {
+  @include paddingContainer();
+  background-image: url(../images/header-logo.webp);
+  background-size: cover;
+  background-position: 90%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  &__top {
+    @include retreatTopHeader();
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onTablet() {
+      padding-block: 36px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    @include onTablet() {
+      gap: 32px;
+    }
+  }
+
+  &__wrapper-phone {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: $transition;
+
+    @include onDesktop() {
+      &:hover {
+        .header__phone-number {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &__phone-number {
+    display: none;
+    transition: $transition;
+
+    @include onTablet() {
+      color: $textColor;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transform: scale(0);
+      display: block;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+
+    &--phone {
+      background-image: url(../images/icons/phone.svg);
+      background-size: cover;
+    }
+
+    &--menu {
+      background-image: url(../images/icons/burger-menu.svg);
+      background-size: cover;
+      transition: $transition;
+
+      @include onDesktop() {
+        &:hover {
+          background-image: url(../images/icons/burger-menu-hover.svg);
+        }
+      }
+    }
+
+    @include onTablet() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 40%;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+
+    @include onTablet() {
+      font-size: 64px;
+    }
+
+    @include onDesktop() {
+      font-size: 80px;
+      margin-bottom: 20%;
+    }
+  }
+}
