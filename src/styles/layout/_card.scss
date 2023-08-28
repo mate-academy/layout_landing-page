@@ -1,0 +1,93 @@
+.card {
+  &__images {
+    @extend %grid-system;
+    margin-bottom: 24px;
+    min-height: 130px;
+
+    @include onTablet {
+      height: 186px;
+    }
+
+    @include onDesktop {
+      min-height: 320px;
+    }
+  }
+
+  &__image-container {
+    transition: all $transition;
+    overflow: hidden;
+
+    &--notablet {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__image {
+    @extend %img-fit;
+
+    &--right {
+      object-position: right;
+    }
+  }
+
+  &__title {
+    color: $color-accent-main;
+  }
+
+  &__date {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+  }
+
+  &:nth-child(1) {
+    > .card__images {
+      grid-template-columns: 1fr 1fr;
+
+      @include onTablet {
+        grid-template-columns: 4fr 2fr;
+      }
+    }
+  }
+
+  &:nth-child(2) {
+    > .card__images {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 87px;
+
+      @include onTablet {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 24px;
+        height: 284px;
+      }
+
+      @include onDesktop {
+        height: 320px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  &:nth-child(3) {
+    > .card__images {
+      grid-template-columns: repeat(2, 1fr);
+
+      @include onTablet {
+        grid-template-columns: 2fr 4fr;
+      }
+    }
+  }
+}
