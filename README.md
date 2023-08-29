@@ -1,18 +1,23 @@
 # Landing page
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://leravlasova.github.io/layout_landing-page/)
+Technologies Used:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+HTML for structuring web pages and content.
+SCSS (Sassy CSS) for convenient and structured styling.
+NPM (Node Package Manager) for managing dependencies and project build.
+"Mobile First" approach to development, allowing for adaptive design across different screen sizes.
+Responsive design to ensure optimal display and interaction on various devices.
+Preview and layout links are not provided in the text of your query. If possible, please add them for more specific information.
+
+Additional instructions to run the project:
+
+Clone the repository with the website code to your computer.
+Install Node.js if it's not already installed.
+Navigate to the project folder in the command line.
+Run the command npm install to install the necessary dependencies.
+After the dependencies are installed, execute the command npm start to launch the local server.
+Open your web browser and navigate to the address provided by the console (usually http://localhost:3000).
+
+[DEMO LINK](https://leravlasova.github.io/layout_landing-page/)
