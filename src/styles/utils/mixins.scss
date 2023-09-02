@@ -1,0 +1,79 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  position: relative;
+  @include contentPaddingInline;
+}
+
+@mixin iconsGap() {
+  gap: 24px;
+
+  @include onTablet {
+    gap: 32px;
+  }
+}
+
+@mixin headerPaddingBottom() {
+  padding-bottom: 40px;
+
+  @include onTablet {
+    padding-bottom: 65px;
+  }
+}
+
+@mixin menuTopMarginBottom() {
+  margin-bottom: 32px;
+
+  @include onTablet {
+    margin-bottom: 56px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  $columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat($columns, 1fr);
+
+  @include onTablet {
+    $columns: 6;
+    column-gap: 24px;
+    grid-template-columns: repeat($columns, 1fr);
+  }
+
+  @include onDesktop {
+    $columns: 12;
+    grid-template-columns: repeat($columns, 1fr);
+  }
+}
