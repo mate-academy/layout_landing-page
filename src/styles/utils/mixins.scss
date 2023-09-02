@@ -4,16 +4,61 @@
   }
 }
 
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline() {
   padding-inline: 20px;
 
   @include onTablet {
     padding-inline: 72px;
   }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
 }
 
-@mixin logoHeight() {
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin focus ($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:focus {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin buttonStyle {
+  @include hover (background-color, $main-text-color);
+  @include focus (background-color, $button-focus-color);
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
   @include onTablet {
-    height: 24px;
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
   }
 }
