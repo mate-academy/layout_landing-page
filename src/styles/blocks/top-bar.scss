@@ -1,13 +1,8 @@
 .top-bar {
   padding-block: 24px;
-  @include contentPaddingInline();
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @include onTablet {
-    padding: 36px 72px;
-  }
 
   &-logo {
     display: flex;
@@ -27,5 +22,26 @@
   &__icons {
     display: flex;
     gap: 24px;
+
+    @include onDesktop() {
+      &--phone {
+        position: relative;
+
+        &:hover::after {
+          content: "+1 234 5555-55-55";
+          position: absolute;
+          display: flex;
+          align-items: center;
+          color: #fff;
+          width: 200px;
+          height: 100%;
+          right: 10px;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          transform: scale(1.2);
+        }
+      }
+    }
   }
 }
