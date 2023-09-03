@@ -1,0 +1,84 @@
+.page {
+  font-family: Manrope, sans-serif;
+  color: $main-text-color;
+  line-height: 140%; /* 22.4px */
+  font-size: 16px;
+  font-style: normal;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__button-wraper {
+    @include pageGrid;
+  }
+
+  &__button {
+    display: flex;
+
+    height: 56px;
+    padding: 0 48px;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+    background: #f98921;
+
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 100%;
+
+    grid-column: 1 / -1;
+
+    &:hover,
+    &:target,
+    &:focus {
+      background-color: #1b2129;
+      color: #fff;
+      transition-duration: 0.5s;
+    }
+
+    &:active {
+      background-color: #010810;
+      color: #fff;
+    }
+  }
+
+  &__image {
+    display: block;
+    @include hover(transform, scale(1.07));
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+}
