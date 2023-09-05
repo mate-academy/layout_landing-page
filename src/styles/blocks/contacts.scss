@@ -37,8 +37,18 @@
     row-gap: 16px;
     justify-content: center;
 
+    &__item {
+      width: 180px;
+      height: 48px;
+    }
+
     &--left {
-      row-gap: 0;
+      display: grid;
+      justify-content: center;
+      flex-direction: column;
+      width: 280px;
+
+      padding-bottom: 100px;
     }
 
     &__input {
@@ -47,7 +57,7 @@
       height: 48px;
       border-radius: 40px;
       color: #7e7e83;
-      border: $inputColor 1px solid;
+      border: $inputColor 3px solid;
 
       @include onTablet {
         width: 288px;
@@ -77,5 +87,29 @@
 }
 
 .custom-input {
-  padding-left: 20px;
+  padding-left: 16px;
+  overflow: hidden;
+  resize: horizontal;
+  white-space: pre-line;
+  border-style: none;
+
+  @include onTablet {
+    width: 288px;
+  }
+
+  @include onDesktop {
+    width: 411px;
+  }
+}
+
+.custom-input::placeholder {
+  text-align: left;
+}
+
+.custom-input:-webkit-autofill {
+  background-color: transparent;
+}
+
+.custom-input:focus {
+  outline: none;
 }
