@@ -1,0 +1,61 @@
+@mixin center-both {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin on-tablet {
+  @media (min-width: 744px) and (max-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (max-width: 744px) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 12;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet() {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include on-phone() {
+    --columns: 2;
+  }
+}
+
+@mixin line-after-hover($color) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+
+    content: "";
+
+    display: block;
+
+    height: 2px;
+
+    border-radius: 8px;
+    background-color: #{$color};
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
