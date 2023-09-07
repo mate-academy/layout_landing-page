@@ -46,11 +46,31 @@
   &__number {
     color: inherit;
     text-decoration: none;
-    display: block;
+    display: inline-block;
 
     font-size: 16px;
     font-weight: 500;
     line-height: 140%;
+
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      display: block;
+      width: 100%;
+      background-color: #fff;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__text {
@@ -67,12 +87,16 @@
   display: grid;
   row-gap: 16px;
   &__input {
-    padding: 0;
+    padding-left: 16px;
     box-sizing: border-box;
     height: 48px;
     width: 100%;
     border-radius: 40px;
     background: #f8f8fa;
+    color: #292929;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
 
     &:hover {
       border: 1px solid #d5d7de;
@@ -83,7 +107,14 @@
     }
 
     &::placeholder {
-      padding-left: 16px;
+      color: #7e7e83;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    &:hover::placeholder {
+      color: #292929;
     }
   }
 
@@ -96,6 +127,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
+    color: #292929;
   }
 
   &__button {
