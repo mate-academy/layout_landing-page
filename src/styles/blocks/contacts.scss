@@ -1,0 +1,157 @@
+.contacts {
+  &__wrapper {
+    display: grid;
+    gap: 48px;
+
+    @include onTablet {
+      @include pageGrid;
+    }
+
+  }
+
+  &__form {
+    grid-column: 1/-1;
+    @include onTablet {
+      grid-column: span 3;
+    }
+
+    @include onDesktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__input {
+    background-color: rgba(248, 248, 250, 1);
+    width: 100%;
+    height: 48px;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    color: rgba(126, 126, 131, 1);
+    padding: 14px 16px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    outline: none;
+
+    @include inputState;
+
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+
+    -webkit-text-fill-color: rgba(41, 41, 41, 1);
+    background-color: rgba(248, 248, 250, 1);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &__textarea {
+    resize: none;
+    outline: none;
+    background-color: rgba(248, 248, 250, 1);
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    height: 148px;
+    padding: 14px 16px;
+    color: rgba(126, 126, 131, 1);
+    box-sizing: border-box;
+    margin-bottom: 32px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    &:focus,
+    &:hover {
+      background: linear-gradient(0deg, #d5d7de, #d5d7de),
+        linear-gradient(0deg, #f8f8fa, #f8f8fa);
+      color: rgba(41, 41, 41, 1);
+    }
+
+    &:valid {
+      color: rgba(41, 41, 41, 1);
+    }
+
+  }
+
+  &__button {
+    background-color: $main-text-color;
+    color: $color-bg-aside;
+    border: 1px solid transparent;
+    text-align: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 40px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0;
+    cursor: pointer;
+
+    @include buttonState;
+    transition-duration: 0.5s;
+  }
+
+  &__info {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    text-decoration: none;
+
+    @include onTablet {
+      grid-column: span 2;
+    }
+
+    @include onDesktop {
+      grid-column: 9/13;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 8px;
+    text-decoration: none;
+  }
+
+  &__description {
+    color: $main-text-color;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      background-color: $main-text-color;
+      display: block;
+      width: 100%;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

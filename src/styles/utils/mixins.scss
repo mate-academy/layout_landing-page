@@ -1,0 +1,83 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property,$toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--columns),1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonState {
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin inputState {
+
+  &:valid {
+    color: rgba(41, 41, 41, 1);
+  }
+
+  &:hover {
+    background-color: rgba(213, 215, 222, 1);
+    color: rgba(41, 41, 41, 1);
+    border: 1px solid rgba(213, 215, 222, 1);
+  }
+
+  &:active,
+  &:focus {
+    background-color: lrgba(248, 248, 250, 1);
+    border: 1px solid rgba(41, 41, 41, 1);
+    color: rgba(41, 41, 41, 1);
+  }
+
+}
