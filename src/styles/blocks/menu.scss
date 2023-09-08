@@ -1,0 +1,92 @@
+@use "../utils/mixins" as*;
+
+.menu {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(+100%);
+  transition: transform 350ms ease-in-out;
+  background-color: $color-primary;
+  padding: 0 20px;
+  min-height: 100vh;
+  z-index: 1;
+
+  @include grid();
+  row-gap: 0;
+  align-content: start;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__navigation {
+    grid-column: span 2;
+
+    @include for-744-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__paragraph {
+    color: $color-article;
+    font-size: 16px;
+    @include font-familly();
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    grid-column: span 2;
+
+    @include for-744-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+
+  &__link {
+    color: $color-article;
+    font-size: 16px;
+    @include font-familly();
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 4px;
+    grid-column: span 2;
+
+    @include for-744-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+
+    &:hover {
+      border-bottom: 1px solid $color-article;
+    }
+  }
+
+  &__links {
+    margin-bottom: 16px;
+    grid-column: span 2;
+
+    @include for-744-width() {
+      grid-column: span 6;
+    }
+
+    @include for-desktop() {
+      grid-column: span 12;
+    }
+  }
+}
