@@ -6,24 +6,36 @@
   }
 
   &__list {
-    display: flex;
-    flex-direction: column;
+    @include displayFlex(column, start);
     gap: 32px;
   }
 
   &__link {
-    display: block;
-    color: $dark-theme;
+    position: relative;
     font-size: 22px;
     font-style: normal;
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-  }
+    color: $dark-theme;
 
-  &__link:hover {
-    text-decoration: underline #{$dark-theme};
-    text-underline-offset: 8px;
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: -8px;
+      background-color: $dark-theme;
+
+      transition: transform $animation-time;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
