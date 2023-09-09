@@ -1,0 +1,206 @@
+
+.header {
+  background-image: url(../images/Cover-photo-for-mobile.svg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+  @include OnTablet {
+    background-image: url(../images/Cover_photo.svg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__bottom {
+    margin-bottom: 88px;
+
+    @include OnTablet {
+      margin-bottom: 120px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    @include OnTablet {
+      font-size: 64px;
+    }
+  }
+}
+
+.top-bar {
+  position: relative;
+  display: flex;
+  padding: 24px 0;
+  justify-content: space-between;
+
+  @include OnTablet {
+    padding: 36px 0;
+  }
+}
+
+.logo-link {
+  display: block;
+  height: 38px;
+}
+
+.logo {
+  width: 130px;
+  height: 38px;
+  transition: transform 0.1s linear;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include OnTablet {
+    width: 187px;
+    height: 56px;
+  }
+}
+
+.icon {
+  margin-top: 4px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  transition: 0.2s linear;
+
+  @include OnTablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.icon--phone {
+  background-image: url(../images/icons/Icon-Phone-call.svg);
+  transition: opacity 0.7s linear;
+
+  &::before {
+    content: "+1 234 5555-55-55";
+    position: absolute;
+    opacity: 0;
+    top: 50px;
+    right: 0;
+    width: 200px;
+    transform: translateX(-100px);
+    color: $main-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    transition: 0.5s linear;
+    pointer-events: none;
+  }
+
+  @include OnTablet {
+    &:hover {
+      &::before {
+        opacity: 1;
+        transform: translateX(-50px);
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.icon--menu {
+  background-image: url(../images/icons/Icon-burger-menu.svg);
+
+  &:hover {
+    background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+  }
+}
+
+.menu {
+  height: 100vh;
+  background-color: #c2c2c2;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &__top {
+    margin-bottom: 24px;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__phone-number {
+    display: block;
+    margin-bottom: 16px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px; /* 168.75% */
+    color: $menu-color;
+  }
+
+  &__call-to-order {
+    display: block;
+    border-bottom: 1px solid $menu-color;
+    width: fit-content;
+    padding-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px; /* 133.333% */
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: $menu-color;
+  }
+}
+
+.icon--close {
+  background-image: url(../images/icons/Icon-close.svg);
+}
+
+.nav {
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    line-height: 22px; /* 100% */
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: $menu-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $menu-color;
+
+      transition: 0.3s linear;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(100%);
+    }
+  }
+}
