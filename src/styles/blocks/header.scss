@@ -1,35 +1,49 @@
 .header {
-  height: 100vh;
-  background-image: url(../images/header-bg.png);
+  @include constantPaddingInline;
+
+  background-image: url("../images/header-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: -300px center;
+  background-position: 85% center;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
+  @include onTablet {
+    background-position: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin: 0 auto;
+
+    height: 100vh;
+    max-width: 1020px;
+  }
 
   &__bottom {
     padding-bottom: 88px;
 
-    @include constantPaddingInline;
     @include onTablet {
       padding-bottom: 130px;
+    }
+
+    @include onDescktop {
+      padding-bottom: 203px;
     }
   }
 
   &__title {
-    margin: 0;
-    font-size: 2.25rem;
-    font-weight: 700;
+    @include title-style(2.25rem, 2.25rem, 700);
     text-align: center;
     letter-spacing: -1.5px;
-    line-height: 36px;
 
     @include onTablet {
-      font-size: 4rem;
-      line-height: 64px;
+      @include title-style(4rem, 4rem, 700);
+    }
+
+    @include onDescktop {
+      @include title-style(5rem, 5rem, 700);
     }
   }
 }
