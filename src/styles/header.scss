@@ -2,35 +2,37 @@
 .header {
   display: flex;
   height: 100vh;
+  margin-inline: auto;
+  @include header-media;
+  max-width: 1260px;
+
   justify-content: space-between;
   flex-direction: column;
   box-sizing: border-box;
   background-image: url(../images/cover_photo.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right -50px top 0;
 
   &__link {
     display: flex;
   }
 
   &__logo {
-    width: 130px;
-    height: 38px;
+    @include logo-size;
   }
 
   &__title {
-    padding-bottom: 88px;
     text-align: center;
     margin: 0;
-    font-size: 36px;
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
     letter-spacing: -1.5px;
     color: $color-white;
+    font-size: inherit;
   }
 }
+
 /* #endregion*/
 /* #region icon*/
 .icon {
@@ -39,35 +41,58 @@
   height: 24px;
   background-repeat: no-repeat;
   background-size: contain;
+  transition: transform 0.3s;
+
+  @media (min-width: 576px) {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
 
   &--phone {
     position: relative;
     background-image: url(../images/icon-phone-call.svg);
-
   }
-  /*  for future
-    &--phone:hover::before {
-      content: "+1 234 5555-55-55";
-      float: right;
-      margin-right: calc(100% + 20px);
-      width: maX-content;
-      top: 50%;
-      color: $color-white;
-    }
-  */
+
+  &--phone:hover::before {
+    content: "+1 234 5555-55-55";
+    position: relative;
+    float: right;
+    margin-right: calc(100% + 20px);
+    width: max-content;
+    transform: translateY(-50%);
+    top: 50%;
+    color: $color-white;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+
   &--burger {
     background-image: url(../images/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
   }
 
   &--close {
     background-image: url(../images/icon-close.svg);
   }
 }
+
 /* #endregion*/
 /* #region menu*/
 .top-bar {
   display: flex;
-  padding: 24px 20px;
+  @include top-bap-pd-block;
+  @include content-padding-inline;
+
   justify-content: space-between;
   align-items: center;
 
@@ -89,7 +114,7 @@
   }
 
   &__content {
-    padding-inline: 20px;
+    @include content-padding-inline;
   }
 
   &__logo {
@@ -126,16 +151,19 @@
 
   &__top {
     margin-bottom: 24px;
-    position: sticky; /* to keep cross always visible */
+    position: sticky;
+    /* to keep cross always visible */
     top: 0;
     z-index: 1;
-    background-color: $color-white-menu-top; /* according to checklist */
+    background-color: $color-white-menu-top;
+    /* according to checklist */
   }
 
   &__nav {
     margin-bottom: 40px;
   }
 }
+
 /* #endregion*/
 /* #region nav */
 .nav {
@@ -150,12 +178,32 @@
   }
 
   &__link {
+    position: relative;
     font-size: 22px;
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 2px;
     text-decoration: none;
     color: $color-black;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-black;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
+
 /* #endregion */
