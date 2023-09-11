@@ -1,15 +1,15 @@
 .icon {
   display: block;
-  height: 24px;
-  width: 24px;
+  height: $icon-size-mobile;
+  width: $icon-size-mobile;
   background-image: url(../images/header_burger_icon.svg);
   background-size: cover;
 
   @include hover(transform, scale(1.2));
 
   @include onTablet {
-    height: 32px;
-    width: 32px;
+    height: $icon-size-tablet;
+    width: $icon-size-tablet;
   }
 
   &--burger {
@@ -21,7 +21,28 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/header_phone_icon.svg);
+
+    &:before {
+      content: "+1-234-555-55-55";
+      position: absolute;
+      display: block;
+      right: calc(#{$icon-size-tablet} + 20px);
+      width: fit-content;
+
+      @include regularText();
+      line-height: 32px;
+      color: $light-theme;
+
+      @include transition(300ms);
+      transform-origin: right;
+      scale: 0;
+    }
+
+    &:hover::before {
+      scale: 100%;
+    }
   }
 
   &--close {
