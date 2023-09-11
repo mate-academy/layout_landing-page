@@ -5,18 +5,22 @@
 
 body {
   background: $c-gray;
-
 }
 
-/* Keep the max-width property for .product img and .images-container img */
+html {
+  scroll-behavior: smooth;
+}
+
 .product img,
 .images-container img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
-  position: relative; /* Add this line to make position relative */
+  position: relative;
   z-index: 1;
   overflow: visible;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .img {
@@ -37,9 +41,10 @@ body {
 }
 
 .movefree {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
-  gap: 24px;
+  justify-content: space-between;
+  font-size: 64px;
 }
 
 .move, .shift {
@@ -50,7 +55,7 @@ body {
 .move {
   color: #FFF;
   font-family: Poppins;
-  font-size: 64px;
+
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
@@ -71,9 +76,9 @@ line-height: 140%;
 .product-container {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
   flex-wrap: nowrap;
   overflow: visible;
+  box-sizing: border-box;
 }
 
 .product {
@@ -85,6 +90,7 @@ line-height: 140%;
 
 .product img {
   max-width: 100%;
+  box-sizing: border-box;
 }
 
 .product__info{
@@ -104,7 +110,9 @@ line-height: 140%;
   font-weight: 700;
   line-height: 140%;
 }
-
+.menu__opener{
+  cursor: pointer;
+}
 .number{
   display:flex;
   color: #1D1D1D;
@@ -161,17 +169,19 @@ font-weight: 700;
 
 .form {
   height: 48px;
+  width: 411px;
   flex-shrink: 0;
   border-radius: 40px;
   background: #F8F8FA;
   margin: 8px;
-  color: #7E7E83;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
   padding-left: 16px;
+  outline: none;
+  border: none;
 }
 
 .message:focus {
@@ -239,6 +249,7 @@ gap: 10px;
 .send{
   display: flex;
 height: 56px;
+width: 430px;
 padding: 0px 0px 0px 0px;
 flex-direction: column;
 justify-content: center;
@@ -246,8 +257,6 @@ align-items: center;
 flex-shrink: 0;
 border-radius: 40px;
 background: #FFF;
-box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
-color: #1D1D1D;
 text-align: center;
 font-family: Poppins;
 font-size: 16px;
@@ -260,7 +269,7 @@ margin-top: 24px;
 
 .message {
   display: flex;
-  width: 411px;
+  width: 400px;
   padding-top: 16px;
   align-items: flex-start;
   gap: 10px;
@@ -271,20 +280,23 @@ margin-top: 24px;
 
 .contacts {
   display: flex;
-  justify-content: center;
-  gap: 198px;
-  padding: 120px 0;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 300px;
 }
 
 .contacts--form{
   display:flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #7E7E83;
 font-family: Poppins;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 20px;
+margin-left: 370px;
 }
 
 
@@ -365,24 +377,32 @@ line-height: 140%;
   line-height: 140%;
 }
 
+.contacts--block{
+  margin-right: 660px;
+}
+
 .movefree__section{
   display:flex;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .images-container {
   display: flex;
   justify-content: center;
   gap: 24px;
-  max-width: 100%;
   overflow: visible;
   margin-top: 48px;
+  box-sizing: border-box;
+
 }
 
 .images-container img {
-  max-width: 100%;
   height: auto;
   object-fit: cover;
+  cursor:pointer;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .price{
@@ -392,12 +412,6 @@ font-size: 24px;
 font-style: normal;
 font-weight: 700;
 line-height: 140%;
-}
-
-.container {
-  @media (min-width: 1024px) {
-    padding: 1000px 400px;
-  }
 }
 
 .page {
@@ -410,6 +424,7 @@ line-height: 140%;
 
 .product__wrapper{
   max-width: 1024px;
+  box-sizing: border-box;
 }
 
 .section-title {
@@ -422,6 +437,8 @@ font-weight: 500;
 line-height: 100%;
 letter-spacing: -1.5px;
 }
+
+
 
 .menu {
   display: flex;
@@ -504,9 +521,6 @@ margin: 50px 120px 36px 120px ;
   cursor: url(../images/Cursor-Mouse-Mice.svg), auto;
 }
 
-.menu-icon:hover{
-
-}
 
 .menu-icon::before,
 .menu-icon::after {
@@ -528,37 +542,33 @@ margin: 50px 120px 36px 120px ;
   top: 20px;
 }
 
-.modal--navigation{
-  display:flex;
+.modal--navigation {
+  display: flex;
   justify-content: space-between;
 }
 
 .modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #C2C2C2;
+  background: rgba(194, 194, 194, 1); /* Use RGBA color with transparency */
   z-index: 9999;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out; /* Add transition property */
   box-sizing: border-box;
   cursor: url(../images/Cursor-Mouse-Mice.svg), auto;
-
-}
-
-.modal:not(.show) {
-  opacity: 0;
-  pointer-events: none;
+  pointer-events: none; /* Prevent interaction with hidden modal */
 }
 
 .modal.show {
+  opacity: 1; /* Make the modal visible */
+  pointer-events: auto; /* Enable interaction when visible */
   display: flex;
   flex-direction: column;
-
-
+  justify-content: left;
+  align-items: left;
 }
 
 .modal__content {
@@ -607,14 +617,13 @@ margin-left: 78px;
 
 .menu__phone {
   position: relative;
-  display: inline-block;
 }
 
 .menu__numberphone {
   display: none;
   position: absolute;
   top: 50%;
-  left: -170px;
+  left: calc(-100% - 150px); /* Adjust this value as needed */
   transform: translateY(-50%);
   color: var(--gray-white, #FFF);
   padding: 4px 8px;
@@ -626,10 +635,12 @@ margin-left: 78px;
   letter-spacing: 2px;
   text-transform: uppercase;
   white-space: nowrap;
+  visibility: hidden;
 }
 
 .menu__phone:hover .menu__numberphone {
   display: block;
+  visibility: visible;
 }
 
 .footer {
@@ -656,5 +667,10 @@ flex-shrink: 0;
   z-index: 2; /* Add this line to bring the hovered image above other elements */
   position: relative; /* Add this line to reset position during hover */
 }
+
+.move, .shift {
+
+}
+
 
 
