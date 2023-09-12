@@ -1,0 +1,107 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --grid-columns: 2;
+  --columns-width: 1fr;
+  display: grid;
+  justify-content: center;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--grid-columns), var(--columns-width));
+
+  @include onTablet {
+    --grid-columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns-width: 63px;
+    --grid-columns: 12;
+  }
+}
+
+@mixin contentPaddingBlock {
+  padding-block: 60px 120px;
+
+  @include onTablet {
+    padding-block: 120px;
+  }
+
+  @include onDesktop {
+    padding-block: 120px 182px;
+  }
+}
+
+@mixin contentMarginBottom {
+  margin-bottom: 92px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 164px;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin backgroundImage {
+  background-position: 85% 0;
+
+  @include onTablet {
+    background-position: center;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin logoSize {
+  width: 130px;
+  height: 38px;
+
+  @include onTablet {
+    width: 187px;
+    height: 56px;
+  }
+}
+
+@mixin mainTitle {
+  font-size: 36px;
+  line-height: 100%;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onDesktop {
+    font-size: 80px;
+  }
+}
