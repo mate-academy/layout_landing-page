@@ -1,7 +1,10 @@
 .icon {
+  position: relative;
+
   display: block;
   height: 24px;
   width: 24px;
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,23 +20,36 @@
     @include hover(transform, scale(1.2));
   }
 
+  &__decoration {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
+  &:hover &__decoration {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
-    position: relative;
-    &:hover::before {
-      color: #fff;
-      content: "";
-      position: absolute;
-      top: 40px;
-      left: -120px;
-
-      @include onTablet {
-        content: "+1 234 555-55-55";
-        position: absolute;
-        top: 10px;
-        left: -150px;
-      }
-    }
   }
 
   &--menu {
