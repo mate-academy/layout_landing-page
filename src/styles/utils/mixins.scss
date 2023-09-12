@@ -1,0 +1,32 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding: 28px 20px ;
+  margin-inline: auto;
+  max-width: 280px;
+
+  @include onTablet {
+    max-width: 600px;
+    padding: 36px 72px;
+  }
+
+  @include onDesktop() {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding: 36px 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
