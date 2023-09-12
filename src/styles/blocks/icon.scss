@@ -13,10 +13,30 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        color: #fff;
+        display: none;
+        position: absolute;
+        top: 5px;
+        left: -150px;
+      }
+
+      &:hover::before {
+        display: inline;
+      }
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.svg);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
   }
 
   &--close {
