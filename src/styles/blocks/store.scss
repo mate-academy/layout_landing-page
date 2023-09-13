@@ -1,10 +1,10 @@
 .store {
   &__wrapper {
     display: grid;
-    row-gap: 40px;
+    row-gap: $mobile-row-gap;
 
     @include onTablet {
-      row-gap: 56px;
+      row-gap: $tablet-row-gap;
     }
   }
 }
@@ -46,16 +46,49 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    @include hover(transform, scale(1.05));
   }
 
   &__title {
-    margin: 0;
     font-size: 18px;
     font-weight: 700;
     line-height: 140%;
 
     @include onTablet {
       font-size: 24px;
+    }
+  }
+}
+
+.button-more {
+  &__container {
+    @include pageGrid;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    color: $neutral-color;
+    background-color: $main-text-color;
+    text-align: center;
+    font-size: $details-text-size;
+    line-height: $button-height;
+    height: $button-height;
+    border: 2px solid $main-text-color;
+    border-radius: 8px;
+    text-decoration: none;
+    padding-inline: 48px;
+    grid-column: 1 / -1;
+
+    @include hoverButton;
+
+    &:active {
+      background-color: #111;
+      color: $neutral-color;
+    }
+
+    @include onDesktop {
+      grid-column: span 4;
     }
   }
 }
