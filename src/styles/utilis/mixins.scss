@@ -4,12 +4,43 @@
   }
 }
 
-@mixin constentPaddingInline() {
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
   padding-inline: 20px;
 
   @include onTablet {
     padding-inline: 72px;
   }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin pageGrid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
 }
 
 @mixin hover ($property, $toValue) {
