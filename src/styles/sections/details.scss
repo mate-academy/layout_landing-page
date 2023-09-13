@@ -1,0 +1,116 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+    @include onTablet {
+      row-gap: 48px;
+    }
+  }
+
+  &__title {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__link {
+    grid-column: 1 / -1;
+    &--button {
+      display: block;
+      height: 56px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 16px;
+      // line-height: 27px;
+      line-height: 56px;
+      background-color: $main-text-color;
+      border-radius: 40px;
+      padding: 14.5px 108.5px;
+      text-decoration: none;
+      color: $main-border-color;
+      &:hover {
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4), 0 3px 6px rgba(251, 251, 251, 0.2);
+      }
+      &:active {
+        box-shadow: 0 6px 10px rgba(255, 255, 255, 0.7), 0 6px 10px rgba(251, 251, 251, 0.5);
+      }
+    }
+  }
+  &__button-wrapper {
+    width: 100%;
+    cursor: pointer;
+    @include onTablet {
+      width: 60%;
+    }
+    @include onDesktop {
+      width: 40%;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    transition: transform 1s;
+    &:hover {
+      transform: scale(1.2);
+      z-index: 3;
+    }
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33.6px;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 22.4px;
+    font-weight: 400;
+  }
+}
