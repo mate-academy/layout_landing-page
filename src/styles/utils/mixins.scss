@@ -11,33 +11,26 @@
 }
 
 @mixin pageGrid {
+  --columns-width: 130px;
   --grid-columns: 2;
-  --columns-width: 1fr;
+  --column-gap: 20px;
+
   display: grid;
   justify-content: center;
-  column-gap: 20px;
+  column-gap: var(--column-gap);
   grid-template-columns: repeat(var(--grid-columns), var(--columns-width));
+  max-width: calc(var(--grid-columns) * var(--columns-width)
+  + var(--column-gap) * (var(--grid-columns) - 1));
 
   @include onTablet {
+    --columns-width: 80px;
     --grid-columns: 6;
-    column-gap: 24px;
+    --column-gap: 24px;
   }
 
   @include onDesktop {
     --columns-width: 63px;
     --grid-columns: 12;
-  }
-}
-
-@mixin contentPaddingBlock {
-  padding-block: 60px 120px;
-
-  @include onTablet {
-    padding-block: 120px;
-  }
-
-  @include onDesktop {
-    padding-block: 120px 182px;
   }
 }
 
@@ -53,6 +46,18 @@
   }
 }
 
+@mixin contentPaddingBlock {
+  padding-block: 60px 120px;
+
+  @include onTablet {
+    padding-block: 120px;
+  }
+
+  @include onDesktop {
+    padding-block: 120px 182px;
+  }
+}
+
 @mixin contentPaddingInline {
   padding-inline: 20px;
 
@@ -65,43 +70,21 @@
   }
 }
 
-@mixin backgroundImage {
-  background-position: 85% 0;
-
-  @include onTablet {
-    background-position: center;
-  }
-}
-
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+  transition: #{$property} $transition-duration;
   &:hover {
+    z-index: 1;
     #{$property}: $toValue;
+    @content;
   }
 }
 
-@mixin logoSize {
-  width: 130px;
-  height: 38px;
-
-  @include onTablet {
-    width: 187px;
-    height: 56px;
-  }
-}
-
-@mixin mainTitle {
-  font-size: 36px;
-  line-height: 100%;
-  font-weight: 700;
-  letter-spacing: -1.5px;
-  text-align: center;
-
-  @include onTablet {
-    font-size: 64px;
+@mixin buttonState {
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
   }
 
-  @include onDesktop {
-    font-size: 80px;
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
   }
 }
