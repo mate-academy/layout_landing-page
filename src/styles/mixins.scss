@@ -1,0 +1,43 @@
+@import "./values.scss";
+
+@mixin onTabletHeader {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    padding: 36px 72px;
+  }
+}
+
+@mixin onMobileHeader {
+  @media (min-width: 320px) and (max-width: 743px) {
+    padding: 24px 20px;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    max-width: 1020px;
+    margin-inline: auto;
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    column-gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
