@@ -2,6 +2,7 @@
   @include displayFlex(column, start);
 
   &__row-container {
+    overflow: hidden;
     @include displayGrid();
     row-gap: 8px;
     padding-bottom: 40px;
@@ -37,21 +38,10 @@
     padding-top: 8px;
   }
 
-  &__image {
-    height: 130px;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-
-    @for $index from 1 through 6 {
-      &--#{$index} {
-        background-image: url(../images/details_#{$index}.png);
-      }
-    }
+  &__image-container {
+    overflow: hidden;
 
     @include onTablet {
-      height: 187px;
-
       &--start {
         grid-column: 1 / 5;
 
@@ -70,8 +60,6 @@
     }
 
     @include onLaptop {
-      height: 320px;
-
       &--start {
         grid-column: 1 / 9;
 
@@ -87,6 +75,28 @@
           grid-column: 5 / 13;
         }
       }
+    }
+  }
+
+  &__image {
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+
+    @for $index from 1 through 6 {
+      &--#{$index} {
+        background-image: url(../images/details_#{$index}.png);
+      }
+    }
+
+    @include hover(scale, 1.2);
+
+    @include onTablet {
+      height: 187px;
+    }
+
+    @include onLaptop {
+      height: 320px;
     }
   }
 
