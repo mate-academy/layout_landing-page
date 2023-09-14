@@ -1,0 +1,188 @@
+.now-on-view {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
+  color: $main-dark;
+
+  @include contentPaddingInline;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 63px);
+    column-gap: 24px;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    grid-column: 1 / -1;
+  }
+
+  &-info {
+    grid-column: 1 / -1;
+  }
+
+  &--text-normal {
+    line-height: 27px;
+
+    &-centered {
+      text-align: center;
+    }
+  }
+
+  &--text-accent {
+    padding-top: 24px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $accent-main;
+  }
+
+  /* #region photo */
+  &-photo-container {
+    padding-top: 48px;
+    display: flex;
+    column-gap: 20px;
+
+    @include onTablet {
+      column-gap: 24px;
+    }
+
+    &--3 {
+      column-gap: 8px;
+
+      @include onTablet {
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__photo {
+    width: 130px;
+    height: 130px;
+
+    @include onTablet {
+      width: 184px;
+      height: 186px;
+      grid-column: 5 / -1;
+    }
+
+    @include onDesktop {
+      width: 324px;
+      height: 320px;
+      grid-column: 9 / -1;
+    }
+
+    &--3 {
+      width: 88px;
+      height: 87px;
+
+      &--last {
+        width: 88px;
+        height: 87px;
+      }
+
+      @include onTablet {
+        width: 288px;
+        height: 284px;
+
+        grid-column: 1 / 4;
+        column-gap: 24px;
+
+        &--last {
+          display: none;
+        }
+      }
+
+      @include onDesktop {
+        width: 324px;
+        height: 320px;
+
+        grid-column: 1 / 5;
+        column-gap: 24px;
+
+        &--last {
+          width: 324px;
+          height: 320px;
+          display: block;
+        }
+      }
+    }
+
+    &--background {
+      content: "";
+      width: 130px;
+      height: 130px;
+      background-size: cover;
+
+      @include onTablet {
+        grid-column: 1 / 5;
+        width: 392px;
+        height: 186px;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 9;
+        width: 672px;
+        height: 320px;
+      }
+
+      &--first {
+        background-image: url("../images/Layer\ 46@1\,5x.png");
+
+        @include onTablet {
+          background-image: url("../images/Layer\ 46@1\,5x\ NEW.png");
+        }
+        // image for desktop version is the same
+      }
+
+      &--third {
+        background-image: url("../images/Layer\ 52@1\,5x.png");
+
+        @include onTablet {
+          background-image: url("../images/Layer\ 52@1\,5x NEW.png");
+        }
+        // image for desktop version is the same
+      }
+    }
+
+    @include hover(transform, scale(120%));
+  }
+  /* #endregion */
+
+  &__button {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 40px;
+
+    background-color: $accent-main;
+    font-weight: 700;
+    line-height: 56px;
+    color: $main-text-color;
+    text-align: center;
+
+    text-decoration: none;
+
+    transition: background-color 300ms;
+
+    @include hover(background-color, $button-hover);
+
+    &:active {
+      background-color: $button-pressed;
+    }
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
