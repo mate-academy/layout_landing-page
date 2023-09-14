@@ -7,34 +7,110 @@
     background-repeat: no-repeat;
     height: 32px;
     width: 32px;
+    background-size: cover;
+
   }
 
   @media (min-width: 1260px) {
     height: 32px;
     width: 32px;
     background-repeat: no-repeat;
-    &:hover {
-      animation: menu-icon .3s linear;
-      background-image: url(../images/icons/icon-burger-menu-hover.png)
-    }
-    @keyframes menu-icon {
-      from {
-        background-image: url(../images/icons/icon-burger-menu.png);
-      }
-      to {
-        background-image: url(../images/icons/icon-burger-menu-hover.png)
-      }
-    }
+    background-size: cover;
   }
 
 
   &--phone {
-    background-image: url(../images/icons/icon-phone.png );
+    background-image: url(../images/icons/icon-phone.png);
+      @media (min-width: 1260px) {
+        position: relative;
+
+      &:hover::before {
+        position: absolute;
+        content: "+1 234 5555-55-55";
+
+        display: flex;
+        left: -20%;
+        translate: -100% 50%;
+
+        justify-content: center;
+
+        color: #1B2129;
+        white-space: nowrap;
+        text-align: right;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        animation: phonenumber .3s ease;
+
+        // &::before:not(:hover) {
+        //   animation: phonenumber-un .5s reverse;
+        // }
+      }
+      &:not(:hover)::before {
+        position: absolute;
+        content: "+1 234 5555-55-55";
+
+        opacity: 0;
+        display: flex;
+        left: -20%;
+        translate: -100% 50%;
+
+        justify-content: center;
+
+        color: #1B2129;
+        white-space: nowrap;
+        text-align: right;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        animation: phonenumber-un .3s ease;
+      }
+
+      @keyframes phonenumber-un {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes phonenumber {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
   }
+
+
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.png);
 
+    @media (min-width: 1260px) {
+      height: 32px;
+      width: 32px;
+      background-repeat: no-repeat;
+
+      &:hover {
+        animation: menu-icon .3s linear;
+        background-image: url(../images/icons/icon-burger-menu-hover.png)
+      }
+      @keyframes menu-icon {
+        from {
+          background-image: url(../images/icons/icon-burger-menu.png);
+        }
+        to {
+          background-image: url(../images/icons/icon-burger-menu-hover.png)
+        }
+      }
+    }
   }
 
   &--close {
