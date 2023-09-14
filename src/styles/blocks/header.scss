@@ -1,31 +1,50 @@
 .header {
-  box-sizing: border-box;
-  height: 100vh;
+  // display: none !important;
+  background: url(images/bg-mobile.png) no-repeat center;
   background-size: cover;
-  background-position: center;
-  background: url(images/bg-mobile.png) no-repeat;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  &__content {
+    @include contentPaddingInline;
 
-  &__center {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+  }
+
+  @media (min-width: $tablet-min-width) {
+    background: url(images/bg-tablet.png) no-repeat center;
+  }
+
+  @media (min-width: 1260px) {
+    background: url(images/bg-desctop.png) no-repeat center;
   }
 
   &__title {
     margin: 0;
     color: #fff;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 100%;
-    font-family: Cinzel;
     font-size: 40px;
     letter-spacing: -1.5px;
+
+    @include onTablet {
+      text-align: center;
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 64px;
+      letter-spacing: -1.5px;
+    }
   }
 
   &__center {
+    display: flex;
+    justify-content: center;
     padding-bottom: 288px;
-    @include contentPaddingInline;
+
+    @include onTablet {
+      padding-bottom: 456px;
+    }
   }
 }
