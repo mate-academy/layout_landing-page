@@ -5,13 +5,18 @@
   background-size: cover;
   @include hover(scale, 1.2);
 
-  @media (min-width: 576px) {
-    width: 32px;
-    height: 32px;
-  }
+  @include onTablet {
+   width: 32px;
+   height: 32px;
+ }
 
   &--menu {
     background-image: url("../images/icons/icon-burger.svg");
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url("../images/icons/icon-burger-hover.svg");
+    }
   }
 
   &--phone {
@@ -24,9 +29,9 @@
       color: $color-white;
       font-size: 16px;
       line-height: 27px;
-      visibility: hidden;
+      opacity: 0;
       font-weight: 700;
-      transition: visibility 0.3s;
+      transition: opacity 0.3s;
     }
 
     &::after {
@@ -47,7 +52,7 @@
       @include onDesktop {
         &::before,
         &::after {
-          visibility: visible;
+          opacity: 1;
         }
       }
     }
