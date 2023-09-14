@@ -1,18 +1,33 @@
 .page {
-  background-color: #1d1d1d;
-  font-family: "Poppins", sans-serif;
+  background-color: $main-dark-color;
   color: $main-text-color;
+  font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  font-weight: $font-bold-weight;
+
   &__body {
-    margin: 0;
     min-width: 320px;
+
+    &::-webkit-scrollbar {
+      width: 0.3em;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $main-text-color;
+      outline: 1px solid $main-text-color;
+    }
   }
+
   &__menu {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    transition: all 0.3s;
+    // transition: all 0.3s;
     opacity: 0;
     transform: translateX(-100%);
     pointer-events: none;
@@ -22,7 +37,8 @@
       pointer-events: all;
     }
   }
+
   &:has(.page__menu:target) {
-    overflow: hidden; /* not to scroll the page */
+    overflow: hidden;
   }
 }
