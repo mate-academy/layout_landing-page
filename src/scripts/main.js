@@ -9,7 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   phoneIcon.addEventListener('mouseout', function() {
-    phoneNumber.style.display = 'none';
+    setTimeout(function() {
+      phoneNumber.style.display = 'none';
+    }, 1500);
+  });
+
+  phoneNumber.addEventListener('mouseover', function() {
+    clearTimeout(this.timeoutId);
+  });
+
+  phoneNumber.addEventListener('mouseout', function() {
+    this.timeoutId = setTimeout(function() {
+      phoneNumber.style.display = 'none';
+    }, 1500);
   });
 });
 
