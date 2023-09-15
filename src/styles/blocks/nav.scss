@@ -1,5 +1,3 @@
-@import "../variables.scss";
-
 .nav {
   &__list {
     padding: 0;
@@ -11,7 +9,7 @@
   }
 
   &__item {
-    margin-top: 32px;
+    margin-top: $margin-top-32px;
   }
 
   &__item:first-child {
@@ -19,12 +17,33 @@
   }
 
   &__link {
+    position: relative;
     text-decoration: none;
     color: #1d1d1d;
-    font-weight: 600;
+    font-weight: $font-weight-600;
 
     @include onDesktop {
-      font-weight: 700;
+      font-weight: $font-weight-700;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+
+      width: 100%;
+      height: 1px;
+
+      display: block;
+      background-color: $main-color;
+
+      transition: transform 0.5s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
 }
