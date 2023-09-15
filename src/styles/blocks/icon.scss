@@ -7,12 +7,40 @@
 
   @include hover(transform, scale(1.2));
 
+  &__tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+  }
+
   @include onTablet {
     width: 32px;
     height: 32px;
+
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/icon-Phone-call.svg);
   }
 
