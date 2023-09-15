@@ -2,8 +2,12 @@
   font-family: "Cinzel", Helvetica, serif;
   font-size: 16px;
   line-height: 27px;
-  color: #161616;
   scroll-behavior: smooth;
+  color: $main-text-color;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
   &__body {
     margin: 0;
@@ -15,14 +19,13 @@
     top: 0;
     right: 0;
     left: 0;
-
-    opacity: 0;
-    transition: all 0.3s;
+    visibility: hidden;
     transform: translateX(-100%);
+    transition: all $main-transition-duration;
     pointer-events: none;
 
     &:target {
-      opacity: 1;
+      visibility: visible;
       transform: translateX(0);
       pointer-events: all;
     }
