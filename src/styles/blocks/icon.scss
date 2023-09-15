@@ -1,0 +1,72 @@
+@import "../utils/mixins";
+
+.icon {
+  box-sizing: border-box;
+
+  @include sizeIcons(24px);
+
+  @include onTablet {
+    @include sizeIcons(32px);
+  }
+
+  &--phone {
+    border-radius: 25%;
+    @include transitionPage;
+    @include iconBackground(url(../img/Icon-Phone-Call.svg));
+
+    @include onDesktop {
+
+      &:hover {
+        animation: phone 1s infinite;
+        transform: scale(1);
+        padding: 2px;
+        background-color: $color-placeholder;
+        border-radius: 50%;
+
+        &::before {
+          content: "";
+          position: absolute;
+          border: 1px solid $color-placeholder;
+          left: -20px;
+          right: -20px;
+          top: -20px;
+          bottom: -20px;
+          border-radius: 50%;
+          animation: pulse 1.8s linear infinite;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    @include iconBackground(url(../img/icon-burger-menu.svg));
+
+    &:hover {
+      @include iconBackground(url(../img/icon-burger-menu-hover.svg));
+    }
+  }
+
+  &--close {
+    @include iconBackground(url(../img/icon-close.svg));
+  }
+}
+
+@keyframes phone {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}

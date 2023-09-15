@@ -1,0 +1,77 @@
+@import "../variables";
+
+@mixin onTablet () {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop () {
+
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin paddingBottom() {
+  padding-bottom: 88px;
+
+  @include onTablet {
+    padding-bottom: 130px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 203px;
+  }
+}
+
+@mixin sizeIcons($size) {
+  height: #{$size};
+  width: #{$size};
+}
+
+@mixin iconBackground($url) {
+  background-image: $url;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin paddingInline {
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 120px;
+  }
+}
+
+@mixin pageGrid {
+  --colomns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colomns), 1fr);
+
+  @include onTablet {
+    --colomns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --colomns: 12;
+  }
+}
+
+@mixin transitionPage {
+  transition: all 1s;
+}
+
+@mixin font-char ($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}

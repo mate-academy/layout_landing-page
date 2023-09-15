@@ -1,0 +1,120 @@
+@import "../utils/mixins";
+
+.details {
+  margin-bottom: 80px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 180px;
+  }
+
+  &__container {
+    @include pageGrid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 48px;
+      row-gap: 48px;
+    }
+  }
+
+  &__wrapper-more-link {
+    @include pageGrid;
+  }
+
+  &__more-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    background-color: $main-text-color;
+    color: $main-color-menu;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+
+      &:hover {
+        box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+      }
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+    }
+  }
+}
+
+.detail {
+  color: $main-text-color;
+  font-style: normal;
+  line-height: 140%;
+  grid-column: 1 / -1;
+
+  &__photos {
+    gap: 20px;
+    margin-bottom: 16px;
+
+    @include pageGrid;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include transitionPage;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+      @include onTablet {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include font-char(24px, 700, 140%);
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    @include font-char(16px, 400, 140%);
+  }
+}
