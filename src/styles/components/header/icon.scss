@@ -6,42 +6,50 @@
   background-size: contain;
   transition: transform $time-duration;
 
-  @media (min-width: 576px) {
+  @include onTablet {
     width: 32px;
     height: 32px;
   }
 
   @include hover(transform, scale(1.2));
 
-  &--phone {
-    position: relative;
-    background-image: url(../images/icon-phone-call.svg);
-  }
-
-  &--phone:hover::before {
-    content: "+1 234 5555-55-55";
-    position: relative;
-    float: right;
-    margin-right: calc(100% + 10px);
+  &--number {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
     width: max-content;
     transform: translateY(-50%);
+    left: -400%;
+    padding-right: 60%;
     top: 50%;
     color: #fff;
     font-size: 7px;
     font-style: normal;
     font-weight: 700;
-    line-height: 16px;
+    line-height: 24px;
     letter-spacing: 1px;
+    transition: opacity $time-duration;
 
     @include onTablet {
+      left: -500%;
       font-size: 12px;
+      line-height: 32px;
       letter-spacing: 2px;
     }
 
     @include onDesktop {
       font-size: 12px;
       letter-spacing: 2px;
-      margin-right: calc(100% + 20px);
+    }
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icon-phone-call.svg);
+
+    &:hover .icon--number {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
