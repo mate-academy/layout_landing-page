@@ -1,6 +1,3 @@
-$tablet-size: 600px;
-$wide-screen-size: 1000px;
-
 .page {
   margin: 0;
   --main-white: #fff;
@@ -8,27 +5,38 @@ $wide-screen-size: 1000px;
   --main-accent: #d12d35;
   --main-text: #3e3e3e;
   --secondary-accent: #ae1c23;
+  --secondary-accent-active: #eb343d;
   --form-background: #f8f8fa;
   --form-label-grey: #7e7e83;
+  --max-width: 1260px;
 
   font-family: Cinzel, Georgia, Times, "Times New Roman", serif;
   font-size: 16px;
   color: var( --main-dark);
   line-height: 27px;
-}
+  scroll-behavior: smooth;
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
-  opacity: 0;
-  pointer-events: none;
-}
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    transition: width 0.5s;
+  }
 
-.page__menu:target {
-  opacity: 1;
-  pointer-events: all;
-  z-index: 10;
+  &__menu:target {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 10;
+    width: 100vw;
+
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
 }

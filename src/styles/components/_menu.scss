@@ -2,6 +2,8 @@
   height: 100vh;
   padding: 25px 20px;
   background-color: var(--main-accent);
+  overflow: auto; /* to scroll the menu if needed */
+  transition: width 0.5s;
 
   @media (min-width: $tablet-size) {
     padding: 32px 72px;
@@ -12,11 +14,15 @@
   }
 
   &__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
   }
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -59,16 +65,29 @@
   &__call-to-order {
     position: relative;
     font-size: 12px;
-  }
+    max-width: fit-content;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      opacity: 0;
+      background-color: var(--main-white);
+      transition: opacity 0.5s;
+    }
 
-  &__call-to-order::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--main-white);
+    &:hover:after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      opacity: 1;
+      background-color: var(--main-white);
+      transition: opacity 0.5s;
+    }
   }
 }
