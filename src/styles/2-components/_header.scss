@@ -1,0 +1,188 @@
+.header {
+  background-image: url("../images/header/bg-mobile-2x.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+
+  padding-bottom: 40px;
+
+  @media (min-width: 500px) {
+    background-image: url("../images/header/bg-tablet.jpg");
+  }
+
+  @media (min-width: 1070px) {
+    background-image: url("../images/header/bg-desktop-x4.jpg");
+  }
+
+  &__grid-wrapper {
+    @extend %pageGrid;
+    align-items: center;
+    grid-template-rows: 1fr calc(100vh - 184px) 1fr;
+
+    @include onTablet {
+      grid-template-rows: 1fr calc(100vh - 264px) 1fr;
+    }
+  }
+
+  &__top {
+    padding-block: 24px;
+    @include flex-align(space-between);
+  }
+
+  &__top-logo-link {
+    display: block;
+  }
+
+  &__icons-box {
+    grid-column: 2 / 3;
+    text-align: right;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+
+    position: relative;
+
+    &-number {
+      font-family: $addition-font-family-1, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      width: max-content;
+      letter-spacing: 2px;
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      overflow-x: hidden;
+
+      &-text {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.47);
+        transition: all 0.3s ease 0s;
+        border-radius: 5px;
+        padding: 2px;
+        transform: translateX(100%);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .header__icons-phone-link:hover + &-number span {
+        transform: translateX(0);
+      }
+    }
+
+    @include onTablet {
+      gap: 32px;
+      grid-column: 5 / 7;
+    }
+
+    @include onDesktop {
+      gap: 32px;
+      grid-column: 10 / -1;
+    }
+  }
+
+  &__icons-phone,
+  &__icons-burger {
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__icons-phone-link,
+  &__icons-burger-link {
+    display: block;
+  }
+
+  &__icons-phone-link {
+    position: relative;
+
+    svg {
+      display: block;
+
+      &:hover {
+        animation-name: phone-call;
+        animation-duration: 0.3s;
+        animation-timing-function: ease;
+        animation-iteration-count: 2;
+
+        @keyframes phone-call {
+          0% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(-30deg);
+          }
+          50% {
+            transform: rotate(30deg);
+          }
+          100% {
+            transform: rotate(0);
+          }
+        }
+      }
+    }
+  }
+
+  &__icons-burger-link {
+    position: relative;
+    width: 24px;
+    height: 20px;
+
+    &--border-top,
+    &--border-mid,
+    &--border-bot {
+      height: 4px;
+      border-radius: 5px;
+      background-color: $main-color;
+      width: 100%;
+      transition: width $effectDuration $effectFunc 0s,
+        background-color $effectDuration $effectFunc 0s;
+
+      position: absolute;
+      left: 0;
+    }
+
+    &--border-top {
+      top: 0;
+    }
+
+    &--border-mid {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--border-bot {
+      bottom: 0;
+    }
+
+    &:hover &--border-top {
+      width: 85%;
+      background-color: $close-icon-right;
+    }
+
+    &:hover &--border-bot {
+      width: 60%;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    max-width: 280px;
+
+    @include onTablet {
+      max-width: initial;
+      grid-column: 1 / 5;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+      max-width: 432px;
+    }
+  }
+}
