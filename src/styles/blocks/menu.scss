@@ -1,6 +1,11 @@
 .menu {
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding-bottom: 113px;
+
   @include onTablet {
     padding-bottom: 167px;
   }
@@ -15,6 +20,19 @@
   text-transform: uppercase;
   overflow: auto;
 
+  transition: all 1s;
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    transition-duration: 1s;
+    pointer-events: all;
+    overflow: hidden;
+  }
+
   &__top {
     position: sticky;
     top: 0;
@@ -28,10 +46,6 @@
     @include onDesktop {
       margin-inline: auto;
     }
-  }
-
-  &__nav {
-    margin-bottom: 40px;
   }
 
   &__content {
