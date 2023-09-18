@@ -1,0 +1,87 @@
+.category {
+  color: $main-black;
+
+  &__photos {
+    @include grid;
+    margin-bottom: 24px;
+
+    &--middle {
+      --columns: 3;
+      column-gap: 8px;
+  
+      @include onTablet {
+        --columns: 6;
+        column-gap: 24px;
+      }
+  
+      @include onDesktop {
+        --columns: 12;
+        column-gap: 24px;
+      }
+    }
+  }
+  
+  &__link {
+    position: relative;
+    &--wide{
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square{
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--middle{
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+      &:last-child{
+        @include onTablet {
+          display: none;
+        }
+  
+        @include onDesktop {
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    transition: all $effectDuration;
+
+    &:hover {
+      @include hoverImage
+    }
+  }
+
+  &__title {
+    color: $accent-red;
+  }
+}
