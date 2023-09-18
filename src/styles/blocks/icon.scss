@@ -1,5 +1,5 @@
 .icon {
-  display: flex;
+  display: block;
   height: 24px;
   width: 24px;
   background-size: cover;
@@ -12,12 +12,7 @@
     width: 32px;
   }
 
-  &--hover-visible {
-    visibility: hidden;
-  }
-
   &--phone {
-    background-image: url(../images/icons/icon-phone.svg);
     color: inherit;
     text-decoration: none;
     font-weight: 700;
@@ -25,11 +20,10 @@
     display: flex;
     align-items: center;
 
-    @include hover(background-image, none);
-    @include hover(width, fit-content);
-
-    &:hover .icon--hover-visible {
-      visibility: visible;
+    &:hover::before {
+      content: "+1 234 5555-55-55";
+      display: block;
+      padding-right: 5px;
     }
   }
 
