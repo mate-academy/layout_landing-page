@@ -1,0 +1,66 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin createGridPage {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin inputActiveTextColor {
+  &:hover::placeholder {
+    color: $placeholder-color-input-active;
+  }
+  &:focus::placeholder {
+    color: $placeholder-color-input-active;
+  }
+}
+
+@mixin buttonActive {
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
