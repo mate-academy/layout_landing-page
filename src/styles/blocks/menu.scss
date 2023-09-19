@@ -4,12 +4,23 @@
   background-color: $color-accent;
   font-weight: 700;
   text-transform: uppercase;
-  overflow: hidden;
 
   &__content {
     padding-inline: 20px;
-    max-height: 280px;
-    overflow-y: auto;
+
+    max-height: 560px;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    @media (max-height: 500px) {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    @media (max-height: 300px) {
+      max-height: 130px;
+    }
 
     @include onTablet {
       padding-inline: 72px;
@@ -21,10 +32,10 @@
   }
 
   &__nav {
-    margin: -90px 0 32px;
+    margin-bottom: 32px;
 
-    @media (min-width: 744px) {
-      margin: 0 0 48px;
+    @include onTablet {
+      margin-bottom: 48px;
     }
   }
 
