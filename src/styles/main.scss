@@ -1,17 +1,22 @@
 :root {
   --main-color: #292929; // зміна з коліром
-  --background-color: #E5E6E8;
+  --background-color: #e5e6e8;
 }
+
 .page {
-  font-family: 'Space Grotesk', sans-serif; // шрифти для тексу
-  // font-family: 'Space Mono', monospace;
+  font-family: "Space Grotesk", sans-serif; // шрифти для тексу
   color: var(--main-color); // колір тексту
 
   scroll-behavior: smooth;
+  overflow: auto;
 }
+
 .page__body {
-  margin: 0; // забирає стандартні відступи
+  max-width: 1200px;
+  margin: 0 auto;
+  // padding: 20px;
 }
+
 .page__menu {
   position: fixed;
   top: 0;
@@ -25,49 +30,57 @@
 .page__menu:target {
   opacity: 1;
   pointer-events: all;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
 
 /* #region header */
-  .header {
-    box-sizing: border-box;
-    height: 100vh; // розтягує header на всю висоту сторінки
-    background-size: cover; // Фон заповнює всю площину
-    background-image: url(/img/bg-photo.png); // імпорт картинки з папки для беграуд
-    background-position: center; // Позиція картинки по центру
+.header {
+  box-sizing: border-box;
+  height: 100vh; // розтягує header на всю висоту сторінки
+  background-size: cover; // Фон заповнює всю площину
+  background-image: url(/img/bg-photo.png); // імпорт картинки з папки для беграуд
+  background-position: center; // Позиція картинки по центру
 
-    display: flex;
-    flex-direction: column;// Всі елементи в середині стають колонками
-    justify-content: space-between; // Розміщує елементи на протилежних кінцях один від одного і ствоює пустий простір міє ними
-  }
-  .header__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; // Центрує лого і іконки щоб вони були на одному рівні
-    // padding: 24px 20px; // Відступи від верху і боку батьківського елемента
-  }
+  display: flex;
+  flex-direction: column;// Всі елементи в середині стають колонками
+  justify-content: space-between;
+  // Розміщує елементи на протилежних
+}
 
-  .header__bottom {
-    display: flex;
-    align-items: center;
-    padding: 0 20px 40px;
-  }
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; // Центрує лого і іконки щоб вони були на одному рівні
+  // padding: 24px 20px; // Відступи від верху і боку батьківського елемента
+}
 
-  .header__title {
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%; // Налаштування шрифта відповідно макету
-    margin: 0;
-  }
+.header__bottom {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 40px;
+}
 
-  .logo {
-    display: flex;
-    width: 125px;
-    height: 16px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-  }
+.header__title {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; // Налаштування шрифта відповідно макету
+  margin: 0;
+}
+
+.logo {
+  display: flex;
+  width: 125px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
 /* #endregion*/
 /* #region menu*/
 .top-bar {
@@ -136,7 +149,7 @@
 }
 /* #endregion*/
 /* #region icon */
-.icon{
+.icon {
   display: block;
   height: 24px;
   width: 24px;
@@ -149,36 +162,62 @@
 .icon--menu {
   background-image: url(/img/icon/icon-menu.png); // Використаня бакграунду картинками
 }
+
 .icon--close {
   background-image: url(/img/icon/icon-close.png); // Використаня бакграунду картинками
 }
 
 /* #endregion*/
 /* #region nav*/
-  .nav__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
-  .nav__item {
-    // padding-bottom: 32px;
-    // margin: 10px;
-  }
+a {
+  cursor: alias;
+}
 
-  .nav__item:last-child {
-    padding-bottom: 0;
-  }
+.nav__item:last-child {
+  padding-bottom: 0;
+}
 
-  .nav__link {
-    text-decoration: none;
-    color: var(--main-color);
-    font-size: 22px;
-    line-height: 22px; /* 100% */
-  }
+.nav__link {
+  text-decoration: none;
+  color: var(--main-color);
+  font-size: 22px;
+  line-height: 22px; /* 100% */
+}
+
+.link-with-info {
+  position: relative; /* Налаштовуємо позицію для псевдоелементу */
+  color: #007bff; /* Колір тексту посилання */
+  text-decoration: none; /* Забираємо підкреслення посилання */
+}
+
+.link-with-info::before {
+  content: "+1 234 5555-55-55";
+  /* Використовуємо атрибут data-info як вміст псевдоелемента */
+  position: absolute;
+  /* Розташовуємо псевдоелемент абсолютно відносно батьківського елементу */
+  top: 100%; /* Позиціонуємо псевдоелемент внизу посилання */
+  left: -100px; /* Розташовуємо псевдоелемент від лівого краю посилання */
+  padding: 5px;
+  /* Зовнішні відступи для стилізації */
+  display: none; /* Спочатку приховуємо псевдоелемент */
+  z-index: 1;
+  /* Збільшуємо значення z-index, щоб псевдоелемент був поверх контенту */
+  width: max-content;
+  // height: 20px;
+}
+
+.link-with-info:hover::before {
+  display: block; /* Показуємо псевдоелемент при наведенні на посилання */
+}
 /* #endregion*/
 /* #region footer */
 
