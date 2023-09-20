@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: $header-height;
+  background-image: url(../images/MyBike-bg-sm.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include tablet {
+    background-image: url(../images/MyBike-bg-md.png);
+    background-position: center;
+  }
+
+  @include desktop {
+    background-image: url(../images/MyBike-bg-lg.png);
+  }
+
+  &__top-bar {
+
+    .header__logo img {
+      height: 38px;
+
+      @include tablet {
+        height: $header-logo-height
+      }
+    }
+
+    .header__buttons {
+      position: relative;
+      display: flex;
+      gap: 24px;
+
+      @include tablet {
+        gap: 32px;
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @include tablet {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .header__phone {
+        background-image: url(../images/icons/Icon-Phone-call.png);
+      }
+
+      .header__phone:hover {
+        animation: shake 0.3s;
+      }
+
+      .header__menu {
+        background-image: url(../images/icons/Icon-Burger-menu.png);
+        transition: background-image 0.3s;
+      }
+
+      .header__menu:hover {
+        background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+      }
+    }
+
+    .header__buttons::before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      left: -70px;
+      bottom: -26px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px; /* 133.333% */
+      letter-spacing: 2px;
+      transition: transform 0.3s;
+      transform: scale(0);
+
+      @include desktop {
+        left: -154px;
+        top: 8px;
+      }
+    }
+
+    .header__buttons:hover::before {
+      transform: scale(1);
+    }
+  }
+
+  &__title {
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 18.33333vh;
+    line-height: 100%; /* 36px */
+    letter-spacing: -1.5px;
+
+    @include tablet {
+      font-size: 64px;
+    }
+
+    @include desktop {
+      font-size: 80px;
+    }
+  }
+}

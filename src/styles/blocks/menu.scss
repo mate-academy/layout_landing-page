@@ -1,0 +1,106 @@
+.menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  background-color: #c2c2c2;
+  color: $main-color;
+  z-index: 10;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__top-bar {
+    @include tablet {
+      height: 110px;
+    }
+
+    .menu__close-link {
+      display: flex;
+
+      .icon-close {
+        height: 24px;
+
+        @include tablet {
+          height: 32px;
+        }
+      }
+
+      .icon-close:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__content {
+    padding: 24px 20px 0;
+
+    @include tablet {
+      padding: 8px 72px 0;
+    }
+
+    @include desktop {
+      padding: 24px 120px 0;
+    }
+
+    .nav {
+      margin-bottom: 40px;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      &__link {
+        position: relative;
+        padding: 8px 0;
+        @include menu-text-common(22px, 22px);
+        letter-spacing: 2px;
+      }
+
+      &__link::after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: $main-color;
+        transition: transform 0.3s;
+        transform: scaleX(0);
+      }
+
+      &__link:hover::after {
+        transform: scaleX(1);
+      }
+    }
+
+    .menu__contacts {
+
+      .menu__phone {
+        margin-bottom: 16px;
+
+        &--number {
+          @include menu-text-common(16px, 27px);
+        }
+
+        &--number:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .menu__phone-description {
+        display: inline-block;
+        padding-bottom: 8px;
+        @include menu-text-common(12px, 16px);
+        letter-spacing: 2px;
+        border-bottom: 1px solid $main-color;
+      }
+    }
+  }
+}
+

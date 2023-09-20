@@ -1,0 +1,333 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 120px;
+  align-items: center;
+  background-color: $main-color;
+
+  @include tablet {
+    padding: 120px 0;
+  }
+
+  @include desktop {
+    padding: 120px 0 182px;
+  }
+
+  .section {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    column-gap: 20px;
+    margin-bottom: 92px;
+
+    @include tablet {
+      grid-template-columns: repeat(6, 80px);
+      column-gap: 24px;
+      margin-bottom: 120px;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(12, 63px);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &__title {
+      grid-column: 1 / -1;
+      justify-self: center;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 100%; /* 32px */
+      letter-spacing: -1.5px;
+      text-transform: capitalize;
+      margin-bottom: 48px;
+
+      @include tablet {
+        font-size: 48px;
+      }
+
+      @include desktop {
+        font-size: 64px;
+      }
+    }
+  }
+
+  .about-us {
+
+    @include tablet {
+      margin-bottom: 132px;
+    }
+
+    @include desktop {
+      margin-bottom: 164px;
+    }
+
+      &__title {
+        justify-self: start;
+        margin-bottom: 32px;
+
+        @include tablet {
+          grid-column: span 3;
+        }
+
+        @include desktop {
+          grid-column: span 4;
+        }
+      }
+
+      &__text {
+        grid-column: span 2;
+        font-size: 23px;
+        font-weight: 500;
+        line-height: 140%; /* 32.2px */
+
+        @include tablet {
+          grid-column: span 3;
+        }
+
+        @include desktop {
+          grid-column: 6 / -2;
+        }
+      }
+  }
+
+  .compare-bikes {
+    @include desktop {
+      margin-bottom: 144px;
+    }
+
+    &__title {
+      @include desktop {
+        margin-bottom: 56px;
+      }
+    }
+
+    .bike {
+      grid-column: span 2;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 20px 0px rgba(184,184,184,1);
+        border-radius: 10px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+
+      @include  tablet {
+        grid-column: 2 / -2;
+
+        &:not(:last-child) {
+          margin-bottom: 48px;
+        }
+      }
+
+      @include desktop {
+        grid-column: span 4;
+        margin-bottom: 0 !important;
+      }
+
+      &__img {
+        margin-bottom: 32px;
+
+        @include tablet {
+          width: 100%;
+        }
+      }
+
+      &__title {
+        @include product-title;
+        margin-bottom: 8px;
+      }
+
+      &__info {
+        @include product-text;
+        margin-bottom: 16px;
+      }
+
+      &__price {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 140%; /* 33.6px */
+      }
+    }
+  }
+
+  .details {
+    margin-bottom: 80px;
+
+    &__btn {
+      grid-column: span 2;
+      @include submit-btn;
+
+      @include tablet {
+        grid-column: 2 / -2;
+      }
+
+      @include desktop {
+        grid-column: 5 / span 4;
+      }
+    }
+
+    @include tablet {
+      margin-bottom: 120px;
+
+      &__title {
+        margin-bottom: 64px;
+      }
+    }
+
+    @include desktop {
+      margin-bottom: 180px;
+
+      &__title {
+        margin-bottom: 48px;
+      }
+    }
+
+    .detail {
+      grid-column: span 2;
+      margin-bottom: 40px;
+
+      @include tablet {
+        grid-column: 1 / -1;
+        margin-bottom: 48px;
+      }
+
+      &__images {
+        display: grid;
+        grid-template-columns: repeat(2, 130px);
+        column-gap: 20px;
+        margin-bottom: 16px;
+
+        @include tablet {
+          column-gap: 24px;
+        }
+
+        .detail-image {
+          width: 100%;
+          height: 130px;
+          object-fit: cover;
+
+          @include tablet {
+            height: 188px;
+          }
+
+          @include desktop {
+            height: 320px;
+          }
+        }
+
+        @include tablet {
+          display: grid;
+          grid-template-columns: repeat(6, 80px);
+        }
+
+        @include desktop {
+          grid-template-columns: repeat(12, 63px);
+        }
+
+        .detail-image--wide {
+          @include tablet {
+            grid-column: span 4;
+          }
+
+          @include desktop {
+            grid-column: span 8;
+          }
+        }
+
+        .detail-image--square {
+          @include tablet {
+            grid-column: span 2;
+          }
+
+          @include desktop {
+            grid-column: span 4
+          }
+        }
+      }
+
+      &__title {
+        @include product-title;
+        margin-bottom: 8px;
+      }
+
+      &__info {
+        @include product-text;
+      }
+    }
+  }
+
+  .contacts {
+
+    &__form {
+      grid-column: span 2;
+      margin-bottom: 48px;
+
+      @include tablet {
+        grid-column: span 3;
+        margin-bottom: 0;
+      }
+
+      @include desktop {
+        grid-column: span 5;
+      }
+
+      .input-field {
+        @include input-field;
+        margin-bottom: 16px;
+      }
+
+      .input-message {
+        @include btn;
+        height: 148px;
+        padding: 14px 16px;
+        color: #292929;
+        line-height: 20px; /* 142.857% */
+        border-radius: 16px;
+        background-color: #F8F8FA;
+        margin-bottom: 32px;
+      }
+    }
+
+    &__info {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      @include tablet {
+        grid-column: span 3;
+      }
+
+      @include desktop {
+        grid-column: -6 / -1;
+      }
+
+      .contact {
+
+        &__title {
+          font-size: 14px;
+          line-height: 140%; /* 19.6px */
+          margin-bottom: 8px;
+        }
+
+        &__data {
+          display: inline-block;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 140%; /* 22.4px */
+          transition: transform 0.3s;
+
+          &:hover {
+            transform: translateX(10px);
+          }
+        }
+      }
+    }
+  }
+}
