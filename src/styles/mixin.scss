@@ -1,0 +1,72 @@
+
+@mixin onDesktop {
+  @media (min-width: $descktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline {
+  margin-inline: auto;
+
+  @include onDesktop {
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+
+  @include onTablet {
+    max-width: 600px;
+    padding-inline: 72px;
+  }
+
+  @include onMobile {
+    max-width: 280px;
+    padding-inline: 20px;
+  }
+}
+
+@mixin PageGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), var(--column-size));
+  column-gap: 24px;
+
+  @include onDesktop {
+    --column-count: 12;
+    --column-size: 63px;
+    max-width: 1024px;
+  }
+
+  @include onTablet {
+    --column-count: 6;
+    --column-size: 80px;
+    max-width: 768px;
+  }
+
+  @include onMobile {
+    --column-count: 2;
+    --column-size: 130px;
+    column-gap: 20px;
+    max-width: 280px;
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(100%);
+  }
+
+  to {
+    transform: scale(110%);
+  }
+}
