@@ -1,0 +1,101 @@
+.store {
+  padding-top: 96px;
+
+  @include onTablet {
+    padding-top: 120px;
+  }
+
+  @include onDesktop {
+    padding-top: 128px;
+  }
+
+  &__photo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__photo-link-wide {
+    @include onTablet {
+      grid-column: span 2;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: all 300ms;
+
+    &:hover {
+      transform: scale(1.05);
+      border-radius: 5px;
+    }
+
+    &--left:hover {
+      transform-origin: right;
+    }
+
+    &--right:hover {
+      transform-origin: left;
+    }
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include onTablet {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__link-container {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__link {
+    width: 100%;
+    height: 56px;
+    display: block;
+    background-color: $textColor;
+    border-radius: 8px;
+
+    text-align: center;
+    line-height: 56px;
+    text-decoration: none;
+    color: $buttonTextColor;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: all 300ms;
+
+    &:hover {
+      background-color: $hoverButtonColor;
+      color: $textColor;
+      border: 2px solid $hoverButtonBorderColor;
+    }
+
+    &:focus {
+      background-color: $focusButtonColor;
+      color: $buttonTextColor;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 2;
+    }
+  }
+}
