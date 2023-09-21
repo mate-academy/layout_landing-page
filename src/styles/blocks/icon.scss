@@ -1,0 +1,58 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(/images/Icon-Phone-call.svg);
+  }
+
+  &--menu {
+
+    background-image: url(/images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/images/Icon-Close.svg);
+  }
+
+  &--phone-number {
+    opacity: 0;
+    position: absolute;
+    flex-wrap: nowrap;
+    width: max-content;
+    top: 9px;
+    right: 115px;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 16px;
+    font-weight: 700;
+    color: $main-text-color;
+    pointer-events: none;
+
+    transition: opacity $transition-time ease;
+  }
+
+  @include onTablet {
+    &--phone-number:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      text-decoration: none;
+    }
+  }
+}
