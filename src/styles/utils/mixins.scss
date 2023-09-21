@@ -1,0 +1,61 @@
+@mixin onTable {
+  @media (min-width: $min-width-table) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $min-width-desktop) {
+    @content;
+  }
+}
+
+@mixin constentPaddingInLine() {
+  padding-inline: 20px;
+
+  @include onTable {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1060px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include constentPaddingInLine;
+}
+
+@mixin hover ($property, $toValue) {
+  transform: #{$property, $effectDuration};
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTable {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin contactsTextStiels {
+  margin: 0;
+  font-weight: 400;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 20px;
+  color: $grey-form-text;
+}
