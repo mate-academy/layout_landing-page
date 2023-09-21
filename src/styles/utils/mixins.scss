@@ -1,0 +1,70 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin topBarPaddings {
+  padding-block: 24px;
+
+  @include onTablet {
+    padding-block: 32px;
+  }
+}
+
+@mixin iconsSize {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @include onTablet {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@mixin mainTitleFontSize {
+  font-size: 36px;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  line-height: 100%;
+
+  @include onTablet {
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 56px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: $property $trasition-duration;
+
+  &:hover {
+    transform: $toValue;
+  }
+}
+
+@mixin grid-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+
