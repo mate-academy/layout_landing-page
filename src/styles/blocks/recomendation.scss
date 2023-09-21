@@ -55,9 +55,33 @@
         flex-shrink: 0;
       }
       @media (min-width: 1260px) {
-        width: 324px;
-        height: 324px;
+        display: block;
+        min-inline-size: 25vw;
         grid-row: 2;
+        &:hover {
+          animation: zooming 0.3s ease;
+          transform: scale(1.05);
+        }
+        @keyframes zooming {
+          from {
+            transform: scale(1);
+          }
+          to {
+            transform: scale(1.05);
+          }
+        }
+        &:not(:hover) {
+          animation: unzooming 0.3s ease;
+          transform: scale(1);
+        }
+        @keyframes unzooming {
+          from {
+            transform: scale(1.05);
+          }
+          to {
+            transform: scale(1);
+          }
+        }
       }
     }
 
