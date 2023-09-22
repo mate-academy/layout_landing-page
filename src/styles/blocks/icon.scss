@@ -1,0 +1,74 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--number {
+    font-family: "Space Grotesk", sans-serif;
+    color: $main-text-color;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    pointer-events: none;
+  }
+
+  &--number:hover {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--phone {
+    background-image: url(../icons/phone-number.svg);
+
+    &:hover + .icon--number {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+
+      @include onTablet {
+        opacity: 1;
+      }
+
+      @include onDesktop {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-image: url(../icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.container-for-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
