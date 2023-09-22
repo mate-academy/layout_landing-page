@@ -1,0 +1,79 @@
+.header {
+  background-image: url(../images/header/header-bg-mobile.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  @include onTablet {
+    background-image: url(../images/header/header-bg.jpg);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+  }
+
+  &__icons {
+    position: relative;
+  }
+
+  &__calls {
+    display: none;
+
+    @include onDesktop {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 200px;
+      right: 120px;
+      top: -52px;
+      padding-right: 20px;
+      font-weight: 700;
+      color: $color-light;
+      text-align: end;
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__call:hover ~ &__calls {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__calls-text:not(:last-child) {
+    margin-top: 8px;
+  }
+
+  &__calls-link {
+    @include hover(color, $color-main-accent);
+  }
+
+  &__title {
+    padding-top: 129px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
+    color: $color-light;
+    filter: drop-shadow(0 4px 4px #000);
+
+    @include onTablet {
+      padding-top: 141px;
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      padding-top: 83px;
+      font-size: 80px;
+    }
+  }
+}
