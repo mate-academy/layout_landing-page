@@ -1,0 +1,52 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  position: relative;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/icon-phone.svg);
+
+    @include onDesktop {
+      &::before {
+        display: inline-block;
+        position: absolute;
+        left: -150px;
+        top: 10px;
+        color: white;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        content: $phone-number;
+        opacity: 0;
+      }
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.svg);
+  }
+}
