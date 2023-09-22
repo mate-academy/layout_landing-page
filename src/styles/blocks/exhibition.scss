@@ -1,0 +1,110 @@
+.exhibitions {
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+    position: relative;
+  }
+
+  &__button {
+    width: 100%;
+    height: 56px;
+    background-color: #d12d35;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 700;
+    line-height: 27px;
+    color: #fff;
+    text-decoration: none;
+
+    @include onTablet {
+      width: 30%;
+      margin: 0 auto;
+      display: flex;
+      align-self: center;
+    }
+
+    @include hover(transform, scale(1.05));
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+  }
+}
+
+.exhibition {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+
+    &--flex {
+      display: grid;
+      grid-template-columns: repeat(3, 0.75fr);
+
+      @include onTablet {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+    animation: transform 0.3s;
+
+    @include hover(transform, scale(1.05));
+
+    &--left {
+      object-position: 20%;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    color: #d12d35;
+    line-height: 27px;
+  }
+
+  &__description {
+    color: #161616;
+    line-height: 27px;
+    margin-bottom: 48px;
+
+    &--to-button {
+      margin-bottom: 40px;
+    }
+  }
+}
