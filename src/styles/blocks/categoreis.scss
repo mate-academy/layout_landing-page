@@ -1,0 +1,57 @@
+.categories {
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    @include onTablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: all 0.3s;
+    @include hover {
+      transform: scale(105%);
+      -webkit-box-shadow: 9px 9px 40px 0 rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 9px 9px 40px 0 rgba(0, 0, 0, 0.75);
+      box-shadow: 9px 9px 40px 0 rgba(0, 0, 0, 0.75);
+    }
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
