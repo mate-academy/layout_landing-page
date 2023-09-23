@@ -1,0 +1,132 @@
+.menu {
+  @include width-height(100%, 100vh);
+  background-color: hsl(0, 0%, 76%);
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+
+  &:target {
+    animation: menu 1s;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__top--bar {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 36px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 8px;
+    }
+
+    @include onMobile {
+      padding-block: 24px;
+    }
+
+    &-logo {
+      background-image: url(../img/black_logo.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      @include width-height(187px, 56px);
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      @include onMobile {
+        @include width-height(130px, 38px);
+      }
+    }
+
+    &-right-panel {
+      gap: 32px;
+      display: flex;
+      align-items: center;
+
+      @include onMobile {
+        gap: 24px;
+      }
+    }
+  }
+}
+
+.ex--icon {
+  background-image: url(../img/icon-close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include width-height(32px, 32px);
+
+  @include onMobile {
+    @include width-height(24px, 24px);
+  }
+
+  &:hover {
+    transition-duration: 500ms;
+    transform: rotate(360deg);
+  }
+}
+
+.nav__block {
+  margin-bottom: 40px;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+  &--links {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+
+    &:hover::before {
+      @include menu-links-underline;
+      animation: underline-anim 0.5s;
+    }
+  }
+}
+
+.bottom--phone {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px; /* 168.75% */
+  text-transform: uppercase;
+  margin-bottom: 16px;
+
+  @include onMobile {
+    font-weight: 600;
+  }
+}
+
+.test--ride {
+  position: relative;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  @include onTablet {
+    font-weight: 600;
+  }
+
+  @include onMobile {
+    font-weight: 600;
+  }
+
+  &::before {
+    @include menu-links-underline;
+  }
+}

@@ -1,0 +1,40 @@
+@mixin onMobile {
+  @media (max-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin width-height ($width-value, $height-value) {
+  width: $width-value;
+  height: $height-value;
+}
+
+@mixin menu-links-underline {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(12, 63px);
+  column-gap: 24px;
+  grid-auto-flow: row;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 80px);
+  }
+
+  @include onMobile {
+    grid-template-columns: repeat(2, 130px);
+    column-gap: 20px;
+  }
+}
