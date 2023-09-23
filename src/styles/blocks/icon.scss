@@ -1,0 +1,61 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__menu {
+    background-image: url(/images/Icon-Burger-menu.svg);
+    transition: background-image 0.5s, transform $transition-time;
+
+    &:hover {
+      background-image: url(/images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &__close {
+    background-image: url(/images/Icon-Close.svg);
+  }
+
+  &__phone {
+    background-image: url(/images/Icon-Phone-call.svg);
+    position: relative;
+    display: block;
+
+    &--number {
+      position: absolute;
+      flex-wrap: nowrap;
+      opacity: 0;
+      top: 28%;
+      right: 32px;
+      width: max-content;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity $transition-time;
+
+      letter-spacing: 2px;
+      line-height: 16px;
+      font-weight: 700;
+      color: $main-text-color;
+      pointer-events: none;
+      text-decoration: none;
+    }
+
+    @include onTablet {
+      &:hover &--number {
+        opacity: 1;
+        transform: translate(0);
+        pointer-events: all;
+        padding-right: 20px;
+      }
+    }
+  }
+}
