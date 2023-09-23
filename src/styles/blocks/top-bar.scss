@@ -7,17 +7,47 @@
   align-items: center;
 
   @include onTablet {
-    padding-block: 64px;
+    padding-block: 32px;
+  }
+
+  @include onDesktop {
+    padding-block: 24px;
   }
 
   &__icons {
     display: flex;
     gap: 24px;
+    position: relative;
   }
 
   &__logo {
     display: flex;
     height: 46px;
     width: 64px;
+
+    @include onDesktop {
+      height: 65px;
+      width: 87px;
+    }
+  }
+
+  &__hover-phone {
+    position: absolute;
+    margin: 0;
+    top: -110%;
+    right: 140%;
+    width: 200px;
+
+    display: none;
+    flex-direction: column;
+    align-items: end;
+    // transition: 20s ease-in-out;
+  }
+
+  .hover--phone:hover ~ .top-bar__hover-phone {
+    @include onDesktop {
+      display: flex;
+      // transition: 2s ease-in;
+    }
   }
 }
