@@ -1,4 +1,5 @@
 # Landing page
+[DEMO LINK](https://neovendano.github.io/layout_landing-page/)
 
 Design of landing page:
 - [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
