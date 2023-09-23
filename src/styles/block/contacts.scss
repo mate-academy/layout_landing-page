@@ -1,0 +1,96 @@
+.contacts {
+  &__content {
+    @include pageGrid;
+  }
+
+  &__form {
+    display: grid;
+    row-gap: 16px;
+
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+    width: 411px;
+
+    @include onFormSize;
+  }
+
+  &__information {
+    display: grid;
+    row-gap: 24px;
+    padding-block: 48px;
+
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 4 / 7;
+      padding-block: 0 100px;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__link {
+    position: relative;
+    color: $main-color;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22.4px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__input {
+    border-radius: 40px;
+    height: 48px;
+    padding-left: 16px;
+    border: none;
+    background-color: $input-color;
+
+    @include onFormSize;
+
+    &:hover {
+      border: 1px solid #d5d7de;
+    }
+
+    &:hover:before {
+      border: 1px solid $main-color;
+    }
+  }
+
+  &__text {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+}
