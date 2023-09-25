@@ -14,16 +14,32 @@
   }
 
   &__gallery {
-    --columns: 2;
-    display: grid;
-    column-gap: 20px;
-    grid-template-columns: repeat(var(--columns),1fr);
+    @include pageGrid;
+
     margin-bottom: 16px;
+  }
+
+  &__link {
+    background-color: $light-bg;
+
+    @include onTablet {
+      height: 184px;
+      grid-column: span 3;
+    }
+    @include onDesktop {
+      height: 324px;
+      grid-column: span 6;
+    }
   }
 
   &__photo {
     width: 100%;
-    background: #000;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    margin-bottom: 16px;
   }
 
   &__title {
