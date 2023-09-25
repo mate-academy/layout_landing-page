@@ -1,0 +1,83 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onPhone {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin contentPadingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPadingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  box-sizing: border-box;
+  height: 56px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 56px;
+  color: #fff;
+  background-color: $hover-button-color;
+  border: none;
+  border-radius: 8px;
+  transition: background-color $effectDuration;
+
+  &:hover {
+    background-color: $main-text-color;
+  }
+
+  &:active {
+    background-color: $active-botton-color;
+  }
+}
