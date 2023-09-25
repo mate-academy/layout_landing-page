@@ -47,7 +47,11 @@
   position: relative;
   align-items: center;
 
-  &:hover::before {
+
+
+
+
+  &::before {
     content: "+123 45 67 899";
     position: absolute;
     width: max-content;
@@ -56,10 +60,18 @@
     letter-spacing: 2px;
     right: 52px;
     color: white;
+    transition: transform 0.5s;
+    transform: scale(0);
+    transform-origin: right;
 
     @include onMobile {
       content: none;
     }
+  }
+
+  &:hover::before {
+    transition: transform 0.5s;
+    transform: scale(1);
   }
 }
 
@@ -67,9 +79,11 @@
   background-image: url(../img/icon-menu.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  transition: background-image .5s;
 
   &:hover {
     background-image: url(../img/icon-menu-hover.svg);
+    transition: background-image .5s;
   }
 }
 
