@@ -32,10 +32,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       @include width-height(187px, 56px);
-
-      &:hover {
-        transform: scale(1.1);
-      }
+      @include img-hover;
 
       @include onMobile {
         @include width-height(130px, 38px);
@@ -91,9 +88,15 @@
     text-transform: uppercase;
     position: relative;
 
-    &:hover::before {
+    &::after {
       @include menu-links-underline;
-      animation: underline-anim 0.5s;
+      transition: transform 0.5s;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transition: transform 0.5s;
+      transform: scale(1);
     }
   }
 }
