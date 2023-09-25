@@ -1,0 +1,45 @@
+@use "../utils/mixins" as *;
+
+.burger {
+  &::before {
+    display: inline-block;
+    content: "";
+    background-image: url(images/Burger.svg);
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+
+    @include for-744-width() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: "";
+    background-image: url(images/Burger-hover.svg);
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+
+    @include for-744-width() {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden();
+  }
+}
