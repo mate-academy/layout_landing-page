@@ -1,0 +1,56 @@
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url("../images/icon/icon-menu.svg");
+  transition: transform 0.3s;
+
+  @include hover (transform, scale(1.2));
+
+  @include onTablet {
+    height: 23px;
+    width: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &--phone {
+    background-image: url("../images/icon/icon-phone.svg");
+    position: relative;
+
+    @include onTablet {
+      &::after {
+        content: "+1 234 555-55-55";
+        color: $main-text-color;
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: absolute;
+        transform-origin: center;
+        white-space: nowrap;
+        transform: translate(-145px);
+        opacity: 0;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url("../images/icon/icon-menu.svg");
+
+    &:hover {
+      transform: scale(1.2);
+      background-image: url("../images/icon/icon-menu-hover.svg");
+    }
+  }
+
+  &--close {
+    background-image: url("../images/icon/icon-close.svg");
+  }
+}
