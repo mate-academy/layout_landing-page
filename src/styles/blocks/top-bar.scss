@@ -1,5 +1,6 @@
 .top-bar {
   padding-block: 24px;
+  z-index: 1;
   @include contentPaddingInline;
 
   display: flex;
@@ -37,17 +38,22 @@
     top: -110%;
     right: 140%;
     width: 200px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    font-weight: 600;
 
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: end;
-    // transition: 20s ease-in-out;
   }
 
+  .hover--phone:focus ~ .top-bar__hover-phone,
   .hover--phone:hover ~ .top-bar__hover-phone {
     @include onDesktop {
-      display: flex;
-      // transition: 2s ease-in;
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 }
