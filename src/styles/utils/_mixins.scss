@@ -1,0 +1,222 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $duration ease-in-out;
+  &:hover {
+    cursor: pointer;
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin hoverUnderline {
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -2px;
+    background-color: $color-text-black;
+    transition: all 0.4s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin grid {
+  --columns: 2;
+  --gap: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: var(--gap);
+
+  @include onTablet {
+    --columns: 6;
+    --gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin mobileHeading1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+@mixin mobileCardHeading {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33.6px;
+  letter-spacing: 1px;
+  color: $color-text-main;
+}
+
+@mixin mobileCardText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  letter-spacing: 1px;
+  color: $color-text-main;
+}
+
+@mixin mobileCardPrice {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33.6px;
+  color: $color-text-main;
+}
+
+@mixin mobileHeading2 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+}
+
+@mixin mobileTextBig {
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 32.2px;
+}
+
+@mixin phoneNumber {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 27px;
+  color: $color-text-black;
+}
+
+@mixin menuBook {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $color-text-black;
+}
+
+@mixin tabletHeading1 {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+@mixin tabletHeading2 {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 48px;
+  letter-spacing: -1.5px;
+  text-align: left;
+}
+
+@mixin tabletTextBig {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+}
+
+@mixin desktopHeading1 {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 80px;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+@mixin desktopHeading2 {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 64px;
+  letter-spacing: -1.5px;
+  text-align: left;
+}
+
+@mixin desktopTextBig {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+}
+
+@mixin menuNavText {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $color-text-black;
+}
+
+@mixin buttonText {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: center;
+  color: $color-text-black;
+}
+
+@mixin formInput {
+  box-sizing: border-box;
+  padding: 14px 16px;
+  background: $form-bcg-color;
+  border-radius: 40px;
+  width: 100%;
+  height: 48px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  color: #292929;
+  font-size: 14px;
+  line-height: 20px;
+
+  &:focus {
+    outline: none;
+    font-weight: 500;
+    color: $color-text-black;
+
+    &::placeholder {
+      font-weight: 500;
+    }
+  }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px $form-bcg-color inset;
+  }
+}
+
+@mixin contactsTitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $color-text-main;
+}
+
+@mixin contactsLink {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  color: $color-text-main;
+}
