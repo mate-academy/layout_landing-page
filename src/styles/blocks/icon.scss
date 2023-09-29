@@ -2,26 +2,48 @@
   height: 24px;
   width: 24px;
   display: block;
-  transition: transform 0.3s;
+  background-size: cover;
 
   @include hover (transform, scale(1.2));
 
   @include onTablet {
     height: 32px;
     width: 32px;
-    background-size: cover;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+    position: relative;
+
+    &:hover {
+      display: flex;
+      align-items: center;
+      width: 180px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 16px;
+      line-height: 100%;
+      background-image: url(../images/icons/phone-number.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.png);
 
-    &:hover {
-      background-image: url(../images/icons/icon-burger-menu-hover.png);
-    }
+    @include hover (
+      background-image,
+      url(../images/icons/icon-burger-menu-hover.png)
+    );
   }
 
   &--close {
