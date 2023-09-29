@@ -13,11 +13,38 @@
 
   &--phone {
     background-image: url(../imgs/header/phone.svg);
+    position: relative;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      color: #fff;
+      display: block;
+      width: max-content;
+      position: absolute;
+      top: 25%;
+      right: 50px;
+      text-align: right;
+      font-family: Poppins, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform $effect-duration;
+    }
+
+    &:hover::before {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--menu {
     background-image: url(../imgs/header/burger_menu.svg);
-    transition: all $effect-duration;
 
     &:hover {
       background-image: url(../imgs/header/burger_menu-hover.svg);
