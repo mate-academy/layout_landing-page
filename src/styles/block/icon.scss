@@ -14,7 +14,33 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(/icons/Phone-number.png);
+
+    @include onTablet {
+      &::after {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        left: -140px;
+        top: 8px;
+        display: block;
+        height: 16px;
+        width: 145px;
+        color: $bg-color;
+
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        transition: transform 0.3s;
+        transform: scale(0);
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
   }
 
   &--menu {
