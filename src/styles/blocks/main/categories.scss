@@ -1,0 +1,83 @@
+.categories {
+  @include onDesktop {
+    @include pageGrid;
+  }
+
+  &__section-title {
+    @include onDesktop {
+      grid-column: 1 /-1;
+    }
+  }
+
+  &__wrapper {
+    @include onDesktop {
+      grid-column: 1 / -1;
+    }
+
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      row-gap: 56px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__view-all-button {
+    @include onDesktop {
+      grid-column: span 4;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    @include hover(scale, 1.05);
+
+    @media (max-width: $tablet-min-width) {
+      position: relative;
+      height: 0;
+      padding-bottom: 100%;
+    }
+
+    @include onTablet {
+      grid-column: span 3;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    @include hover(border-radius, 2%);
+
+    @media (max-width: $tablet-min-width) {
+      position: absolute;
+    }
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+
+    color: $main-text-color;
+    font-size: 18px;
+
+    @include onTablet {
+      font-size: 24px;
+    }
+
+    font-weight: 700;
+    line-height: 25px;
+  }
+}
