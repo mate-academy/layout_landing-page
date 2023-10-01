@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@400;500;700&display=swap");
-//font-family: 'Roboto', sans-serif; in specific block.
+
+@mixin onDesktop {
+  @media (min-width:$desktop-min-width) {
+    @content;
+  }
+}
 
 @mixin onTablet {
   @media (min-width:$tablet-min-width) {
@@ -12,5 +17,25 @@
 
   @include onTablet {
     padding-inline: 72px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --colums: 6;
+  display: grid;
+  column-gap: 24px;
+  @include onTablet() {
+    column-gap: 32px;
+  }
+  grid-template-columns: repeat(var(--colums), 1fr);
+  @include onDesktop() {
+    --colums: 12;
   }
 }

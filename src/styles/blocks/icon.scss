@@ -3,11 +3,8 @@
   height: 24px;
   width: 24px;
   background-size: cover;
-  transition: transform 0.5s;
 
-  &:hover {
-    transform: scale(1.2);
-  }
+  @include hover(transform, scale(1.2));
 
   @include onTablet {
     height: 32px;
@@ -15,19 +12,64 @@
   }
 
   &--phone {
-    background-image: url(../img/icon-phone-call.png);
+    background-image: url(../img/icon-phone-call.svg);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: right;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @media (min-width: 1260px) {
+      &:after {
+        content: "The Met Cloisters \A +1 212-923-3700";
+        display: block;
+        visibility: hidden;
+        transform: translate(-100%,-80%);
+        transition: opacity 0.3s;
+        width: max-content;
+        padding-right: 16px;
+        white-space: pre;
+        opacity: 0;
+      }
+
+      &:hover:after {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    @media (min-width: 1260px) {
+      &:before {
+        margin-top: 24px;
+        content: "The Met Fifth Avenue \A +1 212-535-7710";
+        display: block;
+        visibility: hidden;
+        transform: translate(-100%,-80%);
+        transition: opacity 0.3s;
+        width: max-content;
+        padding-right: 16px;
+        white-space: pre;
+        opacity: 0;
+      }
+
+      &:hover:before {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
-    background-image: url(../img/icon-burger-menu.png);
+    background-image: url(../img/icon-burger-menu.svg);
 
     &:hover {
-      background-image: url(../img/Icon-Burger-menu-hover.png);
+      background-image: url(../img/icon-burger-menu-hover.svg);
     }
   }
 
   &--close {
-    background-image: url(../img/icon-close.png);
+    background-image: url(../img/icon-close.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
