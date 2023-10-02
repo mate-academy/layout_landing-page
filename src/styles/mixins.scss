@@ -1,0 +1,67 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+  margin: 0 auto;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin inputStyles {
+  box-sizing: border-box;
+  height: 48px;
+  color: #7e7e83;
+  background-color: #f8f8fa;
+  border: 1px solid #f8f8fa;
+  border-radius: 8px;
+  outline: none;
+  font-family: "Space Mono", sans-serif;
+  font-size: 14px;
+  padding: 14px 16px;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid #d5d7de;
+    cursor: pointer;
+  }
+
+  &:hover::placeholder {
+    color: $main-text-color;
+  }
+
+  &:focus {
+    border: 1px solid $main-text-color;
+  }
+}
