@@ -1,6 +1,6 @@
 .menu {
   height: 100vh;
-  background-color: #E5E6E8;
+  background-color: #e5e6e8;
   opacity: 0;
   pointer-events: none;
 
@@ -16,11 +16,30 @@
   }
 
   &__phone-number {
-    display: block;
+    position: relative;
+    display: inline-block;
     text-decoration: none;
     color: inherit;
     margin-bottom: 16px;
     margin-top: 48px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $main-page-color;
+      transform: scale(0);
+      transform-origin: left;
+
+      transition: transform $effectDuration;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__call-to-order {
