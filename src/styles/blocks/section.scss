@@ -1,19 +1,17 @@
 .main {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn;
   gap: 92px;
-  width: 320px;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn;
   align-items: center;
-  padding-inline: 20px;
+  @include contentPaddingInline;
 
   &-img {
-    width: 280px;
+    min-width: 280px;
     height: 228px;
+    align-self: center;
   }
 
   &__subtitle {
@@ -27,6 +25,7 @@
     margin-top: 8px;
     font-weight: 400;
     line-height: 140%;
+    max-width: 672px;
   }
 
   &__price {
@@ -37,12 +36,15 @@
   }
 }
 
+.compare-bikes__card {
+  @include flexColumn;
+}
+
 //move free
 
 .move__free {
+  @include flexColumn;
   margin-top: 60px;
-  display: flex;
-  flex-direction: column;
   gap: 32px;
 
   &-header {
@@ -52,8 +54,8 @@
   }
 
   &-description {
-  font-size: 23px;
-  line-height: 140%;
+    font-size: 23px;
+    line-height: 140%;
   }
 }
 
@@ -67,15 +69,13 @@
 //compare bikes
 
 .main-section {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn;
   gap: 48px;
 
 }
 
 .section__list {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn;
   gap: 40px;
   list-style: none;
 }
@@ -84,30 +84,87 @@
 .details {
 
   &__card {
-    display: flex;
-    flex-direction: column;
+    @include flexColumn;
     gap: 16px;
 
     &-wrap-img {
       display: flex;
-      justify-content: space-between;
+      gap: 20px;
     }
 
     &-img {
-      width: 130px;
-      height: 130px
+      min-width: 130px;
+      max-width: 100%;
+      min-height: 130px;
+      max-height: 100%;
     }
   }
 }
 
 .button {
-  width: 100%;
+  width: 280px;
   height: 56px;
   border: none;
   border-radius: 40px;
-  background: #FFF;
+  background: #fff;
   text-align: center;
   font-family: inherit;
   font-size: inherit;
   font-weight: 700;
+}
+
+.button:hover {
+  box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.40);
+  cursor: pointer;
+}
+
+@media (min-width: 744px) {
+  .main {
+    gap: 120px;
+  }
+
+  .move__free {
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    gap: 100px;
+
+    &-header {
+      font-size: 48px;
+      white-space: nowrap;
+    }
+
+    &-description {
+      max-width: 498px;
+    }
+  }
+
+  .section__header {
+    font-size: 48px;
+    line-height: 100%;
+  }
+
+  .section-img {
+    width: 392px;
+    height: 316px;
+  }
+}
+@media (min-width: 1260px) {
+  .section__header {
+    font-size: 64px;
+    line-height: 100%;
+  }
+
+  .section-img {
+    width: 324px;
+    height: 256px;
+  }
+
+  .main {
+    gap: 164px;
+  }
+
+  .move__free {
+    gap: 200px;
+  }
 }
