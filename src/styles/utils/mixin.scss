@@ -1,0 +1,66 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover ($property, $value) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin grid {
+  --column: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    --column: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop() {
+    --column: 12;
+  }
+}
+
+@mixin titleSection {
+  @content ;
+  text-align: center;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+}
+
+@mixin titleSectionLeft {
+  @content ;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+}
+
+@mixin text {
+  @content ;
+  font-weight: $fw400;
+  font-size: 16px;
+  line-height: 27px;
+  color: $colorBlack;
+}
+
+@mixin titleRed {
+  @content ;
+  font-weight: $fw700;
+  font-size: 16px;
+  line-height: 27px;
+  color: $colorSubTitle;
+}
