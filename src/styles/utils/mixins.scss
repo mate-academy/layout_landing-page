@@ -1,0 +1,168 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin topBarPaddings {
+  padding-block: 24px;
+
+  @include onTablet {
+    padding-block: 32px;
+  }
+}
+
+@mixin iconsSize {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @include onTablet {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@mixin mainTitleFontSize {
+  font-size: 36px;
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  line-height: 100%;
+
+  @include onTablet {
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 56px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: $property $trasition-duration;
+
+  &:hover {
+    transform: $toValue;
+  }
+}
+
+@mixin grid-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin section-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 100%;
+  margin-bottom: 46px;
+
+  @include onTablet {
+    font-size: 40px;
+    margin-bottom: 56px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
+
+@mixin input {
+  font-size: 14px;
+  padding: 14px 18px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  outline: 2px solid transparent;
+  border: 1px solid transparent;
+  transition: all $trasition-duration;
+}
+
+@mixin btn {
+  height: 56px;
+  grid-column: span 2;
+  text-decoration: none;
+  text-align: center;
+  color: $color-bg;
+  border-radius: 8px;
+  border: none;
+  background-color: $color-btn;
+
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color $trasition-duration;
+
+  &:hover {
+    background-color: $color-btn-hover;
+  }
+
+  &:active {
+    background-color: $color-btn-active;
+  }
+
+  @include onTablet {
+    grid-column: span 6;
+  }
+}
+
+@mixin autoFill {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    transition: all $trasition-duration;
+    border: 1px solid $color-btn;
+    -webkit-text-fill-color: $color-btn;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6 #fcfaef;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-btn;
+    outline: 1px solid $color-btn;
+    border-radius: 5px;
+  }
+}
