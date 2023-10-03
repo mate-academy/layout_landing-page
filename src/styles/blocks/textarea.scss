@@ -1,5 +1,13 @@
 .textarea {
   @include input;
+  @include placeholder {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all $trasition-duration;
+  }
+
+  @include scrollBar;
+
   grid-column: span 2;
   height: 120px;
   transition: $trasition-duration;
@@ -9,11 +17,18 @@
     grid-column: span 6;
   }
 
-  &:hover::placeholder {
-    color: $color-main;
+  &:hover {
+    @include placeholder {
+      color: $color-main;
+    }
   }
 
   &:focus {
     outline: 2px solid $color-btn;
+
+    @include placeholder {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
   }
 }
