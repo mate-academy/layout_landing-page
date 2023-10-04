@@ -4,11 +4,21 @@
   }
 }
 
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline {
   padding-inline: 20px;
 
   @include onTablet {
     padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
   }
 }
 
@@ -28,12 +38,6 @@
   }
 }
 
-@mixin topBarLogo {
-  @include onTablet {
-    width: 87px;
-  }
-}
-
 @mixin topBarIconsGap {
   gap: 24px;
 
@@ -49,5 +53,35 @@
   @include onTablet {
     font-size: 64px;
     line-height: 64px;
+  }
+
+  @include onDesktop() {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+
+@mixin hoverEffect($property, $value) {
+  transition: $property $transition-time;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+@mixin hoverUnderlined {
+  &::after {
+    content: "";
+    bottom: 10px;
+    display: block;
+    height: 1px;
+    transform: translateY(8px);
+    background-color: rgba($color: #fff, $alpha: 0);
+
+    transition: background-color $transition-time;
+  }
+
+  &:hover::after {
+    background-color: rgba($color: #fff, $alpha: 1);
   }
 }
