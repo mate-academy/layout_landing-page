@@ -1,23 +1,10 @@
 .contacts {
-  --columns: 1;
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-
-  @include onTablet {
-    --columns: 6;
-    row-gap: 24px;
-  }
-
-  @include onDesktop {
-    --columns: 12;
-  }
   &__wrapper {
     display: grid;
-    row-gap: 16px;
-    margin-bottom: 48px;
+    row-gap: 48px;
 
     @include onTablet {
-      grid-column: 1 / -2;
+      @include pageGrid;
     }
   }
 
@@ -81,6 +68,7 @@
     height: 148px;
     border-radius: 16px;
     padding-left: 16px;
+    padding-top: 16px;
     margin-bottom: 32px;
 
     @include onDesktop {
@@ -103,9 +91,20 @@
 }
 
 .contact {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  gap: 24px;
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+
+  @include onDesktop {
+    grid-column: 8 / span 3;
+  }
 
   &__details {
-    @include pageGrid;
     margin-bottom: 24px;
   }
 
