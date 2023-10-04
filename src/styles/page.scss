@@ -1,8 +1,6 @@
 .page {
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  line-height: 140%;
-  color: $main-text-color;
+  font-family: "Monrope", sans-serif;
+  color: #1b2129;
 
   scroll-behavior: smooth;
 
@@ -11,21 +9,34 @@
     min-width: 320px;
   }
 
+  &__body.menu {
+    overflow: hidden;
+  }
+
   &__menu {
     position: fixed;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
 
+    transition: all 0.4s;
     opacity: 0;
-    transition: all 0.3;
     transform: translateX(-100%);
     pointer-events: none;
-
-    &:target {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: all;
-    }
   }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+h1 {
+  margin: 0;
+}
+
+.page:has(.page__menu:target) {
+  
+  overflow: hidden;
 }
