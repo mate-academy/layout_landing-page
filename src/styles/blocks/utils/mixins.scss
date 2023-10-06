@@ -1,0 +1,152 @@
+// Width 744 - 1260px
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+// Width +1020px
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+// GRIDS
+@mixin grid {
+  --columns-qty: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns-qty), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns-qty: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns-qty: 12;
+  }
+}
+
+// Text style for changing content titles and headers
+@mixin headerTitle() {
+  font-size: $mobile-header-text-font-size;
+
+  @include onTablet() {
+    font-size: $tablet-header-text-font-size;
+  }
+
+  @include onDesktop() {
+    font-size: $desktop-header-text-font-size;
+  }
+}
+
+@mixin textTitle {
+  font-size: $mobile-title-font-size;
+  font-weight: $bold-text-font-weight;
+  line-height: $mobile-title-font-line-height;
+
+  @include onTablet {
+    font-size: $tablet-title-font-size;
+    line-height: $tablet-title-font-line-height;
+  }
+
+  @include onDesktop {
+    font-size: $desktop-title-font-size;
+    line-height: $desktop-title-font-line-height;
+  }
+}
+
+@mixin textHeader {
+  font-size: $mobile-header-font-size;
+  font-weight: $bold-text-font-weight;
+  line-height: $mobile-header-font-line-height;
+
+  @include onTablet {
+    font-size: $tablet-header-font-size;
+    line-height: $tablet-header-font-line-height;
+  }
+}
+
+// Icrease hovered logo, img and icons on desktop mode
+@mixin hover ($property, $value) {
+  transition: #{$property} $speed-transitions;
+  &:hover {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin hoverScale() {
+  @include onDesktop() {
+    @include hover(transform, scale(1.05));
+  }
+}
+
+// Add transition with underline for menu links on desktop mode
+@mixin hoveredUnderline ($property, $value) {
+  @include onDesktop() {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $main-black-color;
+
+      transition: #{$property}, $speed-transitions;
+      #{$property}: scale(0);
+    }
+
+    &:hover::after {
+      #{$property}: #{$value};
+    }
+  }
+}
+
+@mixin hoveredUnderlineMenu () {
+  @include onDesktop () {
+    @include hoveredUnderline (transform, scale(1));
+  }
+}
+
+// Change logo sizes
+@mixin logoSize() {
+  height: $mobile-logo-height;
+  width: $mobile-logo-width;
+
+  @include onTablet() {
+    height: $tablet-logo-height;
+    width: $tablet-logo-width;
+  }
+}
+
+// Change space between phone and burger-menu icons
+@mixin iconBetween() {
+  margin-left: $mobile-icon-size;
+
+  @include onTablet() {
+    margin-left: $mobile-icon-size;
+  }
+}
+
+// Change icon sizes on mobile and tablet mode
+@mixin iconSize() {
+  height: $mobile-icon-size;
+  width: $mobile-icon-size;
+
+  @include onTablet() {
+    height: $tablet-icon-size;
+    width: $tablet-icon-size;
+  }
+}
+
+// Add phone number to hovered phone icon on desktop mode
+@mixin iconPhoneSize() {
+  @include onDesktop() {
+    background-image: url(../icon/icon-phone-call-hovered.svg);
+    height: $desktop-phone-icon-hovered-height;
+    width: $desktop-phone-icon-hovered-width;
+  }
+}
