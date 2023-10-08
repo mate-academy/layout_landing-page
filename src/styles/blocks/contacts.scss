@@ -1,5 +1,9 @@
 .contacts {
-  @include pageGrid;
+  width: 100%;
+  &__wrapper {
+    align-items: start;
+    @include pageGrid;
+  }
 
   &__form {
     grid-column: 1 / -1;
@@ -9,23 +13,14 @@
     }
 
     @include onDesktop {
-      grid-column: 1 / 6;
-    }
-  }
-
-  &__info {
-    grid-column: 1 / -1;
-
-    @include onTablet {
-      grid-column: 4 / 7;
-    }
-
-    @include onDesktop {
-      grid-column: 8 / 10;
+      grid-column: span 5;
     }
   }
 
   &__input {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 16px;
     display: flex;
     justify-items: center;
     height: 48px;
@@ -37,17 +32,71 @@
     color: #292929;
   }
 
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    gap: 24px;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      margin-top: 0;
+      grid-column: 4 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / -2;
+      justify-content: center;
+    }
+  }
+
   &__name {
     margin: 0;
-    margin-top: 24px;
     font-size: 14px;
     font-weight: 400;
     line-height: 140%;
+    color: #fff;
+
+    &:hover {
+      color:  #7e7e83;
+      cursor: pointer;
+    }
   }
 
   &__details {
     font-size: 16px;
     font-weight: 500;
     line-height: 140%;
+    color: #fff;
+
+    &:hover {
+      color: #7e7e83;
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    display: block;
+    height: 56px;
+    width: 100%;
+    padding: 13px;
+
+    @include fontSizeWeightLineHeight (16px, 700, 27px);
+
+    text-decoration: none;
+    color: #1d1d1d;
+    background-color: #fff;
+    border: 3px solid transparent;
+    border-radius: 40px;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #e8e8f066;
+      cursor: pointer;
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+      border: none;
+    }
   }
 }
