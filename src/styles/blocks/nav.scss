@@ -9,6 +9,7 @@
   }
 
   &__link {
+    position: relative;
     color: $color-text-onMenu;
     text-decoration: none;
 
@@ -16,10 +17,23 @@
     line-height: 22px;
     letter-spacing: 2px;
 
-    &:hover {
-      width: fit-content;
-      padding-bottom: 7px;
-      border-bottom: 1px solid $color-text-onMenu;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-text-onMenu;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
 }
