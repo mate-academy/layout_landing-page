@@ -6,7 +6,7 @@
   font-weight: 700;
   text-transform: uppercase;
   overflow: auto;
-
+  z-index: 1;
   &__nav {
     margin-bottom: 32px;
   }
@@ -14,12 +14,13 @@
   &__top {
     position: sticky;
     top: 0;
-    z-index: 1;
     margin-bottom: 40px;
+    background-color: $Accent-main-color;
+    z-index: 1;
   }
 
   &__bottom {
-    text-align: center;
+    text-align: left;
   }
 
   &__phone-number-fifth-avenue {
@@ -29,6 +30,8 @@
     color: $white-color;
     text-decoration: none;
     margin-bottom: 8px;
+
+    @include hover(color, $link-main-color);
   }
 
   &__phone-number-cloisters {
@@ -38,18 +41,35 @@
     line-height: 27px;
     color: $white-color;
     text-decoration: none;
+    @include hover(color, $link-main-color);
   }
 
   &__call-to-order {
+    position: relative;
     display: inline-block;
-
-    padding-bottom: 7px;
-    border-bottom: 1px solid $white-color;
 
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
     color: $white-color;
     text-decoration: none;
+    @include hover(color, $link-main-color);
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: flex;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: $white-color;
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
