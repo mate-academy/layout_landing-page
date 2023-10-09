@@ -1,0 +1,63 @@
+.top-bar {
+  @include contentPaddingBlock;
+  @include contentPaddingInline;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    display: flex;
+    text-decoration: none;
+    @include hoverEffect(transform, scale(1.2));
+
+    &--text {
+      user-select: none;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      font-size: 28px;
+      line-height: 23px;
+
+      @include onTablet {
+        font-size: 40px;
+        line-height: 32px;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 55px;
+    }
+  }
+
+  &__tooltip {
+    position: relative;
+
+    @include onDesktop {
+      transition: display $transition-time;
+
+      &:hover .top-bar__tooltip-content {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__tooltip-content {
+    transition: opacity $transition-time;
+
+    position: absolute;
+    top: -25px;
+    right: 100%;
+    visibility: hidden;
+    padding-right: 10px;
+    opacity: 0;
+  }
+}

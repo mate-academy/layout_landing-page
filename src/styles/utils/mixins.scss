@@ -1,0 +1,85 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1260px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin contentPaddingBlock {
+  padding-block: 25px;
+
+  @include onTablet {
+    padding-block: 50px;
+  }
+}
+
+@mixin headerBGImage {
+  background-image: url(../img/header-bg-mobile.png);
+
+  @include onTablet {
+    background-image: url(../img/header-bg.png);
+  }
+}
+
+@mixin hoverEffect($property, $value) {
+  transition: $property $transition-time;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+@mixin hoverUnderlined ($col: #fff) {
+  &::after {
+    content: "";
+    bottom: 10px;
+    display: block;
+    height: 1px;
+    transform: translateY(8px);
+    background-color: rgba($color: $col, $alpha: 0);
+
+    transition: background-color $transition-time;
+  }
+
+  &:hover::after {
+    background-color: rgba($color: $col, $alpha: 1);
+  }
+}
+
+@mixin imagePositioningInline ($inline) {
+  object-position: $inline;
+}
+
+@mixin pageGrid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
