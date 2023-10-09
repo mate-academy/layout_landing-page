@@ -1,0 +1,186 @@
+.header {
+  padding: 25px 20px 288px;
+  background-image: url(../images/photos/header-image-phone.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  transition: $transition;
+
+  @include onTablet {
+    background-image: url(../images/photos/header-tablet.png);
+    padding: 50px 72px 456px;
+  }
+
+  @include onDesktop {
+    background-image: url(../images/photos/header-desktop.png);
+    padding: 50px 120px 482px;
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: $font-size-small;
+    line-height: $main-line-height;
+    color: $white-color;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    gap: 8px;
+    width: max-content;
+    position: absolute;
+    right: 200%;
+    top: -220%;
+    opacity: 0;
+    pointer-events: none;
+    transition: $transition;
+  }
+
+  &__content {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation-duration: 1s;
+    animation-name: headerTop;
+  }
+
+  &__title {
+    color: $white-color;
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    animation-duration: 1s;
+    animation-name: headerTitle;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 60px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__icon--close {
+    display: block;
+    background-image: url(../images/menu-closed.svg);
+    transition: $transition;
+
+    @include onDesktop {
+      &:hover {
+        @include hover(transform, scale($main-scale));
+      }
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+    transition: $transition;
+    @include onDesktop {
+      @include hover(transform, scale($main-scale));
+    }
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__icon--phone {
+    position: relative;
+    display: block;
+    background-image: url(../images/phone.svg);
+    transition: $transition;
+
+    @include onDesktop {
+      &:hover {
+        @include hover(transform, scale($main-scale));
+      }
+      &:hover .header__text-block {
+        @include onDesktop {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &__icon--menu {
+    display: flex;
+    justify-content: center;
+    height: 12px;
+    width: 18px;
+    gap: 3px;
+    flex-direction: column;
+
+    @include onTablet {
+      height: 16px;
+      width: 24px;
+      gap: 4px;
+    }
+
+    @include onDesktop {
+      &:hover &-line:first-child {
+        width: 80%;
+      }
+      &:hover &-line:last-child {
+        width: 50%;
+      }
+    }
+
+    &-line {
+      display: block;
+      border-radius: 10px;
+      width: 100%;
+      height: 2px;
+      background-color: $white-color;
+      transition: $transition;
+
+      @include onTablet {
+        width: 24px;
+        height: 3px;
+      }
+    }
+  }
+
+  &__icon {
+    background-size: cover;
+    height: 18px;
+    width: 18px;
+
+    @include onTablet {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}
