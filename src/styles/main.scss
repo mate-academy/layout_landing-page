@@ -8,9 +8,9 @@
   scroll-behavior: smooth;
 }
 
-.page:has(.page__menu:target) {
-  overflow: hidden; /* not to scroll the page */
-}
+// .page:has(.page__menu:target) {
+//   overflow: hidden; /* not to scroll the page */
+// }
 
 .page__body {
   margin: 0;
@@ -24,11 +24,17 @@
 
   opacity: 0;
   pointer-events: none;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .page__menu:target {
   opacity: 1;
   pointer-events: all;
+
+  max-height: 100%;
 }
 /* #endregion */
 
@@ -38,8 +44,8 @@
   height: 100vh;
   background-image: url(../images/header-bg-mobile2.png);
   background-size: cover;
-  background-position: right;
-  // padding: 24px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
 
   display: flex;
   flex-direction: column;
@@ -82,7 +88,7 @@
   position: sticky; /* to keep cross always visible */
   top: 0;
   z-index: 1;
-  background-color: #e5e5e5;
+  // background-color: #e5e5e5;
 
   margin-bottom: 24px;
 }
@@ -107,6 +113,10 @@
 .nav__link {
   color: inherit;
   text-decoration: none;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
 }
 
 .menu__phone-number {
@@ -144,6 +154,8 @@
 .icon--phone {
   background-image: url(../icons/icon-phone.png);
   background-repeat: no-repeat;
+
+  position: relative;
 }
 
 .icon--burger {
@@ -164,6 +176,22 @@
 
 .icon--close {
   background-image: url(../icons/icon-close.png);
+}
+
+.icon--phone::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  color: #fff;
+  display: flex;
+  top: 20%;
+  right: 5px;
+  transform: translateX(-30%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.icon--phone:hover::after {
+  opacity: 1;
 }
 /* #endregion */
 
