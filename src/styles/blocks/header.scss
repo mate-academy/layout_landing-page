@@ -1,6 +1,5 @@
 .header {
   @include flexColumn;
-  gap: 270px;
   height: 100vh;
   background-image: url("../images/bg-mybike.jpeg");
   background-size: cover;
@@ -17,7 +16,12 @@
       color: inherit;
       font-size: inherit;
       text-align: center;
+      align-self: center;
       display: none;
+      scale: 1;
+      animation-name: example;
+      animation-duration: 0.3s;
+      animation-fill-mode: forwards;
     }
 
     &-logo {
@@ -36,6 +40,11 @@
       height: $small;
       transition: 0.3s;
       background-size: cover;
+
+      &-container {
+        display: inherit;
+        gap: $small;
+      }
     }
 
     &-icons-phone {
@@ -53,17 +62,21 @@
 
     &-icon:hover {
       transform: scale(1.2);
+      transition: transform 0.3s;
     }
 
     &-icons-menu:hover {
       background-image: url("../images/icons/icon-burger-menu-hover.svg");
-      transition: 0.3;
+      transition: 0.3s;
     }
+
   }
 
   &__bottom {
+    height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     &-title {
       font-size: 36px;
@@ -72,16 +85,15 @@
       letter-spacing: -1.5px;
     }
   }
+
 }
 
-.header__top-icons-wrapper:hover:nth-child(2) :nth-child(1)  {
+.header__top-icon-container:hover .header__top-phone-number {
   display: block;
 }
 
 @media (min-width: 744px) {
   .header {
-    gap: 400px;
-
     &__top {
       padding: 36px 72px;
 
@@ -97,6 +109,10 @@
       &-icon {
         width: $large;
         height: $large;
+
+        &-container {
+          gap: $large;
+        }
       }
     }
 
@@ -118,5 +134,3 @@
   }
 
 }
-
-
