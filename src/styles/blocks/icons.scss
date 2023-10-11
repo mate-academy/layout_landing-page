@@ -1,0 +1,83 @@
+.icons {
+  display: flex;
+  gap: $icon-size-mobile;
+
+  @include onTablet {
+    gap: $icon-size-tablet;
+  }
+
+}
+
+.icon {
+  display: block;
+  height: $icon-size-mobile;
+  width: $icon-size-mobile;
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    height: $icon-size-tablet;
+    width: $icon-size-tablet;
+  }
+
+  @include hover(transform, scale(1.2));
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icons/icon-phone.svg);
+
+    transition: all $effect-duration;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        right: 44px;
+        display: flex;
+        margin-block: 10px;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        white-space: nowrap;
+        color: $white-color;
+
+        opacity: 0;
+        transform: scale(0);
+        pointer-events: none;
+        transition: all $effect-duration;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: scale(1);
+        transform-origin: right;
+      }
+    }
+
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+    transition: background-image $effect-duration;
+
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: rotate(270deg);
+    }
+
+    &:focus {
+      transform: rotate(-360deg);
+    }
+  }
+}
