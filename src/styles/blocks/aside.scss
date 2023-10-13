@@ -1,0 +1,95 @@
+.menu {
+  position: fixed;
+  @include flexColumn;
+  overflow: auto;
+  height: 100vh;
+  gap: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #c2c2c2;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.3s;
+
+  &__content {
+    @include flexColumn;
+    gap: 40px;
+  }
+}
+
+.menu:target {
+  opacity: 1;
+  pointer-events: all;
+  transition: all 0.3s;
+}
+
+.nav {
+  @include contentPaddingInline;
+
+  &__list {
+    @include flexColumn;
+    gap: 32px;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 1px;
+      width: 100%;
+      bottom: -8px;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: center;
+      background-color: #1d1d1d;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.book__ride {
+  @include flexColumn;
+  margin-top: 40px;
+  padding: 0;
+  gap: 16px;
+  list-style: none;
+
+  &-phone {
+    color: #1d1d1d;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &-test {
+    color: #1d1d1d;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}
