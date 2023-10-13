@@ -1,0 +1,43 @@
+$text--color: #fff;
+$menu--color--text: #1d1d1d;
+
+.page {
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+  
+  font-family: Poppins, sans-serif;
+  color: $text--color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: $menu--color--text;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden !important;
+    z-index: 1;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+
+    @media (min-width:576px) {
+      padding-inline: 72px;
+    }
+
+    pointer-events: none;
+    opacity: 0;
+
+    &:target {
+      overflow: hidden !important;
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
