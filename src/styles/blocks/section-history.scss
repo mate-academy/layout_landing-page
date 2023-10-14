@@ -1,0 +1,70 @@
+.history {
+  &__top {
+    margin-top: 120px;
+    background-image: url(/media/bottom-section-bg.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+  }
+}
+
+.content {
+  @include contentPaddingInline;
+  background-color: $history-bg-color;
+
+  padding-block: 48px;
+  display: grid;
+  grid-template-areas: "content-title content-title"
+    "history-content history-content";
+  @include pageGrid;
+  grid-template-rows: minmax(100, auto) minmax(150, auto);
+  row-gap: 24px;
+  justify-items: baseline;
+
+  &__title {
+    grid-area: content-title;
+  }
+
+  &__text {
+    grid-area: history-content;
+    color: $main-black-color;
+    font-size: 16px;
+  }
+}
+
+@include onTablet {
+  .history__top {
+    height: 400px;
+  }
+
+  .content {
+    padding-block: 120px;
+    grid-template-areas: "history-title history-content";
+    grid-template-rows: auto;
+
+    &__title {
+      grid-column: 1/5;
+      grid-row: 1;
+
+    }
+
+    &__text {
+      grid-column: 4/-1;
+    }
+  }
+}
+
+@include onDesktop {
+  .content {
+    &__title {
+      grid-column: 1/7;
+      grid-row: 1;
+
+    }
+
+    &__text {
+      grid-column: 7/-1;
+    }
+  }
+}

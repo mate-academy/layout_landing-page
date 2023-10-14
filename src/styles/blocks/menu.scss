@@ -1,0 +1,120 @@
+.page__menu {
+  @include contentPaddingInline;
+  padding-top: 24px;
+  height: 100vh;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-areas: "menu-head"
+    "menu-nav"
+    "menu-cont";
+  @include pageGrid;
+  grid-template-rows: 100px 280px;
+  row-gap: 48px;
+
+  background: $menu-bg-color;
+
+}
+
+.header__icons-close {
+  grid-column: -1;
+  justify-self: end;
+}
+
+.icon--close {
+  display: block;
+  background-image: url(/media/icon/Icon-Close.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  grid-area: menu-nav;
+  @include fullGridWidth;
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $main-black-color;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      bottom: -8px;
+      width: 100%;
+      height: 2px;
+      background-color: $main-black-color;
+
+      transform: scale(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.call-inform {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  grid-area: menu-cont;
+  @include fullGridWidth;
+
+  &__phone-number {
+    text-decoration: none;
+    color: $main-black-color;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  &__call-button {
+    width: fit-content;
+    padding-bottom: 4px;
+    text-decoration: none;
+    border-bottom: 2px solid;
+    color: $main-black-color;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}
+
+@include onTablet {
+  .page__menu {
+    padding-top: 32px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@include onDesktop {
+  .page__menu {
+    grid-template-columns: repeat(12, 1fr);
+    height: 100vh;
+    position: fixed;
+    padding: 32px 120px 64px;
+  }
+}
