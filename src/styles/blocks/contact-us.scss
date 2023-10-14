@@ -12,142 +12,113 @@
     margin-bottom: 16px;
     padding: 14px 16px;
 
-    grid-template-columns: 2fr;
-
-    @include onTablet {
-      &__content {
-        grid-column: span 3;
-      }
-    }
-
-    @include onDesktop {
-      &__content {
-        grid-column: span 5;
-      }
-    }
-
   }
 
   .message-container {
 
-    width: 278px;
+    width: 100%;
     height: 148px;
     border-radius: 16px;
-
-    @include onTablet {
-      width: 288px;
-      border-radius: 16px;
-    }
-
-    @include onDesktop {
-      width: 400px;
-      border-radius: 16px;
-    }
   }
 
   .input-container {
 
-    width: 278px;
+    width: 100%;
     height: 48px;
-
-    @include onTablet {
-      width: 288px;
-    }
-
-    @include onDesktop {
-      width: 400px;
-    }
   }
 
   &__content {
     display: grid;
-    gap: 10px;
-
-    .contact-us__button {
-      border-radius: 40px;
-      background-color: $text-color;
-      cursor: pointer;
-
-      color: $main-text-color;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 27px;
-      text-align: center;
-
-      width: 280px;
-      height: 56px;
-
-      @include onTablet {
-        width: 288px;
-      }
-
-      @include onDesktop {
-        width: 411px;
-      }
-
-      &:hover {
-        box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
-      }
-
-      &:active {
-        box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
-      }
-    }
 
     .contact-us__info {
 
-      grid-column: -1 / 1;
+      grid-column: 1 / -1;
 
       @include onTablet {
-        grid-column: span 2;
+        grid-column: 4 / 6;
+      }
+
+      @include onDesktop {
+        grid-column: 8 / 10;
+      }
+
+      .info-item {
+        margin: 0;
+        color: $text-color;
+        margin-bottom: 24px;
+      }
+
+      .info-label {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+      }
+
+      .info-content {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        text-align: left;
+        text-decoration: none;
+        color: $text-color;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -2px;
+          background-color: $text-color;
+          height: 2px;
+          transform: scaleX(0);
+          transform-origin: 0 50%;
+          transition: transform 0.4s;
+          border-radius: 3px;
+        }
+
+        &:hover::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    form {
+      margin-bottom: 48px;
+      grid-column: 1 / -1;
+
+      @include onTablet {
+        grid-column: 1 / 3;
       }
 
       @include onDesktop {
 
-        grid-column: 8 / 10;
+        grid-column: 1 / 5;
       }
-    }
 
-    .info-item {
-      margin: 0;
-      color: $text-color;
-      margin-bottom: 24px;
-    }
-
-    .info-label {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-      text-align: left;
-    }
-
-    .info-content {
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 22px;
-      text-align: left;
-      text-decoration: none;
-      color: $text-color;
-      position: relative;
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -2px;
+      .form__button {
+        border-radius: 40px;
         background-color: $text-color;
-        height: 2px;
-        transform: scaleX(0);
-        transform-origin: 0 50%;
-        transition: transform 0.4s;
-        border-radius: 3px;
-      }
+        cursor: pointer;
 
-      &:hover::after {
-        transform: scaleX(1);
+        color: $main-text-color;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+        text-align: center;
+
+        width: 100%;
+        height: 56px;
+
+        &:hover {
+          box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+        }
+
+        &:active {
+          box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+        }
       }
     }
-
   }
 }
