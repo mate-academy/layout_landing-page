@@ -1,0 +1,50 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin squareSize($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-time;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin button-behaviour {
+  cursor: pointer;
+
+  @include hover(box-shadow, 1px 4px 16px 0 #e8e8f066);
+
+  &:active {
+    box-shadow: #e8e8f0a3;
+  }
+}
