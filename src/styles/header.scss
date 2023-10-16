@@ -179,7 +179,6 @@
 
   &__top {
     position: sticky;
-    top: 0;
     z-index: 1;
     background-color: #e5e5e5;
     display: flex;
@@ -199,21 +198,32 @@
   }
 
   &__item {
-    display: inline-block;
+    position: relative;
     margin-bottom: 32px;
     color: black;
+    text-decoration: none;
     text-transform: uppercase;
     font-weight: $font-size-big;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
+    width: 250px;
 
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: black;
-      cursor: pointer;
-      text-underline-offset: 4px;
-      border-radius: $border-radius;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: black;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
 
