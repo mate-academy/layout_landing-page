@@ -1,18 +1,25 @@
 .recommended {
-  padding: 48px 20px;
+  @include contentPaddingInline;
+  padding-block: 48px;
   display: grid;
-  grid-template-areas: "head"
-    "speaker"
-    "headphone"
-    "bar";
+  grid-template-areas: "head head"
+    "speaker speaker"
+    "headphone headphone"
+    "bar bar";
   @include pageGrid;
   grid-template-rows: 40px repeat(3, minmax(480px, auto));
   row-gap: 40px;
-}
 
-.recommended-title {
-  grid-area: head;
-  @include fullGridWidth;
+  &__title {
+    grid-area: head;
+    @include fullGridWidth;
+  }
+
+  &__product {
+    @include fullGridWidth;
+    justify-self: center;
+    text-decoration: none;
+  }
 }
 
 .speaker {
@@ -27,47 +34,44 @@
   grid-area: bar;
 }
 
-.recommended__product {
-  @include fullGridWidth;
-  justify-self: center;
-  text-decoration: none;
-}
+.product {
 
-.recommended__prod-logo {
-  box-sizing: border-box;
-  margin-bottom: 24px;
-  width: 98%;
+  &__logo {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    width: 98%;
 
-  @include hover (transform, scale(1.1));
+    @include hover (transform, scale(1.1));
 
-}
+  }
 
-.recommended__prod-title {
-  color: $main-black-color;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
+  &__title {
+    color: $main-black-color;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
 
-.recommended__prod-dicrp {
-  margin-bottom: 12px;
-  color: $main-black-color;
-  font-size: 16px;
-}
+  &__discription {
+    margin-bottom: 12px;
+    color: $main-black-color;
+    font-size: 16px;
+  }
 
-.recommended__prod-price {
-  color: $main-black-color;
-  font-size: 16px;
-  font-weight: 700;
+  &__price {
+    color: $main-black-color;
+    font-size: 16px;
+    font-weight: 700;
 
+  }
 }
 
 @include onTablet {
   .recommended {
-    padding: 64px 72px;
-    grid-template-columns: repeat(6, 1fr);
+    padding-block: 64px;
     grid-template-rows: 40px repeat(3, minmax(600px, auto));
-    gap: 56px 24px;
+    row-gap: 56px;
+
     &__product {
       @include fullGridWidth;
     }
@@ -78,16 +82,12 @@
 @include onDesktop {
 
   .recommended {
-
-    margin-inline: auto;
-
-    padding-inline: 120px;
-    grid-template-columns: repeat(12, 1fr);
+    padding-block: 120px;
     grid-template-rows: auto;
-  }
 
-  .recommended-title {
-    font-size: 48px;
+    &__title {
+      font-size: 48px;
+    }
   }
 
   .speaker {
