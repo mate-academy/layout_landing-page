@@ -1,0 +1,131 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@keyframes ani {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin contentPaddingInLine() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1260px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInLine;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin focus($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:focus {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover1($property, $toValue, $zIndex: inherit) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    z-index: $zIndex;
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonStyle {
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+  background-color: $main-text-color;
+  border: 3px solid $main-text-color;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: $effectDuration;
+
+  &:hover {
+    color: $main-text-color;
+    background-color: #fff;
+    border: 3px solid $main-text-color;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: $main-text-color;
+  }
+}
+
+@mixin formStyle {
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: $main-text-color;
+  background-color: $bacground-input-color;
+  border: 1px solid $bacground-input-color;
+  border-radius: 40px;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px $bacground-input-color inset;
+  }
+
+  @include hover(border, 1px solid #d5d7de);
+
+  @include active(border, 1px solid $main-text-color);
+
+  @include focus(border, 1px solid $main-text-color);
+}
