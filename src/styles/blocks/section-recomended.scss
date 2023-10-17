@@ -1,0 +1,106 @@
+.recommended {
+  @include contentPaddingInline;
+  padding-block: 48px;
+  display: grid;
+  grid-template-areas: "head head"
+    "speaker speaker"
+    "headphone headphone"
+    "bar bar";
+  @include pageGrid;
+  grid-template-rows: 40px repeat(3, minmax(480px, auto));
+  row-gap: 40px;
+
+  &__title {
+    grid-area: head;
+    @include fullGridWidth;
+  }
+
+  &__product {
+    @include fullGridWidth;
+    justify-self: center;
+    text-decoration: none;
+  }
+}
+
+.speaker {
+  grid-area: speaker;
+}
+
+.headphone {
+  grid-area: headphone;
+}
+
+.bar {
+  grid-area: bar;
+}
+
+.product {
+
+  &__logo {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    width: 98%;
+
+    @include hover (transform, scale(1.1));
+
+  }
+
+  &__title {
+    color: $main-black-color;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__discription {
+    margin-bottom: 12px;
+    color: $main-black-color;
+    font-size: 16px;
+  }
+
+  &__price {
+    color: $main-black-color;
+    font-size: 16px;
+    font-weight: 700;
+
+  }
+}
+
+@include onTablet {
+  .recommended {
+    padding-block: 64px;
+    grid-template-rows: 40px repeat(3, minmax(600px, auto));
+    row-gap: 56px;
+
+    &__product {
+      @include fullGridWidth;
+    }
+  }
+
+}
+
+@include onDesktop {
+
+  .recommended {
+    padding-block: 120px;
+    grid-template-rows: auto;
+
+    &__title {
+      font-size: 48px;
+    }
+  }
+
+  .speaker {
+    grid-column: 1/-9;
+  }
+
+  .headphone {
+    grid-column: 5/-5;
+    grid-row-end: 2;
+  }
+
+  .bar {
+    grid-column: 9/-1;
+    grid-row-end: 2;
+  }
+}

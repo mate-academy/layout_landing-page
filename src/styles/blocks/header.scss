@@ -1,0 +1,121 @@
+
+.header {
+  @include contentPaddingInline;
+  padding-block: 24px 40px;
+  box-sizing: border-box;
+  display: grid;
+  @include pageGrid;
+
+  background-image: url(/media/header_bg.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  &__icons {
+    min-width: 70px;
+    max-width: 96px;
+    display: flex;
+    justify-content: space-between;
+    justify-self: end;
+  }
+
+  &__bottom {
+    grid-row: 3;
+    display: grid;
+    @include fullGridWidth;
+    align-items: end;
+  }
+}
+
+.logo {
+  grid-row-start: 1;
+  width: 152px;
+  height: 24px;
+
+  &_img {
+    width: 152px;
+    height: 24px;
+  }
+
+  @include hover (transform, scale(1.2));
+
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  @include hover (transform, scale(1.2));
+
+}
+
+.icon--phone {
+  position: relative;
+  background-image: url(/media/icon/Icon-Phone-call.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:hover::before {
+    padding-top: 8px;
+    content: "+1 234 5555-55-55";
+
+    color: $main-black-color;
+    height: 100%;
+    width: max-content;
+    position: absolute;
+    font-family: Inter, sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    right: 40px;
+    pointer-events: none;
+    transition: ease-out 1s;
+  }
+}
+
+.icon--burger-menu {
+  background-image: url(/media/icon/Icon-Burger-menu.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:hover {
+    background-image: url(/media/icon/Icon-Burger-menu-hover.svg);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@include onTablet {
+  .header {
+    padding-block: 32px 64px;
+    row-gap: 56px;
+
+    &__icons {
+      grid-column: -3/-1;
+      width: 96px;
+    }
+  }
+
+  .logo {
+    width: 228px;
+    height: 24px;
+    align-items: center;
+    grid-column: 1/-4;
+
+    &_img {
+      width: 228px;
+      height: 24px;
+    }
+  }
+
+  .icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,122 @@
+.footer {
+  @include contentPaddingInline;
+  margin-inline: auto;
+  padding-top: 48px;
+  z-index: -1;
+
+  display: grid;
+  grid-template-areas: "footer-title"
+    "fitback-form"
+    "contact-inform";
+  @include pageGrid;
+  grid-template-rows: 40px repeat(2, minmax(312px, auto));
+  row-gap: 48px;
+
+  align-items: center;
+
+  &__title {
+    grid-area: footer-title;
+    @include fullGridWidth;
+    grid-row: 1;
+  }
+}
+
+.form-style {
+  height: 48px;
+  resize: none;
+  box-sizing: border-box;
+  outline-color: transparent;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  background: $menu-bg-color;
+
+  &:hover {
+    border-radius: 8px;
+    border: 1px solid $form-hover-border-color;
+  }
+
+  &:focus {
+    border: 3px solid $hover-color;
+    transition: 0.2s cubic-bezier(0.04, 0.51, 0.99, 0.68);
+  }
+}
+
+.fitback-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  grid-area: fitback-form;
+  @include fullGridWidth;
+  grid-row: 2;
+
+  &__message {
+    resize: none;
+    box-sizing: border-box;
+    height: 120px;
+  }
+
+  &__button {
+    margin-top: 16px;
+    border: none;
+  }
+}
+
+.cont-info {
+  grid-area: contact-inform;
+  @include fullGridWidth;
+  grid-row: 3;
+
+  align-self: flex-start;
+  list-style: none;
+  color: $secondary-black-color;
+  font-size: 16px;
+
+  &__legend {
+    padding-bottom: 8px;
+    color: $legend-color;
+
+    &:first-of-type {
+      padding-top: 26px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-black-color;
+    font-size: 16px;
+
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      color: $hover-color;
+    }
+  }
+
+  &__text {
+    margin-bottom: 24px;
+  }
+}
+
+@include onTablet {
+  .footer {
+    grid-template-rows: 40px repeat(2, minmax(312px, auto));
+  }
+}
+
+@include onDesktop {
+  .footer {
+    grid-template-areas: "basehead contform";
+    padding: 120px;
+    grid-template-rows: 40px 364px;
+  }
+
+  .fitback-form {
+    grid-column: 1/7;
+  }
+
+  .cont-info {
+    grid-column: 8/12;
+    grid-row: 2;
+  }
+}

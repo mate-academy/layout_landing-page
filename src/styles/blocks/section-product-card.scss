@@ -1,0 +1,79 @@
+.product-catalog {
+  @include contentPaddingInline;
+  padding-top: 48px;
+
+  display: grid;
+  grid-template-areas: "title title"
+    "speakers speakers"
+    "earphones earphones"
+    "smart-home smart-home"
+    "button button";
+  @include pageGrid;
+  grid-template-rows: 70px repeat(3, minmax(180, auto)) 60px;
+  row-gap: 40px;
+
+  &__title {
+    @include fullGridWidth;
+    grid-area: title;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include fullGridWidth;
+  }
+
+  &__button {
+    @include fullGridWidth;
+  }
+}
+
+.product-card {
+  margin-bottom: 24px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    width: 48%;
+    height: 100%;
+
+  }
+
+  &__photo {
+    width: 98%;
+
+    @include hover (transform, scale(1.1));
+  }
+
+}
+
+@media(min-width: 576px) {
+  .product-catalog {
+
+    padding-top: 48px;
+    grid-template-rows: 70px repeat(3, minmax(220px, auto)) 60px;
+    row-gap: 40px;
+
+    &__title {
+      @include fullGridWidth;
+    }
+  }
+
+  .product-list__title {
+    font-size: 24px;
+  }
+}
+
+@include onDesktop {
+  .product-catalog {
+    margin-inline: auto;
+    grid-template-rows: 120px repeat(3, minmax(374px, auto)) 60px;
+    row-gap: 56px;
+
+    .product-catalog__button {
+      grid-column: 1/5;
+    }
+  }
+}
