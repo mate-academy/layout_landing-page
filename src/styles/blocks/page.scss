@@ -1,0 +1,44 @@
+.page {
+  font-family: "Space Mono", monospace;
+  color: $text-color;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.4em;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    margin-bottom: 64px;
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transform: translateX(100%);
+
+    pointer-events: none;
+    transition: $transition-speed;
+
+    &:target {
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__separator {
+    margin-top: 96px;
+
+    @include onTablet {
+      margin-top: 120px;
+    }
+  }
+}
