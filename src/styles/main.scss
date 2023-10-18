@@ -1,14 +1,78 @@
-html {
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
+$tablet-min-width: 576px;
+$desktop-min-width: 1024px;
+
+$effectDuration: 0.3s;
+
+$main-text-color: #292929;
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
 }
 
-body {
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+/* #region page */
+.page {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-color: #1D1D1D;
+
+  scroll-behavior: smooth;
+}
+
+.page__body {
   margin: 0;
 }
 
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page__menu:target {
+  opacity: 1;
+  pointer-events: all;
+}
+
+h1 {
+  margin: 0;
+}
+/* #endregion */
+/* #region header*/
 .header {
-  padding: 24px 20px;
   box-sizing: border-box;
   height: 100vh;
   background-image: url(../images/header_image.png);
@@ -20,31 +84,102 @@ body {
   justify-content: space-between;
 }
 
-.header__top {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-.header__logo {
+.header__img {
   height: 38px;
   width: 130px;
 }
 
-.header__icons {
-  display: flex;
-  gap: 24px;
-}
-
 .header__title {
   margin: 0;
-  font-size: 36px;
   font-weight: 700;
   line-height: 100%;
   text-align: center;
   color: #fff;
 }
 
+.header__bottom {
+  padding: 0 20px 88px;
+}
+/* #endregion */
+/* #region menu*/
+.top-bar {
+  padding: 24px 20px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar__icons {
+  display: flex;
+  gap: 24px;
+}
+
+.top-bar__logo {
+  display: flex;
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  font-weight: 700;
+  background-color: #C2C2C2;
+
+  text-transform: uppercase;
+}
+
+.menu__nav {
+  margin-bottom: 40px;
+}
+
+.menu__content {
+  padding-inline: 20px;
+}
+.menu__top {
+  margin-bottom: 24px;
+}
+.menu__phone-number {
+  color: #1D1D1D;
+  margin-bottom: 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.menu__book-a-test-ride {
+  color: #1D1D1D;
+  width: fit-content;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1D1D1D;
+  text-decoration: none;
+  display:block;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 2px;
+}
+/* #endregion */
+/* #region nav*/
+.nav__link {
+  color: #1D1D1D;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+}
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+/* #endregion */
+/* #region icons*/
 .icon {
   display: block;
   height: 24px;
@@ -57,4 +192,111 @@ body {
 
 .icon--menu {
   background-image: url(../images/Icon-Burger-menu.png);
+  background-position: center;
+}
+
+.icon--close {
+  background-image: url(../images/Icon-Close.png);
+}
+/* #endregion */
+/* #region footer*/
+/* #endregion */
+/* #region move*/
+.move-free {
+  --columns: 2;
+  display: grid;
+  column-gap: 20;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    max-width: 600px;
+    margin: auto;
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin: auto;
+    --columns: 12;
+  }
+}
+.move-free__title {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 1 / 4;
+  }
+
+  @include onDesktop {
+    grid-column: 1 / 5;
+  }
+}
+
+.move-free__text {
+  margin: 0;
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 4 / 7;
+  }
+}
+
+ @include onDesktop {
+   grid-column: 5 / 9;
+}
+
+/* #endregion */
+/* #region compare*/
+.section-title {
+  margin: 0;
+  font-size: 32px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+
+&--align-left {
+    text-align-last: left;
+  }
+}
+
+.main {
+  background-color: #1D1D1D;
+
+  &__content {
+    display: grid;
+    row-gap: 92px;
+    padding-block: 92px;
+
+    @include onTablet {
+    padding-block: 120px;
+    row-gap: 120px;
+    }
+  }
+}
+
+.product__photo {
+  width: 100%;
+}
+
+.compare-bikes__products {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  row-gap: 40px;
+
+  @include onTablet {
+    padding-inline: 72px;
+    max-width: 744px;
+    justify-items: center;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin: auto;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px;
+    justify-items: stretch;
+  }
 }
