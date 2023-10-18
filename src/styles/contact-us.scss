@@ -42,6 +42,11 @@
 
     border: none;
 
+    @include onDeskTop {
+      @include hover (transform, scale(105%));
+
+    }
+
     &--text {
       margin-bottom: 16px;
 
@@ -70,13 +75,22 @@
       border-radius: 40px;
       background-color: $main-text-color;
 
-      &:hover {
-        box-shadow: $buttom-hover;
+      cursor: pointer;
+
+      @include onDeskTop {
+        @include hover (transform, scale(105%));
+        transition: transform $transition-dutation;
+
+        &:hover {
+          box-shadow: $buttom-hover;
+        }
+
+        &:focus {
+          box-shadow: $buttom-focus;
+        }
       }
 
-      &:focus {
-        box-shadow: $buttom-focus;
-      }
+
     }
 
     &:focus {
@@ -118,5 +132,11 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
+
+    @include onDeskTop {
+      &:hover {
+        font-size: 1.1rem;
+      }
+    }
   }
 }

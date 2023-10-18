@@ -7,11 +7,13 @@
 
   transition: transform 0.3s;
 
-  @include hover (transform, scale(1.2));
-
   @include onTablet {
     height: 32px;
     width: 32px;
+  }
+
+  @include onDeskTop {
+    @include hover (transform, scale(1.2));
   }
 
   &--phone {
@@ -21,21 +23,23 @@
     text-decoration: none;
   }
 
-  &--phone:hover::before {
-    content: "+1 234 555-55-55";
+  @include onDeskTop {
+    &--phone:hover::before {
+      content: "+1 234 555-55-55";
 
-    position: absolute;
-    right: 48px;
+      position: absolute;
+      right: 48px;
 
-    white-space: nowrap;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: $main-text-color;
-    line-height: 32px;
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: $main-text-color;
+      line-height: 32px;
 
-    @include onTablet {
-      display: block;
+      @include onTablet {
+        display: block;
+      }
     }
   }
 
