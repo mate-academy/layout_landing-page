@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: $white;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    min-width: 320px;
+    background-color: $bg-color;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all $effect-duration;
+    pointer-events: none;
+
+    &:target {
+      z-index: 1;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
