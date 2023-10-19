@@ -1,0 +1,93 @@
+.header {
+  background-image: url(../images/photos/bg3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+
+  @include onTablet {
+    background-image: url(../images/photos/bg2.png);
+    background-position: center;
+  }
+  @include onDesktop {
+    background-image: url(../images/photos/bg1.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 24px;
+    @include onTablet {
+      padding-top: $headerTopPadding;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    height: 38px;
+    margin: 0;
+    padding-bottom: 0;
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
+
+  &__active {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: $colorText;
+        padding-right: 20px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    padding-top: 355px;
+    padding-bottom: 88px;
+    color: $colorText;
+    letter-spacing: -1.5px;
+    @include onTablet {
+      font-size: 64px;
+      padding-bottom: 130px;
+      padding-top: 430px;
+    }
+    @include onDesktop {
+      padding-top: 440px;
+      font-size: 80px;
+      padding-bottom: 200px;
+    }
+  }
+}
