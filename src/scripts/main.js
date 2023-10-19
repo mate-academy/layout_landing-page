@@ -2,5 +2,8 @@
 
 document.getElementById('myForm').addEventListener('submit', function(event) {
   event.preventDefault();
-  this.reset();
+
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('message').value = '';
 });
