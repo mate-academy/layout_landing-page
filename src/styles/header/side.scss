@@ -3,16 +3,23 @@
 
   @include headerSizing();
 
-  background-color: $side-menu-bg-color;
+  background-color: $main-accent;
   background-size: cover;
   background-position: center;
-  color: $header-text-color;
+  color: $btn-text-color;
 
-  opacity: 0;
+  transition: transform $transition-duration;
+
+  transform: translateX(100%);
   pointer-events: none;
 
+  overflow: auto;
+
   &:target {
-    opacity: 1;
+    z-index: 1; /* I don't know any other way to hide burger menu,
+    cause it somehow shows itself on side menu due to transformation */
+
+    transform: translateX(0);
     pointer-events: all;
   }
 
@@ -26,13 +33,19 @@
     background-position: center;
     background-size: cover;
 
-    @media screen and (min-width: 568px) {
+    transition: transform $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include onTablet {
       width: 32px;
       height: 32px;
     }
 
     &--close-btn {
-      background-image: url("../images/icon-close.svg");
+      background-image: url("../images//icons/icon-close.svg");
     }
   }
 
@@ -43,8 +56,10 @@
     border-bottom: 1px solid transparent;
     width: fit-content;
 
+    transition: border-color $transition-duration;
+
     &:hover {
-      border-color: $header-text-color;
+      border-color: $btn-text-color;
     }
   }
 

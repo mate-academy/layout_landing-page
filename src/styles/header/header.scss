@@ -1,14 +1,11 @@
 .header {
-  @include headerSizing();
+  @include headerSizing;
 
-  background-image: url("../images/header-bg-mobile.jpg");
+  background-image: url("../images//header-images/header-bg.jpg");
+
   background-size: cover;
   background-position: center;
   color: $header-text-color;
-
-  @media screen and (min-width: 568px) {
-    background-image: url("../images/header-bg-desktop.jpg");
-  }
 
   &__buttons {
     display: flex;
@@ -25,17 +22,28 @@
     background-position: center;
     background-size: cover;
 
-    @media screen and (min-width: 568px) {
+    transition: background-image,
+      transform $transition-duration;
+
+    @include onTablet {
       width: 32px;
       height: 32px;
     }
 
+    &:hover {
+      transform: scale(1.2);
+    }
+
     &--menu-btn {
-      background-image: url("../images/icon-burger-menu.svg");
+      background-image: url("../images/icons/icon-burger-menu.svg");
+
+      &:hover {
+        background-image: url("../images/icons/icon-burger-menu-hover.svg");
+      }
     }
 
     &--phone-btn {
-      background-image: url("../images/icon-phone.svg");
+      background-image: url("../images/icons/icon-phone.svg");
     }
   }
 
@@ -46,11 +54,11 @@
     letter-spacing: -1.5px;
     text-align: center;
 
-    @media screen and (min-width: 568px) {
+    @include onTablet {
       font-size: 64px;
     }
 
-    @media screen and (min-width: 992px) {
+    @include onDesktop {
       font-size: 80px;
     }
   }
