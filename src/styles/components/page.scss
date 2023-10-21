@@ -1,0 +1,40 @@
+.page {
+  font-family: $primary-font-family;
+  color: $primary-text-color;
+  font-weight: 700;
+  line-height: 140%;
+  font-size: 16px;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin-bottom: 64px;
+    min-width: 320px;
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all $timing-value;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+body:has(.page__menu:target) {
+  overflow: hidden;
+}
