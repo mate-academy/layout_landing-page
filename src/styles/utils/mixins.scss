@@ -1,11 +1,25 @@
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    margin: auto;
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
 @mixin onTablet {
-  @media (min-width: $tablet-min-width) {
+  @media (min-width: 576px) {
     @content;
   }
 }
 
 @mixin onDesktop {
-  @media (min-width: $desktop-min-width) {
+  @media (min-width: 1024px) {
     @content;
   }
 }
@@ -26,20 +40,6 @@
   }
 }
 
-@mixin contentPaddingInline {
-  padding-inline: 20px;
-
-  @include onTablet {
-    padding-inline: 72px;
-  }
-
-  @include onDesktop() {
-    margin: auto;
-    max-width: 1020px;
-    padding-inline: 120px;
-  }
-}
-
 @mixin gridTextPosition {
   grid-column: 1 / -1;
 
@@ -57,10 +57,10 @@
 }
 
 @mixin transformScale {
+  @include transitionTime;
 
   &:hover {
     transform: scale(1.1);
-    @include transitionTime;
   }
 
 }
