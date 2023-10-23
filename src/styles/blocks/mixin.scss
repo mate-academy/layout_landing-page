@@ -1,0 +1,53 @@
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin headingsFont {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+@mixin menuFontStyle {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  color: $c-mainTextColor;
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletMinWidth) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktopMinWidth) {
+    @content;
+  }
+}
+
+@mixin paddingInline {
+  padding-inline: 20px;
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include paddingInline;
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} $hoverDuration;
+  &:hover {
+    #{$property}: $value;
+  }
+}
