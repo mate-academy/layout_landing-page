@@ -1,0 +1,65 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url(../icons/icon-burger-menu.png);
+  background-size: cover;
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/icon-phone-call.png);
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 8px;
+
+        color: $main-dark-color;
+        text-align: right;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        opacity: 0;
+        pointer-events: none;
+
+        @include hover(opacity, 1);
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.png);
+  }
+}
