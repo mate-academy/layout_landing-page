@@ -1,0 +1,70 @@
+@import "../utils/mixins.scss";
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url(../images/icons/icon-burger-menu.svg);
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(110%));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+    scale: 120%;
+  }
+
+  @include onDesktop {
+    height: 32px;
+    width: 32px;
+    scale: 120%;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+
+  &--call {
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        transition-duration: 0.3s;
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: white;
+        letter-spacing: 2px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
