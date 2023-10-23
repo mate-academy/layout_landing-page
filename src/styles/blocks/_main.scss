@@ -1,0 +1,44 @@
+.main {
+  display: grid;
+  row-gap: 92px;
+  padding-block: 60px;
+  // @include contentPaddingInline;
+
+  @include onTablet {
+    padding-block: 120px;
+    row-gap: 120px;
+  }
+}
+
+.page {
+  &__body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    min-width: 320px;
+    &:has(.page__menu:target) {
+      overflow: hidden;
+    }
+  }
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    overflow: auto;
+    transform: translateX(-100%);
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.page__main {
+  background-color: $main-color;
+}
