@@ -1,8 +1,13 @@
 .icon {
-  display: block;
   height: 24px;
-  width: 24px;
-  background-size: cover;
+  position: relative;
+  display: block;
+  width: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
 
   @include hover(transform, scale(1.2));
 
@@ -13,30 +18,45 @@
 
   &--phone {
     background-image: url(../images/icon-phone.svg);
-    background-repeat: no-repeat;
+  }
 
-    &:hover::after {
-      content: "+1 234 5555-55-55";
-      position: absolute;
-      color: #fff;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-align: right;
-      white-space: nowrap;
-      transform: translate(-170px, 10px);
-      opacity: 0;
+  &--tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
 
-      @include onTablet {
-        opacity: 1;
-      }
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s, color 0.3s;
+
+    &:hover {
+      color: rgba(126, 126, 131, 1);
+    }
+  }
+
+  &:hover &--tooltip {
+    opacity: 0;
+
+    @include onDesctop {
+      pointer-events: all;
+      opacity: 1;
     }
   }
 
   &--menu {
     background-image: url(../images/icon-burger-menu.svg);
-    background-repeat: no-repeat;
 
     &:hover {
       background-image: url(../images/icon-burger-menu-hover.svg);
@@ -45,6 +65,5 @@
 
   &--close {
     background-image: url(../images/button-close.svg);
-    background-repeat: no-repeat;
   }
 }
