@@ -1,0 +1,48 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin baseTitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+  color: $colorText;
+}
+
+@mixin baseSubTitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: $colorText;
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  &:hover {
+    box-shadow: 7px 7px 16px 0 rgba(250,242,242,0.3);
+  }
+  &:active {
+    box-shadow: 7px 7px 16px 0 rgba(250,242,242,0.9);
+  }
+}
