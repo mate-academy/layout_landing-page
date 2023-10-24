@@ -1,10 +1,20 @@
 .page {
   font-family: $main-text-font;
   font-size: 16px;
-  line-height: 140%;
+  line-height: 1;
   color: $c-main-text;
+  font-weight: 400;
 
   scroll-behavior: smooth;
+
+  ::selection {
+    background-color: $c-main-text;
+    color: #f8f8fa;
+  }
+
+  :has(&__menu:target) {
+    overflow: hidden;
+  }
 
   &__body {
     min-width: 320px;
@@ -16,7 +26,7 @@
     left: 0;
     right: 0;
 
-    transition: all 0.3s;
+    transition: all $animation-speed;
     opacity: 0;
     transform: translateX(100%);
     pointer-events: none;
@@ -28,8 +38,3 @@
     pointer-events: all;
   }
 }
-
-::selection {
-    background-color: $c-main-text;
-    color: #f8f8fa;
-  }
