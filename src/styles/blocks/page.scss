@@ -1,0 +1,34 @@
+.page {
+  font-family: "Space Mono", monospace;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    padding-right: 17px;
+    /* i've added some pudding to to compensate that space
+    that was reserved for scroll so that page didnt move.
+    I know that it's prety bad solution
+    but till i don't know how to use js here, it will go.*/
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translate(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translate(0);
+      pointer-events: all;
+    }
+  }
+}
