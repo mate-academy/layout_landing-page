@@ -13,6 +13,27 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+    text-decoration: none;
+
+    @include onDesktop {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        position: relative;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        color: $main-text-color;
+        letter-spacing: 2px;
+        opacity: 0;
+        transition: transform 0.3s;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
