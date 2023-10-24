@@ -1,29 +1,51 @@
 .icon {
   display: block;
-  width: 24px;
-  height: 24px;
+  cursor: pointer;
+  @include square(24px);
 
-  transition: transform 0.3s;
+  transition: transform $transition;
 
-  @media (min-width: 744px) {
-    width: 32px;
-    height: 32px;
+  @include onTablet() {
+    @include square(32px);
   }
 
   &--phone {
-    background: url(../../icons/Icon-Phone-call.svg) center / contain no-repeat;
+    background: url(../icons/Icon-Phone-call.svg) center / contain no-repeat;
+    position: relative;
+
+    &-screenL {
+      display: none;
+
+      & > :first-child {
+        margin-bottom: 8px;
+      }
+    }
+
+    @include onDesktop {
+      &:hover &-screenL {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        font-weight: 700;
+        line-height: 27px;
+        text-align: right;
+        color: $color-main-light;
+        transform: scale(0.6) translate(-135%, -50%);
+        padding-right: 16px;
+      }
+    }
   }
 
   &--menu {
-    background: url(../../icons/Icon-Burger-menu.svg) center / contain no-repeat;
+    background: url(../icons/Icon-Burger-menu.svg) center / contain no-repeat;
 
     &:hover {
-      background-image: url(../../icons/Icon-Burger-menu-hover.svg);
+      background-image: url(../icons/Icon-Burger-menu-hover.svg);
     }
   }
 
   &--close {
-    background: url(../../icons/Icon-Close.svg) center / contain no-repeat;
+    background: url(../icons/Icon-Close.svg) center / contain no-repeat;
   }
 
   &:hover {
