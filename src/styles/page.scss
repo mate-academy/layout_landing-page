@@ -1,14 +1,23 @@
 .page {
+  height: 100%;
+
   display: flex; /* As much as I hate doing this,
   I literally have no idea how to remove blank space
   right after the footer otherwise -_- */
-
   flex-direction: column;
 
   min-width: $mobile-width;
   color: $secondary-accent;
 
-  &:has(.page:target) {
+  &:has(.side:target) {
     overflow: hidden;
+  }
+
+  &__wrapper {
+    min-height: calc(100vh - var(--footer-mobile-height));
+
+    @include onTablet {
+      min-height: calc(100vh - var(--footer-tablet-height));
+    }
   }
 }
