@@ -1,0 +1,116 @@
+@import "variables";
+@import "mixins";
+
+.header {
+  font-family: $secondaryFont;
+  background: url("../images/upBanner.png") 50% 50% no-repeat;
+  background-size: cover;
+  height: $bannerMinHeight;
+  margin-bottom: 46px;
+
+  @include for-tablet {
+    height: $bannerMidHeight;
+  }
+
+  @include for-desktop {
+    height: $bannerMidHeight;
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: $minPadding;
+
+    @include for-tablet {
+      padding: $midPadding;
+    }
+
+    @include for-desktop {
+      padding: $maxPadding;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding-bottom: 40px;
+  }
+
+  &__number {
+    display: none;
+  }
+
+  &__controls {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  &__button {
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+
+    @include for-tablet {
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.1s;
+      }
+    }
+
+    &.icon-phone {
+      display: flex;
+      align-self: center;
+      position: relative;
+    }
+
+    &.icon-phone::after {
+      content: "+1 234 555-55-55";
+      display: none;
+      font-size: 16px;
+      position: absolute;
+      font-weight: 700;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 150px;
+    }
+
+    &.icon-phone:hover {
+      &::after {
+        display: block;
+      }
+    }
+
+    &--burger {
+      font-size: 30px;
+      margin-left: 20px;
+
+      &:after {
+        font-family: "icomoon", sans-serif !important;
+        content: "\e901";
+        display: block;
+      }
+
+      @include for-tablet {
+        &:hover {
+          cursor: pointer;
+          &:after {
+            content: "\e900";
+          }
+        }
+      }
+    }
+  }
+}

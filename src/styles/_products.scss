@@ -1,0 +1,93 @@
+@import "variables";
+@import "mixins";
+
+.product {
+  font-family: $primaryFont;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  @include for-tablet {
+    &:hover {
+      color: $hoverColor;
+    }
+  }
+
+  @include for-desktop {
+    flex-basis: 33%;
+    margin-bottom: 40px;
+
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    width: 100%;
+
+    @include for-tablet {
+      max-height: 350px;
+      max-width: 350px;
+      width: auto;
+      margin: 0 auto;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 350px;
+    max-width: 350px;
+    display: block;
+    transition: 0.2s all ease-in-out;
+    margin: 0 auto;
+
+    @include for-tablet {
+      width: auto;
+
+      &:hover {
+        transform: scale(1.1);
+        -webkit-filter: invert(0.9);
+        filter: invert(0.2);
+      }
+    }
+
+    @include for-desktop {
+      max-height: unset;
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__description {
+
+    @include for-desktop {
+      min-height: 100px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+    font-family: $secondaryFont;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}
