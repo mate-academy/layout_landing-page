@@ -4,6 +4,7 @@
   font-weight: 400;
   line-height: 27px;
   color: #161616;
+  scroll-behavior: smooth;
 }
 
 .page:has(.page__menu:target) {
@@ -92,6 +93,7 @@
 
 .top-bar__logo {
   height: 46px;
+  transition: transform 0.3s;
 }
 
 @media (min-width: 576px) {
@@ -100,9 +102,61 @@
   }
 }
 
+.top-bar__logo:hover {
+  transform: scale(1.2);
+}
+
 .top-bar__icons {
   display: flex;
   gap: 24px;
+}
+
+@media (min-width: 576px) {
+  .top-bar__icons {
+    gap: 55px;
+  }
+}
+
+.top-bar__tooltip {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .top-bar__tooltip {
+    transition: 0.3s;
+  }
+
+  .top-bar__tooltip:hover .top-bar__tooltip--content {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.top-bar__tooltip--content {
+  transition: opacity 0.3s;
+  position: absolute;
+  top: -25px;
+  right: 100%;
+  visibility: hidden;
+  padding-right: 10px;
+  opacity: 0;
+}
+
+.tooltip {
+  margin: 0;
+  padding: 0;
+  width: max-content;
+}
+
+.tooltip__text {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.tooltip__text:hover {
+  font-weight: 700;
 }
 
 .icon {
@@ -111,6 +165,7 @@
   width: 24px;
   background-size: contain;
   background-repeat: no-repeat;
+  transition: transform 0.3s;
 }
 
 @media (min-width: 576px) {
@@ -118,6 +173,10 @@
     height: 32px;
     width: 32px;
   }
+}
+
+.icon:hover {
+  transform: scale(1.2);
 }
 
 .icon--phone {
@@ -370,6 +429,7 @@
 
 .timetable__weekend {
   font-weight: 700;
+  margin-bottom: 0;
   margin-bottom: 8px;
 }
 
@@ -511,12 +571,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
 
 .gallery__photo:hover {
   transform: scale(1.05);
+}
+
+.gallery__photo:hover {
   cursor: pointer;
+}
+
+.gallery__photo--old-masters {
+  object-position: 15%;
+}
+
+.gallery__photo--dancers {
+  object-position: right;
 }
 
 .button {
@@ -650,11 +721,14 @@
 
 .explore__photo {
   width: 100%;
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
 
 .explore__photo:hover {
   transform: scale(1.05);
+}
+
+.explore__photo:hover {
   cursor: pointer;
 }
 
@@ -720,6 +794,7 @@
 }
 
 .contacts__form--input {
+  box-sizing: border-box;
   margin-bottom: 16px;
   padding-left: 11px;
   width: 100%;
@@ -732,8 +807,32 @@
   color: #161616;
 }
 
+.contacts__form--input:focus {
+  outline: 0;
+  border: 1px solid #d12d35;
+}
+
 .contacts__form--textarea {
   padding-top: 14px;
+  height: 144px;
+  resize: none;
+}
+
+.contacts__form--textarea::-webkit-scrollbar {
+  width: 12px;
+}
+
+.contacts__form--textarea::-webkit-scrollbar-thumb {
+  background-color: #d12d35;
+  border-radius: 6px;
+}
+
+.contacts__form--textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #ae1c23;
+}
+
+.contacts__form--textarea::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
 }
 
 .contacts__info {

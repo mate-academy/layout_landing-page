@@ -21,10 +21,39 @@
     @include onTablet {
       height: 65px;
     }
+
+    @include hover(transform, scale(1.2));
   }
 
   &__icons {
     display: flex;
     gap: 24px;
+
+    @include onTablet {
+      gap: 55px;
+    }
+  }
+
+  &__tooltip {
+    position: relative;
+
+    @include onDesktop {
+      transition: $effectDuration;
+
+      &:hover .top-bar__tooltip--content {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &--content {
+      transition: opacity $effectDuration;
+      position: absolute;
+      top: -25px;
+      right: 100%;
+      visibility: hidden;
+      padding-right: 10px;
+      opacity: 0;
+    }
   }
 }
