@@ -1,0 +1,34 @@
+.page {
+  scroll-behavior: smooth;
+  color: $main-text-color;
+
+  &__body {
+    margin: 0;
+    // colsor: $main-text-color;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    pointer-events: none;
+    opacity: 0;
+
+    transition-property: transform opacity;
+    transition-duration: $transition-duration;
+    transform: translateY(-100%);
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu:target {
+    pointer-events: all;
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
