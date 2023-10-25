@@ -4,11 +4,9 @@
   }
 }
 
-@mixin paddingInline() {
-  padding-inline: 20px;
-
-  @include OnTablet() {
-    padding-inline: 72px;
+@mixin OnDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
   }
 }
 
@@ -17,5 +15,21 @@
 
   &:hover {
     #{$property}: $Value;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include OnTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include OnDesktop() {
+    --columns: 12;
   }
 }
