@@ -1,11 +1,13 @@
 .explore {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
   row-gap: 48px;
 
   &__content {
+    grid-row: 2;
     display: grid;
-    justify-items: center;
+    align-items: center;
     grid-column: 1 / -1;
 
     @include onDesktop() {
@@ -18,6 +20,7 @@
   }
 
   &__title {
+    grid-row: 1;
     grid-column: 1 / -1;
     text-align: center;
   }
@@ -26,11 +29,11 @@
     grid-column: -1 / -1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-content: center;
   }
 
   &__part-title {
-    color: $Accent-main;
+    color: $accent-main;
     line-height: 140%;
   }
 
@@ -52,6 +55,7 @@
     @include onDesktop() {
       grid-column: 1 / 5;
       row-gap: 32px;
+      margin-top: -26.5px;
     }
   }
 
@@ -79,5 +83,11 @@
       grid-column: 9 / -1;
       row-gap: 32px;
     }
+  }
+
+  &__image * {
+    display: block;
+
+    @include hoverScaleTransition-img();
   }
 }
