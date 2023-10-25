@@ -1,0 +1,126 @@
+.header {
+  &__container {
+    @include contentIndent();
+
+    padding-top: 25px;
+
+    @include onTablet() {
+      padding-top: 50px;
+    }
+
+    @include onDesktop() {
+      padding-top: 50px;
+    }
+  }
+
+  height: 568px;
+
+  @include onTablet() {
+    height: 840px;
+  }
+
+  @include onDesktop() {
+    height: 840px;
+  }
+
+  box-sizing: border-box;
+
+  background-image: url(../images/HeaderBGDesktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icons {
+    display: flex;
+    position: relative;
+
+    gap: 24px;
+
+    @include onTablet() {
+      gap: 55px;
+    }
+
+    @include onDesktop() {
+      gap: 55px;
+    }
+  }
+
+  &__tel-box {
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    flex-direction: column;
+    width: 205px;
+    align-items: end;
+    gap: 6px;
+
+    font-weight: 700;
+    color: $Secondary-color;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    text-transform: uppercase;
+    text-align: end;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    transition-property: opacity;
+    transition-duration: $Global-transition-duration;
+
+    font-size: 12px;
+    line-height: 20px;
+    right: 0;
+    top: 40px;
+
+    @include onTablet() {
+      font-size: 16px;
+      line-height: 27px;
+      right: 0;
+      top: 50px;
+    }
+
+    @include onDesktop() {
+      font-size: 16px;
+      line-height: 27px;
+      left: -221px;
+      top: -40px;
+    }
+  }
+
+  &__tel-box::after {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 205px;
+    background: rgba(12, 7, 6, 0.44);
+    filter: blur(50px);
+
+    z-index: -1;
+  }
+
+  &__tel-icon:hover + &__tel-box {
+    opacity: 1;
+  }
+
+  &__title {
+    text-align: center;
+
+    margin-top: 129px;
+
+    @include onTablet() {
+      margin-top: 141px;
+    }
+
+    @include onDesktop() {
+      margin-top: 83px;
+    }
+  }
+}

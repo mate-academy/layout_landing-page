@@ -1,0 +1,138 @@
+.menu {
+  box-sizing: border-box;
+
+  &__container {
+    @include contentIndent();
+
+    padding-bottom: 25px;
+
+    @include onTablet() {
+      padding-bottom: 50px;
+    }
+
+    @include onDesktop() {
+      padding-bottom: 50px;
+    }
+
+  }
+
+  overflow: auto; /* to scroll the menu if needed */
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $Accent-main;
+
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    @include onTablet() {
+      padding-top: 50px;
+    }
+
+    @include onDesktop() {
+      padding-top: 50px;
+    }
+  }
+
+  height: 100vh;
+
+  background-color: $Accent-main;
+
+  &__nav {
+    font-weight: 700;
+
+    margin-top: 40px;
+
+    @include onTablet() {
+      margin-top: 40px;
+    }
+
+    @include onDesktop() {
+      margin-top: 55px;
+    }
+
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__bottom {
+    margin-top: 32px;
+
+    @include onTablet() {
+      margin-top: 32px;
+    }
+
+    @include onDesktop() {
+      margin-top: 48px;
+    }
+
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    position: relative;
+
+    line-height: 100%;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      margin-top: 8px;
+      height: 1px;
+      width: 100%;
+      background-color: $Secondary-color;
+
+      transition: transform, $Global-transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__tel-info {
+    color: $Secondary-color;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    &:nth-of-type(3) {
+      margin-top: 8px;
+    }
+  }
+
+  &__tel-link {
+    margin-top: 16px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      margin-top: 8px;
+      height: 1px;
+      width: 100%;
+      background-color: $Secondary-color;
+    }
+  }
+}
