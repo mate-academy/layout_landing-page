@@ -6,8 +6,24 @@
   font-family: "Space Mono", monospace;
 }
 
+@mixin wrapperMaxWidth {
+  max-width: 1020px;
+}
+
 @mixin onTablet {
   @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onTabletLarge {
+  @media (min-width: $tablet-large-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
     @content;
   }
 }
@@ -17,6 +33,10 @@
 
   @include onTablet {
     padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 0;
   }
 }
 
@@ -52,4 +72,44 @@
   @include onTablet {
     margin-bottom: 56px;
   }
+}
+
+@mixin mainBtn {
+  border: 2px solid $grey-color-text;
+  background-color: $grey-color-text;
+  border-radius: 8px;
+  width: 100%;
+  height: 56px;
+
+  @include fontGrotesk;
+  color: #fff;
+  font-weight: 700;
+  line-height: 27px;
+  font-size: 16px;
+
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  @include onDesktop {
+    width: 324px;
+  }
+
+  &:hover {
+    background: #f8f8fa;
+    color: $grey-color-text;
+    border: 2px solid #f0f1f4;
+  }
+
+  &:active {
+    background: #111;
+    border: 2px solid #111;
+    color: #fff;
+  }
+}
+
+@mixin gridPattern {
+  --columns-count: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+  column-gap: 20px;
 }
