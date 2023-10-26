@@ -1,9 +1,15 @@
 .page {
+  position: relative;
   font-family: "Cinzel", serif;
   color: $main-dark;
   font-size: 16px;
   line-height: 27px;
   scroll-behavior: smooth;
+  overflow: auto;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
   &__body {
     margin: 0;
@@ -15,11 +21,14 @@
     top: 0;
     left: 0;
     right: 0;
+    transition: transform 0.3s, opacity 0.3s;
     opacity: 0;
+    transform: translateX(100%);
     pointer-events: none;
 
     &:target {
       opacity: 1;
+      transform: translateX(0);
       pointer-events: all;
     }
   }
