@@ -1,0 +1,77 @@
+.category {
+  grid-column: 1 / -1;
+
+  &__photo-container {
+    @include grid;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    transition: transform 0.5s;
+    @include onDesktop {
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      grid-column: span 1;
+
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+      grid-column: span 1;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__info-container {
+    @include grid;
+    margin-top: 16px;
+    grid-row-start: auto;
+
+  }
+
+  &__title {
+    @include bold24pxText;
+    grid-column: 1/-1;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__text {
+    @include mainText;
+    margin-top: 8px;
+    grid-column: 1/-1;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+}
