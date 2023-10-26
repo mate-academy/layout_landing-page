@@ -1,0 +1,54 @@
+.page {
+  font-family: "Manrope", sans-serif;
+  box-sizing: border-box;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  &__section {
+    @include sectionMargin;
+
+    @media (max-width: 575px) {
+      &--margin-top {
+        margin-top: 96px;
+      }
+    }
+
+    &--last-section {
+      margin-bottom: 64px;
+
+      @include onDesktop {
+        margin-bottom: 120px;
+      }
+    }
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &__button {
+    @include pageGrid;
+  }
+}
