@@ -8,7 +8,43 @@
   transition: background-image 0.3s ease-in-out;
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/phoneIcon.svg);
+
+    @include onTablet {
+      &::after {
+        position: absolute;
+        content: "+1 234 555-55-55";
+        text-align: center;
+        height: 16px;
+  
+        width: 145px;
+        bottom: 50%;
+        top: 50%;
+        opacity: 0;
+        transform: translateY(-50%) translateX(-129px);
+  
+        letter-spacing: 2px;
+        line-height: 16px;
+        font-weight: 700;
+        color: $grey-color-text;
+        font-size: 12px;
+        @include fontInter;
+  
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: translateY(-50%) translateX(-145px);
+        }
+      }
+    }
+
+    &-number {
+      position: absolute;
+    }
   }
 
   &--menu {
