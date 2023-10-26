@@ -1,0 +1,61 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin pageGrid {
+  display: grid;
+  --column: 2;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    --column: 6;
+  }
+
+  @include onDesktop {
+    --column: 12;
+  }
+}
+
+@mixin hoverButton {
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+  &:focus {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
