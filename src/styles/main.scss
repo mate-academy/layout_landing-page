@@ -5,13 +5,13 @@ $effectDuration: 0.3s;
 
 $main-text-color: #292929;
 
-@mixin onTablet {
+@mixin onTablet() {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin onDesktop() {
   @media (min-width: $desktop-min-width) {
     @content;
   }
@@ -38,6 +38,27 @@ $main-text-color: #292929;
     #{$property}: $toValue;
   }
 }
+
+@mixin pageGrid() {
+  --columns: 2;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    @include onTablet {
+      max-width: 600px;
+      margin: auto;
+      --columns: 6;
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      max-width: 1020px;
+      margin: auto;
+      --columns: 12;
+    }
+  }
+
 
 /* #region page */
 .page {
@@ -203,9 +224,10 @@ h1 {
 /* #endregion */
 /* #region move*/
 .move-free {
-  --columns: 2;
+--columns: 2;
+  padding-left: 20px;
   display: grid;
-  column-gap: 20;
+  column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include onTablet {
@@ -221,7 +243,9 @@ h1 {
     --columns: 12;
   }
 }
+
 .move-free__title {
+  padding-bottom: 32px;
   grid-column: 1 / -1;
 
   @include onTablet {
@@ -229,26 +253,31 @@ h1 {
   }
 
   @include onDesktop {
-    grid-column: 1 / 5;
+    grid-column: span 5;
   }
 }
 
 .move-free__text {
+  display: grid;
+  padding-right: 20px;
+  font-size: 23px;
   margin: 0;
   grid-column: 1 / -1;
 
   @include onTablet {
     grid-column: 4 / 7;
   }
+
+  @include onDesktop {
+    grid-column: span 6;
+  }
 }
 
- @include onDesktop {
-   grid-column: 5 / 9;
-}
 
 /* #endregion */
 /* #region compare*/
 .section-title {
+  padding-bottom: 48px;
   margin: 0;
   font-size: 32px;
   text-align: center;
@@ -280,23 +309,86 @@ h1 {
   width: 100%;
 }
 
-.compare-bikes__products {
-  padding-left: 20px;
-  padding-right: 20px;
-  display: grid;
-  row-gap: 40px;
+.compare-bikes {
+  &__products {
+    margin-right: 20px;
+    margin-left: 20px;
+    display: grid;
+    row-gap: 40px;
 
-  @include onTablet {
-    padding-inline: 72px;
-    max-width: 744px;
-    justify-items: center;
+      @include onTablet {
+        padding-inline: 72px;
+        max-width: 744px;
+        justify-items: center;
+      }
+
+      @include onDesktop {
+        max-width: 1020px;
+        margin: auto;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 24px;
+        justify-items: stretch;
+      }
+    }
+}
+
+.details {
+  &__wrapper {
+    padding: 0 20px;
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 48px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include pageGrid;
   }
 
-  @include onDesktop {
-    max-width: 1020px;
-    margin: auto;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px;
-    justify-items: stretch;
+  &__link {
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 16px 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
   }
 }
