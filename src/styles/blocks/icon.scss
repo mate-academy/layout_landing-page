@@ -1,0 +1,55 @@
+.icon {
+  @include flex-justify-align(center, center);
+  width: $icon-min;
+  height: $icon-min;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: $icon-max;
+    height: $icon-max;
+  }
+
+  &--phone {
+    background: url(../images/icon-phone-call.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &--close {
+    background: url(../images/icon-close.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__menu {
+    display: flex;
+    background: $main-color;
+    width: 80%;
+    height: 3px;
+    border-radius: 8px;
+    position: relative;
+
+    &::before {
+      @include icon-menu;
+      top: 8px;
+    }
+
+    &::after {
+      @include icon-menu;
+      bottom: 8px;
+    }
+  }
+
+  &:hover {
+    & .icon__menu {
+      &::before {
+        width: 50%;
+      }
+
+      &::after {
+        width: 75%;
+      }
+    }
+  }
+}

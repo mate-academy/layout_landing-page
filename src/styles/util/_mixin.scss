@@ -1,0 +1,100 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-laptop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin container {
+  padding: 0 20px;
+
+  @include on-tablet {
+    padding: 0 calc(50% - 300px);
+  }
+
+  @include on-laptop {
+    padding: 0 calc(50% - 510px);
+  }
+}
+
+@mixin container-indent {
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-bottom: 120px;
+  }
+}
+
+@mixin grid-12 {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include on-laptop {
+    --columns: 12;
+  }
+}
+
+@mixin grid-2 {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+  }
+}
+
+@mixin flex-justify-align($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin hide-show ($visible, $opacity) {
+  visibility: $visible;
+  opacity: $opacity;
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} 0.2s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin icon-menu {
+  content: "";
+  background: $main-color;
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  border-radius: 8px;
+  transition: width 0.3s ease-in-out;
+}
+
+@mixin line-after($width) {
+  &::after {
+    content: "";
+    background: $main-color;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: $width;
+    @content;
+  }
+}
