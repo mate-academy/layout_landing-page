@@ -1,39 +1,150 @@
 .header {
-  display: none !important;
-  box-sizing: border-box;
   height: 100vh;
   background-image: url(../images/header-bg.png);
   background-size: cover;
-
-  @include forTablet {
-    background-image: url(../images/Cover_photo.png);
-    background-position: center;
-  }
+  background-position: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  &__title {
-    margin: 0;
-    color: white;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 36px;
-    word-wrap: break-word;
+  @media (min-width: 744px) {
+    background-image: url(../images/Cover_photo.png);
+    background-position: center;
+    background-size: cover;
+  }
 
-    @include forTablet {
-      font-size: 64px;
-      text-align: center;
-    }
+  &__number {
+    display: none;
+    text-decoration: none;
+    margin-right: 20px;
+    color: #fff;
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__icons:hover + &__number {
+    display: block;
+  }
+
+  &__top {
+    @include onTabletHeader;
+    @include onMobileHeader;
+    padding: $padding-logo;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__bottom {
-    padding-bottom: 88px;
-    @include contentPadding;
-    @include forTablet {
-      padding-bottom: 130px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 203px;
+
+    @media (min-width: 744px) and (max-width: 1259px) {
+      padding-bottom: 160px;
+    }
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      padding-bottom: 120px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    letter-spacing: -1.5px;
+    color: #fff;
+    font-weight: $font-size-big;
+    font-size: 80px;
+    line-height: 80px;
+
+    @media (min-width: 744px) and (max-width: 1259px) {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+
+  &__logo {
+    background-image: url(../images/Logo.svg);
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 38px;
+    background-size: cover;
+    transition: transform $effectDuration;
+
+    &:hover {
+      transform: scale(1.2)
+    }
+
+    @media (min-width: 744px) and (max-width: 1259px) {
+      height: 56px;
+      width: 187px;
+    }
+  }
+
+  &__logo--mini {
+    background-repeat: no-repeat;
+    background-image: url(../images/Logo-menu.svg);
+    width: 130px;
+    height: 38px;
+
+    transition: transform $effectDuration;
+
+    &:hover {
+      transform: scale(1.2)
+    }
+
+    @media (min-width: 744px) {
+      height: 56px;
+      width: 187px;
+   }
+  }
+
+  &__icons {
+    gap: 32px;
+    display: flex;
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      gap: 20px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    background-size: cover;
+
+    @media (min-width: 744px) {
+      height: 32px;
+      width: 32px;
+    }
+
+    transition: transform $effectDuration;
+
+    &:hover {
+      transform: scale(1.2)
+    }
+
+    &--phone {
+      background-image: url(../images/Icon-Phone-call.svg);
+    }
+
+    &--menu {
+      margin-top: 4px;
+      background-image: url(../images/Icon-Burger-menu.svg);
+    }
+
+    &--close {
+      background-image: url(../images/Icon-Close.svg);
     }
   }
 }
-
