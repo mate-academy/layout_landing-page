@@ -1,0 +1,78 @@
+@mixin onTablet {
+  @media (min-width:744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width:1260px) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInLine() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 60px;
+  }
+
+  @include onDesktop() {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding-inline: 120px ;
+  }
+
+}
+
+.container {
+  @include contentPaddingInLine;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns),1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonStyle {
+  height: 56px;
+
+  border-radius: $button-radius;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  transition-duration: 0.3s;
+  color: $button-text-color;
+
+  &:hover {
+    box-shadow: 1px 4px 16px #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px #e8e8f066;
+  }
+}
+
+@mixin changeColorText ($toValue) {
+  &:hover {
+    color: $toValue;
+  }
+}
