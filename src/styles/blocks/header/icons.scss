@@ -1,19 +1,51 @@
 .icon {
 
+  transition: transform 0.5s;
   @include iconSize;
-  @include hover(transform, scale(1.2));
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/icon-phone-call-2x.png);
     background-size: cover;
+    @include hover(transform, scale(1.2));
+
+    @include onDeskstop {
+      &:hover::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        color: $c-font;
+        width: 150px;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        top: 50%;
+        bottom: 50%;
+        transform: translateY(-50%);
+        left: -150px;
+      }
+    }
+
   }
 
   &--buger {
     background-image: url(../images/icons/Icon-Burger-menu-2x.png);
     background-size: cover;
+    @include hover(transform, scale(1.2));
+    @include onDeskstop {
+      &:hover {
+        background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+      }
+    }
   }
   &--close {
     background-image: url(../images/icons/icon-close-2x.png);
     background-size: cover;
+    @include hover(transform, scale(1.2))
   }
 }
