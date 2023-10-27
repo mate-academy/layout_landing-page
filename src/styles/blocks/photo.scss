@@ -1,20 +1,34 @@
 .photo {
-  overflow: hidden;
+  transition: transform 0.3s;
 
   &__img {
+    display: block;
     width: 100%;
-    transition: transform 0.3s;
+    border-radius: 4px;
   }
 
-  &--on-hover .photo__img {
+  &--mob-height {
+    @media (max-width: 1200px) {
+      min-height: 130px;
+      max-height: 184px;
+      height: 100%;
+
+      & .photo__img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &--on-hover {
     &:hover {
-      transform: scale(1.3);
+      transform: scale(1.05);
     }
   }
 }
 
 .product {
-  &:hover .photo__img {
-    transform: scale(1.3);
+  &:hover .photo {
+    transform: scale(1.05);
   }
 }
