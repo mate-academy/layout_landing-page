@@ -22,92 +22,99 @@
 }
 
 .now-on-view__list {
-  @include pageGrid;
+  display: grid;
+  row-gap: 48px;
 }
 
-.view-1 {
-  grid-column: 1 / -1;
-}
-
-.view-2 {
-  grid-column: 1 / -1;
-}
-
-.view-3 {
-  grid-column: 1 / -1;
-}
-
-.view__photo {
-  width: 130px;
-  height: 130px;
-  margin-bottom: 24px;
-  margin-left: 16px;
-
-  @include onTablet {
-    height: 186px;
-    width: 186px;
-    margin-bottom: 12px;
-  }
-
-  @include onDesktop {
-    width: 324px;
-    height: 320px;
-    margin-left: 20px;
-  }
-
-  &-small {
-    width: 88px;
-    height: 88px;
+.view {
+  &__photos {
+    @include pageGrid;
     margin-bottom: 24px;
-    margin-left: 4px;
 
-    @include onTablet {
-      width: 288px;
-      height: 284px;
-      margin-bottom: 12px;
-      margin-left: 20px;
-    }
+    &--triple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+      margin-bottom: 24px;
 
-    @include onDesktop {
-      width: 324px;
-      height: 320px;
-      margin-bottom: 12px;
-      margin-left: 20px;
+      @include onTablet {
+        @include pageGrid;
+      }
     }
   }
-}
 
-.photo-wide-1 {
-  object-fit: cover;
-  object-position: 20%;
+  &__link {
+    position: relative;
 
-  @include onTablet {
-    width: 392px;
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--triple {
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
   }
 
-  @include onDesktop {
-    width: 672px;
-    height: 320px;
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.03));
+
+    &--first {
+      object-position: 20%;
+    }
+
+    &--last {
+      object-position: 100%;
+    }
+
+    &--triple {
+      width: 100%;
+      height: 100%;
+
+      @include hover(transform, scale(1.03));
+    }
+
+    &--display-none {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
   }
 }
 
-.photo-wide-2 {
-  object-fit: cover;
-  object-position: right;
-
-  @include onTablet {
-    width: 392px;
-  }
-
-  @include onDesktop {
-    width: 672px;
-    height: 320px;
-  }
-}
-
-.photo-first {
-  margin-left: 0;
-}
 
 .view__name {
   color: $color-red;
@@ -122,7 +129,6 @@
 
 .view__date {
   margin: 0;
-  margin-bottom: 48px;
 }
 
 .date-last {
@@ -142,7 +148,10 @@
 
   background-color: $color-red;
 
+  transition-duration: 300ms;
+
   &:hover {
+    cursor: pointer;
     background-color: $color-btn-hover;
   }
 
@@ -152,15 +161,5 @@
 
   @include onTablet {
     // width: 392px;
-  }
-}
-
-.no-display {
-  @include onTablet {
-    display: none;
-  }
-
-  @include onDesktop {
-    display: inline;
   }
 }

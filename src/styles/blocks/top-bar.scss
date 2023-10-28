@@ -12,6 +12,7 @@
   &__icons {
     display: flex;
     gap: 24px;
+    // position: relative;
 
     @include onTablet {
       gap: 55px;
@@ -23,5 +24,34 @@
     transition: transform 300ms;
 
     @include hover(transform, scale(1.1));
+  }
+}
+
+.top-bar__hover-call {
+  font-weight: 700;
+  line-height: 27px;
+  text-align: right;
+  display: none;
+  position: absolute;
+  transform: translate(-210px, -40px);
+
+  .hover-link:hover {
+    .top-bar__hover-call {
+      display: none;
+    }
+  }
+}
+
+.hover-call-number {
+  color: $color-light;
+  text-decoration: none;
+  display: block;
+}
+
+@include onDesktop {
+  .top-bar:has(.icon--phone:hover) {
+    .top-bar__hover-call {
+      display: block;
+    }
   }
 }
