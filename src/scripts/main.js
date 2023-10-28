@@ -3,11 +3,17 @@
 let modal;
 
 function toggleModal(event) {
+  const body = document.body;
+
   event.stopPropagation();
   modal.classList.toggle('show');
+  body.classList.add('body-no-scroll');
 }
 
 function closeModal() {
+  const body = document.body;
+
+  body.classList.remove('body-no-scroll');
   modal.classList.remove('show');
 }
 
