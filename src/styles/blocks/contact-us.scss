@@ -51,6 +51,7 @@
   }
 
   &__link {
+    position: relative;
     color: #191919;
     font-weight: 400;
     font-size: 16px;
@@ -58,6 +59,24 @@
     letter-spacing: 0.15px;
     text-decoration: none;
     font-style: normal;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
 
