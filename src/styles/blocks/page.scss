@@ -1,0 +1,37 @@
+.page {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(-100%);
+    transition: all $transition-duration ease-in-out;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    pointer-events: all;
+
+    transform: translateX(0);
+  }
+
+  &__section {
+    margin-bottom: 64px;
+
+    @include onTablet {
+      margin-bottom: 120px;
+    }
+  }
+
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+}

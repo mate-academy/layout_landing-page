@@ -1,0 +1,54 @@
+.icon {
+  display: block;
+  background-size: cover;
+  width: $icon-size-sm;
+  height: $icon-size-sm;
+
+  @include hover(transform, scale(1.2));
+  @include customCursor;
+
+  @include onTablet {
+    width: $icon-size-md;
+    height: $icon-size-md;
+  }
+
+  $icons: (
+    "phone": "phone-icon.svg",
+    "menu": "burger-menu-icon.svg",
+    "close": "close-icon.svg"
+  );
+
+  @each $name, $filename in $icons {
+    &--#{$name} {
+      background-image: url(../images/icons/#{$filename});
+    }
+  }
+
+  &--menu {
+    @include hover(background-image, url(../images/icons/burger-menu-hover-icon.svg));
+  }
+
+  &--with-text {
+    position: relative;
+  }
+
+  &__text {
+    position: absolute;
+    top: 25%;
+    left: -120px;
+    color: $text-color-dark;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+
+    transition: transform $transition-duration;
+    transform: scale(0);
+    transform-origin: right;
+  }
+
+  &--with-text:hover &__text {
+    @include onDesktop {
+      transform: scale(1);
+    }
+  }
+}
