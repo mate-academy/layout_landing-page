@@ -1,0 +1,257 @@
+@import "./values.scss";
+@import "./browser.scss";
+@import "./mixins.scss";
+
+.header {
+  height: $height;
+  background-image: url(../images/Cover_photo.png);
+  background-size: cover;
+  background-position: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 320px) and (max-width: 743px) {
+    background-image: url(../images/back.svg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__number {
+    display: none;
+    text-decoration: none;
+    margin-right: 20px;
+    color: #fff;
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__icons:hover + &__number {
+    display: block;
+  }
+
+  &__top {
+    @include onTabletHeader;
+    @include onMobileHeader;
+    padding: $padding-logo;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 203px;
+
+    @media (min-width: 744px) and (max-width: 1259px) {
+      padding-bottom: 160px;
+    }
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      padding-bottom: 120px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    letter-spacing: -1.5px;
+    color: #fff;
+    font-weight: $font-size-big;
+    font-size: 80px;
+    line-height: 80px;
+
+    @media (min-width: 744px) and (max-width: 1259px) {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+
+  &__logo {
+    background-image: url(../images/MyBiKE.svg);
+    background-repeat: no-repeat;
+    width: 187px;
+    height: 55px;
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      background-image: url(../images/MyBiKE-mini.svg);
+      background-repeat: no-repeat;
+      height: 38px;
+      width: 130px;
+    }
+  }
+
+  &__logo--mini {
+    background-repeat: no-repeat;
+    background-image: url(../images/MyBiKE-black.svg);
+    width: 187px;
+    height: 55px;
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      background-image: url(../images/MyBiKE-black--mini.svg);
+      background-repeat: no-repeat;
+      height: 38px;
+      width: 130px;
+    }
+  }
+
+  &__icons {
+    gap: 32px;
+    display: flex;
+
+    @media (min-width: 320px) and (max-width: 743px) {
+      gap: 20px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+
+    &--phone {
+      background-image: url(../images/Vector.svg);
+
+      @media (min-width: 320px) and (max-width: 743px) {
+        background-image: url(../images/Vector-mini.svg);
+      }
+    }
+
+    &--menu {
+      margin-top: 4px;
+      background-image: url(../images/MENU.svg);
+
+      @media (min-width: 320px) and (max-width: 743px) {
+        background-image: url(../images/MENU-mini.svg);
+        background-repeat: no-repeat;
+      }
+    }
+
+    &--close {
+      background-image: url(../images/EXIT.svg);
+
+      @media (min-width: 320px) and (max-width: 743px) {
+        background-image: url(../images/EXIT-mini.svg);
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+
+.menu {
+  overflow: auto;
+  position: fixed;
+  color: indianred;
+  background-color: #e5e5e5;
+  box-sizing: border-box;
+  height: $height;
+  bottom: 0;
+  width: 100%;
+  padding: $padding-logo;
+  @include onTabletHeader;
+  @include onMobileHeader;
+
+  opacity: 0;
+  pointer-events: none;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    position: sticky;
+    z-index: 1;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    margin-top: 60px;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__vertical {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 32px;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: $font-size-big;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    width: 250px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: black;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__itemContact {
+    display: inline-block;
+    padding-bottom: 16px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: $font-size-big;
+    font-size: 16px;
+    line-height: 27px;
+
+    &--href {
+      text-decoration: none;
+      color: black;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: black;
+      cursor: pointer;
+      text-underline-offset: 4px;
+      border-radius: $border-radius;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
