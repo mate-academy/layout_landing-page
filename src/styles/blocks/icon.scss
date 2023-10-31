@@ -1,5 +1,4 @@
 .icon {
-  display: block;
   height: 24px;
   width: 24px;
   background-size: cover;
@@ -13,30 +12,40 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone-2x.png);
+    cursor: pointer;
+    opacity: 1;
+
+    &--link {
+      display: block;
+    }
+  }
+
+  &--hover {
+    opacity: 1;
 
     &--text {
-      top: 24px;
-      right: 20%;
+      position: absolute;
+      top: -24px;
+      right: 46px;
       text-align: right;
-      position: fixed;
-
-      opacity: 0;
       pointer-events: none;
+      width: 205px;
+      opacity: 0;
     }
 
-    &:hover + &--text {
-      opacity: 1;
-      pointer-events: all;
-      background-image: none;
+    @include onDesktop {
+      &:hover .icon--hover--text {
+        pointer-events: all;
+        opacity: 1;
+      }
     }
-
   }
 
   &--menu {
     background-image: url(../images/icons/icon-menu-2x.png);
 
     @include hover (background-image, url(../images/icons/icon-menu-hover-2x.png));
-    
+
   }
 
   &--close {
