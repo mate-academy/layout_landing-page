@@ -84,7 +84,7 @@
 }
 
 @mixin hoverTopBarNumber($property, $toValue) {
-  & &__phone-number-hover {
+  &--phone-number {
     transition: #{$property} $effectDuration ease-in;
 
     @keyframes hover {
@@ -98,19 +98,18 @@
     }
   }
 
-  &:hover &__phone-number-hover {
+  &--icon:hover &--phone-number {
     #{$property}: #{$toValue};
 
     transform: translateY(-150%);
     animation: hover $effectDuration forwards;
-    @include hoverHeaderCursor(cursor, pointer);
   }
 }
 
 @mixin hoverHeaderCursor($property, $toValue) {
   &:hover {
+    #{$property}: url(../images/cursor/cursor-mouse-mice.svg) 4 12, #{$toValue};
     filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.25));
-    #{$property}: url(../images/cursor/cursor-mouse-mice.svg) #{$toValue};
   }
 }
 
@@ -119,5 +118,30 @@
 
   &:hover {
     #{$property}: #{$toValue};
+  }
+}
+
+@mixin hoverUnderscore {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+
+    display: block;
+
+    height: 1px;
+    width: 100%;
+
+    background-color: $main-textPage-color;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
   }
 }
