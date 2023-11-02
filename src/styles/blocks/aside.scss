@@ -1,0 +1,99 @@
+@import "../../utils/mixin";
+
+.aside {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $aside-background-color;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $accent-dark-color;
+  font-size: 22px;
+  line-height: $line-height-22-mobile;
+  letter-spacing: 2px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  pointer-events: none;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+
+    max-height: 100%;
+  }
+
+  &__menu-top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-block: 24px;
+    @include contentPaddingInline;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onTablet {
+      padding-block: 36px;
+    }
+  }
+
+  &__menu-nav {
+    @include contentPaddingInline;
+
+    &__list-ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &-link {
+      color: inherit;
+      text-decoration: none;
+
+      @include onDesktop {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__menu-phone-number {
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    display: block;
+    margin: 40px 0 16px;
+    @include contentPaddingInline;
+  }
+
+  &__menu-book-a-test-ride {
+    color: inherit;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    width: fit-content;
+    margin-left: 20px;
+
+    border-bottom: 1px solid #1d1d1d;
+    padding-bottom: 8px;
+
+    @include onTablet {
+      margin-left: 72px;
+    }
+  }
+}
