@@ -1,11 +1,17 @@
 .contacts {
-  &__wrapper {
-    @include pageGrid;
 
+  &__wrapper {
+    --column-count: 2;
+    display: grid;
+
+    @include pageGrid;
     row-gap: 48px;
+    margin-top: 48px;
   }
 
   &__form {
+    display: grid;
+    row-gap: 16px;
     grid-column: 1 / -1;
 
     @include onTablet {
@@ -17,11 +23,49 @@
     }
   }
 
-  &__address {
+  &__input {
+    all: unset;
+    display: block;
+    box-sizing: border-box;
     grid-column: 1 / -1;
+    padding-block: 14px;
+    padding-inline: 16px;
+    height: 48px;
+    color: #000;
+    border-radius: 40px;
+    background-color: $form-input-color;
+    border: 1px solid $form-input-color;
+
+    &--hover:hover {
+      border: 1px solid $form-hover-color;
+      &::placeholder {
+        color: $form-hover-color;
+      }
+    }
+  }
+
+  &__message {
+    all: unset;
+    box-sizing: border-box;
+    display: block;
+    grid-column: 1/ -1;
+    margin-bottom: 16px;
+    height: 120px;
+    padding-block: 14px;
+    padding-inline: 16px;
+    color: #000;
+    background-color: $form-input-color;
+    border: 1px solid $form-input-color;
+    border-radius: 16px;
+  }
+
+  &__information {
+    grid-column: 1 / -1;
+    width: 100%;
 
     @include onTablet {
-      grid-column: span 2;
+      grid-column: span 3;
+      column-gap: 24px;
     }
 
     @include onDekstop {
@@ -29,63 +73,37 @@
     }
   }
 
-  &__title {
-    margin: 0;
-    margin-bottom: 8px;
-    font-weight: 400;
-    font-size: 14px;
+  &__list {
+    padding: 0;
+    width: 100%;
+    list-style: none;
   }
 
-  &__description {
-    font-weight: 500;
-    margin-bottom: 24px;
+  &__item {
+    width: 100%;
+    display: grid;
+    row-gap: 8px;
+    font-size: 14px;
+    font-weight: 400;
 
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
   }
 
   &__link {
-    text-decoration: none;
     color: $main-text-color;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
 
     &:hover {
-      text-shadow: 5px 5px 5px $main-text-color;
-      cursor: $cursur-mause-main;
+      color: #c1b297;
+      cursor: pointer;
     }
   }
 }
 
-.form {
-  &__input {
-    box-sizing: border-box;
-    padding: 0;
-    height: 48px;
-    width: 100%;
-    border-radius: 40px;
-    border: 0 solid $form-input-color;
-    text-indent: 16px;
-    margin-bottom: 16px;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    background: $form-input-color;
-    outline: none;
-    color: $form-hover-color;
-
-    @include placeholderText;
-
-    &::placeholder {
-      color: #7e7e83;
-    }
-
-    &:hover::placeholder {
-      color: $form-hover-color;
-    }
-  }
-
-  &__textArea {
-    box-sizing: border-box;
-    text-indent: 0;
-    border-radius: 16px;
-    padding: 16px 14px;
-    height: 148px;
-    margin-bottom: 32px;
-    resize: none;
-  }
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px $form-input-color;
 }
