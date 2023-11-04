@@ -4,44 +4,45 @@
   width: 24px;
   background-size: cover;
 
-  @media (min-width: 576px) {
+  @include onTablet {
     height: 32px;
     width: 32px;
   }
 
-  &__phone {
+  &--phone {
     background-image: url(../images/icons/icon-phone.svg);
-
-    &--hover {
-      display: none;
-      position: absolute;
-      color: $main-text-color;
-      font-family: "Poppins", sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-
-      top: 75px;
-      left: 75%;
-      transform: translateX(-60%);
-      transition: all $effectDuration ease;
-
-    }
-
-    &.icon__phone:hover .icon__phone--hover {
-      display: block;
-    }
+    position: relative;
+    box-sizing: border-box;
   }
 
-  &__menu {
+  &--phone::after {
+    content: "+1 234 555-55-55";
+    position: absolute;
+    width: 190px;
+    right: 0;
+    top: 8px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0;
+    transition: 1s;
+  }
+  &--phone:hover::after {
+    opacity: 1;
+    gap: 20px;
+  }
+
+
+  &--menu {
     background-image: url(../images/icons/icon-menu.svg);
     transition: all $effectDuration ease;
   }
 
-  &__menu:hover {
+  &--menu:hover {
     background-image: url(../images/icons/icon-menu--hover.svg);
   }
 

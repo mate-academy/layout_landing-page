@@ -1,17 +1,48 @@
 .details {
   &__wrapper {
     display: grid;
-    row-gap: 20px;
+    row-gap: 40px;
 
     @include onTablet {
-      row-gap: 24px;
+      row-gap: 48px;
+    }
+  }
+  &__button {
+    @include pageGrid;
+
+    &--explore {
+      grid-column: 1 / -1;
+      @include onTablet {
+        grid-column: 2 / 6;
+      }
+      @include onDesktop {
+        grid-column: 5 / 9;
+      }
     }
   }
 }
 
 .detail {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all $effectDuration ease;
+  }
+  &__photo:hover {
+    transform: scale(0.9);
+  }
+
   &__link {
     position: relative;
+
     &--wide {
       @include onTablet {
         grid-column: span 4;
@@ -20,6 +51,7 @@
         grid-column: span 8;
       }
     }
+
     &--square {
       padding-bottom: 100%;
       height: 0;
@@ -31,28 +63,9 @@
       }
     }
   }
-  &__photo {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all $effectDuration ease;
-  }
 
-  &__photo:hover {
-    transform: scale(0.9);
-  }
-  &__photos {
-    @include pageGrid;
-    margin-bottom: 16px;
-  }
   &__title {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
-
-    margin: 0;
+    margin-bottom: 8px;
   }
   &__description {
     font-size: 16px;
