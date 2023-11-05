@@ -1,0 +1,106 @@
+.requisite {
+  &__title {
+    margin-bottom: 8px;
+
+    color: #9393a3;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+  }
+
+  &__text {
+    position: relative;
+    color: #191919;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    text-decoration: none;
+
+    transition: all $transition-duration;
+
+    &:after {
+      position: absolute;
+      content: "";
+      width: 22px;
+      height: 22px;
+      right: -30px;
+      background-size: cover;
+      background-position: center;
+
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::after {
+      @include onDesktop {
+        opacity: 1;
+      }
+    }
+
+    &--phone-number {
+      &:hover::after {
+        background-image: url(../images/icons/icon-phone-call.svg);
+        animation: 0.6s forwards ease-out 2 call;
+      }
+    }
+
+    &--email {
+      &:hover::after {
+        background-image: url(../images/icons/icon-send-mail.svg);
+        animation: 0.9s linear move;
+      }
+    }
+
+    &--address {
+      &:hover::after {
+        background-image: url(../images/icons/icon-location.svg);
+        bottom: 22px;
+        animation: 0.3s linear 4 alternate jump;
+      }
+    }
+  }
+}
+
+@keyframes call {
+  0% {
+    background-image: url(../images/icons/icon-phone-call.svg);
+  }
+
+  50% {
+    background-image: url(../images/icons/icon-phone-call-1.svg);
+  }
+
+  100% {
+    background-image: url(../images/icons/icon-phone-call-2.svg);
+  }
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+
+  75% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
