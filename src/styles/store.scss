@@ -1,5 +1,4 @@
 .store {
-
   &__header {
     font-size: 32px;
 
@@ -17,6 +16,7 @@
   &__wrapper {
     display: grid;
     row-gap: 40px;
+    justify-items: center;
 
     @include onTablet {
       row-gap: 56px;
@@ -24,16 +24,8 @@
   }
 
   &__images {
-    display: grid;
-    grid-template-columns: repeat(2, 130px);
-    column-gap: 20px;
-
+    @include pageGrid;
     margin-bottom: 16px;
-
-    @include onTablet {
-      grid-template-columns: repeat(6, 80px);
-      column-gap: 24px;
-    }
 
     @include onDesktop {
       grid-template-columns: repeat(12, 63px);
@@ -41,11 +33,11 @@
   }
 
   &__link {
-
     &--wide {
       @include onTablet {
         grid-column: span 4;
       }
+
       @include onDesktop {
         grid-column: span 8;
       }
@@ -55,6 +47,7 @@
       @include onTablet {
         grid-column: span 2;
       }
+
       @include onDesktop {
         grid-column: span 4;
       }
@@ -85,24 +78,26 @@
     background-color: $main-color;
     height: 56px;
     align-items: center;
+    border: 2px solid $main-color;
     border-radius: 8px;
     color: $btn-text-color;
     margin-bottom: 96px;
-
-    &:active {
-      background-color: $main-color;
-      color: $btn-text-color;
-    }
+    width: 100%;
 
     @include onDesktop {
       width: 324px;
-      transition: all 0.3s;
+      transition: background-color 0.3s;
 
       &:hover {
         background-color: $btn-hover-bg-color;
         color: $main-color;
-        border: 2px solid $btn-border-color;
+        border-color: $btn-border-color;
       }
+    }
+
+    &:active {
+      background-color: $main-color;
+      color: $btn-text-color;
     }
   }
 }
