@@ -3,6 +3,7 @@
   height: 24px;
   display: block;
   background-size: cover;
+  position: relative;
 
   @include onTablet {
     width: 32px;
@@ -11,6 +12,27 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone-call.svg);
+    &::before {
+      content: "tel:+123455555555";
+      @include addTransition;
+      position: absolute;
+      bottom: -10px;
+      left: -170px;
+      background-color: $light-grey-color;
+      opacity: 0;
+
+      padding: 10px;
+      border-radius: 10px;
+
+      @include onTablet {
+        bottom: -5px;
+      }
+    }
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
