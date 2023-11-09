@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" class="page">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Bang & Olufsen</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Roboto:wght@400;500;700&display=swap"
@@ -13,14 +13,42 @@
       href="/images/favicon.ico"
       type="image/x-icon"
     >
-    <link rel="stylesheet" href="./styles/styles.scss">
+    <link rel="stylesheet" href="./styles/styles.scss" >
     <script src="scripts/main.js" defer></script>
+    <script>
+      function validateForm() {
+        const nameInput = document.getElementById("nameInput");
+        const emailInput = document.getElementById("emailInput");
+        const messageInput = document.getElementById("messageInput");
+
+        if (isWhitespaceOnly(nameInput.value)) {
+          return false;
+        }
+
+        if (isWhitespaceOnly(messageInput.value)) {
+          messageInput.value = '';
+
+          return false;
+        }
+
+
+        nameInput.value = '';
+        messageInput.value = '';
+        emailInput.value = '';
+
+        return true;
+      }
+
+      function isWhitespaceOnly(str) {
+        return !str.trim();
+      }
+    </script>
   </head>
   <body class="page__body">
     <header class="header">
       <div class="top-bar">
         <a href="./" class="top-bar__logo">
-          <img src="./images/logo.svg" alt="Bang & Olufsen Logo">
+          <img src="./images/logo.svg" alt="Bang & Olufsen Logo" >
         </a>
 
         <div class="top-bar__icons">
@@ -32,7 +60,7 @@
       <div class="header__bottom">
         <h1 class="header__title">
           Your senses.
-          <br>
+          <br >
           Set free.
         </h1>
       </div>
@@ -41,7 +69,7 @@
     <aside class="menu page__menu" id="menu">
       <div class="top-bar menu__top">
         <a href="./" class="top-bar__logo">
-          <img src="./images/logo.svg" alt="Bang & Olufsen Logo">
+          <img src="./images/logo.svg" alt="Bang & Olufsen Logo" >
         </a>
 
         <a href="#" class="icon icon--close"> </a>
@@ -137,7 +165,7 @@
 
       <section id="categories" class="main__section categories">
         <h2 class="section_title categories__title">
-          Sound. Vision. <br>It’s your pick.
+          Sound. Vision. <br >It’s your pick.
         </h2>
         <div class="categories__list">
           <article class="categories__item category">
@@ -189,7 +217,7 @@
                   class="category__image"
                   src="./images/categories/categories-smart-home-left.png"
                   alt="B&O categories smart home right"
-               >
+                >
               </a>
 
               <a href="#" class="category__link">
@@ -214,8 +242,8 @@
           <div class="about-us__content">
             <h2 class="about-us__title">Timeless, for 50 years and counting</h2>
             <p class="about-us__description">
-              Bang & Olufsen is expanding its Recreated Classics Program with the
-              launch of Beosystems – a limited edition music system that
+              Bang & Olufsen is expanding its Recreated Classics Program with
+              the launch of Beosystems – a limited edition music system that
               transcends time by bridging the gap between one of our iconic
               designs from 1972 and today’s cutting-edge digital technology.
             </p>
@@ -229,32 +257,34 @@
           <form
             class="contact-us__send-form"
             action="#"
-            onsubmit="this.reset(); return false;"
+            onsubmit="return validateForm();"
           >
             <input
+              id="nameInput"
               class="send-form__input input"
               type="text"
               placeholder="Name"
               required
+              title="Name cannot contain only whitespace"
               pattern=".*\S.*"
             >
             <input
+              id="emailInput"
               class="send-form__input input"
               type="email"
               placeholder="Email"
               required
             >
             <textarea
+              id="messageInput"
               class="textarea"
               placeholder="Message"
               rows="5"
+              title="Message cannot contain only whitespace"
               required
-              pattern=".*\S.*"
             ></textarea>
 
-            <button class="contact-us__send-button button" type="submit">
-              Send
-            </button>
+            <button class="contact-us__send-button button">Send</button>
           </form>
           <div class="contact-us__data">
             <label class="contact-us__label">
@@ -278,7 +308,7 @@
                 href="https://maps.app.goo.gl/QdxHWeoFDmvLc7z89"
                 target="_blank"
               >
-                400 first ave.<br>suite 700<br>Minneapolis, MN 55401
+                400 first ave.<br >suite 700<br >Minneapolis, MN 55401
               </a>
             </label>
           </div>
