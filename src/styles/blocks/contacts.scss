@@ -1,7 +1,13 @@
 .contacts {
   &__content {
-    @include pageGrid;
+    display: grid;
     row-gap: 48px;
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+
+    @include onTablet {
+      @include pageGrid;
+    }
   }
 
   &__list-wrapper {
@@ -21,12 +27,37 @@
     }
   }
 
-  &__form {
+  .form {
     @include onTablet {
       grid-column: span 3;
     }
+
     @include onDesktop {
       grid-column: span 5;
+    }
+  }
+
+  &__button {
+    background-color: $red-color;
+    border: none;
+    height: 56px;
+    flex-shrink: 0;
+    transition: background-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      background-color: $hover-red-color;
+    }
+
+    &:active {
+      background-color: $target-red-color;
+    }
+  }
+
+  &__field {
+    margin: 0 0 16px;
+
+    &--last {
+      margin-bottom: 32px;
     }
   }
 }
