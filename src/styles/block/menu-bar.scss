@@ -37,6 +37,25 @@
     text-align: left;
     color: $text-color;
     text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: $text-color;
+
+      transition: transform 0.3s;
+      transform-origin: left;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__top {
@@ -73,10 +92,5 @@
       border-bottom: 1px solid $text-color;
       width: fit-content;
     }
-
   }
-}
-
-a:hover {
-  color: rgb(104, 103, 103);
 }
