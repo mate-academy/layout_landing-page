@@ -28,7 +28,7 @@
     ```
 13. All form fields should be required and have correct types (`email`, `tel`, etc.)
 14. Placeholders should give examples of what should be added, to make the expected format clear
-15. The page shouldn't be reloaded on form submit, but the fields should be cleared. Use:
+15. The page shouldn"t be reloaded on form submit, but the fields should be cleared. Use:
     ```html
     <form onsubmit="this.reset(); return false;">
     ```
