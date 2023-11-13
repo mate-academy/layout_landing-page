@@ -1,0 +1,176 @@
+.now-on-view {
+  &__title {
+    margin-bottom: 8px;
+    grid-column: 1 / -1;
+  }
+
+  &__description {
+    margin: 0;
+    margin-bottom: 48px;
+    line-height: 27px;
+    text-align: center;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
+
+.now-on-view__list {
+  display: grid;
+  row-gap: 48px;
+}
+
+.view {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--triple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+      margin-bottom: 24px;
+
+      @include onTablet {
+        @include pageGrid;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--triple {
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.03));
+
+    &--first {
+      object-position: 20%;
+    }
+
+    &--last {
+      object-position: 100%;
+    }
+
+    &--triple {
+      width: 100%;
+      height: 100%;
+
+      @include hover(transform, scale(1.03));
+    }
+
+    &--display-none {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+}
+
+.view__name {
+  color: $color-red;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: left;
+}
+
+.view__decription {
+  color: $color-dark;
+}
+
+.view__date {
+  margin: 0;
+}
+
+.date-last {
+  margin-bottom: 40px;
+}
+
+.view__button-grid {
+  @include pageGrid;
+}
+
+.view__button {
+  border: 0;
+  color: #fff;
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  width: 100%;
+  height: 56px;
+
+  background-color: $color-red;
+
+  transition-duration: 300ms;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $color-btn-hover;
+  }
+
+  &:focus {
+    background-color: $color-btn-pressed;
+  }
+
+  &-link {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
