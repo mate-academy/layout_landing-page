@@ -345,11 +345,43 @@ h1 {
 }
 
 .detail {
+  &__content {
+    grid-column: span 6;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+
+    &__title {
+      margin: 0;
+      padding: 16px 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &__text {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
   &__photos {
     @include pageGrid;
   }
 
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   &__link {
+    position: relative;
+
     &--wide {
       @include onTablet {
         grid-column: span 4;
@@ -361,6 +393,9 @@ h1 {
     }
 
     &--square {
+      height: 0;
+      padding-bottom: 100%;
+
       @include onTablet {
         grid-column: span 2;
       }
@@ -371,24 +406,122 @@ h1 {
     }
   }
 
-  &__photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  &__button {
+    margin: auto;
+
+      &--view {
+        display: flex;
+        width: 278px;
+        height: 56px;
+        padding: 0px 48px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border-radius: 40px;
+        background: #FFF;
+        color: #1D1D1D;
+        text-align: center;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: 700;
+        line-height: 27px;
+      }
+  }
+}
+
+.section-information {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    max-width: 600px;
+    margin: auto;
+    --columns: 6;
+    column-gap: 24px;
   }
 
-  &__title {
-    margin: 0;
-    padding: 16px 0 8px;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 140%;
+  @include onDesktop {
+    max-width: 1020px;
+    margin: auto;
+    --columns: 12;
+  }
+}
+
+.form {
+  margin: auto;
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 1 / 3;
   }
 
-  &__text {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 140%;
+  @include onDesktop {
+    grid-column: span 5;
   }
+}
+
+.form-field {
+  padding: 16px 14px;
+  margin-bottom: 16px;
+  width: 100%;
+  border-radius: 40px;
+  border: none;
+  background: #F8F8FA;
+}
+
+
+.form-btn {
+  display: flex;
+  width: 280px;
+  height: 56px;
+  padding: 0px 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: #FFF;
+  border: none;
+  margin: auto;
+
+  &--send {
+  text-decoration: none;
+  color: #1D1D1D;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  }
+}
+
+.contact-us__wrapper {
+  margin: auto;
+  grid-column: 1 / -1;
+}
+
+.contact-us__information {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.contact-us__information:not(:last-child) {
+  margin-bottom: 54px;
+}
+
+.contact-us__information a {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+}
+
+.contact-us__information p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
 }
