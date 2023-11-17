@@ -108,16 +108,17 @@ html {
 }
 
 .menu {
-
   box-sizing: border-box;
   background-color: #c2c2c2;
   height: 100vh;
   font-weight: 600;
   text-transform: uppercase;
+  transition: 0.5s all;
 }
 
 .menu__nav {
   margin-bottom: 40px;
+  transition: 5s;
 }
 
 .nav__list {
@@ -134,7 +135,9 @@ html {
   margin-bottom: 16px;
   color: inherit;
   font-size: 16px;
+  font-weight: 700;
   line-height: 27px;
+  font-family: var(--fonts);
 }
 
 .menu__test-ride {
@@ -147,20 +150,40 @@ html {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 2px;
+  font-family: var(--fonts);
+  font-weight: 700;
 
 }
 
 .nav__link {
+  position: relative;
   color: inherit;
   text-decoration: none;
   font-family: var(--fonts);
 }
 
-.nav__link:hover {
+/* .nav__link:hover {
   text-decoration: underline;
+} */
+
+.nav__link:after {
+  display: block;
+  position: absolute;
+  margin-top: 8px;
+  left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  width: 0;/*задаём длинну линии до наведения курсора*/
+  height: 1px; /*задаём ширину линии*/
+  background-color: #1d1d1d; /*задаём цвет линии*/
+  content: "";
+  transition: width 0.3s ease-out; /*задаём время анимации*/
 }
 
-/* ENDregion menu  */
+.nav__link:hover:after,
+.nav__link:focus:after {
+  width: 100%;
+}
+
+/* ENDregion menu*/
 
 /* region main */
 
@@ -191,6 +214,26 @@ html {
 
 .recommended__products {
   display: flex;
+
+}
+
+.category__photos img {
+  height: 100%;
+}
+
+.category__photos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category__link--wide {
+  flex-grow: 2;
+
+}
+
+.category__link--square {
+  flex-grow: 1;
+
 }
 
 .product__title {
@@ -218,12 +261,6 @@ html {
   text-align: center;
   color: #fff;
   font-family: var(--fonts);
-}
-
-.category__photos {
-  display: flex;
-  justify-content: space-between;
-
 }
 
 /* .category__photos:hover {
@@ -278,7 +315,8 @@ html {
 }
 
 .contact-title {
-  text-align: center;
+  /* text-align: center; */
+
   color: #fff;
   font-family: var(--fonts);
 }
@@ -351,6 +389,10 @@ html {
 }
 
 .contact-us__info-link--red:hover {
+  color: red;
+}
+
+.contact-us__info-link:hover {
   color: red;
 }
 
