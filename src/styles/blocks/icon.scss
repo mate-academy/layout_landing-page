@@ -1,0 +1,50 @@
+.icon {
+  position: relative;
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+  transition: transform $effectDuration;
+
+  @include hover(transform,  scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+    transition: all 0.3s;
+
+    &[data-tooltip]:hover::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      color: white;
+      top: 10px;
+      right: 40px;
+      width: 170px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-align: right;
+
+      @media (max-width: 700px) {
+        top: 50px;
+        right: -50px;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    @include hover(background-image,  url(../images/icons/icon-burger-menu-hover.svg));
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
