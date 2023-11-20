@@ -31,7 +31,12 @@
                >
           </a>
           <div class="top-bar__icons">
-            <a href="tel:+12345555555" class="icon icon--phone"></a>
+
+            <div class="top-bar__icons--phone-block">
+              <a href="tel:+12345555555" class="top-bar__number">+1 234 5555-55-55</a>
+              <a href="tel:+12345555555" class="icon icon--phone"></a>
+            </div>
+            
             <a href="#menu" class="icon icon--menu"></a>
           </div>
         </div>
@@ -53,7 +58,6 @@
               >
           </a>
           <div class="menu__icons">
-            <a href="tel:+12345555555" class="icon icon--menu-phone menu__icons__phone"></a>
             <a href="#" class="icon icon--close"></a>
           </div>
         </div>
@@ -216,7 +220,7 @@
               </article>
 
               <div class="details__button-block">
-                <a href="#" class="details__button">Explore</a>
+                <button type="submit" class="details__button">Explore</button>
               </div>
             </div>
 
@@ -227,21 +231,26 @@
 
             <div class="contacts__wrapper">
 
-              <form method="post" class="contacts__form">
+              <form method="post" 
+                class="contacts__form" 
+                onsubmit="event.preventDefault(); this.reset();"
+              >
                 <input
                   placeholder="Name"
                   type="text"
                   name="name"
                   class="contacts__form--item contacts__form--name"
+                  autocomplete="off"
+                  required
                 >
                 <br>
                 <input
                   type="email"
                   name="email"
-                  pattern=".+@example\.com" 
                   size="50"
                   class="contacts__form--item contacts__form--email"
                   placeholder="Email"
+                  autocomplete="off"
                   required
                 >
                 <br>
@@ -249,9 +258,11 @@
                   name="message"
                   placeholder="Message"
                   class="contacts__form--item contacts__form--message"
+                  autocomplete="off"
+                  required
                 ></textarea>
 
-                <a href="#" class="contacts__button">Send</a>
+                <button type="submit" class="contacts__button">Send</button>
               </form>
 
               <article class="contacts__info">
