@@ -1,42 +1,30 @@
 'use strict';
 
-const phoneIcon = document.body.querySelector('.header__phoneSvg');
 const menuIcon = document.body.querySelector('.header__menuSvg');
-let phoneNumber = document.body.querySelector('.header__PhoneNumber');
 const nav = document.body.querySelector('.navigation');
+const body = document.querySelector('#body');
+const form = document.querySelector('#feedback');
 
 document.body.addEventListener('click', (event) => {
-/*   if (event.target === phoneIcon) {
-    phoneNumber.style['pointer-events'] = 'all';
-    phoneNumber.style.opacity = 1;
-  }
-
-  if (event.target !== phoneIcon
-    && phoneNumber.style['pointer-events'] === 'all') {
-    phoneNumber.style.opacity = 0;
-    phoneNumber.style['pointer-events'] = 'none';
-  } */
-
   if (event.target === menuIcon) {
     nav.style['pointer-events'] = 'all';
     nav.style.opacity = 1;
     nav.style['z-index'] = 10;
+    body.style.overflow = 'hidden';
   }
 
   if (event.target !== menuIcon) {
     nav.style['pointer-events'] = 'none';
     nav.style.opacity = 0;
+    body.style.overflow = 'auto';
 
     setTimeout(() => {
       nav.style['z-index'] = -10;
-      //nav.style['background-color'] = 'red';
     }, 500);
   }
 });
 
-
-/*
-  pointer-events: none;
-  opacity: 0;
-  z-index: -10;
-*/
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  e.target.reset();
+});
