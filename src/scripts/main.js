@@ -11,6 +11,7 @@ document.body.addEventListener('click', (event) => {
     nav.style.opacity = 1;
     nav.style['z-index'] = 10;
     body.style.overflow = 'hidden';
+    nav.style.overflow = 'auto';
   }
 
   if (event.target !== menuIcon) {
