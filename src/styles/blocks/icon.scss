@@ -1,0 +1,81 @@
+.icon {
+  @include flex-justify-align(center, center);
+  width: $icon-min;
+  height: $icon-min;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: $icon-max;
+    height: $icon-max;
+  }
+
+  &--phone {
+    background: url(../images/icon-phone-call.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  @include on-laptop {
+    &--tooltip {
+      position: relative;
+
+      &::after {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        width: max-content;
+        left: -146px;
+        color: $main-color;
+        font-family: $inter;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        @include hide-show (hidden, 0);
+        transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      }
+
+      &:hover {
+        &::after {
+          @include hide-show (visible, 1);
+        }
+      }
+    }
+  }
+
+  &--close {
+    background: url(../images/icon-close.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__menu {
+    display: flex;
+    background: $main-color;
+    width: 80%;
+    height: 3px;
+    border-radius: 8px;
+    position: relative;
+
+    &::before {
+      @include icon-menu;
+      top: 8px;
+    }
+
+    &::after {
+      @include icon-menu;
+      bottom: 8px;
+    }
+  }
+
+  &:hover {
+    & .icon__menu {
+      &::before {
+        width: 50%;
+      }
+
+      &::after {
+        width: 75%;
+      }
+    }
+  }
+}
