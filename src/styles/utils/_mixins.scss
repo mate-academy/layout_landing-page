@@ -1,0 +1,58 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin OnTablet {
+  @media (min-width: $min-tablet-with) {
+    @content;
+  }
+}
+
+@mixin OnDesktop {
+  @media (min-width: $min-desktop-with) {
+    @content;
+  }
+}
+
+@mixin IconSize {
+  height: 24px;
+  width: 24px;
+
+  @include OnTablet {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+@mixin BackGroundImage {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin hover($property, $toValue) {
+  transition: $property 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin PageGrid {
+  --collums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--collums), 1fr);
+
+  @include OnTablet {
+    --collums: 6;
+    column-gap: 24px;
+  }
+
+  @include OnDesktop {
+    --collums: 12;
+  }
+}
