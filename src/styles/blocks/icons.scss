@@ -1,0 +1,55 @@
+.icon {
+  @include onSizeIcons;
+  display: block;
+  background-size: cover;
+  position: relative;
+
+  &--phone {
+    background-image: url("../images/icons/icon-phone.png");
+
+    &-acrive {
+      opacity: 0;
+      pointer-events: none;
+      @include transition;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      position: absolute;
+      right: 270px;
+
+
+      &:target {
+        @include onMobile {
+          opacity: 0;
+          @include transition;
+          pointer-events: visible;
+        }
+
+        @include onTablet {
+          opacity: 1;
+          right: 250px;
+        }
+
+        @include onDesktop {
+          right: 200px;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url("../images/icons/icon-burger-menu.png");
+    @include transition;
+
+    &:hover {
+      background-image: url("../images/icons/icon-burger-hover.png");
+      @include transition;
+    }
+  }
+
+  &--close {
+    background-image: url("../images/icons/icon-close.png");
+  }
+}
+
