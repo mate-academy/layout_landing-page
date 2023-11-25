@@ -8,18 +8,11 @@
     padding-top: 50px;
   }
 
-  @include onDesktop {
-    &:hover .top-bar__contacts {
-      display: block;
-      opacity: 1;
-    }
-  }
-
   &__contacts {
     display: none;
 
     @include onDesktop {
-      display: none;
+      display: block;
       width: 201px;
       position: absolute;
       right: 135px;
@@ -29,16 +22,36 @@
       font-weight: 700;
       text-transform: uppercase;
       text-align: right;
-      pointer-events: none;
       opacity: 0;
-      transition: opacity 0.3s ease;
 
-      &--contact {
-        margin: 0;
+      &--link {
+        display: block;
+        margin-bottom: 35px;
+        text-decoration: none;
+        color: $main-text-color;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        font-size: 16px;
+        font-style: normal;
+        text-align: right;
+        font-weight: 700;
+        line-height: 27px;
+        text-transform: uppercase;
       }
 
-      &--contact--margin {
-        margin-bottom: 8px;
+      &--fifth-avenue::after {
+        content: "+1 212-535-7710";
+        position: absolute;
+        width: 201px;
+        top: 27px;
+        right: 0;
+      }
+
+      &--cloisters::after {
+        content: "+1 212-923-3700";
+        position: absolute;
+        width: 201px;
+        top: 87px;
+        right: 0;
       }
     }
   }
@@ -52,10 +65,19 @@
       gap: 55px;
     }
 
-    // .icon--phone:hover + .top-bar__contacts {
-    //   pointer-events: all;
-    //   opacity: 1;
-    // }
+    .show-contacts {
+      display: block;
+    }
+
+    .icon--phone:hover + .top-bar__contacts {
+      pointer-events: all;
+      opacity: 1;
+      transition: 0.3s;
+    }
+
+    .top-bar__contacts.show-contacts {
+      transition-delay: 60s;
+    }
   }
 
   &__logo {
