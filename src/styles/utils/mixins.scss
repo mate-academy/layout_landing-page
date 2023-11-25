@@ -1,0 +1,48 @@
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+  }
+}
+
+@mixin onTablet() {
+  @media screen and (min-width:$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media screen and (min-width:$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onHover($property, $toValue) {
+  transition: #{$property} $transform-time;
+  &:hover {
+    #{$property}: $toValue;
+    z-index: 1
+  }
+}
+
+.container {
+  @include contentPaddingInline();
+}
+
+@mixin onGrid() {
+  display: grid;
+  grid-template-columns: repeat(#{$phone-columns}, 1fr);
+
+  @include onTablet() {
+    grid-template-columns: repeat(#{$tablet-columns}, 1fr);
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(#{$desktop-columns}, 1fr);
+  }
+}
