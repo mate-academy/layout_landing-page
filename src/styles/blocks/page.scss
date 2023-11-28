@@ -1,0 +1,36 @@
+.page {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+  background-color: $page-color;
+
+  scroll-behavior: smooth;
+  :has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    @include contentPaddingInline;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(+100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
