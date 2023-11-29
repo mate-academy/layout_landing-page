@@ -1,0 +1,83 @@
+.icons {
+  display: flex;
+  gap: $iconSizeMobile;
+
+  @include onTablet {
+    gap: $iconSizeTablet;
+  }
+
+}
+
+.icon {
+  display: block;
+  height: $iconSizeMobile;
+  width: $iconSizeMobile;
+
+  @include onTablet {
+    height: $iconSizeTablet;
+    width: $iconSizeTablet;
+  }
+
+  @include hover(transform, scale(1.2));
+
+  background-size: cover;
+  background-position: center;
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+    transition: all $effect-duration;
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        display: flex;
+        margin-block: 10px;
+        content: "+1 234 555-55-55";
+        color: $white-color;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        white-space: nowrap;
+
+        position: absolute;
+        right: 44px;
+
+        opacity: 0;
+        transform: scale(0);
+        pointer-events: none;
+        transition: all $effect-duration;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: scale(1);
+        transform-origin: center;
+      }
+    }
+
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+    transition: background-image $effect-duration;
+
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+    transition: transform 500ms;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+
+    &:focus {
+      transform: rotate(-360deg);
+    }
+  }
+}
