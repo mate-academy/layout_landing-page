@@ -1,0 +1,44 @@
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    @include onDesktop() {
+      font-weight: 700;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      display: block;
+      background-color: $color-main-dark;
+
+      transition: transform $transition-time;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
