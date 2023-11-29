@@ -1,0 +1,96 @@
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 100vh;
+  background-color: rgba(229, 230, 232, 1);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.6s ease;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    padding-bottom: 32px;
+    @include contentPaddingInline;
+
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-align: left;
+    color: $text-color;
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: $text-color;
+
+      transition: transform 0.3s;
+      transform-origin: left;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__top {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__control {
+    display: flex;
+  }
+
+  &__buttom {
+    @include contentPaddingInline;
+  }
+
+  &__buttom-link {
+    margin-block: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-align: left;
+    color: $text-color;
+
+    &:last-child {
+      border-bottom: 1px solid $text-color;
+      width: fit-content;
+    }
+  }
+}
