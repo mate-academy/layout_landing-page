@@ -1,0 +1,42 @@
+.page {
+  font-family: "Space Mono", monospace;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+
+    transition: all $effectDuration;
+    transform: translateY(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateY(0%);
+      pointer-events: all;
+    }
+  }
+
+  :has(&__menu:target) {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100vw;
+
+    ::-webkit-scrollbar {
+      background-color: #e5e6e8;
+    }
+  }
+}
