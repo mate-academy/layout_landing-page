@@ -1,0 +1,73 @@
+.icon {
+  height: 24px;
+  width: 24px;
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+  background-size: cover;
+  @include hover(transform, scale(1.2));
+
+  transition: $main-transition-duration;
+
+  &--phone {
+    background-image: url(/images/icons/icon-phone.svg);
+    color: $default-white-color;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: right;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &::before {
+      content: "The Met Fifth Avenue \A +1 212-535-7710";
+      display: block;
+      visibility: hidden;
+      transform: translate(-100%,-80%);
+      transition: opacity 0.3s;
+      width: max-content;
+      padding-right: 16px;
+      white-space: pre;
+      opacity: 0;
+    }
+
+    &:hover::before {
+      @include onDesktop {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: "The Met Cloisters \A +1 212-923-3700";
+      display: block;
+      visibility: hidden;
+      transform: translate(-100%,-80%);
+      transition: opacity 0.3s;
+      width: max-content;
+      padding-right: 16px;
+      white-space: pre;
+      opacity: 0;
+    }
+
+    &:hover::after {
+      @include onDesktop {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(/images/icons/icon-menu.svg);
+
+    &:hover {
+      background-image: url(/images/icons/icon-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/images/icons/icon-close.svg);
+  }
+}

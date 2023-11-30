@@ -1,0 +1,182 @@
+.now-on-view {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__description-block {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__description {
+    width: 280px;
+
+    @include onTablet {
+      width: 392px;
+    }
+
+    @include onDesktop {
+      width: 325px;
+    }
+
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  &__button-grid {
+    @include pageGrid;
+  }
+
+  &__button {
+    grid-column: span 2;
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+    transition: $main-transition-duration;
+    border: none;
+    padding: 0;
+    height: 56px;
+    background-color: $special-color;
+    font-size: 16px;
+    font-family: "Cinzel", Helvetica, serif;
+    font-weight: 700;
+    cursor: pointer;
+
+    @include hover(background-color, $button-hover-color);
+
+    &:active {
+      transition: 30ms;
+      background-color: $button-action-color;
+    }
+  }
+
+  &__button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: $default-white-color;
+  }
+}
+
+.event {
+  &--margin {
+    margin-bottom: 40px;
+  }
+
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--trio {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      @include onTablet {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      grid-column: span 1;
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--default {
+
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 2;
+      }
+    }
+
+    &--third {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+        grid-column: span 2;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    object-fit: cover;
+    transition: all $main-transition-duration;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+      transform: scale(1.02);
+      border-radius: 16px;
+    }
+
+    &--align--left {
+      object-position: left;
+    }
+
+    &--align--right {
+      object-position: right;
+    }
+
+    &--third {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__title {
+    color: $special-color;
+  }
+}
