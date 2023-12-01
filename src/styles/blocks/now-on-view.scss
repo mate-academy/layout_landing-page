@@ -1,0 +1,105 @@
+.now-on-view {
+  &__title-text {
+    text-align: center;
+    font-size: $font-size-small;
+    line-height: $main-line-height;
+    color: $main-color-text;
+    margin-bottom: 48px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &-article {
+    &__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition;
+
+      @include onDesktop {
+        &:hover {
+          @include hover(transform, scale($scale));
+        }
+      }
+
+      &-none {
+        @include onTablet {
+          display: none;
+        }
+
+        @include onDesktop {
+          display: block;
+        }
+      }
+    }
+
+    &__link {
+      &--wide {
+        @include onTablet {
+          grid-column: span 4;
+        }
+
+        @include onDesktop {
+          grid-column: span 8;
+        }
+      }
+
+      &--square {
+        @include onTablet {
+          grid-column: span 2;
+        }
+
+        @include onDesktop {
+          grid-column: span 4;
+        }
+
+        &-small {
+          @include onTablet {
+            grid-column: span 3;
+          }
+
+          @include onDesktop {
+            grid-column: span 4;
+          }
+
+          &-none {
+            @include onTablet {
+              display: none;
+            }
+
+            @include onDesktop {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    &__photos {
+      @include pageGrid;
+      margin-bottom: 24px;
+
+      &-small {
+        @include pageGrid-Small;
+      }
+    }
+
+    &__red-title {
+      font-weight: 700;
+      font-size: $font-size-small;
+      line-height: $main-line-height;
+      color: $bg-color-main;
+    }
+
+    &__black-title {
+      font-weight: 400;
+      font-size: $font-size-small;
+      line-height: $main-line-height;
+      color: $main-color-text;
+    }
+  }
+}
