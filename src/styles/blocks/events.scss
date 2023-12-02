@@ -1,0 +1,132 @@
+.actual-events {
+  margin-bottom: 140px;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 55px;
+  }
+
+  &__title {
+    padding-bottom: 0;
+    text-align: center;
+
+    &__wrapper {
+      max-width: 325px;
+      display: flex;
+      flex-direction: column;
+      margin-inline: auto;
+      gap: 8px;
+      padding-bottom: 40px;
+
+      @include onTablet {
+        padding-bottom: 48px;
+      }
+    }
+
+    &__bottom-text {
+      text-align: center;
+      font-weight: 400;
+    }
+  }
+
+  @include onTablet {
+    row-gap: 64px;
+  }
+
+  &__content {
+    &__photos {
+      @include pageGrid;
+      margin-bottom: 24px;
+
+      &--three-img {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+
+        @include onTablet {
+          gap: 20px;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include onDesktop {
+          gap: 24px;
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      &__link {
+        position: relative;
+        transition: all 0.3s;
+
+        &--wide {
+          @include onTablet {
+            grid-column: span 4;
+          }
+
+          @include onDesktop {
+            grid-column: span 8;
+          }
+        }
+
+        &--square {
+          height: 0;
+          padding-bottom: 100%;
+          @include onTablet {
+            grid-column: span 2;
+          }
+
+          @include onDesktop {
+            grid-column: span 4;
+          }
+        }
+
+        &--three-img {
+          height: 0;
+          padding-bottom: 100%;
+        }
+
+        &--none {
+          @include onTablet {
+            display: none;
+          }
+
+          @include onDesktop {
+            display: flex;
+          }
+        }
+
+        &:hover {
+          transform: scale(110%);
+        }
+      }
+    }
+
+    &__photo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &--first {
+        object-position: 30% 70%;
+      }
+
+      &--last {
+        object-position: 100%;
+      }
+    }
+
+    &__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #d12d35;
+      line-height: 27px;
+    }
+
+    &__text {
+      font-weight: 400;
+      line-height: 27px;
+    }
+  }
+}
