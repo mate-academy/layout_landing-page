@@ -3,47 +3,8 @@
   display: block;
   background-size: cover;
 
-
   &--phone {
     background-image: url("../images/icons/icon-phone.png");
-
-    &::after {
-      content: "+1 234 555-55-55";
-      position: absolute;
-      right: 300px;
-      top: 45px;
-      opacity: 0;
-      pointer-events: none;
-      @include transition;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-    }
-
-    &:hover {
-      @include transition;
-
-      &::after {
-        opacity: 1;
-        pointer-events: none;
-
-        @include onMobile {
-          opacity: 0;
-          @include transition;
-          pointer-events: visible;
-        }
-
-        @include onTablet {
-          opacity: 1;
-          right: 270px;
-        }
-
-        @include onDesktop {
-          right: 200px;
-        }
-      }
-    }
   }
 
   &--menu {
@@ -61,3 +22,28 @@
   }
 }
 
+.icon--phone-number {
+  @include onMobile {
+    display: none;
+  }
+
+  @include onTablet {
+    display: block;
+  }
+
+  opacity: 0;
+  pointer-events: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  @include transition;
+}
+
+.icon--phone-number.active {
+  @include onTablet {
+    opacity: 1;
+    pointer-events: auto;
+    @include transition;
+  }
+}
