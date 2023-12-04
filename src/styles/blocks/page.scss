@@ -1,0 +1,35 @@
+.page {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: #fff;
+
+  &__body {
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all $effect-duration;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-100%);
+
+    &:target {
+      background: $menu-background-color;
+      color: $main-dark-color;
+
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(0);
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
