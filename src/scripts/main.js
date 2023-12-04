@@ -29,3 +29,19 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   e.target.reset();
 });
+
+const footerName = document.querySelector('.footer__inputName');
+const forbiddenSymbols = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+document.querySelector('.footer__inputName')
+  .addEventListener('keydown', (event) => {
+    // console.log(footerName.value);
+
+    if (forbiddenSymbols.some(el => footerName.value.includes(el))) {
+      document.querySelector('.footer__inputName')
+        .setCustomValidity('Name should contain only letters');
+      document.querySelector('.footer__inputName').reportValidity();
+    } else {
+      return event;
+    }
+  });
