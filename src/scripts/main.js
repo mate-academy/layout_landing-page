@@ -33,14 +33,16 @@ form.addEventListener('submit', (e) => {
 const footerName = document.querySelector('.footer__inputName');
 const forbiddenSymbols = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-document.querySelector('.footer__inputName')
-  .addEventListener('keydown', (event) => {
+footerName
+  .addEventListener('keyup', (event) => {
     // console.log(footerName.value);
+    footerName
+      .setCustomValidity('');
 
     if (forbiddenSymbols.some(el => footerName.value.includes(el))) {
-      document.querySelector('.footer__inputName')
+      footerName
         .setCustomValidity('Name should contain only letters');
-      document.querySelector('.footer__inputName').reportValidity();
+      footerName.reportValidity();
     } else {
       return event;
     }
