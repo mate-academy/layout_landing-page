@@ -1,0 +1,151 @@
+.header {
+  font-family: inherit;
+  background-image: url(../images/photos/headerMidle.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding: 30px 0;
+
+  @include on-tablet {
+    padding-top: 35px;
+    background-position: center;
+  }
+
+  @include on-desktop {
+    background-image: url(../images/photos/Cover_photo.jpg);
+  }
+
+  &__content {
+    height: 100%;
+    margin: 0 20px;
+
+    @include on-tablet {
+      margin: 0 72px;
+    }
+
+    @include on-desktop {
+      margin: 0 120px;
+    }
+  }
+
+  &__container {
+    height: 100%;
+  }
+
+  &__grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 130px 1fr 24px 24px;
+    grid-template-rows: repeat(2, 1fr);
+
+    @include on-tablet {
+      grid-template-columns: 190px 1fr 32px 32px;
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: 190px 1fr 32px 32px;
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+  }
+
+  &__contacts {
+    background-image: url(../images/Icon-Phone-call.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    width: $icon-small;
+    height: $icon-small;
+    transform: translateX(-100%);
+    grid-area: 1 / 4;
+
+    &::before {
+      content: "+1 234 555-55-55";
+      width: max-content;
+      position: relative;
+      top: 50%;
+      padding-right: 20px;
+      transform: translate(-100%, -50%);
+      display: block;
+      transition: opacity $animation-time;
+
+      text-decoration: none;
+      color: $main-whit;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    @include on-tablet {
+      width: $icon-big;
+      height: $icon-big;
+    }
+  }
+
+  &__nav {
+    background-image: url(../images/Icon-Burger-menu.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    width: $icon-small;
+    height: $icon-small;
+    grid-area: 1 / 5;
+    transition: background-image $animation-time;
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+
+    @include on-tablet {
+      width: $icon-big;
+      height: $icon-big;
+    }
+  }
+
+  &__title {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    margin-bottom: 80px;
+    line-height: 36px;
+
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    grid-area: 2 / 1 / -1 / 6;
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+      margin-bottom: 130px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      line-height: 80px;
+      margin-bottom: 200px;
+    }
+  }
+}
+
+.logo {
+  background-image: url(../images/photos/MyBiKE.png);
+  background-repeat: no-repeat;
+  grid-area: 1 / 1;
+
+  @include on-tablet {
+    background-image: url(../images/MyBiKEbig.png);
+  }
+}
