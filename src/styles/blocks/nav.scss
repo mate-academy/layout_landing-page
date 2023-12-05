@@ -2,8 +2,13 @@
   &__list {
     margin: 0;
     padding: 0;
-    padding-top: 28px;
+    padding-top: 24px;
+
     list-style: none;
+
+    @include onTablet {
+      padding-top: 8px;
+    }
   }
 
   &__list :not(:last-child){
@@ -15,12 +20,36 @@
   }
 
   &__link {
+    position: relative;
+
     color: inherit;
     font-family: Poppins, Arial, Helvetica, sans-serif;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
     text-decoration: none;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -8px;
+
+      display: block;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: $menu-text-color;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
 
