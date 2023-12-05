@@ -2,12 +2,13 @@
   font-family: Manrope, Arial, Helvetica, sans-serif;
   color: $main-text-color;
   line-height: 140%;
-  letter-spacing: 0.15px;
+  letter-spacing: .15px;
 
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
+    min-width: 320px;
   }
 
   &__menu {
@@ -17,11 +18,29 @@
     left: 0;
 
     opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
     pointer-events: none;
   }
 
   &__menu:target {
     opacity: 1;
+    transform: translateX(0);
     pointer-events: all;
+  }
+}
+
+.main {
+  background-color: #fff;
+
+  &__content {
+    display: grid;
+    row-gap: 64px;
+    padding-block: 64px;
+
+    @include on-tablet {
+      row-gap: 120px;
+      padding-block: 120px;
+    }
   }
 }
