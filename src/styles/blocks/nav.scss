@@ -1,13 +1,17 @@
 /* #region nav */
 .nav {
   &__list {
-    margin-top: 15px;
+    margin-top: 8px;
     margin-bottom: 32px;
     padding: 0;
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include on-desktop {
+      margin-bottom: 48px;
+    }
   }
 
   &__link {
@@ -16,6 +20,24 @@
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $form-hover-color;
+      transition: $effect-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
 /* #endregion */

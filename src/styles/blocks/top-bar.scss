@@ -3,30 +3,61 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include contentPaddingInline;
-  @include contentPaddingBlock;
+  padding-block: 25px;
+
+  @include on-tablet {
+    padding-block: 50px;
+  }
 
   &__logo {
-    display: flex;
     height: 46px;
     width: 64px;
 
-    &:hover {
-      transform: scale(1.2);
-    }
+    @include hover(transform, scale(1.2));
 
-    @include onTablet {
+    @include on-tablet {
       height: 65px;
       width: 87px;
     }
+  }
+
+  &__logo-link {
+    display: flex;
   }
 
   &__icons {
     display: flex;
     gap: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 55px;
+    }
+
+    @include on-desktop {
+      gap: 60px;
+    }
+  }
+
+  &__hint {
+    position: relative;
+
+    @include on-desktop {
+      transition: $effect-duration;
+
+      &:hover .top-bar__hint--text {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &--text {
+      transition: opacity $effect-duration;
+      position: absolute;
+      top: -25px;
+      right: 100%;
+      visibility: hidden;
+      padding-right: 10px;
+      opacity: 0;
     }
   }
 }

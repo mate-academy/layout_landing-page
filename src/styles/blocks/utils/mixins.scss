@@ -1,61 +1,94 @@
-@mixin onTablet {
-  @media (min-width: 576px) {
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
-  @media (min-width: 1024px) {
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin contentPaddingInline {
+@mixin content-padding-inline {
   padding-inline: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 72px;
   }
-}
 
-@mixin contentPaddingBlock {
-  padding-block: 25px;
-
-  @include onTablet {
-    padding-block: 50px;
+  @include on-desktop {
+    margin-inline: auto;
+    padding-inline: 120px;
+    max-width: 1020px;
   }
 }
 
-@mixin headerBgImage {
+@mixin header-bg-image {
   background-image: url(../images/header/header-bg-mob.svg);
 
-  @include onTablet {
+  @include on-tablet {
     background-image: url(../images/header/header-bg-tab.svg);
   }
 
-  @include onDesktop {
-    background-image: url(../images/header/header-bg-dex.svg);
+  @include on-desktop {
+    background-image: url(../images/header/header-bg-des.svg);
   }
 }
 
-@mixin titlePosition {
+@mixin title-position {
   text-align: center;
-  margin-top: 130px;
+  margin-top: 110px;
   font-size: 40px;
   line-height: 40px;
   font-weight: 700px;
   letter-spacing: -1.5px;
-  color: $header-text-color;
+  color: $second-text-color;
 
-  @include onTablet {
-    margin-top: 90px;
+  @include on-tablet {
+    margin-top: 91px;
     font-size: 64px;
     line-height: 64px;
   }
 
-  @include onDesktop {
-    margin-top: 35px;
+  @include on-desktop {
+    margin-top: 33px;
     font-size: 80px;
     line-height: 80px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $toValue;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin basic-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid $button-bg-color;
+  color: $second-text-color;
+  background-color: $button-bg-color;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@mixin page-grid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
   }
 }
