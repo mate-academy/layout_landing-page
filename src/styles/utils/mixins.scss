@@ -14,6 +14,8 @@
   padding-inline: 20px;
 
   @include on-tablet {
+    margin-inline: auto;
+    max-width: 600px;
     padding-inline: 72px;
   }
 
@@ -32,8 +34,28 @@
 
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
+  cursor: url('../images/cursor-hover.svg'), auto;
+
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin zoom-hover() {
+  transition: transform 0.3s;
+  cursor: url('../images/cursor-hover.svg'), auto;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+
+@mixin contacts-hover() {
+  transition: color 0.3s;
+  cursor: url('../images/cursor-hover.svg'), auto;
+
+  &:hover {
+    color: grey;
   }
 }
 
@@ -46,7 +68,7 @@
 
   @include on-tablet {
     --columns: 6;
-    
+
     column-gap: 24px;
   }
 
@@ -54,3 +76,4 @@
     --columns: 12;
   }
 }
+  
