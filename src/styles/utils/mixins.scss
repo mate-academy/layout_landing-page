@@ -11,25 +11,44 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} $transition-duration;
+  transition: #{$property} $transition-duration $transition-delay;
 
   &:hover {
     #{$property}: $toValue;
   }
 }
 
-@mixin withPaddingInline {
-  padding-inline: 20px;
+@mixin sectionTittleTextStyles {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  text-align: center;
 
   @include onTablet {
-    padding-inline: 72px;
+    font-size: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 64px;
   }
 }
 
-@mixin withPaddingBlock {
-  padding-block: 24px;
+@mixin pageGrid {
+  --columns: 2;
 
-  @media (min-width: 744px) {
-    padding-block: 36px;
+  box-sizing: border-box;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
   }
 }
