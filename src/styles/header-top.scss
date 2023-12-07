@@ -1,26 +1,68 @@
 .header-top {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
 
   &__logo {
     display: inline-block;
     width: 125px;
-    height: 16px;
+
+    @include onDesktop {
+      width: 172px;
+    }
   }
 
   &__icons {
     display: flex;
     gap: 24px;
-  }
 
-  &__phone {
-    width: 24px;
-    height: 24px;
+    @include onTablet {
+      gap: 32px;
+    }
   }
 
   &__burger-menu {
     width: 24px;
     height: 24px;
+    background-image: url('../icons/burger_menu.svg');
+    background-position: center;
+    background-size: contain;
+
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      background-image: url('../icons/burger_menu-hover.svg');
+    }
+  }
+
+  &__phone {
+    width: 24px;
+    height: 24px;
+    background-image: url('../icons/phone_icon.svg');
+    background-position: center;
+    background-size: contain;
+
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      @include onDesktop {
+        display: absolute;
+        &::before {
+          content: '+1 234 555-55-55';
+          position: absolute;
+          display: block;
+          top: calc(50% - 8px);
+          right: 100px;
+          color: $main-color;
+        }
+      }
+    }
   }
 }
