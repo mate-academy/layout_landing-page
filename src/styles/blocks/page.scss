@@ -1,0 +1,57 @@
+.page {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+  color: $main-color;
+  line-height: 140%;
+  letter-spacing: .15px;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity .3s, transform .3s;
+    pointer-events: none;
+
+    overflow: auto;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+.main {
+  background-color: #fff;
+
+  &__content {
+    display: grid;
+    row-gap: 64px;
+    padding-block: 64px;
+
+    @include on-tablet {
+      row-gap: 120px;
+      padding-block: 120px;
+    }
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}

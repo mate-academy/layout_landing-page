@@ -1,0 +1,39 @@
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-color;
+
+      transition: transform .3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    @include on-desktop {
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
