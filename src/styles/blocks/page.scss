@@ -1,7 +1,7 @@
 .page {
   background-color: $color-accent-dark;
-  font-family: Poppins,  Helvetica, Arial, sans-serif;
-  color: #fff;
+  font-family: $page-font;
+  color: $page-font-color;
   font-size: 16px;
   line-height: 22.4px;
 
@@ -9,7 +9,8 @@
 
   &__body {
     min-width: 320px;
-    cursor: url('../images/cursor-base.svg'), auto;
+
+    @include cursor-body;
   }
 
   &__menu {
@@ -43,26 +44,27 @@
   }
 
   &__input {
-    font-family: Poppins,  Helvetica, Arial, sans-serif;
+    font-family: $page-font;
     font-size: 14px;
     line-height: 20px;
-    background-color: #f8f8fA;
-    color: #292929;
+
+    background-color: $input-base-color;
+    color: $input-text-color;
     padding: 14px 16px;
-    border: 1px solid #f8f8fA;
+    border: 1px solid $input-base-color;
 
 
     &::placeholder {
-      color: #7e7e83;
+      color: $input-placeholder-color;
     }
 
     &:hover {
-      border: 1px solid #d5d7dE;
+      border: 1px solid $input-hover-border-color;
     }
 
     &:focus {
       outline: none;
-      border: 1px solid #292929;
+      border: 1px solid $input-text-color;
     }
   }
 
@@ -71,7 +73,9 @@
     padding-inline: 48px;
     border-radius: 40px;
     border: none;
-    background-color: #fff;
+    background-color: $button-main-color;
+
+    @include cursor-pointer;
 
     font-weight: 700;
     font-size: 16px;
@@ -80,11 +84,11 @@
     color: $color-accent-dark;
 
     &:hover {
-      box-shadow: 1px 4px 16px 0 #E8E8F066;
+      box-shadow: 1px 4px 16px 0 $button-hover-color;
     }
 
     &:active {
-      box-shadow: 1px 4px 16px 0 #E8E8F0A3;
+      box-shadow: 1px 4px 16px 0 $button-active-color;
     }
   }
 
@@ -97,16 +101,7 @@
   &__shader {
     position: fixed;
     width: 100%;
-    height: 6vh;
     z-index: 1;
-
-    @include on-tablet {
-      height: 10vh;
-    }
-
-    @include on-desktop {
-      height: 10vh;
-    }
 
     background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.9), black 100%);
   }
@@ -119,4 +114,3 @@
     z-index: 2;
   }
 }
-  

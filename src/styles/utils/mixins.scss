@@ -32,9 +32,18 @@
   box-sizing: content-box;
 }
 
+@mixin cursor-body() {
+  cursor: $cursor-pointer;
+}
+
+@mixin cursor-pointer() {
+  cursor: $cursor-pointer;
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
-  cursor: url('../images/cursor-hover.svg'), auto;
+
+  @include cursor-pointer;
 
   &:hover {
     #{$property}: $toValue;
@@ -43,7 +52,9 @@
 
 @mixin zoom-hover() {
   transition: transform 0.3s;
-  cursor: url('../images/cursor-hover.svg'), auto;
+
+  @include cursor-pointer;
+
   &:hover {
     transform: scale(1.05);
   }
@@ -52,7 +63,8 @@
 
 @mixin contacts-hover() {
   transition: color 0.3s;
-  cursor: url('../images/cursor-hover.svg'), auto;
+
+  @include cursor-pointer;
 
   &:hover {
     color: grey;
@@ -76,4 +88,3 @@
     --columns: 12;
   }
 }
-  
