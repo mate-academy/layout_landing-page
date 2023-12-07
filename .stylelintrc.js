@@ -3,7 +3,5 @@ module.exports = {
   plugins: [
     "stylelint-scss"
   ],
-  rules: {
-    "scss/at-mixin-pattern": null
-  }
+  rules: {}
 };
