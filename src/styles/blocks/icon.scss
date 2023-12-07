@@ -12,7 +12,7 @@
 
   &--link {
     text-decoration: none;
-    color: #fff;
+    color: $color-white;
   }
 
 
@@ -28,7 +28,7 @@
     width: max-content;
     padding-right: 20px;
 
-    color: #fff;
+    color: $color-white;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
@@ -37,7 +37,9 @@
     opacity: 0;
     pointer-events: none;
 
-    transition: opacity 0.3s;
+    transition:
+      opacity $effectDuration,
+      background-image 2s;
   }
 
 
@@ -46,8 +48,9 @@
     pointer-events: all;
   }
 
-
-  @include hover(transform, scale(1.2));
+  @include onDesktop {
+    @include hover(transform, scale(1.5));
+  }
 
 
   @include onTablet {
@@ -57,21 +60,23 @@
 
 
   &--phone {
-    background-image: url(../images/icons/icon-phone-call.png);
+    background-image: url(../images/icons/icon-phone-call.svg);
     display: flex;
     flex-direction: column;
   }
 
 
   &--menu {
-    background-image: url(../images/icons/icon-burger-menu.png);
+    background-image: url(../images/icons/icon-burger-menu.svg);
 
-    &:hover {
-      background-image: url(../images/icons/icon-burger-menu-hover.png);
+    @include onDesktop {
+      &:hover {
+        background-image: url(../images/icons/icon-burger-menu-hover.svg);
+      }
     }
   }
 
   &--close {
-    background-image: url(../images/icons/icon-close.png);
+    background-image: url(../images/icons/icon-close.svg);
   }
 }

@@ -11,11 +11,7 @@
   grid-column: 1 / -1;
 
   &__link {
-    transition: transform $effectDuration;
-
-    &:hover {
-      transform: scale(1.1);
-    }
+      overflow: hidden;
 
     &--square {
       grid-column: span 3;
@@ -86,6 +82,16 @@
     height: 100%;
     object-fit: cover;
 
+    transition:
+    transform $effectDuration,
+    overflow $effectDuration;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale($effectScale);
+      }
+    }
+
     &--left {
       object-position: 20%;
     }
@@ -110,11 +116,17 @@
   color: $color-white;
   background-color: $color-red;
   border: 1px solid $color-red;
-  transition: transform $effectDuration, color $effectDuration;
+  
+  transition:
+    transform $effectDuration,
+    color $effectDuration,
+    background-color $effectDuration;
 
-  &:hover {
-    color: $color-red;
-    background-color: $color-white;
-    transform: scale(1.1);
+  @include onDesktop {
+    &:hover {
+      color: $color-red;
+      background-color: $color-white;
+      transform: scale($effectScale);
+    }
   }
 }

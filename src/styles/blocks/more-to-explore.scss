@@ -1,7 +1,7 @@
 .more-to-explore {
   &__wrapper {
     @include pageGrid;
-    
+
     row-gap: 40px;
   }
 }
@@ -17,13 +17,26 @@
     grid-column: span 4;
   }
 
+  &__link {
+    height: auto;
+    display: block;
+    overflow: hidden;
+  }
+
   &__photo {
     width: 100%;
     height: auto;
-    transition: transform $effectDuration;
+    object-fit: cover;
 
-    &:hover {
-      transform: scale(1.1);
+    transition:
+    transform $effectDuration,
+    overflow $effectDuration;
+    transform-origin: bottom;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale($effectScale);
+      }
     }
   }
 
