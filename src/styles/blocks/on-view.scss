@@ -1,0 +1,132 @@
+.on-view {
+  &__events {
+    @include pageGrid;
+    @include onTablet;
+
+    row-gap: 40px;
+  }
+}
+
+.event {
+  grid-column: 1 / -1;
+
+  &__link {
+      overflow: hidden;
+
+    &--square {
+      grid-column: span 3;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      grid-column: span 3;
+
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--column-3 {
+      @media (min-width: $tablet-min-width) and (max-width: $desktop-min-width) {
+        grid-column: span 3;
+      }
+
+      @media (min-width: 0) and (max-width: $tablet-min-width) {
+        grid-column: span 2;
+      }
+    }
+
+    &--none {
+      @media (min-width: $tablet-min-width) and (max-width: $desktop-min-width) {
+        display: none;
+      }
+    }
+  }
+
+  &__photos {
+    @include pageGrid;
+  }
+
+  &__title {
+    margin: 0;
+    margin-top: 24px;
+
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    color: $color-red;
+  }
+
+  &__date {
+    margin: 0;
+    margin-bottom: 48px;
+
+    color: $color-black;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+    transform $effectDuration,
+    overflow $effectDuration;
+
+    @include onDesktop {
+      &:hover {
+        transform: scale($effectScale);
+      }
+    }
+
+    &--left {
+      object-position: 20%;
+    }
+
+    &--right {
+      object-position: right;
+    }
+  }
+}
+
+.secondary-button {
+  display: block;
+  height: 56px;
+  width: 280px;
+  margin: 0 auto;
+
+  text-align: center;
+  font-weight: 700;
+  line-height: 56px;
+
+  box-sizing: border-box;
+  color: $color-white;
+  background-color: $color-red;
+  border: 1px solid $color-red;
+  
+  transition:
+    transform $effectDuration,
+    color $effectDuration,
+    background-color $effectDuration;
+
+  @include onDesktop {
+    &:hover {
+      color: $color-red;
+      background-color: $color-white;
+      transform: scale($effectScale);
+    }
+  }
+}
