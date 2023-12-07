@@ -1,0 +1,160 @@
+@mixin onMobile {
+  @media (max-width: $mobileMaxWidth) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletMinWidth) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktopMinWidth) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin sectionTitleFontSize() {
+  padding-top: 64px;
+  padding-bottom: 48px;
+  font-size: 32px;
+
+  @include onTablet {
+    padding-top: 120px;
+    padding-bottom: 56px;
+    font-size: 40px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
+
+@mixin sectionTitlePaddings($padTopMobile) {
+  padding-top: $padTopMobile;
+  padding-bottom: 48px;
+
+  @include onTablet {
+    padding-top: 120px;
+    padding-bottom: 56px;
+  }
+}
+
+@mixin gridContainerProperties() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin gridSectionTitleProperties() {
+  grid-column: 1 / -1;
+}
+
+@mixin gridProductCardsDesktopProperties($startPosDesk, $finishPosDesk) {
+  @include onDesktop {
+    grid-column-start: $startPosDesk;
+    grid-column-end: $finishPosDesk;
+  }
+}
+
+@mixin gridCategoryCardImgProperties($startPosMob, $finishPosMob,
+$startPosTabl, $finishPosTabl, $startPosDesk, $finishPosDesk) {
+  grid-column-start: $startPosMob;
+  grid-column-end: $finishPosMob;
+
+  @include onTablet {
+    grid-column-start: $startPosTabl;
+    grid-column-end: $finishPosTabl;
+  }
+
+  @include onDesktop {
+    grid-column-start: $startPosDesk;
+    grid-column-end: $finishPosDesk;
+  }
+}
+
+@mixin categoryCardImgProperties($displeyMobile, $displeyTablet) {
+  @include onMobile {
+    display: $displeyMobile;
+  }
+
+  @include onTablet {
+    display: $displeyTablet;
+  }
+}
+
+@mixin aboutUsContentBlockPaddings() {
+  padding-top: 48px;
+  padding-bottom: 24px;
+
+  @include onTablet {
+    padding-top: 56px;
+    padding-bottom: 0;
+  }
+}
+
+@mixin gridAboutUsContentProprties($startPosTabl,
+$finishPosTabl, $startPosDesk, $finishPosDesk) {
+
+  @include onTablet {
+    grid-column-start: $startPosTabl;
+    grid-column-end: $finishPosTabl;
+  }
+
+  @include onDesktop {
+    grid-column-start: $startPosDesk;
+    grid-column-end: $finishPosDesk;
+  }
+}
+
+@mixin formMarginBottom() {
+  margin-bottom: 48px;
+
+  @include onTablet {
+    margin-bottom: 80px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 120px;
+  }
+}
+
+@mixin ContactMarginBottom() {
+  margin-bottom: 64px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
