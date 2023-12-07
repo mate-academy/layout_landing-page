@@ -12,9 +12,32 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../icons/icon-phone-call.png);
     background-size: cover;
+
+    &::before {
+      content: attr(data-phone);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      white-space: nowrap;
+      transform: translate(-100%, -50%) scale(0.8);
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      font-family: Inter, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
   }
+
 
   &--menu {
     background-image: url(../icons/icon-burger-menu.png);
