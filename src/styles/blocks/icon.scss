@@ -1,0 +1,82 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url(../images/icons/icon-burger-menu.svg);
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  @include onDesktop {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
+
+.icon__number {
+  opacity: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 2px;
+  white-space: nowrap;
+
+  @include onTablet {
+    font-size: 12px;
+    margin-right: 20px;
+  }
+}
+
+.hovering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon--phone {
+    order: 2;
+  }
+
+  .icon__number {
+    order: 1;
+    @include onTablet {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@include onTablet {
+  .icon--phone {
+    &:hover {
+      + .icon__number {
+        opacity: 1;
+      }
+    }
+  }
+}
