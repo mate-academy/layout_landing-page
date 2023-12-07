@@ -1,0 +1,103 @@
+.category {
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--2 {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+
+      @include onTablet {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    @include hover(transform, scale(1.03));
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+
+      &--2 {
+        height: 0;
+        padding-bottom: 100%;
+        
+        @include onTablet {
+          grid-column: span 1;
+          column-gap: 24px;
+        }
+
+        @include onDesktop {
+          grid-column: span 1;
+        }
+      }
+    }
+
+    &--hidden {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+
+    &--align--left {
+      object-fit: cover;
+      object-position: 30%;
+    }
+  }
+
+  &__title {
+    font-size: $text-main-size;
+    font-weight: $font-weight-bold;
+    line-height: 27px;
+    color: $secondary-color;
+  }
+
+  &__subtitle {
+    font-size: $text-main-size;
+    font-weight: $font-weight-normal;
+    line-height: 27px;
+    color: $main-color;
+  }
+}
