@@ -15,7 +15,6 @@
 
   @include on-tablet {
     margin-inline: auto;
-    max-width: 600px;
     padding-inline: 72px;
   }
 
@@ -33,7 +32,7 @@
 }
 
 @mixin cursor-body() {
-  cursor: $cursor-pointer;
+  cursor: $cursor-base;
 }
 
 @mixin cursor-pointer() {
@@ -41,22 +40,26 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+  @media (min-width: $desktop-min-width) {
+    transition: #{$property} $transition-duration;
 
-  @include cursor-pointer;
+    @include cursor-pointer;
 
-  &:hover {
-    #{$property}: $toValue;
+    &:hover {
+      #{$property}: $toValue;
+    }
   }
 }
 
 @mixin zoom-hover() {
-  transition: transform 0.3s;
+  @media (min-width: $desktop-min-width) {
+    transition: transform $transition-duration;
 
-  @include cursor-pointer;
+    @include cursor-pointer;
 
-  &:hover {
-    transform: scale(1.05);
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -67,7 +70,7 @@
   @include cursor-pointer;
 
   &:hover {
-    color: grey;
+    color: rgb(196, 196, 196);
   }
 }
 
