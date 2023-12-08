@@ -1,0 +1,76 @@
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 48px;
+    }
+  }
+  &__button {
+    @include pageGrid;
+
+    &--explore {
+      grid-column: 1 / -1;
+      @include onTablet {
+        grid-column: 2 / 6;
+      }
+      @include onDesktop {
+        grid-column: 5 / 9;
+      }
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all $effectDuration ease;
+  }
+  &__photo:hover {
+    transform: scale(105%);
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+  &__description {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+}
