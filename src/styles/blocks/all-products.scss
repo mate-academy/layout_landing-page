@@ -1,0 +1,131 @@
+.all-products {
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transform: translateX(100%);
+  transition: 320ms;
+
+  background-color: $backgroundColor;
+  overflow: scroll;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  @include onDesktop {
+    display: none;
+  }
+
+  &--tablet {
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &--mobile {
+    display: block;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__title {
+    color: $secondaryColor;
+
+    margin-bottom: 10px;
+
+    @include onTablet {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__price {
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+
+    @include onTablet {
+      color: $primaryColor;
+      font-size: 18px;
+      line-height: 150%;
+      letter-spacing: 0.9px;
+
+      margin-bottom: 10px;
+    }
+  }
+
+  &__weight {
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+  }
+
+  &__action {
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    @include onTablet {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__img {
+    min-height: 300px;
+    width: 100%;
+    margin-bottom: 30px;
+
+    background: url("../../src/images/mobile/product1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include onTablet {
+      min-height: 440px;
+      width: 100%;
+
+      background: url("../../src/images/tablet/product3.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+
+    margin-bottom: 20px;
+
+    @include onTablet {
+      font-size: 16px;
+
+      margin-bottom: 25px;
+    }
+
+    &:first-of-type {
+      &::before {
+        content: "Ingredients:";
+        color: $primaryColor;
+      }
+    }
+
+    &:last-of-type {
+      &::before {
+        content: "Application:";
+        color: $primaryColor;
+      }
+    }
+  }
+}

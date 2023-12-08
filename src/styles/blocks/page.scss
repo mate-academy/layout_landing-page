@@ -1,0 +1,74 @@
+.page {
+  scroll-behavior: smooth;
+  transition: all 320ms;
+
+  &__body {
+    font-family: Avenir, Sharp_Sans_No2, serif;
+    background: $backgroundColor;
+    margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: 320ms;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 100px;
+
+    @include onTablet {
+      margin-bottom: 130px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 200px;
+    }
+
+    &__mark {
+      display: none;
+
+      @include onDesktop {
+        display: block;
+        width: min-content;
+
+        color: $primaryColor;
+        opacity: 0.5;
+
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 130%;
+        white-space: nowrap;
+
+        position: relative;
+        grid-column: 1 / 2;
+        transform-origin: top right;
+        transform: translate(-100%) rotate(-90deg);
+
+        &::before {
+          content: "";
+          background: $primaryColor;
+
+          position: absolute;
+          width: 100px;
+          height: 1px;
+
+          right: calc(100% + 10px);
+          top: 7px;
+        }
+      }
+    }
+  }
+}
