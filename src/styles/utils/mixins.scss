@@ -1,0 +1,40 @@
+@mixin onTablet {
+  @media screen and (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media screen and (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 24px;
+
+  @include onTablet {
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin headerSizing {
+  width: 100%;
+  height: 100vh;
+  padding: 25px 20px;
+
+  @include onTablet {
+    padding: 50px 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
