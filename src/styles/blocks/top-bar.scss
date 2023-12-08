@@ -1,0 +1,67 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__home-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: $home-logo-width;
+    height: $home-logo-height;
+
+    @include hover(transform, scale(1.1));
+
+    @include on-tablet {
+      width: $home-logo-width-large;
+      height: $home-logo-height-large;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__tel {
+    display: grid;
+    position: relative;
+    align-items: center;
+    column-gap: 20px;
+    grid-auto-flow: column;
+
+    &:hover {
+        @include on-desktop {
+          .top-bar__tel-num {
+            opacity: 1;
+            right: 20px + $icon-side;
+          }
+        }
+      }
+
+    &-num {
+      position: absolute;
+      right: 0;
+
+      color: $page-font-color;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      width: max-content;
+
+      transition: right $transition-duration,
+                  opacity $transition-duration;
+
+      opacity: 0;
+    }
+  }
+}

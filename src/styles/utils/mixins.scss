@@ -1,0 +1,92 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    margin-inline: auto;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop{
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+
+  box-sizing: content-box;
+}
+
+@mixin cursor-body() {
+  cursor: $cursor-base;
+}
+
+@mixin cursor-pointer() {
+  cursor: $cursor-pointer;
+}
+
+@mixin hover($property, $toValue) {
+  @media (min-width: $desktop-min-width) {
+    transition: #{$property} $transition-duration;
+
+    @include cursor-pointer;
+
+    &:hover {
+      #{$property}: $toValue;
+    }
+  }
+}
+
+@mixin zoom-hover() {
+  @media (min-width: $desktop-min-width) {
+    transition: transform $transition-duration;
+
+    @include cursor-pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@mixin contacts-hover() {
+  transition: color 0.3s;
+
+  @include cursor-pointer;
+
+  &:hover {
+    color: rgb(196, 196, 196);
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
