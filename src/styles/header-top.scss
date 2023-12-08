@@ -29,6 +29,8 @@
     background-position: center;
     background-size: contain;
 
+    transition: background-image $transition-duration;
+
     @include onTablet {
       width: 32px;
       height: 32px;
@@ -36,12 +38,14 @@
 
     &:hover {
       background-image: url('../icons/burger_menu-hover.svg');
+      @include hoverItem(scale, $item-scale-size, $transition-duration);
     }
   }
 
   &__phone {
     width: 24px;
     height: 24px;
+
     background-image: url('../icons/phone_icon.svg');
     background-position: center;
     background-size: contain;
@@ -52,15 +56,18 @@
     }
 
     &:hover {
+      @include hoverItem(scale, $item-scale-size, $transition-duration);
+
       @include onDesktop {
-        display: absolute;
         &::before {
-          content: '+1 234 555-55-55';
-          position: absolute;
+          content: "+1 234 555-55-55";
           display: block;
-          top: calc(50% - 8px);
-          right: 100px;
-          color: $main-color;
+          width: max-content;
+          position: relative;
+          bottom: -50% ;
+          right: 10px;
+
+          transform: translate(-100%, -50%);
         }
       }
     }
