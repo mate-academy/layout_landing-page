@@ -1,0 +1,56 @@
+@import "./variables.scss";
+
+@mixin onTablet {
+  @media(min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media(min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media(min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 150px;
+  }
+}
+
+@mixin contentPaddingBlock {
+  padding-block: 25px;
+
+  @include onTablet {
+    padding-block: 50px;
+  }
+
+  @include onDesktop{
+    padding-block: 50px;
+  }
+}
+
+@mixin pageGrid {
+  display: grid;
+  grid-template-columns: repeat((2), 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat((6), 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat((12), 1fr);
+  }
+}
