@@ -1,0 +1,59 @@
+.category {
+  &__photos {
+    @include page-grid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &-square {
+      padding-bottom: 100%;
+      height: 0;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &-wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: all $transition-duration ease-out;
+
+    &:hover {
+      transform: scale($transform-scale-size);
+      border-radius: 0 50px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 33.5px;
+    margin: 0;
+  }
+
+  &__button {
+    @include onDesktop {
+      grid-column: 1 / 4;
+    }
+  }
+}
