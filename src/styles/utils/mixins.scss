@@ -23,7 +23,7 @@
 /* #region paddingBottomHeader */
 
 @mixin onPaddingBottomHeader {
-  padding-bottom: 80px;
+  padding-bottom: 88px;
 
   @include onTablet {
     padding-bottom: 130px;
@@ -37,16 +37,6 @@
 /* #endregion */
 
 /* #region SizeIcons */
-
-@mixin onSizeLogo {
-  width: 130px;
-  height: 38px;
-
-  @include onTablet {
-    width: 187px;
-    height: 56px;
-  }
-}
 
 @mixin onSizeIcons {
   height: 24px;
@@ -96,8 +86,20 @@
   -webkit-transition: all 0.5s ease;
 }
 
+@mixin onPaddingPage {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
 @mixin baseGridTemplate {
-  max-width: 320px;
+  @include onPaddingPage;
   margin: 0 auto;
   column-gap: 20px;
   --columns: 2;
@@ -105,7 +107,6 @@
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include onTablet {
-    max-width: 600px;
     column-gap: 24px;
     --columns: 6;
   }
@@ -135,25 +136,6 @@
   }
 }
 
-
-@mixin onCardWidth {
-  width: 280px;
-
-  @include onTablet {
-    width: 392px;
-  }
-
-  @include onDesktop {
-    width: 324px;
-  }
-}
-
-@mixin onCardImage {
-  @include onCardWidth;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 @mixin mainBtn {
   width: 100%;
   height: 56px;
@@ -169,27 +151,23 @@
   display: block;
   margin: 0 auto;
   cursor: pointer;
-  @include transition;
   border: none;
+  @include transition;
+
 }
 
 @mixin mainBtnHover {
   box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
 }
 
-@mixin onInputParam {
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 280px;
+@mixin onFormGridTemplate {
   grid-column: 1 / -1;
 
   @include onTablet {
-    min-width: 288px;
     grid-column: span 3;
   }
 
   @include onDesktop {
-    min-width: 411px;
-    grid-column: span 8;
+    grid-column: span 5;
   }
 }
