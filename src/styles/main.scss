@@ -1,14 +1,17 @@
 @import 'utils/reset';
 @import 'utils/variables';
+@import 'utils/mixins';
 @import 'blocks/header';
 @import 'blocks/icon';
 @import 'blocks/aside';
 @import 'blocks/nav';
+@import 'blocks/recommend';
 @import 'blocks/card';
 @import 'blocks/category';
 @import 'blocks/button';
 @import 'blocks/about';
 @import 'blocks/contacts';
+
 
 .page {
   font-family: Manrope, sans-serif;
@@ -36,6 +39,10 @@
       pointer-events: all;
     }
   }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
 }
 
 .main {
@@ -43,19 +50,27 @@
   flex-direction: column;
   row-gap: 96px;
 
-  padding: 64px 20px;
+  padding-block: 64px;
+
+  @include padding-inline;
+
+  @media (min-width: 744px) {
+    padding-block: 120px;
+  }
 
   &__subtitle {
     font-size: 32px;
     font-weight: 700;
-    line-height: 32px;
-  }
-}
+    line-height: 100%;
 
-.recommend {
-  display: flex;
-  flex-direction: column;
-  row-gap: 40px;
+    @media (min-width: 744px) {
+      font-size: 40px;
+    }
+
+    @media (min-width: 1260px) {
+      font-size: 48px;
+    }
+  }
 }
 
 .categories {
