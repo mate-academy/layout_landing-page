@@ -1,0 +1,90 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid-store {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+
+  @include on-tablet {
+    --columns: 2;
+
+    column-gap: 24px;
+  }
+}
+
+
+@mixin page-grid-recommended {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 96px;
+
+  @include on-tablet {
+    gap: 56px;
+    margin-bottom: 120px;
+  }
+
+  @include on-desktop {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(3, 324px);
+    justify-content: center;
+
+    margin-bottom: 128px;
+  }
+}
+
+@mixin page-grid-footer {
+  --columns: 2;
+
+  display: grid;
+  row-gap: 24px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-desktop {
+    --columns: 2;
+
+    column-gap: 120px;
+  }
+}
+
+@mixin fade-in($duration: 2s, $delay: 0s) {
+  opacity: 0;
+  transform: translateY(100px);
+  animation: fade-in $duration ease-in-out $delay forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin fade-in-plug($duration: $appear-duration, $delay: 0s) {
+  opacity: 0;
+  transform: translate(-100%);
+  animation: fade-in-plug $duration ease-in-out $delay forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-plug {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
