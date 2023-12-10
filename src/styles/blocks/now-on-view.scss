@@ -1,0 +1,115 @@
+.now-on-view {
+  @include sectionMargin;
+
+  &__titles {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include title-h2
+  }
+
+  &__collection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    margin-top: 48px;
+  }
+
+  &__exibits {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include pageGrid
+  }
+
+  &__exibits-3-img {
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include pageGrid
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--big-square {
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDecktop {
+        grid-column: span 4;
+      }
+
+      &:last-child {
+        @include onTablet {
+          display: none;
+        }
+
+        @include onDecktop {
+          display: block;
+        }
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDecktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDecktop {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__red-text {
+    color: $accent-main;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    margin-top: 40px;
+
+    @include pageGrid;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $menu-color;
+    width: 100%;
+    height: 56px;
+    background-color: $accent-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+    @include onTablet {
+      grid-column: 2 / span 4;
+    }
+
+    @include onDecktop {
+      grid-column: 5 / span 4;
+    }
+  }
+}
