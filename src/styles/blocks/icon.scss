@@ -16,6 +16,30 @@
 
   &--phone {
     background-image: url(../images/icon-phone.svg);
+    position: relative;
+
+    &::before {
+      content: attr(data-phone);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      white-space: nowrap;
+      transform: translate(-100%, -50%) scale(0.8);
+      opacity: 0;
+      transition: opacity 0.3s;
+      color: $text-color-main;
+
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    &:hover::before {
+      @include on-desktop {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
