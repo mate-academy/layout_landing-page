@@ -9,10 +9,6 @@
   line-height: 27px;
   color: $main-color;
 
-  &::has(.page__menu:target) {
-    overflow: hidden; /* not to scroll the page */
-  }
-
   &__body {
     margin: 0;
   }
@@ -28,11 +24,14 @@
     left: 0;
     opacity: 0;
     pointer-events: none;
+    transform: translateX(-100%);
+    transition: 1s;
 
     @include content-padding-inline;
   }
 
   &__menu:target {
+    transform: translateX(0);
     opacity: 1;
     pointer-events: all;
   }

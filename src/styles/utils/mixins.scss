@@ -66,3 +66,44 @@
     margin-top: 140px;
   }
 }
+
+@mixin link-hover {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    background-color: $menu-color;
+    height: 1px;
+    width: 100%;
+    color: $menu-color;
+    bottom: -8px;
+    display: block;
+
+    transition: transform 1s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin button-hover {
+  transition: all 1s;
+  &:hover {
+    background-color: $hover-color;
+  }
+  &:active {
+    background-color: $pressed-color;
+  }
+}
+
+@mixin hover-img ($property, $toValue) {
+  transition: #{$property} 1s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
