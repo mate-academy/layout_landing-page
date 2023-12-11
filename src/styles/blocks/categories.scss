@@ -1,0 +1,95 @@
+.categories {
+  line-height: 48px;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+  &__link {
+    position: relative;
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    position: absolute;
+    @include hover(transform, scale(1.05));
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-weight: $main-font-weight-bold;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__but {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-family: $main-font-family;
+    color: $category-button-color;
+    background: $category-button-background-color;
+    font-size: 16px;
+    font-weight: $main-font-weight-bold;
+    line-height: 27px;
+
+    &:hover {
+      background-color: $category-button-hover-background-color;
+      color: $category-button-hover-color;
+    }
+
+    &:active {
+      background-color: $category-button-active-background-color;
+      color: $category-button-active-color;
+    }
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    @include onDesktop {
+      width: 324px;
+    }
+  }
+}
