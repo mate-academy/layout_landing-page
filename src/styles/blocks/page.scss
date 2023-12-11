@@ -1,0 +1,47 @@
+.page {
+  font-family: Cinzel, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    box-sizing: border-box;
+    min-width: 330px;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  article {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: all $effect-duration;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+*:focus {
+  outline: none;
+}

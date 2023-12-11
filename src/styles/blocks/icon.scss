@@ -1,0 +1,81 @@
+.icon {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+
+  &__numbers {
+    display: flex;
+    position: absolute;
+    right: 100%;
+    transform: translateY(-33%);
+    flex-direction: column;
+    text-transform: uppercase;
+    pointer-events: none;
+    width: max-content;
+    opacity: 0;
+    transition: opacity $effect-duration;
+
+    &__phone {
+      display: block;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 22px;
+      max-width: 135px;
+
+      @include onTablet {
+        font-size: 16px;
+        line-height: 27px;
+      }
+
+      &:nth-child(-n +3) {
+        padding-bottom: 4px;
+
+        @include onTablet {
+          padding-bottom: 8px;
+        }
+      }
+
+      &--title {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 22px;
+
+        @include onTablet {
+          font-size: 16px;
+          line-height: 27px;
+        }
+      }
+    }
+  }
+
+  &:hover &__numbers {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
