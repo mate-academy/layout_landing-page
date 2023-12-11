@@ -1,0 +1,163 @@
+.now-on-view {
+  justify-content: center;
+  color: $main-dark;
+  background-color: #fff;
+
+  @include contentPaddingInline;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &-info {
+    padding-top: 48px;
+  }
+
+  &--text-normal {
+    line-height: 27px;
+
+    &-centered {
+      text-align: center;
+    }
+  }
+
+  &--text-accent {
+    padding-top: 24px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $accent-main;
+  }
+
+  /* #region photo */
+  &-photo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include onTablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &--2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+
+      @include onTablet {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 24px;
+
+        &-third {
+          display: none;
+        }
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(3, 1fr);
+
+        &-third {
+          display: inline;
+        }
+      }
+    }
+
+    &--1 {
+      &-first {
+        grid-column: 1 / 2;
+
+        @include onTablet {
+          grid-column: 1 / 5;
+        }
+
+        @include onDesktop {
+          grid-column: 1 / 9;
+        }
+      }
+
+      &-second {
+        grid-column: 2 / -1;
+
+        @include onTablet {
+          grid-column: 5 / -1;
+        }
+
+        @include onDesktop {
+          grid-column: 9 / -1;
+        }
+      }
+    }
+
+    &--3 {
+      &-first {
+        grid-column: 1 / 2;
+
+        @include onTablet {
+          grid-column: 1 / 3;
+        }
+
+        @include onDesktop {
+          grid-column: 1 / 5;
+        }
+      }
+
+      &-second {
+        grid-column: 2 / -1;
+
+        @include onTablet {
+          grid-column: 3 / -1;
+        }
+
+        @include onDesktop {
+          grid-column: 5 / -1;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: auto;
+
+    @include hover(transform, scale(120%));
+  }
+
+  /* #endregion */
+
+  &__button {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 40px;
+
+    background-color: $accent-main;
+    font-weight: 700;
+    line-height: 56px;
+    color: $main-text-color;
+    text-align: center;
+
+    text-decoration: none;
+
+    transition: background-color 300ms;
+
+    @include hover(background-color, $button-hover);
+
+    &:active {
+      background-color: $button-pressed;
+    }
+
+    @include onTablet {
+      grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}

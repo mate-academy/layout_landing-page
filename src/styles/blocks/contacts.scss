@@ -1,0 +1,167 @@
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  justify-content: center;
+  padding-bottom: 84px;
+  color: $main-dark;
+  background-color: #fff;
+
+  @include contentPaddingInline;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+    padding-bottom: 156px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+    padding-bottom: 134px;
+  }
+
+  &-wrapper {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+      padding-bottom: 16px;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 7;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__container {
+    &--fifth-avenue {
+      @include onDesktop {
+        grid-column: 1 / 4;
+      }
+    }
+
+    &--cloisters {
+      @include onDesktop {
+        grid-column: 4 / -1;
+      }
+    }
+  }
+
+  &__title {
+    padding-top: 48px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  &__phone {
+    padding-top: 16px;
+  }
+
+  &__address {
+    padding-top: 8px;
+
+    &-info {
+      text-decoration: none;
+      color: $main-dark;
+    }
+  }
+
+  &__phone-number {
+    text-decoration: none;
+    color: $main-dark;
+  }
+
+  &--text-normal {
+    font-size: 14px;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  &--text-bold {
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+
+    @include hover(color, $contacts-hover-color);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    width: 100%;
+    padding-top: 48px;
+    padding-bottom: 16px;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 4 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / -1;
+      padding-bottom: 16px;
+    }
+  }
+
+  &__field {
+    padding-left: 11px;
+    background-color: rgba(248, 248, 250, 1);
+    height: 48px;
+    border: 1px solid rgba(248, 248, 250, 1);
+
+    color: $main-dark;
+
+    font-family: $main-font;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+
+    &--message {
+      height: 144px;
+      line-height: 48px;
+      resize: none;
+    }
+
+    &:focus {
+      border: 1px solid $main-dark;
+    }
+
+    &::placeholder {
+      color: rgba(126, 126, 131, 1);
+    }
+
+    &:hover {
+      color: $main-dark;
+      border: 1px solid rgba(213, 215, 222, 1);
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+    height: 56px;
+    border: none;
+    background-color: $accent-main;
+
+    font-family: $main-font;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+    color: $main-text-color;
+    cursor: pointer;
+
+    transition: background-color 300ms;
+
+    @include hover(background-color, $button-hover);
+
+    &:active {
+      background-color: $button-pressed;
+    }
+  }
+}
