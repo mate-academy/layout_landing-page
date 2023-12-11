@@ -1,5 +1,13 @@
 .contacts {
-  padding-top: 80px;
+  margin-top: 80px;
+
+  @include on-tablet {
+    margin-top: 120px;
+  }
+
+  @include on-desktop {
+    margin-top: 180px;
+  }
 
   &__body {
     @include page-grid;
@@ -25,20 +33,22 @@
     display: block;
     box-sizing: border-box;
     padding: 14px 16px;
+    outline: none;
 
     font-family: $page-font-family;
 
-    border: 1px solid $form-background-color;
+    border: 0;
     border-radius: 24px;
     background-color: $form-background-color;
 
-    &--field:hover {
-      border: 1px solid $form-border-color-hover;
-    }
+    @include on-desktop {
+      &--field:hover {
+        outline: 1px solid $form-border-color-hover;
+      }
 
-    &--field:focus {
-      outline: none;
-      border: 1px solid $form-border-color-focus;
+      &--field:focus {
+        outline: 1px solid $form-border-color-focus;
+      }
     }
    }
 
@@ -83,6 +93,7 @@
     }
 
   }
+
   &__label {
     display: block;
     padding-bottom: 8px;
@@ -91,13 +102,16 @@
     font-weight: 400;
     line-height: 140%;
   }
+
   &__value {
     display: block;
 
     font-weight: 500;
     color: $main-text-color;
 
-    @include hover (color, $aside-background-color)
+    @include on-desktop {
+      @include hover (color, $aside-background-color);
+    }
   }
 }
 
