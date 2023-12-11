@@ -1,6 +1,8 @@
 .about-us {
   margin-top: 96px;
 
+  background-color: $bg-about-us-color;
+
   @include on-tablet {
     margin-top: 120px;
   }
@@ -12,7 +14,15 @@
   position: relative;
   padding-top: 248px;
 
-  @include page-grid;
+  --columns: 1;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet{
+    --columns: 2;
+  }
 
   @include on-tablet {
     padding-top: 520px;
@@ -61,16 +71,6 @@
   &__title {
     margin-bottom: 24px;
     grid-column: 1 / -1;
-
-    @include on-tablet {
-      grid-column: 1 / 4;
-    }
-
-    @include on-desktop {
-      margin-bottom: 0;
-      grid-column: span 6;
-    }
-
   }
 
   &__text {
@@ -79,11 +79,11 @@
     letter-spacing: 0.15px;
 
     @include on-tablet {
-      grid-column: 4 / 7;
+      grid-column: 2 / 3;
     }
 
     @include on-desktop {
-      grid-column: 8 / span 5;
+      grid-column: 2 / 3;
     }
   }
 }
