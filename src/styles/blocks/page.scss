@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: $default-font;
+  color: $main-text-color;
+  line-height: $main-line-height;
+  font-size: 16px;
+  background: $background-color;
+
+  scroll-behavior: smooth;
+
+  @include onTablet {
+    overflow-x: hidden;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-height: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+
+    transition:  transform  $transition-time, opacity $transition-time;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target{
+      opacity: 1;
+      transform: translateX(0%);
+      pointer-events: all;
+    }
+  }
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+
+  @include onTablet{
+    font-size: 48px;
+  }
+
+  @include onPC {
+    font-size: 64px;
+  }
+}
+
+
