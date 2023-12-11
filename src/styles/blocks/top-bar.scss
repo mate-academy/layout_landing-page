@@ -1,0 +1,58 @@
+.top-bar {
+  padding-block: 24px;
+  z-index: 1;
+  @include contentPaddingInline;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    padding-block: 32px;
+  }
+
+  @include onDesktop {
+    padding-block: 24px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    position: relative;
+  }
+
+  &__logo {
+    display: flex;
+    height: 46px;
+    width: 64px;
+
+    @include onDesktop {
+      height: 65px;
+      width: 87px;
+    }
+  }
+
+  &__hover-phone {
+    position: absolute;
+    margin: 0;
+    top: -110%;
+    right: 140%;
+    width: 200px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+    font-weight: 600;
+
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .hover--phone:hover ~ .top-bar__hover-phone {
+    @include onDesktop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
