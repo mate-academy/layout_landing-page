@@ -3,20 +3,19 @@
   height: 24px;
   width: 24px;
 
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform 0.3s;
-
-  @include hover(transform, scale(1.2));
-
   @include on-tablet {
     height: 32px;
     width: 32px;
   }
 
+  @include on-desktop {
+    @include hover(transform, scale(1.2));
+  }
+
   &--phone {
-    background-image: url(../images/icon-phone.svg);
     position: relative;
+    background-image: url(../images/icon-phone.svg);
+    background-size: cover;
 
     &::before {
       content: attr(data-phone);
@@ -27,11 +26,11 @@
       transform: translate(-100%, -50%) scale(0.8);
       opacity: 0;
       transition: opacity 0.3s;
-      color: $text-color-main;
 
       font-size: 12px;
       line-height: 16px;
       font-weight: 700;
+      font-family: $secondary-font;
       letter-spacing: 2px;
     }
 
@@ -42,8 +41,10 @@
     }
   }
 
+
   &--menu {
     background-image: url(../images/burger-menu.svg);
+    background-size: cover;
 
     &:hover {
       background-image: url(../images/burger-menu-hover.svg);
@@ -52,5 +53,6 @@
 
   &--close {
     background-image: url(../images/icon-close.svg);
+    background-size: cover;
   }
 }
