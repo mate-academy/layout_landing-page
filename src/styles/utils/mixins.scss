@@ -1,0 +1,109 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content
+  }
+};
+
+@mixin on-decktop {
+  @media (min-width: $decktop-min-width) {
+    @content
+  }
+};
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-decktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin title-h2 {
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  letter-spacing: -1.5px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin title-h3 {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+@mixin page-grid {
+  @include on-tablet {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-decktop {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin section-margin {
+  margin-top: 100px;
+
+  @include on-tablet {
+    margin-top: 140px;
+  }
+}
+
+@mixin link-hover {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    background-color: $menu-color;
+    height: 1px;
+    width: 100%;
+    color: $menu-color;
+    bottom: -8px;
+    display: block;
+
+    transition: transform 1s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin button-hover {
+  transition: all 1s;
+  &:hover {
+    background-color: $hover-color;
+  }
+  &:active {
+    background-color: $pressed-color;
+  }
+}
+
+@mixin hover-img($property, $toValue) {
+  transition: #{$property} 1s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

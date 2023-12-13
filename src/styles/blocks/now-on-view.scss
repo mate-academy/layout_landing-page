@@ -1,0 +1,119 @@
+.now-on-view {
+  @include section-margin;
+
+  &__titles {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include title-h2
+  }
+
+  &__collection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    margin-top: 48px;
+  }
+
+  &__exibits {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include page-grid
+  }
+
+  &__exibits-3-img {
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include page-grid
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover-img (transform, scale(1.05));
+
+    &--big-square {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-decktop {
+        grid-column: span 4;
+      }
+
+      &:last-child {
+        @include on-tablet {
+          display: none;
+        }
+
+        @include on-decktop {
+          display: block;
+        }
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-decktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-decktop {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__red-text {
+    color: $accent-main;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    margin-top: 40px;
+
+    @include page-grid;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $menu-color;
+    width: 100%;
+    height: 56px;
+    background-color: $accent-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+    @include button-hover;
+
+    @include on-tablet {
+      grid-column: 2 / span 4;
+    }
+
+    @include on-decktop {
+      grid-column: 5 / span 4;
+    }
+  }
+}
