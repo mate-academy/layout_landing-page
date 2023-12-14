@@ -1,0 +1,40 @@
+@mixin on-tablet {
+  @media (min-width: $min-width-tablet) {
+    @content;
+  }
+}
+
+@mixin on-decstop {
+  @media (min-width: $min-width-decstop) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-decstop {
+    padding-inline: 120px;
+    max-width: 1260px;
+  }
+}
+
+@mixin page-grid {
+  $colomns: 2;
+  
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat($colomns, 1fr);
+
+  @include on-tablet {
+    $colomns: 6;
+  }
+
+  @include on-decstop {
+    $colomns: 12;
+  }
+}
