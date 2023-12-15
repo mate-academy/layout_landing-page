@@ -36,20 +36,32 @@
   }
 
   @include onDesktop {
-    &__item:hover {
+
+    &__item {
       display: block;
       position: relative;
       &::after {
+        opacity: 0;
+        transition: opacity $transition-duration, transform $transition-duration;
         content: '';
         height: 1px;
-        background-color: #292929;;
+        background-color: $main-color;;
         left: 0;
         right: 0;
         bottom: -4px;
         position: absolute;
+        transform: translateY(100%);
+      }
+
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: translate(0);
+        }
       }
     }
   }
+
 
   &:target {
     opacity: 1;
