@@ -1,0 +1,85 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constentPaddingInLine() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGridColumns {
+  --columns: 2;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonStyle {
+  box-sizing: border-box;
+  margin: auto;
+  width: 100%;
+  line-height: 56px;
+
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: $main-color;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all $effectDuration;
+
+  &:hover {
+    border: 2px #f0f1f4 solid;
+    background-color: #f8f8fa;
+    color: #292929;
+  }
+
+  &:focus {
+    background-color: #111;
+    color: #fff;
+  }
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 324px;
+    margin: 0;
+  }
+}
