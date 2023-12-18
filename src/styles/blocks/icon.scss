@@ -2,6 +2,7 @@
   display: block;
   height: 24px;
   width: 24px;
+  position: relative;
 
   @include hover(transform, scale(1.2));
 
@@ -21,6 +22,9 @@
   &--phone {
     background-image: url('../images/icons/icon-phone.svg');
     background-size: cover;
+    &:hover + .icon__phone-number {
+      opacity: 1;
+    }
   }
   &--menu {
     background-image: url('../images/icons/icon-burger-menu.svg');
@@ -34,5 +38,20 @@
   &--close {
     background-image: url('../images/icons/icon-close.svg');
     background-size: cover;
+  }
+
+  &__phone-number {
+    display: none;
+    @include on-desktop {
+      display: block;
+      position: absolute;
+      transform: translateX(-160px);
+      opacity: 0;
+      transition: 0.3s all;
+      color: $main-text-color;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
   }
 }
