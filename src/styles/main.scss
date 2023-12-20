@@ -37,18 +37,59 @@
   background-image: url("/src/images/icons/Icon-Close.png");
 }
 
-.phone__number__logo:hover::before {
-  content: "+1 234 555-55-55";
-  position: absolute;
-  font-family: Poppins, sans-serif;
-  color: #fff;
-  display: flex;
-  font-size: 12px;
+
+.popover__title {
+  font-size: 24px;
+  line-height: 36px;
   text-decoration: none;
-  right: 230px;
-  line-height: 35px;
-  font-weight: 700;
+  color: rgb(228, 68, 68);
+  text-align: center;
+  padding: 15px 0;
 }
+
+.popover__wrapper {
+  position: relative;
+  display: block;
+}
+.popover__content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: -220px;
+  top: -7px;
+  transform: translate(0, 10px);
+  background-color:transparent;
+  padding: 1.5rem;
+  width: 200px;
+}
+
+.popover__wrapper:hover .popover__content {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -20px);
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+.popover__message {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .burger_menu {
   background-image: url("/src/images/icons/Icon-Burger-menu.png");
@@ -72,7 +113,6 @@
 
 .menu {
   position: fixed;
-  margin: 10px;
   top: 0;
   left: 0;
   right: 0;
@@ -90,8 +130,19 @@
   justify-content: space-between;
 }
 
+
+
 .menu:target {
   display: flex;
+  overflow: hidden;
+}
+
+.menu:target body {
+  overflow: hidden;
+}
+
+.page:has(.menu:target) {
+  overflow: hidden; /* not to scroll the page */
 }
 
 .nav-menu {
@@ -110,12 +161,19 @@
   font-size: 20px;
   font-family: Poppins, sans-serif;
   font-weight: 700;
+  padding: 2px;
   line-height: 22px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 2px solid transparent;
+  width: fit-content;
 }
 
 .nav-item:hover {
   width: fit-content;
-  border-bottom: #1d1d1d solid 1px;
+
+  border-bottom-color: #1d1d1d;
 }
 
 
@@ -147,11 +205,12 @@ body {
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
+  display: block;
 }
 
 .input-submit {
   display: flex;
-  width: 411px;
+  width: 100%;
   height: 56px;
   padding: 0 48px;
   flex-direction: column;
@@ -197,7 +256,9 @@ input[type="submit"] {
   justify-content: flex-end;
   padding-right: 345px;
   gap: 24px;
-  margin: auto 16px auto 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin:auto
 }
 
 .big__text {
@@ -238,6 +299,7 @@ input[type="submit"] {
 
 .phone__number {
   color: #1d1d1d;
+  text-decoration: none;
   font-weight: 900;
 }
 
@@ -281,6 +343,10 @@ input[type="submit"] {
   gap:8px;
 }
 
+.bike:hover {
+transform: scale(1.1,1.2);
+}
+
 .bike-image {
   width: 324px;
   height: 256px;
@@ -318,8 +384,20 @@ input[type="submit"] {
   justify-content: center;
 }
 
+.explore:hover {
+  border-radius: 40px;
+  background: #FFF;
+  box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
+}
+
 .contact-title {
   font-size: 48px;
+}
+
+
+.image1:hover,
+.image2:hover {
+  transform: scale(1.1,1.2);
 }
 
 .contact-block {
@@ -339,6 +417,7 @@ input[type="submit"] {
 .input-message {
   width: 411px;
   font-family: Poppins, sans-serif;
+  text-indent: 16px;
 }
 
 .input-text {
@@ -348,16 +427,18 @@ input[type="submit"] {
 
 .input-text::placeholder,
 .input-message::placeholder {
-  padding-left: 16px;
   font-size: 14px;
   color: #7e7e83;
   font-weight: 400;
   line-height: 20px;
+  margin-right: 20px;
 }
 
 .input-message {
   background-color: #f8f8fa;
   height: 120px;
+  resize: none;
+  padding-top: 10px;
 }
 
 .footer {
@@ -588,7 +669,6 @@ input[type="submit"] {
 
  .input-submit {
    width: 100%;
-   padding: 20px;
  }
 
  .contacts {
