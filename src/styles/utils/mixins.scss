@@ -58,7 +58,7 @@
   @include active(background-color, $main-text-color);
 }
 
-@mixin page-grid {
+@mixin page-grid() {
   --columns: 2;
 
   display: grid;
@@ -67,11 +67,35 @@
 
   @include on-tablet {
     column-gap: 24px;
-    
+
     --columns: 6;
   }
 
   @include on-desktop {
     --columns: 12;
+  }
+}
+
+@mixin underline-text-hover($height) {
+  & {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: #{$height};
+    height: 1px;
+    background-color: $main-text-color;
+
+    transform: scale(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
   }
 }
