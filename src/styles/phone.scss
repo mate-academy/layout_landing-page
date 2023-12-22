@@ -1,48 +1,60 @@
-.phone {
-  background-image: url("../photos/Icon-Phone-call.svg");
-  position: relative;
+.icon {
+  &-phone {
+    background-image: url("../photos/Icon-Phone-call.svg");
 
-  &:hover {
-    transform: scale(1.1);
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s;
+    }
+  }
+
+  &-call {
+    text-decoration: none;
     transition: transform 0.3s;
-  }
 
-  &__wrapper {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: -28px;
-    right: 30px;
-    text-align: right;
-
-    @include onTablet {
-      top: -35px;
-      right: 35px;
+    &:hover {
+      transform: scale(1.2);
     }
-  }
 
-  &__item {
-    transition: opacity 0.4s, visibility 0.4s;
-    color: $main-color;
-    text-decoration: 0;
-    white-space: nowrap;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0;
-    text-transform: uppercase;
+    &::before {
+      display: block;
+      position: relative;
+      content: "The Met Fifth Avenue\A +1 212-535-7710\AThe Met Cloisters\A+1 212-923-3700";
 
-    @include onTablet {
-      font-size: 16px;
+      top: -15px;
+      right: 210px;
+      width: 200px;
+      padding-right: 10px;
+
+      color: $main-color;
       font-weight: 700;
-      line-height: 27px;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 15px;
       letter-spacing: 0;
-      text-transform: uppercase;
+      text-align: right;
+      white-space: pre;
+      opacity: 0;
+      pointer-events: none;
+
+      @include onTablet {
+        color: $main-color;
+        font-weight: 700;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 27px;
+        letter-spacing: 0;
+
+        top: -40px;
+        right: 210px;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 }
 
-.phone:hover .phone__wrapper {
-  opacity: 1;
-  visibility: visible;
-}
+
