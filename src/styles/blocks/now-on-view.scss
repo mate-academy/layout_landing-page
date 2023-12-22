@@ -1,80 +1,72 @@
-.now-on-view__top,
-.now-on-view__cards,
-.now-on-view__card {
-  display: flex;
-  flex-direction: column;
-}
+.now-on-view {
 
-.now-on-view__top {
-  width: 280px;
-  margin: 0 auto;
-  text-align: center;
-  gap: 8px;
-}
-
-.now-on-view__title,
-.now-on-view__text,
-.now-on-view__sub-header {
-  margin: 0;
-}
-
-.now-on-view__cards {
-  gap: 48px;
-  margin-top: 48px;
-}
-
-.now-on-view__card {
-  gap: 24px;
-}
-
-.now-on-view__images {
-  display: flex;
-  justify-content: space-between;
-}
-
-.now-on-view__image {
-  display: block;
-}
-
-.now-on-view__sub-header {
-  font-size: 16px;
-  color: #D12D35;
-}
-
-.now-on-view__btn {
-  margin: 40px auto 0;
-  width: 280px;
-}
-
-@media (min-width: 744px){
-
-  .now-on-view__top {
-    width: 392px;
+  &__top,
+  &__cards,
+  &__card {
+    @include flexColumn;
   }
 
-  .now-on-view__picure--hidden {
-    display: none;
+  &__top {
+    width: 280px;
+    margin: 0 auto;
+    text-align: center;
+    gap: 8px;
+
+    @include tabletView {
+      width: 392px;
+    }
+
+    @include desktoptView {
+      width: 325px;
+    }
+
   }
 
-  .now-on-view__btn {
-    width: 392px;
+  &__cards {
+    gap: 48px;
+    margin-top: 48px;
   }
 
-}
-
-@media (min-width: 1260px){
-
-  .now-on-view__top {
-    width: 325px;
+  &__card {
+    gap: 24px;
   }
 
-  .now-on-view__picure--hidden {
+  &__images {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__image {
     display: block;
+    @include defaultTransitionOnState(scale, hover, 1.3);
   }
 
+  &__picure--hidden {
+    @include tabletView {
+      display: none;
+    }
 
-  .now-on-view__btn {
-    width: 324px;
+    @include desktoptView {
+      display: block;
+    }
+  }
+
+  &__sub-header {
+    font-size: 16px;
+    color: $accent-color;
+  }
+
+  &__btn {
+    margin: 40px auto 0;
+    width: 280px;
+
+    @include tabletView {
+      width: 392px;
+    }
+
+    @include desktoptView {
+      width: 324px;
+    }
   }
 
 }

@@ -1,57 +1,47 @@
 .menu {
   height: 100vh;
-  background-color: #D12D35;
+  background-color: $accent-color;
   font-weight: 700;
   text-transform: uppercase;
-  color: #FFF;
+  color: $secondary-color;
   overflow: auto;
-}
 
-.menu__content {
-  padding-inline: 20px;
-}
+  &__content {
+    padding-inline: 20px;
 
-.menu__text {
-  margin: 0;
-}
+    @include tabletView {
+      padding-inline: 72px;
+    }
 
-.menu__phones {
-  margin-top: 32px;
-}
-
-.menu__call-to-order {
-  margin-top: 16px;
-  color: inherit;
-  text-decoration: none;
-  display: block;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 2px;
-  width: fit-content;
-}
-
-.menu__call-to-order:hover {
-  padding-bottom: 7px;
-  border-bottom: 1px solid #FFF;
-}
-
-@media (min-width: 744px){
-
-  .menu__content {
-    padding-inline: 72px;
+    @include desktoptView {
+      padding-inline: 120px;
+    }
   }
 
-}
-
-@media (min-width: 1260px){
-
-  .menu__content {
-    padding-inline: 120px;
+  &__text {
+    margin: 0;
   }
 
-  .menu__phones {
-    margin-top: 48px;
+  &__phones {
+    margin-top: 32px;
+
+    @include desktoptView {
+      margin-top: 48px;
+    }
   }
 
+  &__call-to-order {
+    margin-top: 16px;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid transparent;
 
+    @include defaultTransitionOnState(border-bottom, hover, 1px solid $secondary-color);
+  }
 }

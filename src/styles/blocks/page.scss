@@ -1,59 +1,44 @@
 .page {
   font-family: Cinzel, serif;
-  color: #161616;
+  color: $main-color;
   font-size: 16px;
   line-height: 27px;
   font-weight: 400;
   scroll-behavior: smooth;
-}
 
-.page:has(.page__menu:target) {
-  overflow: hidden;
-}
-
-.page__body {
-  margin: 0;
-}
-
-.page__menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-
-  opacity: 0;
-  pointer-events: none;
-}
-
-.page__menu:target {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.page__main {
-  padding-inline: 20px;
-}
-
-.page__section {
-  margin-top: 100px;
-}
-
-@media (min-width: 744px){
-
-  .page__main {
-    padding-inline: 72px;
+  &:has(.page__menu:target) {
+    overflow: hidden;
   }
 
-  .page__section {
-    margin-top: 140px;
+  &__body {
+    margin: 0;
   }
 
-}
-
-@media (min-width: 1260px){
-
-  .page__main {
-    padding-inline: 120px;
+  &__menu {
+    @include hiddenSlider;
   }
 
+  &__menu:target {
+    @include visibleSlider;
+  }
+
+  &__main {
+    padding-inline: 20px;
+
+    @include tabletView {
+      padding-inline: 72px;
+    }
+
+    @include desktoptView {
+      padding-inline: 120px;
+    }
+  }
+
+  &__section {
+    margin-top: 100px;
+
+    @include tabletView {
+      margin-top: 140px;
+    }
+  }
 }

@@ -3,53 +3,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.top-bar__icons{
-  display: flex;
-  gap: 24px;
-}
-
-.top-bar__logo {
-  display: flex;
-}
-
-.top-bar__phone-list {
-  display: none;
-}
-
-@media (min-width: 744px){
-
-  .top-bar {
+  @include tabletView {
     padding: 50px 72px;
   }
 
-  .top-bar__icons{
-    gap: 55px;
-  }
-
-}
-
-@media (min-width: 1260px){
-
-  .top-bar {
+  @include desktoptView {
     padding-inline: 120px;
   }
 
-  .top-bar__phone {
-    position: relative;
+  &__icons{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @include tabletView {
+      gap: 55px;
+    }
   }
 
-  .top-bar__phone-list {
-    text-align: right;
-    position: absolute;
-    width: 201px;
-    top: 50%;
-    transform: translate(-217px, -50%);
+  &__phones {
+    @include desktoptView {
+      &:hover .top-bar__phone-list{
+        right: 200;
+        @include visibleSlider;
+      }
+
+      &:hover .top-bar__phone {
+        position: relative;
+        top: 24;
+        right: 55;
+      }
+    }
   }
 
-  .top-bar__phone:hover .top-bar__phone-list{
+  &__logo {
     display: flex;
   }
 
+  &__phone-list {
+    text-align: right;
+    @include hiddenSlider;
+  }
 }
