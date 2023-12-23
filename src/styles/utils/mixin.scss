@@ -1,0 +1,32 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desctop {
+    max-width: 1260px;
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+@mixin on-desctop() {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
