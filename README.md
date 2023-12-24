@@ -1,21 +1,15 @@
-# Landing page
+**MyBike** is the landing page of a leading urban bicycle manufacturer, developed using advanced technologies to create a stylish and functional interface.
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
-
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
-
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
-
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+[DEMO LINK](https://artemvlasiuk.github.io/layout_landing-page/)
+[LAYOUT LINK](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
+***
+### Technologies used:
+* **HTML**: the primary markup language for creating a structure of the landing page;
+* **SCSS (Sass)**: a CSS preprocessor that allows for the organized and efficient maintenance of styles with enhanced readability of the code;
+* **CSS Grid**: a technique within Cascading Style Sheets (CSS) that provides power and flexibility for creating responsive and efficient grids on the page;
+***
+### Launch Instructions:
+1. Download the landing page files from the repository;
+2. Run `npm install`;
+3. Run `npm start` to open the page;
+4. Enjoy the stylish and responsive MyBike landing page for a comfortable viewing experience on any device!
