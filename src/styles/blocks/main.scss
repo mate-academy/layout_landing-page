@@ -14,10 +14,14 @@
   }
 
   &__list {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    row-gap: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
     justify-content: center;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
 
     &--text {
       display: flex;
@@ -30,6 +34,23 @@
         flex-direction: row;
       }
     }
+
+    @include on-desktop {
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    grid-row: 1 / 3;
+    width: 324px;
+  }
+
+  &__photo-bike {
+    transition: transform 1s;
+  }
+
+  &__photo-bike:hover {
+    transform: scale(1.3);
   }
 
   &__description {
@@ -38,6 +59,7 @@
   }
 
   &__text {
+    width: 100%;
     font-size: 16px;
   }
 
