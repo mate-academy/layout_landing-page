@@ -1,6 +1,6 @@
 .header {
   padding: 25px 20px;
-  height: 568px;
+  height: 100vh;
   background-image: url(../images/bg-menu-mobile.png);
   background-size: cover;
   background-position: center;
@@ -18,7 +18,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 
 .header__icons {
   display: flex;
@@ -43,35 +42,33 @@
   display: block;
 }
 
-.icon-container::before {
-  content: "THE MET FIFTH AVENUE \0a +1 212-535-7710 \0a \0a The Met Cloisters \0a +1 212-923-3700";
+.phone-numbers {
   position: absolute;
-  width: 201px;
-  height: 116px;
-  top: -50px;
+  width: 250px;
+  top: -100%;
   left: -100px;
   transform: translateX(-50%);
-  color: white;
-  background-color:rgba(255, 255, 255, 0)(254, 254, 254);
+  background-color: rgba(255, 255, 255, 0);
   padding: 10px;
-  white-space: pre;
-  z-index: 1;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
 }
 
-.icon-container:hover::before {
+.phone-number {
   display: block;
+  margin-bottom: 5px;
+  color: var(--white-main);
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+  font-weight: 700;
 }
-
-
 
 .icon--menu {
   background-image: url(../icons/Icon-Burger-menu.png);
   transition: background-image var(--hover-transition);
-}
-
-.icon--menu:hover {
-  background-image: url(../icons/Icon-Burger-menu-hover.png);
 }
 
 .header__title {
@@ -85,14 +82,13 @@
   margin-right: auto;
 }
 
-
 .menu {
   box-sizing: border-box;
   padding: 25px;
-  height: 100vh;
+  height: 100%;
   font-weight: 700;
   text-transform: uppercase;
-  background-color:var(--red-main);
+  background-color: var(--red-main);
 }
 
 .menu__top {
@@ -109,10 +105,10 @@
 .nav {
   display: flex;
   flex-direction: column;
-
 }
 
 .nav__link {
+  position: relative;
   text-decoration: none;
   color: var(--white-main);
 }
@@ -140,7 +136,6 @@
 }
 
 .nav__span {
-  display: block;
   padding-top: 5px;
 }
 
@@ -154,21 +149,6 @@
   position: relative;
   transition: var(--hover-transition);
 }
-
-.nav__list--bottom li:last-child .nav__link:hover::after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color:var(--white-main);
-}
-
-
-
-
 
 @media only screen and (min-width: 744px) and (max-width: 1259px) {
   .header {
@@ -198,12 +178,10 @@
     background-image: url(../images/header-title-tablet.png);
   }
 
-
   .menu {
     padding: 32px 72px;
   }
 }
-
 
 @media only screen and (min-width: 1260px) {
   .header {
@@ -216,7 +194,6 @@
     width: 87px;
     height: 65px;
   }
-
 
   .header__icons {
     display: flex;
@@ -235,10 +212,49 @@
     background-image: url(../images/title-full.png);
   }
 
-
   .menu {
     padding: 32px 121px;
   }
 
-}
+  .phone-numbers:hover,
+  .icon-container:hover .phone-numbers {
+    opacity: 1;
+    pointer-events: all;
+  }
 
+  .phone-number:hover {
+    color: rgb(222, 217, 212);
+  }
+
+  .icon--menu:hover {
+    background-image: url(../icons/Icon-Burger-menu-hover.png);
+  }
+
+  .nav__item .nav__link::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--white-main);
+    transition: width 0.3s ease;
+    z-index: 1;
+  }
+
+  .nav__item:hover .nav__link::after {
+    width: 100%;
+  }
+
+  .nav__list--bottom li:last-child .nav__link::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--white-main);
+  }
+}
