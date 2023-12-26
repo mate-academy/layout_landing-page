@@ -1,0 +1,148 @@
+.contacts {
+  color: $main-black-text-color;
+
+  @include onTablet {
+    --columns: 6;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+
+  &__title {
+    &--h2 {
+      text-align: center;
+      font-size: 32px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      margin-bottom: 48px;
+
+      @include onTablet {
+        font-size: 48px;
+        grid-column: 2 / -2;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / 10;
+      }
+    }
+
+    &--h3 {
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+
+    gap: 48px;
+    margin-bottom: 48px;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      gap: 24px;
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__group {
+    @include onDesktop {
+      width: 237px;
+    }
+  }
+
+  &__text {
+    display: block;
+    text-decoration: none;
+    line-height: 27px;
+
+    &--lite {
+      font-size: 14px;
+      font-weight: $lite-style-text;
+      margin-bottom: 4px;
+    }
+
+    &--bold {
+      color: $second-black-text-color;
+      font-size: 16px;
+      font-weight: $bold-style-text;
+      margin-bottom: 8px;
+
+      &:last-of-type {
+        margin: 0;
+      }
+
+      &:hover {
+        color: $red-text-color;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      grid-column: 4 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__input {
+    font-family: inherit;
+    padding: 14px 16px;
+    background-color: $second-white-text-color;
+    border: 1px solid transparent;
+
+    &--margin {
+      margin-bottom: 16px;
+    }
+
+    &::placeholder {
+      color: $main-grey-form-color;
+      font-size: 14px;
+      font-weight: $lite-style-text;
+      line-height: 20px;
+    }
+
+    &:hover {
+      border-color: $second-grey-form-color;
+
+      &::placeholder {
+        color: $main-black-text-color;
+      }
+    }
+
+    &:focus {
+      border-color: $main-black-text-color;
+      outline: 0;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      background-color: transparent !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+
+  &__textarea {
+    padding-bottom: 110px;
+    resize: none;
+  }
+}
