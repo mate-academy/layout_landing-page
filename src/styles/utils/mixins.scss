@@ -1,0 +1,29 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-pc {
+  @media (min-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin grid-template {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-pc {
+    --columns: 12;
+  }
+}
