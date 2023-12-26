@@ -1,0 +1,43 @@
+@mixin desktopt-view {
+  @media (min-width: 1260px){
+    @content;
+  }
+}
+
+@mixin tablet-view {
+  @media (min-width: 744px){
+    @content;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin default-transition-on-state($property, $state, $value) {
+  transition: #{$property} 450ms;
+
+  &:#{$state} {
+    #{$property} : $value;
+    @content;
+  }
+}
+
+@mixin hidden-slider {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: transform 450ms;
+}
+
+@mixin visible-slider {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+  transition: transform 450ms;
+}
