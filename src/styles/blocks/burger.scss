@@ -1,0 +1,59 @@
+@use "../utils/mixins" as *;
+
+.burger {
+  transition: all 0.5s ease-in-out;
+
+  &::before {
+    display: inline-block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url('../icons/burger-menu.svg');
+    background-size: cover;
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include for-desktop {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &::after {
+    display: none;
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url('../icons/burger-menu-hover.svg');
+    background-size: cover;
+
+    @include for-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include for-desktop {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}
