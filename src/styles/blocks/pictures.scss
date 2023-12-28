@@ -1,0 +1,50 @@
+@use "../utils/mixins" as *;
+
+.pictures {
+  @include grid;
+
+  &__item {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+
+    @include for-tablet {
+      padding-top: 187px;
+
+      &--big {
+        grid-column: span 4;
+      }
+
+      &--small {
+        grid-column: span 2;
+      }
+    }
+
+    @include for-desktop {
+      padding-top: 320px;
+
+      &--big {
+        grid-column: span 8;
+      }
+
+      &--small {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
