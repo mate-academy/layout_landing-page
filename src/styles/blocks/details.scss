@@ -1,0 +1,136 @@
+.details {
+  @include displayFlex(column, start);
+
+  &__row-container {
+    overflow: hidden;
+    @include displayGrid();
+    row-gap: 8px;
+    padding-bottom: 40px;
+
+    @include onTablet {
+      padding-bottom: 48px;
+    }
+  }
+
+  &__text-container {
+    grid-column: 1 / 3;
+
+    @include onTablet {
+      grid-column: 1 / 6;
+    }
+
+    @include onLaptop {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__logo {
+    text-align: center;
+  }
+
+  &__text-title {
+    @include textTitle();
+    padding-top: 8px;
+  }
+
+  &__text {
+    @include regularText();
+    padding-top: 8px;
+  }
+
+  &__image-container {
+    overflow: hidden;
+
+    @include onTablet {
+      &--start {
+        grid-column: 1 / 5;
+
+        &-alternate {
+          grid-column: 1 / 3;
+        }
+      }
+
+      &--end {
+        grid-column: 5 / 7;
+
+        &-alternate {
+          grid-column: 3 / 7;
+        }
+      }
+    }
+
+    @include onLaptop {
+      &--start {
+        grid-column: 1 / 9;
+
+        &-alternate {
+          grid-column: 1 / 5;
+        }
+      }
+
+      &--end {
+        grid-column: 9 / 13;
+
+        &-alternate {
+          grid-column: 5 / 13;
+        }
+      }
+    }
+  }
+
+  &__image {
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+
+    @for $index from 1 through 6 {
+      &--#{$index} {
+        background-image: url(../images/details_#{$index}.png);
+      }
+    }
+
+    @include hover(scale, 1.2);
+
+    @include onTablet {
+      height: 187px;
+    }
+
+    @include onLaptop {
+      height: 320px;
+    }
+  }
+
+  &__link {
+    display: block;
+    align-self: center;
+    width: 100%;
+    padding: 15px 0;
+
+    background-color: $light-theme;
+    border-radius: 40px;
+
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $dark-theme;
+
+    @include transition(200ms);
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+    }
+
+    @include onTablet {
+      max-width: 400px;
+    }
+
+    @include onLaptop {
+      max-width: 320px;
+    }
+  }
+}

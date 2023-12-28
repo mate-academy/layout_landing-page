@@ -1,0 +1,96 @@
+.header {
+  height: 100vh;
+  @include displayFlex(column, space-between);
+  box-sizing: border-box;
+
+  &--main {
+    background-image: url(../images/header_photo.png);
+    background-position: calc(100% + 60px);
+    background-size: cover;
+    padding-bottom: 18%;
+
+    @include onTablet {
+      background-position: center;
+      padding-bottom: 20%;
+    }
+
+    @include onLaptop {
+      padding-bottom: 16%;
+    }
+  }
+
+  &--menu {
+    display: none;
+    justify-content: start;
+    background-color: $dimgray-theme;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1;
+
+    transition: all $animation-time;
+    transform: translateX(-100%);
+
+    &:target {
+      display: block;
+      transform: translateX(0);
+    }
+
+    @include onTablet {
+      overflow: scroll;
+    }
+  }
+
+  &__moto {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    color: $light-theme;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onLaptop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__contacts {
+    @include displayFlex(column, start);
+    gap: 16px;
+    padding: 40px 20px 0;
+
+    @include onTablet {
+      padding-left: 72px;
+    }
+
+    @include onLaptop {
+      padding-left: 120px;
+    }
+  }
+
+  &__contact {
+    color: $dark-theme;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+    }
+
+    &--book {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-decoration: underline #{$dark-theme};
+      text-underline-offset: 8px;
+    }
+  }
+}

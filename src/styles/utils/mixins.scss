@@ -1,0 +1,74 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin displayFlex($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+@mixin displayGrid() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onLaptop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin logo() {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-transform: capitalize;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include onLaptop {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+
+@mixin textTitle() {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33.6px;
+}
+
+@mixin regularText() {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+@mixin transition($time) {
+  transition: all $time;
+}
+
+@mixin hover($prop, $toValue) {
+  transition: $prop $animation-time;
+
+  &:hover {
+    #{$prop}: $toValue;
+  }
+}
