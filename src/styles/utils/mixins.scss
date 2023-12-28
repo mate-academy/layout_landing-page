@@ -1,0 +1,89 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --columns-width: 130px;
+  --grid-columns: 2;
+  --column-gap: 20px;
+
+  display: grid;
+  justify-content: center;
+  column-gap: var(--column-gap);
+  grid-template-columns: repeat(var(--grid-columns), var(--columns-width));
+  max-width: calc(var(--grid-columns) * var(--columns-width)
+  + var(--column-gap) * (var(--grid-columns) - 1));
+
+  @include onTablet {
+    --columns-width: 80px;
+    --grid-columns: 6;
+    --column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns-width: 63px;
+    --grid-columns: 12;
+  }
+}
+
+@mixin contentMarginBottom {
+  margin-bottom: 92px;
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 164px;
+  }
+}
+
+@mixin contentPaddingBlock {
+  padding-block: 60px 120px;
+
+  @include onTablet {
+    padding-block: 120px;
+  }
+
+  @include onDesktop {
+    padding-block: 120px 182px;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-duration;
+  &:hover {
+    #{$property}: $toValue;
+    @content;
+  }
+}
+
+@mixin buttonState {
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
