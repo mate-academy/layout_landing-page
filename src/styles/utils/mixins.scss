@@ -1,0 +1,97 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline($padding-px) {
+  padding-inline: #{$padding-px};
+
+  @include on-tablet {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin active($property, $toValue) {
+  &:active {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin button-setings() {
+  cursor: pointer;
+  border-radius: 8px;
+  background: #F98921;
+  height: 56px;
+  padding: 0 48px;
+  border: none;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+
+  @include hover(background-color, $main-text-color);
+  @include active(background-color, $main-text-color);
+}
+
+@mixin page-grid() {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin underline-text-hover($height) {
+  & {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: #{$height};
+    height: 1px;
+    background-color: $main-text-color;
+
+    transform: scale(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
