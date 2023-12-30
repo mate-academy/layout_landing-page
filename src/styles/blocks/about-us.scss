@@ -1,0 +1,75 @@
+.about-us {
+  display: grid;
+  --columns: 2;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: $column-gap-24px;
+
+  padding-inline: $padding-inline-20px;
+  margin-top: 60px;
+
+  @include onTable {
+    --columns: 6;
+    column-gap: $column-gap-24px;
+
+    padding-inline: $padding-inline-72px;
+    margin-top: $margin-top-120px;
+  }
+
+  @include onDesktop {
+    max-width: 1200px;
+    margin: 0 auto;
+    --columns: 12;
+    column-gap: $column-gap-24px;
+
+    padding-inline: $padding-inline-120px;
+    margin-top: $margin-top-120px;
+  }
+
+  &__paragraph {
+    font-weight: $font-weight-500;
+    font-size: 23px;
+    line-height: 32.2px;
+
+    margin-top: 32px;
+
+    @include onTable {
+      margin: 0;
+    }
+
+    grid-column: 4 / 2;
+  }
+
+  &__page-title {
+    font-weight: $font-weight-500;
+    font-size: $about-us-title-for-phone;
+    letter-spacing: -1.5px;
+    line-height: $about-us-title-for-phone;
+
+    grid-column: 1 / -1;
+
+    @include onTable {
+      grid-column: 1 / 4;
+
+      font-size: $about-us-title-for-table;
+      line-height: $about-us-title-for-table;
+    }
+
+    @include onDesktop {
+      grid-column: span 5;
+      font-size: $about-us-title-for-desktop;
+      line-height: $about-us-title-for-desktop;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    @include onTable {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
+  }
+}
