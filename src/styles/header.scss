@@ -1,0 +1,260 @@
+.header {
+  padding: 25px 20px;
+  height: 100vh;
+  background-image: url(../images/bg-menu-mobile.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+
+  &__img {
+    width: 64px;
+    height: 46px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__title {
+    margin-top: 120px;
+    width: 280px;
+    height: 80px;
+    background-image: url(../images/Title-mobile.png);
+    background-size: cover;
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon--phone {
+  background-image: url(../icons/Icon-Phone-call.png);
+  display: block;
+}
+
+.phone-numbers {
+  position: absolute;
+  text-align: end;
+  width: 300px;
+  top: -140%;
+  left: -120px;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0);
+  padding: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+}
+
+.phone-number {
+  display: block;
+  padding-right: 20%;
+  margin-bottom: 5px;
+  color: $white-main;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+.icon--menu {
+  background-image: url(../icons/Icon-Burger-menu.png);
+  transition: background-image var(--hover-transition);
+}
+
+.menu {
+  box-sizing: border-box;
+  padding: 25px;
+  height: 100vh;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: $red-main;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.icon--close {
+  background-image: url(../icons/Icon-Close.png);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $white-main;
+  }
+
+  &__span {
+    padding-top: 5px;
+  }
+
+  &__list {
+    list-style: none;
+
+    &--top {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      font-size: 22px;
+      font-weight: 700;
+      padding-top: 40px;
+    }
+
+    &--bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      padding-top: 25px;
+    }
+  }
+}
+
+.nav__list--bottom li:last-child {
+  padding-top: 11px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.nav__list--bottom li:last-child .nav__link {
+  position: relative;
+  transition: $hover-transition;
+}
+
+@include on-tablet {
+  .menu {
+    padding: 50px 40px;
+  }
+
+  .header {
+    padding: 50px 40px;
+    background-image: url(../images/bg-menu-tablet.png);
+
+    &__img {
+      width: 87px;
+      height: 65px;
+    }
+
+    &__icons {
+      gap: 55px;
+    }
+
+    &__title {
+      margin-top: 140px;
+      width: 392px;
+      height: 128px;
+      background-image: url(../images/header-title-tablet.png);
+    }
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@include on-big-screen {
+  .header {
+    padding: 50px 120px;
+    background-image: url(../images/header-full.png);
+
+    &__img {
+      width: 87px;
+      height: 65px;
+    }
+
+    &__icons {
+      display: flex;
+      gap: 55px;
+    }
+
+    &__title {
+      margin-top: 80px;
+      width: 600px;
+      height: 180px;
+      background-image: url(../images/title-full.png);
+    }
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .menu {
+    padding: 50px 120px;
+  }
+
+  .phone-numbers:hover,
+  .icon-container:hover .phone-numbers {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .phone-number:hover {
+    color: $border-color;
+  }
+
+  .icon--menu:hover {
+    background-image: url(../icons/Icon-Burger-menu-hover.png);
+  }
+
+  .nav__item .nav__link::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: $white-main;
+    transition: width 0.3s ease;
+    z-index: 1;
+  }
+
+  .nav__item:hover .nav__link::after {
+    width: 100%;
+  }
+
+  .nav__list--bottom li:last-child .nav__link::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $white-main;
+  }
+}

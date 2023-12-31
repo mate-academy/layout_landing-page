@@ -1,0 +1,153 @@
+.main__days {
+  height: 525px;
+  display: grid;
+  grid-template-rows: 51px 240px 178px;
+  grid-template-areas:
+    "title"
+    "avenue"
+    "cloisters";
+}
+
+.hours {
+  grid-area: title;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__text {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 17px;
+    color: $red-main;
+  }
+
+  &__name {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $black-main;
+  }
+}
+
+.avenue {
+  padding-top: 32px;
+
+  &__time {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__hours {
+    width: 98px;
+    font-weight: 700;
+  }
+
+  &__close {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+  }
+
+  &__holiday {
+    font-weight: 400;
+  }
+}
+
+.cloisters {
+  &__time {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__days {
+    font-size: 16px;
+  }
+
+  &__hours {
+    width: 98px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__close {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+  }
+
+  &__holiday {
+    font-weight: 400;
+  }
+}
+
+@include on-tablet {
+  .main__days {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      "title avenue"
+      "title cloisters";
+  }
+
+  .hours {
+    &__title {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    &__name {
+      width: 50%;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  .cloisters {
+    margin-top: 24px;
+  }
+}
+
+@include on-big-screen {
+  .main__days {
+    width: 1020px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+      "title avenue"
+      "title cloisters";
+  }
+
+  .hours {
+    &__title {
+      padding-right: 24px;
+      gap: 5px;
+    }
+
+    &__name {
+      width: 100%;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  .avenue {
+    padding-top: 0;
+
+    &__holiday br {
+      display: none;
+    }
+  }
+
+  .cloisters__hours {
+    width: 130px;
+  }
+}
