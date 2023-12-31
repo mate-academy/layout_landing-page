@@ -1,0 +1,72 @@
+.top-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+
+  @include onTablet {
+    padding: 50px 0;
+  }
+
+  &__logo {
+    display: flex;
+    width: 64px;
+    height: 46px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__contact-info {
+    position: absolute;
+    list-style: none;
+    color: $white-main;
+
+    top: 20;
+    bottom: 0;
+    right: 110px;
+    margin: auto 0;
+
+    text-align: right;
+
+    &__label,
+    &__link {
+      text-decoration: none;
+      @include topBarTextStyling;
+    }
+
+    // opacity: 0;
+    // pointer-events: none;
+    visibility: hidden;
+    transition: visibility $effect-duration;
+    transition-delay: $effect-duration;
+
+    &__link {
+      @include hover(color, $accent-main);
+      @include hover(text-shadow, $white-main);
+    }
+  }
+
+  @include onTablet {
+    .icon--phone:hover {
+      & ~ .top-bar__contact-info {
+        // opacity: 1;
+        // pointer-events: all;
+
+        visibility: visible;
+
+        @include hover(color, $accent-main);
+        @include hover(color, $accent-main);
+      }
+    }
+
+    .top-bar__contact-info:hover {
+      // opacity: 1;
+      // pointer-events: all;
+      visibility: visible;
+    }
+  }
+}
