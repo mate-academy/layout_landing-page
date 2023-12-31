@@ -16,31 +16,57 @@
   text-align: center;
 }
 
-.avenue__subtitle {
-  font-size: 16px;
-  font-weight: 700;
+.avenue {
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__phone,
+  &__adress {
+    font-size: 14px;
+  }
+
+  &__phone p {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__phone a {
+    text-decoration: none;
+    font-weight: 700;
+    color: $black-main;
+  }
+
+  &__adress {
+    padding-top: 15px;
+  }
 }
 
-.avenue__phone,
-.avenue__adress {
-  font-size: 14px;
-}
+.cloisters {
+  &__phone a {
+    text-decoration: none;
+    font-weight: 700;
+    color: $black-main;
+  }
 
-.avenue__phone p {
-  margin: 0;
-  padding: 0;
-}
+  &__cloisters {
+    padding-top: 48px;
+  }
 
-.avenue__phone a {
-  text-decoration: none;
-  font-weight: 700;
-  color: var(--black-main);
-}
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 700;
+  }
 
-.cloisters__phone a {
-  text-decoration: none;
-  font-weight: 700;
-  color: var(--black-main);
+  &__phone,
+  &__adress {
+    font-size: 14px;
+  }
+
+  &__adress {
+    padding-top: 15px;
+  }
 }
 
 .avenue__adress a,
@@ -49,49 +75,11 @@
   color: inherit;
 }
 
-.avenue__phone a:hover {
-  color: var(--active-red);
-}
-
-.avenue__adress {
-  padding-top: 15px;
-}
-
 .avenue__adress h2,
 .cloisters__adress h2 {
   font-size: 16px;
   font-weight: 700;
   margin-top: 4px;
-}
-
-.avenue__adress h2:hover {
-  color: var(--active-red);
-}
-
-.contacts__cloisters {
-  padding-top: 48px;
-}
-
-.cloisters__subtitle {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.cloisters__phone,
-.cloisters__adress {
-  font-size: 14px;
-}
-
-.cloisters__adress {
-  padding-top: 15px;
-}
-
-.cloisters__phone a:hover {
-  color: var(--active-red);
-}
-
-.cloisters__adress h2:hover {
-  color: var(--active-red);
 }
 
 .contacts__form {
@@ -103,9 +91,9 @@
 
 .input {
   all: unset;
-  background-color: var(--input-color);
+  background-color: $input-color;
   height: 48px;
-  color: var(--black-main);
+  color: $black-main;
 }
 
 .form__text {
@@ -120,47 +108,20 @@
   height: 56px;
   font-size: 16px;
   font-weight: 700;
-  color: var(--input-color);
-  background-color: var(--red-main);
-  transition: background-color var(--hover-transition);
-}
-
-.form__send:hover {
-  background-color: var(--red-hover);
-}
-
-.form__name:hover::placeholder,
-.form__email:hover::placeholder,
-.form__text:hover::placeholder {
-  color: var(--black-main);
+  color: $input-color;
+  background-color: $red-main;
+  transition: background-color $hover-transition;
 }
 
 .form__name,
 .form__email,
 .form__text {
   font-size: 14px;
-  color: var(--black-main);
+  color: $black-main;
   font-weight: 400;
   border: 1px solid transparent;
-  transition: var(--hover-transition);
+  transition: $hover-transition;
   padding-left: 16px;
-}
-
-.form__name:hover,
-.form__email:hover,
-.form__text:hover {
-  border: 1px solid var(--border-color);
-  color: var(--black-main);
-}
-
-.form__name:focus,
-.form__email:focus,
-.form__text:focus {
-  border: 1px solid var(--black-main);
-}
-
-.form__send:active {
-  background-color: var(--active-red);
 }
 
 .avenue__adress a:visited,
@@ -168,8 +129,9 @@
   color: inherit;
 }
 
-@media only screen and (min-width: 744px) and (max-width: 1259px) {
+@include onTablet {
   .main__contacts {
+    width: 600px;
     position: relative;
     flex-direction: row;
     gap: 75px;
@@ -183,7 +145,7 @@
   }
 }
 
-@media only screen and (min-width: 1260px) {
+@include onBigScreen {
   .main__contacts {
     width: 1020px;
     margin-top: 200px;
@@ -214,5 +176,48 @@
 
   .contacts__form {
     width: 411px;
+  }
+
+  .avenue__phone a:hover {
+    color: $active-red;
+  }
+
+  .avenue__adress h2:hover {
+    color: $active-red;
+  }
+
+  .form__name:hover::placeholder,
+  .form__email:hover::placeholder,
+  .form__text:hover::placeholder {
+    color: $black-main;
+  }
+
+  .cloisters__phone a:hover {
+    color: $active-red;
+  }
+
+  .cloisters__adress h2:hover {
+    color: $active-red;
+  }
+
+  .form__send:hover {
+    background-color: $red-hover;
+  }
+
+  .form__name:hover,
+  .form__email:hover,
+  .form__text:hover {
+    border: 1px solid $border-color;
+    color: $black-main;
+  }
+
+  .form__name:focus,
+  .form__email:focus,
+  .form__text:focus {
+    border: 1px solid $black-main;
+  }
+
+  .form__send:active {
+    background-color: $active-red;
   }
 }
