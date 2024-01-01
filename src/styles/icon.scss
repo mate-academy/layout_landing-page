@@ -19,7 +19,36 @@
     text-decoration: none;
     color: inherit;
     display: flex;
+
+    @include onDesktop {
+      &::before {
+        transition: ease 500ms;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        transition: ease 500ms;
+        position: absolute;
+        content: '+1-234-555-55-55';
+
+        justify-content: center;
+        width: 150px;
+        right: 120%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 1;
+        text-align: right;
+
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $mainColor;
+      }
+    }
   }
+
 
   &--menu {
     background-image: url(../images/icon-burger-menu.svg);
@@ -33,34 +62,3 @@
     background-image: url(../images/icon-close.svg);
   }
   }
-
-.upperline-acttions-number {
-  padding-right: 10px;
-  display: flex;
-  position: absolute;
-  opacity: 0;
-  right: -150px;
-  color: inherit;
-  text-align: right;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 140%;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: 0.5s;
-  margin-top: 8px;
-}
-
-.number-text {
-  align-self: center;
-  display: block;
-}
-
-.upperline:hover .upperline-acttions-number {
-  @include onDesktop {
-    right: 300px;
-    display: flex;
-    opacity: 1;
-  }
-}
-
