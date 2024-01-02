@@ -1,0 +1,70 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    // width: 100vh;
+    // max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hoverEffect($property, $toValue) {
+  transition: #{$property} 0.5s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin inputField {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  font-family: $font-family;
+  color: $text-color-input-active;
+  background-color: $background-color-button;
+  border: 3px solid transparent;
+  border-radius: 40px;
+}
+
+@mixin footerImage ($imageUrl) {
+  background-image: linear-gradient(to bottom, $background-color, transparent),
+    $imageUrl;
+}
+
+@mixin fontSizeWeightLineHeight ($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
