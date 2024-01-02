@@ -5,7 +5,9 @@
   align-items: center;
   padding: 32px 0;
 
-  @include onTablet {
+  transition: visibility $effect-duration;
+
+  @include on-tablet {
     padding: 50px 0;
   }
 
@@ -13,6 +15,8 @@
     display: flex;
     width: 64px;
     height: 46px;
+
+    @include hover-scale($standard-scale);
   }
 
   &__icons {
@@ -32,14 +36,14 @@
 
     text-align: right;
 
+
     &__label,
     &__link {
+      @include top-bar-text-styling;
+
       text-decoration: none;
-      @include topBarTextStyling;
     }
 
-    // opacity: 0;
-    // pointer-events: none;
     visibility: hidden;
     transition: visibility $effect-duration;
     transition-delay: $effect-duration;
@@ -50,23 +54,18 @@
     }
   }
 
-  @include onTablet {
+  @include on-tablet {
+    .top-bar__contact-info:hover {
+      visibility: visible;
+    }
+
     .icon--phone:hover {
       & ~ .top-bar__contact-info {
-        // opacity: 1;
-        // pointer-events: all;
-
         visibility: visible;
 
         @include hover(color, $accent-main);
         @include hover(color, $accent-main);
       }
-    }
-
-    .top-bar__contact-info:hover {
-      // opacity: 1;
-      // pointer-events: all;
-      visibility: visible;
     }
   }
 }

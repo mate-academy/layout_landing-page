@@ -47,6 +47,8 @@
 
     font-family: inherit;
 
+    transition: transform $effect-duration;
+
     &--textarea {
       height: 144px;
 
@@ -60,17 +62,18 @@
       }
     }
 
-    &:hover {
-      & ~ .form__label {
-        transform: translateY(-25px);
-        font-size: 12px;
-      }
+    &::placeholder {
+      color: $form-placeholder-grey;
+      font-family: Cinzel, serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
 
-      &::placeholder {
-        opacity: 1;
-      }
+      opacity: 0;
     }
 
+    &:hover,
     &:focus {
       & ~ .form__label {
         transform: translateY(-25px);
@@ -82,16 +85,11 @@
       }
     }
 
-    &::placeholder {
-      color: $form-placeholder-grey;
-      font-family: Cinzel;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 20px;
-
-      opacity: 0;
+    &:active,
+    &:focus {
+      outline: none;
     }
+
   }
 
   &__button {
