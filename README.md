@@ -22,3 +22,5 @@ BEM technology ensures the harmony of blocks, elements, and modifiers, creating 
 Join me on this visual odyssey, where each line of code is a stroke of imagination, and every pixel tells a story. 
 Let's create a web experience that not only functions flawlessly but also captivates the soul. 
 Welcome to a digital masterpiece in the making.
+
+Here you can see a [Showcase DEMO](https://BetterSol.github.io/layout_landing-page/)
