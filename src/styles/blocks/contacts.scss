@@ -14,7 +14,7 @@
   font-weight: 700;
   line-height: 27px;
   text-align: center;
-  background-color: #fff;
+  background-color: $secondary-text-color;
   padding: 15px 48px;
   border-radius: 40px;
   text-decoration: none;
@@ -25,26 +25,65 @@
   box-sizing: border-box;
   width: 100%;
   margin-bottom: 48px;
+  border: none;
+
+  &:hover {
+    box-shadow: 1px 4px 16px $button-shadow-color;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px $button-shadow-color;
+  }
  }
 }
 
-.form__input {
-  box-sizing: border-box;
-  border-radius: 40px;
-  width: 100%;
+.form {
+  margin-bottom: 30px;
   display: flex;
-  background: #F8F8FA;
-  color: #7E7E83;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  border: none;
-  padding: 14px 16px;
-  margin-bottom: 16px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
 
-  &--textarea {
-    padding-top: 15px;
-    height: 200px;
-    resize: none;
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $input-color;
+    border-radius: 40px;
+    padding: 0 20px;
+    height: 48px;
+    border: none;
+    transition: $effect-duration;
+    outline: none;
+
+    &--textarea {
+      padding-top: 15px;
+      height: 200px;
+      resize: none;
+    }
+
+    &::placeholder {
+      font: $main-font;
+      color: $placeholder-color;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: left;
+    }
+
+    &:hover {
+      border: 1px solid $border-hover-color;
+
+      &::placeholder {
+        color: $placeholder-action-color;
+      }
+
+      &:focus {
+        font-family: $main-font;
+        color: $placeholder-action-color;
+
+        &::placeholder {
+          color: $placeholder-action-color;
+        }
+      }
+    }
   }
 }
