@@ -1,0 +1,54 @@
+@use "../utils/mixins" as *;
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: grey;
+  background-image: url('../images/header-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 90%;
+
+  @include for-tablet {
+    padding-bottom: 130px;
+    background-position: 50%;
+  }
+
+  @include for-desktop {
+    padding-bottom: 203px;
+    background-position: center;
+  }
+
+  grid-template-rows: 1fr 1fr;
+
+  @include grid;
+
+  &__navigation {
+    align-self: start;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__title {
+    align-self: end;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    padding-bottom: 20px;
+
+    @include for-tablet {
+      grid-column: 1 / 7;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+}
