@@ -1,0 +1,68 @@
+.top-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+
+  @include on-tablet {
+    padding: 50px 0;
+  }
+
+  &__logo {
+    display: flex;
+    width: 64px;
+    height: 46px;
+
+    @include hover-scale($standard-scale);
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__contact-info {
+    position: absolute;
+    list-style: none;
+    color: $white-main;
+
+    top: 20;
+    bottom: 0;
+    right: 110px;
+    margin: auto 0;
+
+    text-align: right;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $effect-duration, visibility $effect-duration;
+    transition-delay: $effect-duration;
+
+    &__label,
+    &__link {
+      @include top-bar-text-styling;
+
+      text-decoration: none;
+    }
+
+    &__link {
+      @include hover(color, $accent-main);
+      @include hover(text-shadow, $white-main);
+    }
+  }
+
+  @include on-tablet {
+    .top-bar__contact-info:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .icon--phone:hover {
+      & ~ .top-bar__contact-info {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
