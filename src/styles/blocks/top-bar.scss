@@ -5,8 +5,6 @@
   align-items: center;
   padding: 32px 0;
 
-  transition: visibility $effect-duration;
-
   @include on-tablet {
     padding: 50px 0;
   }
@@ -36,6 +34,10 @@
 
     text-align: right;
 
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $effect-duration, visibility $effect-duration;
+    transition-delay: $effect-duration;
 
     &__label,
     &__link {
@@ -43,10 +45,6 @@
 
       text-decoration: none;
     }
-
-    visibility: hidden;
-    transition: visibility $effect-duration;
-    transition-delay: $effect-duration;
 
     &__link {
       @include hover(color, $accent-main);
@@ -57,14 +55,13 @@
   @include on-tablet {
     .top-bar__contact-info:hover {
       visibility: visible;
+      opacity: 1;
     }
 
     .icon--phone:hover {
       & ~ .top-bar__contact-info {
         visibility: visible;
-
-        @include hover(color, $accent-main);
-        @include hover(color, $accent-main);
+        opacity: 1;
       }
     }
   }
