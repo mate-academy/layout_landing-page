@@ -1,10 +1,11 @@
+$black-text-color: #292929;
+$tablet-width: 576px;
+
 html {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
 
-  --black-color: #292929;
-  
-  color: var(--black-color);
+  color: $black-text-color;
 }
 
 body {
@@ -20,49 +21,86 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &__logo {
+    @media (max-width: $tablet-width) {
+      width: 125px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 36px;
+    line-height: 100%;
+    max-width: 295px;
+
+    @media (min-width: $tablet-width) {
+      font-size: 48px;
+      max-width: 396px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 56px;
+      max-width: 568px;
+    }
+
+  }
+
 }
 
 .top-bar {
   box-sizing: border-box;
   padding: 24px 20px 40px;
   height: 100vh;
+
+  @media (min-width: $tablet-width) {
+    padding: 32px 72px 65px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 32px 120px 92px;
+  }
+
 }
 
 .icon {
   display: block;
   width: 24px;
   height: 24px;
-}
-
-.icon--phone {
-  background-image: url(../icons/phone-number.svg);
-}
-
-.icon--sidebar--menu {
-  background-image: url(../icons/icon-burger-menu.svg);
-}
-
-.icon--close {
-  background-image: url(../icons/icon-close.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
+
+  @media (min-width: $tablet-width) {
+      width: 32px;
+      height: 32px;
+    }
+
+  &--phone {
+    background-image: url(../icons/phone-number.svg);
+  }
+
+  &--sidebar--menu {
+    background-image: url(../icons/icon-burger-menu.svg);
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
+
 
 .menu__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.header__icons {
-  display: flex;
-  gap: 24px;
-}
-
-.header__title {
-  margin: 0;
-  font-size: 36px;
-  line-height: 100%;
 }
 
 .sidebar__menu {
@@ -77,65 +115,73 @@ body {
   pointer-events: none;
   transform: translateX(100%);
   transition: 0.5s;
-}
 
-.sidebar__menu__top {
-  padding-bottom: 24px;
-}
-
-.sidebar__menu:target {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateX(0%);
-}
-
-.sidebar__nav__links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin: 32px 0;
-  padding: 0;
-  margin-bottom: 48px;
-}
-
-.sidebar__menu__link {
-  text-decoration: none;
-  color: var(--black-color);
-  font-size: 22px;
-  line-height: 22px;
-  letter-spacing: 2px;
-}
-
-.sidebar__menu__link:hover {
-  text-decoration: underline;
-  color: var(--black-color);
-}
-
-.sidebar__menu__phone {
-  color: var(--black-color);
-  text-decoration: none;
-  display: block;
-  margin-bottom: 16px;
-  line-height: 140%;
-  letter-spacing: 2px;
-}
-
-.sidebar__menu__call {
-  color: var(--black-color);
-  text-transform: uppercase;
-  text-decoration: none;
-  border-bottom: 1px solid var(--black-color);
-  padding-bottom: 7px;
-  line-height: 140%;
-  letter-spacing: 2px;
-}
-
-@media (max-width: 320px) {
-  .header__logo {
-    width: 125px;
+  &__logo {
+    @media (max-width: $tablet-width) {
+      width: 125px;
+    }
   }
-  .sidebar__menu__logo {
-    width: 125px;
+
+  &__top {
+    padding-bottom: 24px;
+
+    @media (min-width: $tablet-width) {
+      padding-bottom: 32px;
+    }
   }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0%);
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 32px 0;
+    padding: 0;
+    margin-bottom: 48px;
+
+    @media (min-width: $tablet-width) {
+      margin-top: 56px;
+    }
+
+  }
+
+
+  &__link {
+    text-decoration: none;
+    color: $black-text-color;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+  }
+
+  &__link:hover {
+    text-decoration: underline;
+    color: $black-text-color;
+  }
+
+  &__phone {
+    color: $black-text-color;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
+  &__call {
+    color: $black-text-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid $black-text-color;
+    padding-bottom: 7px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
 }
