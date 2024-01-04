@@ -6,13 +6,6 @@
     @include on-tablet {
       row-gap: 56px;
     }
-
-    &--button {
-      @include on-desktop {
-        grid-column: 1 / 4;
-        width: 324px;
-      }
-    }
   }
 }
 
@@ -20,25 +13,28 @@
   &__photos {
     @include page-grid;
 
+    gap: 20px;
     margin-bottom: 16px;
   }
 
   &__link {
     position: relative;
+    display: block;
+    overflow: hidden;
 
     &--wide {
       @include on-tablet {
-        grid-column: 4;
+        grid-column: span 4;
       }
 
       @include on-desktop {
-        grid-column: 8;
+        grid-column: span 8;
       }
     }
 
     &--square {
-      height: 0;
-      padding-bottom: 100%;
+      height: 100%;
+      object-fit: cover;
 
       @include on-tablet {
         grid-column: span 2;
@@ -51,7 +47,6 @@
   }
 
   &__photo {
-    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
