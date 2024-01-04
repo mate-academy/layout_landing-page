@@ -1,0 +1,74 @@
+/* #region nav*/
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 22px;
+    line-height: 22px; /* 100% */
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left ;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__item:last-child {
+    padding-bottom: 0;
+  }
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.link-with-info {
+  position: relative; /* Налаштовуємо позицію для псевдоелементу */
+  text-decoration: none; /* Забираємо підкреслення посилання */
+}
+
+.link-with-info::before {
+  content: "+1 234 5555-55-55";
+  color: #000;
+  /* Використовуємо атрибут data-info як вміст псевдоелемента */
+  position: absolute;
+  /* Розташовуємо псевдоелемент абсолютно відносно батьківського елементу */
+  // top: 100%; /* Позиціонуємо псевдоелемент внизу посилання */
+  // left: -100px; /* Розташовуємо псевдоелемент від лівого краю посилання */
+  right: 30px;
+  padding: 5px;
+  /* Зовнішні відступи для стилізації */
+  display: none; /* Спочатку приховуємо псевдоелемент */
+  z-index: 1;
+  /* Збільшуємо значення z-index, щоб псевдоелемент був поверх контенту */
+  width: max-content;
+  // height: 20px;
+}
+
+.link-with-info:hover::before {
+  display: block; /* Показуємо псевдоелемент при наведенні на посилання */
+}
+/* #endregion*/
