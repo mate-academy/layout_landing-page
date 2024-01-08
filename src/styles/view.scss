@@ -1,0 +1,141 @@
+.on__view {
+  &--title {
+    margin-bottom: 0;
+  }
+
+  &__description__align--center {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 48px;
+
+    @include onTablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+}
+  .view  {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--same {
+      --colums: 3;
+      display: grid;
+      column-gap: 8px;
+      grid-template-columns: repeat(var(--colums), 1fr);
+      margin-bottom: 24px;
+
+      @include onTablet {
+        --colums: 6;
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        --colums: 12;
+      }
+    }
+  }
+
+  &__photo {
+    &--mobile--first {
+      transform: scale(1.4);
+      object-position: 20% 20%;
+    }
+
+    &--mobile--second {
+      object-position: right;
+    }
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__link {
+    @include hover(transform, scale(1.2));
+
+    position: relative;
+    overflow: hidden;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--same {
+      padding-bottom: 100%;
+      height: 0;
+      grid-column: span 1;
+
+      @include onTablet {
+        grid-column: span 3;
+
+        &:last-child {
+          display: none;
+        }
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+
+        &:last-child {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: $main-accent-color;
+    font-size: 16px;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  &__button {
+    @include pageGrid;
+
+    &--link {
+      grid-column: 1 / -1;
+
+      @include onTablet {
+        grid-column: 2 / -2;
+      }
+
+      @include onDesktop {
+        grid-column: 4 / -4;
+      }
+
+      @include pageButton;
+    }
+  }
+}
+
