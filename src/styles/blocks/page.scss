@@ -1,0 +1,77 @@
+* {
+  font-family: Poppins, sans-serif;
+
+  &::selection {
+    background-color: #7a7c7c;
+    color: $dark-theme-color;
+  }
+
+  &::-moz-selection {
+    background-color: #7a7c7c;
+    color: $dark-theme-color;
+  }
+}
+
+.page {
+  font-size: 16px;
+  text-align: left;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+
+    color: #fff;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: $transition-speed;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+
+    @for $item from 1 through 5 {
+      .nav__list :nth-child(#{$item}) {
+        animation: menu 0.3s ease #{$item/5}s 1 normal forwards running;
+      }
+    }
+  }
+
+  &:has(.section__title:target) {
+    .section__title {
+      animation: sectionTitle 1000ms ease forwards;
+      @include textAnimation(sectionTitle, 100%, 0);
+    }
+  }
+}
+
+@keyframes menu {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-3%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
