@@ -24,7 +24,9 @@
               <img src="images/Logo.png" alt="Bike">
             </a>
             <div class="top-bar__icons">
-              <a href="tel:+1 234 5555-55-55" class="icon icon--phone"></a>
+              <p id="mobile" class="top-bar__phone">+1 234 5555-55-55</p>
+              <a href="#mobile" class="icon icon--phone">
+              </a>
               <a href="#menu" class="icon icon--menu"></a>
             </div>
           </div>
@@ -34,6 +36,45 @@
         </div>
       </div>
     </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const mobileLink = document.querySelector('a[href="#mobile"]');
+        if (mobileLink) {
+          mobileLink.addEventListener("click", function(e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение ссылки (прокрутку к якорю)
+            const mobileElement = document.getElementById("mobile");
+            if (mobileElement) {
+              mobileElement.style.opacity = "1";
+              mobileElement.style.pointerEvents = "all";
+              mobileElement.style.transform = "translateX(0)";
+            }
+          });
+        }
+      });
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const mobileLink = document.querySelector('a[href="#mobile"]');
+    if (mobileLink) {
+      mobileLink.addEventListener("click", function(e) {
+        e.preventDefault(); // Предотвращаем стандартное поведение ссылки (прокрутку к якорю)
+        const mobileElement = document.getElementById("mobile");
+        if (mobileElement) {
+          const isVisible = window.getComputedStyle(mobileElement).opacity === "1";
+          if (isVisible) {
+            mobileElement.style.opacity = "0";
+            mobileElement.style.pointerEvents = "none";
+            mobileElement.style.transform = "translateX(-100%)";
+          } else {
+            mobileElement.style.opacity = "1";
+            mobileElement.style.pointerEvents = "all";
+            mobileElement.style.transform = "translateX(0)";
+          }
+        }
+      });
+    }
+  });
+    </script>
 
     <aside class="menu page__menu menu__top" id="menu">
       <div class="container">
