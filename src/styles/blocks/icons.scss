@@ -6,13 +6,29 @@
 
   @include hover(transform, scale(1.2));
 
-  @include onTablet {
+  @include on-tablet {
     width: 32px;
     height: 32px;
   }
 
   &--phone {
+    position: relative;
+
     background-image: url(../images/icons/icon-phone-call.svg);
+
+    @include on-tablet {
+      &:hover {
+        &::before {
+          content: "+1 234 5555-55-55";
+          position: absolute;
+          color: $main-text-color;
+          left: -12em;
+          top: 8px;
+          letter-spacing: 2px;
+          font-size: 12px;
+        }
+      }
+    }
   }
 
   &--menu {
