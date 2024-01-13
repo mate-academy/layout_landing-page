@@ -1,0 +1,81 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin add-transition {
+  transition-duration: 1500ms;
+  transition-timing-function: cubic-bezier(0, .98, .79, .97);
+}
+
+@mixin anim-on-scroll($nameClass, $property, $toValue, $activValue, $delay) {
+  &#{$nameClass}.anim-show {
+    transition: $property, opacity;
+
+    @include add-transition;
+
+    transition-delay: $delay;
+  
+    #{$property}: $toValue;
+    opacity: 0;
+    &.active {
+      #{$property}: $activValue;
+      opacity: 1;
+    }
+  }
+
+  &.active .anim-show {
+    #{$property}: $activValue;
+    opacity: 1;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  @include add-transition;
+
+  transition-property: #{$property};
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    max-width: $content-tablet-max-width;
+    margin-inline: auto;
+  }
+
+  @include on-desktop {
+    max-width: $content-desktop-max-width;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}

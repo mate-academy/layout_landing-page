@@ -1,0 +1,32 @@
+.compare-bikes {
+  overflow: hidden;
+
+  @include anim-on-scroll(__title, transform, translate(-120%, 0), translate(0, 0), 0);
+  @include anim-on-scroll(__anim-first, transform, translate(120%, 0), translate(0, 0), 300ms);
+  @include anim-on-scroll(__anim-second, transform, translate(-120%, 0), translate(0, 0), 500ms);
+  @include anim-on-scroll(__anim-third, transform, translate(120%, 0), translate(0, 0), 800ms);
+
+  @include on-desktop {
+    @include anim-on-scroll(__anim-first, transform, translate(-120%, 0), translate(0, 0), 300ms);
+    @include anim-on-scroll(__anim-second, transform, translate(0, 120%), translate(0, 0), 500ms);
+    @include anim-on-scroll(__anim-third, transform, translate(120%, 0), translate(0, 0), 800ms);
+  }
+
+  &__products {
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__product {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
