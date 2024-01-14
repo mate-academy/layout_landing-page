@@ -63,7 +63,7 @@
 }
 
 @mixin button {
-  height: 56px;
+  padding-block: 14.5px;
   display: block;
 
   border-radius: 40px;
@@ -73,7 +73,7 @@
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-  line-height: 56px;
+  line-height: 27px;
 
   @include buttonHover;
   @include buttonPressed;
@@ -85,10 +85,43 @@
   }
 }
 
-
-
 @mixin buttonHover {
 &:hover {
   box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.40);
 }
+}
+
+@mixin input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  display: block;
+
+  border: 1px solid $input-background-color;
+  background: $input-background-color;
+  color: $input-text-color;
+  font-family: Poppins, sans-serif;
+  line-height: 20px;
+
+  @include input-hover;
+  @include input-focus;
+}
+
+@mixin input-hover {
+  &:hover {
+    border: 1px solid $input-border-color;
+    cursor: pointer;
+
+    &::placeholder {
+      color: $input-hover-text-color;
+    }
+  }
+}
+
+@mixin input-focus {
+  &:focus {
+    border: 1px solid #292929;
+    color: $input-hover-text-color;
+    outline: none;
+  }
 }
