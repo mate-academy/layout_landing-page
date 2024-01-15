@@ -34,7 +34,7 @@ Dive deep into thought-provoking exhibits that span across centuries and contine
 
 To set up the MET landing page locally, follow these steps:
 
-1. Clone this repository: git clone https://github.com/your-username/met-landing.git
+1. Clone this repository: git clone https://github.com/your-username/layout_landing-page.git
 2. Navigate to the project directory: cd met-landing
 3. Open the index.html file in your preferred browser.
 
