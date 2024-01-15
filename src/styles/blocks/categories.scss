@@ -1,0 +1,83 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #F98921;
+    height: 56px;
+    border-radius: 8px;
+    padding: 0 48px;
+
+    &:hover {
+      background-color: #1B2129;
+      color: $button-text-color;
+      border: 1px solid $button-text-color;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    &--left {
+      grid-column: 1 / 2;
+
+      @include on-tablet {
+        grid-column: 1 / 4;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 7;
+      }
+    }
+    &--right {
+      grid-column: 2 / -1;
+
+      @include on-tablet {
+        grid-column: 4 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 7 / -1;
+      }
+    }
+  }
+  &__photo {
+    width: 100%;
+    min-height: 130px;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+    }
+
+    color: $button-text-color;
+    text-decoration: none;
+  }
+
+  &__border {
+    overflow: hidden;
+  }
+}
