@@ -10,10 +10,29 @@
   }
 
   &__link {
+    position: relative;
     color: $menu-text-color;
     text-decoration: none;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $menu-text-color;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
