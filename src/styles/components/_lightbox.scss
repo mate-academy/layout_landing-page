@@ -1,0 +1,80 @@
+.lightbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition-property: opacity;
+
+  @include add-transition;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  &__content {
+    transform: scale(0.95);
+    transition-property: transform;
+
+    @include add-transition;
+  }
+
+  &.is-open .lightbox__content {
+    transform: scale(1);
+  }
+
+  &__image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 100vh;
+    max-width: 100vw;
+  }
+
+  &__button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition-property: background-color;
+
+    @include add-transition;
+
+    outline: none;
+    background-image: url(../icons/icon-close-modal.svg);
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+  }
+
+  &__button:hover,
+  &__button:focus {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
