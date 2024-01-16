@@ -4,7 +4,7 @@
   width: 24px;
   background-image: url("../images/icons/icon-burger-menu.png");
   background-size: cover;
- 
+
   @include hover(transform, scale(1.2));
 
   @include on-table {
@@ -14,6 +14,30 @@
 
   &--phone{
     background-image: url("../images/icons/icon-phone.png");
+    position: relative;
+
+    @include on-desktop {
+      &::after {
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        right: calc(100% + 20px);
+        top: 25%;
+        display: block;
+        width: max-content;
+        color: #fff;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        transition: transform $transition-duration;
+        transform: scale(0);
+        transform-origin: right;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
   }
 
   &--menu {
