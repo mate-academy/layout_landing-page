@@ -1,5 +1,5 @@
 'use strict';
 
 AOS.init({
-  duration: 700,
+  duration: 500,
 });
