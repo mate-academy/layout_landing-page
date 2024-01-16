@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: Poppins, sans-serif;
+  color: $white-color-text;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: $min-width-mobile;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all $duration-for-animation;
+    pointer-events: none;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0%);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
