@@ -1,0 +1,40 @@
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $menu-link-color;
+    width: fit-content;
+    transition: $transition-time;
+
+    @include on-pc {
+      font-weight: 700;
+    }
+
+    &:hover::after {
+      @include on-pc {
+        position: absolute;
+        content: "";
+        display: block;
+        border-bottom: 1px solid $menu-link-color;
+        height: 1px;
+        bottom: -8px;
+        animation: nav-line $transition-time forwards;
+      }
+    }
+  }
+}
