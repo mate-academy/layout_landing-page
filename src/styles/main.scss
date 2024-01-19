@@ -1,3 +1,145 @@
-body {
-  margin: 0;
+@import "./utils/variables";
+@import "./utils/mixin";
+
+.page {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  line-height: 140%;
+  background-color: #fff;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.header {
+  background-image: url("../images/header-bg-mob.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  &__bottom {
+    padding-bottom: 40px;
+
+    @include content-padding-inline;
+  }
+}
+
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @media (min-width: 576px) {
+      gap: 32px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/icons/burger-menu.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &--phone {
+    background-image: url("../images/icons/phone-icon.svg");
+  }
+
+  &--menu {
+    background-image: url("../images/icons/burger-menu.svg");
+  }
+
+  &--close {
+    background-image: url("../images/icons/close-icon.svg");
+  }
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.menu {
+  height: 100vh;
+  background-color: #e5e6e8;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 22px;
+
+  &__top {
+    margin-bottom: 32px;
+
+    @media (min-width: 576px) {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+  &__bottom {
+    font-size: 16px;
+  }
+
+  &__phone-number {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__call-to-order {
+    display: block;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $main-text-color;
+    width: fit-content;
+  }
+}
+
+.menu__inner {
+  @include content-padding-inline;
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    font-size: 22px;
+  }
 }
