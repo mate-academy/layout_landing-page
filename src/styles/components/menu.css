@@ -1,11 +1,11 @@
 .menu {
-  padding: 25px 20px 41vh;
+  padding: 25px 20px 288px;
   box-sizing: border-box;
   height: 100vh;
   background-color: var(--main-accent);
   font-weight: 700;
   text-transform: uppercase;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .menu__content {
@@ -20,9 +20,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: calc(100vw / 1.41);
+  margin-bottom: 40px;
   position: sticky;
   top: 0;
+}
+
+.menu__top--header {
+  margin-bottom: 129px;
 }
 
 .menu__top--aside {
@@ -63,6 +67,7 @@
 
 .nav__link:hover {
   border-bottom: 1px solid #fff;
+  transition: all 0.5s ease-in-out;
 }
 
 .menu__items {
@@ -75,10 +80,21 @@
 .menu__items--hover {
   display: flex;
   position: absolute;
-  right: 180px;
-  top: 24px;
+  right: 70px;
+  top: -20;
+  padding-right: 35px;
   color: #fff;
-  visibility: hidden;
+  transform: translateX(-100%);
+  transition: visibility 0.5s, transform 0.5s ease-in-out;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.menu__items--hover:hover {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all;
 }
 
 .menu__item {
@@ -98,19 +114,20 @@
 
 .menu__phone-number:hover {
   color: var(--hover-info);
+  transition: all 0.5s ease-in-out;
 }
 
 @media (min-width: 744px) {
   .menu {
     box-sizing: border-box;
-    padding: 43px 72px 41vh;
+    padding: 43px 72px 50vh;
     background-color: var(--main-accent);
     font-weight: 700;
     text-transform: uppercase;
   }
 
-  .menu__top {
-    margin-bottom: calc(100vw / 5);
+  .menu__top--header {
+    margin-bottom: 141px;
   }
 
   .menu__logo {
@@ -125,23 +142,14 @@
   }
 
   .menu__top {
-    margin-bottom: calc(100vw / 15);
+    margin-bottom: 55px;
+  }
+
+  .menu__top--header {
+    margin-bottom: 83px;
   }
 
   .menu__nav {
     margin-bottom: 48px;
-  }
-
-  .menu__items--hover {
-    display: flex;
-    position: absolute;
-    right: 240px;
-    top: 24px;
-    color: #fff;
-    visibility: hidden;
-  }
-
-  .menu__items--hover:hover {
-    visibility: visible;
   }
 }
