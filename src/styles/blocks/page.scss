@@ -1,0 +1,48 @@
+.page {
+  font-family: Poppins, sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+
+    opacity: 0;
+    transform: translate(-100%);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translate(0);
+    pointer-events: all;
+  }
+
+  &__footer {
+    background-image: url(../images/footer-bg.png);
+    height: 454px;
+    background-size: cover;
+    background-position: center;
+
+    @include onTablet {
+      height: 1090px;
+    }
+    @include onDesktop {
+      height: 1260px;
+    }
+  }
+}
