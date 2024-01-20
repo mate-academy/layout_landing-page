@@ -9,30 +9,34 @@
   &--phone {
     position: relative;
     background-image: url(../images/icons/phone-call.svg);
+    tab-size: 158px;
 
-    &::before {
-      content: '+1 234 555-55-55';
-      position: absolute;
-      top: 8px;
-      left: -158px;
-      display: block;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-      color: $main-color;
-      text-decoration: none;
-      opacity: 0;
-      pointer-events: none;
+    @include transitionDefault(all);
 
-      @include transitionDefault(all);
+    @include onTablet {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        top: 8px;
+        left: -158px;
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $main-color;
+        text-decoration: none;
+        opacity: 0;
+
+        @include transitionDefault(all);
+      }
+
+      &:hover::before  {
+        opacity: 1;
+      }
+
     }
 
-    &:hover::before {
-      content: '+1 234 555-55-55';
-      opacity: 1;
-      pointer-events: all;
-    }
   }
 
   &--burger {
@@ -47,7 +51,7 @@
 
   &--close {
     @include hover(transform, scale(1.2));
-    
+
     background-image: url(../images/icons/close.svg);
   }
 
