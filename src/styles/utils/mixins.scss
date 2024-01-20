@@ -1,43 +1,45 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $table-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} $effectDuration;
+  transition: #{$property} $effect-duration;
   &:hover {
     #{$property}: $toValue;
   }
 }
 
 @mixin transition($property) {
-  transition: #{$property} $effectDuration;
+  transition: #{$property} $effect-duration;
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
+
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     --columns: 6;
+
     column-gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     --columns: 12;
   }
 }
 
-@mixin formText {
+@mixin form-text {
   padding: 14px 16px;
   margin-bottom: 16px;
   height: 48px;
@@ -51,6 +53,7 @@
   line-height: 20px;
   outline: none;
   resize: none;
+
   @include transition(border);
 
     &:hover {
@@ -62,7 +65,7 @@
 @mixin button {
   display: flex;
   height: 56px;
-  padding: 0px 48px;
+  padding: 0 48px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -77,11 +80,11 @@
   font-weight: 700;
   line-height: 27px;
   text-decoration: none;
-  @include transition(box-shadow);
 
-  @include hover(box-shadow,  1px 4px 16px 0px rgba(232, 232, 240, 0.40));
+  @include transition(box-shadow);
+  @include hover(box-shadow,  1px 4px 16px 0 rgba(232, 232, 240, 0.40));
 
   &:active {
-    box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.64);
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
   }
 }
