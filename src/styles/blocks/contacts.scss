@@ -1,38 +1,18 @@
 .contacts {
-  &__form {
-    @include page-grid;
+  &__container {
+    display: flex;
+    flex-direction: column;
 
-    &__name,
-    &__email {
-      @include input-styles;
-      @include text-styles;
-
-      grid-column: span 2;
-
-      @include on-tablet {
-        grid-column: 1/4;
-      }
-
-      @include on-desktop {
-        grid-column: 1/6;
-      }
+    @include on-tablet {
+      @include page-grid;
     }
 
-    &__message {
-      box-sizing: border-box;
-
-      @include text-styles;
-
+    &__form {
       display: flex;
-      margin-bottom: 32px;
-      padding: 14px 16px;
-      align-items: flex-start;
-      gap: 10px;
-      height: 120px;
-
-      border-radius: 16px;
-      background: #f8f8fa;
-      grid-column: span 2;
+      flex-direction: column;
+      outline: none;
+      border: none;
+      @include text-styles;
 
       @include on-tablet {
         grid-column: 1/4;
@@ -41,61 +21,95 @@
       @include on-desktop {
         grid-column: 1/6;
       }
+
+      &__name,
+      &__email {
+        @include input-styles;
+        @include text-styles;
+      }
+
+      &__message {
+        box-sizing: border-box;
+        @include text-styles;
+        display: flex;
+        margin-bottom: 32px;
+        padding: 14px 16px;
+        align-items: flex-start;
+        gap: 10px;
+        min-height: 120px;
+        border-radius: 16px;
+        background: #f8f8fa;
+
+        &:hover {
+          border: 1px solid #d5d7de;
+          color: #292929;
+        }
+
+        &:active {
+          border: 1px solid #292929;
+          color: #292929;
+        }
+      }
     }
 
-    &__company-phone,
-    &__company-email,
-    &__company-address {
-      grid-column: span 2;
+    &__button {
+      @include page-grid;
+      @include button-styles;
+      display: flex;
+      margin-bottom: 48px;
 
       @include on-tablet {
-        grid-column: 4/7;
+        grid-column: 1/4;
+        margin-bottom: 120px;
       }
 
       @include on-desktop {
-        grid-column: 8/13;
-      }
-    }
-
-    &__company-phone,
-    &__company-email {
-      &__actual {
-        margin: 0 0 24px;
-      }
-    }
-
-    &__company-address,
-    &__company-email {
-      &__title {
-        margin: 0 0 8px;
-      }
-    }
-
-    &__company-phone {
-      white-space: nowrap;
-
-      &__title {
-        margin: 48px 0 8px;
-      }
-    }
-
-    &__company-address {
-      margin-bottom: 120px;
-
-      &__actual-address {
-        margin: 0;
-        padding: 0;
-      }
-
-      @include on-desktop {
+        grid-column: 1/6;
         margin-bottom: 182px;
       }
     }
-  }
 
-  &__button {
-    grid-column: span 2;
+    &__details {
+      display: flex;
+      flex-direction: column;
 
-    @include button-styles;
+      @include on-tablet {
+        grid-column: 4/6;
+      }
+
+      @include on-desktop {
+        grid-column: 8/11;
+      }
+
+      &-phone,
+      &-email,
+      &-address {
+        &__label {
+          margin: 0 0 8px;
+          padding: 0;
+
+          color: #fff;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 140%;
+        }
+
+        &__actual {
+          margin: 0 0 24px;
+          padding: 0;
+
+          color: #fff;
+          font-family: inherit;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 140%;
+
+          &:last-child {
+            margin-bottom: 120px;
+          }
+        }
+      }
+    }
   }
 }
