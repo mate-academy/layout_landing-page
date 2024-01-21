@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+html {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 400;
+  color: $page-text-color;
+}
+
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translate(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translate(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
