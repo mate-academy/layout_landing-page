@@ -2,25 +2,53 @@
   display: block;
   height: 24px;
   width: 24px;
-  background-size: cover;
+  background-size: 18px;
+  background-repeat: no-repeat;
   background-position: center;
 
   @include hover(transform, scale(1.2));
 
-  @include onTablet {
+  @include on-tablet {
     height: 32px;
     width: 32px;
+    background-size: 24px;
   }
 
   &--phone {
-    background-image: url(../images/icons/icon-phone-call.svg);
+    position: relative;
+    background-image: url(../images/icons/icon-phone.svg);
+    display: flex;
+    align-items: center;
+
+    @include on-desktop {
+      &::after {
+        position: absolute;
+        content: '+1 234 555-55-55';
+        width: max-content;
+        right: 20px + $desctop-icon-size;
+        transition: transform 0.3s;
+        transform: scale(0);
+        transform-origin: right;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #fff;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
   }
 
+
   &--menu {
-    background-image: url(../images/icons/icon-burger-menu.svg);
+    background-image: url(../images/icons/icon-menu.svg);
 
     &:hover {
-      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+      background-image: url(../images/icons/icon-menu-hover.svg);
     }
   }
 
