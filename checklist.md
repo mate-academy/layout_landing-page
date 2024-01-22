@@ -1,6 +1,6 @@
-1. Use the logo as a favicon
-2. Use the landing name as a page title
-3. All logos should be links to the top of the page
+1. Use the logo as a favicon +
+2. Use the landing name as a page title +
+3. All logos should be links to the top of the page -
 4. Change text color on hover for phone, email, and address
 5. Make sure phone icons and phone numbers are real links to start a call
 6. All addresses should be links to some location on Google Maps. Open them in a new tab with `target="_blank"`.
@@ -8,7 +8,7 @@
 8. Make sure everything looks neat on mobile and without horizontal scrolling
 9. The speed of animations should be the same throughout the page (for example, increasing when hovering or moving blocks when scrolling)
 10. Ensure that all `nav__links` work smoothly
-11. Disable page scrolling under the menu using the next code:
+11. Disable page scrolling under the menu using the next code: +
     ```css
     .page:has(.page__menu:target) {
       overflow: hidden; /* not to scroll the page */
