@@ -13,24 +13,19 @@
   right: 0;
   left: 0;
   opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s;
   pointer-events: none;
 }
 
 .page__menu:target {
+  transform: translateX(0);
   opacity: 1;
   pointer-events: all;
 }
 
-.page:has(.page__menu:target) {
-  overflow: hidden;
-}
-
-.link-hover:hover {
-  color: #40e065;
-}
-
 .header {
-  background-image: url("../images/header-bg-mob.png");
+  background-image: url("../images/header-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,6 +60,14 @@
   padding-inline: 20px;
 }
 
+.top-bar__logo {
+  transition: transform 0.3s;
+}
+
+.top-bar__logo:hover {
+  transform: scale(1.2);
+}
+
 @media (min-width: 576px) {
   .top-bar {
     padding-inline: 72px;
@@ -96,6 +99,19 @@
   background-image: url("../images/icons/burger-menu.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+@media (min-width: 576px) {
+  .icon {
+    height: 32px;
+    width: 32px;
+  }
 }
 
 .icon--phone {
@@ -106,15 +122,12 @@
   background-image: url("../images/icons/burger-menu.svg");
 }
 
-.icon--close {
-  background-image: url("../images/icons/close-icon.svg");
+.icon--menu:hover {
+  background-image: url("../images/icons/burger-menu-hover.svg");
 }
 
-@media (min-width: 576px) {
-  .icon {
-    height: 32px;
-    width: 32px;
-  }
+.icon--close {
+  background-image: url("../images/icons/close-icon.svg");
 }
 
 .menu {
@@ -152,7 +165,7 @@
   display: block;
   padding-bottom: 4px;
   border-bottom: 1px solid #292929;
-  width: moz-fit-content;
+  width: --moz-fit-content;
   width: fit-content;
 }
 
@@ -175,4 +188,26 @@
 
 .nav__link {
   font-size: 22px;
+  position: relative;
+}
+
+.nav__link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  bottom: -8px;
+  background-color: #292929;
+  transition: transform 0.3s;
+  transform: scale(0);
+  transform-origin: left;
+}
+
+.nav__link:hover::after {
+  transform: scale(1);
+}
+
+.link-hover:hover {
+  color: #40e065;
 }/*# sourceMappingURL=main.css.map */
