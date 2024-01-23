@@ -3,14 +3,11 @@ $weighter-font: 700;
 /* #region page */
 
 .page {
-  font-family: Manrope, sans-serif;
+  font-family: Manrope, Inter, sans-serif;
   line-height: 140%; /* 22.4px */
   letter-spacing: 0.15px;
   font-size: 16px;
   scroll-behavior: smooth;
-  cursor:
-    url(../images/cursor/mouse/mice.png),
-    auto;
 }
 
 .page__body {
@@ -82,6 +79,7 @@ $weighter-font: 700;
 
 .top-bar__icons {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
@@ -157,25 +155,32 @@ $weighter-font: 700;
   display: block;
   height: 24px;
   width: 24px;
+  text-decoration: none;
+}
+
+.icon:hover {
+  cursor:
+  url(../images/cursor/mouse/mice.png),
+  pointer;
 }
 
 .icon--phone {
-  background-image: url(../images/icons/icon-phone.png);
+  background-image: url(../images/icons/icon-phone.svg);
   background-size: contain;
 }
 
 .icon--menu {
-  background-image: url(../images/icons/icon-burger-menu.png);
+  background-image: url(../images/icons/icon-burger-menu.svg);
   background-size: contain;
 }
 
 .icon--menu:hover {
-  background-image: url(../images/icons/icon-burger-menu-hover.png);
+  background-image: url(../images/icons/icon-burger-menu-hover.svg);
   background-size: contain;
 }
 
 .icon--close {
-  background-image: url(../images/icons/icon-close.png);
+  background-image: url(../images/icons/icon-close.svg);
   background-size: contain;
 }
 
@@ -216,6 +221,9 @@ $weighter-font: 700;
 
 .button:hover {
   background: #1B2129;
+  cursor:
+    url(../images/cursor/mouse/mice.png),
+    pointer;
 }
 
 .button:active {
@@ -230,6 +238,12 @@ $weighter-font: 700;
   flex-direction: column;
   padding: 64px 0 0;
   padding-inline: 20px;
+  gap: 40px;
+}
+
+.recommended__wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
@@ -393,6 +407,12 @@ $weighter-font: 700;
   padding-inline: 20px;
 }
 
+.contact-us__content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 64px;
+}
+
 .contact-us__form {
   display: flex;
   flex-direction: column;
@@ -410,18 +430,26 @@ $weighter-font: 700;
   letter-spacing: 0.15px;
   background: #F9F9F9;
   color: #1B2129;
-  width: 280px;
+  min-width: 280px;
+  max-width: 600px;
   box-sizing: border-box;
   padding: 14px 16px;
   border: 0;
 }
 
-.contact-us__input::placeholder {
-  color: #7E7E83;
-}
-
 .contact-us__input:focus, .contact-us__input:focus-visible, .contact-us__input:active {
   outline: 2px solid #F98921;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #31b0dd;
+  -webkit-box-shadow: 0 0 0 40rem #ffff inset;
+}
+
+.contact-us__input::placeholder {
+  color: #7E7E83;
 }
 
 .contact-us__input:hover {
@@ -430,25 +458,20 @@ $weighter-font: 700;
 
 .contact-us__input-message {
   height: 148px;
-}
-
-.contact-us__content {
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 64px;
+  resize: none;
 }
 
 .contact-us__field {
   color: #9393A3;
   font-size: 14px;
-  width: 280px;
+  max-width: 600px;
   margin: 24px 0 8px;
 }
 
 .contact-us__link {
   color: #191919;
   text-decoration: none;
-  width: 280px;
+  max-width: 600px;
   margin: 0;
 }
 
@@ -611,7 +634,7 @@ $weighter-font: 700;
 /* #endregion */
 
 /* #region media 1260px */
-@media screen and (min-width: 1260px){
+@media screen and (orientation: landscape) and (min-width: 1260px){
 
   .page {
     font-size: 16px;
@@ -651,18 +674,46 @@ $weighter-font: 700;
     margin-bottom: 56px;
   }
 
+  .nav__link:hover {
+    width: fit-content;
+    border-bottom: 1px solid #1B2129;
+  }
+
   .icon {
     display: block;
     height: 32px;
     width: 32px;
   }
 
-  .main {
-    gap: 120px;
+  .icon--phone {
+    position: relative;
   }
 
-  .button {
-    width: 324px;
+  .icon--phone::before {
+    content:'+1 234 555-55-55';
+    color: #1B2129;
+    text-align: right;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px; /* 133.333% */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: absolute;
+    height: auto;
+    width: 200px;
+    display:none;
+  }
+
+  .icon--phone:hover::before {
+    right: 40px;
+    top: 12px;
+    display: block;
+  }
+
+  .main {
+    gap: 120px;
   }
 
   .section-title {
@@ -685,6 +736,11 @@ $weighter-font: 700;
   .recommended__product-image {
     width: 324px;
     height: 324px;
+    transition: transform .2s;
+  }
+
+  .recommended__product-image:hover {
+    transform: scale(1.15);
   }
 
   .recommended__product-description {
@@ -697,6 +753,10 @@ $weighter-font: 700;
     padding-block: 0;
     padding-inline: 72px;
     gap: 56px;
+  }
+
+  .categories .button {
+      width: 324px;
   }
 
   .categories__image-holder {
