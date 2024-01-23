@@ -1,0 +1,122 @@
+.menu {
+  position: fixed;
+  padding: 24px 20px 40px;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+
+  overflow: auto;
+  transition: padding .3s, opacity .3s;
+
+  opacity: 0;
+  background-color: $background-nav-color;
+  pointer-events: none;
+
+  @include onTablet {
+    padding: 32px 72px 65px;
+  }
+
+  @include onDesktop {
+    padding: 32px 120px 92px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 60px;
+    gap: 32px;
+
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+  }
+
+  @include onDesktop {
+
+    &__item {
+      display: block;
+      position: relative;
+      &::after {
+        opacity: 0;
+        transition: opacity $transition-duration, transform $transition-duration;
+        content: '';
+        height: 1px;
+        background-color: $main-color;;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        position: absolute;
+        transform: translateY(100%);
+      }
+
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: translate(0);
+        }
+      }
+    }
+  }
+
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    .header {
+      height: 0;
+      opacity: 0;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__phone-number {
+    display: block;
+
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__contacts  {
+    margin-top: 16px;
+
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__contact {
+    position: relative;
+    display: inline-block;
+    margin-top: 16px;
+  }
+
+  &__call-to-order::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    background-color: black;
+    height: 1px;
+    bottom:0;
+    right: 0;
+  }
+}
+
+.page:has(.menu:target) {
+  position: fixed;
+  overflow: hidden;
+  width: 100vw;
+}
