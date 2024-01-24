@@ -12,7 +12,7 @@
     ```css
     .page:has(.page__menu:target) {
       overflow: hidden; /* not to scroll the page */
-    }
+    }his
     ```
 12. Make it possible to scroll the menu if it is higher than the viewport;
     ```css
