@@ -1,21 +1,30 @@
 # Landing page
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+This project is a website for a bicycle brand named "MyBiKE.". This is a well-structured and visually appealing website with sections for showcasing the brand, products, features, and facilitating user interaction through contact options.
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+The technologies used in this project include:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+1. HTML (HyperText Markup Language):
+Used for structuring the content and defining the layout of the web pages.
+
+2. CSS (Cascading Style Sheets):
+Responsible for styling and formatting the visual presentation of the HTML content.
+
+3. SCSS (Sass):
+An extension of CSS that adds features like variables and nested rules, making the stylesheets more maintainable.
+
+4. JavaScript:
+Used for adding interactivity to the website. The main JavaScript file (main.js) is linked with the HTML document.
+
+5. Google Fonts:
+The website imports the "Poppins" font from Google Fonts to enhance the typography.
+
+6. Responsive Design:
+Media queries in the CSS styles are likely used for creating a responsive design that adapts to different screen sizes and devices.
+
+These technologies collectively contribute to the structure, style, and interactivity of the "MyBiKE" website, providing a visually appealing and functional user experience.
+
+[LINK TO PREVIEW] (https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=41317%3A204&mode=dev);
+[DEMO LINK](https://alexmotalex.github.io/layout_landing-page/);
+
