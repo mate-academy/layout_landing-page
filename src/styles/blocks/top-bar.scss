@@ -1,0 +1,80 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 24px;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include animation-zoom;
+
+    & > img {
+      width: 130px;
+      height: 38px;
+
+      @include on-tablet {
+        width: 187px;
+        height: 56px;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include animation-zoom;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &-phone {
+      position: relative;
+      background-image: url('./../img/icons/icon-phone.svg');
+
+      @include on-desktop {
+        &:hover::before {
+          content: '+1 234 555-55-55';
+          display: block;
+          width: max-content;
+          color: $color-main-text;
+
+          position: absolute;
+          top: 50%;
+          right: 40px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    &-menu {
+      background-image: url('./../img/icons/icon-burger-menu.svg');
+
+      &:hover {
+        background-image: url('./../img/icons/icon-burger-menu-hover.svg');
+      }
+    }
+
+    &-close {
+      background-image: url('./../img/icons/icon-close.svg');
+    }
+  }
+}

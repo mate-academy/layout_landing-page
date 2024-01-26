@@ -1,0 +1,53 @@
+.cards {
+  display: grid;
+  row-gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: repeat($count-col-tablet, 1fr);
+    column-gap: $size-gap-tablet;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($count-col-desktop, 1fr);
+  }
+
+  &__card {
+    @include on-tablet {
+      grid-column: 2 / span 4;
+
+      @include animation-zoom;
+      
+      cursor: pointer;
+    }
+
+    @include on-desktop {
+      min-width: 324px;
+      grid-column: span 4;
+
+      @include animation-zoom;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    margin-inline: auto;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__text {
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+  }
+}
