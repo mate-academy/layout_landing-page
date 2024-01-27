@@ -1,0 +1,54 @@
+// resolution
+@mixin onTablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+// inline-padding
+@mixin menuInlinePadding {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 121px;
+
+  }
+}
+
+.container {
+  @include menuInlinePadding;
+}
+// hoverEffect
+@mixin hoverEffect ($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+
+  }
+
+  @include onDesktop {
+    --columns: 12;
+
+  }
+}
