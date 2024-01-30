@@ -1,3 +1,10 @@
+@import '../utils/variables.scss';
+
+@font-face {
+  font-family: 'Inter', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+}
+
 .icon {
   display: block;
   height: $icon-size;
@@ -12,14 +19,49 @@
     background-image: url(../icons/Icon-Phone-call.svg);
     background-repeat: no-repeat;
     display: block;
+    flex-direction: row;
     background-position: center;
+    position: relative;
+    color: $main-text-color;
+    font-family: 'Inter';
+
+    &--number {
+      opacity: 0;
+    }
+
+    @media (min-width: 1260px) {
+        &--number {
+        position: absolute;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        font-size: 12px;
+        top: 50%;
+        left: -100%;
+        transform: translate(-100%, -50%);
+        opacity: 0;
+        transition: left 0.5s ease-in-out, opacity 0.4s ease-in-out;
+      }
+
+      &:hover .icon--phone--number {
+        display: block;
+        left: 0;
+        opacity: 1;
+      }
+    }
   }
+
 
   &--menu {
     background-image: url(../icons/Icon-Burger-menu.svg);
     background-repeat: no-repeat;
     display: block;
     background-position: center;
+
+    &:hover {
+      background-image: url(../icons/Icon-Burger-menu-hover.svg);
+    }
   }
 
   &--close {
@@ -28,10 +70,4 @@
     display: block;
     background-position: center;
   }
-
-  // @media (min-width: 744px) {
-  //   &--close {
-
-  //   }
-  // }
 }
