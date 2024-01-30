@@ -4,7 +4,6 @@
 $white: #fff;
 $main: #292929;
 $second: #e5e6e8;
-$blue: #00acdc;
 $spacegrotesk: "Space Grotesk", monospace;
 $spacemono: "Space Mono", monospace;
 $mainfont: 16;
@@ -22,7 +21,13 @@ $mainfont: 16;
 }
 
 @mixin mobile-md {
-  @media (max-width: 744px) {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin mobile-sm {
+  @media (max-width: 480px) {
     @content;
   }
 }
@@ -36,17 +41,24 @@ $mainfont: 16;
 
   column-gap: rem(24);
 
-  @include tablet-md {
+  @include tablet-sm {
     --columns: 6;
 
     column-gap: rem(24);
   }
 
-  @include mobile-md {
+  @include mobile-sm {
     --columns: 2;
 
     column-gap: rem(20);
   }
+}
+
+@mixin imagecover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 $maxwidth: 1260;
