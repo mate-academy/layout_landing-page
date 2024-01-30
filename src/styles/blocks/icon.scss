@@ -2,9 +2,7 @@
   display: block;
   height: 24px;
   width: 24px;
-  background-position: center;
   background-size: cover ;
-  transition: transform 0.3s;
 
   @include hover(transform, scale(1.2));
 
@@ -12,18 +10,39 @@
   width: 32px;
   height: 32px;
   }
-.icon:hover {
-    transform: scale(1.1);
-    transition: 300ms;
+
+  &--phone {
+    background-image: url('../images/Icon-Phone-call.svg');
+
+    @include on-desktop  {
+      &::before {
+        content: "+1 234 555-55-55";
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        color: $main-text-color;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity $kebab-case;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+    }
   }
-
-&--phone {
-  background-image: url('../images/Icon-Phone-call.svg');
-}
-
-.icon--phone:hover .top-bar__phone {
-  display: inline-block;
-}
 
 &--menu {
   background-image: url('../images/Icon-Burger-menu.svg');
