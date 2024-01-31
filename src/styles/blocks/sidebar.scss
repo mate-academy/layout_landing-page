@@ -1,0 +1,96 @@
+.sidebar__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background-color: #E5E6E8;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: 0.5s;
+
+  &__logo {
+    @include logo-width;
+    @include hover(transform, scale(1.2));
+
+  }
+
+  &__top {
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      padding-bottom: 32px;
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0%);
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 32px 0;
+    padding: 0;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-top: 56px;
+    }
+
+  }
+
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $black-text-color;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $black-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__phone {
+    color: $black-text-color;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
+  &__call {
+    color: $black-text-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid $black-text-color;
+    padding-bottom: 7px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
+}
