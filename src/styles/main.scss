@@ -1,3 +1,297 @@
+@import './reset';
+@import './blocks/header';
+@import './variables';
+@import './blocks/menu';
+@import './blocks/woking-hours';
+@import './blocks/page';
+@import './blocks/exhibition';
+@import './blocks/blog';
+@import './blocks/explore';
+@import './blocks/extended';
+@import './blocks/contact';
+@import './blocks/contact-item';
+@import './blocks/footer';
+
 body {
-  margin: 0;
+  font-family: Cinzel, serif;
+  font-weight: 400;
+  font-size: 14px;
 }
+
+[class*="__container"] {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+[class*="__top-bar"] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+/* Main settings */
+.logo {
+  display: block;
+  background-image: url(../images/logo.svg);
+  width: 64px;
+  height: 46px;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+}
+
+.title {
+  color: $main-dark;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+}
+
+.blog {
+  font-size: $normal-font-size;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.announcement {
+  color: $main-accent;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: $main-dark;
+  font-size: $normal-font-size;
+}
+
+.button {
+  text-align: center;
+  padding: 15px 0;
+  color: $white;
+  font-size: $normal-font-size;
+  font-weight: 700;
+  line-height: 27px;
+  width: 280px;
+  align-self: center;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: $main-accent;
+    background-color: $white;
+    transform: scale(1.05);
+  }
+}
+
+.min-height {
+  min-height: 130px;
+  min-width: 130px;
+}
+
+.after {
+  position: relative;
+  width: fit-content;
+
+  &::after {
+    background-color: $white;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: -8px;
+
+    transition: $main-transition;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.after-red {
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+
+  &::after {
+    background-color: $main-accent;
+    bottom: 0;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    transition: $main-transition;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.bold {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@media (min-width: 744px) {
+
+  [class*="__top-bar"] {
+      height: 160px;
+  }
+
+  .header {
+    &__icons {
+      column-gap: 55px;
+    }
+
+    &__title {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 64px;
+      max-width: 392px;
+    }
+
+    &__title--margin {
+      margin-top: 30%;
+    }
+  }
+
+  .logo {
+    width: 87px;
+    height: 65px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 48px;
+
+  }
+
+  .working-hours {
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    &__shedule {
+      max-width: 288px;
+    }
+  }
+
+  .blog {
+    &__photo {
+      width: 100%;
+      &--new {
+        background-position: left 0 top 0;
+      }
+    }
+
+    &__photos {
+      gap: 24px;
+      &--second {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    &__item {
+      &--none {
+        display: none;
+      }
+    }
+  }
+
+  .explore {
+
+    &__block {
+      max-width: 392px;
+    }
+  }
+
+  .contact {
+
+    &__main {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .footer {
+    height: 359px;
+  }
+}
+
+
+@media (min-width: 1260px) {
+  .header {
+    &__title {
+      font-size: 80px;
+      line-height: 80px;
+      max-width: 498px;
+    }
+
+    &__title--margin {
+      margin-top: 20%;
+    }
+  }
+
+  .working-hours {
+    &__shedule {
+      max-width: 520px;
+    }
+  }
+
+  .exhibition {
+    &__subtitle {
+      max-width: 325px
+    }
+  }
+
+  .blog {
+    &__item {
+      max-height: 320px;
+      &--none {
+        display: block;
+      }
+  }
+  &__photos {
+    &--second {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  .explore {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .contact {
+
+    &__adress {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+}
+
