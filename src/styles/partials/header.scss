@@ -1,20 +1,47 @@
-.header {
+.hero {
   height: 100vh;
   background-image: url(../images/hero-new.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  padding-bottom: rem(92);
 
   .container {
     height: 100%;
   }
 
   &__content {
+    @include pagegrid;
+
+    height: 100%;
+    margin-top: auto;
+
+    &-title {
+      margin-top: auto;
+      font-size: rem(56);
+      grid-column: span 6;
+
+      @include tablet-sm {
+        font-size: rem(48);
+        grid-column: span 4;
+      }
+
+      @include mobile-sm {
+        font-size: rem(36);
+      }
+    }
+  }
+}
+
+.header {
+  position: absolute;
+  padding: rem(32) 0;
+
+  &__content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-bottom: rem(92);
 
     @include tablet-sm {
       padding-bottom: rem(65);
@@ -25,8 +52,6 @@
     align-items: center;
 
     @include pagegrid;
-
-    padding: rem(32) 0;
   }
 
   &__logo {
@@ -149,47 +174,34 @@
       grid-column: span 1;
     }
   }
-
-  &__bottom {
-    @include pagegrid;
-
-    margin-top: auto;
-
-    &-title {
-      font-size: rem(56);
-      grid-column: span 6;
-
-      @include tablet-sm {
-        font-size: rem(48);
-        grid-column: span 4;
-      }
-
-      @include mobile-sm {
-        font-size: rem(36);
-      }
-    }
-  }
 }
 
 .menu {
   left: 0;
   top: 0;
-  transform: translateY(-100%);
+  transform: translateX(-100%);
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: $second;
   padding-top: rem(152);
   transition: 0.3s ease-in-out;
+  overflow: auto;
 
   &--active {
-    transform: translateY(0);
+    transform: translateX(0);
+
+    .link-hovered {
+      animation: cssanimation 0.3s ease-in 0.5s forwards;
+    }
   }
 
   &__content {
     @include pagegrid;
 
     row-gap: rem(48);
+    overflow: auto;
+    height: rem(288);
   }
 
   .nav {
@@ -204,22 +216,7 @@
 
     &__item {
       position: relative;
-      width: min-content;
-      &::after {
-        transition: 0.3s ease-in-out;
-      }
-
-      &:hover {
-        &::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: rem(-4);
-          width: 100%;
-          height: rem(1);
-          background-color: $main;
-        }
-      }
+      width: max-content;
     }
 
     &__link {
@@ -229,6 +226,7 @@
       text-decoration: none;
       letter-spacing: rem(2);
       color: $main;
+      opacity: 0;
     }
   }
 
@@ -247,21 +245,21 @@
 
     &-phone {
       text-decoration: none;
+      opacity: 0;
     }
 
     &-call-to-order {
       text-transform: uppercase;
       position: relative;
       width: max-content;
-
-      &::after {
-        position: absolute;
-        left: 0;
-        bottom: rem(-4);
-        width: 100%;
-        height: rem(1);
-        background-color: $main;
-      }
+      text-decoration: none;
+      opacity: 0;
     }
+  }
+}
+
+@keyframes cssanimation {
+  to {
+    opacity: 1;
   }
 }
