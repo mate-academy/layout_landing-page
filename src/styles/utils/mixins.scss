@@ -1,0 +1,90 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1024px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --column: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    --column: 6;
+  }
+
+  @include onDesktop {
+    --column: 12;
+  }
+}
+
+@mixin flex($type: flex, $direction: false, $align: false, $justify: false ) {
+  display: $type;
+
+  @if ($direction) {
+    flex-direction: $direction;
+  }
+
+  @if ($align) {
+    align-items: $align;
+  }
+
+  @if ($justify) {
+    justify-content: $justify;
+  }
+}
+
+
+@mixin animation($duration: false, $display: inline-block) {
+  @keyframes wave {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(-5px);
+    }
+  }
+
+  display: $display;
+  transition: transform 0.3s ease;
+  animation: wave $duration infinite;
+}
