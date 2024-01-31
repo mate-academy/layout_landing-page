@@ -17,7 +17,7 @@
 12. Make it possible to scroll the menu if it is higher than the viewport;
     ```css
     .menu {
-      overflow: auto; /* to scroll the menu if needed */
+      overflow: auto; /* to scroll the menu if need */
     }
     .menu__top {
       position: sticky; /* to keep cross always visible */
