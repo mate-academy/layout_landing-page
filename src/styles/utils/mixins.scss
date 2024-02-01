@@ -1,0 +1,34 @@
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin gridPage {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin hoverIcons ($property, $toValue) {
+  transition: #{$property}, #{$transition-speed};
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
