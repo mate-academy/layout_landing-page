@@ -1,0 +1,77 @@
+@use "sass:math" as *;
+@use "sass:list" as *;
+
+$white: #fff;
+$main: #292929;
+$second: #e5e6e8;
+$spacegrotesk: "Space Grotesk", monospace;
+$spacemono: "Space Mono", monospace;
+$mainfont: 16;
+
+@mixin tablet-md {
+  @media (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin tablet-sm {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin mobile-sm {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin pagegrid {
+  --columns: 12;
+
+  display: grid;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  column-gap: rem(24);
+
+  @include tablet-sm {
+    --columns: 6;
+
+    column-gap: rem(24);
+  }
+
+  @include mobile-sm {
+    --columns: 2;
+
+    column-gap: rem(20);
+  }
+}
+
+@mixin imagecover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+$maxwidth: 1260;
+$mobwidth: 320;
+
+@function vw($value) {
+  $vwvalue: calc(#{$value} / #{$maxwidth} * 100vw);
+
+  @return $vwvalue;
+}
+
+@function rem($value) {
+  $remvalue: div($value, $mainfont) + rem;
+
+  @return $remvalue;
+}
+
+@function lineheight($pixels, $fontsize) {
+  $lineheight: calc($pixels / $fontsize);
+
+  @return $lineheight;
+}

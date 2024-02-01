@@ -1,0 +1,270 @@
+.hero {
+  height: 100vh;
+  background-image: url(../images/hero-new.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  padding-bottom: rem(92);
+
+  .container {
+    height: 100%;
+  }
+
+  &__content {
+    @include pagegrid;
+
+    height: 100%;
+    margin-top: auto;
+
+    &-title {
+      margin-top: auto;
+      font-size: rem(56);
+      grid-column: span 6;
+
+      @include tablet-sm {
+        font-size: rem(48);
+        grid-column: span 4;
+      }
+
+      @include mobile-sm {
+        font-size: rem(36);
+      }
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: rem(32) 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @include tablet-sm {
+      padding-bottom: rem(65);
+    }
+  }
+
+  &__top {
+    align-items: center;
+
+    @include pagegrid;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 2;
+    grid-column: span 3;
+
+    @include tablet-sm {
+      grid-column: span 3;
+    }
+
+    @include mobile-sm {
+      grid-column: span 1;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: rem(36);
+    grid-column: -2 / -1;
+
+    &-phone {
+      position: relative;
+      width: rem(32);
+      height: rem(32);
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url("../images/Icon-Phone-call.svg");
+      }
+    }
+
+    &-toggle {
+      width: rem(28);
+      height: rem(16);
+      position: relative;
+      z-index: 2;
+      border-radius: rem(50);
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      small {
+        width: rem(24);
+        height: rem(3);
+        background-color: $main;
+        border-radius: rem(50);
+        transition: 0.3s ease-in-out;
+      }
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        transition: 0.3s ease-in-out;
+        width: rem(24);
+        height: rem(3);
+        background-color: $main;
+        border-radius: rem(50);
+      }
+
+      &::after {
+        top: 0;
+      }
+
+      &::before {
+        bottom: 0;
+      }
+
+      &:hover {
+        &::after {
+          width: 50%;
+        }
+
+        &::before {
+          width: 70%;
+        }
+      }
+
+      &--active {
+        small {
+          transform: scale(0);
+        }
+
+        &::after {
+          transform: rotate(45deg);
+          top: rem(6);
+        }
+
+        &::before {
+          transform: rotate(-45deg);
+          bottom: rem(7);
+        }
+
+        &:hover {
+          &::after {
+            width: rem(24);
+          }
+
+          &::before {
+            width: rem(24);
+          }
+        }
+      }
+    }
+
+    @include tablet-sm {
+      justify-content: flex-end;
+      grid-column: span 3;
+    }
+
+    @include mobile-sm {
+      grid-column: span 1;
+    }
+  }
+}
+
+.menu {
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: $second;
+  padding-top: rem(152);
+  transition: 0.3s ease-in-out;
+  overflow: auto;
+  z-index: 1;
+
+  &--active {
+    transform: translateX(0);
+
+    .link-hovered {
+      animation: cssanimation 0.3s ease-in 0.25s forwards;
+    }
+  }
+
+  &__content {
+    @include pagegrid;
+
+    row-gap: rem(48);
+    overflow: auto;
+    height: rem(289);
+  }
+
+  .nav {
+    grid-column: 1 / 4;
+
+    &__list {
+      padding: 0;
+      list-style: none;
+      display: grid;
+      row-gap: rem(28);
+    }
+
+    &__item {
+      position: relative;
+      width: max-content;
+    }
+
+    &__link {
+      font-size: rem(22);
+      line-height: lineheight(22, 22);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: rem(2);
+      color: $main;
+      opacity: 0;
+    }
+  }
+
+  &__bottom {
+    grid-column: 1 / 4;
+    display: grid;
+    row-gap: rem(16);
+
+    .link-bottom {
+      font-size: rem(16);
+      font-weight: 700;
+      line-height: lineheight(22.4, 16);
+      letter-spacing: rem(2);
+      color: $main;
+    }
+
+    &-phone {
+      text-decoration: none;
+      opacity: 0;
+    }
+
+    &-call-to-order {
+      text-transform: uppercase;
+      position: relative;
+      width: max-content;
+      text-decoration: none;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes cssanimation {
+  to {
+    opacity: 1;
+  }
+}
