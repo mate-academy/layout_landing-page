@@ -1,0 +1,88 @@
+.museum-exhibits {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+
+  font-family: $text-font-family;
+  font-size: 16px;
+  line-height: 27px; /* 168.75% */
+
+
+  &__content {
+    display: inline-flex;
+    gap: $now-on-view-content-gap-mobile;
+    justify-content: space-between;
+
+    &--small {
+      gap: $now-on-view-content-gap-small-mobile;
+    }
+
+    @include on-tablet {
+      gap: $now-on-view-content-gap-tablet;
+    }
+
+  }
+
+  &__img {
+    width: calc(50% - $mobile-margin);
+    object-fit: cover;
+    object-position: 30%;
+
+    &--small {
+      width: calc(34% - $mobile-margin * 2 / 3);
+
+      @include on-tablet {
+        width: 50%;
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+
+      @include on-desctop {
+        width: 34%;
+        &:nth-child(3) {
+          display: block;
+        }
+      }
+    }
+
+    &--larger {
+      @include on-tablet {
+        width: 67%;
+      }
+    }
+
+    &--less {
+      @include on-tablet {
+        width: 33%;
+      }
+    }
+
+    &--right {
+      object-position: 100%;
+    }
+
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    text-align: left;
+
+  }
+
+  &__title {
+    margin: 0;
+    margin-top: 24px;
+    color: $red-text-color;
+
+    font-weight: 700;
+  }
+
+  &__dates {
+    margin: 0;
+    color: $dark-text-color;
+    font-weight: 400;
+  }
+}
