@@ -1,0 +1,77 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $dekctop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin pageGrid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonStyle {
+  display: grid;
+
+  height: 56px;
+  font-family: Manrope, sans-serif;
+  background-color: $button-color;
+  border-radius: 8px;
+  text-decoration: none;
+  justify-content: center	;
+  line-height: 56px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  &:hover {
+    background-color: $button-hover-color;
+  }
+  &:active {
+    background-color: $button-pressed-color;
+  }
+}
