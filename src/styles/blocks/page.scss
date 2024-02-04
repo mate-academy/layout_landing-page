@@ -1,10 +1,11 @@
-.page {
-  scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth rule;
+}
 
+.page {
   &__body {
     margin: 0;
     min-width: 320px;
-    overflow-x: hidden;
 
     color: $main-text-color;
     font-family: Manrope, sans-serif;
@@ -25,11 +26,17 @@
     transition: all 0.3s;
     transform: translateX(-100%);
     pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      z-index: 1;
+    }
   }
 }
 
-.page__menu:target {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: all;
+.page:has(.page__menu:target) {
+  height: 100vh;
+  overflow-y: hidden;
 }
