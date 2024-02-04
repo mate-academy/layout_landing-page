@@ -1,5 +1,11 @@
 .page {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
 
   &::-webkit-scrollbar {
     display: none;
@@ -17,6 +23,8 @@
 
     opacity: 0;
     pointer-events: none;
+
+    @include change-property(opacity);
 
     &:target {
       opacity: 1;
@@ -69,22 +77,16 @@
     text-decoration: none;
     color: $text-color;
 
+    border-bottom-color: $red-text-color;
+
+    @include change-property(border-bottom-color);
+
     &:hover {
+      box-sizing: border-box;
       width: fit-content;
-      padding-bottom: 7px;
+      margin-bottom: -1px;
       border-bottom: 1px solid $text-color;
     }
-  }
-
-  &--avenue-tel,
-  &--cloisters-tel {
-    margin-bottom: 8px;
-  }
-
-  &--order {
-    font-size: 12px;
-    line-height: 16px; /* 133.333% */
-    letter-spacing: 2px;
   }
 
   &__main {

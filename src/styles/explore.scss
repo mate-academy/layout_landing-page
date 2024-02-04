@@ -3,12 +3,13 @@
 
   font-family: $text-font-family;
   font-weight: 700;
-  line-height: 100%;
   color: $dark-text-color;
   text-align: center;
 
   &__title {
     width: 100%;
+
+    line-height: 100%;
     font-size: 32px;
     letter-spacing: -1.5px;
 
@@ -19,8 +20,7 @@
 
   &__list {
     display: grid;
-    width: 100%;
-    grid-template-columns: repeat(1, auto);
+    grid-template-columns: repeat(1, 100%);
     justify-content: center;
     justify-items: center;
 
@@ -29,7 +29,7 @@
     }
 
     @include on-desctop {
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(3, calc(100% / 3));
       column-gap: 24px;
       align-items: start;
     }
@@ -41,6 +41,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  &__image {
+
+    & :nth-child(n) {
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   &__name {
