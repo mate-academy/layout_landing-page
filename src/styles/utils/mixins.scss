@@ -1,3 +1,7 @@
+.container {
+  @include constent-padding-inline;
+}
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -8,6 +12,12 @@
   @media (min-width: $desktop-min-width) {
     @content;
   }
+}
+
+@mixin bold-text() {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36.6px;
 }
 
 @mixin constent-padding-inline() {
@@ -21,5 +31,31 @@
     padding-inline: 120px;
     margin-inline: auto;
     max-width: 1020px;
+  }
+}
+
+@mixin page-grid {
+  $grid-colums: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat($grid-colums, 1fr);
+
+  @include on-tablet {
+    $grid-colums: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    $grid-colums: 12;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $to-value;
   }
 }
