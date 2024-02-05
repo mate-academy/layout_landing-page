@@ -1,7 +1,6 @@
 @import "./utils/variables";
 @import "./utils/mixin";
 
-
 .page {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
@@ -10,10 +9,6 @@
   background-color: $white-color;
   color: $main-color;
   scroll-behavior: smooth;
-
-  .page:has(.page__menu:target) {
-    overflow: hidden;
-  }
 
   &__menu {
     position: fixed;
@@ -31,6 +26,10 @@
     opacity: 1;
     pointer-events: all;
   }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
 
 .link-btn {
@@ -144,6 +143,30 @@
 
   &--phone {
     background-image: url("../images/icons/phone-icon.svg");
+
+    &::after {
+      content: "+1 234 5555-55-55";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: transparent;
+      color: $main-color;
+      padding: 10px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    &:hover::after {
+      bottom: -30px;
+      right: -50px;
+      opacity: 1;
+
+      @include on-tablet {
+        right: 30px;
+        bottom: 0;
+      }
+    }
   }
 
   &--menu {
@@ -165,9 +188,14 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1;
+  overflow: auto;
 
   &__top {
     margin-bottom: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #e5e5e5;
 
     @include on-tablet {
       margin-bottom: 56px;
@@ -322,13 +350,13 @@
     row-gap: 40px;
     grid-column: 1/2;
 
-  @include on-tablet {
-    grid-column: span 2;
-  }
+    @include on-tablet {
+      grid-column: span 2;
+    }
 
-  @include on-desktop {
-    grid-column: span 4;
-  }
+    @include on-desktop {
+      grid-column: span 4;
+    }
 
     @include on-tablet {
       row-gap: 56px;
@@ -337,7 +365,6 @@
 }
 
 .category {
-
   &__photos {
     @include page-grid;
 
@@ -396,21 +423,22 @@
   }
 }
 
-.background-img {
+.holder {
+  background-image: url("../images/img-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100vw;
-  margin: 0 -20px 48px;
-  object-fit: cover;
-  object-position: center;
   height: 200px;
+  margin-bottom: 48px;
 
   @include on-tablet {
     height: 400px;
-    margin: 0 -72px 56px;
+    margin-bottom: 56px;
   }
 
   @include on-desktop {
     height: 460px;
-    margin-inline: -120px;
   }
 }
 
