@@ -1,13 +1,12 @@
 .menu {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   padding-bottom: 40px;
-  box-sizing: border-box;
-  flex-direction: column;
   background-color: $main-bg-color;
+  opacity: 0;
 
   transition: all 0.3s;
-  opacity: 0;
   transform: translateY(-100%);
 
   @include constant-padding;
@@ -24,13 +23,13 @@
   }
 
   &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     font-weight: 700;
     line-height: 140%;
     letter-spacing: 2px;
     text-transform: uppercase;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
 
     > p {
       margin: 0;
@@ -39,11 +38,31 @@
     &--phone-link {
       color: $main-text-color;
       text-decoration: none;
+
+      @include hover(color, $accent-color);
     }
 
-    &--action {
-      border-bottom: 1px solid $main-text-color;
-      width: fit-content;
+    &--action a {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: $main-text-color;
+        transform: scale(1);
+        transform-origin: left;
+        transition: all 0.3s;
+      }
+
+      &:hover::after {
+        transform: scale(0);
+      }
+
+      @include hover(color, $accent-color);
     }
   }
 }
