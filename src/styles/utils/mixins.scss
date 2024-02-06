@@ -1,7 +1,3 @@
-.container {
-  @include constent-padding-inline;
-}
-
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -34,21 +30,25 @@
   }
 }
 
+.container {
+  @include constent-padding-inline;
+}
+
 @mixin page-grid {
-  $grid-colums: 2;
+  --columns: 2;
 
   display: grid;
   column-gap: 20px;
-  grid-template-columns: repeat($grid-colums, 1fr);
+  grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
-    $grid-colums: 6;
+    --columns: 6;
 
     column-gap: 24px;
   }
 
   @include on-desktop {
-    $grid-colums: 12;
+    --columns: 12;
   }
 }
 
