@@ -1,0 +1,33 @@
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  scroll-behavior: smooth;
+
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    min-width: 320px;
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform $transition-duration-menu,
+      opacity $transition-duration-menu;
+
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
