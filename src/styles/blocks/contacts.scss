@@ -1,4 +1,48 @@
 .contacts {
+  padding-block: 40px;
+
+  @include on-tablet {
+    padding-block: 60px;
+  }
+
+  @include on-desktop {
+    padding-block: 80px;
+  }
+
+  &__wrap {
+    display: grid;
+    padding-inline: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 20px;
+
+    @include on-tablet {
+      @include tablet-grid;
+    }
+
+    @include on-desktop {
+      @include desktop-grid;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+
+    & :last-child {
+      margin-top: 16px;
+    }
+  }
+
   &__title {
     text-align: center;
     color: #fff;
@@ -10,28 +54,26 @@
     margin-block: 80px 48px;
   }
 
-  &__form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 16px;
-    padding-inline: 20px;
-
-    & :last-child {
-      margin-top: 16px;
-    }
-  }
-
   &__contact-info {
-    padding-block: 48px 120px;
-    padding-inline: 20px;
+    // padding-block: 48px 120px;
+    // padding-inline: 20px;
     color: #fff;
+
+    @include on-tablet {
+      padding: 0;
+      // padding-inline: 24px;
+      grid-column: 4 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 9;
+    }
   }
 }
 
 .form {
   &__input {
+    box-sizing: border-box;
     width: 100%;
     height: 48px;
     border: none;
@@ -45,6 +87,7 @@
   }
 
   &__textarea {
+    box-sizing: border-box;
     width: 100%;
     border-radius: 16px;
     height: 148px;
