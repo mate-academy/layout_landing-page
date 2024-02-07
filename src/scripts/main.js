@@ -7,17 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const menu = document.querySelector('.menu');
 
   menuButton.addEventListener('click', function() {
-    menu.style.transform = 'translateY(0%)';
-    menu.style.opacity = '1';
+    menu.classList.add('is-open');
   });
 
   closeButton.addEventListener('click', function() {
-    menu.style.transform = 'translateY(-100%)';
-    menu.style.opacity = '0';
+    menu.classList.remove('is-open');
   });
 
   navList.addEventListener('click', function() {
-    menu.style.transform = 'translateY(-100%)';
-    menu.style.opacity = '0';
+    menu.classList.remove('is-open');
   });
 });

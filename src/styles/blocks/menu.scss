@@ -4,25 +4,32 @@
   height: 100vh;
   padding-bottom: 40px;
   background-color: $main-bg-color;
+  overflow: auto;
+
+  transform: translateY(-100%);
   opacity: 0;
 
   transition: all 0.3s;
-  transform: translateY(-100%);
 
-  @include constant-padding;
-
-  .logo{
+  .logo {
     @include logo;
     @include hover(transform, scale(1.2));
   }
 
   &__top {
     @include space-between-position;
+    @include constant-padding;
 
-    margin-bottom: 24px;
+    padding-bottom: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $main-bg-color;
   }
 
   &__bottom {
+    @include constant-padding;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -65,5 +72,9 @@
       @include hover(color, $accent-color);
     }
   }
-}
 
+  &.is-open {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
