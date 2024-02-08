@@ -1,0 +1,36 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin responsive-background-image(
+  $image-small,
+  $image-tablet,
+  $image-desktop
+) {
+  background-image: url("#{$image-small}");
+  background-position: center;
+  background-size: cover;
+
+  @include on-tablet {
+    background-image: url("#{$image-tablet}");
+  }
+
+  @include on-desktop {
+    background-image: url("#{$image-desktop}");
+  }
+}
+
+@mixin hover($property, $value, $duration) {
+  transition: $property, $duration;
+  &:hover {
+    #{$property}: $value;
+  }
+}
