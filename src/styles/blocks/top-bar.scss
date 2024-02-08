@@ -13,6 +13,31 @@
     position: relative;
     display: flex;
     gap: 24px;
+
+    &::before {
+      content: '+1 234 5555-55-55';
+      position: absolute;
+      margin-right: 20px;
+      right: 100%;
+      width: max-content;
+      align-self: center;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      opacity: 0;
+
+      transition: opacity $effect-duration;
+    }
+
+    @include on-tablet {
+      @media (hover: hover) {
+        &:has(.icon--phone:hover)::before {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &__logo-link {
