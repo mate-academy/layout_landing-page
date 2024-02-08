@@ -1,14 +1,20 @@
 .cards {
   display: grid;
   row-gap: 40px;
+  margin-bottom: 80px;
 
   @include on-tablet {
     row-gap: 48px;
+    margin-bottom: 120px;
+  }
+
+  @include on-desktop {
+    row-gap: 48px;
+    margin-bottom: 180px;
   }
 }
 
 .card {
-  // display: grid;
   &__photos {
     margin-bottom: 16px;
 
@@ -61,44 +67,17 @@
 }
 
 .card__button {
-  display: grid;
+  @include page-grid;
 
   .button {
-    height: 56px;
+    grid-column: 1 / span 2;
 
-    font-size: 17px;
-    line-height: 27px;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-
-    color: $secondary-color;
-
-    background: $main-color;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-
-    // @include on-tablet {
-    //   grid-column: 2 / 6;
-    // }
-
-    // @include on-desktop {
-    //   grid-column: 3;
-    // }
-
-    position: relative;
-    transition: box-shadow 0.3s ease;
-
-    &:hover {
-      height: 56px;
-      width: 100%;
-      background-color: $button-color;
-      box-shadow: -15px -15px -15px $button-color-shadow;
+    @include on-tablet {
+      grid-column: 2 / span 4;
     }
 
-    &:active {
-      box-shadow: 5px 5px 5px $button-color-shadow;
+    @include on-desktop {
+      grid-column: 5 / 9;
     }
   }
 }
