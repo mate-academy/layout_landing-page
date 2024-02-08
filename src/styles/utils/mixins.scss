@@ -1,0 +1,71 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin logo-size() {
+  width: 130px;
+  height: 38px;
+
+  @include onDesktop() {
+    width: 187px;
+    height: 56px;
+  }
+}
+
+@mixin content-padding-inline () {
+  padding-inline: 20px;
+
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+    max-width: 1260px;
+    margin-inline: auto;
+  }
+}
+
+@mixin pageGrid() {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin sticky-footer-handler ($property) {
+  #{$property}: 200px;
+
+  @include onTablet {
+    #{$property}: 480px;
+  }
+
+  @include onDesktop {
+    #{$property}: 555px;
+  }
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

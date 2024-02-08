@@ -1,0 +1,44 @@
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-transform: uppercase;
+
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: inherit;
+
+    @include onDesktop {
+      font-weight: 700;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-black;
+
+      transition: transform $time-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
