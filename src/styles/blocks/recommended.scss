@@ -10,10 +10,13 @@
   }
 
   &-item {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 24px;
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
     &__card {
       max-width: 280px;
@@ -40,19 +43,9 @@
 
       @include hover(transform, scale(1.05));
 
-      > img {
-        width: 280px;
-        height: 280px;
-
-        @include on-tablet {
-          width: 600px;
-          height: 600px;
-        }
-
-        @include on-desktop {
-          width: 324px;
-          height: 324px;
-        }
+      &-picture {
+        width:100%;
+        aspect-ratio: 1/1;
       }
     }
 
