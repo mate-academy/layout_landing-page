@@ -17,23 +17,29 @@
   &--phone {
     position: relative;
     background-image: url(../images/icon-phone-call.svg);
+    display: inline-block; // new
 
     &::after {
       content: '+1 234 555-55-55';
       position: absolute;
-      left: -140px; // по моєму не правильно що тут так
+      left: -140px;
+      top: 50%;
+      transform: translateY(-50%);
       color: $main-text-color;
+      font-family: Inter, sans-serif;
       font-size: 12px;
       font-weight: 700;
+
       letter-spacing: 2px;
 
-      transition: transform $effect-duration;
-      transform: scale(0);
+      transition: all $effect-duration;
       transform-origin: right;
+      opacity: 0;
     }
 
     &:hover::after {
-      transform: scale(1);
+      transform: translateY(-50%) scale(1); // Масштабируем псевдоэлемент при наведении
+      opacity: 1;
     }
   }
 
