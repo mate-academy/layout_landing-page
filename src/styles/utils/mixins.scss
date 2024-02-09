@@ -1,29 +1,29 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
 
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     --columns: 6;
 
     column-gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     --columns: 12;
   }
 }
@@ -35,8 +35,11 @@
   }
 }
 
-@mixin hoverPhotos($property, $toValue, $effectTime) {
-  transition: #{$property} $effectTime, box-shadow $effectTime, border-radius $effectTime;
+@mixin hover-photos($property, $toValue, $effectTime) {
+  transition:
+    #{$property} $effectTime,
+    box-shadow $effectTime,
+    border-radius $effectTime;
 
   &:hover {
     #{$property}: $toValue;
@@ -44,3 +47,14 @@
     border-radius: 6px;
   }
 }
+
+@mixin hover-form {
+  &:hover {
+    border: 1px solid #d5d7de;
+  }
+
+  &:focus {
+    border: 1px solid #292929;
+  }
+}
+
