@@ -1,18 +1,38 @@
-
 .page {
   font-family: Poppins, sans-serif;
 
   &__body {
+    z-index: 1;
+
     margin: 0;
-    background-color: $main-color;
+
     color: $text-color;
   }
 
-  &__header {
-    margin-bottom: 60px;
+  &__menu {
+    position: fixed;
+    top: -480px;
+    right: 0;
+    left: 0;
+
+    &:target {
+      top: 0;
+    }
+
+    @include on-tablet {
+      top: -628px;
+    }
+
+    @include on-desktop {
+      top: -711px;
+    }
   }
 
-  &:has(.main__menu:target) {
+  &__header {
+    position: relative;
+  }
+
+  &:has(.page__menu:target) {
     overflow: hidden;
   }
 }
