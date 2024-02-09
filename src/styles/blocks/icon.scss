@@ -8,7 +8,7 @@
   background-position: 50%;
 
   transition: transform 0.3s;
-  
+
   &:hover {
     transform: scale(1.1);
   }
@@ -22,20 +22,28 @@
 .icon--phone {
   background-image: url('../images/icons/phone-icon.svg');
 
-  &:hover {
-    &::before {
-      position: absolute;
-      right: 44px;
-      height: 28px;
-      width: 160px;
-      content: '+1 234 5555-55-55';
+  &__telephone-number {
+    display: none;
+    opacity: 0;
 
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: $main-text-color;
-      text-decoration: none;
+    @include onTablet {
+      display: block;
     }
+
+    @include onDesktop {
+      display: block;
+    }
+
+    transition: opacity .3s, transform .3s;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  &:hover + &__telephone-number {
+      opacity: 1;
   }
 }
 
