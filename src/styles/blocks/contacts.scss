@@ -1,0 +1,135 @@
+.contacts {
+  &__big-container {
+    @include on-tablet {
+      display: grid;
+      grid-template-areas: "container form";
+
+      @include on-desktop {
+        @include page-grid;
+      }
+    }
+  }
+  &__container {
+    grid-area: container;
+    font-size: $font-size-main-text;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-areas: "container-1" "container-2";
+    }
+
+    @include on-desktop {
+      grid-template-areas: "container-1 container-2";
+      grid-column: span 8;
+    }
+  }
+
+  &__container-1 {
+    grid-area: container-1;
+    width: 237px;
+    padding-top: 48px;
+  }
+
+  &__container-2 {
+    grid-area: container-2;
+    width: 237px;
+    padding-top: 48px;
+  }
+
+  &__location {
+    color: $secondary-text-color;
+  }
+
+  &__number-key {
+    padding-top: 16px;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-main-text-smaller;
+    color: $secondary-text-color;
+  }
+
+  &__address-key {
+    padding-top: 8px;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-main-text-smaller;
+    color: $secondary-text-color;
+  }
+
+  &__number,
+  &__location {
+    padding-top: 4px;
+  }
+
+  &__form {
+    grid-area: form;
+    padding-top: 48px;
+    width: 280px;
+    line-height: 20px;
+
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+      grid-column: span 4;
+    }
+  }
+
+  &__input-container {
+    display: grid;
+    row-gap: 16px;
+    padding-bottom: 32px;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    gap: 16px;
+    padding: 0;
+    width: 280px;
+    height: 48px;
+    flex-shrink: 0;
+    border: none;
+    outline: none;
+    font-family: $font-family;
+    color: $secondary-text-color;
+    background: $form-bg-color;
+
+    @include placeholder;
+
+    padding-left: 10.9px;
+
+    @include on-tablet {
+      padding-left: 11.21px;
+      width: 288px;
+    }
+
+    @include on-desktop {
+      padding-left: 16px;
+      width: 411px;
+    }
+
+    &--massage {
+      padding-top: 14px;
+      height: 144px;
+      resize: none;
+    }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px $form-bg-color inset;
+    }
+  }
+
+  &__input-submit {
+    padding: 0;
+
+    @include btn;
+
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+    }
+  }
+}

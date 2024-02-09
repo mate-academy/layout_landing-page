@@ -1,10 +1,29 @@
 .menu {
   box-sizing: border-box;
   height: 100vh;
-  background-color: #D12D35;
+  background-color: $accent-color;
+  text-transform: uppercase;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+  transition: $effect-duration;
 
-  &__top{
- margin-bottom: 32px;
+  &:target {
+    transition: $effect-duration;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__top-bar {
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $accent-color;
   }
 
   &__nav {
@@ -12,45 +31,37 @@
   }
 
   &__content {
-  padding-inline: 72px;
+    @include inline-padding-control;
   }
 
-  &__contact {
+  &__phone-and-CTA {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-    &--phone{
-      color: $color-menu;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 27px;
-      text-decoration: none;
-      list-style: none;
+  &__phone-number {
+    margin: 0;
+    color: $main-text-color;
+    line-height: 27px;
+
+    &--1 {
       margin-bottom: 8px;
     }
 
-    &--list{
-      color: $color-menu;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 27px;
-      text-decoration: none;
-      list-style: none;
-    }
-    &__list {
-      margin-top: 18px;
+    &--2 {
+      margin-bottom: 16px;
     }
   }
-}
 
-.contact__link {
-  color: $color-menu;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 27px;
-  text-decoration: none;
-  list-style: none;
-  margin-top: 16px;
-  border-bottom: 1px solid $color-menu;
-  width: fit-content;
+  &__call-to-order {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    display: block;
+    color: $main-text-color;
+    width: fit-content;
+
+    @include hover-links-underlines ($main-text-color, -8px);
+  }
 }
