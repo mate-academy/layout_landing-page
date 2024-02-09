@@ -16,18 +16,28 @@
     position: relative;
     background-image: url(/src/images/icons/icon-phone.svg);
 
-      &:hover::before {
-      content: '+1 234 5555-55-55';
+    @include on-desktop {
+      &::after {
+        content: '+1 234 5555-55-55';
 
-      position: absolute;
-      right: 44px;
-      width: 150px;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 36px;
-      letter-spacing: 2px;
-      color: $main-txt-color;
-      text-decoration: none;
+        position: absolute;
+        right: 45px;
+        transition: transform $transition-time;
+        transform: scale(0);
+        transform-origin: right;
+
+        width: 150px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 35px;
+        letter-spacing: 2px;
+        color: $main-txt-color;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
     }
   }
 
