@@ -2,55 +2,74 @@
   display: flex;
   flex-direction: column;
 
+  &__img-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      grid-template-columns: 2.14fr 1fr;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 2.05fr 1fr;
+    }
+
+    &--last {
+      @include on-tablet {
+        grid-template-columns: 1fr 2.14fr;
+      }
+    }
+  }
+
+
   &__img {
-    display: block;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
 
+    display: block;
+
     transition: transform $default-transition;
+
+    &--bikes {
+      @include on-desktop {
+        width: 324px;
+      }
+    }
+
+    &--details {
+      @include on-tablet {
+        min-height: 187px;
+      }
+
+      @include on-desktop {
+        min-height: 320px;
+      }
+    }
 
     &:hover {
       transform: scale(1.1);
     }
 
-    &--details--s, &--details--l {
-      width: 130px;
-      height: 130px;
-    }
-
-    &--details--s {
-      @include on-tablet {
-        width: 187px;
-        height: 187px;
-      }
-
-      @include on-desktop {
-        width: 320px;
-        height: 320px;
-      }
-    }
-
     &--details--l {
-      @include on-tablet {
-        width: 392px;
-        height: 187px;
-      }
-
-      @include on-desktop {
-        width: 672px;
-        height: 320px;
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }
 
   &__name {
-    margin-top: 16px;
+    margin: 16px 0 8px;
 
     font-size: 24px;
     font-weight: 700;
     line-height: 34px;
 
     &--product {
-      margin-top: 32px;
+      margin: 32px 0 8px;
     }
   }
 
@@ -74,12 +93,6 @@
     font-weight: 700;
     line-height: 34px;
     text-align: left;
-  }
-
-  &__img-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
   }
 
   &__button {
