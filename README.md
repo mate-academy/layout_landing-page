@@ -1,21 +1,17 @@
-# Landing page
+Discover ultimate freedom in urban commuting with our innovative bike collection. Shift your ride effortlessly as our bikes adapt intuitively to your desired speed. Compare our Sporty 4, Ride in Town ST, and Agile Ride 3 models, each offering a unique riding experience. Dive into the details, from auto unlock features to GPS tracking, range, integrated lights, and hydraulic disc brakes. Stay connected by reaching out through our convenient contact form. Embrace the joy of cycling with cutting-edge designs and unparalleled functionality.
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+Technologies:
+- HTML
+- CSS
+- SCSS
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Preview - [LINK](https://kovachhh.github.io/layout_landing-page/)
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+Mock-up - [LINK](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?type=design&node-id=41317-204&mode=design&t=Mh6syJUu3bINNA0t-0)
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Instructions to launch the project:
+1. Install NodeJs
+2. Clone a repository
+3. Open a repository
+4. Enter 'npm i' or 'npm install' command in cmd in project repository
+5. Enter 'npm start' command in cmd in project repository
