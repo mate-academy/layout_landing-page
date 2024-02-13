@@ -1,0 +1,107 @@
+.exhibition {
+  &__photos {
+    @include pageGrid;
+
+    margin-bottom: 24px;
+
+    &--center {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      @include onTablet {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include hover(transform, scale(1.05));
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--def {
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 2;
+      }
+    }
+
+    &--off {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+        grid-column: span 2;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: all $effectDuration;
+
+    &--position-mobile-46 {
+      object-position: 15%;
+    }
+    &--position-mobile-52 {
+      object-position: right;
+    }
+  }
+
+  &__link:hover {
+    box-shadow: $imageShadow;
+    border-radius: 20px;
+
+    .exhibition {
+      &__photo {
+        @include hover(border-radius, 20px)
+      }
+    }
+  }
+
+  &__announces {
+    &-announce {
+      margin: 0;
+      font-weight: 700;
+      color: $AccentMainColor;
+    }
+  }
+}

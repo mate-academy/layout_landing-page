@@ -1,0 +1,76 @@
+@mixin onMobile {
+  @media (max-width: $mobileMaxWidth) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tableMinWidth) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktopMinWidth) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInLine() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin titlePosition() {
+  margin-top: 130px;
+  font-size: 40px;
+  line-height: 40px;
+
+  @include onTablet {
+    margin-top: 141px;
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  @include onDesktop {
+    margin-top: 100px;
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration ;
+  transition-property: all;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
