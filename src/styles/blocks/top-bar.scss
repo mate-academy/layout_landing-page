@@ -1,0 +1,82 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 24px;
+
+    &::before {
+      content: '+1 234 5555-55-55';
+      position: absolute;
+      margin-right: 20px;
+      right: 100%;
+      width: max-content;
+      align-self: center;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      opacity: 0;
+
+      transition: opacity $effect-duration;
+    }
+
+    @include on-tablet {
+      @media (hover: hover) {
+        &:has(.icon--phone:hover)::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
+
+    &--menu {
+      @include on-tablet {
+        height: 38px;
+      }
+
+      @include on-desktop {
+        height: 56px;
+      }
+    }
+  }
+
+  &__show-number {
+    position: absolute;
+    right: 100%;
+    margin-right: 20px;
+    width: max-content;
+    align-self: center;
+    opacity: 0;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    transition: opacity $effect-duration;
+  }
+}
