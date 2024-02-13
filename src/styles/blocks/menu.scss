@@ -1,0 +1,120 @@
+.menu {
+  height: 100vh;
+
+  @include inline-padding;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: $menu-bg-color;
+
+  color: $main-color;
+  text-transform: uppercase;
+
+  transition: top 0.7s;
+  overflow: auto;
+
+  &__header-top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    background-color: $menu-bg-color;
+  }
+
+  &__list {
+    margin: 24px 0 40px;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    list-style: none;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 66px;
+      font-weight: 700;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    text-decoration: none;
+    color: $main-color;
+  }
+
+  &__link::after {
+    content: '';
+    position: absolute;
+
+    width: 100%;
+    height: 1px;
+    margin-top: 8px;
+    display: block;
+
+    background-color: $main-color;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &__link:hover::after {
+    transform: scale(1);
+  }
+
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+
+    @include on-desktop {
+      font-weight: 700;
+    }
+  }
+
+  &__phone {
+    width: fit-content;
+
+    text-decoration: none;
+    color: $main-color;
+
+    transition: text-shadow $default-transition;
+
+    &:hover {
+      text-shadow: 0 0 8px $placeholder-event-color;
+    }
+  }
+
+
+  &__email {
+    width: fit-content;
+    margin-bottom: 100px;
+
+    border-bottom: 1px solid $main-color;
+
+    text-decoration: none;
+    color: $main-color;
+
+    transition: text-shadow $default-transition;
+
+    &:hover {
+      text-shadow: 0 0 8px $placeholder-event-color;
+    }
+  }
+}
