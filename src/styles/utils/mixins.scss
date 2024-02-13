@@ -1,0 +1,98 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-time;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --colums: 12;
+  }
+}
+
+@mixin formText {
+  outline: none;
+  color: $color-form-active-text;
+  font-family: Poppins, sans-serif;
+  line-height: 20px;
+  box-sizing: border-box;
+  padding: 13px 13px 16px;
+  border-radius: 40px;
+  margin-bottom: 16px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid $color-form-hover-border;
+    color: $color-form-active-text;
+  }
+
+  &:active {
+    border: 1px solid $color-form-active-border;
+    color: $color-form-active-text;
+  }
+
+  &:focus {
+    border: 1px solid $color-form-active-border;
+    color: $color-form-active-text;
+  }
+}
+
+@mixin underlineAnimation {
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+    height: 1px;
+    bottom: -8px;
+    background-color: $color-font-main-menu;
+    transition: $transition-time;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
