@@ -1,0 +1,83 @@
+.top-bar {
+  padding-block: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &--size-change {
+    @include on-tablet {
+      padding-bottom: 50px;
+      padding-top: 24px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__icon--phone {
+    position: relative;
+
+    &::before {
+      @include on-desktop {
+        position: absolute;
+        opacity: 0;
+        color: $main-text-color;
+        content: "The Met Fifth Avenue +1 212-535-7710";
+        width: 200px;
+        top: -25px;
+        right: 50px;
+        font-size: 16px;
+        line-height: 20px;
+        transition: $effect-duration;
+        text-transform: uppercase;
+        text-align: end;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    &::after {
+      @include on-tablet {
+        top: 25px;
+        position: absolute;
+        opacity: 0;
+        content: "The Met Cloister +1 212-923-3700";
+        right: 50px;
+        font-size: 16px;
+        line-height: 20px;
+        width: 172px;
+        text-transform: uppercase;
+        transition: $effect-duration;
+        text-align: end;
+        color: $main-text-color;
+      }
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+    width: 64px;
+
+    &--size-change {
+      @include on-tablet {
+        height: 65px;
+        width: 87px;
+      }
+    }
+
+    @include hover (transform, scale(1.2));
+  }
+}
