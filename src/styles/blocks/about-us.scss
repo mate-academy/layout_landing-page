@@ -2,25 +2,16 @@
   padding: 60px 20px 92px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  "title title"
-  "info info"
-  ;
   gap: 32px 20px;
 
   @include on-tablet {
     @include tablet-grid;
 
     padding-top: 120px;
-    grid-template-areas:
-    "title title title info info info";
   }
 
   @include on-desktop {
     @include desktop-grid;
-
-    grid-template-areas:
-    "title title title title . info info info info info info .";
   }
 
   &__title {
@@ -30,13 +21,15 @@
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -1.5px;
-    grid-area: title;
+    grid-column: span 2;
 
     @include on-tablet {
+      grid-column: span 3;
       font-size: 48px;
     }
 
     @include on-desktop {
+      grid-column: span 4;
       font-size: 64px;
     }
   }
@@ -47,6 +40,14 @@
     font-weight: 500;
     line-height: 140%;
     margin: 0;
-    grid-area: info;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 6 / 12;
+    }
   }
 }
