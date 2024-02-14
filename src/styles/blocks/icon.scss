@@ -1,0 +1,56 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  transition:  0.3s transform;
+
+  @include desktop {
+    @include hover(transform, scale(1.1));
+  }
+
+  @include phone {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/phone.svg);
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 9px;
+      right: 20px;
+      content: '+1 234 5555-55-55';
+      width: 150px;
+      color: $main-text-color;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0;
+      transition:  0.3s all;
+    }
+
+    @include desktop {
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-menu-burger.svg);
+
+    @include desktop {
+      &:hover {
+        background-image: url(../images/icons/burger-hover.svg);
+        transition:  0.3s transform;
+        cursor: url('../images/icons/cursor-hover.svg');
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/close.svg);
+  }
+}

@@ -1,0 +1,77 @@
+@mixin phone {
+  @media (min-width: $phone-min-width){
+    @content
+  }
+};
+
+@mixin tablet {
+  @media (min-width: $tablet-min-width){
+    @content
+  }
+};
+
+@mixin desktop {
+  @media (min-width: $desktop-min-width){
+    @content
+  }
+};
+
+@mixin content-padding-inline {
+  max-width: 1260px;
+  margin-inline: auto;
+  padding-inline:20px;
+
+  @include phone {
+    padding-inline: 40px;
+  }
+
+  @include tablet {
+    padding-inline: 72px;
+  }
+
+  @include desktop {
+    padding-inline: 120px;
+  }
+};
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}:$toValue;
+    cursor: url('../images/icons/cursor-hover.svg');
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include phone {
+    --columns: 6;
+
+    column-gap: 20px;
+  }
+
+  @include desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-activity {
+  &:hover{
+    border: 1px solid #D5D7DE;
+    color: $main-text-color;
+    }
+
+  &:focus {
+    border: 1px solid #D5D7DE;
+    color: $main-text-color;
+  }
+}
