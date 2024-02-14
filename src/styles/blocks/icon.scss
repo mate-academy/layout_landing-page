@@ -1,0 +1,55 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include hover (transform, scale(1.2));
+
+  @media (min-width: $tablet-width) {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+    position: relative;
+    color: inherit;
+
+    @media (min-width: $desktop-width) {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        right: 52px;
+        min-width: 138px;
+        opacity: 0;
+        display: none;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        transition: opacity 0.5s;
+      }
+
+      &:hover::before {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
