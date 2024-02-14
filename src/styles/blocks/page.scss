@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-box-shadow: 0 0 0 1000px $form-input-bg-color inset;
+    -webkit-text-fill-color: $placeholder-hover-color;
+  }
+}
+
+.page {
+  font-family: $main-font-family;
+  color: #FFF;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+}
+
+.container {
+  @include content-padding-inling;
+}
