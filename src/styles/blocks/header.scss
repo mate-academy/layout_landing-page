@@ -1,0 +1,225 @@
+.header {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 100;
+
+  @include transition(background-color);
+
+  &.header-scroll {
+    background-color: $bg-color;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 36px $horizontal-paddings;
+
+    @include mobile-small {
+      padding: 24px $horizontal-paddings;
+    }
+  }
+
+  &__logo,
+  &__burger-button {
+    z-index: 3;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    width: clamp-calc($min-break-point, $pc, 130px, 187px);
+    height: clamp-calc($min-break-point, $pc, 38px, 56px);
+    fill: $main-color;
+
+    @include transition(all);
+
+    &:hover {
+      transform: scale(1.1)
+    }
+
+    .menu-open & {
+      fill: $bg-color;
+      width: 130px;
+      height: 38px;
+    }
+  }
+
+  &__logo-icon {
+    pointer-events: none;
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @media (any-hover: hover) {
+      &:hover {
+        .header__phone-text {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &__phone-text {
+    font-size: 12px;
+    letter-spacing: 0.17em;
+    transform-origin: right;
+    transform: scale(0);
+
+    @include transition(transform);
+
+    @include laptop {
+      display: none;
+    }
+  }
+
+  &__phone-icon {
+    fill: $main-color;
+    flex-shrink: 0;
+    width: clamp-calc($min-break-point, $pc, 18px, 24px);
+
+    @include transition(transform);
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__burger-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    @include transition(transform);
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    // Для збільшення зони клікабельності
+    &::before {
+      content: '';
+      position: absolute;
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  &__burger-line {
+    width: 24px;
+    height: 2px;
+    position: relative;
+    background-color: $main-color;
+
+    @include transition(background-color);
+
+    &::before,
+    &::after {
+      content: '';
+      right: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 2px;
+      background-color: $main-color;
+      position: absolute;
+
+      @include transition(all)
+    }
+
+    &::before {
+      top: -8px;
+    }
+
+    &::after {
+      bottom: -8px;
+    }
+
+    .menu-open & {
+      background-color: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+
+      &::before,
+      &::after {
+        background-color: $bg-color;
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    inset: 0;
+    background-color: $mobile-menu-bg;
+    width: 100%;
+    height: 100vh;
+    padding-top: 120px;
+    transform: translateY(-100%);
+
+    @include transition(transform);
+
+    color: $bg-color;
+    font-weight: 700;
+    overflow: auto;
+
+    .menu-open & {
+      transform: translateX(0);
+    }
+  }
+
+  &__menu-nav {
+    margin-bottom: 40px;
+  }
+
+  &__menu-nav-item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__menu-link {
+    font-size: 22px;
+    padding-bottom: 8px;
+  }
+
+  &__menu-link,
+  &__link {
+    text-transform: uppercase;
+
+    &::before {
+      background-color: $bg-color;
+    }
+
+    @extend %hover-underline;
+  }
+
+  &__link {
+    display: block;
+    width: fit-content;
+
+    &--underline {
+      &::before {
+        transform: scale(1);
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+}
