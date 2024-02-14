@@ -1,0 +1,39 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat($mobile-columns, 1fr);
+  justify-content: space-between;
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat($tablet-columns, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($desktop-columns, 1fr);
+  }
+}
