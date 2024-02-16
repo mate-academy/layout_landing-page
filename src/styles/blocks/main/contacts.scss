@@ -34,6 +34,7 @@
   &__area {
     border-radius: 16px;
     height: 120px;
+    resize: none;
   }
 
   &__info {
@@ -64,6 +65,24 @@
       color: white;
       text-decoration: none;
       cursor: pointer;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: white;
+        transition: transform $effectduration;
+        transform: scale(0);
+        transform-origin: left;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
     }
   }
 }
