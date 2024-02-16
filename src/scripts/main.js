@@ -16,7 +16,7 @@ window.addEventListener('hashchange', function() {
   }
 });
 
-function defaultBehaviour(event) {
-  event.preventDefault();
-  form.reset();
-}
+// function defaultBehaviour(event) {
+//   event.preventDefault();
+//   form.reset();
+// }
