@@ -15,8 +15,3 @@ window.addEventListener('hashchange', function() {
     closeMenu();
   }
 });
-
-// function defaultBehaviour(event) {
-//   event.preventDefault();
-//   form.reset();
-// }
