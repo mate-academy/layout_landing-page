@@ -1,0 +1,111 @@
+.page {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__body {
+    margin: 0;
+    display: block;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+
+    opacity: 0;
+    pointer-events: none;
+
+    @include change-property(opacity);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__top {
+    height: 46px;
+    width: $header-width;
+    margin: 25px 20px 0;
+
+    display: inline-flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: calc(100vw - 144px);
+      height: 65px;
+      margin: 50px 72px 0;
+    }
+
+    @include on-desctop {
+      width: calc(100vw - 240px);
+      margin-right: 120px;
+      margin-left: 120px;
+    }
+  }
+
+  &__logo {
+    align-self: flex-start;
+    background-size: 46px 64px;
+
+    @include on-tablet {
+      width: 87px;
+      height: 65px;
+      & :nth-child(1) {
+        width: 87px;
+        height: 65px;
+      }
+    }
+  }
+
+  &__phone {
+    position: absolute;
+    top: 10px;
+    right: 255px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $text-color;
+
+    border-bottom-color: $red-text-color;
+
+    @include change-property(border-bottom-color);
+
+    &:hover {
+      box-sizing: border-box;
+      width: fit-content;
+      margin-bottom: -1px;
+      border-bottom: 1px solid $text-color;
+    }
+  }
+
+  &__main {
+    width: 100vw;
+    display: block;
+  }
+
+  &__margin {
+    margin-left: $mobile-margin;
+    margin-right: $mobile-margin;
+
+    @include on-tablet {
+      margin-left: $tablet-margin;
+      margin-right: $tablet-margin;
+    }
+
+    @include on-desctop {
+      margin-left: $desctop-margin;
+      margin-right: $desctop-margin;
+    }
+  }
+}
