@@ -2,13 +2,30 @@
   display: block;
   height: 24px;
   width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  transition: transform $animation-duration;
+
+  @include hover(transform, scale(1.2));
 
   &--tel {
     background-image: url(../images/icons/icon-tel.svg);
+
+    &:hover {
+      .header__phone {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/icon-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-menu-hover.svg);
+    }
   }
 
   &--close {
@@ -17,7 +34,7 @@
     background-repeat: no-repeat;
   }
 
-  @media (min-width: 320px) {
+  @include on-tablet {
     height: 32px;
     width: 32px;
   }
