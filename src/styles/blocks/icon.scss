@@ -1,0 +1,56 @@
+.logo {
+  width: 64px;
+  height: 46px;
+
+  @include hover(transform, scale(1.2));
+
+  @media (min-width: $tablet-min-width) {
+    height: 65px;
+    width: 87px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include OnTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/Icon-Phone-call.svg);
+    position: relative;
+
+    @include OnDesktop {
+      &::before {
+        content: url(../images/Icon-Phone-hover.svg);
+        position: absolute;
+        visibility: hidden;
+        top: -56px;
+        right: 16px;
+      }
+
+      &:hover::before {
+        visibility: visible;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/Icon-Close.svg);
+  }
+}
