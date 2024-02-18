@@ -1,0 +1,60 @@
+.top-bar {
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding: 50px 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include on-tablet {
+      height: 65px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__tooltip {
+    position: relative;
+
+    @include on-desktop {
+      transition: $effect-duration;
+
+      &:hover .top-bar__tooltip--content {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &--content {
+      transition: opacity $effect-duration;
+      position: absolute;
+      top: -25px;
+      right: 100%;
+      visibility: hidden;
+      padding-right: 10px;
+      opacity: 0;
+    }
+  }
+}
