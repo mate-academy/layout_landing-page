@@ -1,0 +1,48 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property}, 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $minw-tablet) {
+    @content;
+  }
+}
+
+@mixin on-pc {
+  @media (min-width: $minw-pc) {
+    @content;
+  }
+}
+
+@mixin content-padding {
+  margin-inline: 20px;
+
+  @include on-tablet {
+    margin-inline: 72px;
+    padding-top: 50px;
+  }
+
+  @include on-pc {
+    max-width: 1260px;
+    margin-inline: 120px;
+    padding-top: 50px;
+  }
+}
+
+@mixin picture-size-cover {
+  background-size: cover;
+}
+
+@mixin trans-trans-03s {
+  transition: transform 0.3s;
+}
+
+@mixin hover-scale-pictures {
+  &:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
+  }
+}
