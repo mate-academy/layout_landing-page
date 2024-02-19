@@ -1,0 +1,100 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-bigger-tablet {
+  @media (min-width: $bigger-tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin line-height-and-letter-spacing {
+  line-height: 100%;
+  letter-spacing: -1.5px;
+}
+
+@mixin hover-top($property, $toValue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin menu-underline {
+  width: fit-content;
+  position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    height: 1px;
+    width: 100%;
+    background-color: $first-text-color;
+    transform: scale(0);
+    transition-duration: $effect-duration;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin cover-no-repeat {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin masters-disney-grid-template {
+  @include on-tablet {
+    grid-template-columns: repeat(2, 184px);
+  }
+
+  @include on-bigger-tablet {
+    grid-template-columns: repeat(3, 184px);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(3, 324px);
+  }
+}
+
+@mixin hover-yellow {
+  &:hover {
+    color: yellow;
+    transition-duration: $effect-duration;
+  }
+}
+@mixin hover-red {
+  &:hover {
+    color: $hover-red-color;
+    transition-duration: $effect-duration;
+  }
+}
