@@ -4,8 +4,7 @@
   height: 24px;
   color: #292929;
   background-repeat: no-repeat;
-
-  @include hover(transform, scale(1,2));
+  position: relative;
 
   @include on-tablet {
     width: 32px;
@@ -14,6 +13,21 @@
 
   &--phone {
     background-image: url('../images/icon/icon-phone-call.png');
+
+    &:hover::before {
+      content: "+1 234 5555-55-55";
+      display: inline-block;
+      width: 139px;
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 10px);
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+
+      transform: translateY(-50%);
+    }
   }
 
   &--menu {
