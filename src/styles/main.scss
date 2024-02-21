@@ -17,11 +17,16 @@ top: 0;
 left: 0;
 right: 0;
 opacity: 0;
+transition: all 0.3s;
+transform: translateX(-100%);
 pointer-events: none;
+padding-left: 20px;
+padding-right: 20px;
 }
 
 .page__menu:target {
   opacity: 1;
+  transform: translateX(0);
   pointer-events: all;
   }
 
@@ -32,13 +37,13 @@ pointer-events: none;
 box-sizing: border-box;
 height: 100vh;
 background-image: url(../images/header-bg-mobile.png);
+border-right: none;
 background-size: cover;
 background-position: center;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 }
-
 
 .header__title {
   margin: 0;
@@ -137,10 +142,13 @@ gap: 32px;
 display: block;
 height: 24px;
 width: 24px;
+transition: transform 0.3s;
 }
+
 
 .icon--phone {
 background-image: url(../images/icons/icon-phone.png);
+position: relative;
 }
 
 .icon--menu {
@@ -151,6 +159,36 @@ background-image: url(../images/icons/icon-burger-menu.png);
 background-image: url(../images/icons/icon-close.png);
 }
 
+.icon--phone:hover {
+transform: scale(1.2);
+}
+
+.icon--menu:hover {
+transform: scale(1.2);
+}
+
+
+.icon--phone::after{
+content: '+1 234 5555-55-55';
+position: absolute;
+margin-left: 8px;
+width: 139px;
+height: 16px;
+font-weight: 700;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 2px;
+text-align: right;
+right: 32px;
+display: block;
+color: #1B2129;
+transition: transform 0.3s;
+transform: scale(0);
+transform-origin: left;
+}
+
+.icon--phone:hover::after {
+transform: scale(1);
+}
+
 /* #endregion */
-
-
