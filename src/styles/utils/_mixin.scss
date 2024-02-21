@@ -1,0 +1,110 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $tablet-min-desktop) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin flexbox($display, $flex-direction, $justify-content: null) {
+  display: $display;
+  flex-direction: $flex-direction;
+
+  @if $justify-content != null {
+    justify-content: $justify-content;
+  }
+}
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin contentPaddingBlock {
+  padding-block: 64px;
+
+  @include onTablet {
+    padding-block: 120px;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-time;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+%icon-sizes-phone {
+  width: 24px;
+  height: 24px;
+}
+
+%menu-phone-call-style {
+  display: block;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+@mixin inputStyle {
+  font-family: "Space Mono", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  font-size: 14px;
+  width: 100%;
+  line-height: 1.96rem;
+  font-weight: 400;
+  border: 1px solid $input-ba-and-border-color;
+  border-radius: 8px;
+  background-color: $input-ba-and-border-color;
+  color: $input-color;
+
+  &:hover {
+    border-color: $input-hover-color;
+  }
+
+  &:hover::placeholder {
+    color: $main-text-color;
+  }
+
+  &:focus {
+    border-color: $main-text-color;
+  }
+}
