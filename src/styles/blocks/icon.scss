@@ -1,0 +1,71 @@
+/*#region icon*/
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url(../images/icons/icon-burger-menu.png);
+  background-size: cover;
+  position: relative;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/Icon-Phone-call.svg);
+  }
+
+  &--call {
+    text-decoration: none;
+    transition: transform 0.3s;
+
+    @include onDesktop() {
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &::before {
+        display: block;
+        position: relative;
+        top: 50%;
+        content: "+1 234 555-55-55";
+        cursor: pointer;
+        width: max-content;
+        padding-right: 8px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: $main-text-color;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%, -50%);
+        transition: transform 1s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+  }
+
+  &--menu {
+    background-image: url(../images/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/Icon-Close.svg);
+  }
+}
+
+/*#endregion*/

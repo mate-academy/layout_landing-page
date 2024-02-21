@@ -1,0 +1,116 @@
+@mixin onTablet {
+  @media (min-width: $tablets-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin mainSizeTittleHeader {
+  font-size: 36px;
+
+  @include onTablet {
+    font-size: 48px;
+  }
+}
+
+@mixin mainSizeSectionsTittle {
+  font-size: 32px;
+  line-height: 32px;
+  margin: 0 0 48px;
+
+  @include onTablet {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 56px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin marginBottomWidth {
+  margin-bottom: 64px;
+
+  @include onTablet {
+    margin-bottom: 72px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 120px;
+  }
+}
+
+@mixin recomendedCenterItems {
+
+  @include onDesktop {
+    max-width: 1260px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+  @include recomendedCenterItems;
+}
+
+@mixin hover ($property, $toValue) {
+  opacity: 1;
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin button {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background-color: $bg-color-botton;
+  transition: all 0.5s;
+
+  &:hover {
+    color: $main-text-color;
+    outline: 2px solid #f0f1f4;
+    background-color: $bg-color-hover-botton;
+  }
+}
