@@ -26,7 +26,7 @@ footer {
   }
 
   &__container {
-    padding-bottom: 16px
+    padding-bottom: 16px;
   }
 
   &__content {
@@ -35,7 +35,6 @@ footer {
 
     &__forms {
         position: relative;
-        margin-bottom: 16px;
 
         grid-column: 1 / -1;
 
@@ -48,22 +47,25 @@ footer {
     }
 
     &--input {
+      box-sizing: border-box;
       outline: none;
-      border: none;
       position: relative;
+      font-family: Manrope, sans-serif;
+      font-size: 14px;
+      line-height: 19.6px;
       width: 100%;
       height: 48px;
+      padding-left: 16px;
       border-radius: 8px;
+      border: 1px solid $forms-background-color;
       background-color: $forms-background-color;
+      transition: $effect-duration;
 
-      &-third {
-        padding-bottom: 112px;
-      }
 
       &::placeholder {
         color: $forms-text-color;
         pointer-events: none;
-        padding-left: 16px;
+        transition: $effect-duration;
       }
 
       &:hover {
@@ -76,7 +78,6 @@ footer {
 
       &:focus {
         border: 2px solid $focus-color;
-        transition: $effect-duration;
 
         &::placeholder {
           color: $main-text-color;
@@ -84,17 +85,63 @@ footer {
       }
     }
 
+    &--textarea {
+      box-sizing: border-box;
+      resize: none;
+      outline: none;
+      position: relative;
+      font-family: Manrope, sans-serif;
+      font-size: 14px;
+      padding-top: 14px;
+      line-height: 19.6px;
+      color: $main-text-color;
+      width: 100%;
+      height: 148px;
+      padding-left: 16px;
+      border-radius: 8px;
+      border: 1px solid $forms-background-color;
+      background-color: $forms-background-color;
+      transition: $effect-duration;
+
+
+      &::placeholder {
+        color: $forms-text-color;
+        pointer-events: none;
+        transition: $effect-duration;
+      }
+
+      &:hover {
+        border: 1px solid $forms-hover-border;
+
+        &::placeholder {
+          color: $main-text-color;
+        }
+      }
+
+      &:focus {
+        border: 2px solid $focus-color;
+
+        &::placeholder {
+          color: $main-text-color;
+        }
+      }
+    }
+
+
       &--button {
         width: 100%;
         height: 56px;
         border-radius: 8px;
-        background-color: $forms-button-color;
+        border: none;
+        background-color: $category-button;
         color: $secondary-color;
+        cursor: pointer;
         font-weight: 700;
         font-size: 16px;
         line-height: 27px;
         text-align: center;
-        margin-top: 40px;
+        margin-top: 16px;
+        transition: background-color $effect-duration;
 
         @include on-tablet {
           margin-bottom: 56px;
@@ -102,9 +149,19 @@ footer {
         }
 
         @include on-desktop {
+          margin-bottom: 120px;
           grid-column: span 6;
         }
+
+        &:hover {
+          background-color: $category-button-hover;
+        }
+
+        &:focus {
+          background-color: $category-button-focus;
+        }
       }
+
     }
 
   &__information {
@@ -114,7 +171,6 @@ footer {
 
     @include on-tablet {
       grid-column: span 6;
-      margin-top: 80px;
       margin-bottom: 120px;
     }
 
@@ -143,17 +199,7 @@ footer {
         color: $focus-color;
       }
 
-      &--address {
-        text-decoration: none;
-        color: $contact-us-secondary;
-        transition: color $effect-duration;
-
-        &:hover {
-          color: $focus-color;
-        }
-      }
-
-      &--number {
+      &--address, &--number, &--email {
         text-decoration: none;
         color: $contact-us-secondary;
         transition: color $effect-duration;
