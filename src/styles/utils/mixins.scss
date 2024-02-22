@@ -1,0 +1,37 @@
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin on-hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin use-page-grid {
+  --grid-column-count: 2;
+  --grid-column-gap: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--grid-column-count), 1fr);
+  column-gap: var(--grid-column-gap);
+
+  @include on-tablet {
+    --grid-column-count: 6;
+    --grid-column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --grid-column-count: 12;
+  }
+}
