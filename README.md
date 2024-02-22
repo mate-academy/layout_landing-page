@@ -1,21 +1,16 @@
-# Landing page
+DESCRIPTION
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+This website is a landing page showcasing a museum. The page contains main sections such as "Plan your visit," "Now On View," "More to explore online," and "Contact us." These sections provide information about opening hours, current exhibitions, online programs, and contact details.
 
-Choose a design for your landing page:
+TECHNOLOGIES
+
+The page is built using HTML and CSS, with various classes and pseudo-elements utilized for styling and organizing content. Media queries and a well-thought-out HTML structure are employed to ensure responsiveness and usability. Mixins and variables in SCSS are actively used for convenient style organization and management. Additionally, text transformation and user interaction responses are implemented. The <div class="container"> element in this landing is not part of BEM but is used to limit the width in all sections as a DOM element. Through the contentPaddingInline mixin, it provides adaptive margins relative to the screen size, increasing them for different devices.
+
+LINKS
+
 - [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+- [DEMO LINK](https://opalahecha.github.io/layout_landing-page/)
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+ADDITIONAL LAUNCH INSTRUCTIONS
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+It is recommended to use a modern browser for optimal page performance. The entire project is divided into separate files for styles, allowing for convenient code management and editing. Experience with the SCSS preprocessor is recommended for making style changes.
