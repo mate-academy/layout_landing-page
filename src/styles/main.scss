@@ -14,16 +14,23 @@ body {
   letter-spacing: 0.15px;
 }
 
+button:hover {
+  background-color: #1B2129;
+  transition: .3s;
+}
+
+button:focus {
+  background-color: #010810;
+}
+
 .conteiner {
-  background: url('../img/Imagefon.png');
-  background-size: 100%;
+  background: url('../img/Imagefon.png') no-repeat center top;
+  background-size: cover;
   width: 100%;
   height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-repeat: no-repeat;
-
 }
 
 header {
@@ -32,6 +39,10 @@ header {
   align-items: center;
   width: 100%;
   padding: 36px 120px 0;
+
+  .logo {
+    cursor: pointer;
+  }
 
   .icons {
     display: flex;
@@ -47,6 +58,8 @@ header {
       flex-direction: column;
       position: relative;
       z-index: 1000;
+      cursor: pointer;
+
 
       .burgerIconLine {
         width: 24px;
@@ -82,8 +95,10 @@ header {
 }
 
 
-
-
+.ptel {
+  text-decoration: none;
+  color: #191919;
+}
 
 .conteiner p {
   color: #FFF;
@@ -98,6 +113,7 @@ header {
 
 .div2{
   width: 33%!important;
+  text-decoration: none;
 }
 
 .div1 {
@@ -109,23 +125,52 @@ header {
   width: 100%;
 }
 
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+  opacity: 0;
+  transition: .5s ease all;
+}
+
+.imageContainer img {
+  transition: .5s ease all;
+  object-fit: cover;
+}
+
+.imageContainer:hover img {
+  transform: scale(1.2);
+}
+
+.imageContainer:hover::after {opacity: 0.2;}
+
 .div1 .div2 .p1 {
   color: #1B2129;
-  font-family: Manrope, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
+
 }
 
 .div1 .div2 .p2 {
   color: #1B2129;
-  font-family: Manrope, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.15px;
+  margin-top: 8px;
 }
 
 .p3 {
@@ -133,6 +178,7 @@ header {
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
+  margin-top: 12px;
 }
 
 .div1 .div2 .p3 {
@@ -167,8 +213,16 @@ header {
 }
 
 .imgg {
-  width: 45%;
+  width: 100%;
   margin-right: 24px;
+}
+
+.div5 > .imageContainer, .div6 > .imageContainer, .div7 > .imageContainer {
+  width: 45%;
+}
+
+.div5 , .div6, .div7{
+    justify-content: space-between;
 }
 
 .img1 {
@@ -192,14 +246,11 @@ header {
   color: #FFF;
   border: none;
   text-align: center;
-  font-family: Manrope, sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 27px;
-  margin-left: 120px;
-  margin-top: 56px;
-  margin-bottom: 120px;
+  margin: 56px 0 120px 120px;
+  cursor: pointer;
 }
 
 .Image11 {
@@ -265,6 +316,7 @@ header {
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.15px;
+  border-radius: 8px;
 }
 
 .inputEmail {
@@ -281,6 +333,7 @@ header {
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.15px;
+  border-radius: 8px;
 }
 
 .inputMessage {
@@ -299,6 +352,19 @@ header {
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.15px;
+  border-radius: 8px;
+}
+
+.inputName:hover,
+.inputEmail:hover,
+.inputMessage:hover {
+  outline: 1px solid #DBDBDB;
+}
+
+.inputName:focus,
+.inputEmail:focus,
+.inputMessage:focus {
+  outline: 2px solid #F98921;
 }
 
 footer {
@@ -315,13 +381,13 @@ footer {
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background: #1B2129;
+  background: #F98921;
+  border: 0;
   color: #FFF;
-  font-family: Manrope, sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 27px;
+  cursor: pointer;
 }
 
 .text {
@@ -341,16 +407,19 @@ form {
 }
 
 .phone-num {
-  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .number {
   opacity: 0;
   transition:  opacity 0.5s ease;
-  position: absolute;
-  right: 50px;
-  width: 150px;
-  margin-top: 36px;
+  font-size: 12px;
+  color: #1B2129;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .phoneIcon {
@@ -361,6 +430,17 @@ form {
   opacity: 1;
 }
 
+.div5 {
+  display: flex;
+}
+
+.div6 {
+  display: flex;
+}
+
+.div7 {
+  display: flex;
+}
 
 @media screen and (max-width:745px) {
   .divv {
@@ -378,17 +458,7 @@ form {
     height: 400px;
   }
 
-  .div5 {
-    display: flex;
 
-  }
-  .div6 {
-    display: flex;
-
-  }
-  .div7 {
-    display: flex;
-  }
 
   .btn_viewAll {
     width: 100%;
@@ -420,6 +490,9 @@ form {
 }
 
 @media screen and (min-width:320px) and (max-width: 745px) {
+  header{
+    padding: 14px 24px;
+  }
   .div1 {
     margin-left: 20px;
     margin-right: 20px;
@@ -454,14 +527,12 @@ form {
     max-height: 600px;
     background: url(../img/Imagefon.png) no-repeat center top;
   }
+
   .logo {
     width: 152px;
     height: 16px;
   }
-  .conteiner header img {
-    margin-top: 24px;
-    margin-left: 20px;
-  }
+
   .icon1 {
     width: 24px;
     height: 24px;
@@ -490,12 +561,17 @@ form {
   opacity: 1;
 }
 
+body:has(.burgerMenu.open) {
+  overflow: hidden;
+}
+
 .burgerMenu {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 999;
   background-color: #fff;
   display: none;
+  overflow: auto;
 
   &.open {
     display: block;
@@ -554,4 +630,6 @@ form {
     }
   }
 
+
 }
+
