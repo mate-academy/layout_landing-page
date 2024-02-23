@@ -3,17 +3,20 @@
   transition:
     transform $transition-slow-specs,
     border-radius $transition-slow-specs;
-  overflow: auto;
-  min-height: 100vh;
 
   &:not(:target) {
     transform: translateY(-100%) scale(.7);
     border-radius: 24px;
   }
 
+  &__inner {
+    height: 100vh;
+    overflow: auto;
+  }
+
   &__content {
     padding-block: 28px;
-    color: $dark-color;
+    color: inherit;
 
     @include on-tablet {
       padding-block: 52px;
@@ -68,10 +71,10 @@
   &__phone {
     color: inherit;
     text-decoration: none;
-    transition: opacity $transition-fast-specs;
+    transition: color $transition-fast-specs;
 
     @include on-hover {
-      opacity: .7;
+      color: $gray-color;
     }
   }
 
@@ -94,18 +97,16 @@
       right: 0;
       bottom: 0;
       height: 1px;
-      background: $dark-color;
-      transition: height $transition-fast-specs, transform $transition-fast-specs;
+      background: currentColor;
+      transition:
+        transform $transition-fast-specs;
       z-index: -1;
     }
 
     @include on-hover {
       &::after {
-        height: 100%;
-        transform: scaleX(1.1);
+        transform: scaleX(.5);
       }
-
-      color: $light-color;
     }
   }
 }
