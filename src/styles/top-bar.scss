@@ -14,6 +14,41 @@
   &__icons {
     display: flex;
     gap: 24px;
+
+    &--wrapper {
+      position: relative;
+
+      .phone-number {
+        position: absolute;
+        width: 190px;
+        top: -30px;
+        right: -150%;
+        transform: translateX(-50%);
+        box-shadow: 18px 4px 26px 0 #00000070;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+        text-align: right;
+        margin: 0;
+
+        &__link {
+          display: none;
+          color: $white-color;
+          text-decoration: none;
+
+          @include on-desktop {
+            display: block;
+          }
+        }
+      }
+
+      @include on-desktop {
+        &:hover .phone-number {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &__logo-link {
@@ -23,6 +58,8 @@
   &__logo {
     height: 46px;
     width: 64px;
+
+    @include hover(transform, scale(1.2));
 
     @include on-tablet {
       height: 65px;
