@@ -3,6 +3,7 @@
   height: 100vh;
   background-color: $main-color;
   text-transform: uppercase;
+  overflow: auto;
 
   @include on-tablet {
     margin-bottom: 0;
@@ -30,19 +31,37 @@
   }
 
   &__call {
-    display: block;
+    position: relative;
     text-decoration: none;
     color: $white-color;
     font-size: 12px;
     font-weight: $title-font-weight;
     line-height: 1.33;
     letter-spacing: 2px;
-    text-align: left;
-    padding-bottom: 7px;
 
-    &:hover {
-      border-bottom: 1px solid $white-color;
-      width: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $white-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $main-color;
+  }
 }
+
