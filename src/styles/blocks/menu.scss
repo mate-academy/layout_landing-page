@@ -1,49 +1,72 @@
 .menu {
+  display: flex;
   background-color: #C2C2C2;
   text-transform: uppercase;
   font-weight: 600;
+  overflow: auto;
 
   &:target {
     opacity: 1;
     pointer-events: all;
   }
 
+  &__wrapper {
+    @include onDesktop {
+      width: 1020px;
+      margin: 0 auto;
+      transform: translateX(-8.5px);
+    }
+  }
+
   &__top {
-    margin-bottom: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 48px;
+
+    @include onTablet {
+      margin-bottom: 44px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 60px;
+    }
   }
 
   &__list {
+    width: 280px;
     margin: 0;
     margin-bottom: 40px;
     padding: 0;
   }
 
   &__phone-number {
-    color: $theme-color;
+    color: $theme-bg-color;
     text-decoration: none;
     font-size: 16px;
     line-height: 27px;
-    margin-bottom: 16px;
   }
 
   &__book-a-test-ride {
     display: block;
-    color: $theme-color;
+    margin-top: 16px;
+    color: $theme-bg-color;
     text-decoration: none;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid $theme-color;
+    border-bottom: 1px solid $theme-bg-color;
     width: fit-content;
 
     &:hover {
-      border-bottom: 1px solid $theme-color;
+      border-bottom: 1px solid $theme-bg-color;
     }
   }
 }
 
 .nav {
+  width: 280px;
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -52,10 +75,16 @@
 
   &__item {
     list-style-type: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid $theme-bg-color;
+      width: fit-content;
+    }
   }
 
   &__link {
-    color: $theme-color;
+    color: $theme-bg-color;
     text-decoration: none;
     font-size: 22px;
     line-height: 22px;

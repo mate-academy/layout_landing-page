@@ -7,14 +7,77 @@
   background-size: contain;
 
   &--phone {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     background-image: url('../icons/header/icon-phone.svg');
+
+    &:hover + .phone-number {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &--menu {
     background-image: url('../icons/header/icon-burger-menu.svg');
+
+    &:hover {
+      background-image: url('../icons/header/icon-burger-menu-hover.svg');
+    }
   }
 
   &--close {
     background-image: url('../icons/menu/icon-close.svg');
   }
+
+  @include onTablet {
+    width: $onTablet-icon-size;
+    height: $onTablet-icon-size;
+  }
+
+  @include onDesktop {
+    width: $onTablet-icon-size;
+    height: $onTablet-icon-size;
+  }
+}
+
+.phone__wrapper {
+  display: flex;
+  position: relative;
+  width: $onTablet-icon-size;
+
+  @include onDesktop {
+    width: 182px;
+  }
+}
+
+.phone-number {
+  display: none;
+  width: 100%;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  opacity: 0;
+  pointer-events: none;
+  padding: 8px 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @include onDesktop {
+    display: block;
+  }
+}
+
+.phone__wrapper {
+  height: 32px;
 }

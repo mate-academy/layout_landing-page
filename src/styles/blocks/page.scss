@@ -6,24 +6,47 @@
   font-family: Poppins, sans-serif;
   color: #fff;
   scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    background-color: $theme-bg-color;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
 }
 
-.page__body {
-  background-color: $theme-color;
-}
-
-.page__wrapper {
-  box-sizing: content-box;
-  width: 280px;
-  margin: 0 auto;
+.main__wrapper {
+  position: relative;
+  min-width: 280px;
+  max-width: 1260px;
   padding: 0 20px 120px;
-}
+  margin: 0 auto;
+  z-index: 1;
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  pointer-events: none;
+  @include onTablet {
+    padding: 0 72px 120px;
+  }
+
+  @include onDesktop {
+    padding: 0 120px 182px;
+  }
 }

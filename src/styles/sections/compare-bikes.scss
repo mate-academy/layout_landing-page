@@ -1,18 +1,41 @@
+.compare-bikes {
+  &__title {
+    @include onTablet {
+      margin: 132px 0 48px;
+    }
+
+    @include onDesktop {
+      margin: 164px 0 56px;
+    }
+  }
+}
+
 .bikes__list {
   display: grid;
   grid-template-columns: repeat(1, $compare-bikes-photo-width);
   justify-content: center;
   row-gap: 40px;
+  margin: 0 auto;
+
+  @include onTablet {
+    grid-template-columns: repeat(1, $compare-bikes-photo-width + 68px);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(3, $compare-bikes-photo-width);
+    column-gap: 24px;
+  }
 }
 
 .bike {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: transform 0.4s;
+  cursor: pointer;
+  transition: transform 0.3s;
 
   &__image {
-    width: $compare-bikes-photo-width;
+    width: 100%;
     margin-bottom: 32px;
   }
 
@@ -38,5 +61,9 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  &:hover {
+    transform: scale(1.08);
   }
 }
