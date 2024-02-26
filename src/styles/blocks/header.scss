@@ -1,0 +1,95 @@
+.header {
+  @include flexTemplate;
+  height: 100vh;
+
+  background-image: url('../images/backgrounds/bicycle-mobile.png');
+  background-position: right center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include onTablet {
+    background-position: center center;
+    background-image: url('../images/backgrounds/bicycle.png');
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: $paddingTopHeaderMobile 88px;
+    height: 100%;
+
+    @include onTablet {
+      padding-block: $paddingTopHeaderTablet 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 204px;
+    }
+  }
+
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  &__icon {
+    &--show--meroInfo {
+      position: relative;
+
+      @include onDesktop {
+        &::before {
+          content: '+1 234 555-55-55';
+          position: absolute;
+          top: 50%;
+          left: -20px;
+          display: block;
+          width: max-content;
+          transform: translate(-100%, -50%);
+
+          font-size: 12px;
+          font-weight: 700;
+          text-decoration: none;
+          color: $mainColorText;
+          letter-spacing: 2px;
+          line-height: 16px;
+          opacity: 0;
+          transition: opacity $transitionDuration;
+        }
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+}
