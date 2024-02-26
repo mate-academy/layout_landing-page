@@ -1,34 +1,70 @@
 .contacts {
-  &__wrapper {
-    @include sections-block;
+  &__title {
+    margin-bottom: 48px;
   }
-}
 
-.contacts-form {
-  display: flex;
-  flex-direction: column;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
 
-  width: 100%;
-  gap: 16px;
-
-  &__input {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 14px 11px;
-    border: none;
-    background-color: $bg-color-input;
-
-    &::placeholder {
-      color: $text-color-input;
-      font-family: $font-default;
-      font-size: inherit;
-      line-height: 24px;
-      letter-spacing: 1px;
+    @include on-tablet {
+      grid-column: 1/4;
     }
 
-    &:last-child {
-      height: 144px;
-      padding-bottom: 0;
+    @include on-desktop {
+      grid-column: span 6;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px 0;
+
+    @include on-tablet {
+      @include sections-block;
+    }
+  }
+
+  &__form {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+  }
+  &__address-title {
+    text-transform: capitalize;
+    margin-bottom: 16px;
+    line-height: 169%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    line-height: 169%;
+    color: #3e3e3e;
+
+    transition: color $animation-duration;
+
+    &:hover {
+      color: $accent-color-hover;
     }
   }
 }

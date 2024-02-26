@@ -1,0 +1,94 @@
+.gallery {
+  &__photos {
+    @include sections-block;
+    
+    margin-bottom: 24px;
+
+    &--grid-columns {
+      display: grid;
+      column-gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+
+      @include on-tablet {
+        @include sections-block;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    overflow: hidden;
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      object-position: right;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--hidden {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &--grid {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: position $animation-duration;
+
+    &--positioned {
+      object-position: 30%;
+
+      &-right {
+        object-position: right;
+      }
+    }
+
+    @include hover(transform, scale(1.1));
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+}
