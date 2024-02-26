@@ -4,6 +4,7 @@
   display: block;
   background-position: center;
   background-size: cover;
+  transition: transform $effect-duration ease-in-out;
 
   @include hover((transform), scale(1.2));
 
@@ -14,6 +15,26 @@
 
   &--phone {
     background-image: url(../images/Icon-Phone-call.svg);
+  }
+
+  &[title]::before {
+    content: attr(title);
+    position: absolute;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    top: 0;
+    left: -65px;
+    transform: translateX(-50%);
+    color: $main-text-color;
+    padding: 8px;
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity $effect-duration ease-in-out;
+  }
+
+  &:hover::before {
+    opacity: 1;
   }
 
   &--menu {
