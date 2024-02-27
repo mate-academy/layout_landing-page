@@ -1,0 +1,95 @@
+.exhibition {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
+
+    &--gap {
+      --columnCount: 3;
+      column-gap: 8px;
+
+      @include onTablet {
+        --columnCount: 6;
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        --columnCount: 12;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include hover(transform, scale(1.08));
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--none {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+      }
+    }
+
+    &--big {
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    object-position: top right;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--fit {
+      object-position: -45px;
+
+      @include onTablet {
+        object-position: 0;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    color: $main-accent;
+    font-size: 16px;
+  }
+
+  &__button {
+    @include button;
+    max-width: 392px;
+  }
+}
