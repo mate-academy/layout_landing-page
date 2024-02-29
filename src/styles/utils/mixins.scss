@@ -10,21 +10,43 @@
   }
 }
 
-@mixin content-padding-inline() {
+@mixin content-padding-inline {
   padding-inline: 20px;
 
   @include on-tablet {
     padding-inline: 72px;
   }
 
-  @include on-desktop() {
+  @include on-desktop {
     padding-inline: 120px;
   }
 }
 
-@mixin hover ($property, $toValue){
+.container {
+  @include content-padding-inline();
+}
+
+@mixin hover($property, $toValue) {
   transition: #{$property} 0.4s;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin grid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    column-gap: 24px;
+    --colums: 6;
+  }
+
+  @include on-desktop {
+    --colums: 12;
   }
 }
