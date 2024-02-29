@@ -1,29 +1,48 @@
 .header {
-  box-sizing: border-box;
-  height: 480px;
-  background-image: url(../images/header-bg-mobile.png);
+  // display: none !important;
+
+  background-image: url(../images/header-bg.png);
   background-size: cover;
   background-position: right;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include on-desktop {
+    background-image: url(../images/header-bg-pc.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 480px;
+
+    @include on-tablet {
+      height: 100vh;
+    }
+  }
+
+  @include on-tablet {
+    height: 100vh;
+  }
 
   &__title {
     font-size: 36px;
     font-weight: 700;
+    text-align: center;
     line-height: 100%;
     letter-spacing: -1.5px;
     margin: 0 auto;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
   }
 
   &__bottom {
-    display: flex;
-    align-items: center;
-    text-align: center;
-
     padding-bottom: 88px;
 
-    @include content-padding-inline;
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
   }
 }
