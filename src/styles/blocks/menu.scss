@@ -1,13 +1,17 @@
 .menu {
-  @include flexTemplate;
+  @include flex-template;
+
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
+  z-index: 1;
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
+  overflow: auto;
+  background-color: $colorGray;
 
   &:target {
     transform: translateY(0);
@@ -15,14 +19,12 @@
     pointer-events: all;
   }
 
-  background-color: $colorGray;
-
   &__content {
     display: flex;
     flex-direction: column;
     padding-top: $paddingTopHeaderMobile;
 
-    @include onTablet {
+    @include on-tablet {
       padding-top: $paddingTopHeaderTablet;
     }
   }
@@ -33,11 +35,11 @@
     justify-content: space-between;
     margin-bottom: 48px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 44px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-bottom: 60px;
     }
   }
@@ -63,23 +65,20 @@
     text-transform: uppercase;
     color: $colorBlack;
     cursor: pointer;
+    position: relative;
 
-    @include onDesktop {
+    @include on-desktop {
       font-weight: 700;
     }
 
-    position: relative;
-
-    &::after{
+    &::after {
       content: '';
       position: absolute;
       bottom: -8px;
-
       display: block;
       height: 1px;
       width: 100%;
       background-color: $colorBlack;
-
       transform: scale(0);
       transform-origin: left;
       transition: transform $transitionDuration;
@@ -99,11 +98,14 @@
     margin-bottom: 16px;
     max-width: max-content;
 
-    @include onDesktop {
+    @include on-desktop {
       font-weight: 700;
     }
-  }
 
+    &:hover {
+      color: $mainColorText;
+    }
+  }
   &__book {
     font-weight: 600;
     font-size: 12px;
@@ -115,10 +117,9 @@
     max-width: max-content;
     padding-bottom: 8px;
     cursor: pointer;
-
     position: relative;
 
-    @include onDesktop {
+    @include on-desktop {
       font-weight: 700;
     }
 
@@ -126,11 +127,19 @@
       content: '';
       position: absolute;
       bottom: 0;
-
       display: block;
       height: 1px;
       width: 100%;
       background-color: $colorBlack;
+      transition: all $transitionDuration;
+    }
+
+    &:hover {
+      color: $mainColorText;
+
+      &::after {
+        background-color: $mainColorText;
+      }
     }
   }
 }
