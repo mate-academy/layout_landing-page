@@ -1,0 +1,40 @@
+
+.page {
+  font-family: Cinzel, serif;
+  color: $main-text-color;
+  font-size: 32px;
+  line-height: 32px;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    height: 100%;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+
+    opacity: 0;
+    transition: all $transition-duration;
+    transform: translateX(-100%);
+    pointer-events: none;
+    color: $main-text-color-white;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
