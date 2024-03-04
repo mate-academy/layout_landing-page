@@ -1,0 +1,76 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include on-phone {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  &--desktop {
+    display: block;
+
+    @include on-desktop {
+      display: grid;
+    }
+  }
+
+  &--tablet {
+    display: block;
+
+    @include on-tablet {
+      display: grid;
+    }
+  }
+
+  &--phone {
+    display: block;
+
+    @include on-tablet {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include on-desktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
+        &--phone-#{$start}-#{$end} {
+          @include on-phone {
+            grid-column: #{$start} / #{$end };
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include on-tablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+  }
+}
