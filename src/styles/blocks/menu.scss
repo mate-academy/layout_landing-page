@@ -1,0 +1,145 @@
+.menu {
+  @include flex-template;
+
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+  background-color: $colorGray;
+
+  &:target {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding-top: $paddingTopHeaderMobile;
+
+    @include on-tablet {
+      padding-top: $paddingTopHeaderTablet;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 44px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $colorBlack;
+    cursor: pointer;
+    position: relative;
+
+    @include on-desktop {
+      font-weight: 700;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $colorBlack;
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform $transitionDuration;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__phoneNumber {
+    text-decoration: none;
+    color: $colorBlack;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    max-width: max-content;
+
+    @include on-desktop {
+      font-weight: 700;
+    }
+
+    &:hover {
+      color: $mainColorText;
+    }
+  }
+  &__book {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $colorBlack;
+    text-transform: uppercase;
+    text-decoration: none;
+    max-width: max-content;
+    padding-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+
+    @include on-desktop {
+      font-weight: 700;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $colorBlack;
+      transition: all $transitionDuration;
+    }
+
+    &:hover {
+      color: $mainColorText;
+
+      &::after {
+        background-color: $mainColorText;
+      }
+    }
+  }
+}

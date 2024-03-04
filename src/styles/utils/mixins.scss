@@ -1,0 +1,49 @@
+@mixin on-tablet() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin grid-template() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include grid-template-tablet-desktop;
+}
+
+@mixin grid-template-tablet-desktop() {
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: $columnGridGapTablet;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin flex-template() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin item-title-text-format() {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33.6px;
+}
+
+@mixin item-description-text-format() {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+}
