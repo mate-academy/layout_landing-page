@@ -13,4 +13,4 @@ menuIcon?.addEventListener('click', () => {
 closeIcon?.addEventListener('click', () => {
   Icons.classList.toggle('top-bar__icons--show');
 });
-/* end hide menu icon on click */
+/* #end hide menu icon on click */
