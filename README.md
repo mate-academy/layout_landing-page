@@ -2,7 +2,7 @@
 
 Description of the project
 
- -Technologies: HTML, SASS, BEM, CSS
+ -Technologies: HTML, BEM, SCSS, mobile-first approach
  
  -[DEMO LINK](https://h1deeeee.github.io/layout_landing-page/)
  
