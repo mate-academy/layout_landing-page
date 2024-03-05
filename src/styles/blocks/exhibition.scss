@@ -1,0 +1,97 @@
+.exhibition {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+
+    &--gap {
+      --column-count: 3;
+
+      column-gap: 8px;
+
+      @include on-tablet {
+        --column-count: 6;
+
+        column-gap: 24px;
+      }
+
+      @include on-desktop {
+        --column-count: 12;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include hover(transform, scale(1.04));
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--none {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &--big {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    object-position: top right;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--fit {
+      object-position: -45px;
+
+      @include on-tablet {
+        object-position: 0;
+      }
+    }
+  }
+
+  &__title {
+    color: $main-accent;
+    font-size: 16px;
+  }
+
+  &__dates {
+    color: $dark-text-color;
+  }
+}
