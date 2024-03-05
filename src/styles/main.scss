@@ -1,171 +1,25 @@
-.page {
-  font-family: "Poppins", sans-serif;
-  color: white;
+@import "variables";
+@import "icons";
+@import "top-bar";
+@import "page";
+@import "menu";
+@import "nav";
+@import "header";
+@import "intro";
+@import "compare-bikes";
+@import "details";
+@import "contacts";
 
-  scroll-behavior: smooth;
-  background-color: #1d1d1d;
+.main {
+  padding: 60px 20px 120px;
 }
 
-.page__body {
-  margin: 0;
-}
-
-.page__menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-
-  opacity: 0;
-  pointer-events: none;
-}
-
-.header {
-  box-sizing: border-box;
-  height: 100vh;
-  background-image: url("../images/header/bike.svg");
-  background-size: cover;
+.footer {
+  height: 200px;
+  background-image: url("../images/footer/bkg.png");
+  background-repeat: no-repeat;
   background-position: center;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.icon {
-  display: block;
-  width: 24px;
-  height: 24px;
-}
-
-.icon--phone {
-  background-image: url("../images/header/Icon-Phone-call.png");
-  position: relative;
-}
-
-.icon--phone:hover::before {
-  content: ("+1 234 5555-55-55");
-  width: max-content;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px;
-  letter-spacing: 2px;
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  right: 50px;
-  top: 5px;
-}
-
-.icon--menu {
-  background-image: url("../images/header/Icon-Burger-menu.png");
-}
-
-.header__title {
-  margin: 0;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 36px;
-  letter-spacing: -1.5px;
-}
-
-.header__bottom {
-  padding: 24px 20px 124px;
-}
-
-.top-bar {
-  padding: 24px 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.top-bar__icons {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.top-bar__logo {
-  display: flex;
-}
-
-.top-bar__logo img {
-  width: 130px;
-  height: 38px;
-}
-
-.menu {
-  box-sizing: border-box;
-  height: 100vh;
-  background-color: #c2c2c2;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.menu:target {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.menu-top {
-  margin-bottom: 32px;
-}
-
-.menu__nav {
-  margin-bottom: 40px;
-}
-
-.menu__content {
-  padding-inline: 20px;
-}
-
-.icon-close img {
-  width: 24px;
-  height: 24px;
-}
-
-.nav__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.nav__link,
-.menu__phone-number,
-.menu__book-ride {
-  color: black;
-  text-decoration: none;
-}
-
-.nav__link {
-  letter-spacing: 2px;
-  font-size: 22px;
-  line-height: 22px;
-}
-
-.nav__link:hover {
-  border-bottom: 1px solid #1d1d1d;
-}
-
-.menu__phone-number {
-  display: block;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 27px;
-}
-
-.menu__book-ride {
-  display: block;
-  width: fit-content;
-  padding-bottom: 7px;
-  border-bottom: 1px solid #1d1d1d;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 2px;
+  background-size: cover;
 }
 
 @media (min-width: 576px) {
@@ -194,18 +48,18 @@
   .icon--phone {
     background-size: cover;
     background-position: center;
-    width: 32px;
-    height: 32px;
+    width: $width-32;
+    height: $height-32;
   }
 
   .icon-close img {
-    width: 32px;
-    height: 32px;
+    width: $width-32;
+    height: $height-32;
   }
 
   .header__title {
-    font-size: 64px;
-    line-height: 64px;
+    font-size: $font-size-xxxl;
+    line-height: $line-height-xxxl;
   }
 
   .header__bottom {
@@ -219,6 +73,93 @@
   .menu__content {
     padding-inline: 73px;
   }
+
+  .main {
+    padding: 120px 72px 102px;
+  }
+
+  .intro,
+  .details__photos,
+  .the-details__button,
+  .contacts {
+    --columns: 6;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 24px;
+  }
+
+  .intro {
+    &__title {
+      font-size: $font-size-xxl;
+      line-height: $line-height-xxxl;
+      grid-column: 1 / 4;
+    }
+
+    &__info {
+      grid-column: 4 / 7;
+    }
+  }
+
+  .compare-bikes {
+    margin-top: 132px;
+
+    &__title {
+      font-size: $font-size-xxl;
+      line-height: $line-height-xxxl;
+    }
+  }
+
+  .bikes {
+    justify-items: center;
+  }
+
+  .the-details {
+    margin-top: 120px;
+
+    &__title {
+      font-size: $font-size-xxl;
+      line-height: $line-height-xxxl;
+    }
+  }
+
+  .details {
+    gap: 48px;
+
+    &__photos-square,
+    &__photos-rectangle {
+      width: 100%;
+      object-fit: cover;
+      height: 188px;
+    }
+
+    &__photos-rectangle {
+      grid-column: span 4;
+    }
+
+    &__photos-square {
+      grid-column: span 2;
+    }
+
+    &__button {
+      margin-top: 48px;
+      grid-column: 2 / 6;
+    }
+  }
+
+  .contacts {
+    &__form {
+      grid-column: span 3;
+    }
+
+    &__blocks {
+      grid-column: 4 / 6;
+    }
+  }
+
+  .footer {
+    height: 480px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -227,8 +168,8 @@
   }
 
   .header__title {
-    font-size: 80px;
-    line-height: 80px;
+    font-size: $font-size-xxxxl;
+    line-height: $line-height-xxxxxl;
   }
 
   .header__bottom {
@@ -241,5 +182,93 @@
 
   .menu__content {
     padding-inline: 120px;
+  }
+
+  .main {
+    padding: 120px 120px 164px;
+  }
+
+  .intro,
+  .bikes,
+  .details__photos,
+  .the-details__button,
+  .contacts {
+    --columns: 12;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 24px;
+  }
+
+  .intro {
+    &__title {
+      font-size: $font-size-xxxl;
+      line-height: $line-height-xxxl;
+      grid-column: 1 / 6;
+    }
+
+    &__info {
+      grid-column: 6 / 12;
+    }
+  }
+
+  .compare-bikes {
+    margin-top: 164px;
+    margin-bottom: 56px;
+
+    &__title {
+      font-size: $font-size-xxxl;
+      line-height: $line-height-xxxl;
+    }
+  }
+
+  .bike {
+    grid-column: span 4;
+  }
+
+  .the-details {
+    margin-top: 144px;
+
+    &__title {
+      font-size: $font-size-xxxl;
+      line-height: $line-height-xxxxl;
+    }
+  }
+
+  .details {
+    &__photos {
+      --columns: 12;
+    }
+
+    &__photos-square,
+    &__photos-rectangle {
+      height: 100%;
+    }
+
+    &__photos-rectangle {
+      grid-column: span 8;
+    }
+
+    &__photos-square {
+      grid-column: span 4;
+    }
+
+    &__button {
+      grid-column: 5 / 9;
+    }
+  }
+
+  .contacts {
+    &__form {
+      grid-column: span 5;
+    }
+
+    &__blocks {
+      grid-column: 8 / 10;
+    }
+  }
+
+  .footer {
+    height: 555px;
   }
 }
