@@ -9,40 +9,47 @@
 
   @include hover(transform, scale(1.2));
 
-  @include onTablet {
+  @include on-tablet {
     width: 32px;
     height: 32px;
   }
 
   &--phone {
-    background-image: url(../images/icons/icon-phone.png);
-    position: relative;
+    background-image: url(../images/icons/icon-phone.svg);
+  }
 
-    &:hover::before {
-      content: '+1 234 555-55-55';
-      position: absolute;
-      right: 52px;
-      width: 140px;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 32px;
-      letter-spacing: 2;
-      color: #FFF;
-    }
+  &[title]::before {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: -65px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    color: #FFF;
+    padding: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity $effect-duration ease-in-out;
+  }
+
+  &:hover::before {
+    opacity: 1;
   }
 
   &--menu {
-    background-image: url(../images/icons/icon-burger-menu.png);
+    background-image: url(../images/icons/icon-burger-menu.svg);
 
     &:hover {
-      background-image: url(../images/icons/icon-burger-menu-hover.png);
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
     }
   }
 
   &--close {
-    background: url(../images/icons/icon-close.png);
+    background: url(../images/icons/icon-close.svg);
 
-    @include onTablet {
+    @include on-tablet {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
