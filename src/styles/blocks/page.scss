@@ -4,29 +4,33 @@
   font-weight: 400;
   line-height: 140%;
   letter-spacing: 0.15px;
-  color: #1b2129;
+  color: $main-text-color;
 
   scroll-behavior: smooth;
-}
 
-.page:has(.page__menu:target) {
-  overflow: hidden;
-}
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
-.page__body {
-  margin: 0;
-}
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-}
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition: .3s ease-in-out;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
 
-.page__menu:target {
-  opacity: 1;
-  pointer-events: all;
+      &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
 }
