@@ -1,23 +1,23 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin contentPaddingInline {
+@mixin content-padding-inline {
   padding-inline: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 72px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     max-width: 1020px;
     margin-inline: auto;
     padding-inline: 120px;
@@ -25,31 +25,31 @@
 }
 
 .container {
-  @include contentPaddingInline;
+  @include content-padding-inline;
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} $effectDuration;
+  transition: #{$property} $effect-duration;
 
   &:hover {
     #{$property}: $toValue;
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
 
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
-
+  @include on-tablet {
     --columns: 6;
+
     column-gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     --columns: 12;
   }
 }
@@ -58,25 +58,22 @@
   box-sizing: border-box;
   display: inline-flex;
   height: 56px;
-  padding: 0px 48px;
+  padding: 0 48px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  transition: .3s ease-in-out;
   border-radius: 8px;
-  background: #F98921;
+  background-color: #F98921;
   color: #fff;
   text-decoration: none;
   font-weight: 700;
   line-height: 27px;
   width: 100%;
 
-  &:hover {
-    background: #1B2129;
-  }
+  @include hover(background-color, #1B2129);
 
   &:active {
-    background: #010810;
+    background-color: #010810;
   }
 }
