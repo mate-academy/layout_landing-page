@@ -20,7 +20,6 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #e5e5e5;
 
     @include ontablet {
       margin-bottom: 8px;
@@ -62,6 +61,25 @@
     line-height: 27px;
     display: block;
     margin-bottom: 16px;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-page-color;
+      transition: transform 0.5s ease;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__call-to-order{
@@ -75,5 +93,10 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
