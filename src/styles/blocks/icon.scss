@@ -1,6 +1,6 @@
 .icon {
-  width: 24px;
-  height: 24px;
+  width: $icon-size;
+  height: $icon-size;
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,12 +8,41 @@
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
-    width: 32px;
-    height: 32px;
+    width: $icon-size-tablet;
+    height: $icon-size-tablet;
   }
 
   &--phone {
+    // padding-left: 100px;
+    position: relative;
     background-image: url("/src/icons/Icon-Phone-call2-x.png");
+
+    &::before {
+      display: none;
+
+      @include on-desktop {
+        display: inline;
+      }
+
+      transition: 0.3s;
+      opacity: 0;
+      content: "+1 234 5555-55-55";
+
+      position: absolute;
+      right: calc(#{$icon-size-tablet + 20px});
+      top: 12px;
+      width: 150px;
+
+      color: white;
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
   }
 
   &--menu {
@@ -22,14 +51,9 @@
     &:hover {
       background-image: url("/src/icons/Icon-Burger-menu-hover.png");
     }
-
   }
 
   &--close {
     background-image: url("/src/icons/Icon-Close2-x.png");
   }
 }
-
-
-
-
