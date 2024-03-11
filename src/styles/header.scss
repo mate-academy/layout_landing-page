@@ -1,0 +1,135 @@
+.header {
+  box-sizing: border-box;
+  background-image: url(/src/images/bgheader.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 90% top;
+
+  @include on-tablet {
+    background-position: 50% 25%;
+  }
+
+  @include on-desktop {
+    background-position: 50% 25%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 203px;
+    }
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -1.5px;
+    line-height: 80px;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__icons {
+    gap: 24px;
+    display: flex;
+  }
+}
+
+.icon {
+  display: block;
+  height: 32px;
+  width: 32px;
+
+  &--phone {
+    position: relative;
+    background-image: url(/src/images/phone-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        width: max-content;
+
+        display: flex;
+        position: absolute;
+
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        top: 50%;
+        right: 60px;
+
+        opacity: 0;
+        transition: opacity 350ms;
+        transform: translateY(-50%);
+      }
+    }
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/images/burger-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(/src/images/burger-hover-icon.svg);
+    }
+  }
+}

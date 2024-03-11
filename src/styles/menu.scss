@@ -1,0 +1,130 @@
+.menu {
+  opacity: 0;
+  pointer-events: none;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  transition: all 350ms;
+  transform: translateX(10%);
+
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #c2c2c2;
+
+  text-transform: uppercase;
+
+  &__content {
+    max-width: 1020px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    margin: 0 auto;
+    font-weight: 600;
+
+    @include on-tablet {
+      padding: 0 72px;
+    }
+
+    @include on-desktop {
+      padding: 0 120px;
+      font-weight: 700;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+
+    padding-block: 24px;
+
+    @include on-tablet {
+      padding-block: 36px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+    width: 130px;
+    height: 38px;
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  &__phone {
+    display: block;
+    color: #1d1d1d;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__call {
+    display: block;
+    color: #1d1d1d;
+    text-decoration: none;
+    border-bottom: 1px solid #1d1d1d;
+    padding-bottom: 8px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    width: max-content;
+  }
+}
+
+.icon--close {
+  background-image: url(/src/images/close-icon.svg);
+  background-size: cover;
+}
+
+.nav__list {
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  margin: 0;
+  padding: 0;
+  margin-bottom: 40px;
+
+  list-style: none;
+  font-size: 22px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #1d1d1d;
+  width: max-content;
+  cursor: pointer;
+  transition: 122ms;
+  position: relative;
+
+  &::after {
+    content: '';
+    background-color: #1d1d1d;
+    position: absolute;
+    transform: scale(0);
+    transition: 300ms;
+    width: 100%;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
