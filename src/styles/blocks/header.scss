@@ -24,34 +24,71 @@
     }
   }
 
-  &__nav {
-    &-list {
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 24px;
+  }
+
+  &__item {
+    &--long {
       display: flex;
-      list-style: none;
-      gap: 24px;
+      align-items: center;
+      position: relative;
     }
   }
+
   &__link {
-    &-call {
-      display: block;
-      background: center / cover no-repeat url('../images/icons/phone-call.png');
+    position: absolute;
+    left: -80px;
+    right: -50px;
+    bottom: -35px;
+    opacity: 0;
+    pointer-events: none;
 
-      @include icons-dimensions;
-    }
-
-    &-menu {
-      display: block;
-      background: center / cover no-repeat url('../images/icons/menu.png');
-      cursor: pointer;
-
-      @include icons-dimensions;
-
-      &:hover {
-        background: center / cover no-repeat
-          url('../images/icons/menu-hover.png');
-      }
+    @include on-tablet {
+      margin-left: 150px;
+      padding-left: 200px;
+      right: 0;
+      left: -350px;
+      bottom: 2px;
     }
   }
+
+  &__call-icon {
+    background: left 100% bottom 50% / contain no-repeat
+      url('../images/icons/phone-call.png');
+    position: relative;
+    padding-bottom: 20px;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-left: 150px;
+      padding-left: 200px;
+    }
+
+    @include icons-dimensions;
+
+    &:hover > .header__link {
+      transition: opacity 300ms;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__menu-icon {
+    display: block;
+    background: center / cover no-repeat url('../images/icons/menu.png');
+    cursor: pointer;
+
+    @include icons-dimensions;
+
+    &:hover {
+      background: center / cover no-repeat url('../images/icons/menu-hover.png');
+    }
+  }
+
   &__title {
     margin-bottom: 88px;
     font-weight: 700;
