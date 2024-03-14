@@ -1,0 +1,155 @@
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+.container {
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onMobile {
+    padding-inline: 20px;
+  }
+}
+
+@mixin iconDimensionsMobile() {
+  @include onMobile {
+    width: $icon-dimensions-mobile;
+    height: $icon-dimensions-mobile;
+  }
+}
+
+@mixin iconGapMobile() {
+  @include onMobile {
+    gap: $icon-dimensions-mobile;
+  }
+}
+
+@mixin headerMotoFontSize() {
+  @include onDesktop {
+    font-size: 80px;
+  }
+
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onMobile {
+    font-size: 36px;
+  }
+}
+
+@mixin motoFontSize() {
+  @include onDesktop {
+    font-size: 80px;
+  }
+
+  @include onTablet {
+    font-size: 64px;
+  }
+
+  @include onMobile {
+    font-size: 36px;
+  }
+}
+
+@mixin headerBottomMargin() {
+  @include onDesktop {
+    margin-bottom: 203px;
+  }
+
+  @include onTablet {
+    margin-bottom: 130px;
+  }
+
+  @include onMobile {
+    margin-bottom: 88px;
+  }
+}
+
+@mixin mobileLogoDimensions() {
+  @include onMobile {
+    width: 130px;
+    height: 38px;
+  }
+}
+
+@mixin pageGrid() {
+  --columns: 12;
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+  }
+
+  @include onMobile {
+    --columns: 2;
+    column-gap: 20px;
+  }
+}
+
+@mixin buttonStyle() {
+  display: flex;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  justify-content: center;
+
+  width: auto;
+  height: 56px;
+  padding: 0 48px;
+  border-radius: 40px;
+
+  color: $primary-color;
+  background-color: $secondary-color;
+  text-decoration: none;
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin textColorChangeOnHover($hoverColor) {
+  &:hover {
+    transition: color 0.3s ease;
+    color: $hoverColor;
+  }
+}
+
+@mixin imageAnimation() {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
