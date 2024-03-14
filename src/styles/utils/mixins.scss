@@ -1,0 +1,92 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin logo-dimensions {
+  width: 130px;
+  height: 38px;
+
+  @include on-tablet {
+    width: 187px;
+    height: 56px;
+  }
+}
+
+@mixin icons-dimensions {
+  width: 24px;
+  height: 24px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@mixin body-container {
+  padding-inline: 20px;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    padding-block: 36px;
+  }
+
+  @include on-desctop {
+    padding-inline: 120px;
+    min-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin menu-nav-link-style {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: $black-900;
+  &:hover {
+    text-decoration: none;
+    color: $black-900;
+  }
+}
+
+@mixin title-styles {
+  font-size: 32px;
+  letter-spacing: -2px;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 48px;
+
+  @include on-tablet {
+    font-size: 48px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desctop {
+    grid-column: span 5;
+    font-size: 64px;
+    margin-bottom: 48px;
+  }
+}
+
+@mixin grid-column {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+  }
+
+  @include on-desctop {
+    grid-template-columns: repeat(12, 63px);
+    justify-content: baseline;
+  }
+}
