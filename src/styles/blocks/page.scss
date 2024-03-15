@@ -1,0 +1,40 @@
+.page {
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-duration: $transition-time;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+li {
+  list-style: none;
+}
