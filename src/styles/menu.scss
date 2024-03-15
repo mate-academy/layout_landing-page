@@ -5,22 +5,37 @@
   right: 0;
   left: 0;
   background: #fff;
-  height: $header-size;
   pointer-events: none;
   opacity: 0;
+  overflow-y: scroll;
 
-  overflow: auto;
+  // @include height-menu;
+  height: $header-size;
+
+  &-container {
+    @media screen and (max-width: 743px) {
+      width: 360px;
+    }
+
+    @media screen and (min-width: 744px) and (max-width: 1259px) {
+      width: 744px;
+    }
+
+    @media screen and (min-width: 1260px) {
+      width: 1260px;
+    }
+  }
   &:target {
     opacity: 1;
     pointer-events: all;
 
-    overflow: hidden;
+    overflow: auto;
   }
 
   &_list {
     margin: 0;
     @include padding-inline;
-    padding-block: 104px 32px;
+    padding-block: 32px;
   }
 
   &_item {
@@ -28,6 +43,11 @@
 
     &:not(:last-child) {
       padding-bottom: 32px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-position: under;
     }
   }
 
