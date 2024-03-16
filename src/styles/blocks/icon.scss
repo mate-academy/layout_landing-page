@@ -5,15 +5,44 @@
   background-size: cover;
   background-position: center;
 
-  @include hoverEffect(transform, scale(1.2));
+  @include hover-effect(transform, scale(1.2));
 
-  @include onTablet {
+  @include on-tablet {
     height: 32px;
     width: 32px;
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/phone.svg);
+
+    @include on-desktop {
+      &:hover .icon__phone-number {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__phone-number {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    width: max-content;
+    padding-right: 20px;
+
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease-in-out;
+
+    color: $main-text-color;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+
+    opacity: 0;
+    pointer-events: none;
   }
 
   &--menu {
