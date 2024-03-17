@@ -2,13 +2,45 @@
   display: block;
   width: 24px;
   height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include transition(transform);
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__call-to-action {
+    display: none;
+    position: absolute;
+    padding-right: 16px;
+    top: -100%;
+    right: 100%;
+    width: 250px;
+  }
 
   &--phone {
     background-image: url(../images/icons/phone.svg);
+    cursor: pointer;
+    position: relative;
+
+    &:hover .icon__call-to-action {
+      display: block;
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/menu-hover.svg);
+    }
   }
 
   &--close {

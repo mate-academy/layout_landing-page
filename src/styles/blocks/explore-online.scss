@@ -3,6 +3,17 @@
     display: flex;
     flex-direction: column;
     gap: 48px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 48px 20px;
+    }
+
+    @include on-laptop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 24px;
+    }
   }
 
   &__title {
@@ -12,6 +23,14 @@
 
   &__item {
     text-align: center;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-laptop {
+      grid-column: auto;
+    }
   }
 
   &__item-img {
@@ -19,8 +38,9 @@
     margin-bottom: 24px;
     object-fit: cover;
     object-position: center;
-    max-width: 387px;
-    height: 277px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
   }
 
   &__item-title {

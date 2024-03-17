@@ -1,16 +1,37 @@
 .contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-
   &__title {
     text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include on-laptop {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 48px;
+
+    @include on-laptop {
+      grid-column: span 2;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
   }
 
   &__museum-name {
@@ -44,16 +65,28 @@
 
   &__field {
     background-color: $grey100;
-    color: $grey400;
+    color: $text-color;
     border: none;
     font-family: inherit;
     font-size: 14px;
     line-height: 20px;
     padding: 14px 11px;
 
+    &::placeholder {
+      color: $grey400;
+    }
+
     &--area {
       resize: none;
       height: 144px;
+    }
+    &:hover {
+      outline: 1px solid #d5d7de;
+    }
+
+    &:focus,
+    &:focus:hover {
+      outline: 1px solid #161616;
     }
   }
 }
