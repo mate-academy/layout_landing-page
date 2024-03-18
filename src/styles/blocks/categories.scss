@@ -27,7 +27,6 @@
   }
 
 
-
 .category {
   &__photos {
     @include page-grid;
@@ -36,32 +35,30 @@
   }
 
   &__link {
-    height: 100%;
-    position: relative;
-    &--wide {
-      @include on-tablet {
-        grid-column: span 3;
-      }
-
-      @include on-desktop {
-        grid-column: span 6;
-      }
+    @include on-mobile {
+      position: relative;
+      height: 0;
+      padding-bottom: 100%;
     }
-  }
-
-
-  &__photo {
-    width: 100%;
-    border-radius: 4px;
-    box-sizing: border-box;
 
     @include on-tablet {
-      border-radius: 0;
-    }
+      grid-column: span 3;
+      }
 
     @include on-desktop {
-      border-radius: 0;
+      grid-column: span 6;
+      }
     }
+
+  &__photo {
+    @include on-mobile {
+      position: absolute;
+    }
+    
+    height:  100%;
+    width: 100%;
+    object-fit: cover;
+
   }
 
   &__photo:hover {
@@ -75,4 +72,5 @@
     font-weight: 700;
   }
 }
+
 
