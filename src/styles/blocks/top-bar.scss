@@ -13,19 +13,42 @@
 
   &__icon {
     display: block;
-    height: 24px;
-    width: 24px;
+    height: $logo-size;
+    width: $logo-size;
 
     @include on-tablet {
-      height: 32px;
-      width: 32px;
+      height: $logo-tablet-size;
+      width: $logo-tablet-size;
     }
 
     @include hover(transform, scale(1.2));
 
+    &--phone-hover {
+      position: absolute;
+      top: -$logo-size;
+      right: $logo-size * 2;
+
+      width: max-content;
+
+      font-weight: 700;
+      line-height: $logo-size;
+      text-align: center;
+      color: $main-white;
+
+      opacity: 0;
+      pointer-events: none;
+    }
+
     &--phone {
+      position: relative;
       background-image: url(/src/images/icons/icon-phone-call.svg);
       background-size: cover;
+
+      &:hover {
+        .top-bar__icon--phone-hover {
+          opacity: 1;
+        }
+      }
     }
 
     &--menu {
