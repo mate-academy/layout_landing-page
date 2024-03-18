@@ -1,0 +1,64 @@
+.page {
+  font-family: Cinzel, serif;
+
+  scroll-behavior: smooth;
+
+  &__main {
+    background-color: $main-white;
+  }
+
+  &__body {
+    min-width: 320px;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__content {
+    &--menu {
+      display: flex;
+      flex-direction: column;
+
+      gap: 32px;
+
+      @include content-padding-inline;
+
+      @include on-desktop {
+        gap: 48px;
+      }
+    }
+
+    &--main {
+      display: flex;
+      flex-direction: column;
+
+      gap: 100px;
+      padding-top: 138px;
+
+      @include content-padding-inline;
+
+      @include on-tablet {
+        gap: 140px;
+      }
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
