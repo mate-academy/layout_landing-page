@@ -1,6 +1,20 @@
 .contacts {
+  &__wrapper {
+    @include page-grid;
+    grid-row: 48px;
+  }
 
   &__form {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+
     input, textarea {
       width: 100%;
       padding: 14px 16px;
@@ -12,7 +26,24 @@
       margin-bottom: 16px;
 
       border-radius: $default-border-radius;
-      border: none;
+      border: 1px solid transparent;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 6;
+      }
+
+      &:hover {
+        border: 1px solid #D5D7DE;
+      }
+
+      &:focus {
+        border: 1px solid #292929;
+        outline: none;
+      }
     }
 
     input::placeholder, textarea::placeholder {
@@ -21,4 +52,5 @@
       line-height: 140%;
     }
   }
+
 }
