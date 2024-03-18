@@ -18,17 +18,25 @@
   }
 
   @include on-desktop {
-    margin-inline: auto;
-    max-width: 1260px;
     padding-inline: 120px;
+    max-width: 1260px;
+    margin-inline: auto;
   }
 }
 
-@mixin hover($property, $to-value) {
-  transition: #{$property} 0.3s;
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-time;
 
   &:hover {
-    #{$property}: $to-value;
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active($property, $toValue) {
+  transition: #{$property} $transition-time;
+
+  &:active {
+    #{$property}: $toValue;
   }
 }
 
@@ -50,4 +58,8 @@
 
     column-gap: 24px;
   }
+}
+
+.container {
+  @include content-padding-inline;
 }

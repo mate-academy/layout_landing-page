@@ -3,8 +3,6 @@
   height: 24px;
   width: 24px;
   background-size: cover;
-  background-position: center;
-  transition: transform 0.3s;
 
   @include hover(transform, scale(1.2));
 
@@ -15,6 +13,29 @@
 
   &--phone {
     background-image: url(../images/header/icon-phone.svg);
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        top: 10px;
+        left: -145px;
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        color: $main-color;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        transition: $transition-time;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
