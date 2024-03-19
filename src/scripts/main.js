@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Очищаємо поля вводу
+
     var nameInput = document.getElementsByName('name')[0];
     var emailInput = document.getElementsByName('email')[0];
     var messageInput = document.getElementsByName('text')[0];
