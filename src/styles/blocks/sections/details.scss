@@ -1,0 +1,87 @@
+.details {
+  margin-top: 144px; // bad BEM, but its much more convenient than adding additional container
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 48px;
+  }
+
+  &__button-wrapper {
+    @include grid-align;
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
+
+.detail {
+  @include grid-align;
+
+  &__title {
+    margin-top: 16px;
+    grid-column: 1 / -1;
+  }
+
+  &__description {
+    margin-top: 8px;
+    grid-column: 1 / -1;
+  }
+
+  &__photo {
+    @include on-hover-scale-animation(1.05, 0.3s);
+
+    cursor: pointer;
+
+    width: 100%;
+    height: 130px;
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 320px;
+    }
+
+    object-fit: cover;
+
+    &--short {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+  }
+}
