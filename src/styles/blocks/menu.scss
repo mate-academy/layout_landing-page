@@ -54,15 +54,30 @@
   }
 
   &__call-to-order {
-    display: block;
-    width: fit-content;
-
+    position: relative;
     color: $white-color;
     text-decoration: none;
-    padding-bottom: 7px;
-    border-bottom: 1px solid $white-color;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $white-color;
+
+      transition: transform $effect-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transition: all ease $effect-duration;
+    }
   }
 }
