@@ -4,9 +4,14 @@
     bottom: 0;
     z-index: -1;
   }
+
   padding-block: 64px;
   @include padding-inline;
   @include use-row(1260px, 111px);
+
+  @media screen and (max-width: 743px) {
+    @include row-column;
+  }
 
   @media screen and (min-width: 1260px) {
     .row {
@@ -37,16 +42,15 @@
       background: #f9f9f9;
       border-radius: 8px;
       box-sizing: border-box;
-      outline: none;
+      outline: #f9f9f9;
 
       &:hover {
         border: 1px solid #dbdbdb;
       }
-      &:focus {
-        border: 2px solid $link-color;
-        outline: none;
-      }
+
+      &:focus,
       &:target {
+        border: 2px solid $link-color;
         outline: none;
       }
 
@@ -55,6 +59,14 @@
         font-size: 14px;
         text-align: left;
 
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        border: 1px solid $link-color;
+        -webkit-box-shadow: #f9f9f9;
+        transition: background-color 5000s ease-in-out 0s;
       }
 
       @media screen and (min-width: 744px) and (max-width: 1259px) {
@@ -71,9 +83,11 @@
 
       height: 120px;
       resize: none;
+
       @media screen and (min-width: 1260px) {
         height: 148px;
       }
+
       &::placeholder {
         text-transform: capitalize;
         font-size: 14px;
@@ -82,12 +96,15 @@
 
     &-link {
       width: 280px;
+
       @media screen and (min-width: 744px) and (max-width: 1259px) {
         width: 100%;
       }
+
       @media screen and (min-width: 1260px) {
         width: 498px;
       }
+
       height: 56px;
       line-height: 56px;
       display: block;
@@ -112,6 +129,7 @@
   }
 
   .adress {
+    width: 280px;
     padding-block-start: 48px;
 
     @media screen and (min-width: 1260px) {
@@ -122,6 +140,7 @@
       color: $foter-text-color;
 
     }
+
     &-paragraf {
       margin: 0;
     }
