@@ -1,0 +1,114 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-inline-padding {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-inline-padding;
+}
+
+@mixin on-hover($property, $to-value) {
+  transition: 0.3s;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin menu-on-hover-after-link {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    width: 100%;
+    display: block;
+    height: 1px;
+    background-color: $menu-text-color;
+
+    transition: 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin content-grid {
+  --grid-columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+
+  @include on-tablet {
+    --grid-columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --grid-columns: 12;
+  }
+}
+
+@mixin article-title-font {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2rem;
+
+  @include on-tablet {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  @include on-desktop {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+
+@mixin button-link {
+  display: block;
+  text-align: center;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 56px;
+  border: 0;
+  border-radius: 40px;
+  width: 100%;
+  background-color: $main-text-color;
+  color: $main-background-color;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
