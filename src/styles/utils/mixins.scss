@@ -20,7 +20,7 @@
   @include on-desktop {
     max-width: 1020px;
     margin: 0 auto;
-    padding-inline: 120px;
+    padding-inline: 0;
   }
 }
 
@@ -29,9 +29,18 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+  transition: #{$property} $effect-duration;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin button-hover {
+  @include hover(background-color, $form-background);
+  @include hover(color, $main-text-color);
+
+  &:hover {
+    outline: 2px solid $border-color;
   }
 }
 
