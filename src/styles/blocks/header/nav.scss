@@ -1,0 +1,32 @@
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    @include set-font-sizes(1.38rem, 1);
+
+    position: relative;
+    color: inherit;
+    letter-spacing: 2px;
+
+    &::after {
+      @include set-dimensions(100%, 1px);
+
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -($distance-to-border);
+      background-color: $main-text-color;
+      transition: transform $effect-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
