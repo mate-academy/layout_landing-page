@@ -1,4 +1,5 @@
 .icon {
+  position: relative;
   display: block;
   height: 24px;
   width: 24px;
@@ -12,10 +13,37 @@
 
   &--phone {
     background-image: url(/src/icons/icon-phone.svg);
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(-110%, -50%);
+      width: max-content;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+
+      content: "+1 234 555-55-55";
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 32px;
+      letter-spacing: 2px;
+      color: $text-color--main;
+    }
+
+    &:hover {
+      &::before {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
     background-image: url(/src/icons/icon-menu.svg);
+    transition: background-image 0.3s;
 
     &:hover {
       background-image: url(/src/icons/icon-menu-hover.svg);
