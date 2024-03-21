@@ -1,8 +1,46 @@
 .header {
   background-image: url("/images/header-bg.png");
   background-size: cover;
-  background-position: 85% 60%;
+  background-position: 50% 60%;
   flex-shrink: 0;
+
+  @include onMobile {
+    background-position: 85%;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 32px;
+    @include iconGapMobile();
+
+    &-phone {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+
+      &-number {
+        opacity: 0;
+        max-height: 0;
+
+        cursor: default;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $secondary-color;
+
+        transition: all 0.3s ease;
+      }
+
+      &:hover &-number {
+        opacity: 1;
+        max-height: 50px;
+      }
+    }
+  }
 
   &__content {
     height: 100vh;
