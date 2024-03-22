@@ -1,0 +1,90 @@
+.page {
+  scroll-behavior: smooth;
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.7s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__body {
+    min-width: 320px;
+  }
+
+  .hidden {
+    transition: opacity 2s;
+    transition: transform 0.7s;
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+  }
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+
+.scrollup {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+
+  visibility: hidden;
+
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+
+  z-index: 99;
+
+  background-color: #555;
+  color: white;
+
+  cursor: pointer;
+  line-height: 15px;
+  text-align: center;
+  font-size: 16px;
+
+  opacity: 0.7;
+
+  animation: scroller 1s infinite;
+  animation-play-state: paused;
+
+  transition: 0.4s transform;
+
+  @include on-desktop {
+    font-size: 24px;
+    line-height: 24px;
+
+    bottom: 80px;
+    right: 80px;
+  }
+  &:hover {
+    animation-play-state: running;
+  }
+}
+
+@keyframes scroller {
+  from {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(-20px);
+  }
+}

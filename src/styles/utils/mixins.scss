@@ -1,0 +1,81 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin padding-more-than-mobile {
+  padding-inline: 72px;
+}
+
+// @mixin padding-more-than-mobile {
+//   padding-inline: 72px;
+// }
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  // @include on-tablet {
+  //   @include padding-more-than-mobile();
+  // }
+
+  @include on-desktop {
+    @include padding-more-than-mobile;
+
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.5s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  border-radius: 40px;
+  height: 56px;
+
+  outline: none;
+  border: none;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+
+  transition: 0.3s box-shadow;
+
+  font-family: Poppins, sans-serif;
+
+  @include hover(box-shadow, 1px 4px 16px 0 #e8e8f066);
+}

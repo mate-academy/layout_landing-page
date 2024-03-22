@@ -1,0 +1,86 @@
+.details {
+  transition: transform 0.7s;
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+
+    column-gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    overflow: hidden;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      box-sizing: border-box;
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: 1s transform ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 33px;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+
+    margin: 0 auto;
+    padding: 0 48px;
+    width: 278px;
+
+    @include button;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+}
