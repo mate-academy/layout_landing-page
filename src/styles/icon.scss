@@ -1,0 +1,49 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../image/icon_phone.svg);
+
+    @include desktop {
+      &:hover::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        right: 32px;
+        top: 6px;
+
+        width: max-content;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: $text-color;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../image/icon_burger.svg);
+
+    &:hover {
+      background-image: url(../image/icon_burger_hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../image/icon_exit.svg);
+  }
+}
