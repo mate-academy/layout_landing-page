@@ -1,0 +1,89 @@
+.page {
+  color: $main-text-color;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+
+  &__container {
+    @include content-inline-padding;
+
+    height: 100%;
+  }
+
+  &__header {
+    @include content-inline-padding;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__menu {
+    width: 100%;
+    background-color: $menu-bg-color;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: all 0.5s;
+
+    &:target {
+      right: 0;
+      height: 100vh;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__content {
+    background-color: $main-bg-color;
+  }
+
+  &__hero {
+    width: 100%;
+    height: 480px;
+    background-image: url(./../images/hero-mobile.png);
+    background-size: cover;
+    background-position: top right;
+
+    @include on-tablet {
+      height: 100vh;
+    }
+
+    @include on-desktop {
+      background-image: url(./../images/Cover_photo.png);
+      background-position: center;
+    }
+  }
+
+  &__about,
+  &__products,
+  &__details {
+    padding: 60px 0 32px;
+
+    @include on-tablet {
+      padding: 80px 0 40px;
+    }
+
+    @include on-desktop {
+      padding: 100px 0 60px;
+    }
+  }
+
+  &__contact {
+    padding-top: 60px;
+    padding-bottom: 120px;
+
+    @include on-tablet {
+      padding-top: 80px;
+      padding-bottom: 100px;
+    }
+
+    @include on-desktop {
+      padding-top: 100px;
+      padding-bottom: 160px;
+    }
+  }
+}
