@@ -1,3 +1,8 @@
+@mixin on-min-tablet {
+  @media (min-width: $min-tablet-min-width) {
+    @content;
+  }
+}
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -47,9 +52,17 @@
     padding-inline: 20px;
   }
 
+@include on-min-tablet {
+  .container {
+    max-width: $min-tablet-min-width;
+    margin: 0 auto;
+    padding-inline: 72px;
+  }
+}
+
   @include on-tablet {
     .container {
-      max-width: 744px;
+      max-width: $tablet-min-width;
       margin: 0 auto;
       padding-inline: 72px;
     }
@@ -57,7 +70,7 @@
 
   @include on-desktop {
     .container {
-      max-width: 1244px;
+      max-width: $desktop-min-width;
       margin: 0 auto;
       padding-inline: 120px;
     }
