@@ -11,6 +11,7 @@
 
   &__wrapper {
     @include page-grid;
+
     row-gap: 48px;
 
     @include on-tablet {
@@ -65,7 +66,8 @@
     }
 
     &:focus {
-      border-color: $main-button-color;
+      border-color: $main-button-color !important;
+      outline: none;
     }
 
     &--message {
@@ -91,7 +93,17 @@
   &__item {
     list-style: none;
     line-height: 140%;
+  }
+
+  &__link {
     color: #191919;
+    text-decoration: none;
+
+    @include on-desktop {
+      &:hover {
+        color: $main-button-color;
+      }
+    }
   }
 
   &__item--description {
@@ -103,4 +115,12 @@
   &__item--margin {
     margin-bottom: 24px;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #1B2129 !important;
 }
