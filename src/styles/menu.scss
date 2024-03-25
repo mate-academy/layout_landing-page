@@ -1,0 +1,104 @@
+.page__menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page__menu:target {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #c2c2c2;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+
+  &__content {
+    margin: 0;
+  }
+
+  &_top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    margin-bottom: 48px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &_bottom {
+    padding-bottom: 40px;
+    padding-inline: 20px;
+
+    @include onTablet {
+      padding-inline: 72px;
+    }
+
+    @include onDesktop {
+      padding-inline: 121px;
+    }
+  }
+
+  &_phone-number {
+    color: #1d1d1d;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: bold;
+  }
+
+  &_phone-book {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #1d1d1d;
+    width: fit-content;
+    color: #1d1d1d;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+}
+
+.nav__link {
+  color: #1d1d1d;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.nav__link:hover {
+  text-decoration: 1px underline;
+  text-decoration-color: #1d1d1d;
+}
