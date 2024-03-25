@@ -1,0 +1,77 @@
+@import '/src/styles/blocks/variables'; // добавил только потому что иначе не видит variables для планшета и десктопа из за .container когда его убираешь. страницу грузит и нет ошибок
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desctop {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.5s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desctop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  border-radius: 40px;
+  height: 56px;
+
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  background-color: #fff;
+
+  transition: $effectDuration box-shadow;
+
+  font-family: Poppins, sans-serif;
+
+  @include hover(box-shadow, 1px 4px 16px 0 #e8e8f066);
+}
