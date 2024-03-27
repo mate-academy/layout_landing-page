@@ -5,12 +5,12 @@
   background-size: cover;
   background-position: center;
 
-  @include hover (transform, scale(1.2));
-
   @include on-tablet {
     height: 32px;
     width: 32px;
   }
+
+    @include hover (transform, scale(1.2));
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.svg);
@@ -27,26 +27,33 @@
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
 
-    @include on-desktop {
-      &:hover::before {
-        display: flex;
-        align-items: center;
-        content: '+1 234 555-55-55';
-        position: absolute;
-        height: 32px;
-        right: 40px;
+    &::after {
+      content: '+1 234 555-55-55';
 
-        font-size: 12px;
-        line-height: 16px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-align: left;
-        width: max-content;
-        color: #1b2129;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      height: 32px;
+      margin-left: -125px;
 
-        transform: scale(1);
-        transform-origin: right center;
-      }
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: left;
+      width: max-content;
+      color: #1b2129;
+      text-decoration: none;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      pointer-events: none;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      pointer-events: all;
     }
   }
 }
