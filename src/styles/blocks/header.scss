@@ -1,5 +1,5 @@
 .header {
-  background-image: url("/images/header-bg.png");
+  background-image: url("../images/header-bg.png");
   background-size: cover;
   background-position: 50% 60%;
   flex-shrink: 0;
@@ -15,29 +15,40 @@
 
     &-phone {
       display: flex;
-      gap: 32px;
-      justify-content: center;
       align-items: center;
       text-decoration: none;
+      position: relative;
 
-      &-number {
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }
+
+      &:before {
+        content: '+1 234 555-55-55';
+        white-space: nowrap;
         opacity: 0;
-        max-height: 0;
-
-        cursor: default;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        position: absolute;
+        right: 64px;
+        top: 50%;
+        transform: translateX(20px) translateY(-50%);
+        pointer-events: none;
 
         font-size: 12px;
         font-weight: 700;
         line-height: 16px;
         letter-spacing: 2px;
         color: $secondary-color;
-
-        transition: all 0.3s ease;
       }
 
-      &:hover &-number {
+      &:hover:before {
         opacity: 1;
-        max-height: 50px;
+        transform: translateX(0) translateY(-50%);
       }
     }
   }
