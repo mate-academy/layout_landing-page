@@ -2,6 +2,7 @@
   &__wrapper {
     display: grid;
     row-gap: 48px;
+    margin-bottom: 40px;
   }
 }
 
@@ -11,10 +12,10 @@
 
     margin-bottom: 24px;
     &--small {
-      margin-bottom: 24px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       column-gap: 8px;
+      margin-bottom: 24px;
 
       @include on-tablet {
         @include page-grid;
@@ -76,6 +77,8 @@
     object-fit: cover;
     position: absolute;
 
+    @include hover(transform, scale(1.2));
+
     &--1 {
       object-position: -50px center;
 
@@ -108,16 +111,11 @@
   }
 
   &__title {
-    margin: 0;
-    line-height: 27px;
-    font-size: 16px;
     font-weight: 700;
-    color: rgba(209, 45, 53, 1);
+    color: $main-red-color;
 
     &-name {
       letter-spacing: -1.5px;
-      margin: 0;
-      padding: 0;
       font-size: 32px;
       line-height: 100%;
       font-weight: 700;
@@ -128,11 +126,38 @@
     }
   }
 
-  &__description {
-    margin: 0;
-    line-height: 27px;
-    font-size: 16px;
-    font-weight: 400;
-    color: rgba(22, 22, 22, 1);
+  &__button__wrapper {
+    @include page-grid;
+  }
+
+  &__button-link {
+    display: flex;
+    height: 56px;
+    justify-content: center;
+    align-items: center;
+    color: $main-color-white;
+    font-weight: 700;
+
+    &:hover {
+      background-color: $button-background-color--hover;
+    }
+
+    &:active {
+      background-color: rgba(235, 52, 61, 1);
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+    background-color: $main-red-color;
+    border: none;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
   }
 }
