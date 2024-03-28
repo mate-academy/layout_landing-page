@@ -1,0 +1,81 @@
+.header {
+  background-image: url("../images/header-bg.png");
+  background-size: cover;
+  background-position: 50% 60%;
+  flex-shrink: 0;
+
+  @include onMobile {
+    background-position: 85%;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 32px;
+    @include iconGapMobile();
+
+    &-phone {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      position: relative;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+      }
+
+      &:before {
+        content: '+1 234 555-55-55';
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        position: absolute;
+        right: 64px;
+        top: 50%;
+        transform: translateX(20px) translateY(-50%);
+        pointer-events: none;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $secondary-color;
+      }
+
+      &:hover:before {
+        opacity: 1;
+        transform: translateX(0) translateY(-50%);
+      }
+    }
+  }
+
+  &__content {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onMobile {
+      height: 90vh;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    @include headerBottomMargin();
+  }
+
+  &__moto {
+    letter-spacing: -1.5px;
+    font-weight: 700;
+    line-height: 100%;
+    @include headerMotoFontSize();
+  }
+}
