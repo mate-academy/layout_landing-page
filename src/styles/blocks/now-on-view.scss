@@ -10,6 +10,18 @@
     @include page-grid;
 
     margin-bottom: 24px;
+    &--small {
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+
+      @include on-tablet {
+        @include page-grid;
+
+        margin-bottom: 24px;
+      }
+    }
   }
 
   &__link {
@@ -31,10 +43,29 @@
 
       @include on-tablet {
         grid-column: span 2;
+        &--square2-1 {
+          grid-column: span 3;
+        }
+        &--square2-2 {
+          grid-column: span 3;
+        }
+        &--square2-3 {
+          display: none;
+        }
       }
 
       @include on-desktop {
         grid-column: span 4;
+        &--square2-1 {
+          grid-column: span 4;
+        }
+        &--square2-2 {
+          grid-column: span 4;
+        }
+        &--square2-3 {
+          display: grid;
+          grid-column: span 4;
+        }
       }
     }
   }
@@ -44,6 +75,36 @@
     height: 100%;
     object-fit: cover;
     position: absolute;
+
+    &--1 {
+      object-position: -50px center;
+
+      @include on-tablet {
+        object-position: center;
+      }
+    }
+
+    &--3-2 {
+      object-position: top right;
+
+      @include on-tablet {
+        object-position: center;
+      }
+    }
+  }
+
+  &__section-title {
+    @include page-grid;
+
+    margin-bottom: 48px;
+    &__wrapper {
+      grid-column: 1 / -1;
+      text-align: center;
+
+      @include on-tablet {
+        grid-column: 2 / -2;
+      }
+    }
   }
 
   &__title {
@@ -52,6 +113,19 @@
     font-size: 16px;
     font-weight: 700;
     color: rgba(209, 45, 53, 1);
+
+    &-name {
+      letter-spacing: -1.5px;
+      margin: 0;
+      padding: 0;
+      font-size: 32px;
+      line-height: 100%;
+      font-weight: 700;
+
+      @include on-tablet {
+        font-size: 48px;
+      }
+    }
   }
 
   &__description {
