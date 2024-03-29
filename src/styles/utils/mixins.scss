@@ -1,0 +1,74 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+    cursor: url("../images/icon/Cursor-Mouse-Mice.png"), pointer;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns),1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  height: 56px;
+  line-height: 27px;
+  border: 1px;
+  border-radius: 8px;
+  background: #f98921;
+  margin-top: 40px;
+
+  &:hover {
+    background: #1b2129;
+    cursor: url("../images/icon/Cursor-Mouse-Mice.png"), pointer;
+  }
+
+  &:active {
+    background-color: #010810;
+  }
+}
