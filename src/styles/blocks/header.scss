@@ -1,0 +1,123 @@
+.container--header {
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+
+  @include onTablet {
+    gap: 300px;
+  }
+
+}
+
+.header {
+  height: 100vh;
+  background: url(../images/Cover_photo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -300px;
+
+  @include onTablet {
+    background-position: center top;
+  }
+
+  @include onDesktop {
+    background: url(../images/bg1260.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__logo {
+    display: block;
+
+    &--img {
+      height: 38px;
+
+      &:hover{
+        transition-duration: 0.3s;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__top {
+    display: flex;
+    padding: 24px 0;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__icons {
+    display: block;
+    height: 24px;
+    width: 24px;
+    &:hover{
+      transition-duration: 0.3s;
+      transform: scale(1.2);
+    }
+
+    &--phone {
+      background: url(../images/icons/Icon-Phone-call.svg);
+
+    }
+
+    &--hidden {
+      position: absolute;
+      transform: scale(0);
+
+      color: #fff;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: left;
+      width: 200px;
+      right: 285px;
+      top:38px;
+      opacity: 0;
+    }
+    @include onDesktop {
+      &--phone:hover + &--hidden{
+        transform: scale(1);
+        transition: transform 0.3s;
+        transform-origin: left;
+        opacity: 1;
+        z-index: 2;
+      }
+      &--hidden:hover{
+        transform: scale(1);
+        opacity: 1;
+
+      }
+    }
+
+
+    &--menu {
+      background: url(../images/icons/Icon-Burger-menu.svg);
+
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    color: #fff;
+    font-size: 36px;
+    display: block;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+
+    }
+  }
+}

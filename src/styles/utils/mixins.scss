@@ -1,0 +1,93 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --columns:2;
+  --widthColumn:130px;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), var(--widthColumn));
+
+  @include onTablet {
+    --columns:6;
+    --widthColumn:80px;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns:12;
+    --widthColumn:63px;
+    column-gap: 24px;
+  }
+}
+
+@mixin titleH2 {
+  color:$colorText;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include onDesktop {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+
+@mixin titleH3 {
+  color:$colorText;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33.6px;
+
+}
+
+@mixin textInfo {
+  color:$colorText;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+@mixin buttons {
+
+  &--button{
+    width: 100%;
+    text-align: center;
+  }
+
+  &--explore  {
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 278px;
+    height: 56px;
+    grid-column: 1 / -1;
+    cursor: pointer;
+    border: none;
+
+    &:hover{
+      color: $colorText;
+      background-color: $colorFont;
+      border: 1px solid $colorText;
+    }
+  }
+
+
+}
