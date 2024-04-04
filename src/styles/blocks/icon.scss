@@ -20,7 +20,30 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/icon-phone.svg);
+
+    &::before {
+      content: '+1 234 555-55-55';
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: -($icon-phone-before-size + 20px);
+      height: 100%;
+      width: $icon-phone-before-size;
+      background-color: inherit;
+      opacity: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: $main-text-color;
+      transition: opacity, $effectDuration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
   }
 
   &--close {
