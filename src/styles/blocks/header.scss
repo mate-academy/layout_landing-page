@@ -14,7 +14,7 @@
   background: url(../images/Cover_photo.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
+  background-position: -300px;
 
   @include onTablet {
     background-position: center top;
@@ -51,32 +51,41 @@
     height: 24px;
     width: 24px;
 
+
     &--phone {
       background: url(../images/icons/Icon-Phone-call.svg);
-      position: relative;
 
-      @include onDesktop {
-        &::before {
-          content: '+1 234 555-55-55';
-          position: absolute;
-          transform: scale(0);
-          transition: transform 0.3s;
-          transform-origin: left;
-          color: #fff;
-          font-size: 12px;
-          line-height: 16px;
-          letter-spacing: 2px;
-          text-align: right;
-          width: 200px;
-          right: 50px;
-          top:5px;
-        }
+    }
 
-        &:hover::before {
-          transform: scale(1);
-        }
+    &--hidden {
+      position: absolute;
+      transform: scale(0);
+
+      color: #fff;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: left;
+      width: 200px;
+      right: 285px;
+      top:38px;
+      opacity: 0;
+    }
+    @include onDesktop {
+      &--phone:hover + &--hidden{
+        transform: scale(1);
+        transition: transform 0.3s;
+        transform-origin: left;
+        opacity: 1;
+        z-index: 2;
+      }
+      &--hidden:hover{
+        transform: scale(1);
+        opacity: 1;
+
       }
     }
+
 
     &--menu {
       background: url(../images/icons/Icon-Burger-menu.svg);
