@@ -5,13 +5,30 @@
   }
 
   &__content {
-    display: grid;
+    @include page-grid;
+
     row-gap: 40px;
   }
 
   &__card {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+      row-gap: 40px;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
     &-img {
       width: 100%;
+      transition: all 0.5s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &-title {
