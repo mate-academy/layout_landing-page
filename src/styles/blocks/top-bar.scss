@@ -8,6 +8,7 @@
   &__icons {
     display: flex;
     gap: 24px;
+    align-items: center;
   }
 
   &__icon {
@@ -20,7 +21,29 @@
     }
 
     &-call {
+      position: relative; /* Добавляем позиционирование, чтобы ::before относился к этому элементу */
       transition: all 0.4s;
+
+      &::before {
+        content: "1 234 5555-55-55"; /* Добавляем текст */
+        color: #fff;
+        letter-spacing: 2px;
+        opacity: 0;
+        z-index: -1;
+        width: max-content;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        transition: opacity 0.3s;
+        position: absolute;
+        top: 50%;
+        left: -20px;
+        transform: translate(-100%, -50%);
+      }
+
+      &:hover::before {
+        opacity: 1; /* Делаем псевдоэлемент видимым при наведении */
+      }
 
       &:hover {
         transform: scale(1.2);
