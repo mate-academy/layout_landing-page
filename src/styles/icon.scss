@@ -1,0 +1,60 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/phone-call-icon.png);
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    @include on-desktop {
+      &::before {
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        top: 50%;
+        left: -20px;
+        transform: translate(-100%, -50%);
+        width: max-content;
+        color: $primary-text-color;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        transition: all .3s;
+        opacity: 0;
+        z-index: -1;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/menu-icon.png);
+    height: 12px;
+    width: 18px;
+    margin: auto;
+
+    @include on-desktop {
+      height: 16px;
+      width: 24px;
+    }
+
+    @include hover(background-image, url(../images/menu-hover.png));
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.png);
+  }
+}
