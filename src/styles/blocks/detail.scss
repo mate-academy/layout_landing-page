@@ -1,0 +1,55 @@
+.detail {
+  @include page-grid;
+
+  row-gap: 16px;
+
+  &__photos {
+    @include page-grid;
+
+    grid-column: 1 / -1;
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include on-hover(transform, scale(1.05));
+
+    &--big {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--small {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

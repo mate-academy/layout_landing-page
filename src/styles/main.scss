@@ -1,3 +1,112 @@
-body {
-  margin: 0;
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/null';
+@import 'utils/commons';
+
+body:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  > main {
+    flex: 1 1 auto;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+
+    &:target {
+      pointer-events: all;
+      transform: translateX(0);
+      overflow: auto;
+    }
+  }
+}
+
+// sections
+@import 'sections/header';
+@import 'sections/footer';
+@import 'sections/menu';
+@import 'sections/about';
+@import 'sections/offers';
+@import 'sections/details';
+@import 'sections/contacts';
+
+// blocks
+@import 'blocks/icon';
+@import 'blocks/nav';
+@import 'blocks/top-bar';
+@import 'blocks/product';
+@import 'blocks/detail';
+@import 'blocks/description';
+@import 'blocks/form';
+
+.main {
+  background-color: $secondary;
+
+  margin-bottom: 200px;
+
+  @include on-tablet {
+    margin-bottom: 480px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 555px;
+  }
+
+  &__offers {
+    padding-top: 92px;
+
+    @include on-tablet {
+      padding-top: 132px;
+    }
+
+    @include on-desktop {
+      padding-top: 164px;
+    }
+  }
+
+  &__details {
+    padding-top: 92px;
+
+    @include on-tablet {
+      padding-top: 120px;
+    }
+
+    @include on-desktop {
+      padding-top: 144px;
+    }
+  }
+
+  &__contacts {
+    padding-top: 80px;
+    padding-bottom: 120px;
+
+    @include on-tablet {
+      padding-top: 120px;
+    }
+
+    @include on-desktop {
+      padding-top: 180px;
+      padding-bottom: 180px;
+    }
+  }
 }
