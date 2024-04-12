@@ -1,0 +1,97 @@
+.top-bar {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'logo details';
+  align-items: center;
+  width: 100%;
+
+  @include onTablet {
+    padding-top: 50px;
+  }
+
+  @include onDeskTop {
+    padding-top: 24px;
+  }
+
+  &__logo {
+    grid-area: logo;
+    display: block;
+    width: 64px;
+    height: 46px;
+
+    background-image: url(../images/met-logo-2x.png);
+
+    @include background;
+    @include hover (transform, scale(1.2));
+
+
+    @include onTablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__contact-details {
+    grid-area: details ;
+    justify-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__contacts {
+    text-align: end;
+  }
+
+  &__icons {
+    width: 72px;
+    display: flex;
+    justify-content: space-between;
+
+    @include onTablet {
+      width: 119px;
+    }
+
+    // @include onDeskTop {
+    //   &:hover .contacts {
+    //       visibility: visible;
+    //     }
+    // }
+  }
+
+  &__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    @include hover (transform, scale(1.2));
+
+    @include onTablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &--phone {
+      background-image: url(../images/icon-phone-call.svg);
+      @include background;
+    }
+
+    &--burger {
+      background-image: url(../images/icon-burger-menu.svg);
+      @include background;
+
+      transition: background-image 0.5s;
+
+      &:hover {
+        background-image: url(../images/icon-burger-menu-hover.svg);
+      }
+    }
+
+    &--close {
+      background-image: url(../images/icon-close.svg);
+      @include background;
+      justify-self: flex-end;
+    }
+  }
+}
