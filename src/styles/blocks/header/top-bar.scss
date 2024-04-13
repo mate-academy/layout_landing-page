@@ -1,18 +1,9 @@
 .top-bar {
-  padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'logo details';
   align-items: center;
   width: 100%;
-
-  @include onTablet {
-    padding-top: 50px;
-  }
-
-  @include onDeskTop {
-    padding-top: 24px;
-  }
 
   &__logo {
     grid-area: logo;
@@ -37,12 +28,32 @@
     justify-self: flex-end;
     display: flex;
     align-items: center;
-    gap: 16px;
+    justify-content: flex-end;
+    gap: 24px;
   }
 
   &__contacts {
-    text-align: end;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onDeskTop {
+      &:hover .top-bar__contacts-wrapper {
+        display: block;
+          // opacity: 1;
+          transition: display, 1s;
+        }
+      }
   }
+
+  &__contacts-wrapper {
+    text-align: end;
+    display: none;
+    // opacity: 0;
+    transition: opacity, 1s;
+  }
+
+  @include contacts-style;
 
   &__icons {
     width: 72px;
@@ -52,12 +63,6 @@
     @include onTablet {
       width: 119px;
     }
-
-    // @include onDeskTop {
-    //   &:hover .contacts {
-    //       visibility: visible;
-    //     }
-    // }
   }
 
   &__icon {
@@ -75,6 +80,7 @@
     &--phone {
       background-image: url(../images/icon-phone-call.svg);
       @include background;
+
     }
 
     &--burger {
