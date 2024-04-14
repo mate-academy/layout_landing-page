@@ -1,12 +1,15 @@
 .top-bar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 'logo details';
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 
+  @include onTablet {
+    padding-top: 50px;
+  }
+
   &__logo {
-    grid-area: logo;
     display: block;
     width: 64px;
     height: 46px;
@@ -24,12 +27,14 @@
   }
 
   &__contact-details {
-    grid-area: details ;
-    justify-self: flex-end;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-    gap: 24px;
+    align-items: center;
+    gap: 27px;
+
+    @include onTablet {
+      gap: 55px;
+    }
   }
 
   &__contacts {
@@ -39,8 +44,7 @@
 
     @include onDeskTop {
       &:hover .top-bar__contacts-wrapper {
-        display: block;
-          // opacity: 1;
+          opacity: 1;
           transition: display, 1s;
         }
       }
@@ -48,8 +52,7 @@
 
   &__contacts-wrapper {
     text-align: end;
-    display: none;
-    // opacity: 0;
+    opacity: 0;
     transition: opacity, 1s;
   }
 
