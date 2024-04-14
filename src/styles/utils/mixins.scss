@@ -1,0 +1,73 @@
+@mixin on-phone {
+  @media (max-width: $tablet-min-width) {
+   @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+   @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+   @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin button-cust {
+  height: 56px;
+  background-color: $buttom-and-focus-color;
+  color: $main-beckdrop-color;
+  font-weight: 700;
+  line-height: 360%;
+  text-align: center;
+  border-radius: 8px;
+  border-width: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@mixin input-textarea-style {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  background: $menu-and-input-background;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+@mixin phone-number-call-to-order-style {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 140%;
+  font-weight: 700;
+}
