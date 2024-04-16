@@ -3,7 +3,7 @@
 Stylish, responsive landing page using HTML/SCSS with BEM methodology.
 
 # DEMO
-For demo of this project you can visit [DEMO link](https://product-catalog-iota.vercel.app/)
+For demo of this project you can visit [DEMO link](https://pivkopa.github.io/layout_landing-page/#)
 
 Technologies used:
 - HTML/SCSS
