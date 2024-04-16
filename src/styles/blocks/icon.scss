@@ -1,31 +1,57 @@
 .icon{
   display: block;
-  height: 24px;
   width: 24px;
+  height: 24px;
   background-size: cover;
   background-position: center;
 
+  transition: transform 0.3s;
 
-  &:hover{
-    transform: scale(1.2);
-  }
+  @include hover(transform, scale(1.2));
 
-  @include on-tablet {
-    height: 32px;
-    width: 32px;
-  }
+@include on-tablet {
+  width: 32px;
+  height: 32px;
+}
 
-  &--phone{
-    background-image: url(../images/Icon-Phone-call.png);
-  }
+&__headerhover{
+  display: block;
+  width: max-content;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: left;
+  color: $white-color;
 
-  &--menu{
-    background-image: url(../images/Icon-Burger-menu.png);
-  }
+  position: relative;
+  top: 50%;
+  transform: translate(-100%, -50%);
 
-  &--close{
-    background-image: url(../images/Icon-Close.png);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s;
+}
+
+&:hover &__headerhover {
+  @include on-desktop {
+    opacity: 1;
+    pointer-events: all;
   }
 }
 
+&--close{
+  background-image: url(../images/Icon-Close.png);
+}
 
+&--phone{
+  background-image: url(../images/Icon-Phone-call.png);
+}
+
+&--menu{
+  background-image: url(../images/Icon-Burger-menu.png);
+}
+&:hover {
+  background-image: url(../images/Vector.png);
+}
+}
