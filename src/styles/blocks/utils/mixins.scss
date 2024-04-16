@@ -1,10 +1,10 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 };
 
-@mixin onDeskTop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
@@ -12,11 +12,12 @@
 
 @mixin padding {
   padding-inline: 20px;
-  @include onTablet {
+
+  @include on-tablet {
     padding-inline: 72px;
   }
 
-  @include onDeskTop {
+  @include on-desktop {
     padding-inline: 120px;
   }
 }
@@ -25,12 +26,12 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
   }
 
-  @include onDeskTop {
+  @include on-desktop {
     grid-template-columns: repeat(12, 1fr);
   }
 }
@@ -41,7 +42,7 @@
   background-repeat: no-repeat;
 }
 
-@mixin hover ($property, $toValue) {
+@mixin hover($property, $toValue){
   transition: #{$property} 0.3s;
 
   &:hover {
@@ -57,13 +58,13 @@
    line-height: 32px;
    color: $title-color;
 
-   @include onTablet {
+   @include on-tablet {
     font-size: 48px;
     line-height: 48px;
   }
 }
 
-@mixin subSection-text {
+@mixin sub-section-text {
   margin: 0;
   line-height: 27px;
   text-align: left;
@@ -97,7 +98,7 @@
   }
 }
 
-@mixin museum-subSection-title {
+@mixin museum-sub-section-title {
   margin: 0;
   font-size: 24px;
   font-weight: 700;
@@ -105,14 +106,15 @@
   color: $title-color;
 }
 
-@mixin museum-subSection-styles ($class-name) {
+@mixin museum-sub-section-styles($class-name){
   .#{$class-name} {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     &__h3 {
-      @include museum-subSection-title;
+      @include museum-sub-section-title;
+
       font-weight: $bold-text;
     }
 
@@ -123,7 +125,8 @@
     }
 
     &__hours {
-      @include subSection-text;
+      @include sub-section-text;
+
       font-weight: $bold-text;
       display: flex;
       flex-direction: column;
@@ -131,17 +134,20 @@
     }
 
     &__days {
-      @include subSection-text;
+      @include sub-section-text;
+
       display: flex;
       flex-direction: column;
+
       gap: 8px;
     }
 
     &__holidays {
-      @include subSection-text;
+      @include sub-section-text;
 
       &--closed {
-        @include subSection-text;
+        @include sub-section-text;
+
         font-weight: $bold-text;
       }
     }
@@ -160,7 +166,6 @@
     text-transform: uppercase;
     text-align: center;
     line-height: 27px;
-    text-align: center;
     font-size: 16px;
 
     @include hover(background-color,$btn-background-hover);
@@ -171,7 +176,7 @@
     font-size: 14px;
     line-height: 20px;
     text-align: left;
-    font-family: Cinzel;
+    font-family: Cinzel, sans-serif;
 
     color: $placeholder-color;
   }
