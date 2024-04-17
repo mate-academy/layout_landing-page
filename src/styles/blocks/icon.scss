@@ -15,12 +15,32 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone-call.svg);
-    position: relative;
 
-    @include on-desktop {
-      &:hover .top-bar__contacts {
-        opacity: 1;
+    &::before {
+      @include on-desktop {
+        content: "The Met Fifth Avenue \A +1 212-535-7710 \A The Met Cloisters \A +1 212-923-3700";
+        position: absolute;
+        width: 190px;
+        top: -40px;
+        right: 50px;
+        color: $text-white-color;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-align: right;
+        text-transform: uppercase;
+        text-shadow: 18px 4px 26px rgba(0, 0, 0, 0.44);
+        opacity: 0;
+        visibility: hidden;
+        white-space: pre;
+        transition: opacity $transition-time, visibility $transition-time;
+
+        // @include hover(color, $text-red-color);
       }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
     }
   }
 
