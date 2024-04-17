@@ -93,7 +93,7 @@ button {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   letter-spacing: 2px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .menu__top {
@@ -147,6 +147,7 @@ button {
   height: 24px;
   width: 24px;
   background-size: cover;
+  background-position: center;
   transition: transform 0.3s;
 }
 
@@ -163,6 +164,13 @@ button {
 
 .icon--phone {
   background-image: url(../../icons/Icon-Phone-call.svg);
+}
+
+@media (min-width: 1024px) {
+  .icon--phone:hover {
+    background-image: url(../../icons/Phone-number.svg);
+    width: 179px;
+  }
 }
 
 .icon--menu {
@@ -322,10 +330,6 @@ button {
   pointer-events: none;
 }
 
-.top-bar__icon-wrapper__icon:hover ~ .top-bar__icon-wrapper__number {
-  opacity: 1;
-}
-
 .section-title {
   margin-bottom: 48px;
   font-family: 'Space Grotesk', sans-serif;
@@ -350,6 +354,7 @@ button {
 
 .main {
   background-color: #fff;
+  scroll-behavior: smooth;
 }
 
 .main__content {
@@ -371,14 +376,25 @@ button {
   }
 }
 
-.product__photo {
+.product {
   width: 100%;
-  margin-bottom: 24px;
+}
+
+.product__photo {
   transition: transform 0.3s;
+  margin-bottom: 24px;
+  width: 100%;
 }
 
 .product__photo:hover {
   transform: scale(1.1);
+}
+
+.product__price {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #292929;
+  font-weight: 700;
+  line-height: 140%;
 }
 
 .product__title {
@@ -391,19 +407,8 @@ button {
 
 .product__description {
   margin-bottom: 12px;
-  line-height: 140%;
-}
-
-@media (min-width: 1024px) {
-  .product__description {
-    max-width: 280px;
-  }
-}
-
-.product__price {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  line-height: 140%;
+  line-height: 22.4px;
+  font-family: 'Space Mono', monospace;
 }
 
 .recommended {
@@ -442,6 +447,8 @@ button {
 }
 
 .recommended__product {
+  display: flex;
+  flex-direction: column;
   grid-column: 1/-1;
 }
 
@@ -678,6 +685,45 @@ button {
   color: #fff;
 }
 
+.contact-us__input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #f8f8fa;
+  border-radius: 8px;
+  background-color: #f8f8fa;
+  color: #292929;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.contact-us__input:hover {
+  border-color: #d5d7de;
+}
+
+.contact-us__input:focus {
+  border-color: #292929;
+  outline: none;
+}
+
+.contact-us__input::placeholder {
+  color: #7e7e83;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.contact-us__input:-webkit-autofill,
+.contact-us__input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px transparent inset;
+}
+
+.contact-us__input:-webkit-autofill:hover {
+  box-shadow: 0 0 0 1000px transparent inset;
+}
+
 .contact-us__wrapper {
   gap: 48px 20px;
 
@@ -709,47 +755,6 @@ button {
   .contact-us__form {
     grid-column: span 5;
   }
-}
-
-.contact-us__input {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #f8f8fa;
-  border-radius: 8px;
-  background-color: #f8f8fa;
-  color: #292929;
-  font-family: 'Space Mono', monospace;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
-}
-
-.contact-us__input:hover {
-  border-color: #d5d7de;
-}
-
-.contact-us__input:focus {
-  border-color: #292929;
-  outline: none;
-}
-
-.contact-us__input::placeholder {
-  color: #7e7e83;
-  font-family: 'Space Mono', monospace;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
-}
-
-.contact-us__input--small {
-  height: 48px;
-  margin-bottom: 16px;
-}
-
-.contact-us__input--big {
-  height: 148px;
-  margin-bottom: 32px;
-  resize: none;
 }
 
 .contact-us__contacts {
