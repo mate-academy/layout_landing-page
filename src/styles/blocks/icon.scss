@@ -1,0 +1,38 @@
+@mixin hover($property, $toValue) {
+  transition:
+    #{$property,
+    0.3s};
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone-x3.png);
+  }
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu-x3.png);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover-x3.png);
+    }
+  }
+  &--close {
+    background-image: url(../images/icons/icon-close-x3.png);
+  }
+}
