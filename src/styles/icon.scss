@@ -1,0 +1,58 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover((transform), scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/Icon-Phone-call.svg);
+
+    &::before {
+      content: 'The Met Fifth Avenue\A+1 212-535-7710\AThe Met Cloisters\A+1 212-923-3700';
+      white-space: pre;
+      padding: 5px 10px;
+      padding-top: 8px;
+      word-break: break-all;
+      position: absolute;
+      transform: translate(-100%, -40%);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      pointer-events: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      text-align: right;
+      color: $main-text-color;
+    }
+
+    &:nth-of-type(2)::before {
+      margin-bottom: 20px;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/Icon-Close.svg);
+  }
+}
