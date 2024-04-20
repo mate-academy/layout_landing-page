@@ -11,12 +11,31 @@
   }
 
   &__link {
+    position: relative;
     display: block;
 
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
-    color: rgba(29, 29, 29, 1);
+    color: $main-grey-color;
     text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100px;
+      height: 1px;
+      background-color: $main-grey-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
