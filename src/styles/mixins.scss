@@ -1,0 +1,87 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin changePaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin focus($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:focus {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonSettings {
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: $button-border-radius;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: $menu-font-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+}
+
+@mixin inputSettings {
+  width: 100%;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7e7e83;
+  padding: 14px 16px;
+  background-color: #f8f8fa;
+  border: none;
+  outline: none;
+}
