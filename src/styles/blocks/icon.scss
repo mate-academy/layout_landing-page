@@ -12,31 +12,50 @@
 
   @include hover(transform, scale(1.2));
 
-  &--phone {
-    background-image: url(../images/icons/icon-phone-call.svg);
-    position: relative;
+  &__container {
+    display: flex;
 
-    &-number {
-      opacity: 0;
-      pointer-events: none;
+    .content {
+      display: none;
     }
+  }
 
-    &:hover {
-      .icon--phone-number {
+  @include on-desktop {
+    &__container {
+      position: relative;
+      display: flex;
+
+      @include hover(transform, scale(1.2));
+
+      .content {
         position: absolute;
-        top: -40px;
+        width: 200px;
+        top: -45px;
         right: 48px;
-        opacity: 1;
-        pointer-events: all;
-
-        font-size: inherit;
-        line-height: inherit;
-        font-weight: $bold-text;
+        opacity: 0;
         text-align: end;
-        width: max-content;
-        color: $main-light;
+        display: block;
+        transition: opacity 0.3s ease-in-out;
+
+        &__number {
+          font-size: inherit;
+          line-height: inherit;
+          font-weight: $bold-text;
+          text-align: end;
+          width: max-content;
+          color: $main-light;
+          text-decoration: none;
+        }
+      }
+
+      &:hover .content {
+        opacity: 1;
       }
     }
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone-call.svg);
   }
 
   &--menu {
