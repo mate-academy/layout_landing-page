@@ -6,17 +6,19 @@
   align-items: flex-start;
 
   &__input {
+    position: relative;
     width: 100%;
     height: 48px;
     margin-bottom: 16px;
     padding: 16px;
     background-color: #f8f8fa;
-    border-style: none;
+    border: 1px solid transparent;
     font-size: 14px;
     font-weight: 400;
     text-align: left;
     font-family: Cinzel, serif;
     line-height: 20px;
+    transition: border-color 0.3s ease-in-out;
 
     &:hover {
       border: 1px solid #d5d7de;
@@ -26,6 +28,28 @@
     &:focus {
       border: 1px solid $text-color;
       color: $text-color;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &::before {
+      border-bottom-color: #d5d7de;
+    }
+
+    &::after {
+      border-top-color: #d5d7de;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      border-color: $text-color;
     }
 
     &:-webkit-autofill {
@@ -62,6 +86,7 @@
     margin-top: 32px;
     padding: 0;
     font-family: Cinzel, serif;
+    transition: background-color 0.3s ease-in-out;
 
     @include on-tablet {
       padding: 0 48px;
