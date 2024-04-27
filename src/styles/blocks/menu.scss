@@ -1,58 +1,82 @@
 .menu {
   box-sizing: border-box;
   height: 100vh;
-  background-color: var(--accent-main);
+  background-color: $accent-main;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-}
 
-.menu__top {
-  margin-bottom: 18px;
-}
+  &__top {
+    margin-bottom: 18px;
 
-.menu__nav {
-  margin-bottom: 32px;
-}
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
 
-.menu__content {
-  padding-inline: 20px;
-}
+  &__nav {
+    margin-bottom: 32px;
+  }
 
-.menu__phone-avenue {
-  display: block;
-  font-size: 16px;
-  line-height: 27px;
-  margin-bottom: 8px;
+  &__content {
+    @include contentPaddingInline;
+    // padding-inline: 20px;
+  }
 
-  color: inherit;
-  text-decoration: none;
-}
+  &__phone-avenue {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 8px;
 
-.menu__phone-cloisters {
-  display: block;
-  font-size: 16px;
-  line-height: 27px;
-  margin-bottom: 14px;
+    color: inherit;
+    text-decoration: none;
+  }
 
-  color: inherit;
-  text-decoration: none;
-}
+  &__phone-cloisters {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 14px;
 
-.menu__order {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px;
-  letter-spacing: 2px;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 0 2px 7px;
-  width: fit-content;
-  background-color: var(--accent-main);
-  border: none;
-  cursor: pointer;
-}
+    color: inherit;
+    text-decoration: none;
+  }
 
-.menu__order:hover {
-  border-bottom: 1px solid white;
+  &__order {
+    position: relative;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 2px 7px;
+    width: fit-content;
+    background-color: $accent-main;
+    border: none;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    // &:hover {
+    //   border-bottom: 1px solid white;
+    // }
+  }
 }
