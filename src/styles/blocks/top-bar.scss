@@ -1,0 +1,63 @@
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .menu:target & {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    position: relative;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__phone-number {
+    position: absolute;
+    top: 0%;
+    right: 140%;
+    display: block;
+    width: max-content;
+    opacity: 0;
+    transition: all $effectDuration;
+    transform: translateX(-30%);
+
+    color: $primary-color;
+    font-size: 12px;
+    line-height: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .icon--phone:hover ~ .top-bar__phone-number {
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+    transform: translateX(0);
+  }
+}
