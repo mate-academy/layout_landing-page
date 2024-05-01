@@ -1,0 +1,71 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin page-text-style {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: $text-color-1;
+}
+
+@mixin contact-us-text-style-2 {
+  font-size: 14px;
+  line-height: 27px;
+  color: $text-color-1;
+}
+
+@mixin input-text-style {
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin menu-hover-affect {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  border: 1px solid #fff;
+  animation: hover-underline 1s ease-out 1 forwards;
+}
+
+@mixin title-animation {
+  animation: title-animation 3s infinite linear;
+}
