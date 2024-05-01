@@ -4,15 +4,31 @@
   background-color: #d12d35;
   font-weight: 700;
   text-transform: uppercase;
+  overflow: auto;
+
+  &__top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #d12d35;
+  }
 
   &__content {
     @include content-padding-inline;
 
     margin-top: 40px;
+
+    @include on-desktop {
+      margin-top: 55px;
+    }
   }
 
   &__nav {
     margin-bottom: 32px;
+
+    @include on-desktop {
+      margin-bottom: 48px;
+    }
   }
 
   &__phone-part {
@@ -25,11 +41,20 @@
     &:last-of-type {
       margin-bottom: 16px;
     }
+
+    transform-origin: left;
+
+    @include hover(transform, scale(1.2));
   }
 
   &__phone-number {
     text-decoration: none;
     color: $white-text-color;
+    transition: all 0.3s;
+
+    &:hover {
+      color: rgb(16, 16, 16);
+    }
   }
 
   &__call-to-order {
@@ -39,7 +64,9 @@
     line-height: 16px;
     letter-spacing: 2px;
 
-    padding-bottom: 7px;
-    border-bottom: 1px solid #fff;
+    &:hover {
+      padding-bottom: 7px;
+      border-bottom: 1px solid #fff;
+    }
   }
 }
