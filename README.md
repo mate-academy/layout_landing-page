@@ -1,3 +1,8 @@
+Design:
+https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&mode=design&t=KiZfyCI4uRqJWAIx-0
+
+[DEMO LINK](https://kshepetska.github.io/layout_landing-page/)
+
 The project is all about crafting a captivating landing page. Used HTML and CSS to bring this landing page to life, leveraging Sass for smoother development.
 
 Main focus is on meticulously implementing each design element block by block, ensuring a seamless flow and staying true to the chosen design concept. While we strive for design fidelity, our priority is simplicity and effectiveness rather than achieving pixel perfection.
