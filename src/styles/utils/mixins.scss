@@ -1,0 +1,117 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin gap-beetwen-top-bar-icons {
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 55px;
+  }
+}
+
+@mixin logo-size {
+  height: $mobile-height-of-top-bar;
+
+  @include on-tablet {
+    height: $tablet-height-of-top-bar;
+  }
+}
+
+@mixin size-of-header-title {
+  height: 80px;
+  font-size: $mobile-font-size-of-header-title;
+  line-height: $mobile-font-size-of-header-title;
+
+  @include on-tablet {
+    height: 128px;
+    font-size: $tablet-font-size-of-header-title;
+    line-height: $tablet-font-size-of-header-title;
+  }
+
+  @include on-desktop {
+    height: 160px;
+    font-size: $desktop-font-size-of-header-title;
+    line-height: $desktop-font-size-of-header-title;
+  }
+}
+
+@mixin size-of-icon {
+  height: $mobile-icon-size;
+  width: $mobile-icon-size;
+
+  @include on-tablet {
+    height: $tablet-icon-size;
+    width: $tablet-icon-size;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin page-button {
+  display: block;
+  width: 100%;
+  height: 56px;
+  background-color: #d12d35;
+  color: #fff;
+  font-family: Cinzel, sans-serif;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ae1c23;
+    transition: 0.3s;
+  }
+
+  &:active {
+    background-color: #eb343d;
+  }
+
+  @include hover(transform, scale(1.02));
+}
