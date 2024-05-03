@@ -1,0 +1,53 @@
+@mixin on-tablet {
+  @media (width >= $tabletWidth) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (width >= $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin on-wide {
+  @media (width >= $widescreenWidth) {
+    @content;
+  }
+}
+
+@mixin menu-hover {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+    display: block;
+    height: 1px;
+    background-color: $mainDark;
+    transition: transform $transitionDuration linear 60ms;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@mixin grid {
+  --columns-count: 6;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(var(--columns-count), 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns-count: 12;
+  }
+}
