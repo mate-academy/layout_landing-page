@@ -1,0 +1,49 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover > :after {
+    transform: scale(1);
+  }
+
+  &__link {
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  &__photo {
+    width: 100%;
+    transition: all $effectDuration;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__title {
+    position: relative;
+    width: fit-content;
+    font-size: 18px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+  }
+
+  &__description {
+    font-family: "Space Mono", monospace;
+  }
+
+  &__price {
+    margin-top: auto;
+  }
+}
