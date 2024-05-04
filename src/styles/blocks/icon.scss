@@ -5,33 +5,30 @@
   text-decoration: none;
 
   &--headerhover {
-    cursor: pointer;
+    position: absolute;
+    left: -200px;
+    top: -24px;
     width: max-content;
+    height: auto;
+    margin: 0;
+    opacity: 0;
+    text-align: right;
     font-size: 16px;
     font-weight: 700;
-    line-height: 27px;
-    text-align: right;
-    padding-right: 16px;
-    padding-top: 24px;
     color: $second-color;
-
-    position: relative;
-    top: 100%;
-    transform: translate(-100%, -50%);
-
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  &--phone:hover &--headerhover {
-    @include on-desktop {
-      opacity: 1;
-      cursor: pointer;
-    }
+    line-height: 27px;
+    transition: opacity 0.3;
+    pointer-events: none;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone-call.png);
+
+    @include on-desktop {
+      &:hover + .icon--headerhover {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
