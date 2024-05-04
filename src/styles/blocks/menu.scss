@@ -5,11 +5,19 @@
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
+  z-index: 1;
+
+  overflow: auto; /* to scroll the menu if needed */
 
   &__top {
-    margin-bottom: 18px;
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 2;
+    background-color: $accent-main;
 
-    @include onTablet {
+    margin-bottom: 15px;
+
+    @include on-tablet {
       margin-bottom: 0;
     }
   }
@@ -18,14 +26,8 @@
     margin-bottom: 32px;
   }
 
-  &__content {
-    @include contentPaddingInline;
-    // padding-inline: 20px;
-  }
-
   &__phone-avenue {
     display: block;
-    font-size: 16px;
     line-height: 27px;
     margin-bottom: 8px;
 
@@ -35,7 +37,6 @@
 
   &__phone-cloisters {
     display: block;
-    font-size: 16px;
     line-height: 27px;
     margin-bottom: 14px;
 
@@ -66,7 +67,7 @@
       width: 100%;
       background-color: #fff;
 
-      transition: transform 0.3s;
+      transition: transform $transition-duration;
       transform: scale(0);
       transform-origin: left;
     }
@@ -74,9 +75,5 @@
     &:hover::after {
       transform: scale(1);
     }
-
-    // &:hover {
-    //   border-bottom: 1px solid white;
-    // }
   }
 }
