@@ -1,0 +1,172 @@
+.contact {
+  @include page-grid;
+
+  row-gap: 48px;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 4 / 10;
+    }
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+
+    @include page-grid;
+
+    --columns: 1;
+
+    column-gap: 0;
+
+    @include on-tablet {
+      column-gap: 75px;
+    }
+  }
+}
+
+.contacts-container {
+  margin-bottom: 48px;
+
+  @include page-grid;
+
+  --columns: 1;
+
+  row-gap: 48px;
+
+  @include on-tablet {
+    grid-column: span 3;
+    margin-bottom: 0;
+
+    --columns: 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+
+    --columns: 6;
+  }
+}
+
+.contact-group {
+  @include on-tablet {
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 3;
+  }
+
+  &__title {
+    font-weight: 700;
+    line-height: 27px;
+    margin: 0;
+    margin-bottom: 16px;
+  }
+  &__phone {
+    font-size: 14px;
+    line-height: 27px;
+    margin-bottom: 8px;
+  }
+
+  &__link {
+    color: $link-color;
+    text-decoration: none;
+  }
+
+  &__phone--number {
+    font-weight: 700;
+    line-height: 27px;
+    font-size: 16px;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__address {
+    font-size: 14px;
+    line-height: 27px;
+  }
+
+  &__address--address {
+    font-weight: 700;
+    line-height: 22.4px;
+    font-size: 16px;
+
+    @include hover(transform, scale(1.05));
+  }
+}
+
+.contact-form {
+  grid-column: span 3;
+
+  @include on-desktop {
+    grid-column: 8/13;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    background-color: $main-gray;
+    font-family: inherit;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+    color: $main-dark;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 14px 16px;
+    width: 100%;
+    height: 48px;
+
+    @include hover(border, (1px solid $input-hover-border-color));
+
+    &:active,
+    &:focus {
+      border: 1px solid $main-dark;
+    }
+  }
+
+  &__textarea {
+    box-sizing: border-box;
+    background-color: $main-gray;
+    font-family: inherit;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+    color: $main-dark;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 14px 16px;
+    width: 100%;
+    resize: none;
+    margin-bottom: 32px;
+    height: 144px;
+
+    @include hover(border, (1px solid $input-hover-border-color));
+
+    &:active,
+    &:focus {
+      border: 1px solid $main-dark;
+    }
+  }
+}
+
+// Change Autocomplete styles in Chrome
+
+.contact-form__input:-webkit-autofill,
+.contact-form__input:-webkit-autofill:hover,
+.contact-form__input:-webkit-autofill:focus,
+.contact-form__textarea:-webkit-autofill,
+.contact-form__textarea:-webkit-autofill:hover,
+.contact-form__textarea:-webkit-autofill:focus {
+  border: 1px solid $input-hover-border-color;
+  -webkit-text-fill-color: inherit;
+  -webkit-box-shadow: 0 0 0 1000px $main-gray inset;
+  background-color: $main-gray;
+  transition: background-color $transition-duration ease-in-out 0s;
+}

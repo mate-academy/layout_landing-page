@@ -1,0 +1,139 @@
+.exhibitions {
+  @include page-grid;
+
+  row-gap: 48px;
+
+  &__title-wrapper {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 4 / 10;
+    }
+  }
+
+  &__title {
+    &--description {
+      @include on-desktop {
+        padding-inline: 85px;
+      }
+    }
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+
+  &__link {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2/6;
+    }
+
+    @include on-desktop {
+      grid-column: 5/9;
+    }
+  }
+}
+
+.exhibition {
+  &__photoes {
+    @include page-grid;
+
+    margin-bottom: 24px;
+
+    & :nth-child(3) {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &--all-in-row {
+      --columns: 3;
+
+      @include on-tablet {
+        --columns: 6;
+      }
+
+      @include on-desktop {
+        --columns: 12;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    @include hover(transform, scale(1.05));
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--one-row {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    color: $accent-main;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  &__duration {
+    margin: 0;
+    line-height: 27px;
+    text-align: left;
+  }
+}

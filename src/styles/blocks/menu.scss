@@ -1,0 +1,83 @@
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $accent-main;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  z-index: 1;
+
+  overflow: auto; /* to scroll the menu if needed */
+
+  &__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 2;
+    background-color: $accent-main;
+
+    margin-bottom: 15px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 32px;
+  }
+
+  &__phone-avenue {
+    display: block;
+    line-height: 27px;
+    margin-bottom: 8px;
+
+    color: inherit;
+    text-decoration: none;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__phone-cloisters {
+    display: block;
+    line-height: 27px;
+    margin-bottom: 14px;
+
+    color: inherit;
+    text-decoration: none;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__order {
+    position: relative;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 2px 7px;
+    width: fit-content;
+    background-color: $accent-main;
+    border: none;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

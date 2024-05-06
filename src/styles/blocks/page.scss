@@ -1,0 +1,44 @@
+.page {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+
+  color: $main-dark;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    margin-inline: auto;
+
+    position: relative;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all $transition-duration;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__phone {
+    &:target {
+      opacity: 1;
+      transform: translateY(55%);
+    }
+  }
+}
