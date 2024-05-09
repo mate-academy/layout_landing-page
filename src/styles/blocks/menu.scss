@@ -1,12 +1,16 @@
 .menu {
+  overflow: auto;
   box-sizing: border-box;
   height: 100vh;
-  background-color: #d12d35;
+  background-color: $color-tittle;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
 
   &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     margin-bottom: 40px;
 
     @include on-tablet {
@@ -16,10 +20,6 @@
 
   &__nav {
     margin-bottom: 32px;
-  }
-
-  &__content {
-    @include content-padding-inline;
   }
 
   &__phone {
@@ -39,15 +39,31 @@
   }
 
   &__call-to-order {
+    position: relative;
     display: block;
     width: fit-content;
     color: inherit;
 
-    padding-bottom: 7px;
-    border-bottom: 1px solid white;
-
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
