@@ -1,24 +1,26 @@
 .page {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Space Grotesk", sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+  }
 
   &__menu {
-    @include contentPaddingInline;
-    height: 72px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 
-    @include onTablet {
-      padding-bottom: 56px;
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transition: opacity 0.6s ease;
     }
   }
-}
-
-.title-block {
-  @include titleBlock;
-  @include contentPaddingInline;
-  font-weight: 700;
-  line-height: 32px;
-  letter-spacing: 0;
-  text-align: left;
 }
