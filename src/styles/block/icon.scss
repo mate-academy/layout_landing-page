@@ -2,12 +2,26 @@
   display: block;
   width: 24px;
   height: 24px;
+  position: relative;
 
   &--phone {
     background-image: url(../images/Icon-Phone-call.svg);
   }
-  .icon--phone:hover .icon__phone--text {
+
+  &--phone:hover &__phone--text {
     opacity: 1;
+    transition: opacity 0.5s linear;
+  }
+
+  &__phone--text {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    opacity: 0;
+    display: inline-block;
+    width: 150px;
+    color: $text-color;
+    transition: opacity 0.5s linear;
   }
 
   &--menu {
@@ -26,6 +40,11 @@
   display: block;
   height: 16px;
   width: 125px;
+
+  @include onTablet {
+    height: 24px;
+    width: 172px;
+  }
 
   background-image: url(../images/Logo.svg);
   background-repeat: no-repeat;
