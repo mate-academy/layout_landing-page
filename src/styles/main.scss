@@ -1,3 +1,233 @@
-body {
-  margin: 0;
+$tablet-min-width: 744px;
+$desktop-min-width: 1260px;
+
+.page {
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.header {
+
+  height: 100vh;
+  background-image: url(../images/bg.png);
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    text-align: left;
+  }
+
+  &__bottom {
+    padding: 0 20px 40px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @media (min-width: 744px) {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon_phone.svg);
+
+    &::before {
+      position: absolute;
+      content: '+1 234 555-55-55';
+      color: #292929;
+      text-decoration: none;
+      opacity: 0;
+      left: -147px;
+      transition: opacity 0.3s;
+
+      font-size: 12px;
+      line-height: 32px;
+      letter-spacing: 2px;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon_burger_menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon_close.svg);
+  }
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+.top-bar {
+  padding: 24px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 744px) {
+    padding: 32px 72px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+
+    @include hover(transform, scale(1.2));
+  }
+}
+
+.menu {
+  height: 100vh;
+  background-color: #E5E6E8;
+
+  &__top {
+    margin-bottom: 32px;
+  }
+
+  &__phone-number {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__call-to-order {
+    color: inherit;
+    text-decoration: none;
+
+    display: block;
+    width: fit-content;
+
+    padding-bottom: 4px;
+    border-bottom: 1px solid #292929;
+
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: uppercase;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    padding-inline: 20px;
+  }
+}
+
+.nav {
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #292929;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @media (min-width: 744px) {
+    padding-inline: 72px;
+  }
 }
