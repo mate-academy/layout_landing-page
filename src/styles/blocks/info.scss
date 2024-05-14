@@ -1,6 +1,4 @@
 .info {
-  grid-column: 8 / 13;
-
   &__title {
     margin-top: 20px;
     padding-top: 20px;
@@ -17,18 +15,31 @@
       text-align: left;
     }
 
-    &__description {
+    &__link {
+      position: relative;
       color: $main-text-color;
       text-decoration: none;
-      pointer-events: none;
-      transition:
-        color 0.3s ease,
-        text-decoration 0.3s ease;
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      margin-top: 40px;
 
-      &:hover {
-        color: #f98921;
-        text-decoration: underline;
-        pointer-events: auto;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: $main-text-color;
+
+        transition: transform 0.3s;
+        transform: scale(0);
+      }
+
+      &:hover::after {
+        transform: scale(1);
+        transform-origin: left;
       }
     }
   }
