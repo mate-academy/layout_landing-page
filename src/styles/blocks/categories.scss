@@ -1,4 +1,7 @@
 .categories {
+
+  display: grid;
+
   &__wrapper {
     display: grid;
     row-gap: 40px;
@@ -10,10 +13,17 @@
 }
 
 .category {
+  display: grid;
+
   &__photos {
+    // --columns: 2;
+    // grid-template-columns: repeat(var(--columns), 1fr);
+    // display: grid;
+    gap: 20px;
+    margin-bottom: 16px;
+
     @include page-grid;
 
-    margin-bottom: 16px;
   }
 
   &__link {
@@ -30,8 +40,8 @@
     }
 
     &--square {
-      height: 0;
-      padding-bottom: 100%;
+      // height: 0;
+      // padding-bottom: 100%;
 
       @include on-tablet {
         grid-column: span 2;
@@ -45,9 +55,8 @@
 
   &__photo {
     position: relative;
-
-    // width: 100%;
-    // height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -56,5 +65,58 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+        grid-column: 1 / 6;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 6;
+      }
+  }
+
+  &__button {
+    display: grid;
+    height: 56px;
+    border-radius: 8px;
+    margin-top: 56px;
+    background-color: #292929;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Space Grotesk", sans-serif;
+    align-items: center;
+    border: none;
+    grid-column: 1 / -1;
+
+  @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+  @include on-desktop {
+    grid-column: 1 / 5;
+    }
+  }
+
+  &__img {
+    background-image: url(../images/under-categories-img.png);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 200px;
+
+  @include on-tablet {
+    height: 400px;
+  }
+
+  @include on-desktop {
+    height: 460px;
+    }
   }
 }
