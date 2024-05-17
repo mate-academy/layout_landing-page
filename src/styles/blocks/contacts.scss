@@ -52,6 +52,7 @@
 
         &:hover {
           box-shadow: 1px 4px 16px 0 #e8e8f066;
+          transition: $buttonTransition
         }
 
         &:active {
@@ -80,11 +81,25 @@
       }
 
       &--link {
+        position: relative;
         text-decoration: none;
         color: white;
 
-        &:hover {
-          text-decoration: underline;
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          display: block;
+          height: 1px;
+          width: 87%;
+          background-color: #fff;
+
+          transition: transform 0.3s;
+          transform: scale(0);
+        }
+
+        &:hover::after {
+          transform: scale(1);
         }
       }
     }
