@@ -1,4 +1,5 @@
 .form {
+  box-sizing: border-box;
   grid-column: 1 / -1;
   display: grid;
   row-gap: 16px;
@@ -8,11 +9,20 @@
   }
 
   &__row {
+    box-sizing: border-box;
     width: 100%;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color .3s ease-in;
 
     &--margin {
       margin-bottom: 16px;
     }
+
+    &:hover {
+      border: 1px solid $input-hover;
+    }
+
   }
 
   &__input {
@@ -20,8 +30,8 @@
     width: 100%;
     padding: 14px 16px;
     border-radius: 8px;
-    border: 1px solid transparent;
-    transition: border .3s ease-in;
+    border: 2px solid transparent;
+    transition: border-color .3s ease-in;
 
     display: flex;
     flex-direction: row;
@@ -31,6 +41,8 @@
     line-height: 19.6px;
 
     &.textarea {
+      box-sizing: border-box;
+      border: 2px solid transparent;
       font-family: Manrope, sans-serif;
       font-size: 16px;
       font-weight: 400;
@@ -40,7 +52,7 @@
     }
 
     &:hover {
-      border: 1px solid $input-hover;
+      cursor: pointer;
     }
 
     &:focus {
@@ -95,4 +107,9 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: 2px solid $input-focus;
+}
+
+.form__row:has(input:focus),
+.form__row:has(textarea:focus) {
+  border: 1px solid transparent;
 }
