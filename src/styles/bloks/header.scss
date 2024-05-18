@@ -1,0 +1,59 @@
+.header {
+  background-image: url(../img/header-bg-mobile-tablet.png);
+  background-size: cover;
+  background-position: center right;
+
+  @include on-desktop {
+    background-image: url(../img/header-bg-desktop.png);
+  }
+
+  &__content {
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      height: 100vh;
+    }
+  }
+
+  &__title {
+    margin-bottom: 88px;
+
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    text-align: center;
+
+    @include on-tablet {
+      margin-bottom: 130px;
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 200px;
+      font-size: 80px;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all $transition-time;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
