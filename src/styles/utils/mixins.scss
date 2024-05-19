@@ -1,0 +1,106 @@
+@mixin onPhone {
+  @media (min-width: $phone-min-width) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttons {
+  padding: 0;
+  border-radius: 40px;
+  border: #fff;
+
+  background-color: #fff;
+  color: $secondary-accent-color;
+
+  height: 56px;
+
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+
+  transition: 0.3s;
+}
+
+@mixin hoverButton {
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 4px 16px 0px #E8E8F066;
+
+    @include onTablet {
+      transform: scale(1.15);
+    }
+  }
+}
+
+@mixin pressedButton {
+  &:active {
+    box-shadow: 1px 4px 16px 0px #E8E8F0A3;
+  }
+}
+
+@mixin textScaling {
+  transition: 0.3s;
+  transform: translateX(0) scale(1);
+  transform-origin: left top;
+
+  &:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0) scale(1.2);
+  }
+}
+
