@@ -8,7 +8,19 @@
   @include content-padding-inline;
 
   @include on-tablet {
-    padding-block: 64px;
+    padding-block: 50px;
+  }
+
+  &--padding-block {
+    padding-block: 25px 40px;
+
+    @include on-tablet {
+      padding-block: 32px 40px;
+    }
+
+    @include on-desktop {
+      padding-block: 32px 55px;
+    }
   }
 
   &__logo {
@@ -29,5 +41,41 @@
     @include centered-flex;
 
     gap: 24px;
+    position: relative;
   }
 }
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+
+  @include on-desktop {
+    &:hover .phone-number,
+    &:focus-within .phone-number {
+      left: -216px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.phone-number {
+  text-align: right;
+  position: absolute;
+  top: 60%;
+  left: -200px;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+
+  @include on-desktop {
+    &:hover {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
