@@ -1,0 +1,105 @@
+.now-on-view {
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
+
+.exhibition {
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    color: $main-accent;
+    font-size: 16px;
+    line-height: 27px;
+    margin-top: 20px;
+  }
+
+  &__galary {
+    @include page-grid(2, 6, 12, 24px);
+
+    &--change {
+      @include page-grid(3, 2, 3, 24px);
+    }
+  }
+
+  &__link {
+    transition: transform 0.3s ease;
+    &--wide {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--change-size {
+      grid-column: span 1;
+
+      &:nth-child(3) {
+        @include on-tablet {
+          display: none;
+        }
+
+        @include on-desktop {
+          display: block;
+        }
+      }
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.button-link {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: $main-white-color;
+  background-color: $main-accent;
+  padding: 15px 50px;
+  cursor: pointer;
+  margin: 0 auto;
+  font-weight: 700;
+
+  @include on-tablet {
+    padding: 15px 107px;
+  }
+
+  @include on-desktop {
+    padding: 15px 74px;
+  }
+
+  &:hover {
+    background-color: $form-btn-hover;
+  }
+
+  &:active {
+    background-color: $form-btn-active;
+  }
+}
