@@ -1,0 +1,59 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo {
+    align-self: center;
+    height: 16px;
+
+    @include on-tablet {
+      height: 24px;
+    }
+
+    @include hover(transform, scale(1.2));
+    &-link {
+      display: flex;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+  .icon--phone {
+    @include on-tablet {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      &::after {
+        position: absolute;
+        content: '+1 234 555-55-55';
+        font-weight: 700;
+        padding: 5px;
+        border-radius: 5px;
+        width: max-content;
+        text-decoration: none;
+        color: $main-text-color;
+        font-size: 6;
+        line-height: 12px;
+        letter-spacing: 2px;
+
+        transition: all 0.3s;
+        transform: scale(0);
+      }
+
+      &:hover::after {
+        font-size: 14px;
+        transform: translateX(-110%);
+      }
+    }
+  }
+}
