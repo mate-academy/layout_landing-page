@@ -12,10 +12,19 @@
 .detail {
   &__photos {
     @include page-grid;
+
+    @media (max-width: 600px) {
+      display: flex;
+    }
   }
 
   &__link {
     position: relative;
+
+    @media (max-width: 600px) {
+      display: block;
+      width: 50%;
+    }
 
     &--wide {
       @include on-tablet {
@@ -28,8 +37,7 @@
     }
 
     &--square {
-      height: 0;
-      padding-bottom: 100%;
+      aspect-ratio: 1/1;
 
       @include on-tablet {
         grid-column: span 2;
@@ -47,6 +55,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
+    max-width: 100%;
 
     &:hover {
       transform: scale(1.05);
