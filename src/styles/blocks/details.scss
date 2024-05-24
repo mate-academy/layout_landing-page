@@ -1,0 +1,139 @@
+.details {
+  display: grid;
+  box-sizing: border-box;
+
+  &__picture {
+    display: grid;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 321px;
+      justify-items: stretch;
+    }
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__link {
+    display: grid;
+
+    @include on-tablet {
+      &--big {
+        grid-column: 1 / 5;
+      }
+
+      &--small {
+        grid-column: 5 / 7;
+      }
+
+      &--big--last {
+        grid-column: 1 / 3;
+      }
+
+      &--small--last {
+        grid-column: 3 / 7;
+      }
+    }
+
+    @include on-desktop {
+      &--big {
+        grid-column: 1 / 9;
+      }
+
+      &--small {
+        grid-column: 9 / 13;
+      }
+
+      &--big--last {
+        grid-column: 1 / 5;
+      }
+
+      &--small--last {
+        grid-column: 5/ 13;
+      }
+    }
+  }
+
+  &__product__link {
+    @include font-line-text(24px, 700, 33.6px, left);
+
+    color: $main-text-color;
+    text-decoration: none;
+
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    text-shadow: 1px 4px 16px #e8e8f066;
+
+    @include hover(transform, scale(1.04));
+  }
+
+  &__description {
+    @include font-line-text(16px, 400, 22.4px, left);
+
+    margin: 0;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    display: grid;
+    margin: auto;
+
+    height: 56px;
+    width: 278px;
+    border-radius: 40px;
+
+    @include font-line-text(16px, 700, 27px, center);
+
+    background-color: $main-text-color;
+    color: $main-background-color;
+
+    text-decoration: none;
+    align-content: center;
+
+    transition-duration: 1.5s;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+
+    &:hover {
+      transition-duration: 0.5s;
+
+      @include shadows(#e8e8f066);
+    }
+
+    &:active {
+      @include shadows(#e8e8f0a3);
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+
+    justify-content: center;
+    align-items: center;
+
+    column-gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 80px);
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 63px);
+    }
+  }
+}

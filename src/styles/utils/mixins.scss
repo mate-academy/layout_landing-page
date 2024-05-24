@@ -1,0 +1,59 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin font-line-text($fSize, $fWeight, $lHeight, $tAling) {
+  font-size: $fSize;
+  font-weight: $fWeight;
+  line-height: $lHeight;
+  text-align: $tAling;
+}
+
+@mixin page-grid {
+  --columns: 2;
+  --columns-weight: 130px;
+
+  display: grid;
+  column-gap: 20px;
+
+  // grid-template-columns: repeat(var(--columns), var(--columns-weight));
+
+  @include on-tablet {
+    --columns: 6;
+    --columns-weight: 80px;
+
+    column-gap: 24px;
+  }
+
+  @include on-tablet {
+    --columns: 12;
+    --columns-weight: 63px;
+
+    column-gap: 24px;
+  }
+}
+
+@mixin shadows($shadowsColor) {
+  box-shadow: 1px 4px 16px $shadowsColor;
+}
+
+@mixin background-properties($bcgSize, $bgcPosition) {
+  background-size: $bcgSize;
+  background-position: $bgcPosition;
+}
