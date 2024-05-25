@@ -1,0 +1,37 @@
+.page {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  display: flex;
+  justify-content: center;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: all $effectDuration;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
