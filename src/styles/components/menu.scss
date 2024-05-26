@@ -9,18 +9,23 @@
   z-index: 2;
   color: $white;
   transition: left $transition-time ease;
+  overflow: auto;
 
   &__header {
-    padding: 24px 20px 0;
+    padding: 24px 20px 40px;
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: $red;
 
     @media (min-width: $tablet) {
-      padding: 50px 72px 0;
+      padding: 50px 72px 40px;
     }
 
     @media (min-width: $pc) {
-      padding: 52px 120px 0;
+      padding: 52px 120px 40px;
     }
   }
 
@@ -47,7 +52,6 @@
   &__links {
     list-style: none;
     padding: 0 20px;
-    margin-top: $normal-m;
 
     @media (min-width: $tablet) {
       padding: 0 72px;
@@ -123,4 +127,9 @@
   &--opened {
     left: 0;
   }
+}
+
+body:has(.menu--opened) {
+  overflow: hidden;
+  height: 100vh;
 }

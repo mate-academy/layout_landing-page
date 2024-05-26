@@ -13,7 +13,6 @@
   }
 
   &__description {
-    text-transform: uppercase;
     line-height: 27px;
   }
 
@@ -21,43 +20,10 @@
     margin-bottom: $smaller-m;
     display: flex;
     gap: 20px;
-    justify-content: center;
 
     @media (min-width: $pc) {
       &.news__images--big-middle {
         gap: 24px;
-      }
-    }
-
-    &--wider-first {
-      :first-child {
-        object-position: 20% 50%;
-
-        @media (min-width: $tablet) {
-          flex-grow: 1;
-          object-position: unset;
-          object-fit: cover;
-        }
-      }
-    }
-
-    &--wider-last {
-      :last-child {
-        object-position: 100% 50%;
-
-        @media (min-width: $tablet) {
-          flex-grow: 1;
-          object-position: unset;
-          object-fit: cover;
-        }
-      }
-    }
-
-    :nth-child(3) {
-      display: none;
-
-      @media (min-width: $pc) {
-        display: block;
       }
     }
 
@@ -77,18 +43,63 @@
       }
     }
 
-    &--big-middle {
+    &--wider-first {
+      :first-child {
+        object-position: 20% 50%;
+        flex-grow: 1;
+
+        @media (min-width: $tablet) {
+          object-position: unset;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &--wider-last {
+      :last-child {
+        object-position: 100% 50%;
+        flex-grow: 1;
+
+        @media (min-width: $tablet) {
+          object-position: unset;
+          object-fit: cover;
+        }
+      }
+    }
+
+    :nth-child(3) {
+      display: block;
+
       @media (min-width: $tablet) {
+        display: none;
+      }
+
+      @media (min-width: $pc) {
+        display: block;
+      }
+    }
+
+    &--big-middle {
+      gap: 8px;
+
+      img {
+        height: auto;
+        width: calc((100% - 16px) / 3);
+      }
+
+      @media (min-width: $tablet) {
+        gap: 20px;
+
         img {
-          height: 284px;
-          width: 288px;
+          height: auto;
+          width: calc((100% - 20px) / 2);
         }
       }
 
       @media (min-width: $pc) {
         img {
-          height: 320px;
-          width: 324px;
+          height: auto;
+          width: calc((100% - 40px) / 3);
         }
       }
     }

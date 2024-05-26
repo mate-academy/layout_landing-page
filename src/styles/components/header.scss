@@ -2,13 +2,9 @@
   background-image: url('../images/header.png');
   background-position: center;
   background-size: cover;
-  height: 568px;
+  height: 100vh;
   width: 100vw;
   position: relative;
-
-  @media (min-width: $tablet) {
-    height: 840px;
-  }
 
   &__nav {
     position: absolute;
@@ -50,7 +46,7 @@
     display: inline-block;
 
     .header__contacts {
-      width: 150px;
+      width: max-content;
       height: 80px;
       color: white;
       position: absolute;
@@ -59,8 +55,11 @@
       right: 100%;
       transform: translate(0, -50%);
       opacity: 0;
+      visibility: hidden;
       z-index: 1;
-      transition: opacity $transition-time ease;
+      transition:
+        opacity,
+        visibility $transition-time ease;
 
       @media (min-width: $tablet) {
         right: 150%;
@@ -70,6 +69,7 @@
     &:hover {
       .header__contacts {
         opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -89,10 +89,9 @@
 
   &__title {
     width: 280px;
-    height: 80px;
+    height: max-content;
     text-align: center;
     color: $white;
-    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,6 +101,7 @@
     transform: translate(-50%, -50%);
     font-size: $header-fs;
     font-weight: $bold-fw;
+    overflow: hidden;
 
     @keyframes enter-screen-left {
       from {
