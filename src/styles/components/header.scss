@@ -43,7 +43,11 @@
     background-position: center;
     margin-right: $small-m;
     position: relative;
-    display: inline-block;
+    display: none;
+
+    @media (min-width: $pc) {
+      display: inline-block;
+    }
 
     .header__contacts {
       width: max-content;
@@ -52,7 +56,7 @@
       position: absolute;
       text-align: end;
       top: 50%;
-      right: 100%;
+      right: 150%;
       transform: translate(0, -50%);
       opacity: 0;
       visibility: hidden;
@@ -60,16 +64,14 @@
       transition:
         opacity,
         visibility $transition-time ease;
-
-      @media (min-width: $tablet) {
-        right: 150%;
-      }
     }
 
-    &:hover {
-      .header__contacts {
-        opacity: 1;
-        visibility: visible;
+    @media (min-width: $pc) {
+      &:hover {
+        .header__contacts {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
   }
@@ -81,6 +83,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    cursor: pointer;
 
     &:hover {
       background-image: url('../images/icons/hover-burger.svg');
