@@ -1,0 +1,55 @@
+@import './mixins';
+@import './variables';
+@import './icon';
+@import './menu';
+@import './button';
+@import './form';
+@import './header';
+@import './main';
+@import './footer';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img,
+a,
+button {
+  @include transition;
+}
+
+.page-body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  color: $main-text-color;
+  font-size: $mob-secondary-text-fs;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-main-color;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: auto;
+
+    @include transition;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page-body__menu:target) {
+    overflow: hidden;
+  }
+}
