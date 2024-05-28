@@ -1,9 +1,13 @@
 .page {
   font-family: Poppins, sans-serif;
+  background-color: $background-color;
   font-weight: 400;
-  background-color: #000;
-  color: #fff;
+  color: $page-text;
   line-height: $standart-line-height;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
   &__body {
     margin: 0;
@@ -16,10 +20,14 @@
     right: 0;
     pointer-events: none;
     opacity: 0;
+    transform: translateX(-100%);
+    transition-duration: $transition-duration;
 
     &:target {
       pointer-events: all;
       opacity: 1;
+      z-index: 1;
+      transform: translateX(0);
     }
   }
 }
