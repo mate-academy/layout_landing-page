@@ -1,0 +1,47 @@
+@mixin tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include tablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include desktop {
+    column-gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin hover-button {
+  background-color: #f8f8fa;
+  color: $main-text-color;
+  border: 2px solid #f0f1f4;
+  transition: all 0.3s;
+}
+
+@mixin active-button {
+  background-color: $main-text-color;
+  color: #fff;
+  border: none;
+}
