@@ -1,21 +1,28 @@
 # Landing page
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+Project Description
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
+This project is a visually appealing and responsive web page created using HTML and CSS. The goal of the project is to showcase a modern and user-friendly design while demonstrating a strong understanding of fundamental web development principles.
+
+Features:
+Responsive Design: The layout adjusts seamlessly to different screen sizes, ensuring a great user experience on both desktop and mobile devices.
+
+Clean and Modern Aesthetics: The use of contemporary design elements and a minimalist color scheme makes the page visually attractive and easy to navigate.
+
+Interactive Elements: CSS animations and transitions are employed to enhance user engagement and provide a dynamic browsing experience.
+
+Semantic HTML: Proper HTML5 tags are used to improve the page’s structure and accessibility, ensuring it is easy to understand and navigate for all users, including
+those using assistive technologies.
+
+Technologies Used:
+HTML5: For structurnk to ing the content and providing semantic meaning to the web page.
+CSS3: For styling the page, including layout, colors, fonts, and animations.
+SASS and BEM
+This project serves as a comprehensive example of building a modern web page from scratch using HTML and CSS, adhering to best practices in web design and development.
+
+Link to the landing page: https://graf6612.github.io/layout_landing-page/
+
+Figma design:
 - [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://Graf6612.github.io/layout_landing-page/)
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
