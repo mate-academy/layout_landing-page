@@ -32,35 +32,44 @@
     }
   }
 
-  .header__phone {
-    height: 24px;
-    width: 24px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    margin-right: 24px;
-    position: relative;
-    display: inline-block;
+  .header__desktop {
+    display: none;
 
-    .header__contacts {
-      width: max-content;
-      height: 80px;
-      position: absolute;
-      text-align: end;
-      top: 50%;
-      right: 150%;
-      transform: translate(0, -50%);
-      opacity: 0;
-      visibility: hidden;
-      z-index: 1;
-      transition:
-        opacity,
-        visibility 0.3ms ease;
-    }
-    &:hover {
+    @include on-desktop {
+      background-image: url(../images/icons/icon-phone.png);
+      display: block;
+      height: 32px;
+      width: 32px;
+      margin-top: 11px;
+
+      @include hover(transform, scale(1.2));
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+
       .header__contacts {
-        opacity: 1;
-        visibility: visible;
+        width: max-content;
+        height: 80px;
+        position: absolute;
+        text-align: end;
+        top: 50%;
+        right: 150%;
+        transform: translate(0, -50%);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
+        transition:
+          opacity,
+          visibility 0.3ms ease;
+      }
+
+      &:hover {
+        .header__contacts {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
   }
