@@ -1,0 +1,76 @@
+.header {
+  box-sizing: border-box;
+  background-image: url(../images/header-bg.png);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    margin-top: 129px;
+    font-family: inherit;
+    font-size: 40px;
+    line-height: 40px;
+    color: $main-light-color;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+      margin-top: 91px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      line-height: 80px;
+      margin-top: 31px;
+    }
+  }
+
+  .header__desktop {
+    display: none;
+
+    @include on-desktop {
+      background-image: url(../images/icons/icon-phone.png);
+      display: block;
+      height: 32px;
+      width: 32px;
+      margin-top: 11px;
+
+      @include hover(transform, scale(1.2));
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+
+      .header__contacts {
+        width: max-content;
+        height: 80px;
+        position: absolute;
+        text-align: end;
+        top: 50%;
+        right: 150%;
+        transform: translate(0, -50%);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1;
+        transition:
+          opacity,
+          visibility 0.3ms ease;
+      }
+
+      &:hover {
+        .header__contacts {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
