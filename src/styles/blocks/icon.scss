@@ -4,7 +4,35 @@
   width: 24px;
   background-size: cover;
   background-position: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease-in-out;
+
+  &-phone {
+    position: relative;
+  }
+
+  &-phone::after {
+    content: '+1 234 555-55-55';
+    display: block;
+    position: absolute;
+    width: max-content;
+    left: -186px;
+    top: 50%;
+    height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #FFF;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: scale(0.8);
+  }
+
+  &-phone:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
 
   @include hover(transform, scale(1.2));
 
@@ -12,20 +40,4 @@
     height: 32px;
     width: 32px;
   }
-
-  // &-phone {
-  //   background-image: url(../image/icons/icon-phone.png);
-  // }
-
-  // &-menu {
-  //   background-image: url(../image/icons/icon-menu-svg.svg);
-  // }
-
-  // &-close {
-  //   background-image: url(../image/icons/icon-close-svg.svg);
-
-  //   // background-repeat: no-repeat;
-  // }
 }
-
-
