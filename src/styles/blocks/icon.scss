@@ -14,10 +14,40 @@
 
   &--phone {
     background-image: url("../images/icons/icon-phone-call.png");
+
+    &::before {
+      content: " +1 234 5555-55-55";
+      color: $main-text-color;
+      letter-spacing: 2px;
+      opacity: 0;
+      visibility: hidden;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      text-decoration: none;
+      transition: opacity .3s, visibility .3s;
+      position: absolute;
+      top: 40px;
+      right: 168px;
+      transform: translateY(15%);
+    }
+
+    @include on-desctop {
+      &:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &--menu {
     background-image: url("../images/icons/icon-burger-menu.png");
+
+    @include on-desctop {
+      &:hover {
+        background-image: url("../images/icons/icon-burger-menu-hover.png");
+      }
+    }
   }
 
   &--close {

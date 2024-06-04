@@ -1,14 +1,30 @@
+@mixin on-mobile {
+  @media (max-width: $tablet-min-with) {
+    @content;
+  }
+}
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-with) {
     @content;
   }
 }
 
-@mixin content-paddin-inline() {
+@mixin on-desctop {
+  @media (min-width: $desctop-min-with) {
+    @content;
+  }
+}
+
+@mixin content-paddin-inline {
   padding-inline: 20px;
 
   @include on-tablet {
     padding-inline: 72px;
+  }
+
+  @include on-desctop {
+    padding-inline: 120px;
   }
 }
 
@@ -38,4 +54,12 @@
     margin-top: 56px;
     margin-bottom: 60px;
   }
+
+  @include on-desctop {
+    width: 324px;
+  }
+}
+
+.container {
+  @include content-paddin-inline;
 }
