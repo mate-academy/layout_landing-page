@@ -13,15 +13,47 @@
   height: 24px;
   background-position: center;
   background-size: cover;
-  cursor: default;
+  cursor: pointer;
+  transition-duration: $transition-duration;
 
   @include on-tablet {
     width: 32px;
     height: 32px;
   }
 
+  &:hover {
+    transform: scale(1.2);
+  }
+
   &--phone {
     background-image: url(../images/phone.svg);
+    text-decoration: none;
+    position: relative;
+
+    @include on-dekstop {
+      &::before {
+        content: '+1 234 555-55-55';
+        display: block;
+        width: 139px;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        color: $text-main-color;
+        position: absolute;
+        right: 30px;
+        top: 9px;
+        opacity: 0;
+        transition: transform $transition-duration;
+        transform: scale(0);
+        transform-origin: right;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      transform: scale(1.2);
+    }
   }
 
   &--burger-menu {
