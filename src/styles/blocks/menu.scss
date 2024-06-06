@@ -1,0 +1,57 @@
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $grey-200;
+  transform: translateX(50%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
+  overflow: auto;
+  z-index: 1;
+  padding-bottom: 25px;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &__top {
+    @include top-bar;
+
+    position: sticky;
+    top: 0;
+    background-color: $grey-200;
+    z-index: 1;
+  }
+
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__bottom {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    @include default-menu-link;
+
+    width: fit-content;
+    position: relative;
+
+    &:last-child {
+      @include default-menu-link-underline;
+
+      font-size: px-to-rem(12);
+      letter-spacing: 2px;
+    }
+  }
+}
