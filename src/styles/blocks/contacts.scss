@@ -1,13 +1,27 @@
 .contacts {
-  &__form {
-    @include page-grid;
+  margin-bottom: 64px;
 
-    gap: 16px;
+  @include on-tablet {
+    margin-bottom: 120px;
+  }
+
+  &__container {
+    @include page-grid;
+  }
+
+  &__form {
+    display: grid;
+    row-gap: 16px;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
   }
 
   &__button {
-    margin-top: 16px;
-    padding-block: 14.5px;
+    margin-block: 16px 48px;
+    padding: 14.5px 0;
     border: 1px solid $category-button-color;
     box-sizing: border-box;
     border-radius: 8px;
@@ -24,7 +38,8 @@
     grid-column: 1 / -1;
 
     @include on-desktop {
-      grid-column: span 4;
+      grid-column: 1 / 7;
+      margin-bottom: 0;
     }
 
     &:hover {
@@ -53,6 +68,11 @@
     border: 1px solid $menu-bg-color;
     background-color: $menu-bg-color;
     grid-column: 1 / -1;
+    outline: none;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
 
     &:hover {
       border: 1px solid #dbdbdb;
@@ -66,5 +86,38 @@
     &:focus {
       border: 1px solid $category-button-color;
     }
+
+    &--message {
+      height: 148px;
+      padding-right: 16px;
+    }
+  }
+
+  &__adress {
+    display: grid;
+    row-gap: 24px;
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  // &__blocks {
+  //   margin: 0;
+  //   padding: 0;
+  // }
+
+  &__title {
+    margin-block: 0 8px;
+    font-size: 14px;
+    line-height: 19.6px;
+    color: #9393a3;
+  }
+
+  &__descriptions {
+    font-size: 16px;
+    line-height: 22.4px;
+    text-decoration: none;
+    color: $adress-text-color;
   }
 }
