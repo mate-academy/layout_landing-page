@@ -1,0 +1,32 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDeskTop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constenPuddingInLine {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDeskTop {
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
