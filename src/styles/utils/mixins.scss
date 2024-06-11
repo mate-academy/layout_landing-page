@@ -1,0 +1,72 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin title-padding-block() {
+  padding-block: 106px;
+
+  @include on-tablet {
+    padding-block: 94px;
+  }
+
+  @include on-desktop {
+    padding-block: 39px;
+  }
+}
+
+@mixin phone-numb-decoration() {
+  display: block;
+  color: inherit;
+  width: fit-content;
+  text-decoration: none;
+}
+
+@mixin def-text-decoration() {
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid() {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 24px;
+
+  @include on-tablet {
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
