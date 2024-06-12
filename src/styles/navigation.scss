@@ -17,18 +17,29 @@
   }
 
   &__link {
+    position: relative;
     font-size: 22px;
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 2px;
-    padding-bottom: 8px;
-
     color: $menu-text-color;
     text-decoration: none;
-    transition: 0.3s;
 
-    &:hover {
-      border-bottom: 1px solid #1d1d1d;
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: $main-bg-color;
+      bottom: -8px;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
 
     @include ondesktop {
