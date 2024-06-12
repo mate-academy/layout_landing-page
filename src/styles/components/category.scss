@@ -8,32 +8,42 @@
     
     &__photo{
         width: 100%;
-        height: 130px;
-        background-size: cover;
+        min-height: 130px;
+        border-radius: 4px;
+        block-size: 100%;
         background-position: center;
+        background-size: cover;
+        object-fit: cover;
 
-        &--birdth{
-            background-image: url('../images/mobile/birdth-on-phone.png');
-        }
-
-        &--headphones-box-in-hand{
-            background-image: url('../images/mobile/headphones-box-in-hand.png');
-        }
-
-        &--one-headphone{
-            background-image: url('../images/mobile/one-headphone.png');
+        @include onTablet{
+            min-height: 184px;
+            block-size: 0;
+            
+            grid-column: 9/-1;
         }
 
-        &--headphones-in-hand{
-            background-image: url('../images/mobile/headphones-in-hand.png');
+        @include onDesctop{
+            min-height: 324px;
         }
 
-        &--block{
-            background-image: url('../images/mobile/block.png');
+        &--special{
+            @include onTablet{
+                grid-column: 1/5; 
+            }
         }
-        &--phone-black{
-            background-image: url('../images/mobile/phone-black.png');
+
+        &--long{
+            @include onTablet{
+                grid-column: 1/9; 
+            }
         }
+
+        &--long:nth-child(2){
+            @include onTablet{
+                grid-column: 5/-1; 
+            }
+        }
+
     }
 
     &__title{
