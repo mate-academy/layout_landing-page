@@ -16,9 +16,9 @@ The MyBike landing page is built using modern web technologies to ensure a smoot
 To run the MyBike project locally, follow these steps:
 
 1. **Clone the Repository:**:
-   `git clone <repository-url>`
+   `git clone https://github.com/VitaliiNez/layout_landing-page.git`
 2. **Navigate into the Project Directory:**
-   `cd <repository-directory>`
+   `cd layout_landing-page`
 3. **Ensure Node.js Version:**
    The project requires Node.js version 14.21.3 to run. You can check your Node.js version with:
    `node -v`
@@ -29,3 +29,5 @@ To run the MyBike project locally, follow these steps:
    `npm start`
 
 You should now be able to view the MyBike landing page locally in your browser.
+
+To view the live site, visit [MyBike](https://VitaliiNez.github.io/layout_landing-page/).
