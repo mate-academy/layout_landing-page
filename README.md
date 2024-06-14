@@ -19,10 +19,11 @@ To run the MyBike project locally, follow these steps:
    `git clone <repository-url>`
 2. **Navigate into the Project Directory:**
    `cd <repository-directory>`
-3. **Ensure Node.js Version:**:
+3. **Ensure Node.js Version:**
    The project requires Node.js version 14.21.3 to run. You can check your Node.js version with:
    `node -v`
-4. **Install Dependencies:**:
+   If necessary, use a version manager like [nvm](https://github.com/nvm-sh/nvm/) to install and switch to the correct version.
+4. **Install Dependencies:**
    `npm install`
 5. **Run the Project:**
    `npm start`
