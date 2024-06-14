@@ -1,18 +1,30 @@
-# Landing page
+# Project Description: MyBike
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## Overview
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+MyBike is a next-generation urban biking solution designed to transform your city commute. This landing page, developed by me, showcases the innovative features and benefits of our cutting-edge bike. Experience a seamless and intuitive ride with MyBike, the ultimate choice for modern urban mobility. Key features include automatic unlocking with GPS tracking, a removable battery with up to 70km autonomy, integrated lights for day and night visibility, and hydraulic disc brakes for total stopping power.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## Technologies Used
+
+The MyBike landing page is built using modern web technologies to ensure a smooth and responsive user experience. The key technologies utilized are:
+
+- **HTML**: For structuring the content on the page.
+- **CSS/SCSS**: For styling and layout, including the use of SCSS for more efficient and maintainable stylesheets.
+
+## Running the Project Locally
+
+To run the MyBike project locally, follow these steps:
+
+1. **Clone the Repository:**:
+   `git clone <repository-url>`
+2. **Navigate into the Project Directory:**
+   `cd <repository-directory>`
+3. **Ensure Node.js Version:**:
+   The project requires Node.js version 14.21.3 to run. You can check your Node.js version with:
+   `node -v`
+4. **Install Dependencies:**:
+   `npm install`
+5. **Run the Project:**
+   `npm start`
+
+You should now be able to view the MyBike landing page locally in your browser.
