@@ -59,15 +59,27 @@
       @include on-desktop {
         grid-column: span 4;
       }
-    }
 
-    &--tablet{
-      grid-column: span 3;
-    }
+      &-tablet{
+        @include on-tablet{
+          grid-column: span 3;
+        }
 
-    &--tablet:nth-child(3){
-      @include on-tablet {
-        display: none;
+        @include on-desktop {
+          grid-column: span 4;
+        }
+      }
+
+      &-tablet:nth-child(3){
+        display: grid;
+
+        @include on-tablet {
+          display: none;
+        }
+
+        @include on-desktop {
+          display: grid;
+        }
       }
     }
   }
@@ -77,6 +89,22 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    &--wide{
+      object-position: 32%;
+
+      @include on-tablet{
+        object-position: initial;
+      }
+    }
+
+    &--wide-third{
+      object-position: 98%;
+
+      @include on-tablet{
+        object-position: initial;
+      }
+    }
   }
 
   &__title {
