@@ -3,14 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 65px;
+  margin: 0;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 50px;
-  }
+    }
 
-  @include onDeskTop {
-    padding-top: 52px;
+    @include on-desktop {
+    height: 169px;
+    padding-top: 0;
   }
 
   &--menu {
@@ -29,7 +30,7 @@
 
     @include hover(transform, scale(1.2));
 
-    @include onTablet {
+    @include on-tablet {
       width: 87px;
       height: 65px;
     }
@@ -39,8 +40,9 @@
     display: flex;
     gap: 24px;
     align-items: center;
+    height: 100%;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 55px;
     }
   }
@@ -50,28 +52,37 @@
   display: flex;
   gap: 16px;
   align-items: center;
-}
+  height: 100%;
 
-.menu__phone-numbers--header-hover {
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-
-  transition: all 1s;
-  opacity: 0;
-  transform: translateX(-100%);
-  pointer-events: none;
-
-  @include onDeskTop {
-    &:target {
+  @include on-desktop {
+    &:hover .menu__phone-numbers--header-hover {
       opacity: 1;
       pointer-events: all;
       transform: translateX(0);
     }
+  }
+
+  &-hover {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+    justify-content: center;
+    height: 100%;
+
+    transition: all 1s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
   }
 }
 
 .phone1,
 .phone2 {
   text-align: right;
+}
+
+.phone1:hover,
+.phone2:hover {
+  color: aqua;
 }
