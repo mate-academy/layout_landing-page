@@ -14,9 +14,27 @@
   &--phone {
     background-image: url(../images/icons/Icon-Phone-call.png);
 
-    &:hover + .top-bar__phone-number {
-      display: block;
-      transform: translateX(-40%);
+    &::before {
+      content: '+1 234 5555-55-55';
+      color: #fff;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      width: max-content;
+
+      position: absolute;
+      transition: opacity 0.3s ease;
+      transform: translateX(-120%);
+      opacity: 0;
+      top: 20%;
+    }
+
+    &:hover::before {
+      opacity: 1;
+
+      @include on-mobile {
+        opacity: 0;
+      }
     }
   }
 
