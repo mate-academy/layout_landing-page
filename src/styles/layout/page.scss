@@ -1,0 +1,38 @@
+.page{
+  font-family: Space Mono, sans-serif ;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: $mainColor;
+  scroll-behavior: smooth;
+
+  &__body{
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+
+    transition: all .3s;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target{
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__sidebar:target) {
+    @include onDesctop{
+      overflow: hidden;
+    }
+  }
+}  
