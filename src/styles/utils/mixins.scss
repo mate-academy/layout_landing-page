@@ -19,9 +19,13 @@
 
   @include on-desktop {
     max-width: 1020px;
-    // margin-inline: auto;
+    margin-inline: auto;
     padding-inline: 120px;
   }
+}
+
+.container {
+  @include content-padding-inline;
 }
 
 @mixin hover($property, $toValue) {
@@ -31,3 +35,18 @@
   }
 }
 
+@mixin page-grid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
+  }
+}
