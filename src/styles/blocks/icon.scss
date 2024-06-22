@@ -5,8 +5,6 @@
   background-size: cover;
   background-position: center;
 
-  @include hover(transform, scale(1.2));
-
   @include on-tablet {
     height: 32px;
     width: 32px;
@@ -14,13 +12,35 @@
 
   &--phone {
     background-image: url(../images/icons/Icon-Phone-call.png);
+    position: relative;
+
+    &::after{
+      content: '+1 234 5555-55-55';
+      position: absolute;
+      text-decoration: none;
+      color: white;
+      width: 152px;
+      right: 45px;
+      height: 32px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      align-items: center;
+      display: none;
+    }
+
+    &:hover::after{
+      transition-duration: 0.3s;
+      display: flex;
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/Icon-Burger-menu.png);
 
     &:hover {
-      transform: scale(1.2);
       background-image: url(../images/icons/Icon-Burger-menu-hover.png);
     }
   }
