@@ -13,5 +13,6 @@ The saas preprocessor was used to build the project.
 - Rubber layout.
 
 # Links
-[DEMO LINK](https://nataliiasmirnova.github.io/layout_landing-page/)
-[FIGMA LAYOUT](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+- [DEMO LINK](https://nataliiasmirnova.github.io/layout_landing-page/)
+
+- [FIGMA LAYOUT](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
