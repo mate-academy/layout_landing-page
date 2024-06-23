@@ -1,0 +1,50 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  column-count: $column-count-mobile;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat($column-count-mobile, 1fr);
+
+  @include on-tablet {
+    column-count: $column-count-tablet;
+    grid-template-columns: repeat($column-count-tablet, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    column-count: $column-count-desktop;
+    grid-template-columns: repeat($column-count-desktop, 1fr);
+  }
+}
+
+@mixin transition {
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
