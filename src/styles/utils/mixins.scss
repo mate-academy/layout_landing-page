@@ -1,0 +1,106 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $destop-min-width) {
+    @content;
+  }
+}
+
+@mixin cursor-pointer() {
+  cursor: pointer;
+}
+
+@mixin constent-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin content-width-main-logo() {
+  width: 64px;
+
+  @include on-tablet {
+    width: 88px;
+  }
+}
+
+@mixin content-height-main-logo() {
+  height: 46px;
+
+  @include on-tablet {
+    height: 65px;
+  }
+}
+
+@mixin content-main-title() {
+  font-size: 40px;
+
+  @include on-tablet {
+    font-size: 64px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $time-transition;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin img-hover($property, $toValue) {
+  transition: #{$property} $time-transition;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover-button($property, $toValue, $duration: $time-transition) {
+  transition: #{$property} #{$duration};
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin link-hover($property, $toValue) {
+  transition: #{$property} $time-transition;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active-button($property, $toValue, $duration: $time-transition) {
+  transition: #{$property} #{$duration};
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
