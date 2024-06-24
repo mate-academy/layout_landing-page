@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
   phoneIcon.addEventListener('click', function (event) {
     console.log(topBarList);
     event.preventDefault();
-
     topBarList.classList.toggle('visible');
   });
 });
