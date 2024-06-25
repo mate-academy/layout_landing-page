@@ -1,0 +1,77 @@
+@import '/src/styles/utils/variables';
+
+.details {
+  &__wraper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+  }
+
+  & img:hover {
+    transition: 0.6s;
+    transform: scale(106%);
+  }
+  &__title {
+    margin: 16px 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+    text-align: left;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 1/-1;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 1/-1;
+    }
+  }
+}
