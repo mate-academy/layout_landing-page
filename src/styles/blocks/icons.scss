@@ -1,3 +1,28 @@
+.icon__number {
+  display: none;
+  position: absolute;
+
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  top: 50%;
+  left: -45px;
+
+  transform: translate(120%, -50%);
+  opacity: 0;
+
+  z-index: -1;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  @include on-desktop {
+    display: block;
+  }
+}
+
 .icon {
   display: block;
   width: 24px;
@@ -9,6 +34,11 @@
 
   &--phone {
     background-image: url('../images/Phone-number.svg');
+
+    &:hover + .icon__number {
+      transform: translate(0, -50%);
+      opacity: 1;
+    }
   }
 
   &--menu {
@@ -27,5 +57,18 @@
   @include on-tablet {
     height: 32px;
     width: 32px;
+  }
+}
+
+.phone__wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100%;
+  position: relative;
+
+  width: auto;
+
+  @include on-desktop {
+    width: 150px;
   }
 }
