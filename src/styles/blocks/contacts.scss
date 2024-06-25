@@ -1,0 +1,104 @@
+.contacts {
+  margin-bottom: 120px;
+
+  @include on-tablet {
+    margin-bottom: 100px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 164px;
+  }
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__content {
+    @include grid-layout;
+
+    row-gap: 48px;
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__textarea {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -3;
+    }
+  }
+
+  &__info-block {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__link {
+    position: relative;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22.4px;
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+
+      width: 100%;
+      height: 1px;
+      background-color: white;
+      bottom: -8px;
+
+      transform: scale(0);
+      transition: transform $transition-duration;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
+    }
+  }
+}

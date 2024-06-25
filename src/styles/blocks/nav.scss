@@ -1,0 +1,84 @@
+.nav {
+  font-weight: 600;
+  color: $color-dark;
+
+  @include on-desktop {
+    font-weight: 700;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 1px;
+      bottom: -8px;
+      background-color: $color-dark;
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover {
+      cursor: $cursor-link-hover, pointer;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
+    }
+  }
+
+  &__phone-number {
+    color: $color-dark;
+    text-decoration: none;
+
+    display: block;
+    width: fit-content;
+
+    line-height: 27px;
+    margin-bottom: 16px;
+
+    font-weight: 600;
+
+    @include hover(scale, 1.2, $cursor-link-hover);
+  }
+
+  &__call-to-book {
+    color: $color-dark;
+    text-decoration: none;
+
+    display: block;
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $color-dark;
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    @include hover(scale, 1.2, $cursor-link-hover);
+  }
+}
