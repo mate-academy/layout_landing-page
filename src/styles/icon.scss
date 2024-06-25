@@ -3,9 +3,9 @@
   width: 24px;
   height: 24px;
   background-size: contain;
-  transition: transform 0.3s;
+  transition: $effectDuration;
 
-  @include hover(transform,scale(1.2));
+  @include hover(transform, scale(1.2));
 
   @include on-tablet {
     height: 32px;
@@ -15,6 +15,25 @@
   &--phone {
     background-image: url(/icons/icon-phone.svg);
     background-repeat: no-repeat;
+
+    @include on-tablet {
+      &:hover::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        display: block;
+        width: 155px;
+        right: 24px;
+        top: 8px;
+        font:
+          700 12px Inter,
+          Arial,
+          sans-serif;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        color: $main-text-color;
+      }
+    }
   }
 
   &--menu {
@@ -31,5 +50,3 @@
     background-repeat: no-repeat;
   }
 }
-
-
