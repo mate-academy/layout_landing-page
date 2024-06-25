@@ -5,7 +5,7 @@ A design for landing page:
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
 
 # Demo links
-- [DEMO LINK](https://Anya-Laban.github.io/myBike-landing-page/)
+- [DEMO LINK](https://Anya-Laban.github.io/layout-landing-page/)
 
 # Technologies that were used
 - BEM
