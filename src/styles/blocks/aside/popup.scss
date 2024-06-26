@@ -1,34 +1,57 @@
 .popup {
-  position: fixed;
+  position: absolute;
   text-align: right;
-  top: 3%;
-  right: 25%;
+  width: 201px;
   display: none;
+  pointer-events: all;
 
   &__address {
     line-height: 1.68;
     color: $fff;
     text-transform: uppercase;
   }
+
   &__phone {
     line-height: 1.68;
     color: $fff;
+
+    @include hover(color, $red-color);
   }
+
   &__address--gap {
     margin-top: 8px;
   }
 }
 
+.popup--visible {
+  display: block;
+  right: 120%;
+  transform: translateY(0);
+}
+
+@media (max-width: 405px) {
+  .top-bar__popup {
+    position: absolute;
+    right: 95%;
+    transform: translateY(calc(25% + 10px));
+  }
+}
+
+@media (max-width: 320px) {
+  .top-bar__popup {
+    position: absolute;
+    right: 95%;
+    transform: translateY(calc(25% + 10px));
+  }
+}
+
 .icon--phone:hover + .popup {
   @include tablet {
+    right: 120%;
     display: block;
-    pointer-events: all;
-    cursor: pointer;
-    top: 3%;
-    right: 18.5%;
   }
 
   @include desktop {
-    right: 29%;
+    right: 120%;
   }
 }
