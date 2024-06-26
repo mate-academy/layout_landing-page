@@ -1,0 +1,63 @@
+.phone-number {
+  position: absolute;
+  left: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: $white-color;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+  align-items: center;
+  margin: 0 -15px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  transition: transform 0.3s ease; /* Добавьте плавный переход для трансформации */
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @media (min-width: 768px) {
+    height: 32px;
+    width: 32px;
+  }
+
+  &_call {
+    background-image: url(/src/images/Icon-Phone-call.svg);
+    position: relative; /* Необходимо для абсолютного позиционирования .phone-number */
+
+    &:hover .phone-number {
+      @include on-desktop {
+        opacity: 1;
+      }
+    }
+  }
+
+  &_menu {
+    background-image: url(/src/images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/images/Icon-Burger-menu-big.svg);
+    }
+  }
+
+  &_close {
+    background-image: url(/src/images/Icon-Close.svg);
+  }
+
+  &_number {
+    width: fit-content;
+  }
+}
