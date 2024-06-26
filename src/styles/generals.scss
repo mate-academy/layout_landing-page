@@ -1,0 +1,172 @@
+@import 'variables';
+@import 'mixins';
+
+html {
+  scroll-behavior: smooth;
+}
+
+[class*='__container'] {
+  max-width: 1050px;
+  width: 100%;
+
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onTablet {
+    padding: 0 72px;
+  }
+}
+
+body {
+  font-family: 'Space Mono', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: $mainColor;
+  background: #fff;
+
+  /*
+  У мене :has не спрацював , я через js зробила
+  &:has(.nav:target) {
+    overflow: hidden;
+  }*/
+}
+
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  & > .page {
+    flex-grow: 1;
+  }
+}
+
+.observe-element {
+  &__item {
+    transition-duration: 1s;
+    &--left {
+      transform: translateX(-100%);
+    }
+    &--right {
+      transform: translateX(100%);
+    }
+  }
+
+  &--active {
+    .observe-element__item {
+      transform: translateX(0);
+    }
+  }
+}
+
+.section {
+  &__wrapper {
+    padding: 90px 0 0;
+
+    &--small {
+      padding-top: 48px;
+    }
+    &--bottom {
+      margin-bottom: 64px;
+    }
+
+    @include onTablet {
+      padding: 120px 0 0;
+
+      &--small {
+        padding-top: 56px;
+      }
+
+      &--bottom {
+        margin-bottom: 120px;
+      }
+    }
+  }
+
+  &__header {
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+
+    &--small {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+
+    @include onTablet {
+      &:not(:last-child) {
+        margin-bottom: 56px;
+      }
+    }
+  }
+
+  &__title {
+    @include mainTitle;
+
+    &--small {
+      font-size: $additionalFontSize;
+
+      @include onTablet {
+        font-size: 24px;
+      }
+    }
+  }
+  &__banner {
+    min-height: 60svh;
+
+    background-image: url('../images/main/banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.button {
+  max-width: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 14.5px;
+
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+
+  font-family: $spaceGroteskFont;
+  font-weight: $spaceGroteskBold;
+  line-height: 1.6;
+  text-align: center;
+
+  color: $colorWhite;
+  background-color: $mainColor;
+
+  transition-duration: 0.3s;
+
+  &:hover {
+    border-color: #f0f1f4;
+
+    color: $mainColor;
+    background-color: $colorBackgroundGrey;
+  }
+
+  &--grey {
+    border-color: #f0f1f4;
+
+    color: $mainColor;
+    background-color: $colorBackgroundGrey;
+
+    &:hover {
+      color: $colorWhite;
+      background-color: $mainColor;
+    }
+  }
+}

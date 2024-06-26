@@ -1,0 +1,115 @@
+@import '../variables';
+@import '../mixins';
+
+.contact-us {
+  &__content {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 110px;
+    }
+  }
+
+  &__main {
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+
+    @include onTablet {
+      &:not(:last-child) {
+        margin-bottom: 80px;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-family: $spaceGroteskFont;
+    font-size: 14px;
+
+    color: #9393a3;
+  }
+
+  &__link {
+    max-width: max-content;
+    position: relative;
+
+    &::before {
+      @include linkUnderline;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &--address {
+      max-width: 150px;
+      width: 100%;
+    }
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item {
+  }
+
+  &__label {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__input {
+    padding: 14px 16px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+
+    background-color: $colorBackgroundGrey;
+
+    &--textarea {
+      color: $mainColor;
+
+      max-width: 100%;
+      width: 100%;
+      height: 148px;
+
+      resize: none;
+    }
+
+    &::placeholder {
+      color: #7e7e83;
+      font-size: 14px;
+    }
+
+    &:hover {
+      border-color: #d5d7de;
+
+      &::placeholder {
+        color: $mainColor;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+  }
+}

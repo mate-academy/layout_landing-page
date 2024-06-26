@@ -1,0 +1,290 @@
+@import 'variables';
+@import 'mixins';
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+
+  max-width: 100%;
+  width: 100%;
+
+  border-bottom: 2px solid transparent;
+
+  transition:
+    background-color 0.5s,
+    border 0.3s;
+
+  &--active {
+    background-color: #e5e6e8;
+  }
+
+  &__wrapper {
+    position: relative;
+    padding: 28px 0;
+
+    @include onTablet {
+      padding: 36px 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__phone {
+    display: none;
+
+    transform: translateX(100%);
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      transform 0.5s,
+      opacity 0.1s 0.3s;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    span {
+      font-size: 22px;
+
+      transition: $transitionTransform;
+
+      &:hover {
+        transform: $scaleTransform;
+      }
+    }
+
+    &:hover {
+      overflow: visible;
+
+      .header__phone {
+        transform: translateX(-10%);
+
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &--active {
+      display: none;
+    }
+  }
+}
+
+.logo {
+  max-width: 125px;
+  width: 100%;
+  max-height: 16px;
+
+  &__img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+
+    object-position: center;
+    object-fit: cover;
+  }
+}
+
+.burger {
+  width: 20px;
+  height: 20px;
+
+  &__wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &__item {
+    width: 100%;
+    height: 2px;
+
+    background-color: $mainColor;
+    border-radius: 8px;
+
+    transition: $transitionTransform;
+
+    @keyframes line-move {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &:hover {
+    .burger__item {
+      animation: line-move 0.7s ease alternate;
+
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+    }
+  }
+
+  &--active {
+    transition: $transitionTransform;
+
+    .burger__item {
+      position: absolute;
+      top: 7.5px;
+
+      &:nth-child(1) {
+        transform: rotate(-45deg);
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        display: none;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(45deg);
+        right: 0;
+      }
+    }
+
+    &:hover {
+      transform: $scaleTransform;
+
+      .burger__item {
+        animation: none;
+      }
+    }
+  }
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 72px;
+
+  min-height: 100vh;
+  width: 100%;
+
+  overflow-y: auto;
+
+  transform: translateX(100%);
+  transition-duration: 1s;
+
+  background-color: #e5e6e8;
+  &__wrapper {
+    padding-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    font-family: $spaceGroteskFont;
+    font-weight: $spaceGroteskBold;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+
+    font-size: 22px;
+    line-height: $additionalLineHeight;
+
+    &::before {
+      @include linkUnderline;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone {
+    letter-spacing: 2px;
+  }
+
+  &__action {
+    position: relative;
+    max-width: max-content;
+
+    text-transform: uppercase;
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+
+      display: block;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: $mainColor;
+
+      @keyframes underline-move {
+        0% {
+          width: 100%;
+        }
+        50% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    }
+
+    &:hover {
+      &::before {
+        animation: underline-move 0.7s ease alternate;
+      }
+    }
+  }
+  &--active {
+    transform: translateX(0);
+  }
+}
