@@ -39,3 +39,13 @@ showButton.addEventListener('click', () => openMenu());
 
 closeButton.addEventListener('click', () => closeMenu());
 // #endregion
+
+// #region move-link
+const links = document.querySelectorAll('.nav__link');
+const text = document.querySelector('.menu__phone-text');
+const logo = document.querySelector('.logo');
+
+links.forEach((link) => link.addEventListener('click', () => closeMenu()));
+logo.addEventListener('click', () => closeMenu());
+text.addEventListener('click', () => closeMenu());
+// #endregion
