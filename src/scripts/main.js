@@ -20,18 +20,6 @@ function burgerMenuAction(burgerElement, navElement, phoneIcon, header) {
 
 burgerMenuAction(burger, navMenu, phoneBlock, header);
 
-/*function headerAction(header) {
-  window.addEventListener('scroll', () => {
-    window.scrollY > 1 ? header.classList.add('header--scroll') : header.classList.remove('header--scroll');
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (header) {
-    headerAction(header);
-  }
-});*/
-
 
 function observeElements(elementId) {
   const elements = document.querySelectorAll(`.${elementId}`);
