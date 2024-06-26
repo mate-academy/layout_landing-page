@@ -1,0 +1,39 @@
+.page {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 22.4px;
+  font-weight: 400;
+  color: $color-light;
+
+  background-color: $color-dark;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all $transition-duration;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+
+    &:target {
+      z-index: 100;
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+
+      & ~ .main,
+      & ~ .footer {
+        display: none;
+      }
+    }
+  }
+}
