@@ -1,17 +1,32 @@
 .icon {
-  height: 24px;
-  width: 24px;
+  height: $icon-size-small;
+  width: $icon-size-small;
   background-size: cover;
 
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
-    height: 32px;
-    width: 32px;
+    height: $icon-size-big;
+    width: $icon-size-big;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+
+    @include on-desktop {
+      &:hover::before {
+        content: '+1 234 567-90-12';
+        text-decoration: none;
+        position: absolute;
+        width: max-content;
+        right: $icon-size-big + 20px;
+        font-size: 12px;
+        line-height: $icon-size-big;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: $main-text-color;
+      }
+    }
   }
 
   &--menu {
