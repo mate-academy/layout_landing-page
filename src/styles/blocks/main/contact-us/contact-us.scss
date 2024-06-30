@@ -1,0 +1,54 @@
+@import './contact-location';
+@import './contact-form';
+
+.contact-us {
+  @include column(48px);
+
+  &__header {
+    text-align: center;
+  }
+
+  &__content {
+    @include on-mobile {
+      @include column(48px);
+    }
+
+    @include on-tablet {
+      @include tablet-grid;
+    }
+
+    @include on-desktop {
+      @include desktop-grid;
+    }
+  }
+
+  &__locations {
+    @include on-mobile {
+      @include column(48px);
+    }
+
+    @include on-tablet {
+      grid-column: span 3;
+
+      @include column(48px);
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 6;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: $desktop-column-gap;
+    }
+  }
+
+  &__form {
+    @include on-tablet {
+      grid-column: span 3 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 5 / -1;
+    }
+  }
+}

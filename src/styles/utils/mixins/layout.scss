@@ -1,0 +1,66 @@
+@mixin viewport-cover() {
+  min-width: 100%;
+  max-width: 100vh;
+
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+@mixin push-to-sides() {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin single-background-image($path) {
+  background-image: $path;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin vertically-centered-oneliner($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin column($row-gap) {
+  display: flex;
+  flex-direction: column;
+  row-gap: $row-gap;
+}
+
+@mixin row($column-gap) {
+  display: flex;
+  flex-direction: row;
+  column-gap: $column-gap;
+}
+
+$desktop-column-gap: 24px;
+@mixin desktop-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: $desktop-column-gap;
+  @content;
+}
+
+$tablet-column-gap: 24px;
+@mixin tablet-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: $tablet-column-gap;
+  @content;
+}
+
+$mobile-column-gap: 20px;
+@mixin mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: $mobile-column-gap;
+  @content;
+}
