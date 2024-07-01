@@ -1,0 +1,49 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.page {
+  font-family: Cinzel, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #161616;
+  cursor: url('/src/images/cursors/cursor.png'), s-resize;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.8s, opacity 0.6s;
+    transform: translateX(100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0%);
+    }
+  }
+}
