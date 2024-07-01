@@ -1,165 +1,100 @@
+.section {
+  box-sizing: border-box;
+}
+
 .categories {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
+
+  @include content-padding-inline;
 
   @include on-tablet {
     gap: 24px;
   }
 
-  &__image {
-    height: 130px;
-    width: 130px;
+  @include on-desktop {
+    gap: 20px;
+  }
+}
 
-    border-radius: 4px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+.categories__image {
+  border-radius: 4px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
 
-    @include on-tablet {
-      height: 184px;
-      width: 184px;
-    }
+  @include on-tablet {
+    width: calc(33% - 13.33px);
+    height: auto;
+    flex: 0 0 calc(33% - 13.33px);
 
-    @include on-desktop {
-      height: 324px;
-      width: 324px;
-    }
-
-    &.image--one {
-      background-image: url(../images/mobile_images/catgories-birds.png);
-
-      @include on-tablet {
-        background-image: url(../images/tablet_images/catgories-birds-tablet.png);
-        min-width: 392px;
-      }
-
-      @include on-desktop {
-        background-image: url(../images/desktop_images/categories-bird-image.png);
-        min-width: 672px;
-      }
-    }
-
-    &.image--two {
-      background-image: url(../images/mobile_images/catgories-headphones.png);
-
-      @include on-tablet {
-        background-image: url(../images/tablet_images/catgories-headphones-tablet.png);
-      }
-
-      @include on-desktop {
-        background-image: url(../images/desktop_images/catgories-headphones-desktop.png);
-      }
-    }
-
-    &.image--three {
-      background-image: url(../images/mobile_images/catgories-headphones-two.png);
-
-      @include on-tablet {
-        background-image: url(../images/tablet_images/catgories-headphones-two-tablet.png);
-      }
-
-      @include on-desktop {
-        background-image: url(../images/desktop_images/catgories-headphones-two-desktop.png);
-      }
-    }
-
-    &.image--four {
-      background-image: url(../images/mobile_images/catgories-headphones-three.png);
-
-      @include on-tablet {
-        background-image: url(../images/tablet_images/catgories-headphones-three-tablet.png);
-        min-width: 392px;
-      }
-
-      @include on-desktop {
-        background-image: url(../images/desktop_images/catgories-headphones-three-desktop.png);
-        min-width: 672px;
-      }
-    }
-
-    &.image--five {
-      background-image: url(../images/mobile_images/catgories-phone.png);
-
-      @include on-tablet {
-        background-image: url(../images/tablet_images/catgories-phone-tablet.png);
-        min-width: 392px;
-      }
-
-      @include on-desktop {
-        background-image: url(../images/desktop_images/catgories-phone-desktop.png);
-        min-width: 672px;
-      }
-    }
-
-    &.image--six {
-      background-image: url(../images/mobile_images/catgories-charger.png);
-
-      @include on-tablet {
-        background-image: url(../images/tablet_images/catgories-charger-tablet.png);
-      }
-
-      @include on-desktop {
-        background-image: url(../images/desktop_images/catgories-charger-desktop.png);
-      }
+    &.image--big {
+      flex: 0 0 calc(66% - 13.33px);
     }
   }
 
-  &__title {
-    display: flex;
-    align-items: start;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 25px;
-    margin-block: 16px 40px;
+  @include on-desktop {
+    flex: 0 0 calc(33% - 13.33px);
 
-    @include on-tablet {
-      font-size: 24px;
-      line-height: 34px;
-      margin-block: 16px 56px;
+    &.image--big {
+      flex: 0 0 calc(66% - 13.33px);
+      max-width: 672px;
     }
+  }
+}
 
-    @include content-padding-inline;
+.categories__title {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  margin-block: 16px 40px;
+
+  @include on-tablet {
+    font-size: 24px;
+    line-height: 34px;
+    margin-block: 16px 56px;
   }
 
-  &__button {
-    width: 280px;
-    height: 56px;
+  @include content-padding-inline;
+}
 
-    background-color: $button-background-color;
-    border-radius: 8px;
-    border: none;
-    color: $button-text-color;
-    font-family: $space-grotesk-font;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 27px;
-    cursor: pointer;
-    transition: transform 10s;
+.categories__button {
+  width: 280px;
+  height: 56px;
+  background-color: $button-background-color;
+  border-radius: 8px;
+  border: none;
+  color: $button-text-color;
+  font-family: $space-grotesk-font;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  cursor: pointer;
+  margin-inline: 20px;
 
-    margin-inline: 20px;
+  @include on-tablet {
+    width: 600px;
+    margin-inline: 72px;
+  }
 
-    @include on-tablet {
-      width: 600px;
-      margin-inline: 72px;
-    }
+  @include on-desktop {
+    width: 324px;
+    margin-inline: 120px;
+  }
 
-    @include on-desktop {
-      width: 324px;
-      margin-inline: 120px;
-    }
+  &:hover {
+    border: $hovered-button-border;
+    background-color: $hovered-button-background-color;
+    color: $hovered-button-text-color;
+  }
 
-    &:hover {
-      border: $hovered-button-border;
-      background-color: $hovered-button-background-color;
-      color: $hovered-button-text-color;
-    }
-
-    &:focus {
-      border: $focused-button-border;
-      background-color: $focused-button-background-color;
-      color: $focused-button-text-color;
-    }
+  &:focus {
+    border: $focused-button-border;
+    background-color: $focused-button-background-color;
+    color: $focused-button-text-color;
   }
 }
