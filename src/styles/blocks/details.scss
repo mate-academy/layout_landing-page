@@ -1,3 +1,29 @@
+.front-image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.back-image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+@media (min-width: 576px) {
+  .front-image {
+    width: 100%;
+    height: 187px;
+    object-fit: cover;
+  }
+
+  .back-image {
+    width: 100%;
+    height: 187px;
+    object-fit: cover;
+  }
+}
+
 .details {
   padding-inline: 20px;
   display: grid;
@@ -17,7 +43,7 @@
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: repeat(2, 130px);
-    grid-column-gap: 24px;
+    grid-column-gap: 20px;
     margin-bottom: 40px;
     justify-content: center;
 
@@ -58,6 +84,7 @@
     font-size: 16px;
     line-height: 27px;
     text-align: center;
+    margin: 0 auto;
   }
 
   &__button:active {
@@ -67,8 +94,8 @@
 
 @media (min-width: 576px) {
   .details {
-    padding-inline: 72px;
     display: grid;
+    padding-inline: 72px;
     justify-content: center;
 
 
@@ -84,26 +111,34 @@
     &__detail {
       display: grid;
       grid-template-rows: auto auto auto;
-      grid-template-columns: repeat(6, auto);
+      grid-template-columns: repeat(6, 1fr);
       grid-column-gap: 24px;
       margin-bottom: 40px;
       justify-content: center;
-
-
-      &__img:nth-child(1){
-        background-image: url(../images/unlock-big-front.png);
-        width: 392px;
-        height: 187px;
-        grid-column: span 1/4;
-      }
-
-      &__img:nth-child(2){
-        width: 187px;
-        height: 187px;
-        grid-column: span 5/6;
-      }
-
     }
+
+    &__img{
+      width: 100%;
+      height: 187px;
+
+      &-front {
+        grid-column: 1/5;
+        
+        &--small {
+          grid-column: 1/3;
+        }
+      }
+
+      &-back {
+        grid-column: 5/7;
+
+        &--big {
+          grid-column: 3/7;
+        }
+      }
+    }
+
+
 
     &__topic {
       font-weight: 700;
