@@ -3,26 +3,42 @@
 }
 
 .section {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-direction: column;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
 
-  @include section-margin-bottom;
-  @include section-title-size;
-
-
-  &__title {
+    @include section-margin-bottom;
+    @include section-title-size;
     @include content-padding-inline;
 
-    margin-bottom: 3rem;
-    min-width: 280px;
-
-    @include on-tablet {
-      min-width: 498px;
+    @include on-desktop {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 20px;
     }
   }
 
+  &__title {
+    margin-bottom: 3rem;
+    min-width: 280px;
+
+    @include font(2rem, 700);
+    @include content-padding-inline;
+
+    @include on-tablet {
+      min-width: 498px;
+
+      @include font(2.5rem, 700);
+    }
+
+    @include on-desktop {
+      margin-bottom: 3.5rem;
+
+      @include font(3rem, 700);
+    }
+  }
 
   &:last-of-type {
     margin-bottom: 3rem;
@@ -32,18 +48,21 @@
     }
 
     @include on-desktop {
-      margin-bottom: 0;
+      margin-bottom: 7.5rem;
+      margin-left: 0;
     }
   }
 }
 
-    .title--mb--24px {
-      margin-bottom: 1.5rem;
+.title--mb--24px {
+  margin-bottom: 1.5rem;
 
-      @include on-tablet {
-        min-width: 287px;
-        padding-right: 0;
-      }
-    }
+  @include on-tablet {
+    min-width: 287px;
+    padding-right: 0;
+  }
 
-
+  @include on-desktop {
+    width: 498px;
+  }
+}

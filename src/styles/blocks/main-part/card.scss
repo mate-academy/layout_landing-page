@@ -1,16 +1,22 @@
 .card {
-  @include content-padding-inline;
+  margin-bottom: 2.5rem;
 
-    margin-bottom: 2.5rem;
+  @include on-tablet {
+    margin-bottom: 3.5rem;
+  }
 
-    @include on-tablet {
-      margin-bottom: 3.5rem;
-
-    }
+  @include on-desktop {
+    margin-bottom: 0;
+    padding: 0;
+    max-width: 324px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   &__image {
     width: 100%;
-    padding-bottom: 1.5rem;
+    padding-bottom: 24px;
 
     @include on-tablet {
       width: $card-image-width-tablet;
@@ -27,20 +33,29 @@
     font-weight: 700;
     line-height: 25px;
     padding-bottom: 8px;
-
   }
   &__text {
     font-family: $space-mono-font;
-    font-size: 16px;
+    font-size: $font-size-base;
     font-weight: 400;
     line-height: 22px;
     padding-bottom: 12px;
 
+    @include on-desktop {
+      width: 280px;
+    }
   }
   &__price {
-    font-size: 16px;
+    font-size: $font-size-base;
     font-weight: 700;
     line-height: 22px;
   }
+}
 
+.mobile-tablet-text {
+  display: inline;
+
+  @include on-desktop {
+    display: none;
+  }
 }
