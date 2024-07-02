@@ -1,5 +1,6 @@
 .menu {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   position: fixed;
   top: 0;
   right: 0;
@@ -8,6 +9,7 @@
   background-color: $silver-clr;
   z-index: 9999;
   padding: 20px;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 
   &__close {
     display: block;
@@ -17,6 +19,18 @@
     top: 45px;
     right: 20px;
     cursor: pointer;
+
+    @include tablet {
+      top: 45px;
+      right: 70px;
+    }
+
+    @include desktop {
+      width: 21px;
+      height: 21px;
+      top: 70px;
+      right: 120px;
+    }
   }
 
   &__list-nav {
@@ -25,6 +39,7 @@
     padding-top: 24px;
 
     &-link {
+      width: max-content;
       font-size: 22px;
       font-weight: 600;
       line-height: 22px;
@@ -32,10 +47,24 @@
       padding-bottom: 32px;
       color: $main-bg-clr;
       cursor: pointer;
+      position: relative;
+      text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 8px;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 22px; // Adjust the position to be just under the text
+        width: 100%;
+        height: 2px; // Adjust the height of the underline
+        background-color: $main-bg-clr; // Use the same color as the text
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
       }
     }
   }
@@ -54,16 +83,30 @@
     }
 
     &-link {
+      width: max-content;
       font-size: 12px;
       font-weight: 600;
       line-height: 16px;
       color: $main-bg-clr;
       cursor: pointer;
-      text-decoration: underline;
+      text-decoration: none;
+      position: relative;
 
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 8px;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: $main-bg-clr;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
       }
     }
   }
@@ -73,22 +116,9 @@
   }
 }
 
-@media (min-width: 744px) {
-  .menu {
-    &__close {
-      top: 45px;
-      right: 70px;
-    }
-  }
+.menu.open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
-@media (min-width: 1260px) {
-  .menu {
-    &__close {
-      width: 21px;
-      height: 21px;
-      top: 70px;
-      right: 120px;
-    }
-  }
-}

@@ -9,6 +9,10 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 36px;
+
+  @include desktop {
+    min-height: 128px;
+  }
 }
 
 .header__logo-link {
@@ -18,6 +22,11 @@
 .header__logo-link-img {
   width: 130px;
   height: 38px;
+
+  @include desktop {
+    width: 187px;
+    height: 56px;
+  }
 }
 
 .header__nav {
@@ -25,28 +34,46 @@
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+
+  @include desktop {
+    gap: 32px;
+  }
 }
 
 .header__nav-phone {
   position: relative;
+
 }
 
 .header__nav-phone-img,
 .header__nav-menu-img {
   width: 18px;
   height: 18px;
-  transition: transform 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+
+  @include desktop {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .header__nav-menu-img:hover {
   content: url('/images/menu-hover.svg');
+  transform: scale(1.1);
+
+  @include desktop {
+    display: block;
+  }
 }
+
 
 
 
 .header__nav-phone-number {
   white-space: nowrap;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 50%;
   left: calc(-300% - 10px);
@@ -57,33 +84,11 @@
   background-color: transparent;
   color: $white-clr;
   font-weight: bold;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .header__nav-phone:hover .header__nav-phone-number {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
-@media (min-width: 1260px) {
-  .header__content {
-    min-height: 128px;
-  }
-
-  .header__logo-link-img {
-    width: 187px;
-    height: 56px;
-  }
-
-  .header__nav {
-    gap: 32px;
-  }
-
-  .header__nav-phone-img,
-  .header__nav-menu-img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .header__nav-phone:hover .header__nav-phone-number {
-    display: block;
-  }
-}

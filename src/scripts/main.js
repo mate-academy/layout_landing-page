@@ -1,22 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var phoneIcon = document.querySelector('.header__nav-phone-img');
+  let phoneIcon = document.querySelector('.header__nav-phone-img');
 
   phoneIcon.addEventListener('click', function() {
-    var phoneNumber = document.querySelector('.header__nav-phone-number').textContent.trim();
+    let phoneNumber = document.querySelector('.header__nav-phone-number').textContent.trim();
     window.location.href = 'tel:' + phoneNumber;
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const menuIcon = document.querySelector('.header__nav-menu-img');
-  const closeIcon = document.querySelector('.menu__close');
-  const menu = document.querySelector('.menu');
+const menuButton = document.querySelector('.header__nav-menu');
+const menu = document.querySelector('.menu');
 
-  menuIcon.addEventListener('click', function() {
-    menu.style.display = 'block';
-  });
+menuButton.addEventListener('click', () => {
+  menu.classList.toggle('open');
+});
 
-  closeIcon.addEventListener('click', function() {
-    menu.style.display = 'none';
-  });
+const closeButton = menu.querySelector('.menu__close');
+closeButton.addEventListener('click', () => {
+  menu.classList.remove('open');
 });
