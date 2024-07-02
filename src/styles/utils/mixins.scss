@@ -1,0 +1,42 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-with) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-with) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: $property $transition-time;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin title-h3-style {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+}
