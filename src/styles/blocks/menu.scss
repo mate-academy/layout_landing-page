@@ -1,10 +1,11 @@
 @import '../variables';
+@import '../mixins';
 
 .menu{
+    padding: 25px 20px;
     height: 100vh;
     width: 100vw;
     top: 0;
-    padding: 50px 120px;
     box-sizing: border-box;
     color: $text-color-on-images;
     background-color: $main-accent-color;
@@ -14,20 +15,37 @@
     transform: translateY(-100%);
     transition: all 1s;
 
+    @include on-tablet{
+        padding: 50px 72px;
+      }
+
+    @include on-desktop{
+        padding: 50px 120px;
+    }
+
     &:target{
         opacity: 1;
         transform: translateY(0);
         pointer-events: all;
     }
 
-    &_top{
+    &__top{
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        &_icon{
-            padding: 5px;
+        &__icon{
+            width: 24px;
+            height: 24px;
+            box-sizing: border-box;
+            padding: 4px;
             transition: all 0.2s;
+
+            @include on-desktop{
+                width: 32px;
+                height: 32px;
+                padding: 5px;
+            }
   
           &:hover{
             cursor: pointer;
@@ -36,18 +54,21 @@
         }
     }
 
-    &_nav{
-        font-weight: 700;
+    &__nav{
         font-size: 22px;
         line-height: 22px;
-        padding: 56px 0;
+        padding: 40px 0 32px;
         letter-spacing: 2px;
         display: flex;
         flex-direction: column;
         gap: 32px;
 
-        &_item{
-            display: inline-block; 
+        @include on-desktop{
+            padding: 55px 0 48px;
+        }
+
+        &__item{
+            display: inline; 
             color: inherit;
             text-decoration: none;
 
@@ -63,32 +84,32 @@
         }
     }
 
-    &_contacts{ 
-        font-weight: 700;
+    &__contacts{ 
         font-size: 16px;
         line-height: 27px;
         display: flex;
         flex-direction: column;
         gap: 8px;
 
-        &_contact{
+        &__contact{
             display: flex;
             flex-direction: column;
         }
     }
+
+    &__phone__number{
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    &__call_to_order{
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-decoration: underline;
+        text-underline-offset: 8px;
+        margin: 0;
+        margin-top: 16px;
+    }
 }
 
-.phone_number{
-    color: inherit;
-    text-decoration: none;
-}
-
-.call_to_order{
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-decoration: underline;
-    text-underline-offset: 8px;
-    margin: 0;
-    margin-top: 16px;
-}
