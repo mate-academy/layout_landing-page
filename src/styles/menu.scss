@@ -1,0 +1,131 @@
+.menu {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $silver-clr;
+  z-index: 9999;
+  padding: 20px;
+  overflow: auto;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+
+  &__close {
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    cursor: pointer;
+
+    @include tablet {
+      top: 45px;
+      right: 70px;
+    }
+
+    @include desktop {
+      width: 21px;
+      height: 21px;
+      top: 70px;
+      right: 120px;
+    }
+  }
+
+  &__list-nav {
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+
+    &-link {
+      width: max-content;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 22px;
+      text-transform: uppercase;
+      padding-bottom: 32px;
+      color: $main-bg-clr;
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 22px;
+        width: 100%;
+        height: 2px;
+        background-color: $main-bg-clr;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__list-contact {
+    display: flex;
+    flex-direction: column;
+
+    &-tel {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 27px;
+      color: $main-bg-clr;
+      margin-bottom: 16px;
+      text-decoration: none;
+      transition: color 0.5s ease;
+
+      &:hover {
+        color: $link-hov-clr;
+      }
+    }
+
+    &-link {
+      width: max-content;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      color: $main-bg-clr;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: $main-bg-clr;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .logo-menu {
+    margin-top: 18px;
+  }
+}
+
+.menu.open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+
