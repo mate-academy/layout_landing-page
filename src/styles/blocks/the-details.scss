@@ -1,0 +1,113 @@
+.details {
+  &__block {
+    grid-column: 1 / -1;
+
+    &-images {
+      display: flex;
+      column-gap: 20px;
+      height: 130px;
+
+      @include on-tablet {
+        grid-column: 1 / -1;
+        height: 187px;
+
+        @include grid;
+
+        align-items: stretch;
+      }
+
+      @include on-desktop {
+        height: 320px;
+      }
+    }
+
+    &-link {
+      display: contents;
+    }
+
+    &-img {
+      object-fit: cover;
+      min-width: 130px;
+
+      &--big {
+        width: 100%;
+      }
+
+      @include on-tablet {
+        @include hover(transform, scale(1.02));
+
+        &--big {
+          grid-column: 1 / 5;
+
+          &--reversed {
+            grid-column: 3 / 7;
+          }
+        }
+
+        &--small {
+          grid-column: 5 / 7;
+          width: 100%;
+
+          &--reversed {
+            grid-column: 1 / 3;
+          }
+        }
+      }
+
+      @include on-desktop {
+        &--big {
+          grid-column: 1 / 9;
+
+          &--reversed {
+            grid-column: 5 / -1;
+          }
+        }
+
+        &--small {
+          grid-column: 9 / -1;
+          width: 100%;
+
+          &--reversed {
+            grid-column: 1 / 5;
+          }
+        }
+      }
+    }
+
+    &-title {
+      margin: 16px 0 0;
+    }
+
+    @include on-desktop {
+      @include grid;
+
+      &-title,
+      &-descr {
+        grid-column: 1 / 9;
+      }
+    }
+  }
+
+  &__block:nth-child(n + 3),
+  &__button {
+    margin-top: 40px;
+
+    @include on-tablet {
+      margin-top: 48px;
+    }
+  }
+
+  &__button {
+    max-width: 392px;
+    margin-inline: auto;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+      width: 100%;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
