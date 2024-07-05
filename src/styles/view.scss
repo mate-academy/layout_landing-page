@@ -29,6 +29,16 @@
         grid-column: span 4;
       }
     }
+
+    &--first {
+      @include for-tablets {
+        margin-right: 24px;
+      }
+
+      @include for-desktops {
+        margin-right: 0;
+      }
+    }
   }
 
   &__photo {
@@ -42,13 +52,26 @@
     font-weight: $bold_font;
   }
 
+  &__container {
+    @include landing-page-grid;
+  }
+
   &__illustrations {
     display: flex;
     gap: 8px;
     margin-bottom: $large_margin;
 
+    grid-column: $regular_span;
+
     @include for-tablets {
+      gap: 0;
+
+      grid-column: span 6;
+    }
+
+    @include for-desktops {
       gap: 24px;
+      grid-column: span 12;
     }
   }
 
@@ -56,6 +79,18 @@
     display: block;
     width: 100%;
     height: 100%;
+
+    @include for-tablets {
+      &--hidden {
+        display: none;
+      }
+    }
+
+    @include for-desktops {
+      &--hidden {
+        display: block;
+      }
+    }
 
     @include icons-hover(transform, scale(1.1));
   }
