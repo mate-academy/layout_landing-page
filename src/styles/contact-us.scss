@@ -1,30 +1,44 @@
 .contact-us {
-  @include landingPageGrid;
-  row-gap: 48px;
-  text-align: left;
+  @include landing-page-grid;
 
-  &__contacts {
-    grid-column: span 2;
+  row-gap: $big_gap;
 
-    @include forTablets {
+  &__wrapper {
+    @include landing-page-grid;
+
+    grid-column: $regular_span;
+    row-gap: $big_gap;
+
+    @include for-tablets {
       grid-column: 1 / span 3;
     }
 
+    @include for-desktops {
+      grid-column: 1 / span 6;
+    }
+  }
+
+  &__contacts {
+    grid-column: $regular_span;
+
+    @include for-tablets {
+      grid-column: 1 / span 6;
+    }
     &--first {
-      @include forDesktops {
-        grid-column: 1 /span 3;
+      @include for-desktops {
+        grid-column: 1 / span 6;
       }
     }
 
     &--second {
-      @include forDesktops {
-        grid-column: 4 /span 3;
+      @include for-desktops {
+        grid-column: 7 / span 6;
       }
     }
   }
 
   &__title {
-    font-size: 16px;
+    font-size: $regular_size_and_line;
     margin-bottom: 16px;
   }
 
@@ -33,31 +47,34 @@
   }
 
   &__tag {
-    font-size: 14px;
+    font-size: $small_size_and_line;
     margin-bottom: 4px;
   }
 
   &__info {
-    font-weight: 700;
+    font-weight: $bold_font;
     margin-bottom: 4px;
+  }
+
+  &__container {
+    grid-column: $regular_span;
+
+    @include for-tablets {
+      grid-column: 4 / span 3;
+    }
+
+    @include for-desktops {
+      grid-column: 8 / span 5;
+    }
   }
 
   &__form {
     display: grid;
     row-gap: 16px;
-    grid-column: span 2;
-
-    @include forTablets {
-      grid-column: 4 / span 3;
-    }
-
-    @include forDesktops {
-      grid-column: 8 / span 5;
-    }
   }
 
   &__bar {
-    background: #F8F8FA;
+    background: #f8f8fa;
     height: 48px;
 
     &--big {
@@ -69,46 +86,65 @@
     box-sizing: border-box;
     background: inherit;
     height: 48px;
-    border: none;
+    border: 1px solid transparent;
     width: 100%;
     padding-left: 10.9px;
+    transition: border $animation_duration;
 
-    @include forTablets {
+    @include for-tablets {
       padding-left: 11.21px;
     }
 
-    @include forDesktops {
+    @include for-desktops {
       padding-left: 16px;
+    }
+
+    &::placeholder {
+      font-family: Cinzel, sans-serif;
+      color: #7e7e83;
+      transition: color $animation_duration;
+    }
+
+    &:hover {
+      border: 1px solid #d5d7de;
+
+      &::placeholder {
+        color: $main_dark;
+      }
     }
 
     &--big {
       height: 144px;
       resize: none;
       padding-top: 14px;
-
-      &::placeholder {
-        box-sizing: border-box;
-        vertical-align: top;
-      }
     }
 
-    &::placeholder {
-      font-family: Cinzel, sans-serif;
-      color: #7E7E83;
+    &:focus {
+      border: 1px solid $main_dark;
+      outline: none;
     }
   }
 
-
   &__button {
     border: none;
-    color: #F8F8FA;
-    background-color: #D12D35;
+    color: #f8f8fa;
+    background-color: $accent_main;
     height: 56px;
     width: 100%;
     margin: 16px 0;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
+    font-weight: $bold_font;
+    font-size: $regular_size_and_line;
+    line-height: $regular_size_and_line;
     font-family: Cinzel, sans-serif;
+    transition: background-color $animation_duration;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+
+    &:active {
+      background-color: #eb343d;
+    }
   }
 }

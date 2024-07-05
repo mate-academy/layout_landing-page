@@ -1,52 +1,56 @@
-@mixin forDesktops {
+@mixin for-desktops {
   @media (min-width: $desktop_resolution) {
     @content;
   }
 }
 
-@mixin forTablets {
+@mixin for-tablets {
   @media (min-width: $tablet_resolution) {
     @content;
   }
 }
 
-@mixin tabletIcons {
+@mixin tablet-icons {
   @media (min-width: 576px) {
     height: 32px;
     width: 32px;
   }
 }
 
-@mixin horizontalPaddings () {
+@mixin horizontal-paddings {
   padding-inline: 20px;
 
-  @include forTablets {
+  @include for-tablets {
     padding-inline: 72px;
   }
 
-  @include forDesktops {
+  @include for-desktops {
     padding-inline: 120px;
   }
 }
 
-@mixin landingPageGrid {
-  --columns_count: 2;
+@mixin landing-page-grid {
+  --columns-count: 2;
+
   display: grid;
   column-gap: 20px;
-  grid-template-columns: repeat(var(--columns_count), 1fr);
+  grid-template-columns: repeat(var(--columns-count), 1fr);
 
-  @include forTablets {
+  @include for-tablets {
     column-gap: 24px;
-    --columns_count: 6;
+
+    --columns-count: 6;
   }
 
-  @include forDesktops() {
-    --columns_count: 12;
+  @include for-desktops {
+    --columns-count: 12;
   }
 }
 
-@mixin iconsHover ($property, $value) {
-  transition: #{$property}, $animationDuration;
+@mixin icons-hover($property, $value) {
+  transition:
+    #{$property},
+    $animation-duration;
   &:hover {
     #{$property}: $value;
   }

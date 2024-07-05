@@ -12,28 +12,42 @@
     position: relative;
     justify-content: center;
     display: flex;
-    top: $title_position - ($logo_height + $padding-mobile * 2);
+    top: $title_position - ($logo_height_mb + $padding_mobile * 2);
+
+    @include for-tablets {
+      top: $title_position - ($logo_height_bg + $padding_mobile * 2);
+    }
+
+    @include for-desktops {
+      top: $title_position - ($logo_height_bg + $padding_mobile * 4);
+    }
   }
 
   &__text {
-    color: white;
+    color: $secondary_color;
     text-align: center;
-    font-weight: 700;
+    font-weight: $bold_font;
     font-size: 40px;
     line-height: 40px;
     letter-spacing: -1.5px;
 
-    @include forTablets {
+    @include for-tablets {
       font-size: 64px;
       line-height: 64px;
+    }
+
+    @include for-desktops {
+      font-size: 80px;
+      line-height: 80px;
     }
   }
 
   &__top-bar {
     padding-block: 25px;
-    @include horizontalPaddings;
 
-    @include forTablets {
+    @include horizontal-paddings;
+
+    @include for-tablets {
       padding-block: 50px;
     }
   }
