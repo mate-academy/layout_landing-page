@@ -33,7 +33,7 @@
     padding: 14px 16px;
     border: 1px solid transparent;
     border-radius: 8px;
-    transition: border 0.3s color 0.3s;
+    transition: border $effectDuration color $effectDuration;
     font-family: 'Space Mono', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -42,7 +42,7 @@
 
     &::placeholder {
       color: #7e7e83;
-      transition: color 0.3s;
+      transition: color $effectDuration;
     }
 
     &:hover {
@@ -126,10 +126,36 @@
     }
 
     &-information {
+      position: relative;
+      text-decoration: none;
+      color: inherit;
       font-family: 'Space Mono', sans-serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 22.4px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: $main-text-color;
+
+        transition: transform $effectDuration;
+        transform: scale(0);
+        transform-origin: left;
+      }
+
+      &:hover {
+        font-weight: 500;
+        color: #000;
+
+        &::after {
+          transform: scale(1);
+        }
+      }
     }
   }
 }
