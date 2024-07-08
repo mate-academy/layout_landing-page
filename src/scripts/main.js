@@ -15,4 +15,14 @@ document.querySelectorAll(".nav__link").forEach((e) => {
   })
 });
 
+document.querySelector('.contacts__button').addEventListener('click', () => {
+  const form = document.querySelector('.contacts__form');
+
+  if(form.checkValidity()){
+    form.reset();
+  }else {
+    form.reportValidity();
+  }
+})
+
 
