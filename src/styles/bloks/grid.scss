@@ -1,0 +1,57 @@
+.grid {
+  display: grid;
+
+  @include onphone {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include ontablet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include ondesktop {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  &__item {
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--desktop-#{$start}-#{$end} {
+          @include ondesktop {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    @for $start from 1 through 6 {
+      @for $end from $start through 6 {
+        &--tablet-#{$start}-#{$end} {
+          @include ontablet {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+    }
+
+    &--phone-1-2 {
+      @include onphone {
+        grid-column: 1 / 3;
+      }
+    }
+
+    &--phone-1 {
+      @include onphone {
+        grid-column: 1 / 2;
+      }
+    }
+
+    &--phone-2 {
+      @include onphone {
+        grid-column: 2 / 3;
+      }
+    }
+  }
+}
