@@ -5,13 +5,12 @@
 
   display: grid;
   column-gap: 20px;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-columns: repeat(var(--columns, 1fr));
 
   @include ontablet {
     --columns: 6;
 
     column-gap: 24px;
-    grid-template-columns: repeat(var(--columns), 1fr);
   }
 
   @include ondesktop {
@@ -19,25 +18,24 @@
   }
 
   &__title {
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
+    font-size: 32px;
 
     @include ontablet {
-      grid-column: 1/4;
+      grid-column: 1 / 4;
+      font-size: 48px;
     }
   }
 
-  &__content {
-    grid-column: 1/-1;
-
-    @include ontablet {
-      grid-column: 4/7;
-    }
+  &_content {
+    grid-column: 1 / -1;
   }
 
   &__description {
+    grid-column: 1 / -1;
+
     font-size: 23px;
     line-height: 140%;
-    width: 500px;
-    grid-column: 1/-1;
+    font-weight: 500;
   }
 }
