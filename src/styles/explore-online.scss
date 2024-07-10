@@ -1,0 +1,69 @@
+.explore-online {
+  text-align: center;
+
+  &__title {
+    margin-bottom: 40px;
+
+    @include section-title-styles;
+  }
+}
+
+.collection {
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    column-gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 48px;
+  }
+
+  &__image {
+    margin-bottom: 24px;
+    width: 280px;
+    height: 277px;
+    transform: scale(1);
+    transition: transform $transition;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+      width: 392px;
+      height: 387px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      height: 320px;
+    }
+  }
+
+  &__link:hover &__image,
+  &__link:focus &__image {
+    transform: scale(1.05);
+  }
+
+  &__title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+    color: $accent-color;
+  }
+
+  &__text {
+    font-family: Roboto, sans-serif;
+
+    @include on-tablet {
+      margin-inline: auto;
+      max-width: 392px;
+    }
+  }
+}

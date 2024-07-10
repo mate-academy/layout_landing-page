@@ -1,0 +1,123 @@
+.menu {
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  overflow: auto;
+
+  opacity: 0;
+  color: $primary-white-color;
+  background-color: $accent-color;
+
+  pointer-events: none;
+  transform: translateX(100%);
+  transition: all 800ms ease;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    background-color: $accent-color;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 25px 20px 10px;
+
+    @include on-tablet {
+      padding: 50px 72px 10px;
+    }
+
+    @include on-desktop {
+      padding: 50px 120px 10px;
+    }
+  }
+
+  &__content {
+    padding: 0 20px 25px;
+
+    @include on-tablet {
+      padding: 0 72px 40px;
+    }
+
+    @include on-desktop {
+      padding: 0 120px 40px;
+    }
+  }
+
+  &__nav {
+    font-size: 22px;
+    line-height: 22px;
+    padding: 30px 0 32px;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      padding: 55px 0 48px;
+    }
+
+    &__item {
+      padding-bottom: 8px;
+      position: relative;
+      color: inherit;
+
+      &::after {
+        @include underline-link($primary-white-color);
+
+        width: 30%;
+        transition: transform $transition;
+      }
+
+      &:hover::after,
+      &:focus::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__contacts {
+    font-size: 16px;
+    line-height: 27px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__contact {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__phone__number {
+    position: relative;
+    color: $primary-white-color;
+
+    &::after {
+      @include underline-link($primary-white-color);
+
+      width: 30%;
+      transition: transform $transition;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__call_to_order {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+}

@@ -1,0 +1,162 @@
+.current-view {
+  &__title {
+    @include section-title-styles;
+
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  &__description {
+    margin-inline: auto;
+    margin-bottom: 48px;
+    max-width: 392px;
+    justify-self: center;
+    text-align: center;
+    line-height: 27px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 48px;
+  }
+
+  &__item:last-child {
+    margin-bottom: 40px;
+  }
+
+  &__images-field {
+    margin-bottom: 24px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: 2fr 1fr;
+      column-gap: 24px;
+    }
+
+    & .image-1 {
+      @include image-styles;
+
+      @include on-tablet {
+        width: 392px;
+        height: 186px;
+      }
+
+      @include on-desktop {
+        width: 672px;
+        height: 320px;
+      }
+    }
+
+    & .image-2,
+    & .image-6 {
+      width: 130px;
+      height: 130px;
+
+      @include on-tablet {
+        width: 184px;
+        height: 186px;
+      }
+
+      @include on-desktop {
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    & .image-3,
+    & .image-4,
+    & .image-5 {
+      width: 88px;
+      height: 88px;
+
+      @include on-tablet {
+        width: 288px;
+        height: 286px;
+      }
+
+      @include on-desktop {
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    & .image-7 {
+      @include image-styles;
+
+      object-position: right center;
+
+      @include on-tablet {
+        width: 392px;
+        height: 186px;
+      }
+
+      @include on-desktop {
+        width: 672px;
+        height: 320px;
+      }
+    }
+  }
+
+  &__image {
+    transform: scale(1);
+    transition: transform $transition;
+  }
+
+  &__link:hover &__image,
+  &__link:focus &__image {
+    transform: scale(1.05);
+  }
+
+  & .three-images-field {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+
+      .image-5 {
+        display: none;
+      }
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+
+      .image-5 {
+        display: block;
+      }
+    }
+  }
+
+  &__exhibition {
+    color: $accent-color;
+  }
+
+  &__button {
+    margin-inline: auto;
+
+    @include button-styles;
+
+    transition: background-color $transition;
+
+    @include on-tablet {
+      max-width: 392px;
+    }
+
+    @include on-desktop {
+      max-width: 324px;
+    }
+  }
+
+  &__button:hover,
+  &__button:focus {
+    background-color: $hover-color;
+  }
+
+  &__button:active {
+    background-color: $pressed-color;
+  }
+}

@@ -1,0 +1,82 @@
+.header {
+  box-sizing: border-box;
+  padding: 25px 20px;
+  height: 100vh;
+  text-align: center;
+  background-image: url('../images/background-image.png');
+  background-size: cover;
+  background-position: center;
+
+  @include on-tablet {
+    padding: 50px 72px;
+  }
+
+  @include on-desktop {
+    padding: 50px 120px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &__contacts {
+      padding-right: calc(24px + 20px);
+      position: absolute;
+      right: calc(4 * 24px - 10px);
+
+      display: flex;
+      flex-direction: column;
+
+      width: 250px;
+      text-align: end;
+
+      pointer-events: none;
+      opacity: 0;
+      color: $primary-white-color;
+      transition: opacity $transition;
+
+      &:hover {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      &__link {
+        position: relative;
+        color: $primary-white-color;
+
+        &::after {
+          @include underline-link($primary-white-color);
+
+          transform-origin: right;
+          transition: transform $transition;
+        }
+
+        &:hover::after,
+        &:focus::after {
+          transform: scaleX(1);
+        }
+
+        &.margin-bottom {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    height: 100%;
+  }
+
+  &__title {
+    margin-top: 179px;
+    font-size: 40px;
+    line-height: 40px;
+    color: $primary-white-color;
+
+    @include on-tablet {
+      margin-top: 190px;
+    }
+  }
+}
