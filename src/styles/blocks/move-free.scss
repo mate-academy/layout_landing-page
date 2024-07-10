@@ -1,23 +1,10 @@
 @import '../mixins';
 
 .move-free {
-  --columns: 2;
-
-  display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(var(--columns, 1fr));
-
-  @include ontablet {
-    --columns: 6;
-
-    column-gap: 24px;
-  }
-
-  @include ondesktop {
-    --columns: 12;
-  }
+  @include pagegrid;
 
   &__title {
+    text-align: left;
     grid-column: 1 / -1;
     font-size: 32px;
 
@@ -25,15 +12,26 @@
       grid-column: 1 / 4;
       font-size: 48px;
     }
+
+    @include ondesktop {
+      grid-column: span 5;
+    }
   }
 
-  &_content {
+  &__content {
     grid-column: 1 / -1;
+
+    @include ontablet {
+      grid-column: 4 / 7;
+      font-size: 48px;
+    }
+
+    @include ondesktop {
+      grid-column: span 6;
+    }
   }
 
   &__description {
-    grid-column: 1 / -1;
-
     font-size: 23px;
     line-height: 140%;
     font-weight: 500;
