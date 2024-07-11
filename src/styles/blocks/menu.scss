@@ -1,13 +1,29 @@
+body {
+  /* Встановлюємо стандартний стан прокрутки */
+  overflow: auto;
+}
+
+body:target {
+  /* Відключаємо прокрутку, коли таргетуємо меню */
+  overflow: hidden;
+}
+
 .menu {
   box-sizing: border-box;
   height: 100vh;
   background-color: #E5E6E8;
   font-weight: 700;
   text-transform: uppercase;
-
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  
   &__phone-number {
     color: inherit;
-    text-decoration:none;
+    text-decoration: none;
     font-size: 16px;
     line-height: 22px;
     display: block;
@@ -17,7 +33,7 @@
   &__call-to-order {
     display: block;
     color: inherit;
-    text-decoration:none;
+    text-decoration: none;
     font-size: 16px;
     line-height: 22px;
     letter-spacing: 2px;
@@ -39,3 +55,6 @@
   }
 }
 
+#menu:target ~ body {
+  overflow: hidden;
+}

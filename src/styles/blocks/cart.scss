@@ -1,3 +1,78 @@
+/* Загальні стилі для полів форми */
+input,
+textarea {
+  position: relative;
+  border: none;
+  background-color: #F8F8FA;
+  width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: 'Space Mono', monospace;
+  padding: 14px 16px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #D5D7DE; /* Сіра рамка при фокусі */
+  }
+
+  &::placeholder {
+    color: #7E7E83;
+  }
+}
+
+/* Стилі для автозаповнення */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: #000; /* Колір тексту при автозаповненні */
+  -webkit-box-shadow: 0 0 0px 1000px #F8F8FA inset; /* Фон при автозаповненні */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Видалення синьої рамки в браузері Chrome */
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* Стилі для кнопки */
+.cart-input__button {
+  width: 100%;
+  height: 56px;
+  border: 2px solid;
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #292929;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 16px;
+
+  &:hover {
+    background-color: #F8F8FA;
+    color: #292929;
+    border-color: #F0F1F4;
+  }
+
+  &:active {
+    background-color: #111111;
+    color: white;
+  }
+}
+
+/* Стилі для textarea */
+textarea.cart-input__field--height {
+  height: 148px;
+}
+
+/* Grid стилі для секції "Contact us" */
 .cart {
   &__container {
     @include pageGrid;
@@ -23,7 +98,7 @@
       padding-bottom: 10px;
     }
   
-    &__filed {
+    &__field {
       position: relative; 
       border: none;
       background-color: #F8F8FA;
@@ -37,18 +112,17 @@
   
       @include hover(border, 1px);
       @include hover(border-color, #D5D7DE);   
-    }
   
-    &__filed--height {
-      height: 148px;
-    }
+      &--height {
+        height: 148px;
+      }
   
-    &__filed::placeholder {
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      color: #7E7E83;
-      
+      &::placeholder {
+        position: absolute;
+        left: 16px;
+        top: 14px;
+        color: #7E7E83;
+      }
     }
   
     &__button {
@@ -65,7 +139,6 @@
       transition: background-color 0.3s ease, color 0.3s ease; /* Плавні зміни для анімації */
       margin-top: 16px;
       
-      
       @include hover(background-color, #F8F8FA);
       @include hover(color, #292929);
       @include hover(border-color, #F0F1F4);
@@ -76,6 +149,7 @@
       }
     }
   }
+  
   &-contacts {
     grid-column: span 2;
 
@@ -86,6 +160,7 @@
     @include onDesktop {
       grid-column: 7 / 13;
     }
+    
     &__container {
       padding-bottom: 24px;
       display: flex;
@@ -105,6 +180,9 @@
       font-family: 'Space Mono';
       font-size: 16px;
       color: #191919;
+      text-decoration: none;
+
+      @include hover(transform, scale(1.05));
     }
   }
 }
