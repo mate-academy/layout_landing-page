@@ -1,0 +1,57 @@
+@import './variables';
+
+@mixin ontablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin ondesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentpaddinginline {
+  padding-inline: 20px;
+
+  @include ontablet {
+    padding-inline: 72px;
+  }
+
+  @include ondesktop {
+    max-width: 1920px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentpaddinginline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pagegrid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include ontablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include ondesktop {
+    --columns: 12;
+  }
+}

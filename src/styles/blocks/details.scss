@@ -1,0 +1,118 @@
+@import '../mixins';
+
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include ontablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include pagegrid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include ontablet {
+        grid-column: span 4;
+      }
+
+      @include ondesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      @include ontablet {
+        grid-column: span 2;
+      }
+
+      @include ondesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    cursor: pointer;
+    grid-column: 1 / -1;
+
+    @include ontablet {
+      grid-column: 2 / 6;
+    }
+
+    @include ondesktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
+
+.button {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  --columns: 2;
+
+  column-gap: 20px;
+
+  @include hover(transform, scale(1.05));
+
+  @include ontablet {
+    column-gap: 24px;
+
+    --columns: 6;
+  }
+
+  @include ondesktop {
+    --columns: 12;
+  }
+
+  &__content {
+    color: #1d1d1d;
+    text-align: center;
+    background-color: #fff;
+    border: 0;
+    border-radius: 40px;
+    padding-left: 48px;
+    padding-right: 48px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 56px;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #e8e8f066;
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+    }
+  }
+}
