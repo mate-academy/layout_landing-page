@@ -1,6 +1,8 @@
 .login{
   @include page-grid;
 
+  align-items: start;
+
   &__form{
     grid-column: span 2;
 
@@ -26,17 +28,29 @@
     }
   }
 
+
   &__input {
     width: 100%;
     height: 48px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid transparent;
     background-color: #F8F8FA;
     margin-bottom: 10px;
     cursor: pointer;
+    outline: none;
 
 
-    @include hover(transition, 0.3s);
+    &::placeholder{
+      font-family: $fontMono;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19.6px;
+      text-align: left;
+    }
+
+
+    @include hover(transition, $effectDuration);
+
 
       &:hover{
         border: 1px solid #D5D7DE;
@@ -53,6 +67,7 @@
       height: 148px;
       background-color: #F8F8FA;
       resize: none;
+      font-family: $fontMono;
     }
   }
 
@@ -70,7 +85,7 @@
       border: none;
       cursor: pointer;
 
-      @include hover(transition, 0.3s);
+      @include hover(transition, $effectDuration);
 
       &:hover{
         color: #292929;
@@ -92,8 +107,13 @@
       }
     }
 
-    &__communication{
+    &__list{
       grid-column: span 2;
+      list-style: none;
+      padding-left: 0;
+
+
+
 
       @include on-tablet{
         grid-column: span 6;
@@ -101,6 +121,70 @@
 
       @include on-desktop{
         grid-column: 7 / 9;
+
+        // margin-top: 0px;
       }
     }
+
+    &__link{
+      font-family: $fontMono;
+      text-decoration: none;
+      padding-bottom: 24px;
+
+
+      &--phone{
+        white-space: nowrap;
+        color: #191919;
+
+      }
+
+      &--email{
+        color: #191919;
+      }
+
+      &--address{
+        color: #191919;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22.4px;
+        text-align: left;
+
+      }
+
+      // @include on-desktop{
+      //   margin-top: 0px;
+      // }
+    }
   }
+
+  h4{
+    margin: 0;
+  }
+
+.list__item{
+  padding-bottom: 8px;
+
+  &--email{
+    color: #9393A3;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    text-align: left;
+  }
+
+  &--phone{
+  color: #9393A3;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: left;
+  }
+
+  &--address{
+    color: #9393A3;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    text-align: left;
+  }
+}
