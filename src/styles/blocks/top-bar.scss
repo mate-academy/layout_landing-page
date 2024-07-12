@@ -32,10 +32,44 @@
 
     &--phone {
       background-image: url(../images/icons/Icon-Phone-call.png);
+      position: relative;
+
+      @include on-desktop {
+        &::before {
+          content: '+1 234 5555-55-55';
+          font-family: $font-family;
+          font-size: 12px;
+          font-weight: $font-poppins-bold;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-align: right;
+          position: absolute;
+          top: 50%;
+          left: calc(-100% - 140px);
+          transform: translateY(-50%);
+          opacity: 0;
+          transition:
+            opacity 0.5s ease,
+            left 0.5s ease;
+          white-space: nowrap;
+
+          color: $text-color;
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
     }
 
     &--menu {
       background-image: url(../images/icons/Icon-Burger-menu.png);
+      transition: 0.5s ease;
+
+      &:hover {
+        background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+        transition: 0.5s ease;
+      }
     }
 
     &--close {
