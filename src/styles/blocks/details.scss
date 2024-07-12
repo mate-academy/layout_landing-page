@@ -1,0 +1,92 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $phone-gap;
+
+  @include on-tablet {
+    gap: $tablet-gap;
+  }
+
+  @include on-computer {
+    padding-bottom: 180px;
+  }
+
+  &__card,
+  &__button-wrapper {
+    @include grid;
+
+    row-gap: 16px;
+  }
+
+  &__title {
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+
+    @include on-computer {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    grid-column: span 1;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+
+    @include on-tablet {
+      &--wide {
+        grid-column: span 4;
+        height: 100%;
+        padding: 0;
+      }
+
+      &--square {
+        grid-column: span 2;
+      }
+    }
+
+    @include on-computer {
+      &--wide {
+        grid-column: span 8;
+      }
+
+      &--square {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__text {
+    @include phone-span-all-columns;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-computer {
+      grid-column: 1 / span 8;
+    }
+  }
+
+  &__button {
+    @include phone-span-all-columns;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-computer {
+      grid-column: 5 / -5;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include scale-photo;
+  }
+}

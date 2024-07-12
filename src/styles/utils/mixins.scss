@@ -1,0 +1,71 @@
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-computer {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-computer {
+    padding-inline: 120px;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
+  justify-content: center;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include on-computer {
+    grid-template-columns: repeat(12, 63px);
+  }
+}
+
+@mixin phone-span-all-columns {
+  grid-column: 1 / -1;
+}
+
+@mixin scale {
+  transition-duration: $transition-duration;
+
+  &:hover {
+    @content;
+  }
+}
+
+@mixin scale-icon {
+  @include scale {
+    transform: scale(1.2);
+  }
+}
+
+@mixin scale-photo {
+  @include scale {
+    transform: scale(1.05);
+  }
+}
+
+@mixin scale-text {
+  @include scale {
+    transform: scale(1.1);
+  }
+}
