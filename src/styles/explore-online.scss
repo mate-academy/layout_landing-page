@@ -9,45 +9,41 @@
 }
 
 .collection {
+  display: grid;
+  row-gap: 48px;
+
+  @include on-tablet {
+    padding: 0 104px;
+  }
+
   @include on-desktop {
-    display: grid;
+    padding: 0;
     grid-template-columns: repeat(3, 1fr);
-    align-content: center;
     column-gap: 24px;
   }
 
   &__item {
-    display: flex;
+    display: grid;
     align-items: center;
-    flex-direction: column;
-  }
-
-  &__item:not(:last-child) {
-    margin-bottom: 48px;
   }
 
   &__image {
     margin-bottom: 24px;
-    width: 280px;
-    height: 277px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center center;
     transform: scale(1);
     transition: transform $transition;
 
     @include on-tablet {
       margin-bottom: 32px;
-      width: 392px;
-      height: 387px;
     }
 
-    @include on-desktop {
-      width: 324px;
-      height: 320px;
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
     }
-  }
-
-  &__link:hover &__image,
-  &__link:focus &__image {
-    transform: scale(1.05);
   }
 
   &__title {
