@@ -26,6 +26,9 @@
 
 @mixin hover($property, $toValue, $child: false) {
   @if $child {
+    #{$child} {
+      transition: #{$property} 0.3s;
+    }
     &:hover #{$child} {
       #{$property}: $toValue;
     }
@@ -95,5 +98,14 @@
   &:focus-visible {
     outline: 1px solid #f98921;
     border: 1px solid #f98921;
+  }
+}
+
+@mixin autofill {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset;
   }
 }
