@@ -1,0 +1,91 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-with) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin primaryButton {
+  color: #fff;
+  text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  background-color: $main-text-color;
+  border: 2px solid $main-text-color;
+  border-radius: 8px;
+  line-height: 48px;
+  transition: 0.3s;
+
+  &:hover {
+    color: $main-text-color;
+    border-color: $color-btn-border-hover;
+    background-color: $color-light-background;
+  }
+}
+
+@mixin formField {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: $color-light-background;
+  outline: none;
+
+  &::placeholder {
+    color: #7e7e83;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+}
