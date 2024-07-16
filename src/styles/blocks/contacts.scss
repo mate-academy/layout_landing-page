@@ -1,81 +1,129 @@
 .contacts {
-  @include page-grid;
+  margin-bottom: 64px;
 
-  &__input {
-    display: flex;
-    flex-direction: column;
-    grid-column: 1 / 6;
-    margin-bottom: 16px;
+  @include on-tablet {
+    margin-bottom: 120px;
+  }
 
-    input {
-      height: 48px;
-      width: 498px;
-      margin-bottom: 16px;
-      border-radius: 5;
-      border: none;
-      background-color: #F9F9F9;
-      color: #7E7E83;
-      padding: 16px 14px;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
+  &__container {
+    @include page-grid;
+  }
 
-    input::placeholder {
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .input-message {
-      height: 148px;
-    }
-
-    @include on-tablet {
-      grid-column: 1 / 3;
-    }
+  &__form {
+    display: grid;
+    row-gap: 16px;
+    grid-column: 1 / -1;
 
     @include on-desktop {
-      grid-column: 1 / 5;
-    }
-
-    button {
-      background-color: #1B2129;
-      color: white;
-      width: 498px;
-      height: 56px;
-      border-radius: 8px;
-      padding: 0, 48px;
-      border: none;
-      margin-top: 16px;
+      grid-column: 1 / 7;
     }
   }
 
-  &__information {
+  &__button {
+    margin-block: 16px 48px;
+    padding: 14.5px 0;
+    border: 1px solid $category-button-color;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font:
+      700 16px Manrope,
+      Arial,
+      sans-serif;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: $category-button-color;
+    cursor: pointer;
+    grid-column: 1 / -1;
 
-    &__title {
-      color: $secondary-text-color;
-      font-size: 14px;
-      font-weight: 400;
-      font-family: Manrope, sans-serif;
-      margin: 0;
+    @include on-desktop {
+      grid-column: 1 / 7;
+      margin-bottom: 0;
     }
 
-    &__content {
+    &:hover {
+      border: 1px solid $main-text-color;
+      color: #fff;
+      background-color: $main-text-color;
+    }
+
+    &:active {
+      background-color: #010810;
+    }
+  }
+
+  &__input {
+    padding-block: 14px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    font:
+      400 14px Manrope,
+      Arial,
+      sans-serif;
+    line-height: 19.6px;
+    letter-spacing: 0.15px;
+    color: $main-text-color;
+    border-radius: 8px;
+    border: 1px solid $menu-bg-color;
+    background-color: $menu-bg-color;
+    grid-column: 1 / -1;
+    outline: none;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+
+    &:hover {
+      border: 1px solid $input-hover-bg;
       color: $main-text-color;
-      font-size: 16px;
-      font-weight: 400;
-      font-family: Manrope, sans-serif;
-      margin: 0;
-      padding-bottom: 16px;
+
+      &::placeholder {
+        color: $main-text-color;
+      }
     }
 
-    grid-column: 7 / -1;
-
-    @include onTablet {
-      grid-column: 3 / 5;
+    &:focus {
+      border: 1px solid $category-button-color;
     }
 
-    @include onDesktop {
-      grid-column: 6 / 9;
+    &--message {
+      height: 148px;
+      padding-right: 16px;
+      resize: none;
+    }
+  }
+
+  &__address {
+    display: grid;
+    row-gap: 24px;
+    grid-auto-rows: max-content;
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__title {
+    margin-block: 0 8px;
+    font-size: 14px;
+    line-height: 19.6px;
+    color: $address-title-color;
+  }
+
+  &__descriptions {
+    display: block;
+    font-size: 16px;
+    line-height: 22.4px;
+    text-decoration: none;
+    color: $address-text-color;
+    transform-origin: left;
+    transition: transform $effectDuration;
+
+    &:hover {
+      color: $category-button-color;
+      transform: scale(1.05);
     }
   }
 }
