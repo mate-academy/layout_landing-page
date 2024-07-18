@@ -1,0 +1,70 @@
+$main-txt-col: #1b2129;
+$footer-title-txt-col: #9393a3;
+$white-txt-col: #fff;
+$button-accent: #f98921;
+$animDuration: 300ms;
+$section-txt-font-weight: 400;
+$section-txt-size: 16px;
+$icon-size-phone: 24px;
+$icon-size-tablet: 32px;
+$tablet-width: 576px;
+$desktop-width: 1024px;
+$gap-in-form: 16px;
+$button-size: 56px;
+$content-padding-phone: 20px;
+$content-padding-tablet: 72px;
+$content-padding-desktop: 120px;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $animDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
