@@ -1,21 +1,22 @@
-# Landing page
+[DESIGNER'S MOCKUP](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-212&t=wy8tsquYmOS1k5rR-0)
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+[DEMO LINK](https://MaksymMohyla.github.io/layout_landing-page/)
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+This web project represents the clone of the Bang & Olufsen e-commerce store, designed to mimic the look and feel of the original website. The webpage includes header with some working buttons, sliding menu that helps you navigate through the page, sections with product cards, categories and registration form.
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+Technologies Used:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+HTML: The foundation of the website's structure and content.
+CSS: Used to style the website's visual elements, including layout, colors, and fonts.
+SASS: Preprocessor, which is used for more convenient work with CSS and has extended functionality compared to standard CSS.
+JavaScript: Provides interactive functionality.
+
+Features:
+
+-Responsive design: Adapts to different screen sizes, ensuring optimal viewing experience on desktops, tablets, and mobile devices.
+-All logos, images, phone numbers and even adress works as link to actual web pages.
+-Quick navigation through the page thanks to the menu items and go-to-top button.
+-Registration form that has correct input types and resets if you press button "Send".
+Additional Notes:
+
+This project is intended for educational purposes only and does not represent an official Bang & Olufsen website. It is designed to showcase the developer's skills in creating a visually appealing and functional e-commerce store.
