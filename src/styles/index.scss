@@ -1,0 +1,57 @@
+/* #region page */
+@import './utils/variables';
+@import './utils/mixins';
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+  color: $main-txt-col;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all $animDuration;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+/* #endregion */
+@import 'header';
+@import 'top-bar';
+@import 'icon';
+@import 'menu';
+@import 'nav';
+@import 'main';
+@import 'section-title';
+@import 'product';
+@import 'recommended';
+@import 'categories';
+@import 'about-us';
+@import 'button';
+@import 'page-bottom';
