@@ -2,9 +2,7 @@
 
 const buttonGoTop = document.getElementById("buttonGoTop");
 
-window.onscroll = function() {
-  scrollFunction()
-};
+window.addEventListener("scroll", () => scrollFunction());
 
 function scrollFunction() {
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -13,6 +11,8 @@ function scrollFunction() {
     buttonGoTop.style.display = "none";
   }
 }
+
+buttonGoTop.addEventListener("click", () => topFunction());
 
 function topFunction() {
   document.documentElement.scrollTop = 0;
