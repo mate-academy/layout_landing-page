@@ -4,41 +4,53 @@
   align-items: center;
 }
 
-@mixin padding-content-in-line {
-  padding-inline: 20px;
-
-  @media (min-width: 576px) {
-    padding-inline: 72px;
-  }
+@mixin fs-fw-lh-ls {
+  color: $header-font-color;
+  font-weight: 500;
+  letter-spacing: -1.5px;
 }
 
-@mixin padding-content-top-bottom {
-  padding-top: 24px;
-  padding-bottom: 24px;
-
-  @media (min-width: 576px) {
-    padding-top: 36px;
-    padding-bottom: 36px;
-  }
+@mixin h3-fw700-fs24-lh33-6 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33.6px;
 }
 
-@mixin icon-content {
-  width: 130px;
-  height: 38px;
-
-  @media (min-width: 576px) {
-    width: 187px;
-    height: 56px;
-  }
+@mixin p-fw400-lh22-4-fs16 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
 }
 
-@mixin info-icons-content {
-  width: 24px;
-  height: 24px;
+@mixin fs14-fw400-lh19-6-mb8px {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  margin: 0 0 8px;
+}
 
-  @media (min-width: 576px) {
-    width: 32px;
-    height: 32px;
+@mixin fw500-fs16-lh22-4-td-mb {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22.4px;
+  text-decoration: none;
+  color: $header-font-color;
+  margin-bottom: 24px;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == $mobile {
+    @media (min-width: $mobile) {
+      @content;
+    }
+  } @else if $breakpoint == $tablet {
+    @media (min-width: 744px) {
+      @content;
+    }
+  } @else if $breakpoint == $monitor {
+    @media (min-width: 1260px) {
+      @content;
+    }
   }
 }
 
@@ -50,12 +62,22 @@
   }
 }
 
-@mixin font-size-lower-text {
-  font-size: 36px;
-  line-height: 36px;
-
-  @media (min-width: 576px) {
-    font-size: 64px;
-    line-height: 64px;
+@mixin intro-media {
+  @media (min-width: 320px) {
+    display: grid;
+    grid-template-columns: 1fr;
   }
+
+  @media (min-width: 744px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@mixin w271-96-h48-br40-mb16 {
+  width: 277.96px;
+  height: 48px;
+  border-radius: 40px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
 }
