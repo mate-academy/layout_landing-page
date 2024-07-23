@@ -1,0 +1,87 @@
+.header {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/header.png);
+
+  &__top {
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: $animation;
+
+    &:hover {
+      transform: scale(110%);
+    }
+
+    &--call {
+      background-image: url(../images/call.svg);
+
+      @include on-desktop {
+        &::after {
+          content: '+1 234 5555-55-55';
+          position: absolute;
+          right: 120%;
+          top: 50%;
+          transform: translateY(-50%);
+          white-space: nowrap;
+          color: #010810;
+          font-weight: 800;
+          transition: $animation;
+          display: none;
+        }
+
+        &:hover::after {
+          display: block;
+        }
+      }
+    }
+
+    &--burger {
+      background-image: url(../images/menu.svg);
+
+      &:hover {
+        background-image: url(../images/menu_hover.svg);
+      }
+    }
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    margin: 0;
+    font-size: 36px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 56px;
+    }
+  }
+}
