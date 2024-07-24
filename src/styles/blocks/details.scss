@@ -62,37 +62,34 @@
     grid-column: auto auto 1fr;
   }
 
+  &__article:nth-child(4) {
+    @include respond-to($tablet) {
+      grid-template-areas:
+        'left right right'
+        'h h h'
+        'p p p';
+    }
+
+    @include respond-to($monitor) {
+      grid-template-areas:
+        'left right right'
+        'h h h'
+        'p p p';
+    }
+  }
+
   &__img-wrapper {
     display: grid;
     place-items: center;
     margin-bottom: 16px;
-    width: fit-content;
+    width: 100%;
   }
 
   &__img-left {
     grid-area: left;
-
-    &:hover {
-      @include bg-hover;
-    }
-
-    @include respond-to($tablet) {
-      .details__img {
-        width: 392px;
-        height: 187px;
-        object-fit: fill;
-        object-position: center;
-      }
-    }
-
-    @include respond-to($monitor) {
-      .details__img {
-        width: 672px;
-        height: 321px;
-        object-fit: fill;
-        object-position: center;
-      }
-    }
+    object-fit: fill;
+    object-position: center;
+    width: 100%;
   }
 
   &__img-right {
@@ -100,61 +97,27 @@
     width: 100%;
     display: grid;
     justify-items: right;
-
-    @include respond-to($tablet) {
-      .details__img {
-        width: 184px;
-        height: 187px;
-        object-fit: fill;
-        object-position: center;
-      }
-    }
-
-    @include respond-to($monitor) {
-      .details__img {
-        width: 324px;
-        height: 320px;
-        object-fit: fill;
-        object-position: center;
-      }
-    }
   }
 
   &__img {
-    width: 130px;
-    height: 130px;
+    width: 100%;
     object-fit: cover;
     object-position: center;
+    transition: 300ms ease-in-out;
 
-    &:hover {
-      @include bg-hover;
+    @include respond-to($mobile) {
+      height: 130px;
     }
-  }
 
-  .details__img-l {
     @include respond-to($tablet) {
-      width: 183px;
       height: 187px;
     }
 
     @include respond-to($monitor) {
-      width: 324px;
       height: 320px;
     }
-  }
 
-  .details__img-r {
-    @include respond-to($tablet) {
-      width: 392px;
-      height: 187px;
-      object-fit: contain;
-    }
-
-    @include respond-to($monitor) {
-      width: 672px;
-      height: 320px;
-      object-fit: contain;
-    }
+    @include bg-hover;
   }
 
   &__h3 {

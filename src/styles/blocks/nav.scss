@@ -5,6 +5,18 @@
   align-items: center;
   background-color: $aside-back-ground-color;
   overflow: hidden auto;
+
+  @include respond-to($mobile) {
+    margin-bottom: 113px;
+  }
+
+  @include respond-to($tablet) {
+    margin-bottom: 167px;
+  }
+
+  @include respond-to($monitor) {
+    margin-bottom: 203px;
+  }
 }
 
 .menu {
@@ -27,15 +39,15 @@
 
 .top__menu {
   @include respond-to($mobile) {
-    padding: 24px 20px;
+    padding: 24px 20px 48px;
   }
 
   @include respond-to($tablet) {
-    padding: 36px 72px;
+    padding: 36px 72px 44px;
   }
 
   @include respond-to($monitor) {
-    padding-inline: 120px;
+    padding: 32px 120px 60px;
   }
 
   display: flex;
@@ -44,6 +56,9 @@
   align-items: center;
 
   .top__menu__logo {
+    transition: 300ms ease-in-out;
+    padding-bottom: 0;
+
     @include respond-to($mobile) {
       width: 130px;
       height: 38px;
@@ -58,6 +73,8 @@
   }
 
   .top__menu__close {
+    transition: 300ms ease-in-out;
+
     @include respond-to($mobile) {
       width: 24px;
       height: 24px;
@@ -74,6 +91,7 @@
 
 .nav {
   width: 100%;
+  margin-bottom: 40px;
 
   &__list {
     display: flex;
@@ -83,11 +101,12 @@
     width: 100%;
 
     @include respond-to($mobile) {
-      padding: 24px 20px;
+      padding: 0 20px;
+      gap: 32px;
     }
 
     @include respond-to($tablet) {
-      padding: 36px 72px;
+      padding: 0 72px;
     }
 
     @include respond-to($monitor) {
@@ -101,8 +120,6 @@
     list-style: none;
 
     @include d-flex-justify-align-center;
-
-    padding-bottom: 22px;
   }
 
   &__link {
@@ -114,6 +131,7 @@
     letter-spacing: 2px;
     line-height: 22px;
     border-bottom: 1px solid transparent;
+    transition: 300ms ease-in-out;
 
     &:hover {
       border-color: $aside-font-color;
@@ -126,11 +144,11 @@
   width: 100%;
 
   @include respond-to($mobile) {
-    padding: 24px 20px;
+    padding: 0 20px;
   }
 
   @include respond-to($tablet) {
-    padding: 36px 72px;
+    padding: 0 72px;
   }
 
   @include respond-to($monitor) {
@@ -142,22 +160,35 @@
   justify-content: start;
   align-items: start;
 
-  &__page__number {
-    font-size: 16px;
+  .lower__page__link {
     font-weight: 600;
-    line-height: 27px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
   }
 
-  .lower__page__link {
-    @include bg-hover;
+  .lower__page__link::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid $aside-font-color;
+    bottom: -30%;
+    left: 0;
   }
 
   .lower__page__number {
+    text-decoration: none;
     color: $aside-font-color;
     font-size: 16px;
     line-height: 27px;
     font-weight: 600;
     margin-bottom: 16px;
+
+    @include bg-hover;
   }
 
   &__page__icon {
