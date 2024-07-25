@@ -3,6 +3,7 @@
   height: 24px;
   width: 24px;
   background-size: cover;
+  text-decoration: none;
 
   @include tablet {
     height: 32px;
@@ -12,38 +13,44 @@
   @include hover(transform, scale(1.2));
 }
 
-.icon--phonenumber {
-  display: none;
+.icon--phone::before {
+  display: inline-block;
+  content: "+1234 555-55-55";
+  position: relative;
+  width: 60px;
+  top: 50%;
   font-weight: 600;
-  font-size: 6px;
+  font-size: 5px;
   letter-spacing: 1px;
   line-height: normal;
   text-align: center;
-  align-items: center;
-  text-decoration: none;
   color: #FFF;
   pointer-events: none;
-  opacity: 1;
+  opacity: 0;
   transition: all 0.1s;
-  transform: translateX(+50%);
+  transform: translate(0, -50%);
 
-
-
-  @include tablet {
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-  }
-
+    @include tablet {
+      width: 138px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+    }
 }
 
-.icon--phone:hover + .icon--phonenumber {
-  display: flex;
-  opacity: 1;
-  pointer-events: all;
-  transform: translateX(0);
+.icon--phone:hover::before{
+    display: inline-block;
+    opacity: 1;
+    pointer-events: all;
+    text-decoration: dotted;
+    transform: translate(-60px, -120%);
+
+    @include tablet {
+        transform: translate(-150px, -50%);
+      }
 }
+
 
 .icon--phone {
   background-image: url(../images/icon/icon-phone-call.svg);
