@@ -1,20 +1,20 @@
 .contacts {
   &__wrapper {
-    @include pageGrid;
+    @include page-grid;
+
     margin-bottom: 102px;
   }
 }
-
 
 .contact {
   &__form {
     grid-column: 1 / -1;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 3;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 5;
     }
   }
@@ -40,10 +40,13 @@
 
 
     @include hover (border, 1px solid #d5d7de);
-    @include active (border, 1px solid #292929);
 
     &::placeholder {
       color: $third-text-color;
+    }
+
+    &:focus {
+      outline: none;
     }
 
   &--textarea {
@@ -62,11 +65,11 @@
     grid-column: 1 / -1;
 
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 3;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 8 / 11;
     }
   }
@@ -87,6 +90,16 @@
     color: $main-text-color;
 
     @include hover (color, #ddd);
-    @include active (color, #aaa);
 	}
+}
+
+input, textarea, select {
+  &:-webkit-autofill {
+      &, &:hover, &:focus {
+          border: 1px solid $border-color;
+          -webkit-text-fill-color: $second-text-color;
+          -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+          transition: background-color 5000s ease-in-out 0s;
+      }
+  }
 }
