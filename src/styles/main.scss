@@ -14,7 +14,6 @@ html {
 
 body {
   width: 100%;
-  max-width: 1260px;
   margin: 0;
   font-family: Manrope, sans-serif;
   display: flex;
@@ -22,13 +21,17 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+  padding-bottom: 120px;
 }
 
 .container {
-  max-width: 1260px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.recommendedText {
+  margin-left: 120px;
 }
 
 h2 {
@@ -211,7 +214,6 @@ button:active {
     text-align: start;
     margin-left: 120px;
 
-    // z-index: 1000;
     h4 {
       font-size: 56px;
       font-weight: 700;
@@ -222,21 +224,24 @@ button:active {
 
 .main {
   width: 100%;
-
-  // max-width: 1260px;
   display: flex;
   flex-direction: column;
-  padding: 0 120px;
+
   box-sizing: border-box;
+
+  section:not(.main__oldSpeaker) {
+    padding: 0 120px;
+  }
 
   &__recommended {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     &-article {
       max-width: 324px;
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -267,16 +272,21 @@ button:active {
   }
 
   &__oldSpeakerWrapper {
+    padding: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 999;
   }
 
   &__oldSpeaker {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 120px;
     &-article {
+      width: 100%;
       display: flex;
       flex-direction: column;
     }
@@ -287,7 +297,6 @@ button:active {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 1260px;
     height: 460px;
   }
 
@@ -306,12 +315,7 @@ button:active {
 }
 
 .footer {
-  // position: sticky;
-  // bottom: 10px;
-  // z-index: -1;
   width: 100%;
-
-  // max-width: 1260px;
   padding: 0 120px;
   box-sizing: border-box;
   &__contactUs {
@@ -347,6 +351,10 @@ button:active {
   textarea {
     resize: none;
     height: 148px;
+  }
+
+  textarea:hover {
+    border: 2px solid #f98921;
   }
 
   .form {
@@ -396,19 +404,22 @@ button:active {
       font-weight: 400;
     }
 
-    &__address a:hover,
-    &__text a:hover {
-      color: #1b2129;
-    }
-
     &__address a {
       text-decoration: none;
       color: black;
+    }
+    &__address a:hover,
+    &__text a:hover {
+      color: #1b2129;
     }
   }
 }
 
 @media (max-width: 1260px) {
+  .recommendedText {
+    margin-left: 72px;
+  }
+
   .header {
     &__container {
       padding: 0 72px;
@@ -422,10 +433,13 @@ button:active {
   }
 
   .main {
-    max-width: 744px;
-    padding: 0 72px;
+
+
+    section:not(.main__oldSpeaker) {
+      padding: 0 72px;
+    }
+
     &__recommended {
-      width: 100%;
       flex-direction: column;
       &-article {
         max-width: 744px;
@@ -436,9 +450,7 @@ button:active {
       }
     }
     &__soundVision {
-      width: 100%;
       &-article {
-        max-width: 744px;
         width: 100%;
       }
       .image-container img {
@@ -453,9 +465,7 @@ button:active {
     }
 
     &__oldSpeaker {
-      width: 744px;
       &-article {
-        width: 744px;
         justify-content: center;
         align-items: center;
       }
@@ -476,7 +486,6 @@ button:active {
 
   .footer {
     width: 100%;
-    max-width: 744px;
     padding: 0 72px;
     box-sizing: border-box;
     &__contactUs {
@@ -497,6 +506,10 @@ button:active {
 }
 
 @media (max-width: 744px) {
+  .recommendedText {
+    margin-left: 20px;
+  }
+
   .header {
     &__container {
       padding: 0 20px;
@@ -516,12 +529,12 @@ button:active {
   }
 
   .main {
-    max-width: 320px;
-    padding: 0 20px;
+    section:not(.main__oldSpeaker) {
+      padding: 0 20px;
+    }
+
     &__soundVision {
-      width: 100%;
       &-article {
-        max-width: 320px;
         width: 100%;
       }
       .image-container img {
@@ -536,9 +549,7 @@ button:active {
     }
 
     &__oldSpeaker {
-      width: 320px;
       &-article {
-        width: 320px;
         justify-content: center;
         align-items: center;
       }
@@ -568,7 +579,6 @@ button:active {
 
   .footer {
     width: 100%;
-    max-width: 320px;
     padding: 0 20px;
     box-sizing: border-box;
     &__contactUs {
