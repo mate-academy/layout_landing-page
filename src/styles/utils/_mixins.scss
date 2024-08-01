@@ -1,0 +1,61 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-laptop {
+  @media (min-width: 856px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+}
+
+@mixin scale-transoform {
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+@mixin underline-transform {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #1D1D1D;
+
+    transition: all 0.5s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin button-styles {
+  &:hover {
+    cursor: pointer;
+
+    box-shadow: 1px 4px 16px 0 #E8E8F066;
+  }
+
+  &:focus {
+    box-shadow: 1px 4px 16px 0 #E8E8F0A3;
+  }
+}
