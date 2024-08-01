@@ -3,6 +3,7 @@
 const burgerIcon = document.querySelector('.header__settings-burger');
 const crossIcon = document.querySelector('.header__settings-crossMenu');
 const phoneIcon = document.querySelector('.header__settings-phone');
+const navLinks = document.querySelectorAll('.nav__link');
 
 const number = document.querySelector('.header__settings-number');
 const menu = document.querySelector('.header__menu');
@@ -13,9 +14,17 @@ burgerIcon.onclick = () => {
   html.classList.add('no-scroll');
 };
 
-crossIcon.onclick = () => {
+navLinks.forEach((link) => {
+  link.onclick = () => {
+    menu.style.display = 'none';
+    html.classList.remove('no-scroll');
+  };
+});
+
+navLink.onclick = () => {
   menu.style.display = 'none';
   html.classList.remove('no-scroll');
+  console.log('что-нибудь!!!!');
 };
 
 phoneIcon.onmouseover = () => {
