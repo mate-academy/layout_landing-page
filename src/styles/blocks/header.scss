@@ -1,0 +1,152 @@
+.header {
+  height: calc(568px - 25px);
+  color: $white;
+
+  // =================TOP PART of HEADER (Logo and Icons)
+  &__top {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 64px;
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 23px;
+    letter-spacing: -1.5px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  // =================BOTTOM PART of HEADER (Title, Menu-Navigation and Menu-Contacts)
+  &__bottom {
+    text-align: center;
+    margin-inline: auto;
+    padding-top: 129px;
+  }
+
+  &__title {
+    display: block;
+    width: 240px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    margin-inline: auto;
+  }
+
+  // =================MENU (Menu-Navigation and Menu-Contacts)
+  &__navigation {
+    display: none;
+
+    &-item {
+      padding-bottom: 32px;
+      text-align: left;
+    }
+
+    &-link {
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $white;
+
+      &:hover {
+        width: fit-content;
+        border-bottom: 1px solid $white;
+        padding-bottom: 2px;
+      }
+    }
+  }
+
+  &__contacts {
+    display: none;
+
+    &-item {
+      text-align: left;
+
+      &:last-child {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+      }
+
+      &:nth-child(even) {
+        padding-bottom: 8px;
+      }
+
+      &:not(&:last-child) {
+        font-size: 16px;
+        line-height: 27px;
+      }
+
+      &:last-child:hover {
+        width: fit-content;
+        border-bottom: 1px solid $white;
+        padding-bottom: 8px;
+      }
+    }
+
+    &-link {
+      color: $white;
+      text-transform: uppercase;
+    }
+  }
+
+  // Use independent div with header background for save opportunity
+  // apply external margins to BEM block (this case this is a header).
+  // Otherwise, with using padding inside header-BEM is not possible
+  // to get full width with this picture (or another background).
+  &-image {
+    width: 100vw;
+    height: 568px;
+    background-image: url('../images/header-background.webp');
+
+    @include centered-background;
+
+    position: absolute;
+    z-index: -1;
+    top: 0;
+  }
+
+  // =================CHANGING AFTER BurgerMenu CLICK
+  &:has(#navigation:target) + .header-image {
+    background-image: none;
+    background-color: $red;
+  }
+
+  &:has(#navigation:target) &__bottom {
+    padding-top: 40px;
+  }
+
+  &:has(#navigation:target) &__title {
+    display: none;
+  }
+
+  &:has(#navigation:target) &__contacts {
+    display: block;
+  }
+
+  &:has(#navigation:target) &__navigation {
+    display: block;
+  }
+
+  &:target {
+    display: none;
+  }
+
+  &:has(#navigation:target) .icon--burger-menu {
+    display: none;
+  }
+
+  &:has(#navigation:target) .icon--close {
+    display: block;
+  }
+}
