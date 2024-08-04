@@ -2,12 +2,65 @@
   height: calc(568px - 25px);
   color: $white;
 
+  &__contacts {
+    display: none;
+
+    &-list {
+      text-align: left;
+    }
+
+    &-item {
+      &:last-child {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+      }
+
+      &:nth-child(even) {
+        padding-bottom: 8px;
+      }
+
+      &:not(&:last-child) {
+        font-size: 16px;
+        line-height: 27px;
+      }
+
+      &:last-child:hover {
+        width: fit-content;
+        border-bottom: 1px solid $white;
+        padding-bottom: 8px;
+      }
+    }
+
+    &-link {
+      color: $white;
+      text-transform: uppercase;
+    }
+  }
+
   // =================TOP PART of HEADER (Logo and Icons)
   &__top {
     height: 46px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &:has(.icon--phone:hover) + .header__bottom .header__contacts {
+      display: block;
+      position: absolute;
+      top: 24px;
+      right: calc(100vw * 0.14);
+    }
+
+    &:has(.icon--phone:hover) + .header__bottom .header__contacts-list {
+      text-align: right;
+    }
+
+    &:has(.icon--phone:hover)
+      + .header__bottom
+      .header__contacts-item:last-child {
+      display: none;
+    }
   }
 
   &__logo {
@@ -66,40 +119,6 @@
     }
   }
 
-  &__contacts {
-    display: none;
-
-    &-item {
-      text-align: left;
-
-      &:last-child {
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-      }
-
-      &:nth-child(even) {
-        padding-bottom: 8px;
-      }
-
-      &:not(&:last-child) {
-        font-size: 16px;
-        line-height: 27px;
-      }
-
-      &:last-child:hover {
-        width: fit-content;
-        border-bottom: 1px solid $white;
-        padding-bottom: 8px;
-      }
-    }
-
-    &-link {
-      color: $white;
-      text-transform: uppercase;
-    }
-  }
-
   // Use independent div with header background for save opportunity
   // apply external margins to BEM block (this case this is a header).
   // Otherwise, with using padding inside header-BEM is not possible
@@ -115,38 +134,43 @@
     z-index: -1;
     top: 0;
   }
+}
 
-  // =================CHANGING AFTER BurgerMenu CLICK
-  &:has(#navigation:target) + .header-image {
-    background-image: none;
-    background-color: $red;
-  }
+// =================CHANGING AFTER BurgerMenu CLICK
+#navigation-menu-on:target {
+  background-image: none;
+  background-color: $red;
+}
 
-  &:has(#navigation:target) &__bottom {
-    padding-top: 40px;
-  }
+#navigation-menu-on:target + .header .header__bottom {
+  padding-top: 40px;
+}
 
-  &:has(#navigation:target) &__title {
-    display: none;
-  }
+#navigation-menu-on:target + .header .header__title {
+  display: none;
+}
 
-  &:has(#navigation:target) &__contacts {
-    display: block;
-  }
+#navigation-menu-on:target + .header .header__contacts {
+  display: block;
+  position: static;
+}
 
-  &:has(#navigation:target) &__navigation {
-    display: block;
-  }
+#navigation-menu-on:target + .header .header__navigation {
+  display: block;
+}
 
-  &:target {
-    display: none;
-  }
+#navigation-menu-on:target + .header .icon--burger-menu {
+  display: none;
+}
 
-  &:has(#navigation:target) .icon--burger-menu {
-    display: none;
-  }
+#navigation-menu-on:target + .header .icon--close {
+  display: block;
+}
 
-  &:has(#navigation:target) .icon--close {
-    display: block;
-  }
+#navigation-menu-on:target + .header .header__contacts-list {
+  text-align: left;
+}
+
+#navigation-menu-on:target + .header .header__contacts-item:last-child {
+  display: block;
 }
