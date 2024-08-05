@@ -3,9 +3,9 @@
     @include page-grid;
 
     margin-bottom: 102px;
+
   }
 }
-
 
 .contact {
   &__form {
@@ -26,7 +26,6 @@
     padding-bottom: 48px;
   }
 
-
   &__input {
     font-family: $font-family;
     box-sizing: border-box;
@@ -39,21 +38,36 @@
     padding-inline: 16px;
     background-color: $border-color;
 
-
-    @include hover (border, 1px solid #d5d7de);
-    @include active (border, 1px solid #292929);
+    @include hover(border, 1px solid #d5d7de);
+    @include active(border, 1px solid #292929);
 
     &::placeholder {
       color: $third-text-color;
     }
 
-  &--textarea {
+    &--textarea {
       resize: none;
       padding-block: 14px;
       height: 148px;
       border-radius: 16px;
     }
-  }
+
+     /* for autocomplete */
+     input:-webkit-autofill,
+     input:-webkit-autofill:hover,
+     input:-webkit-autofill:focus,
+     textarea:-webkit-autofill,
+     textarea:-webkit-autofill:hover,
+     textarea:-webkit-autofill:focus,
+     select:-webkit-autofill,
+     select:-webkit-autofill:hover,
+     select:-webkit-autofill:focus {
+       border: 1px solid #292929;
+       -webkit-text-fill-color: #292929;
+       -webkit-box-shadow: 0 0 0 1000px #f0f0f0 inset; /* Removed 'px' after '0' */
+       transition: background-color 5000s ease-in-out 0s;
+     }
+   }
 
   &__button {
     margin-top: 16px;
@@ -61,7 +75,6 @@
 
   &__info {
     grid-column: 1 / -1;
-
 
     @include on-tablet {
       grid-column: span 3;
@@ -79,7 +92,7 @@
     line-height: 19.6px;
   }
 
-	&__link {
+  &__link {
     margin-bottom: 24px;
     font-size: 16px;
     font-weight: 500;
@@ -87,7 +100,7 @@
     text-decoration: none;
     color: $main-text-color;
 
-    @include hover (color, #ddd);
-    @include active (color, #aaa);
-	}
+    @include hover(color, #ddd);
+    @include active(color, #aaa);
+  }
 }
