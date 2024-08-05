@@ -1,6 +1,8 @@
 .header {
   height: calc(568px - 25px);
   color: $white;
+  position: relative;
+  z-index: 3;
 
   &__contacts {
     display: none;
@@ -35,6 +37,26 @@
     &-link {
       color: $white;
       text-transform: uppercase;
+
+      &:hover {
+        @include link-white-underline-hover;
+      }
+    }
+
+    &:hover {
+      @include contacts-position-hover;
+
+      & .header__contacts-list {
+        text-align: right;
+      }
+
+      & .header__contacts-item:last-child {
+        display: none;
+      }
+
+      & .header__contacts-link {
+        @include contacts-font-size-hover-mobile;
+      }
     }
   }
 
@@ -46,21 +68,11 @@
     justify-content: space-between;
 
     &:has(.icon--phone:hover) + .header__bottom .header__contacts {
-      display: block;
-      position: absolute;
-      top: 24px;
+      @include contacts-position-hover;
+    }
 
-      @include on-mobile {
-        right: 108px;
-      }
-
-      @include on-tablet {
-        right: 160px;
-      }
-
-      @include on-desktop {
-        right: 208px;
-      }
+    &:has(.icon--phone:hover) + .header__bottom .header__contacts-link {
+      @include contacts-font-size-hover-mobile;
     }
 
     &:has(.icon--phone:hover) + .header__bottom .header__contacts-list {
@@ -136,21 +148,36 @@
   // to get full width with this picture (or another background).
   &-image {
     width: 100vw;
-    height: 568px;
+    height: 593px;
     background-image: url('../images/header-background.webp');
 
     @include centered-background;
 
     position: absolute;
-    z-index: -1;
+    z-index: 2;
     top: 0;
   }
 }
 
 // =================CHANGING AFTER BurgerMenu CLICK
+
+#navigation-menu-on:target + .header {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+#navigation-menu-on:target ~ .hours {
+  margin-top: calc(140px + 593px);
+}
+
 #navigation-menu-on:target {
   background-image: none;
   background-color: $red;
+  position: fixed;
+  z-index: 2;
 }
 
 #navigation-menu-on:target + .header .header__bottom {
@@ -164,6 +191,7 @@
 #navigation-menu-on:target + .header .header__contacts {
   display: block;
   position: static;
+  padding-top: 0;
 }
 
 #navigation-menu-on:target + .header .header__navigation {
@@ -180,6 +208,11 @@
 
 #navigation-menu-on:target + .header .header__contacts-list {
   text-align: left;
+}
+
+#navigation-menu-on:target + .header .header__contacts-link {
+  font-size: 16px;
+  line-height: 27px;
 }
 
 #navigation-menu-on:target + .header .header__contacts-item:last-child {
