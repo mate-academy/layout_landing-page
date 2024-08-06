@@ -4,34 +4,27 @@
   width: 24px;
   background-size: contain;
 
-  @include onTablet {
+  @include on-tablet {
     width: 32px;
     height: 32px;
   }
 
   &--phone {
     background-image: url(./icons/icon-phone-call.png);
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 10px;
-    align-items: center;
+    position: relative;
 
-    &-number {
-      // visibility: hidden;
-      display: none;
+    @include on-desktop {
+      &:hover::before {
+        content: '+1 234 555-55-55';
+        display: block;
+        width: max-content;
+        color: $main-color;
 
-      text-wrap: nowrap;
-      text-decoration: none;
-      color: $main-color;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-      text-align: right;
-    }
-
-    &:hover {
-      display: block;
+        position: absolute;
+        top: 50%;
+        right: 52px;
+        transform: translateY(-50%);
+      }
     }
   }
 
@@ -46,6 +39,5 @@
 
   &--close {
     background-image: url(./icons/menu-close.png);
-    // @include hover(transform, scale(1.2));
   }
 }

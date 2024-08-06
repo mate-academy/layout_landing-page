@@ -1,23 +1,23 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: 576px) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: 1024px) {
     @content;
   }
 }
 
-@mixin contentPaddingInline() {
+@mixin content-padding-inline {
   padding-inline: 20px;
 
-  @include onTablet() {
+  @include on-tablet {
     padding-inline: 72px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     max-width: 1020px;
     margin-inline: auto;
     padding-inline: 120px;
@@ -25,7 +25,7 @@
 }
 
 .container {
-  @include contentPaddingInline;
+  @include content-padding-inline;
 }
 
 @mixin hover($property, $toValue) {
@@ -36,23 +36,25 @@
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
+
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     --columns: 6;
+
     column-gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     --columns: 12;
   }
 }
 
-@mixin pageButton {
+@mixin page-button {
   align-items: center;
 
   padding: 0 48px;
@@ -61,6 +63,7 @@
   border-radius: 40px;
   background-color: #fff;
   color: #1d1d1d;
+  cursor: pointer;
 
   font-size: 16px;
   font-weight: 700;
@@ -69,10 +72,10 @@
   transition: 0.3s;
 
   &:hover {
-    box-shadow: 1px 4px 16px 0px #e8e8f066;
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
   }
 
   &:active {
-    box-shadow: 1px 4px 16px 0px #e8e8f0a3;
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
   }
 }
