@@ -1,8 +1,11 @@
 .header {
-  height: calc(568px - 25px);
   color: $white;
   position: relative;
   z-index: 3;
+
+  @include on-desktop {
+    height: calc(840px - $header-margin-top);
+  }
 
   &__contacts {
     display: none;
@@ -141,8 +144,13 @@
   // Otherwise, with using padding inside header-BEM is not possible
   // to get full width with this picture (or another background).
   &-image {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+
+    @include on-desktop {
+      height: 840px;
+    }
+
     background-image: url('../images/header-background.webp');
 
     @include centered-background;
@@ -156,27 +164,42 @@
 // =================CHANGING AFTER BurgerMenu CLICK
 
 #navigation-menu-on:target + .header {
-  height: 90vh;
+  width: $page-content-width;
+  height: calc(100vh - $header-margin-top);
   position: fixed;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  top: 0;
+  z-index: 4;
   overflow-y: auto;
+
+  @include on-desktop {
+    height: calc(840px - $header-margin-top);
+  }
 }
 
 #navigation-menu-on:target ~ .hours {
-  margin-top: calc(140px + 593px);
+  margin-top: calc(100vh + 140px - $header-margin-top);
+
+  @include on-mobile {
+    margin-top: calc(100vh + 100px - $header-margin-top);
+  }
+
+  @include on-desktop {
+    margin-top: calc(840px + 140px - $header-margin-top);
+  }
 }
 
 #navigation-menu-on:target {
-  background-image: none;
-  background-color: $red;
-  position: fixed;
-  z-index: 2;
+  &::before {
+    content: '';
+    display: block;
+    width: calc($page-content-width + ($page-margin * 2));
+    height: 100vh;
 
-  @include on-desktop {
-    height: 700px;
+    @include on-desktop {
+      height: 700px;
+    }
+    
+    background-color: red;
+    position: fixed;
   }
 }
 
