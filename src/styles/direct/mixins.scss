@@ -52,9 +52,49 @@
   }
 }
 
-@mixin link-white-underline-hover {
-  width: fit-content;
-  border-bottom: 1px solid $white;
-  padding-bottom: 2px;
+@mixin underline-hover-header {
+  & {
+    position: relative;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $white;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 500ms;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
 }
 
+@mixin underline-hover-contacts {
+  & span {
+    display: inline-block;
+    position: relative;
+  }
+
+  & span::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $black;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 500ms;
+  }
+
+  &:hover span::before {
+    transform: scaleX(1);
+  }
+}

@@ -1,4 +1,6 @@
 .header {
+  width: $page-content-width;
+  height: calc(100vh - $header-margin-top);
   color: $white;
   position: relative;
   z-index: 3;
@@ -35,9 +37,7 @@
       color: $white;
       text-transform: uppercase;
 
-      &:hover {
-        @include link-white-underline-hover;
-      }
+      @include underline-hover-header;
     }
 
     &:hover {
@@ -131,11 +131,7 @@
       text-transform: uppercase;
       color: $white;
 
-      &:hover {
-        width: fit-content;
-        border-bottom: 1px solid $white;
-        padding-bottom: 2px;
-      }
+      @include underline-hover-header;
     }
   }
 
@@ -164,14 +160,15 @@
 // =================CHANGING AFTER BurgerMenu CLICK
 
 #navigation-menu-on:target + .header {
-  width: $page-content-width;
   height: calc(100vh - $header-margin-top);
   position: fixed;
+  top: 0;
   z-index: 4;
   overflow-y: auto;
 
   @include on-desktop {
     height: calc(840px - $header-margin-top);
+    left: calc((100vw - $page-content-width) / 2);
   }
 }
 
@@ -192,14 +189,16 @@
     content: '';
     display: block;
     width: calc($page-content-width + ($page-margin * 2));
+    width: 100vw;
     height: 100vh;
 
     @include on-desktop {
       height: 700px;
     }
-    
-    background-color: red;
+
+    background-color: $red;
     position: fixed;
+    left: 0;
   }
 }
 
@@ -245,5 +244,3 @@
 #navigation-menu-on:target + .header .header__contacts-item:last-child {
   display: block;
 }
-
-
