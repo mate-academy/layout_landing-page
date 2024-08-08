@@ -9,8 +9,15 @@
     height: calc(840px - $header-margin-top);
   }
 
+  // #region====CONTACTS-HEADER======
   &__contacts {
-    display: none;
+    display: block;
+    position: absolute;
+    inset: 400px auto auto;
+
+    @include on-desktop {
+      top: 408px;
+    }
 
     &-list {
       text-align: left;
@@ -36,7 +43,10 @@
     &-link {
       color: $white;
       text-transform: uppercase;
+      visibility: hidden;
+      opacity: 0;
 
+      @include transition-hidding;
       @include underline-hover-header;
     }
 
@@ -52,12 +62,17 @@
       }
 
       & .header__contacts-link {
+        visibility: visible;
+        opacity: 1;
+
         @include contacts-font-size-hover-mobile;
       }
     }
   }
 
-  // =================TOP PART of HEADER (Logo and Icons)
+  // #endregion
+
+  // #region====TOP PART of HEADER (Logo and Icons)
   &__top {
     height: 46px;
     display: flex;
@@ -70,6 +85,9 @@
 
     &:has(.icon--phone:hover) + .header__bottom .header__contacts-link {
       @include contacts-font-size-hover-mobile;
+
+      visibility: visible;
+      opacity: 1;
     }
 
     &:has(.icon--phone:hover) + .header__bottom .header__contacts-list {
@@ -98,7 +116,9 @@
     gap: 24px;
   }
 
-  // =================BOTTOM PART of HEADER (Title, Menu-Navigation and Menu-Contacts)
+  // #endregion
+
+  // #region====BOTTOM PART of HEADER (Title, Menu-Navigation and Menu-Contacts)
   &__bottom {
     text-align: center;
     margin-inline: auto;
@@ -113,11 +133,22 @@
     line-height: 40px;
     letter-spacing: -1.5px;
     margin-inline: auto;
+    opacity: 1;
+
+    @include transition-hidding;
   }
 
-  // =================MENU (Menu-Navigation and Menu-Contacts)
+  // #endregion
+
+  // #region====MENU (Menu-Navigation and Menu-Contacts)
   &__navigation {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 95px;
+
+    @include on-desktop {
+      top: 105px;
+    }
 
     &-item {
       padding-bottom: 32px;
@@ -130,11 +161,17 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: $white;
+      visibility: hidden;
+      opacity: 0;
 
+      @include transition-hidding;
       @include underline-hover-header;
     }
   }
 
+  // #endregion
+
+  // =======HEADER-BACKGROUND=======
   //  Use independent div with header background for save opportunity
   // apply external margins to BEM block (this case this is a header).
   // Otherwise, with using padding inside header-BEM is not possible
@@ -154,93 +191,105 @@
     position: absolute;
     z-index: 2;
     top: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      width: calc($page-content-width + ($page-margin * 2));
+      width: 100vw;
+      height: 1px;
+      background-color: transparent;
+      transition:
+        background-color 500ms ease,
+        height 0s 2s;
+      position: fixed;
+      left: 0;
+    }
   }
 }
 
-// =================CHANGING AFTER BurgerMenu CLICK
-
-#navigation-menu-on:target + .header {
-  height: calc(100vh - $header-margin-top);
-  position: fixed;
-  top: 0;
-  z-index: 4;
-  overflow-y: auto;
-
-  @include on-desktop {
-    height: calc(840px - $header-margin-top);
-    left: calc((100vw - $page-content-width) / 2);
-  }
-}
-
-#navigation-menu-on:target ~ .hours {
-  margin-top: calc(100vh + 140px - $header-margin-top);
-
-  @include on-mobile {
-    margin-top: calc(100vh + 100px - $header-margin-top);
-  }
-
-  @include on-desktop {
-    margin-top: calc(840px + 140px - $header-margin-top);
-  }
-}
+// #region===CHANGING AFTER BurgerMenu CLICK
 
 #navigation-menu-on:target {
   &::before {
-    content: '';
-    display: block;
-    width: calc($page-content-width + ($page-margin * 2));
     width: 100vw;
     height: 100vh;
+    background-color: $red;
+    transition: background-color 500ms ease;
 
     @include on-desktop {
       height: 700px;
     }
+  }
 
-    background-color: $red;
+  & ~ .hours {
+    margin-top: calc(100vh + 140px - $header-margin-top);
+
+    @include on-mobile {
+      margin-top: calc(100vh + 100px - $header-margin-top);
+    }
+
+    @include on-desktop {
+      margin-top: calc(840px + 140px - $header-margin-top);
+    }
+  }
+
+  & + .header {
+    height: calc(100vh - $header-margin-top);
     position: fixed;
-    left: 0;
+    top: 0;
+    z-index: 4;
+    overflow-y: auto;
+
+    @include on-desktop {
+      height: calc(840px - $header-margin-top);
+      left: calc((100vw - $page-content-width) / 2);
+    }
+
+    & .header__title {
+      opacity: 0;
+    }
+
+    & .header__contacts:hover {
+      inset: 400px auto auto;
+      padding: 0;
+
+      @include on-desktop {
+        top: 408px;
+      }
+    }
+
+    & .header__contacts-item:last-child {
+      display: block;
+    }
+
+    & .header__contacts-link {
+      visibility: visible;
+      opacity: 1;
+      padding: 0;
+    }
+
+    & .header__navigation-link {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    & .icon--burger-menu {
+      display: none;
+    }
+
+    & .icon--phone {
+      display: none;
+    }
+
+    & .icon--close {
+      display: block;
+    }
+
+    & .header__contacts-list {
+      text-align: left;
+    }
   }
 }
 
-#navigation-menu-on:target + .header .header__bottom {
-  padding-top: 40px;
-}
-
-#navigation-menu-on:target + .header .header__title {
-  display: none;
-}
-
-#navigation-menu-on:target + .header .header__contacts {
-  display: block;
-  position: static;
-  padding-top: 0;
-}
-
-#navigation-menu-on:target + .header .header__navigation {
-  display: block;
-}
-
-#navigation-menu-on:target + .header .icon--burger-menu {
-  display: none;
-}
-
-#navigation-menu-on:target + .header .icon--phone {
-  display: none;
-}
-
-#navigation-menu-on:target + .header .icon--close {
-  display: block;
-}
-
-#navigation-menu-on:target + .header .header__contacts-list {
-  text-align: left;
-}
-
-#navigation-menu-on:target + .header .header__contacts-link {
-  font-size: 16px;
-  line-height: 27px;
-}
-
-#navigation-menu-on:target + .header .header__contacts-item:last-child {
-  display: block;
-}
+// #endregion

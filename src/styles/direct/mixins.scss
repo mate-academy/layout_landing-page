@@ -30,22 +30,25 @@
 }
 
 @mixin contacts-position-hover {
-  display: block;
-  position: absolute;
   z-index: 3;
-  top: 0;
-  right: 71px;
+  inset: -31px 71px auto auto;
   padding-right: 25px;
 
-  @media (max-width: 410px) {
-    top: 23px;
-    right: 0;
-    padding-top: 25px;
-    padding-right: 0;
+  @include on-mobile {
+    top: -29px;
+
+    @media (max-width: 410px) {
+      top: 23px;
+      right: 0;
+      padding-top: 25px;
+      padding-right: 0;
+    }
   }
 }
 
 @mixin contacts-font-size-hover-mobile {
+  padding: 1px;
+
   @media (max-width: 410px) {
     font-size: 12px;
     line-height: 0;
@@ -97,4 +100,8 @@
   &:hover span::before {
     transform: scaleX(1);
   }
+}
+
+@mixin transition-hidding {
+  transition: opacity 1000ms;
 }
