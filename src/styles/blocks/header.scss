@@ -1,0 +1,295 @@
+.header {
+  width: $page-content-width;
+  height: calc(100vh - $header-margin-top);
+  color: $white;
+  position: relative;
+  z-index: 3;
+
+  @include on-desktop {
+    height: calc(840px - $header-margin-top);
+  }
+
+  // #region====CONTACTS-HEADER======
+  &__contacts {
+    display: block;
+    position: absolute;
+    inset: 400px auto auto;
+
+    @include on-desktop {
+      top: 408px;
+    }
+
+    &-list {
+      text-align: left;
+    }
+
+    &-item {
+      &:last-child {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+      }
+
+      &:nth-child(even) {
+        padding-bottom: 8px;
+      }
+
+      &:not(&:last-child) {
+        font-size: 16px;
+        line-height: 27px;
+      }
+    }
+
+    &-link {
+      color: $white;
+      text-transform: uppercase;
+      visibility: hidden;
+      opacity: 0;
+
+      @include transition-hidding;
+      @include underline-hover-header;
+    }
+
+    &:hover {
+      @include contacts-position-hover;
+
+      & .header__contacts-list {
+        text-align: right;
+      }
+
+      & .header__contacts-item:last-child {
+        display: none;
+      }
+
+      & .header__contacts-link {
+        visibility: visible;
+        opacity: 1;
+
+        @include contacts-font-size-hover-mobile;
+      }
+    }
+  }
+
+  // #endregion
+
+  // #region====TOP PART of HEADER (Logo and Icons)
+  &__top {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:has(.icon--phone:hover) + .header__bottom .header__contacts {
+      @include contacts-position-hover;
+    }
+
+    &:has(.icon--phone:hover) + .header__bottom .header__contacts-link {
+      @include contacts-font-size-hover-mobile;
+
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &:has(.icon--phone:hover) + .header__bottom .header__contacts-list {
+      text-align: right;
+    }
+
+    &:has(.icon--phone:hover)
+      + .header__bottom
+      .header__contacts-item:last-child {
+      display: none;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    text-transform: uppercase;
+    font-size: 28px;
+    line-height: 23px;
+    letter-spacing: -1.5px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  // #endregion
+
+  // #region====BOTTOM PART of HEADER (Title, Menu-Navigation and Menu-Contacts)
+  &__bottom {
+    text-align: center;
+    margin-inline: auto;
+    padding-top: 129px;
+  }
+
+  &__title {
+    display: block;
+    width: 240px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    margin-inline: auto;
+    opacity: 1;
+
+    @include transition-hidding;
+  }
+
+  // #endregion
+
+  // #region====MENU (Menu-Navigation and Menu-Contacts)
+  &__navigation {
+    display: block;
+    position: absolute;
+    top: 95px;
+
+    @include on-desktop {
+      top: 105px;
+    }
+
+    &-item {
+      padding-bottom: 32px;
+      text-align: left;
+    }
+
+    &-link {
+      font-size: 22px;
+      line-height: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $white;
+      visibility: hidden;
+      opacity: 0;
+
+      @include transition-hidding;
+      @include underline-hover-header;
+    }
+  }
+
+  // #endregion
+
+  // =======HEADER-BACKGROUND=======
+  //  Use independent div with header background for save opportunity
+  // apply external margins to BEM block (this case this is a header).
+  // Otherwise, with using padding inside header-BEM is not possible
+  // to get full width with this picture (or another background).
+  &-image {
+    width: 100%;
+    height: 100vh;
+
+    @include on-desktop {
+      height: 840px;
+    }
+
+    background-image: url('../images/header-background.webp');
+
+    @include centered-background;
+
+    position: absolute;
+    z-index: 2;
+    top: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      width: calc($page-content-width + ($page-margin * 2));
+      width: 100vw;
+      height: 1px;
+      background-color: transparent;
+      transition:
+        background-color 500ms ease,
+        height 0s 2s;
+      position: fixed;
+      left: 0;
+    }
+  }
+}
+
+// #region===CHANGING AFTER BurgerMenu CLICK
+
+#navigation-menu-on:target {
+  &::before {
+    width: 100vw;
+    height: 100vh;
+    background-color: $red;
+    transition: background-color 500ms ease;
+
+    @include on-desktop {
+      height: 700px;
+    }
+  }
+
+  & ~ .hours {
+    margin-top: calc(100vh + 140px - $header-margin-top);
+
+    @include on-mobile {
+      margin-top: calc(100vh + 100px - $header-margin-top);
+    }
+
+    @include on-desktop {
+      margin-top: calc(840px + 140px - $header-margin-top);
+    }
+  }
+
+  & + .header {
+    height: calc(100vh - $header-margin-top);
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    overflow-y: auto;
+
+    @include on-desktop {
+      height: calc(840px - $header-margin-top);
+      left: calc((100vw - $page-content-width) / 2);
+    }
+
+    & .header__title {
+      opacity: 0;
+    }
+
+    & .header__contacts:hover {
+      inset: 400px auto auto;
+      padding: 0;
+
+      @include on-desktop {
+        top: 408px;
+      }
+    }
+
+    & .header__contacts-item:last-child {
+      display: block;
+    }
+
+    & .header__contacts-link {
+      visibility: visible;
+      opacity: 1;
+      padding: 0;
+    }
+
+    & .header__navigation-link {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    & .icon--burger-menu {
+      display: none;
+    }
+
+    & .icon--phone {
+      display: none;
+    }
+
+    & .icon--close {
+      display: block;
+    }
+
+    & .header__contacts-list {
+      text-align: left;
+    }
+  }
+}
+
+// #endregion

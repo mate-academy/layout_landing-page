@@ -1,0 +1,153 @@
+.onview {
+  &__heading {
+    margin-bottom: 48px;
+
+    &-title {
+      margin-bottom: 8px;
+    }
+
+    &-descreption {
+      max-width: 400px;
+      margin-inline: auto;
+      font-weight: 400;
+      line-height: 27px;
+      text-align: center;
+
+      @include on-desktop {
+        max-width: 350px;
+        text-align: center;
+      }
+    }
+  }
+
+  &__article {
+    margin-bottom: 48px;
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+
+    &-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(87px, 1fr));
+      column-gap: 24px;
+      margin-bottom: 24px;
+
+      @include on-mobile {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+      }
+
+      &--wider-start {
+        grid-template-columns: 1fr 32%;
+
+        @include on-mobile {
+          grid-template: minmax(130px, 32%) / minmax(130px, 1fr) minmax(
+              130px,
+              32%
+            );
+          column-gap: 20px;
+        }
+      }
+
+      &--wider-end {
+        grid-template-columns: 32% 1fr;
+
+        @include on-mobile {
+          grid-template: minmax(130px, 32%) / minmax(130px, 32%) minmax(
+              130px,
+              1fr
+            );
+          column-gap: 20px;
+        }
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &--align-rigth-on-mobile {
+        @include on-mobile {
+          object-position: right;
+        }
+      }
+
+      &--align-centred-text {
+        @include on-mobile {
+          object-position: 19% 20%;
+          scale: 1.35;
+        }
+      }
+    }
+
+    &-details {
+      line-height: 27px;
+    }
+
+    &-title {
+      color: $red;
+    }
+
+    &-period {
+      font-weight: 400;
+    }
+  }
+
+  &__button {
+    width: 324px;
+    height: 56px;
+    display: block;
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    line-height: 27px;
+    color: $white;
+    font-size: 16px;
+    background-color: $red;
+    margin-inline: auto;
+
+    @include on-mobile {
+      width: 100%;
+    }
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background-color 1000ms ease;
+
+      &:hover {
+        background-color: #ae1c23;
+      }
+
+      &:active {
+        background-color: #eb343d;
+      }
+    }
+  }
+
+  &__container {
+    overflow: hidden;
+    transition: scale 500ms;
+
+    &--hidden-on-tablet {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &:hover {
+      scale: 1.02;
+    }
+  }
+}

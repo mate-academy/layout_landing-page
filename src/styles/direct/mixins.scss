@@ -1,0 +1,107 @@
+@mixin on-mobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin on-big-screen {
+  @media (min-width: 1600px) {
+    width: 1300px;
+    @content;
+  }
+}
+
+@mixin centered-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin contacts-position-hover {
+  z-index: 3;
+  inset: -31px 71px auto auto;
+  padding-right: 25px;
+
+  @include on-mobile {
+    top: -29px;
+
+    @media (max-width: 410px) {
+      top: 23px;
+      right: 0;
+      padding-top: 25px;
+      padding-right: 0;
+    }
+  }
+}
+
+@mixin contacts-font-size-hover-mobile {
+  padding: 1px;
+
+  @media (max-width: 410px) {
+    font-size: 12px;
+    line-height: 0;
+  }
+}
+
+@mixin underline-hover-header {
+  & {
+    position: relative;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $white;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 500ms;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+@mixin underline-hover-contacts {
+  & span {
+    display: inline-block;
+    position: relative;
+  }
+
+  & span::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $black;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 500ms;
+  }
+
+  &:hover span::before {
+    transform: scaleX(1);
+  }
+}
+
+@mixin transition-hidding {
+  transition: opacity 1000ms;
+}
