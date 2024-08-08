@@ -6,12 +6,11 @@
   color: $color-background-page;
   line-height: 140%;
   background-color: $color-background-page;
-
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
-    min-width: 320;
+    min-width: 320px;
   }
 
   &__menu {
@@ -20,11 +19,18 @@
     right: 0;
     left: 0;
     opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
     pointer-events: none;
 
     &:target {
       opacity: 1;
+      transform: translateX(0);
       pointer-events: all;
     }
   }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
