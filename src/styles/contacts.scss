@@ -1,119 +1,132 @@
 .contacts {
-  font-family: Manrope, sans-serif;
+  margin-bottom: 64px;
 
-  &__info {
+  @include on-tablet {
+    margin-bottom: 120px;
+  }
+
+  &__container {
     @include page-grid;
+  }
 
-    &-registration {
-      grid-column: 1 / -1;
+  &__form {
+    display: grid;
+    row-gap: 16px;
+    grid-column: 1 / -1;
 
-      @include on-tablet {
-        grid-column: 1 / 4;
-      }
-
-      @include on-desktop {
-        grid-column: span 6;
-      }
-    }
-
-    &-company {
-      grid-column: 1 / -1;
-
-      @include on-tablet {
-        grid-column: 1 / -1;
-      }
-
-      @include on-desktop {
-        grid-column: 8 / 12;
-      }
+    @include on-desktop {
+      grid-column: 1 / 7;
     }
   }
 
-  &__registration-field__input {
-    font-size: 14px;
-    line-height: 20px;
-
-    padding-left: 16px;
-    margin-bottom: 16px;
-    width: 100%;
-    height: 42px;
-    outline: none;
-    border: 1px solid transparent;
+  &__button {
+    margin-block: 16px 48px;
+    padding: 14.5px 0;
+    border: 1px solid $main-button-color;
     box-sizing: border-box;
+    border-radius: 8px;
+    font:
+      700 16px Manrope,
+      Arial,
+      sans-serif;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: $main-button-color;
+    cursor: pointer;
+    grid-column: 1 / -1;
 
-    @include button-field;
+    @include on-desktop {
+      grid-column: 1 / 7;
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      border: 1px solid $main-text-color;
+      color: #fff;
+      background-color: $main-text-color;
+      transition: $efectDuration;
+    }
+
+    &:active {
+      background-color: $main-active-color;
+    }
+  }
+
+  &__input {
+    padding-block: 14px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    font:
+      400 14px Manrope,
+      Arial,
+      sans-serif;
+    line-height: 19.6px;
+    letter-spacing: 0.15px;
+    color: #1b2129;
+    border-radius: 8px;
+    border: 1px solid #f9f9f9;
+    background-color: #f9f9f9;
+    grid-column: 1 / -1;
+    outline: none;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+
+    &:hover {
+      border: 1px solid #dbdbdb;
+      color: $main-text-color;
+      transition: $efectDuration;
+
+      &::placeholder {
+        color: $main-text-color;
+      }
+    }
 
     &:focus {
-      background-color: #f9f9f9;
-      border: 1px solid #dbdbdb;
-      cursor: pointer;
+      border: 1px solid $main-button-color;
     }
 
-    &:invalid {
-      background-color: #f9f9f9;
-      border-color: $main-button-color;
-    }
-
-    &:hover {
-      border: 1px solid #dbdbdb;
-      color: #1b2129;
+    &--message {
+      height: 148px;
+      padding-right: 16px;
+      resize: none;
     }
   }
 
-  &__registration-field__message {
-    font-family: Manrope, sans-serif;
-    font-weight: 400;
+  &__address {
+    display: grid;
+    row-gap: 24px;
+    grid-auto-rows: max-content;
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__title {
+    margin-block: 0 8px;
     font-size: 14px;
-    line-height: 20px;
-
-    padding-top: 14px;
-    padding-left: 16px;
-    margin-bottom: 32px;
-    width: 100%;
-    height: 148px;
-    outline: none;
-    resize: none;
-    box-sizing: border-box;
-
-    &:hover {
-      border: 1px solid #dbdbdb;
-      color: #1b2129;
-    }
-
-    @include button-field;
+    line-height: 19.6px;
+    color: #9393a3;
   }
 
-  &__company-field {
-    margin-bottom: 24px;
-  }
-
-  &__company-field-input {
-    margin: 0 auto;
+  &__descriptions {
     display: block;
-
-    margin-bottom: 8px;
-    width: 100%;
-    height: 20px;
-
-    text-align-last: left;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-
-  &__company-field-input-2 {
-    margin: 0 auto;
-    height: 22px;
-    width: 100%;
-    outline: none;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    transition: all 0.3s;
+    font-size: 16px;
+    line-height: 22.4px;
+    text-decoration: none;
+    color: #191919;
+    transform-origin: left;
+    transition: transform $efectDuration;
 
     &:hover {
-      font-weight: bold;
-      color: green;
+      color: $main-button-color;
+      transform: scale(1.05);
+      transition: $efectDuration;
     }
   }
 }
