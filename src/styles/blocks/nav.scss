@@ -1,0 +1,107 @@
+.nav {
+  position: fixed;
+  left: 0;
+  top: 74px;
+
+  height: calc(100svh - 74px);
+  width: 100vw;
+
+  overflow-y: auto;
+
+  transform: translateX(100%);
+  transition-duration: 0.5s;
+
+  background-color: #e5e6e8;
+
+  @include onDesktop {
+    transition-duration: 1s;
+  }
+
+  &__wrapper {
+    padding: 32px 0 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    font-family: $spaceGroteskFont;
+    font-weight: $spaceGroteskBold;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+
+    font-size: 22px;
+    line-height: $additionalLineHeight;
+
+    &::before {
+      @include linkUnderline;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone {
+    letter-spacing: 2px;
+  }
+
+  &__action {
+    position: relative;
+    max-width: max-content;
+
+    text-transform: uppercase;
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+
+      display: block;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: $mainColor;
+
+      @keyframes underline-move {
+        0% {
+          width: 100%;
+        }
+        50% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    }
+
+    &:hover {
+      &::before {
+        animation: underline-move 0.7s ease alternate;
+      }
+    }
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+}
