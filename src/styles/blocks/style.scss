@@ -1,0 +1,72 @@
+.page {
+  font-size: $font-size-base;
+  color: $main-text-color;
+  font-family: $space-grotesk-font;
+  transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(+100%);
+    transition: all 0.5s;
+    overflow: auto;
+
+    &__top {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: #e5e5e5;
+    }
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+  &__non-contant--image {
+    margin-block: 6rem 3rem;
+
+    @include on-tablet {
+      margin-block: 7.5rem 3.5rem;
+    }
+  }
+}
+
+.image-link img {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    max-width: 744px;
+    padding: 0 72px;
+  }
+
+  @include on-desktop{
+    max-width: 1260px;
+    padding: 0 120px;
+  }
+}

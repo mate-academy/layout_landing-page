@@ -1,0 +1,104 @@
+.section {
+  box-sizing: border-box;
+}
+
+.categories {
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    gap: 20px;
+  }
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  @include on-tablet {
+    justify-content: start;
+  }
+}
+
+.categories__image {
+  border-radius: 4px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include on-tablet {
+    width: calc(33% - 13.33px);
+    height: auto;
+    flex: 0 0 calc(33% - 13.33px);
+
+    &.image--big {
+      flex: 0 0 calc(66% - 13.33px);
+    }
+  }
+
+  @include on-desktop {
+    flex: 0 0 calc(33% - 13.33px);
+
+    &.image--big {
+      flex: 0 0 calc(66% - 13.33px);
+      max-width: 672px;
+    }
+  }
+}
+
+.categories__title {
+  display: flex;
+  align-items: start;
+  line-height: 25px;
+  margin-block: 16px 40px;
+
+  @include font(18px, 700);
+
+  @include on-tablet {
+    font-size: 24px;
+    line-height: 34px;
+    margin-block: 16px 56px;
+  }
+}
+
+.categories__button {
+  width: 280px;
+  height: 56px;
+  background-color: $button-background-color;
+  border-radius: 8px;
+  border: none;
+  color: $button-text-color;
+  font-family: $space-grotesk-font;
+  line-height: 27px;
+  cursor: pointer;
+
+  @include font(16px, 700);
+
+  @include on-tablet {
+    width: 600px;
+  }
+
+  @include on-desktop {
+    width: 324px;
+  }
+
+  &:hover {
+    border: $hovered-button-border;
+    background-color: $hovered-button-background-color;
+    color: $hovered-button-text-color;
+  }
+
+  &:focus {
+    border: $focused-button-border;
+    background-color: $focused-button-background-color;
+    color: $focused-button-text-color;
+  }
+}
