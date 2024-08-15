@@ -1,0 +1,124 @@
+.current-view {
+  &__title {
+    @include section-title-styles;
+
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  &__description {
+    margin-inline: auto;
+    margin-bottom: 48px;
+    max-width: 392px;
+    justify-self: center;
+    text-align: center;
+    line-height: 27px;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 48px;
+  }
+
+  &__item:last-child {
+    margin-bottom: 40px;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center center;
+    transform: scale(1);
+    transition: transform $transition;
+
+    &.image-1 {
+      object-position: 15% center;
+    }
+
+    &.image-7 {
+      object-position: right 25%;
+    }
+
+    &.image-1,
+    &.image-7 {
+      @include on-tablet {
+        aspect-ratio: 2 / 1;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__images-field {
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: 2fr 1fr;
+      column-gap: 24px;
+    }
+
+    &.short-wide {
+      @include on-tablet {
+        grid-template-columns: 1fr 2fr;
+        column-gap: 24px;
+      }
+    }
+  }
+
+  & .three-images-field {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+
+      .image-5 {
+        display: none;
+      }
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+
+      .image-5 {
+        display: block;
+      }
+    }
+  }
+
+  &__exhibition {
+    color: $accent-color;
+  }
+
+  &__button {
+    margin-inline: auto;
+    cursor: pointer;
+
+    @include button-styles;
+
+    transition: background-color $transition;
+
+    @include on-tablet {
+      max-width: 392px;
+    }
+
+    @include on-desktop {
+      max-width: 324px;
+    }
+  }
+
+  &__button:hover,
+  &__button:focus {
+    background-color: $hover-color;
+  }
+
+  &__button:active {
+    background-color: $pressed-color;
+  }
+}
