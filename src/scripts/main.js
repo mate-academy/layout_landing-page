@@ -111,7 +111,7 @@ gsap.utils.toArray('.page__section--title').forEach((element) => {
       scrollTrigger: {
         trigger: element,
         start: 'top 80%',
-        end: 'top 30%',
+        end: 'top 20%',
         toggleActions: 'play none none reverse',
       }
     }
@@ -133,7 +133,7 @@ gsap.fromTo(
     scrollTrigger: {
       trigger: '.about__description',
       start: 'top 80%',
-      end: 'top 30%',
+      end: 'top 20%',
       toggleActions: 'play none none reverse',
     }
   }
@@ -152,7 +152,7 @@ gsap.fromTo(
     scrollTrigger: {
       trigger: '.contacts__container',
       start: 'top 80%',
-      end: 'top 30%',
+      end: 'top 20%',
       toggleActions: 'play none none reverse',
     }
   }
