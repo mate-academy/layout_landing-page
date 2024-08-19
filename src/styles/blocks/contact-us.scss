@@ -1,6 +1,19 @@
 .contact-us {
-  @include pageGrid;
   padding-top: 64px;
+
+  &__content {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat($column-grid-mb, 1fr);
+
+    @include onTablet {
+      grid-template-columns: repeat($column-grid-tb, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat($column-grid-pc, 1fr);
+    }
+  }
 
   @include onTablet {
     padding-top: 120px;
@@ -15,7 +28,80 @@
   }
 }
 
-.footer--content {
+.contact-us__form {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 1 / 6;
+  }
+
+  @include onDesktop {
+    grid-column: 1 / 6;
+  }
+
+  &__input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 16px;
+    background-color: $forms-default;
+    color: $forms-text-default;
+    border-radius: 8px;
+    border: 0;
+    height: 48px;
+    padding: 14px 16px;
+  }
+
+  &__last {
+    padding: 14px 16px;
+    resize: none;
+    height: 148px;
+    color: $forms-text-default;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+}
+
+
+.contact-us__button {
+  grid-column: 1 / -1;
+  border: 0;
+
+  height: 56px;
+  color: $second-main-color;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  background-color: $color-button;
+  transition-duration: $timing-for-animation;
+  margin-bottom: 48px;
+
+  @include onTablet {
+    margin-bottom: 80px;
+    grid-column: 1 / 6;
+  }
+
+  @include onDesktop {
+    margin-bottom: 120px;
+    grid-column: 8 / 12;
+  }
+
+  &:hover {
+    background-color: $main-text-color;
+  }
+
+  &::after {
+    background-color: $button-before;
+  }
+}
+
+.contact-us__footer {
+  font-family: "Manrope", sans-serif;
   grid-column: 1 / -1;
 
   @include onTablet {
@@ -28,79 +114,16 @@
 }
 
 .content-first {
+  margin-bottom: 8px;
   color: $color-footer-title;
-  font-family: Manrope;
   font-size: 14px;
   font-weight: 400;
 }
 
 .content-second {
+  margin: 0;
+  margin-bottom: 24px;
   color: $color-footer-second;
-  font-family: Manrope;
   font-size: 16px;
   font-weight: 400;
 }
-
-  .contact-us__button {
-    height: 56px;
-    color: $second-main-color;
-    border: 0;
-    padding: 0;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 27px;
-    text-align: center;
-    background-color: $color-button;
-    transition-duration: $timing-for-animation;
-    margin-bottom: 48px;
-
-    @include onTablet {
-      margin-bottom: 80px;
-    }
-
-    @include onDesktop {
-      margin-bottom: 120px;
-    }
-
-    &:hover {
-      background-color: $main-text-color;
-    }
-
-    &::after {
-      background-color: $button-before;
-    }
-  }
-
-  .form {
-    grid-column: 1 / -1;
-
-    @include onTablet {
-      grid-column: 1 / 6;
-    }
-
-    &__input {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      margin-bottom: 16px;
-      background-color: $forms-default;
-      color: $forms-text-default;
-      border-radius: 8px;
-      border: 0;
-      height: 48px;
-      padding: 14px 16px;
-    }
-
-    &__last {
-      padding: 14px 16px;
-      resize: none;
-      height: 148px;
-      color: $forms-text-default;
-      font-family: Manrope;
-      font-size: 14px;
-      font-weight: 400;
-      text-align: left;
-      margin-bottom: 32px;
-    }
-  }
