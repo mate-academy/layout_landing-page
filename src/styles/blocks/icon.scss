@@ -6,13 +6,40 @@
 
   @include hover(transform, scale(1.2));
 
-  @include onTablet {
+  @include on-tablet {
     width: 32px;
     height: 32px;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone-call.svg);
+    position: relative;
+
+    &::after {
+      content: '+1 234 5555-55-55';
+      visibility: hidden;
+      opacity: 0; // Initially transparent
+      position: absolute;
+      top: 100%; // Positioned below the icon
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #333;
+      white-space: nowrap;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 10; // Ensure it's above other content
+      pointer-events: none; // Prevent any interaction
+    }
+
+    &:hover::after {
+      visibility: visible; // Show on hover
+      opacity: 1; // Fade in on hover
+    }
   }
 
   &--menu {
