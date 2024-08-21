@@ -3,6 +3,7 @@
   height: 24px;
   width: 24px;
   background-size: cover;
+  transition: transform 0.3s;
 
   @include hover(transform, scale(1.2));
 
@@ -14,21 +15,20 @@
   &--phone {
     background-image: url(icons/icon-phone.svg);
 
-    &::after {
-      content: '+1 234 555-55-55';
-      position: absolute;
-      color: black;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 2px;
-      width: 140px;
-
-      top: calc(25%);
-      left: -100%;
-
-      transform: translateX(-40px) scale(0);
-      transition: all $effectDuration;
+    @include on-desktop {
+      &:hover::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        width: max-content;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 40px;
+        color: #000;
+      }
     }
 
     &:hover::after {
