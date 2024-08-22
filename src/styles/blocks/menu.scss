@@ -1,4 +1,5 @@
 .menu {
+  overflow: auto;
   position: fixed;
   top: -100%;
   right: 0;
@@ -10,7 +11,7 @@
   flex-direction: column;
   pointer-events: none;
 
-  transition: opacity .7s, top 1s;
+  transition: opacity .9s, top 1s;
 
   &:target {
     opacity: 1;
@@ -19,13 +20,22 @@
   }
 
   &__top {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     height: 72px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    @include on-tablet {
+      height: 96px;
+      padding: 0 76px;
+      margin-bottom: 24px;
+    }
   }
 
   &__link {
@@ -34,6 +44,11 @@
     &-logo {
       height: 16px;
       width: 152px;
+
+      @include on-tablet {
+        width: 228px;
+        height: 24px;
+      }
     }
   }
 
