@@ -1,0 +1,57 @@
+@font-face {
+  font-family: Manrope, sans-serif;
+  src: url(../fonts/Manrope-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Manrope, sans-serif;
+  src: url(../fonts/Manrope-Bold.ttf);
+  font-weight: 700;
+}
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $text-color;
+  box-sizing: border-box;
+
+  &__body {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.4s linear;
+    transform: translateX(100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+      z-index: 1;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__container {
+    @include content-padding-mixin;
+  }
+}
+
+.page__menu:target .main__go-top {
+  display: none;
+}
