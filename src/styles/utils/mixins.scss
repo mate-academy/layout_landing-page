@@ -1,0 +1,78 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin align {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin grid-desktop {
+  @for $start from 1 through 12 {
+    @for $end from $start through 12 {
+      &--desktop-#{$start}-#{$end} {
+        @include on-desktop {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin grid-tablet {
+  @for $start from 1 through 6 {
+    @for $end from $start through 6 {
+      &--tablet-#{$start}-#{$end} {
+        @include on-tablet {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
