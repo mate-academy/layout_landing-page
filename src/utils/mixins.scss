@@ -1,0 +1,91 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-dekstop {
+  @media (min-width: $dekstop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-dekstop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns-count: 2;
+  
+  font-weight: 500;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+
+    --columns-count: 6;
+  }
+
+  @include on-dekstop {
+    --columns-count: 12;
+  }
+}
+
+@mixin style-input-button {
+  border: 0;
+  outline: none;
+  grid-column: 1 / -1;
+  border-radius: 40px;
+  padding: 15px 48px;
+
+  font-weight: 700;
+  width: 100%;
+
+  @include hover(all, 0.3s);
+}
+
+@mixin buttons-hover {
+  @include hover(all, 0.3s);
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin inputs-hover {
+  color : $input-placeholder-color;
+  &:hover{
+    color : $input-text-color;
+  }
+  &:focus{
+    color : $input-text-color;
+  }
+}
+
+
