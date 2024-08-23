@@ -8,12 +8,26 @@
 
   transition: transform .5s;
 
-    &:hover {
-      transform: scale(1.15);
-    }
-
   &-phone {
+    position: relative;
     background-image: url(/src/images/icons/icon-phone-call.svg);
+
+    @include on-computer {
+      &::before {
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        left: -150px;
+        width: max-content;
+        transition-duration: .5s;
+        opacity: 0;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &-burger {
@@ -27,5 +41,8 @@
   &-close {
     background-image: url(/src/images/icons/icon-burger-close2.svg);
   }
-}
 
+  &:hover {
+    transform: scale(1.15);
+  }
+}
