@@ -1,0 +1,60 @@
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+
+  &--phone {
+    background-image: url('../img/Phone-number.png');
+    position: relative;
+
+    &::after {
+      content: "+1 234 555-55-55";
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: rgba(27, 33, 41, 1);
+    ;
+      position: absolute;
+      top: 50%;
+      right: 120%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      white-space: nowrap;
+    }
+
+    &:hover::after {
+      @include  onDesktop{
+      opacity: 1;}
+
+    }
+  }
+
+
+  &--menu {
+    background-image: url('../img/Menu.png');
+
+    @include hover(transform, scale(1.2));
+    @include hover(background-image, url('../img/Icon-Burger-menu-hover.png'));
+
+
+  }
+
+  &--close {
+    background-image: url('../img/Icon-Close.png');
+  }
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+}
