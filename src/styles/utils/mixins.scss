@@ -1,0 +1,91 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-laptop {
+  @media (min-width: $laptop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-mixin {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include on-tablet {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
+  @include on-laptop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.4s linear;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin input-styles {
+  padding: 14px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.15px;
+  color: inherit;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  @include hover(border, 1px solid #dbdbdb);
+
+  &:focus {
+    border: 2px solid #f98921;
+  }
+}
+
+@mixin buttons-styles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  height: 56px;
+  width: 100%;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 27px;
+  color: $white-text-color;
+
+  border-radius: 8px;
+  border: none;
+
+  cursor: pointer;
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-laptop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
