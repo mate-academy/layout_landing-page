@@ -1,0 +1,77 @@
+.menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transition: all 0.3s ease 0s;
+
+  &.active {
+    right: 0;
+  }
+
+  &__container {
+    padding-top: 104px;
+
+    @include on-tablet {
+      padding-top: 154px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+  }
+
+  &__link {
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #1b2129;
+
+    &--call {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 16px;
+      padding-top: 12px;
+
+      span {
+        display: inline;
+        position: relative;
+        transition: all 0.3s ease 0s;
+
+        &:last-child {
+          text-transform: uppercase;
+          letter-spacing: 2px;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            bottom: -5px;
+            background-color: #000;
+            transition: all 0.3s ease 0s;
+          }
+        }
+      }
+    }
+  }
+
+  &__item {
+    &:not(:last-child):hover .menu__link {
+      text-decoration: underline;
+    }
+
+    &:last-child:hover .menu__link--call {
+      span::before {
+        display: none;
+      }
+    }
+  }
+}
