@@ -14,10 +14,43 @@
 
   &--phone {
     background-image: url(image/icon/icon-phone.png);
+    position: relative;
+
+    &--tel {
+      opacity: 0;
+      transform: translateY(-300%);
+    }
+
+    @include onTablet {
+      &--tel {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 50%;
+        left: calc(-400% + 10px); // Отступ от иконки
+        transform: translateY(-130%);
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        white-space: nowrap;
+        border-radius: 5px;
+        color: $main-text-color;
+        font-size: 12px;
+        line-height: 16px;
+        text-decoration: none;
+      }
+
+      &:hover &--tel {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &--menu {
     background-image: url(image/icon/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(image/icon/icon-burger-menu-hover.png);
+    }
   }
 
   &--close {
