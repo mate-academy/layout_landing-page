@@ -29,31 +29,40 @@
   }
 
   &__popover-container {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
 
     .popover-content {
-      display: block;
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      display: none;
       opacity: 0;
       visibility: hidden;
-      position: absolute;
-      top: 120%;
-      left: 150%;
       transform: translateX(-50%);
-      padding: 10px;
-      background-color: $text-color-black;
-      color: #fff;
+
+      color: $text-color-black;
       border-radius: 8px;
       white-space: nowrap;
-      z-index: 100;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 2;
       transition: all $effectDuration;
+
+      @include desktop-width {
+        display: flex;
+      }
     }
 
-    &:hover .popover-content {
-      opacity: 1;
-      visibility: visible;
-      left: 50%;
+    @include desktop-width {
+      .popover-trigger:hover + .popover-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
     }
   }
 }
