@@ -8,16 +8,36 @@
   }
 
   &__item {
-    list-style: none;
+    position: relative;
+    width: fit-content;
 
+    list-style: none;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
+
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background-color: $link-color;
+
+      transition: all 0.3s;
+      transform-origin: left;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__link {
+    position: relative;
     display: block;
     text-decoration: none;
-    color: #1d1d1d;
+    color: $link-color;
   }
 }
