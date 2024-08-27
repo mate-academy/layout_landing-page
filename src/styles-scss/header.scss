@@ -10,29 +10,27 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 120px;
+  padding: 0 $laptop-indens;
   position: relative;
+
   @media (max-width: 1260px) {
     height: 744px;
-    padding: 0 72px;
-  }
-  @media (max-width: 744px){
-    height: 480px;
-    padding: 0 20px;
+    padding: 0 $tablet-indens;
   }
 
-  &__content{
+  @media (max-width: 744px) {
+    height: 480px;
+    padding: 0 $phone-indens;
+  }
+
+  &__content {
     height: 100%;
     width: 100%;
   }
 
   &__top {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    grid-column: 1/-1;
+    @include topbar;
+
     z-index: 1;
   }
 
@@ -45,29 +43,31 @@
     width: 672px;
     font-size: 80px;
     line-height: 80px;
-    @media (min-width: 1261px) {
-      margin-top: 300px;
-    }
+    font-weight: $bold-font-weight;
+    letter-spacing: -1.5px;
+    color: white;
+    margin: 300px 0 0;
+
     @media (max-width: 1260px) {
       height: 64px;
       width: 600px;
       font-size: 64px;
       line-height: 64px;
-      margin-top: 306px;
+      margin: 306px 0 0;
     }
+
     @media (max-width: 744px) {
       height: 36px;
       width: 279px;
       font-size: 36px;
       line-height: 36px;
-      margin-top: 270px;
+      margin: 270px 0 0;
     }
-    font-weight: $bold-font-weight;
-    letter-spacing: -1.5px;
-    color: white;
-    margin-block: 0;
   }
 
+  &:has(.menu:target) {
+    overflow: hidden;
+  }
 }
 
 .icon {
@@ -79,11 +79,39 @@
     gap: 24px;
   }
 
-  &--phone{
+  &--phone {
     @include bg-icon-style(url(../pictures/Phone-icon.svg));
+
     height: 32px;
     width: 32px;
     background-size: contain;
+
+    &::before {
+      position: absolute;
+      content: '+1 234 5555-55-55';
+      width: max-content;
+      display: block;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      right: 250px;
+      opacity: 0;
+      transition: opacity $animation-speed ease;
+
+      @media (max-width: 1260px) {
+        right: 200px;
+      }
+
+      @media (max-width: 744px) {
+        right: 120px;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
     @media (max-width: 744px) {
       height: 24px;
       width: 24px;
@@ -92,20 +120,24 @@
 
   &--menu {
     @include bg-icon-style(url(../pictures/Menu-icon.svg));
+
     height: 32px;
     width: 32px;
     background-size: contain;
+
     @media (max-width: 744px) {
       height: 24px;
       width: 24px;
     }
   }
 
-  &--close{
+  &--close {
     @include bg-icon-style(url(../pictures/Close-icon.svg));
+
     height: 32px;
     width: 32px;
     background-size: contain;
+
     @media (max-width: 744px) {
       height: 24px;
       width: 24px;
@@ -113,86 +145,15 @@
   }
 }
 
-.logo{
+.logo {
   background-size: cover;
   margin: 36px 0;
   height: $height-logo;
   width: $width-logo;
+
   @media (max-width: 744px) {
     height: 38px;
     margin: 24px 0;
     width: 130px;
   }
-}
-
-.menu{
-  width: 100%;
-  background-color: #C2C2C2;
-  display: grid;
-  opacity: 0;
-  z-index: 0;
-  position: absolute;
-
-  &__content{
-    height: 711px;
-    margin: 0 120px;
-  @media (max-width: 1260px) {
-    height: 744px;
-    margin: 0 72px;
-  }
-  @media (max-width: 744px){
-    height: 480px;
-    margin: 0 20px;
-  }
-  }
-  &:target{
-    opacity: 1;
-    z-index: 1;
-  }
-
-  &__top{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    grid-row: 1;
-    grid-column: 1/-1;
-    justify-content: space-between;
-    z-index: 0;
-  }
-
-  &__logo{
-    background-image: url(../pictures/MyBiKE-black.svg);
-  }
-
-  &__item{
-    display: flex;
-    flex-direction: column;
-    font-weight: 700;
-    @media (max-width: 1260px) {
-      font-weight: 600;
-    }
-    font-size: 22px;
-    line-height: 22px;
-    grid-column: 1/-1;
-    grid-row: 2;
-    gap: 32px;
-    margin:24px 0 40px;
-  }
-  &__phone{
-    width: 155px;
-    grid-column: 1/-1;
-  }
-  &__button{
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
-    width: 136px;
-    grid-column: 1/-1;
-    border: none;
-    border-bottom: solid 1px;
-    background-color: #C2C2C2;
-    text-transform: uppercase;
-    margin-top: 16px;
-    }
 }
