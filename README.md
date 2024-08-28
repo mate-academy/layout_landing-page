@@ -1,16 +1,24 @@
-# Landing page
+# B&O Landing page
+A landing page for audio products of the high-end consumer electronics company Bang & Olufsen.
 
-- [PAGE PROTOTYPE](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
+## Check it out!
 - [DEMO LINK](https://vkrasnovyd.github.io/layout_landing-page/)
+- [PAGE PROTOTYPE](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
 
-# Task
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://vkrasnovyd.github.io/layout_landing-page/)
+## Project description
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Consists of 6 main blocks:
+1. Start screen with big product image, slogan, logo and multiple links.
+2. Slide-out navigation menu.
+3. **Recommended producs**: product cards with links to the corresponding products.
+4. **Categories**: product cards and headlines with links to the corresponding categories.
+5. **About us**: text block with image.
+6. **Contact us**: form and contact data with links.
+
+## Features
+* Responsive design without horizontal scrolling
+* Block structure with reusable components for easy site scaling
+* Product cards with unified style
+* Clickable contact hyperlinks
+* Slide-out navigation menu
+* Hover effects for enhancing user engagement
