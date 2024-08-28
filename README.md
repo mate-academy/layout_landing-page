@@ -1,21 +1,31 @@
-# Landing page
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+# 🌟Nothing Landing Page
+This landing page project showcases the design of the Nothing website. It is a static website built using HTML, CSS, and JavaScript.
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+# 🛠️ Technologies Used
+HTML: The structure of the web page is built using HTML5 markup.
+CSS (SCSS): Styling is applied using Cascading Style Sheets (CSS3), including custom styles and layout adjustments.
+JavaScript: Interactivity and dynamic content are implemented using JavaScript, enhancing the user experience.
+# 🚀Features
+Responsive Design: The website is fully responsive and optimized for various screen sizes, ensuring a seamless experience across desktop, tablet, and mobile devices.
+Smooth Scroll: Smooth scrolling is implemented for navigating through different sections of the page, providing a modern and user-friendly browsing experience.
+Interactive Components: Interactive elements such as hover effects and clickable buttons enhance user engagement and interaction with the website.
+Optimized Performance: The website is optimized for performance, with fast loading times and efficient resource utilization.
+# Usage
+To view the Nosing Landing Page, simply open the index.html file in a web browser. Alternatively, you can access the live version of the page here.
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+# Credits
+Images: All images used in this project are sourced from royalty-free stock image websites and minification.
+Icons: Icons used in the project are from the Font Awesome icon library.
+Fonts: The fonts utilized are "Roboto" for general text and "Montserrat" for headings, sourced from Google Fonts.
+# Project Link
+- [Nothing Landing Page](https://AnyaRatusnyak.github.io/layout_landing-page/)
+# Design Link
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+- [Design Link](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6802-140&t=NkPM0QUwrXnWPpdN-0)
+# 👷Author
+- LinkedIn: **[Hanna Ratushniak](https://www.linkedin.com/in/hanna-ratushnyak/)**
+- Github: **[AnyaRatusnyak](https://github.com/AnyaRatusnyak)**
+
+# License
+This project is licensed under the MIT License.
