@@ -22,3 +22,4 @@ Consists of 6 main blocks:
 * Clickable contact hyperlinks
 * Slide-out navigation menu
 * Hover effects for enhancing user engagement
+* Image-links with descriptive titles
