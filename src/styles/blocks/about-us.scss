@@ -1,0 +1,75 @@
+.about-us {
+  @include page-grid;
+
+  position: relative; // Встановлюємо відносне позиціонування для секції
+
+  &::before {
+    content: ''; // Додаємо пустий контент для псевдоелемента
+    position: absolute; // Абсолютне позиціонування для фону
+    top: 0;
+    left: 0;
+    width: 100vw; // Розтягуємо фон на всю ширину вікна
+    height: 100%; // Робимо фон на всю висоту секції
+    background-color: #fcfaef; // Колір фону
+    z-index: 0; // Фон має бути позаду тексту
+    margin-left: calc(50% - 50vw); // Центруємо фон відносно ширини вікна
+  }
+  &__foto {
+    z-index: 1;
+    height: 200px;
+    background-position: center;
+    background-image: url(../images/about-us.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    object-position: center;
+    grid-column: 1 / -1;
+    margin: 0;
+    margin-bottom: 48px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+
+    @include on-tablet {
+      height: 400px;
+      margin-bottom: 120px;
+    }
+
+    @include on-desktop {
+      height: 460px;
+    }
+  }
+
+  &__title {
+    z-index: 1;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__content {
+    z-index: 1;
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      grid-column: 4 / 7;
+      margin-bottom: 120px;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 12;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    line-height: 22.4px;
+    font-size: 16px;
+  }
+}
