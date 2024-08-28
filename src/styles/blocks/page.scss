@@ -1,0 +1,49 @@
+.page {
+  font-family: $font-family;
+  font-style: normal;
+  color: $main-font-color;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    // position menu on top of content
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    // make menu overlay transparent
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition-duration: 0.3s;
+
+    &:target {
+      // remove menu overlay transparency when menu is active
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(&__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+.container {
+  @include content-padding-inline;
+
+  @include desktop {
+    max-width: 1020px;
+    margin: 0;
+    margin-inline: auto;
+  }
+}
