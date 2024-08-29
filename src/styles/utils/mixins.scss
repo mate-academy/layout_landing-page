@@ -1,0 +1,71 @@
+@mixin on-small {
+  @media screen and (min-width: $small-min-width) {
+    @content;
+  }
+}
+
+@mixin on-medium {
+  @media screen and (min-width: $medium-min-width) {
+    @content;
+  }
+}
+
+@mixin on-large {
+  @media screen and (min-width: $large-min-width) {
+    @content;
+  }
+}
+
+@mixin on-extra-large {
+  @media screen and (min-width: $extra-large-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 2rem;
+
+  @include on-small {
+    padding-inline: 7.2rem;
+  }
+
+  @include on-extra-large {
+    max-width: 102rem;
+    margin-inline: auto;
+    padding-inline: 12rem;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  row-gap: 3.2rem;
+  margin-bottom: 1.2rem;
+
+  @include on-small {
+    --columns: 6;
+
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 0 2.4rem;
+    margin-bottom: 2rem;
+  }
+
+  @include on-extra-large {
+    --columns: 12;
+
+    margin-bottom: 2rem;
+  }
+}

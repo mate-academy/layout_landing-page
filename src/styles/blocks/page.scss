@@ -1,0 +1,61 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid $input-border-focus;
+  background-color: $input-background-color;
+  -webkit-text-fill-color: $input-text-color;
+  -webkit-box-shadow: 0 0 0 1000px $input-background-color inset;
+  transition: background-color $effect-duration ease-in-out 0s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  font-size: 10px;
+  font-family: Poppins, sans-serif;
+  color: $main-text-color;
+  background: $main-background-color;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2.5rem;
+
+  @include on-medium {
+    scroll-padding-top: 6rem;
+  }
+
+  @include on-extra-large {
+    scroll-padding-top: 1.5rem;
+  }
+
+  &__body {
+    min-width: 32rem;
+  }
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all $effect-duration;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
