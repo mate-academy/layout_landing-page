@@ -14,24 +14,29 @@
 
   &--phone {
     position: relative;
+    text-decoration: none;
     background-image: url(../images/icons/icons-phone.svg);
-  }
 
-  &__phone-number {
-    display: none;
-    position: absolute;
-    left: -108px;
-    top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
-    color: #1b2129;
-    font-weight: 700;
-    font-size: 12px;
-    align-items: center;
-  }
+    &::before {
+      display: flex;
+      justify-content: right;
+      content: '+1 234 555-55-55';
+      font-weight: 700;
+      color: #1b2129;
+      white-space: nowrap;
+      opacity: 0;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      padding-top: 8px;
+      margin-right: 35px;
+    }
 
-  &--phone:hover &__phone-number {
-    display: flex;
+    @include on-desktop {
+      &:hover::before {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
