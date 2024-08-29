@@ -1,44 +1,42 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDekstop {
+@mixin on-dekstop {
   @media (min-width: $dekstop-min-width) {
     @content;
   }
 }
 
-@mixin contentInContainer {
+@mixin content-in-container {
   padding-inline: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 72px;
     margin-inline: auto;
   }
 
-  @include onDekstop() {
+  @include on-dekstop {
     max-width: 1020px;
   }
 }
 
-.container {
-  @include contentInContainer;
-}
-
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
+
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     --columns: 6;
+
     column-gap: 24px;
   }
 
-  @include onDekstop {
+  @include on-dekstop {
     --columns: 12;
   }
 }
