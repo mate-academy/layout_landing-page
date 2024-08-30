@@ -13,12 +13,12 @@
   position: relative;
   background-position: 50%;
 
-  @media (max-width: 1260px) {
+  @media (max-width: $tablet-format) {
     height: 628px;
     padding: 0 $tablet-indens;
   }
 
-  @media (max-width: 744px) {
+  @media (max-width: $phone-format) {
     background-position: 85%;
     height: 480px;
     padding: 0 $phone-indens;
@@ -37,6 +37,10 @@
 
   &__logo {
     background-image: url(../pictures/MyBiKE-white.svg);
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__title {
@@ -48,8 +52,9 @@
     letter-spacing: -1.5px;
     color: white;
     margin: 300px 0 0;
+    text-align: center;
 
-    @media (max-width: 1260px) {
+    @media (max-width: $tablet-format) {
       height: 64px;
       width: 600px;
       font-size: 64px;
@@ -57,7 +62,7 @@
       margin: 306px 0 0;
     }
 
-    @media (max-width: 744px) {
+    @media (max-width: $phone-format) {
       height: 36px;
       width: 279px;
       font-size: 36px;
@@ -65,26 +70,30 @@
       margin: 270px 0 0;
     }
   }
-
-  // &:has(.menu:target) {
-    // overflow: hidden;
-  // }
 }
 
-.icon {
+.icons {
   display: flex;
   gap: 32px;
   background-size: contain;
 
-  @media (max-width: 744px) {
+  @media (max-width: $phone-format) {
     gap: 24px;
   }
+}
 
-  &--phone {
+.icon {
+  height: 32px;
+  width: 32px;
+
+  @media (max-width: $phone-format) {
+    height: 24px;
+    width: 24px;
+  }
+
+  &-phone {
     @include bg-icon-style(url(../pictures/Phone-icon.svg));
 
-    height: 32px;
-    width: 32px;
     background-size: contain;
 
     &::before {
@@ -100,58 +109,36 @@
       opacity: 0;
       transition: opacity $animation-speed ease;
 
-      @media (max-width: 1260px) {
+      @media (max-width: $tablet-format) {
         right: 200px;
       }
 
-      @media (max-width: 744px) {
+      @media (max-width: $phone-format) {
         right: 120px;
       }
     }
 
-    &:hover {
-      opacity: 0.8;
-
-      &::before {
-        opacity: 1;
-      }
-    }
-
-    @media (max-width: 744px) {
-      height: 24px;
-      width: 24px;
+    &:hover::before {
+      opacity: 1;
     }
   }
 
-  &--menu {
+  &-menu {
     @include bg-icon-style(url(../pictures/Menu-icon.svg));
 
-    height: 32px;
-    width: 32px;
     background-size: contain;
     transition: opacity $animation-speed ease;
-
-    @media (max-width: 744px) {
-      height: 24px;
-      width: 24px;
-    }
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 
   &--close {
     @include bg-icon-style(url(../pictures/Close-icon.svg));
 
-    height: 32px;
-    width: 32px;
     background-size: contain;
+  }
 
-    @media (max-width: 744px) {
-      height: 24px;
-      width: 24px;
-    }
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
 }
 
@@ -161,7 +148,7 @@
   height: $height-logo;
   width: $width-logo;
 
-  @media (max-width: 744px) {
+  @media (max-width: $phone-format) {
     height: 38px;
     margin: 24px 0;
     width: 130px;
