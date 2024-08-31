@@ -85,6 +85,7 @@
 .icon {
   height: 32px;
   width: 32px;
+  transition: opacity $animation-speed ease;
 
   @media (max-width: $phone-format) {
     height: 24px;
@@ -95,8 +96,10 @@
     @include bg-icon-style(url(../pictures/Phone-icon.svg));
 
     background-size: contain;
+    position: relative;
 
     &::before {
+      pointer-events: none;
       position: absolute;
       content: '+1 234 5555-55-55';
       width: max-content;
@@ -105,21 +108,15 @@
       font-weight: 700;
       font-size: 16px;
       line-height: 27px;
-      right: 250px;
+      right: 50px;
       opacity: 0;
       transition: opacity $animation-speed ease;
-
-      @media (max-width: $tablet-format) {
-        right: 200px;
-      }
-
-      @media (max-width: $phone-format) {
-        right: 120px;
-      }
     }
 
-    &:hover::before {
-      opacity: 1;
+    @media (min-width: $tablet-format) {
+      &:hover::before {
+        opacity: 1;
+      }
     }
   }
 
