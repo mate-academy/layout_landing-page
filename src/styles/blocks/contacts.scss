@@ -23,6 +23,14 @@
       border: 2px solid #f98921;
     }
 
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      border: 0 solid transparent;
+      -webkit-text-fill-color: #1b2129;
+      -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset;
+    }
+
     &--big {
       min-height: 120px;
       resize: none;
@@ -45,8 +53,11 @@
     line-height: 27px;
     cursor: pointer;
     margin-bottom: 8px;
+    transition: transform 0.3s ease-in-out;
 
     &:hover {
+      @include hover(transform, scale(1.05));
+
       background-color: #1b2129;
     }
     &:focus {
@@ -74,6 +85,12 @@
     padding-bottom: 24px;
     text-decoration: none;
     color: #191919;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      @include hover(transform, scale(1.05));
+    }
   }
 
   &__content {
