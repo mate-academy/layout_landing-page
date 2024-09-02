@@ -1,0 +1,41 @@
+.recommended {
+  &__photo {
+    object-fit: cover;
+    width: 100%;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__products {
+    --columns: 2;
+
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 40px;
+    display: grid;
+
+    @include on-tablet {
+      justify-items: center;
+      gap: 56px 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+
+      grid-template-columns: repeat(var(--columns), 1fr);
+      gap: 24px;
+      justify-items: stretch;
+    }
+  }
+
+  &__product {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
