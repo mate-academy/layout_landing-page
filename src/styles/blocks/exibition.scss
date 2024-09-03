@@ -1,0 +1,86 @@
+$image-positions: (
+  '0': 0,
+  '25': 25%,
+  '50': 50%,
+  '100': 100%,
+);
+
+.exibition {
+  &__frame {
+    @include page-grid;
+
+    &--three-columns {
+      grid-template-columns: repeat(3, 1fr);
+
+      @include on-tablet {
+        @include page-grid;
+
+        .exibition__link:last-child {
+          display: none;
+        }
+      }
+
+      @include on-desktop {
+        .exibition__link:last-child {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &__link {
+    @include hover(transform, scale(1.05));
+
+    grid-column: span 1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @each $i-name, $i in $image-positions {
+      @each $j-name, $j in $image-positions {
+        &--pos-#{$i-name}-#{$j-name} {
+          object-position: #{$i} #{$j};
+        }
+      }
+    }
+  }
+
+  &__text {
+    margin: 0;
+    &--accent {
+      margin-top: 24px;
+      color: $accent-color;
+    }
+  }
+}
