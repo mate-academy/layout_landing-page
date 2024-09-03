@@ -1,0 +1,123 @@
+@import 'variable';
+@import 'mixin';
+
+.menu {
+  overflow: auto;
+  width: 100%;
+  background-color: #c2c2c2;
+  display: grid;
+  opacity: 0;
+  z-index: 0;
+  position: absolute;
+  transition: opacity $animation-speed ease;
+  height: 100%;
+
+  @media (max-width: 744px) {
+    position: absolute;
+    height: 100vh;
+  }
+
+  &__content {
+    margin: 0 120px;
+
+    @media (max-width: 1260px) {
+      margin: 0 72px;
+    }
+
+    @media (max-width: 744px) {
+      margin: 0 20px;
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    z-index: 1000;
+  }
+
+  &__top {
+    @include topbar;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__logo {
+    background-image: url(../pictures/MyBiKE-black.svg);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    gap: 32px;
+    margin: 24px 0 40px;
+
+    @media (max-width: $tablet-format) {
+      font-weight: 600;
+    }
+
+    @media (min-width: $phone-format) and (max-width: $tablet-format) {
+      margin: 8px 0 40px;
+    }
+  }
+
+  &__item {
+    width: fit-content;
+    position: relative;
+    text-decoration: none;
+    color: black;
+
+    &::after {
+      transition: opacity $animation-speed ease;
+      opacity: 0;
+      position: absolute;
+      display: block;
+      content: '';
+      border: solid black 1px;
+      width: 105%;
+      background-color: #000;
+      top: 25px;
+      left: 0;
+      z-index: 1;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__phone {
+    width: 155px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    transition: color $animation-speed ease;
+
+    &:hover {
+      color: #7e7e83;
+    }
+  }
+
+  &__button {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    border: none;
+    border-bottom: solid 1px;
+    background-color: #c2c2c2;
+    text-transform: uppercase;
+    margin-top: 16px;
+    padding: 0;
+    letter-spacing: 2px;
+    color: #1d1d1d;
+  }
+
+  &__number {
+    text-decoration: none;
+    color: black;
+    width: fit-content;
+  }
+}
