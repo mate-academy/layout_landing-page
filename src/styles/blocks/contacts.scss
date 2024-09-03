@@ -1,0 +1,99 @@
+.contacts {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  &__title {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__location {
+    margin-bottom: 8px;
+  }
+
+  &__contact {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__content {
+    --columns-count: 1;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns-count), 1fr);
+    gap: 48px 48px;
+  }
+
+  &__items {
+    display: grid;
+    gap: 48px 48px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: span 1;
+  }
+
+  &__input {
+    width: 100%;
+    height: 48px;
+    background-color: $form-color;
+    border: none;
+    font-family: Cinzel, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $form-text-color;
+    padding: 10px 14px;
+    box-sizing: border-box;
+
+    &--message {
+      height: 144px;
+    }
+  }
+
+  &__button {
+    background-color: $menu-color;
+    color: $secondary-text-color;
+    border: none;
+    width: 100%;
+    height: 56px;
+    font-family: Cinzel, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  @media (min-width: $tablet-min-width) {
+    &__content {
+      --columns-count: 2;
+    }
+  }
+
+  @media (min-width: $desktop-min-width) {
+    &__content {
+      --columns-count: 3;
+    }
+
+    &__items {
+      grid-template-columns: 1fr 1fr;
+      grid-column: span 2;
+    }
+  }
+}

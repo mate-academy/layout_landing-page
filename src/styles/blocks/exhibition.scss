@@ -1,0 +1,48 @@
+.exhibition {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__content {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: repeat($exhibition-columns-amount, 1fr);
+    column-gap: 20px;
+  }
+
+  &__link {
+    overflow: hidden;
+    grid-column: span 6;
+    align-items: center;
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: $mobile-max-width) {
+    &__link--layer50 {
+      display: none;
+    }
+    &__image {
+      &--position25 {
+        object-position: 25%;
+      }
+      &--position100 {
+        object-position: 100%;
+      }
+    }
+  }
+
+  @media (min-width: $tablet-min-width) {
+    &__link {
+      grid-column: span 4;
+
+      &--long {
+        grid-column: span 8;
+      }
+    }
+  }
+}
