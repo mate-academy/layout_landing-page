@@ -1,0 +1,67 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  transition: transform $effect-duration;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/images/icons/icon-phone.png);
+    position: relative;
+
+    .phone-numbers {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      color: $menu-text-color;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      position: absolute;
+      gap: 2px;
+      right: 125%;
+      top: -32px;
+      text-align: right;
+      width: auto;
+      white-space: pre;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      a {
+        color: $menu-text-color;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @include on-desktop {
+      &:hover .phone-numbers {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/images/icons/icon-menu.png);
+
+    &:hover {
+      background-image: url(/src/images/icons/icon-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/images/icons/icon-close.png);
+  }
+}
+
