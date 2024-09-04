@@ -1,0 +1,143 @@
+.page {
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  font-family: Poppins, sans-serif;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+
+  --template-columns: 6;
+  --column-width: 80px;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $black-color;
+    -webkit-box-shadow: 0 0 0 1000px $main-text-color inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform $transition-duration;
+
+    &:target {
+      transform: translateX(0%);
+    }
+  }
+
+  &__main {
+    padding-top: 60px;
+    padding-bottom: 120px;
+
+    @include content-padding-inline;
+
+    background-color: $black-color;
+
+    @include on-tablet {
+      padding-top: 120px;
+    }
+
+    &-section {
+      @include grid;
+    }
+
+    &-section:nth-child(n + 2) {
+      margin-top: 90px;
+
+      @include on-tablet {
+        margin-top: 120px;
+      }
+
+      @include on-desktop {
+        margin-top: 140px;
+      }
+    }
+
+    &-title {
+      margin: 0;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 32px;
+      letter-spacing: $main-letter-spacing;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 48px;
+        grid-column: 2 / 6;
+      }
+
+      @include on-desktop {
+        font-size: 64px;
+        line-height: 64px;
+        grid-column: 4 / 10;
+      }
+
+      &:not(.about-us__title) {
+        text-align: center;
+        margin-bottom: 48px;
+
+        @include on-tablet {
+          margin-bottom: 56px;
+        }
+
+        @include on-desktop {
+          margin-bottom: 64px;
+        }
+      }
+    }
+
+    &-bold {
+      font-size: 24px;
+      line-height: 33.6px;
+    }
+
+    &-regular {
+      margin-top: 8px;
+      line-height: 22.4px;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $main-text-color;
+    color: $black-color;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    height: 56px;
+    border-radius: 40px;
+    transition: box-shadow $transition-duration;
+
+    @include on-tablet {
+      cursor: pointer;
+
+      &:hover {
+        @include shadow-color(box-shadow, $hover-shadow-color);
+      }
+
+      &:active {
+        @include shadow-color(box-shadow, $active-shadow-color);
+      }
+    }
+  }
+}
