@@ -1,0 +1,63 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 32px;
+
+
+    > :last-child {
+      margin-left: auto;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+    position: relative;
+  }
+
+  &__logo {
+    height: 16px;
+
+    @include on-tablet {
+      width: 172px;
+      height: 24px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+}
+
+.phone-number {
+  display: none;
+
+
+  @include on-desktop {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    text-decoration: none;
+    color: $mainTextColor;
+  }
+}
+
+.icon--phone:hover .phone-number {
+  opacity: 1;
+  transform: translateY(-50%) translateX(calc(-100% - 10px));
+}
