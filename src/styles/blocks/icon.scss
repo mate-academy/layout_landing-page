@@ -14,28 +14,40 @@
 
   &--phone {
     background-image: url(/src/images/icons/icon-phone.png);
+    position: relative;
 
-    &::before {
-      content: 'The Met Fifth Avenue\a +1 212-535-771\a The Met Cloisters\a +1 212-923-3700';
+    .phone-numbers {
       font-size: 16px;
       font-weight: 700;
       line-height: 27px;
       color: $menu-text-color;
       display: flex;
+      flex-direction: column;
       text-decoration: none;
       position: absolute;
-      gap: 8px;
+      gap: 2px;
       right: 125%;
       top: -32px;
       text-align: right;
       width: auto;
       white-space: pre;
       opacity: 0;
+      transition: opacity 0.3s ease;
+
+      a {
+        color: $menu-text-color;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
     }
 
     @include on-desktop {
-      &:hover::before {
+      &:hover .phone-numbers {
         opacity: 1;
+        pointer-events: all;
       }
     }
   }
@@ -52,3 +64,4 @@
     background-image: url(/src/images/icons/icon-close.png);
   }
 }
+
