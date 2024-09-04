@@ -1,0 +1,55 @@
+@mixin for-desktops {
+  @media (min-width: $desktop_resolution) {
+    @content;
+  }
+}
+
+@mixin for-tablets {
+  @media (min-width: $tablet_resolution) {
+    @content;
+  }
+}
+
+@mixin tablet-icons {
+  @media (min-width: 576px) {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+@mixin horizontal-paddings {
+  padding-inline: 20px;
+
+  @include for-tablets {
+    padding-inline: 72px;
+  }
+
+  @include for-desktops {
+    padding-inline: 120px;
+  }
+}
+
+@mixin landing-page-grid {
+  --columns-count: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+
+  @include for-tablets {
+    column-gap: 24px;
+
+    --columns-count: 6;
+  }
+
+  @include for-desktops {
+    --columns-count: 12;
+  }
+}
+
+@mixin icons-hover($property, $value) {
+  transition: #{$property} $animation-duration;
+  &:hover {
+    #{$property}: #{$value};
+  }
+}

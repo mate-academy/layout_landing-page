@@ -1,0 +1,74 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  &__top-bar {
+    display: flex;
+    gap: 24px;
+
+    @include for-tablets {
+      gap: 55px;
+    }
+  }
+
+  &--phone {
+    display: flex;
+    align-items: center;
+    background-image: url(/src/images/Header/phone_icon.png);
+
+    @include tablet-icons;
+
+    @include for-desktops {
+      &:hover .icon__hover {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    @include icons-hover(transform, scale(1.25));
+
+    background-image: url(/src/images/Header/menu_icon.png);
+
+    &:hover {
+      background-image: url(/src/images/Header/menu_icon-hover.png);
+    }
+
+    @include tablet-icons;
+  }
+
+  &--close {
+    @include icons-hover(transform, scale(1.25));
+
+    background-image: url(/src/images/Header/Icon-Close.png);
+  }
+
+  &__hover {
+    font-weight: $bold_font;
+    right: 255px;
+    position: absolute;
+    width: fit-content;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      visibility $animation_duration,
+      opacity $animation_duration;
+
+    @include for-desktops {
+      display: block;
+    }
+  }
+
+  &__text {
+    text-align: right;
+    position: relative;
+    color: $secondary_color;
+
+    &--space {
+      margin-bottom: 8px;
+    }
+  }
+}
