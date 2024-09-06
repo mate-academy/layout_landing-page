@@ -1,20 +1,34 @@
 .info {
   height: 244px;
   font-size: 16px;
-  transition-duration: $effectDuration;
 
   &__url {
     position: relative;
     color: $main-text-color;
+    transition: all $effectDuration;
+
+    &:hover {
+      color: #000;
+      font-weight: bold;
+    }
 
     &:hover::after {
       transform: scale(1);
     }
-  }
 
-  &__url:hover {
-    color: #000;
-    font-weight: bold;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: left;
+    }
   }
 
   &__text {
