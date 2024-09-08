@@ -2,13 +2,50 @@
   display: block;
   height: 24px;
   width: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include on-desctop {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__phone-number {
+    position: absolute;
+    background-image: url(../images/phone-number-desktop.png);
+    color: inherit;
+    text-decoration: none;
+    padding-inline: 3px;
+    width: 180px;
+    right: 90px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+
+    @include on-desctop {
+      &:hover {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
 
   &--phone {
+    display: flex;
+    justify-content: space-between;
     background-image: url(../images/phone-number.png);
   }
 
   &--menu {
     background-image: url(../images/icon-burger-menu.png);
+
+    @include on-desctop {
+      &:hover {
+        background-image: url(../images/icon-burger-menu-desktop.png);
+      }
+    }
   }
 
   &--close {
