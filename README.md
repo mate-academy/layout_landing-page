@@ -14,4 +14,4 @@ The MET showcases skills in HTML and CSS. The site was developed using the BEM m
 
 ## LINK TO PREVIEW
 
-[MET preview]()
+[MET preview](https://an-marrykyslenko.github.io/layout_landing-page/)
