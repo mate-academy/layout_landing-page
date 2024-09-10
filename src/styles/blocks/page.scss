@@ -1,0 +1,40 @@
+.page {
+  background-color: $main-bg-color;
+  color: $main-font-color;
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    background-color: inherit;
+    position: relative;
+    z-index: 100;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    @include main-transition(all);
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__main-wrapper {
+    background-color: inherit;
+  }
+}
