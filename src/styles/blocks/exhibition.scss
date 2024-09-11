@@ -1,0 +1,132 @@
+.exhibition {
+  &--block{
+    width: 100%;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+
+    &--block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+
+      @include on-tablet {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @include on-desktop {
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+  }
+
+  &__info {
+    grid-column: 1/-1;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+
+      &-tablet{
+        @include on-tablet{
+          grid-column: span 3;
+        }
+
+        @include on-desktop {
+          grid-column: span 4;
+        }
+      }
+
+      &-tablet:nth-child(3){
+        display: grid;
+
+        @include on-tablet {
+          display: none;
+        }
+
+        @include on-desktop {
+          display: grid;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--wide{
+      object-position: 32%;
+
+      @include on-tablet{
+        object-position: initial;
+      }
+    }
+
+    &--wide-third{
+      object-position: 98%;
+
+      @include on-tablet{
+        object-position: initial;
+      }
+    }
+  }
+
+  &__title {
+    margin: 24px 0 0;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: $bold-font-weight;
+    color: $accent-color;
+
+    @include on-tablet {
+      grid-column: 1/-1;
+      margin-top: 24px;
+    }
+
+    @include on-desktop {
+      grid-column: 1/-1;
+      margin-top: 24px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    grid-column: 1/-1;
+  }
+}
