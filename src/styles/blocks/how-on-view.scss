@@ -1,0 +1,126 @@
+.how-on-view {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  margin-bottom: 100px;
+
+  @include page-grid;
+
+  &__main-title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / -4;
+    }
+  }
+  &__subtext {
+    text-align: center;
+    margin: 8px 0 48px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / -4;
+    }
+  }
+
+  &__middle-content {
+    grid-column: 1 / -1;
+
+    @include page-grid($s: 3, $m: 6, $l: 12);
+
+    column-gap: 8px;
+
+    @include on-tablet {
+      column-gap: 24px;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  &__item {
+    grid-column: span 1;
+    position: relative;
+    transition: transform 0.3s;
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+    }
+
+    &--right {
+      .how-on-view__photo {
+        object-position: right;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+      position: relative;
+    }
+
+    @include on-tablet {
+      grid-column: span 2;
+      &--wide {
+        grid-column: span 4;
+      }
+
+      &--middle {
+        grid-column: span 3;
+      }
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+      &--wide {
+        grid-column: span 8;
+      }
+
+      &--middle {
+        grid-column: span 4;
+      }
+    }
+
+    @media (min-width: 744px) and (max-width: 1024) {
+      &--hidden {
+        display: none;
+      }
+    }
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+    margin-top: 24px;
+    &:last-child {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    color: $accent-color;
+    margin: 0;
+  }
+
+  &__date {
+    margin: 0;
+  }
+
+  &__button {
+    @include centered-element;
+  }
+}
