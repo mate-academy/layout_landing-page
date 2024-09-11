@@ -1,0 +1,42 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-widch) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: $desktop-min-widch) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    max-width: 744px;
+  }
+
+  @include on-desctop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin paga-grit {
+  --coluns: 1;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--coluns), 1fr);
+
+  @include on-tablet {
+    --coluns: 6;
+  }
+
+  @include on-desctop {
+    --coluns: 12;
+  }
+}
