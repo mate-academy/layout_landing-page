@@ -1,24 +1,36 @@
 .top-bar {
-  position: relative;
-  padding: 25px 20px;
+  padding-block: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @include on-tablet {
-    padding: 50px 72px;
+    padding-block: 50px;
   }
 
-  @include on-desktop {
-    padding: 50px 120px;
+  &__phones-container {
+    position: relative;
+
+    @include on-desktop {
+      &:hover .top-bar__phones {
+        display: block;
+      }
+    }
   }
 
   &__phones {
-    display: none;
-    position: absolute;
-    right: 255px;
-    top: 24px;
     text-align: end;
+    display: none;
+
+    position: absolute;
+    width: max-content;
+    right: 100%;
+    padding-right: 16px;
+    transform: translateY(calc(-50% + 16px));
+
+    &:hover {
+      display: block;
+    }
   }
 
   &__phone {
@@ -26,6 +38,10 @@
     font-weight: 700;
     color: #fff;
     text-decoration: none;
+
+    &:hover {
+      color: yellow;
+    }
   }
 
   &__icons {
