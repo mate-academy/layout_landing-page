@@ -15,18 +15,6 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
-
-    &-number{
-      display: none;
-      position: absolute;
-      top: 30px;
-      left: 0;
-      padding: 5px;
-      border-radius: 5px;
-      z-index: 10;
-      font-size: 14px;
-    }
-
   }
 
   &--menu {
@@ -49,9 +37,33 @@
     background-image: url(../images/icons/icon-cross.svg);
   }
 
-  &-wrapper{
-    &:hover .icon--phone-number{
+  &__tooltip{
+    display: none;
+
+    @include on-desktop{
+      position: absolute;
+      transform: translate(-100%, 30%);
+      padding-right: 12px;
+
       display: block;
+      width: max-content;
+      opacity: 0;
+
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+
+      pointer-events: none;
     }
   }
+
+  &:hover &__tooltip {
+    opacity: 1;
+    pointer-events: all;
+    transition: all 500ms ease-out;
+  }
+
 }
