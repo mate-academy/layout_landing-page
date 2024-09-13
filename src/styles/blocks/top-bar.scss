@@ -1,0 +1,56 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+
+  .menu:target & {
+    position: sticky;
+    top: 0;
+    background-color: $menu-bg;
+    z-index: 1;
+  }
+
+  @include on-tablet {
+    padding: 36px 0;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+    @include on-hover(transform, scale(1.2));
+  }
+
+  &__phone {
+    opacity: 0;
+    width: max-content;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    transform: translate(-110%, -50%);
+  }
+
+  @media (any-hover: hover) {
+    .icon--phone:hover ~ .top-bar__phone {
+      transition: all 0.3s ease 0s;
+      opacity: 1;
+      transform: translate(-120%, -50%);
+    }
+  }
+}
