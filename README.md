@@ -1,21 +1,36 @@
-# Landing page
+# Nothing Landing page
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+This landing page for Nothing store. It is present stores recommended products, also allows to choose products by category.
+This page also provides "about us" section, and a form, for contacts.
+Overview Layout is adaptive and responsive, implemented with the mobile-first approach, works correctly on all screen sizes (mobile, tablet, desktop).
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+# Techonoligies used
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+- **HTML**: Markup language for creating web pages.
+- **CSS**: Cascading Style Sheets for styling web pages.
+- **SASS(SCSS)**: extension for using variables, nested rules, grid conditional operators, mixins etc. Managing animations and transitions.
+- **BEM**: Methodology for organizing classes. This makes the code more readable and understandable, helps to avoid naming conflicts and makes the code easier to maintain and reuse.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+# Landing preview
+
+[DEMO LINK](https://Mykolyan.github.io/layout_landing-page/)
+
+# Figma desing
+
+[Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+
+# Setup Instructions
+
+- Open Git Bash (Windows) or ZSH (macOS) in your projects folder;
+- Clone the repo by running the git clone command with the URL you copied on GitHub;
+
+  git clone replace-this-with-the-URL-from-github
+
+- Run code project-name in the terminal;
+- Open the Terminal
+  -Use the shortcut ctrl + `(Windows) or cmd +` (MacOS).
+  -Check if you are inside the project (The project name is the last part in the terminal).
+  -Check if the terminal in VSCode is Git Bash (Windows) or ZSH (macOS).
+
+- Run npm install (or just npm i), to install required dependencies;
+- Run npm start to Open the Page.
