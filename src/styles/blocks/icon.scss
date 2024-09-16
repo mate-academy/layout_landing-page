@@ -1,0 +1,69 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icon-phone-call.svg);
+
+    @include hover(transform, scale(1));
+
+    &::after {
+      position: absolute;
+      content: '+1 212-535-7710';
+      display: none;
+      animation: transform 0.3s linear 0s 1 forwards;
+      left: -130px;
+      top: 4px;
+      color: $main-color-white;
+      font-size: 18px;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    &:hover::after {
+      display: block;
+      width: 200px;
+    }
+
+    @keyframes transform {
+      100% {
+        left: -150px;
+      }
+
+      75% {
+        left: -92px;
+      }
+
+      50% {
+        left: -69px;
+      }
+
+      25% {
+        left: -46px;
+      }
+
+      0% {
+        left: 0;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.svg);
+  }
+}
