@@ -1,0 +1,76 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-column: 1 / -1;
+
+  @include desktop-width {
+    grid-column: span 6;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__input {
+    font-family: Manrope, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.6px;
+    letter-spacing: 0.15px;
+    background-color: #f9f9f9;
+    color: $input-text-color;
+
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    padding-inline: 16px;
+    transition:
+      box-shadow $effectDuration,
+      color $effectDuration;
+
+    &::placeholder {
+      color: inherit;
+      opacity: 1;
+    }
+
+    &:hover {
+      color: $text-color-black;
+      box-shadow: inset 0 0 0 1px #dbdbdb;
+    }
+
+    &:focus {
+      color: $text-color-black;
+      box-shadow: inset 0 0 0 2px #f98921;
+      outline: none;
+    }
+
+    &:-webkit-autofill {
+      -webkit-text-fill-color: $input-text-color;
+      transition:
+        background-color 5000s ease-in-out 5000s,
+        box-shadow $effectDuration;
+    }
+
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: $text-color-black;
+    }
+
+    &--textarea {
+      height: 148px;
+      padding-block: 14px;
+      resize: none;
+    }
+  }
+
+  &__button {
+    @include button-style;
+  }
+}
