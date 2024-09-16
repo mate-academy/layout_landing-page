@@ -1,0 +1,80 @@
+@mixin on-tablet() {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin large-logo-size() {
+  height: 56px;
+}
+
+@mixin header-bg-image {
+  background-image: url(../images/header-bg-mobile.png);
+
+  @include on-desktop {
+    background-image: url(../images/header-bg-desktop.png);
+  }
+}
+
+@mixin title-font-size {
+  font-size: 36px;
+  line-height: 36px;
+
+  @include on-tablet {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  @include on-desktop {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin header-bottom-padding {
+  margin-bottom: 88px;
+
+  @include on-tablet {
+    margin-bottom: 130px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 203px;
+  }
+}
+
+@mixin icon-size {
+  height: 24px;
+  width: 24px;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+@mixin hover-transition($property, $to-value) {
+  transition: #{$property} $transition-duration;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
