@@ -1,0 +1,59 @@
+.page {
+  font-family: Manrope, sans-serif;
+  color: $main-text-color;
+  font-size: 32px;
+  line-height: 32px;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    box-sizing: border-box;
+
+    @include  on-desktop {
+      min-width: 1020px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      transform: translate(0%);
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
+
+img {
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.05);
+    border-radius: 5px;
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+
+  /* not to scroll the page */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px $image-background-color inset !important;
+}
+
+.container {
+  @include content-padding-inline;
+}
