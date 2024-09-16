@@ -1,0 +1,121 @@
+.form {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  display: grid;
+  row-gap: 16px;
+
+  @include on-desktop {
+    grid-column: 1 / 7;
+  }
+
+  &__row {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color .3s ease-in;
+
+    &--margin {
+      margin-bottom: 16px;
+    }
+
+    &:hover {
+      border: 1px solid $input-hover;
+    }
+
+  }
+
+  &__input {
+    font-family: Manrope, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color .3s ease-in;
+
+    display: flex;
+    flex-direction: row;
+    background-color: $input-bg;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    letter-spacing: .15px;
+    outline: none;
+
+    &.textarea {
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      font-family: Manrope, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19.6px;
+      letter-spacing: .15px;
+      height: 120px;
+      resize: none;
+      outline: none;
+    }
+
+    &:hover {
+      // cursor: pointer;
+    }
+
+    &:focus {
+      border: 2px solid $input-focus;
+      outline: none;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 56px;
+    color: #ffff;
+    background-color: $btn-send;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s ease-in;
+
+    &:hover {
+      background-color: #F98921;
+      cursor: pointer;
+    }
+
+    &--margin {
+      margin-top: 16px;
+
+      @include on-tablet {
+        margin-bottom: 24px;
+      }
+
+      @include on-desktop {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 2px solid $input-focus;
+}
+
+.form__row:has(input:focus),
+.form__row:has(textarea:focus) {
+  border: 1px solid transparent;
+}

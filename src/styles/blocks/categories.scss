@@ -1,0 +1,138 @@
+.categories {
+  display: grid;
+
+  --colums: 2;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    --colums: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    --column: 2;
+
+    @include on-tablet {
+      grid-column: 1 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__products {
+    grid-column: 1 / -1;
+
+    --column: 2;
+
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+
+  }
+
+  &__product {
+    display: grid;
+    gap: 20px 16px;
+
+    --colums: 2;
+
+    grid-template-columns: repeat(var(--colums), 1fr);
+    grid-column: 1 / -1;
+
+    --column: 2;
+
+    &--view-all {
+      @include on-desktop {
+        --colums: 12;
+
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 130px;
+    transition: box-shadow 0.3s ease-in-out;
+
+    --column: 1;
+
+    @include on-tablet {
+      height: 184px;
+
+      --column: 3;
+    }
+
+    @include on-desktop {
+      height: 384px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 2px 8px 20px 0 rgba(102, 102, 102, 0.57);
+    }
+  }
+
+  &__subtitle {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.2px;
+
+    @include on-tablet {
+      font-size: 24px;
+      line-height: 33.6px;
+    }
+  }
+
+  &__view-all {
+    grid-column: 1 / -1;
+    height: 56px;
+    background-color: #F98921;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out;
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+    }
+
+    &:hover {
+      background-color: $main-text-color;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: $btn-pressed;
+    }
+
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+}
