@@ -1,0 +1,62 @@
+.category {
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include tablet {
+      column-gap: 24px;
+    }
+  }
+
+  &__link {
+    grid-column: span 1;
+
+    @include desktop {
+      display: block;
+      aspect-ratio: 498 / 324;
+      overflow: hidden;
+    }
+
+    @include phone {
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+
+    @include desktop {
+      @include hover(scale, 1.2);
+    }
+
+    @include phone {
+      position: absolute;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-block: 16px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+    text-align: left;
+    grid-column: 1 / -1;
+
+    @include tablet {
+      font-size: 24px;
+      line-height: 110%;
+      padding-block: 16px 56px;
+    }
+  }
+}
