@@ -1,0 +1,80 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+  &--phone {
+    background-image: url(../images/icons/icon-phone-call.png);
+
+    &:hover {
+      animation: phone-rotate 0.2s infinite linear;
+    }
+  }
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.png);
+  }
+  &--close {
+    background-image: url(../images/icons/icon-close.png);
+  }
+}
+
+.tooltip {
+  position: absolute;
+  text-align: right;
+  top: -45px;
+  right: 110px;
+  left: -230px;
+  visibility: hidden;
+  padding-right: 30px;
+
+  &__address {
+    @include page-text-style;
+
+    color: #fff;
+    text-transform: uppercase;
+    &--gap {
+      margin-top: 8px;
+    }
+  }
+
+  &__phone {
+    @include page-text-style;
+
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      color: $text-color-2;
+    }
+  }
+
+  &:hover {
+    visibility: visible;
+  }
+}
+
+.icon--phone:hover + .tooltip {
+  visibility: visible;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu__bottom,
+  .tooltip {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .menu__bottom,
+  .tooltip {
+    display: none;
+  }
+}
