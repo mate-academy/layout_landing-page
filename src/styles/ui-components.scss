@@ -12,6 +12,76 @@
   }
 }
 
+a {
+  display: block;
+  width: 100%;
+  height: fit-content;
+}
+
+.icons {
+  display: flex;
+  gap: 32px;
+  background-size: contain;
+
+  @media (max-width: $phone-format) {
+    gap: 24px;
+  }
+}
+
+.icon {
+  height: 32px;
+  width: 32px;
+  transition: opacity $animation-speed ease;
+  background-size: contain;
+  
+  @media (max-width: $phone-format) {
+    height: 24px;
+    width: 24px;
+  }
+
+  &-phone {
+    @include bg-icon-style(url(../pictures/Phone-icon.svg));
+
+    position: relative;
+
+    &::before {
+      pointer-events: none;
+      position: absolute;
+      content: '+1 234 5555-55-55';
+      width: max-content;
+      display: block;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      right: 50px;
+      opacity: 0;
+      transition: opacity $animation-speed ease;
+    }
+
+    @media (min-width: $tablet-format) {
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-menu {
+    @include bg-icon-style(url(../pictures/Menu-icon.svg));
+
+    transition: opacity $animation-speed ease;
+  }
+
+  &--close {
+    @include bg-icon-style(url(../pictures/Close-icon.svg));
+  }
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
 .button {
   height: 56px;
   border-radius: 40px;
