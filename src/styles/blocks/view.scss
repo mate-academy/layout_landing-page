@@ -1,0 +1,143 @@
+.view {
+
+  &__wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include page-grid;
+
+    row-gap: 8px;
+
+    & > * {
+      grid-column: 1/-1;
+
+      @include on-tablet {
+        grid-column: 2/6;
+      }
+    }
+
+    .section-title {
+      @include on-desktop {
+        grid-column: 4/10;
+      }
+    }
+
+    .regular-text {
+      margin-block: 0;
+
+      @include on-desktop {
+        grid-column: 5/9;
+      }
+    }
+  }
+
+  &__button {
+    @include page-grid;
+
+    height: 56px;
+
+    &Position {
+      display: block;
+      grid-column: 1 / -1;
+      background-color: $red;
+      border: none;
+      align-items: center;
+
+      @include on-tablet {
+        grid-column: 2/6;
+        padding: 0 48px;
+      }
+
+      @include on-desktop {
+        grid-column: 5/9;
+      }
+    }
+  }
+}
+
+
+.exhibition {
+
+  & > * {
+    margin-block: 0;
+  }
+
+  &__photos {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 20px;
+
+    margin-bottom: 24px;
+
+    &--includeWide {
+      --columns: 2;
+
+      grid-template-columns: repeat(var(--columns), 1fr);
+
+      @include on-tablet {
+        --columns: 3;
+      }
+    }
+
+    &--squares {
+      column-gap: 8px;
+    }
+
+    @include on-tablet {
+      column-gap: 24px;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--tabletNone {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--tabletNoneOnly {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &--wide {
+      display: none;
+
+      @include on-tablet {
+        grid-column: span 2;
+        display: block;
+      }
+    }
+
+    &--squareWithWide {
+      @include on-tablet {
+        grid-column: span 1;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
