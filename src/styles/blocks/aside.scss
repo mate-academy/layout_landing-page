@@ -1,19 +1,32 @@
+html:has(.menu:target) {
+  overflow: hidden;
+}
+
 .menu {
-  position: fixed;
+  position: absolute;
   inset: 0;
   opacity: 0;
   pointer-events: none;
   background-color: $secondaryBG;
   transition: 0.3s;
   text-transform: uppercase;
+  z-index: 2;
+  overflow: auto;
 
   &:target {
     opacity: 1;
     pointer-events: all;
+
+    .topBar {
+      background-color: $secondaryBG;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
   }
 
   &__content a {
-    color: #1d1d1d;
+    color: $mainBG;
     font-weight: 600;
   }
 
@@ -35,19 +48,20 @@
   font-size: 22px;
   line-height: 22px;
   letter-spacing: 2px;
+  margin: 24px 0 40px;
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    margin: 24px 0 40px;
 
     a {
       transition: $transition;
+      border-bottom: 1px solid transparent;
+      line-height: 30px;
     }
 
     a:hover {
-      padding-bottom: 8px;
       border-bottom: 1px solid $mainBG;
     }
   }
