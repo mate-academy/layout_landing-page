@@ -14,11 +14,11 @@
 
 ## Посилання
 
-- **Прев'ю проєкту**: [bicycle-landing-page](https://LirikTop.github.io/bicycle-landing-page/)
+- **Прев'ю проєкту**: [layout_landing-page](https://LirikTop.github.io/layout_landing-page/)
 - **Макет Figma**: [Переглянути макет](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&node-type=canvas&t=JMUWKVa93c7YZpeW-0)
 
 ## Додаткові інструкції для запуску.
 
 1. **Клонуйте репозиторій за допомогою команди**: git clone
 2. **Встановіть необхідні пакети**: npm install
-3. **Запустіть проект**: npm start
+3. **Запустіть проєкт**: npm start
