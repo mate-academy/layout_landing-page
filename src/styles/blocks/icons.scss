@@ -18,7 +18,16 @@
     @include icon-background-center;
 
     position: relative;
-    transition: all 0.3ms ease;
+    transition: all 0.3s;
+
+    &::before {
+      content: '';
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s,
+        visibility 0.3s;
+    }
 
     @include on-desktop {
       &:hover::before {
@@ -29,13 +38,17 @@
         transform: translateY(-50%);
         padding-right: 8px;
         white-space: nowrap;
-
+        visibility: visible;
+        opacity: 1;
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 2px;
         text-decoration: none;
         color: $main-test-color;
+        transition:
+          opacity 0.5s,
+          visibility 0.5s;
       }
     }
   }
