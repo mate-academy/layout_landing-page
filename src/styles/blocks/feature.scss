@@ -1,0 +1,55 @@
+.feature {
+  @include single-column;
+
+  display: grid;
+
+  @include gap-column-row(20px, 8px);
+
+  &__image-link {
+    display: block;
+    grid-column: span 1;
+    grid-row: 1;
+
+    margin: 0 0 8px;
+
+    &--left,
+    &--right {
+      @include property-tabl-desk(grid-column, span 2, span 4);
+    }
+
+    &--left:has(.feature__image--large),
+    &--right:has(.feature__image--large) {
+      @include property-tabl-desk(grid-column, span 4, span 8);
+    }
+  }
+
+  &__image {
+    display: block;
+    object-fit: cover;
+
+    @include height-width(100%, 100%);
+    @include hover-transition(transform, scale(1.1));
+
+    @include on-tablet {
+      @include hover-transition(transform, scale(1.05));
+    }
+  }
+
+  &__title,
+  &__description {
+    @include property-mob-tabl-desk(
+      grid-column,
+      span #{$mobile-grid-columns},
+      span #{$tablet-grid-colums},
+      span 8
+    );
+
+    grid-row: auto;
+    margin: 0;
+    width: 100%;
+  }
+
+  &__title {
+    @include font-line-weight-spacing(24px, 33.6px, $font-weight-bold);
+  }
+}

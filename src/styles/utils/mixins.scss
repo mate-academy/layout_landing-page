@@ -1,80 +1,115 @@
-@mixin on-tablet() {
-  @media (min-width: 576px) {
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin on-desktop() {
-  @media (min-width: 992px) {
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin large-logo-size() {
+@mixin on-large-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+@mixin property-mob-tabl-desk(
+  $property,
+  $mobile: null,
+  $tablet: null,
+  $desktop: null
+) {
+  @if $mobile {
+    #{$property}: $mobile;
+  }
+
+  @if $tablet {
+    @include on-tablet {
+      #{$property}: $tablet;
+    }
+  }
+
+  @if $desktop {
+    @include on-desktop {
+      #{$property}: $desktop;
+    }
+  }
+}
+
+@mixin property-tabl-desk($property, $tablet: null, $desktop: null) {
+  @if $tablet {
+    @include on-tablet {
+      #{$property}: $tablet;
+    }
+  }
+
+  @if $desktop {
+    @include on-desktop {
+      #{$property}: $desktop;
+    }
+  }
+}
+
+@mixin large-logo-size {
   height: 56px;
 }
 
-@mixin header-bg-image {
-  background-image: url(../images/header-bg-mobile.png);
-
-  @include on-desktop {
-    background-image: url(../images/header-bg-desktop.png);
-  }
-}
-
-@mixin title-font-size {
-  font-size: 36px;
-  line-height: 36px;
+@mixin content-padding-inline {
+  padding-inline: $mobile-inline-paddings;
 
   @include on-tablet {
-    font-size: 64px;
-    line-height: 64px;
+    padding-inline: $tablet-inline-paddings;
   }
 
   @include on-desktop {
-    font-size: 80px;
-    line-height: 80px;
-  }
-}
-
-@mixin content-padding-inline() {
-  padding-inline: 20px;
-
-  @include on-tablet {
-    padding-inline: 72px;
-  }
-
-  @include on-desktop {
-    padding-inline: 120px;
-  }
-}
-
-@mixin header-bottom-padding {
-  margin-bottom: 88px;
-
-  @include on-tablet {
-    margin-bottom: 130px;
-  }
-
-  @include on-desktop {
-    margin-bottom: 203px;
-  }
-}
-
-@mixin icon-size {
-  height: 24px;
-  width: 24px;
-
-  @include on-tablet {
-    height: 32px;
-    width: 32px;
+    padding-inline: $desktop-inline-paddings;
   }
 }
 
 @mixin hover-transition($property, $to-value) {
-  transition: #{$property} $transition-duration;
+  transition: #{$property} $transition-duration ease;
 
   &:hover {
     #{$property}: $to-value;
+  }
+}
+
+@mixin gap-column-row($column-gap, $row-gap) {
+  gap: $row-gap $column-gap;
+}
+
+@mixin font-line-weight-spacing($size, $height, $weight: null, $spacing: null) {
+  font-size: $size;
+  line-height: $height;
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $spacing {
+    letter-spacing: $spacing;
+  }
+}
+
+@mixin height-width($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin single-column($start: 1, $end: -1) {
+  grid-column: #{$start} / #{$end};
+}
+
+@mixin single-column-tablet($start: 1, $end: -1) {
+  @include on-tablet {
+    @include single-column($start, $end);
+  }
+}
+
+@mixin single-column-desktop($start: 1, $end: -1) {
+  @include on-desktop {
+    @include single-column($start, $end);
   }
 }
