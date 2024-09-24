@@ -1,0 +1,71 @@
+@mixin on-tablet() {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin icon-size {
+  width: 24px;
+  height: 24px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@mixin grid-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+
+  @include on-tablet {
+    max-width: 600px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px 56px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin button {
+  display: flex;
+  height: 56px;
+
+  padding-inline: 48px;
+
+  border-radius: 8px;
+
+  background-color: $background-color-hover;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  color: #fff;
+  transition-duration: $transition-duration;
+  border: none;
+}
