@@ -1,0 +1,116 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin property-mob-tabl-desk(
+  $property,
+  $mobile: null,
+  $tablet: null,
+  $desktop: null
+) {
+  @if $mobile {
+    #{$property}: $mobile;
+  }
+
+  @if $tablet {
+    @include on-tablet {
+      #{$property}: $tablet;
+    }
+  }
+
+  @if $desktop {
+    @include on-desktop {
+      #{$property}: $desktop;
+    }
+  }
+}
+
+@mixin property-tabl-desk($property, $tablet: null, $desktop: null) {
+  @if $tablet {
+    @include on-tablet {
+      #{$property}: $tablet;
+    }
+  }
+
+  @if $desktop {
+    @include on-desktop {
+      #{$property}: $desktop;
+    }
+  }
+}
+
+@mixin large-logo-size {
+  height: 56px;
+}
+
+@mixin content-padding-inline {
+  padding-inline: $mobile-inline-paddings;
+
+  @include on-tablet {
+    padding-inline: $tablet-inline-paddings;
+  }
+
+  @include on-desktop {
+    padding-inline: $desktop-inline-paddings;
+  }
+}
+
+@mixin hover-transition($property, $to-value) {
+  transition: #{$property} $transition-duration ease;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin gap-column-row($column-gap, $row-gap) {
+  gap: $row-gap $column-gap;
+}
+
+@mixin font-line-weight-spacing($size, $height, $weight: null, $spacing: null) {
+  font-size: $size;
+  line-height: $height;
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $spacing {
+    letter-spacing: $spacing;
+  }
+}
+
+@mixin height-width($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin single-column($start: 1, $end: -1) {
+  grid-column: #{$start} / #{$end};
+}
+
+@mixin single-column-tablet($start: 1, $end: -1) {
+  @include on-tablet {
+    @include single-column($start, $end);
+  }
+}
+
+@mixin single-column-desktop($start: 1, $end: -1) {
+  @include on-desktop {
+    @include single-column($start, $end);
+  }
+}
