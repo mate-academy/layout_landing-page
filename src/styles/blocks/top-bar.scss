@@ -11,24 +11,68 @@
 
   &__icons {
     display: flex;
+    text-align: center;
     gap: 24px;
+    position: relative;
 
     @include on-tablet {
       gap: 55px;
     }
   }
 
-  &__logo-link {
-    display: flex;
+  &__hover {
+    display: none;
+    opacity: 0;
+    position: absolute;
+  }
+
+  &__icon-phone {
+    @include on-desktop {
+      &:hover .top-bar__hover {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        color: $white-color;
+        font-weight: $bold-font;
+
+        @include hover(transform, scale(1.2));
+      }
+    }
   }
 
   &__logo {
     height: 46px;
-
     @include hover(transform, scale(1.2));
 
     @include on-tablet {
       height: 65px;
     }
+  }
+}
+
+.hover-block {
+  position: absolute;
+  width: 201px;
+  height: 116px;
+  left: -200px;
+  top: -45px;
+  padding-right: 16px;
+  box-sizing: border-box;
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+
+    color: $white-color;
+    text-align: right;
+
+    &:last-child {
+      margin-top: 8px;
+    }
+  }
+
+  &__number {
+    text-decoration: none;
+    color: $white-color;
   }
 }
