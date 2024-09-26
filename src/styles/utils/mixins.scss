@@ -1,0 +1,81 @@
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    padding-block: 32px;
+  }
+
+  @include on-descktop {
+    padding-inline: 120px;
+    padding-block: 32px;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-descktop {
+  @media (min-width: $descktop-min-width) {
+    @content;
+  }
+}
+
+@mixin menu-top-margin-bottom {
+  margin-bottom: 40px;
+
+  @media (min-width: 576px) {
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 1020px) {
+    margin-bottom: 55px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --colomns: 2;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--colomns), 1fr);
+
+  @include on-tablet {
+    --colomns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-descktop {
+    --colomns: 12;
+  }
+}
+
+@mixin page-grid3 {
+  --colomns: 3;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--colomns), 1fr);
+
+  @include on-tablet {
+    --colomns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-descktop {
+    --colomns: 12;
+  }
+}

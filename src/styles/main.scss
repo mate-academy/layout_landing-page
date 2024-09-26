@@ -1,3 +1,54 @@
-body {
-  margin: 0;
+@import './utils/variables';
+@import './utils/mixins';
+@import 'container';
+@import 'section-title';
+@import 'header';
+@import 'icons';
+@import 'mainblock';
+@import 'menu';
+@import 'navigation';
+@import 'top-bar';
+@import 'recommended';
+@import 'product';
+@import 'categories';
+@import 'schedule';
+@import 'contacts';
+@import 'input';
+@import 'button-all-exibition';
+@import 'footer';
+
+.page {
+  max-width: 100%;
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-height: 320px;
+
+    .page__menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateX(-100%);
+      pointer-events: none;
+    }
+
+    .page__menu:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
