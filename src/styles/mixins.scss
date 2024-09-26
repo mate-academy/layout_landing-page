@@ -1,0 +1,43 @@
+@mixin on__tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on__desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content__padingInline {
+  padding-inline: 20px;
+
+  @include on__tablet {
+    padding-inline: 72px;
+  }
+
+  @include on__desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
+}
+
+@mixin page__grid {
+  --columns: 2;
+  display: grid;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on__tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on__desktop {
+    --columns: 12;
+  }
+}
