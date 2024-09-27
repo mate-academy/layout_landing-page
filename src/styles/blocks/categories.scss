@@ -1,0 +1,115 @@
+.categories {
+  @include page-grid;
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -2;
+    }
+  }
+
+  &__category {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &--image {
+      @include animation-menu;
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      grid-column: span 1;
+
+      @include on-tablet {
+        &-1 {
+          grid-column: span 2;
+        }
+        &-2 {
+          grid-column: span 4;
+        }
+      }
+
+      @include on-desktop {
+        &-1 {
+          grid-column: span 4;
+        }
+        &-2 {
+          grid-column: span 8;
+        }
+      }
+    }
+
+    &--title {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 33.6px */
+
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__button {
+    width: auto;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #292929;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
+    &:hover {
+      box-sizing: border-box;
+      border-radius: 8px;
+      border: 2px solid #f0f1f4;
+      background: #f8f8fa;
+      color: #292929;
+    }
+
+    &:active {
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 27px; /* 168.75% */
+    }
+  }
+}
