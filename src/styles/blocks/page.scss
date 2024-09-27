@@ -1,0 +1,67 @@
+.page {
+  font-family: Manrope, sans-serif;
+  color: rgba(27, 33, 41, 1);
+  font-size: 16px;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__button {
+    display: block;
+    background-color: rgba(249, 137, 33, 1);
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    line-height: 56px;
+    height: 56px;
+    font-size: 16px;
+
+    @include hover(background-color, rgba(27, 33, 41, 1));
+    @include active(background-color, rgba(1, 8, 16, 1));
+
+    &--view-all {
+      width: 100%;
+      margin-top: 40px;
+
+      @include on-tablet {
+        margin-top: 56px;
+      }
+
+      @include on-desktop {
+        width: 30%;
+      }
+    }
+
+    &--form {
+      cursor: pointer;
+      width: 100%;
+      border: 1px solid white;
+    }
+  }
+}
