@@ -1,0 +1,48 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+
+  &-phone {
+    position: relative;
+  }
+
+  &-phone::after {
+    content: '+1 234 555-55-55';
+    display: none;
+    position: absolute;
+    width: max-content;
+    left: -186px;
+    top: 50%;
+    height: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: scale(1);
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+
+  &-phone:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.2);
+  }
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+}
