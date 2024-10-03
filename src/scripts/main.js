@@ -20,22 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeMenuIcon = document.querySelector('.icon--close');
 
   phoneIcon.addEventListener('mouseenter', function () {
-    phoneNumber.classList.add('visible'); // Добавляем класс при наведении
+    phoneNumber.classList.add('visible');
   });
 
   phoneIcon.addEventListener('mouseleave', function () {
-    phoneNumber.classList.remove('visible'); // Убираем класс при уходе курсора
+    phoneNumber.classList.remove('visible');
   });
 
-  // Открытие меню
   document.querySelector('.icon--menu').addEventListener('click', function () {
-    menu.style.right = '0'; // Показываем меню
-    document.body.style.overflow = 'hidden'; // Отключаем прокрутку
+    menu.style.right = '0';
+    document.body.style.overflow = 'hidden';
   });
 
-  // Закрытие меню
   closeMenuIcon.addEventListener('click', function () {
-    menu.style.right = '-1000%'; // Прячем меню
-    document.body.style.overflow = ''; // Включаем прокрутку
+    menu.style.right = '-1000%';
+    document.body.style.overflow = '';
   });
 });
