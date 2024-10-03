@@ -1,0 +1,76 @@
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    min-width: 1024px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin h1-dimensions {
+  font-size: 36px;
+  line-height: 36px;
+
+  @include on-tablet {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+
+@mixin background-header-img-size {
+  background-image: url(../images/header-bg.png);
+}
+
+@mixin background-footer-img-size {
+  background-image: url(../images/footer-bg.png);
+}
+
+@mixin hover($property, $to-value, $z-index, $z-value) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $to-value;
+    #{$z-index}: $z-value;
+  }
+}
+
+@mixin active($property, $to-value) {
+  transition: #{$property} 0.3s;
+  &:active {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
