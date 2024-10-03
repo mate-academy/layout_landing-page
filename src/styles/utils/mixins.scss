@@ -1,0 +1,112 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin icon-background-center() {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin photo-hover {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+
+  &:hover {
+    transition: all 0.5s;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  height: 56px;
+  padding: 0 48px;
+
+  border-radius: 8px;
+  background-color: $main-test-color;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: $primary-white-color;
+  text-decoration: none;
+
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: span 4;
+  }
+
+  &:hover {
+    color: $main-test-color;
+    background-color: #f8f8fa;
+    border: 2px;
+    border-color: #f0f1f4;
+  }
+
+  &:active {
+    background-color: #111;
+    color: $primary-white-color;
+  }
+}
+
+@mixin link-hover {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: $main-test-color;
+
+    transform: scale(0);
+    transition: $transform;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
