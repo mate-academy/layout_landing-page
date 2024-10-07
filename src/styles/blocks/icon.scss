@@ -1,0 +1,61 @@
+@import '../../utils/mixins';
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url('../img/icons/Icon-phone.png');
+
+    @include hover(transform, scale(120%));
+
+    &--number {
+      display: inline-block;
+      position: absolute;
+      bottom: 42%;
+      right: 94px;
+
+      color: inherit;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-decoration: none;
+
+      transition: all $effectDuration;
+
+      opacity: 0;
+      pointer-events: none;
+
+      @include on-desktop {
+        .icon--phone:hover + & {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url('../img/icons/Icon-menu.png');
+  }
+
+  &--menu:hover {
+    background-image: url('../img/icons/Icon-Burger-menu-hover.png');
+  }
+
+  &--close {
+    background-image: url('../img/icons/Icon-Close.png');
+
+    @include hover(transform, scale(120%));
+  }
+}
