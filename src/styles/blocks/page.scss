@@ -1,0 +1,41 @@
+.page {
+  &__body {
+    margin: 0;
+    padding-block-end: 64px;
+    min-width: 320px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    color: $main-text-color;
+    line-height: 22px;
+
+    scroll-behavior: smooth;
+
+    @include on-tablet {
+      padding-block-end: 120px;
+    }
+
+    &:has(.page__menu:target) {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition:
+      transform,
+      opacity 0.3s;
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
