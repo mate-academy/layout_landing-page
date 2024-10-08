@@ -1,31 +1,31 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap);
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap";
 
 $tablet-min-width: 576px;
 $desctop-min-width: 1024px;
 $main-text-color: #fff;
 $nav-text-color: #1D1D1D;
 
-@mixin onTablet{
+@mixin on-tablet{
   @media (min-width: $tablet-min-width){
     @content;
   }
 }
 
-@mixin onDesctop{
+@mixin on-desctop{
   @media (min-width: $desctop-min-width){
     @content;
   }
 }
 
 
-@mixin contentPaddingInline(){
+@mixin content-padding-inline(){
   padding-inline: 20px;
 
-  @include onTablet{
+  @include on-tablet{
     padding-inline:  72px;
   }
 
-  @include onDesctop{
+  @include on-desctop{
     max-width: 1020px;
     padding-inline: 120px;
     margin-inline: auto;
@@ -33,7 +33,7 @@ $nav-text-color: #1D1D1D;
 }
 
 .container{
-  @include contentPaddingInline;
+  @include content-padding-inline;
 }
 
 
@@ -45,19 +45,22 @@ $nav-text-color: #1D1D1D;
   }
 }
 
-@mixin pageGrid{
+@mixin page-grid{
   --columns: 2;
+
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
 
-  @include onTablet{
+  @include on-tablet{
     --columns: 6;
+
     column-gap: 24px;
+
   }
 
-  @include onDesctop{
+  @include on-desctop{
     --columns: 12;
   }
 }
@@ -68,7 +71,7 @@ $nav-text-color: #1D1D1D;
 }
 
 .page{
-  font-family: 'Poppins',  sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 16px;
   line-height: 140%;
   color: $main-text-color;
@@ -103,6 +106,7 @@ $nav-text-color: #1D1D1D;
   background-image: url(../images/header-bike-mobile.png);
   background-position: right;
   background-size: cover;
+
   // display: none !important;
 
 
@@ -121,7 +125,7 @@ $nav-text-color: #1D1D1D;
     letter-spacing: -1.5px;
     margin: 0;
 
-    @include onTablet{
+    @include on-tablet{
       font-size: 64px;
     }
   }
@@ -129,7 +133,7 @@ $nav-text-color: #1D1D1D;
   &__bottom{
     padding-bottom: 88px;
 
-    @include onTablet{
+    @include on-tablet{
       padding-bottom: 130px;
     }
   }
@@ -151,7 +155,7 @@ $nav-text-color: #1D1D1D;
   justify-content: space-between;
   align-items: center;
 
-  @include onTablet{
+  @include on-tablet{
     padding-block: 36px;
   }
 
@@ -167,7 +171,7 @@ $nav-text-color: #1D1D1D;
   &__logo{
     height: 38px;
 
-    @include onTablet{
+    @include on-tablet{
       height: 56px;
     }
 
@@ -187,7 +191,7 @@ $nav-text-color: #1D1D1D;
   &__top{
     margin-bottom: 24px;
 
-    @include onTablet{
+    @include on-tablet{
       margin-bottom: 0;
     }
   }
@@ -235,7 +239,7 @@ $nav-text-color: #1D1D1D;
 
   @include hover(transform, scale(1.2));
 
-  @include onTablet{
+  @include on-tablet{
     height: 32px;
     width: 32px;
   }
@@ -303,7 +307,7 @@ $nav-text-color: #1D1D1D;
     padding-block: 60px;
 
 
-    @include onTablet{
+    @include on-tablet{
       padding-block: 120px;
       row-gap: 120px;
     }
@@ -320,13 +324,12 @@ $nav-text-color: #1D1D1D;
   line-height: 100%;
   letter-spacing: -1.5px;
 
-
-  @include onTablet(){
+  @include on-tablet{
     font-size: 48px;
     margin-bottom: 64px;
   }
 
-  @include onDesctop(){
+  @include on-desctop{
     font-size: 64px;
   }
 
@@ -336,16 +339,16 @@ $nav-text-color: #1D1D1D;
 }
 
 .move-free{
-  @include pageGrid;
+  @include page-grid;
 
   &__title{
     grid-column: 1 / -1;
 
-    @include onTablet{
+    @include on-tablet{
       grid-column: 1 / 4;
     }
 
-    @include onDesctop{
+    @include on-desctop{
       grid-column: span 5;
     }
   }
@@ -356,11 +359,11 @@ $nav-text-color: #1D1D1D;
     grid-column: 1 / -1;
     line-height: 32.2px;
 
-    @include onTablet{
+    @include on-tablet{
       grid-column: 4 / -1;
     }
 
-    @include onDesctop{
+    @include on-desctop{
       grid-column: span 6;
     }
   }
@@ -370,7 +373,8 @@ $nav-text-color: #1D1D1D;
   margin: 0;
 
   &__products{
-    @include pageGrid;
+    @include page-grid;
+
     display: grid;
     row-gap: 40px;
   }
@@ -378,16 +382,17 @@ $nav-text-color: #1D1D1D;
   &__product{
     grid-column: 1 / -1;
 
-    @include onTablet{
+    @include on-tablet{
       grid-column: 2 / -2;
     }
 
-    @include onDesctop{
+    @include on-desctop{
       grid-column: span 4;
     }
   }
 
 }
+
 .product{
   &__photo{
     width: 100%;
@@ -416,7 +421,7 @@ $nav-text-color: #1D1D1D;
     display: grid;
     row-gap: 40px;
 
-    @include onTablet{
+    @include on-tablet{
       row-gap: 64px;
     }
 
@@ -437,11 +442,11 @@ $nav-text-color: #1D1D1D;
       transition: all .3s;
 
       &:hover{
-        box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
+        box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.40);
       }
 
       &:active{
-        box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.64);
+        box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
       }
     }
   }
@@ -449,28 +454,29 @@ $nav-text-color: #1D1D1D;
 
 .detail{
   &__photos{
-    @include pageGrid;
+    @include page-grid;
+
     margin-bottom: 16px;
   }
 
   &__link{
 
     &--wide{
-      @include onTablet{
+      @include on-tablet{
         grid-column: span 4;
       }
 
-      @include onDesctop{
+      @include on-desctop{
         grid-column: span 8;
       }
     }
 
     &--square{
-      @include onTablet{
+      @include on-tablet{
         grid-column: span 2;
       }
 
-      @include onDesctop{
+      @include on-desctop{
         grid-column: span 4;
       }
     }
@@ -490,7 +496,7 @@ $nav-text-color: #1D1D1D;
   }
 
   &__info{
-    @include onDesctop{
+    @include on-desctop{
       width: 672px;
     }
   }
@@ -499,7 +505,7 @@ $nav-text-color: #1D1D1D;
 .contacts{
 
   &__container{
-  @include pageGrid;
+  @include page-grid;
 
 
     &__form{
@@ -572,15 +578,15 @@ $nav-text-color: #1D1D1D;
         margin-bottom: 48px;
 
         &:hover{
-          box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
+          box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.40);
         }
 
         &:active{
-          box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.64);
+          box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
         }
       }
 
-      @include onTablet{
+      @include on-tablet{
         grid-column: span 3;
       }
     }
