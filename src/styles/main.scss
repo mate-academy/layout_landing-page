@@ -1,3 +1,642 @@
-body {
-  margin: 0;
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap);
+
+$tablet-min-width: 576px;
+$desctop-min-width: 1024px;
+$main-text-color: #fff;
+$nav-text-color: #1D1D1D;
+
+@mixin onTablet{
+  @media (min-width: $tablet-min-width){
+    @content;
+  }
 }
+
+@mixin onDesctop{
+  @media (min-width: $desctop-min-width){
+    @content;
+  }
+}
+
+
+@mixin contentPaddingInline(){
+  padding-inline: 20px;
+
+  @include onTablet{
+    padding-inline:  72px;
+  }
+
+  @include onDesctop{
+    max-width: 1020px;
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+.container{
+  @include contentPaddingInline;
+}
+
+
+@mixin hover($property, $toValue){
+  transition: #{$property} .3s;
+
+  &:hover{
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin pageGrid{
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+
+  @include onTablet{
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop{
+    --columns: 12;
+  }
+}
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page{
+  font-family: 'Poppins',  sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all .3s;
+    transform: translateX(-100%);
+
+    &:target{
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+
+.header{
+  background-image: url(../images/header-bike-mobile.png);
+  background-position: right;
+  background-size: cover;
+  // display: none !important;
+
+
+  &__content{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    margin: 0;
+
+    @include onTablet{
+      font-size: 64px;
+    }
+  }
+
+  &__bottom{
+    padding-bottom: 88px;
+
+    @include onTablet{
+      padding-bottom: 130px;
+    }
+  }
+
+}
+
+
+// .logo__link{
+//   display: flex;
+//   align-items: center;
+// }
+
+
+.top-bar{
+  padding-block: 24px;
+
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet{
+    padding-block: 36px;
+  }
+
+  &__icons{
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link{
+    display: flex;
+  }
+
+  &__logo{
+    height: 38px;
+
+    @include onTablet{
+      height: 56px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+}
+
+
+
+.menu{
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #C2C2C2;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &__top{
+    margin-bottom: 24px;
+
+    @include onTablet{
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav{
+    margin-bottom: 40px;
+  }
+
+
+  &__logo{
+    width: 130px;
+    height: 38px;
+  }
+
+  &__phone-number{
+    color: $nav-text-color;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__book-a-test-ride{
+    color: $nav-text-color;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #1D1D1D;
+  }
+
+}
+
+
+
+.icon{
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet{
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone{
+    background-image: url(../icons/icon-phone.svg);
+  }
+  &--menu{
+    background-image: url(../icons/icon-burger-menu.svg);
+
+    &:hover{
+      background-image: url(../icons/icon-burger-menu-hover\ \(1\).svg);
+    }
+  }
+
+  &--close{
+    background-image: url(../icons/close-btn.svg);
+  }
+}
+
+
+.nav{
+
+  &__link{
+    position: relative;
+    color: $nav-text-color;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after{
+      content: '';
+      position: absolute;
+      background-color: $nav-text-color;
+      width: 100%;
+      height: 1px;
+      bottom: -8px;
+      display: block;
+
+      transition: .3s;
+      transform: scale(0);
+    }
+
+    &:hover::after{
+      transform: scale(1);
+    }
+  }
+
+  &__list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+}
+
+.main{
+  background-color: #1D1D1D;
+  &__content{
+    display: grid;
+    row-gap: 92px;
+    padding-block: 60px;
+
+
+    @include onTablet{
+      padding-block: 120px;
+      row-gap: 120px;
+    }
+  }
+}
+
+
+.section-title{
+  margin: 0;
+  margin-bottom: 48px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+
+
+  @include onTablet(){
+    font-size: 48px;
+    margin-bottom: 64px;
+  }
+
+  @include onDesctop(){
+    font-size: 64px;
+  }
+
+  &--align--left{
+    text-align: left;
+  }
+}
+
+.move-free{
+  @include pageGrid;
+
+  &__title{
+    grid-column: 1 / -1;
+
+    @include onTablet{
+      grid-column: 1 / 4;
+    }
+
+    @include onDesctop{
+      grid-column: span 5;
+    }
+  }
+
+  &__description{
+    margin: 0;
+    font-size: 23px;
+    grid-column: 1 / -1;
+    line-height: 32.2px;
+
+    @include onTablet{
+      grid-column: 4 / -1;
+    }
+
+    @include onDesctop{
+      grid-column: span 6;
+    }
+  }
+}
+
+.compare-bikes{
+  margin: 0;
+
+  &__products{
+    @include pageGrid;
+    display: grid;
+    row-gap: 40px;
+  }
+
+  &__product{
+    grid-column: 1 / -1;
+
+    @include onTablet{
+      grid-column: 2 / -2;
+    }
+
+    @include onDesctop{
+      grid-column: span 4;
+    }
+  }
+
+}
+.product{
+  &__photo{
+    width: 100%;
+  }
+
+  &__title{
+    margin: 32px 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+  }
+
+  &__info{
+    margin-bottom: 16px;
+  }
+
+  &__price{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 33.6px;
+  }
+}
+
+.details{
+  &__wrapper{
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet{
+      row-gap: 64px;
+    }
+
+    &__btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+      color: #1D1D1D;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      width: 324px;
+      height: 56px;
+      background-color: #fff;
+      border-radius: 40px;
+      transition: all .3s;
+
+      &:hover{
+        box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
+      }
+
+      &:active{
+        box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.64);
+      }
+    }
+  }
+}
+
+.detail{
+  &__photos{
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link{
+
+    &--wide{
+      @include onTablet{
+        grid-column: span 4;
+      }
+
+      @include onDesctop{
+        grid-column: span 8;
+      }
+    }
+
+    &--square{
+      @include onTablet{
+        grid-column: span 2;
+      }
+
+      @include onDesctop{
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__info{
+    @include onDesctop{
+      width: 672px;
+    }
+  }
+}
+
+.contacts{
+
+  &__container{
+  @include pageGrid;
+
+
+    &__form{
+      grid-column: 1 / -1;
+      row-gap: 16px;
+
+      &-name{
+        width: 100%;
+        padding-inline: 16px;
+        grid-column: 1 / -1;
+        height: 48px;
+        border-radius: 40px;
+        border: none;
+        outline: none;
+
+        &::placeholder{
+          color: #7E7E83;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px
+        }
+      }
+
+      &-email{
+        width: 100%;
+        padding-inline: 16px;
+        grid-column: 1 / -1;
+        height: 48px;
+        border-radius: 40px;
+        border: none;
+        outline: none;
+
+        &::placeholder{
+          color: #7E7E83;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px
+        }
+
+      }
+
+      &-message{
+        width: 100%;
+        padding: 14px 16px;
+        grid-column: 1 / -1;
+        height: 120px;
+        border-radius: 16px;
+        border: none;
+        outline: none;
+
+        &::placeholder{
+          color: #7E7E83;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px
+        }
+
+      }
+
+      &-btn{
+        width: 100%;
+
+        height: 56px;
+        border-radius: 40px;
+        border: none;
+        outline: none;
+        color: #1D1D1D;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 48px;
+
+        &:hover{
+          box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.40);
+        }
+
+        &:active{
+          box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.64);
+        }
+      }
+
+      @include onTablet{
+        grid-column: span 3;
+      }
+    }
+
+    .contact-info{
+      // display: flex;
+      // flex-direction: column;
+      // row-gap: 24px;
+
+      &__phone{
+        p{
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        a{
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          text-decoration: none;
+        }
+
+      }
+
+      &__email {
+        p{
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        a{
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          text-decoration: none;
+        }
+      }
+
+      &__address {
+        p{
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        a{
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+}
+
