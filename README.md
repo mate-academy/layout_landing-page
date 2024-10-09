@@ -5,7 +5,7 @@ This is a landing page based on the figma layout, a bike shop with an interestin
 
 
 ### Deploy:
-[GitHub page]([https://fs-jun24-team2.github.io/phone-catalog/](https://navi-rap0.github.io/layout_landing-page/))
+[GitHub page]([https://navi-rap0.github.io/layout_landing-page/])
 
 ---
 
