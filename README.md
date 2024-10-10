@@ -4,18 +4,11 @@
 
 
 <!-- PROJECT LOGO -->
-<div style="background-color: blue;">
-  <div align="center">
-    <a href="https://maxborovique.github.io/layout_landing-page/">
-      <div style="background-color: white; display: inline-block; padding: 10px; border-radius: 5px;">
-        <img src="src/images/icons/logo.svg" alt="Logo" width="80" height="80">
-      </div>
-    </a>
-  </div>
-</div>
-
-
-<h3 align="center">Nothing</h3>
+<h1 align="center">
+  <a href="https://maxborovique.github.io/layout_landing-page/">
+    Nothing 
+  </a>
+</h1>   
 
 <p align="center">
 Nothing project
