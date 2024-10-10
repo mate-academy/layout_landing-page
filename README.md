@@ -1,5 +1,8 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+![HTML Badge][HTML-shield]
+![CSS Badge][CSS-shield]
+
 
 <!-- PROJECT LOGO -->
 <br />
@@ -16,32 +19,6 @@ Nothing project
 <a href="https://maxborovique.github.io/layout_landing-page/">View Demo</a>
 </p>
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-<summary>Table of Contents</summary>
-<ol>
-<li>
-<a href="#about-the-project">About The Project</a>
-<ul>
-<li><a href="#built-with">Built With</a></li>
-</ul>
-</li>
-<li>
-<a href="#getting-started">Getting Started</a>
-<ul>
-<li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#installation">Installation</a></li>
-</ul>
-</li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#roadmap">Roadmap</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#license">License</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="#acknowledgments">Acknowledgments</a></li>
-</ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 
@@ -130,18 +107,17 @@ Your Name - [LinkedIn](www.linkedin.com/in/maksym-borovyk-front-end) - [borovyk.
 
 Project Link: https://github.com/MaxBorovique/layout_landing-page/tree/develop
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: www.linkedin.com/in/maksym-borovyk-front-end
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://drive.google.com/file/d/1gDTkZqN-A7tFV-m4oYpRn8MUAsxPovV6/view?usp=sharing
+[HTML-shield]: https://img.shields.io/badge/HTML-5E7C7A?style=for-the-badge&logo=html5&logoColor=white
 [HTML-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
 [HTML-tutorial]: https://www.w3schools.com/html/
 [HTML-reference]: https://www.w3.org/TR/html52/
+[CSS-shield]: https://img.shields.io/badge/CSS-4D93D9?style=for-the-badge&logo=css3&logoColor=white
 [CSS-tutorial]: https://www.w3schools.com/css/
 [CSS-reference]: https://www.css-reference.io/
 
