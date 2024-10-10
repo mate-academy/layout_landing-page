@@ -4,7 +4,7 @@
 
 
 <!-- PROJECT LOGO -->
-<div style="background-color: white;">
+<div style="background-color: blue;">
   <div align="center">
     <a href="https://maxborovique.github.io/layout_landing-page/">
       <div style="background-color: white; display: inline-block; padding: 10px; border-radius: 5px;">
