@@ -4,13 +4,13 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
-  <div style="backgroundColor: white" width="100%">
-<a href="https://maxborovique.github.io/layout_landing-page/">
-<img src="src/images/icons/logo.svg" alt="Logo" width="80" height="80">
+  <a href="https://maxborovique.github.io/layout_landing-page/">
+    <div style="background-color: white; display: inline-block; padding: 10px; border-radius: 5px;">
+      <img src="src/images/icons/logo.svg" alt="Logo" width="80" height="80">
+    </div>
+  </a>
 </div>
-</a>
 
 <h3 align="center">Nothing</h3>
 
