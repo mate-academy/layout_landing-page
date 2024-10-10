@@ -6,16 +6,9 @@
 <!-- PROJECT LOGO -->
 <h1 align="center">
   <a href="https://maxborovique.github.io/layout_landing-page/">
-    Nothing 
+    Nothing(R) Project
   </a>
 </h1>   
-
-<p align="center">
-Nothing project
-<br />
-<a href="https://maxborovique.github.io/layout_landing-page/">View Demo</a>
-</p>
-</div>
 
 <!-- ABOUT THE PROJECT -->
 
