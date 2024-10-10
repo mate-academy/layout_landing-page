@@ -1,4 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 ![HTML Badge][HTML-shield]
 ![CSS Badge][CSS-shield]
