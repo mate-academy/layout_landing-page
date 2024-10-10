@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <div align="center">
   <a href="https://maxborovique.github.io/layout_landing-page/">
-    <div style="background-color: white; display: block; padding: 10px; border-radius: 5px;">
+    <div style="background-color: white; display: block; padding: 10px; border-radius: 5px;" width="400" height="400">
       <img src="src/images/icons/logo.svg" alt="Logo" width="80" height="80">
     </div>
   </a>
