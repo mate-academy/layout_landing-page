@@ -1,0 +1,55 @@
+.top-bar {
+  align-items: center;
+
+  &__button-bar {
+    @for $id from 1 through 2 {
+      &--id-#{$id} {
+        grid-column: span 1 / -#{$id};
+      }
+    }
+  }
+
+  @include on-mobile {
+    @include push-to-sides;
+
+    &__button-bar {
+      display: flex;
+      align-items: center;
+      gap: $l-button-side-mobile;
+    }
+  }
+
+  @include on-tablet {
+    @include tablet-grid;
+
+    &__logo {
+      grid-column: 1 / span 2;
+    }
+
+    &__button-bar {
+      grid-column: span 2 / -1;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: $tablet-column-gap;
+      justify-items: end;
+    }
+  }
+
+  @include on-desktop {
+    @include desktop-grid;
+
+    &__logo {
+      grid-column: 1 / span 2;
+    }
+
+    &__button-bar {
+      grid-column: span 2 / -1;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: $desktop-column-gap;
+      justify-items: end;
+    }
+  }
+}

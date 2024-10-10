@@ -1,0 +1,75 @@
+$l-button-side-mobile: 24px;
+$l-button-side-tablet-and-up: 32px;
+
+.icon-button {
+  display: block;
+  position: relative;
+
+  width: $l-button-side-mobile;
+
+  @include on-tablet-and-up {
+    width: $l-button-side-tablet-and-up;
+  }
+
+  aspect-ratio: 1 / 1;
+
+  background-size: cover;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &__aside {
+    display: block;
+
+    @include text-cinzel($c-light-ink);
+
+    font-weight: $fw-bold;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: right;
+
+    width: max-content;
+
+    position: absolute;
+    right: 48px;
+    top: -42px;
+
+    transition: opacity $d-transition-duration linear;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    @include on-desktop {
+      .icon-button__aside {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--call {
+    @include single-background-image(url(../images/icon-phone-call.svg));
+  }
+
+  &--menu {
+    @include single-background-image(url(../images/icon-burger-menu.svg));
+
+    &:hover {
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    @include single-background-image(url(../images/icon-close.svg));
+  }
+}
