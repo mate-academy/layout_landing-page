@@ -24,27 +24,12 @@ Nothing project
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com/)
+![Product screenshot][product-screenshot]
 
 The "Nothing" project is a simple yet elegant landing page designed to showcase the capabilities of HTML and CSS. It features a clean and modern design that highlights the seamless integration of web technologies.
 
 The landing page is built with responsive design principles in mind, ensuring excellent accessibility across various devices, from desktops to mobile phones. By utilizing contemporary layout techniques, the project demonstrates how to effectively combine HTML for content structure and CSS for styling elements, creating an attractive and functional interface.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-
-
-
-
-
-
-- [![HTML-url][HTML-tutorial](http://bootstrap.com/)]][HTML-reference]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -93,10 +78,6 @@ This is an example of how to list things you need to use the software and how to
     ```
     
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
 
 <!-- ROADMAP -->
 
@@ -109,7 +90,7 @@ Project Link: https://github.com/MaxBorovique/layout_landing-page/tree/develop
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[product-screenshot]: https://drive.google.com/uc?id=1gDTkZqN-A7tFV-m4oYpRn8MUAsxPovV6
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: www.linkedin.com/in/maksym-borovyk-front-end
 [product-screenshot]: https://drive.google.com/file/d/1gDTkZqN-A7tFV-m4oYpRn8MUAsxPovV6/view?usp=sharing
