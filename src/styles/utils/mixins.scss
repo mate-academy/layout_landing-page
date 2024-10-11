@@ -1,0 +1,74 @@
+// ----screens----
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+// ----paddings----
+@mixin padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin padding-top() {
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 36px;
+  }
+}
+
+// ----animation----
+@mixin transition($property) {
+  transition: $property 0.3s ease;
+}
+
+@mixin button-hover {
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #E8E8F066;
+  }
+}
+
+@mixin button-active {
+  &:active {
+    box-shadow: 1px 4px 16px 0 #E8E8F0A3;
+  }
+}
+
+// ----grid----
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+}
