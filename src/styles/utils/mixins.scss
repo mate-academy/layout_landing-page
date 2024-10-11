@@ -1,0 +1,57 @@
+@mixin titles($size, $height) {
+  font-size: $size;
+  line-height: $height;
+}
+
+@mixin hover($property, $toValue){
+  transition: #{$property} 0.3s;
+  &:hover{
+    #{$property}: $toValue;
+  }
+}
+
+@mixin onTablet{
+  @media (min-width: $tabletWidth){
+    @content;
+  }
+}
+
+@mixin onDesctop{
+  @media (min-width: $desktopWidth){
+    @content;
+  }
+}
+
+@mixin contentPaddingInline(){
+  padding-inline: 20px;
+
+  @include onTablet{
+      padding-inline: 72px;
+  }
+
+  @include onDesctop{
+    max-width: 1260px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container{
+  @include contentPaddingInline;
+}
+
+@mixin pageGrid{
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet{
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop{
+    --colums: 12;
+  }
+}
