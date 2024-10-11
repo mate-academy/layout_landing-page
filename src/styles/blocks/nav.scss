@@ -3,13 +3,32 @@
   margin-bottom: 40px;
 
   &__link a {
-    color: rgba(29, 29, 29, 1);
+    position: relative;
+    color: $menu-nav-color;
     text-decoration: none;
     font-size: 22px;
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 2px;
     text-align: left;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $menu-nav-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
+    }
   }
 
   &__list {

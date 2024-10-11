@@ -10,10 +10,28 @@
   }
 }
 
+@mixin on-desktop {
+  @media screen and (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin content-pading-inline() {
   padding-inline: 20px;
 
   @include on-tablet {
     padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+    filter: brightness(0.2) invert(1);
   }
 }
