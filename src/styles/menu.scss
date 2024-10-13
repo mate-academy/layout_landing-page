@@ -1,3 +1,4 @@
+@use 'mixins';
 
 .menu {
   box-sizing: border-box;
@@ -6,6 +7,10 @@
 
   &__top {
     margin-bottom: 32px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 56px;
+    }
   }
   &__nav {
     margin-bottom: 48px;
@@ -14,6 +19,13 @@
     padding-inline: 20px;
     display: flex;
     flex-direction: column;
+    @include mixins.on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include mixins.on-tablet {
+      padding-inline: 120px;
+    }
   }
 
   &__phone-number {
@@ -44,12 +56,35 @@
   }
   
   &__item {
-    margin: 32px 20px;
+    margin-bottom: 32px;
+    height: 22px;
+    line-height: 22px;
   }
 
   &__link {
+    position: relative;
+    font-size: 22px;
+    line-height: 22px;
     text-decoration: none;
+    letter-spacing: 2px;
     color: #292929;
-    
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      background-color: #292929;
+      width: 100%;
+
+      transition: all 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      background-color: red;
+    }
   }
 }
