@@ -3,22 +3,20 @@
     @include content-padding-inline;
   }
 
-  &__grid {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-    @include on-desktop {
-      flex-direction: row;
-      gap: 40px;
-    }
+  .contact__us__grid {
+    @include page-grid;
   }
 
-  &__block {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: 24px;
+  .contact__us__block {
+    display: grid;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 7 / 10;
     }
   }
 
@@ -50,17 +48,24 @@
     font-weight: 400;
     text-decoration: none;
     border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s;
 
     &:hover {
-      border-bottom-color: #7e22ce;
+      border-bottom-color: $form-color;
     }
   }
 
   .contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin-bottom: 16px;
+    display: grid;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+    }
 
     label {
       display: block;
@@ -74,8 +79,10 @@
       resize: none;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
+      box-sizing: border-box;
       padding: 16px;
       border-radius: 6px;
       background-color: #f8f8fa;
@@ -84,13 +91,13 @@
       transition: all 0.3s ease-in-out;
 
       &:focus {
-        border-color: #7e22ce;
+        border-color: $form-color;
         background-color: #fff;
         outline: none;
       }
 
       &:hover {
-        border-color: #7e22ce;
+        border-color: $form-color;
       }
 
       &:active {
@@ -98,26 +105,37 @@
       }
     }
 
-    input::placeholder, textarea::placeholder {
+    input::placeholder,
+    textarea::placeholder {
       font-family: 'Space Mono', sans-serif;
       font-size: 14px;
       color: #7e7e83;
     }
 
-    button {
+    .button--form {
+      margin-bottom: 80px;
       padding: 16px 24px;
       background-color: #fff;
-      color: #7e22ce;
-      border: 2px solid #F0F1F4;
+      color: $form-color;
+      border: 2px solid #f0f1f4;
       border-radius: 6px;
       font-family: 'Space Mono', monospace;
       font-size: 16px;
+      width: 100%;
       cursor: pointer;
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 
       &:hover {
-        background-color: #7e22ce;
+        background-color: $form-color;
         color: #fff;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $form-color;
       }
     }
   }
-
+}
