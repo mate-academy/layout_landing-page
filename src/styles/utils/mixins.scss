@@ -1,0 +1,80 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-bottom: 60px;
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    margin-inline: auto;
+    max-width: 1260px;
+    padding-inline: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+    row-gap: 56px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin pageButton {
+  width: 100%;
+  height: 56px;
+  background-color: $main-button-color;
+  text-align: center;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+    color: $main-text-color;
+  }
+
+  &:active {
+    background-color: $main-button-color;
+    color: #fff;
+  }
+}
