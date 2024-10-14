@@ -67,7 +67,7 @@ $nav-text-color: #1D1D1D;
 
 *{
   margin: 0;
-  box-sizing: border-box;
+
 }
 
 .page{
@@ -101,14 +101,15 @@ $nav-text-color: #1D1D1D;
   }
 }
 
+.page:has(.page__menu:target){
+  overflow: hidden;
+}
+
 
 .header{
-  background-image: url(../images/header-bike-mobile.png);
-  background-position: right;
+  background-image: url(../images/header-bike-img.png);
+  background-position:  right;
   background-size: cover;
-
-  // display: none !important;
-
 
   &__content{
     height: 100vh;
@@ -136,6 +137,10 @@ $nav-text-color: #1D1D1D;
     @include on-tablet{
       padding-bottom: 130px;
     }
+
+    @include on-desctop{
+      padding-bottom: 203px;
+    }
   }
 
 }
@@ -156,6 +161,10 @@ $nav-text-color: #1D1D1D;
   align-items: center;
 
   @include on-tablet{
+    padding-block: 36px;
+  }
+
+  @include on-desctop(){
     padding-block: 36px;
   }
 
@@ -187,9 +196,13 @@ $nav-text-color: #1D1D1D;
   background-color: #C2C2C2;
   font-weight: 600;
   text-transform: uppercase;
+  overflow: auto;
 
   &__top{
     margin-bottom: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
     @include on-tablet{
       margin-bottom: 0;
@@ -244,9 +257,32 @@ $nav-text-color: #1D1D1D;
     width: 32px;
   }
 
+
   &--phone{
     background-image: url(../icons/icon-phone.svg);
+    position: relative;
+
+
+    &::before{
+      content: '+1 234 555-55-55';
+      position: absolute;
+      width: 185px;
+      top: 25%;
+      color: $main-text-color;
+      right: 50px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+
+    &:hover::before{
+      opacity: 1;
+    }
   }
+
   &--menu{
     background-image: url(../icons/icon-burger-menu.svg);
 
@@ -394,8 +430,10 @@ $nav-text-color: #1D1D1D;
 }
 
 .product{
+
   &__photo{
     width: 100%;
+    @include hover(transform, scale(1.1));
   }
 
   &__title{
@@ -435,11 +473,19 @@ $nav-text-color: #1D1D1D;
       font-size: 16px;
       font-weight: 700;
       line-height: 27px;
-      width: 324px;
+      width: 278px;
       height: 56px;
       background-color: #fff;
       border-radius: 40px;
       transition: all .3s;
+
+      @include on-tablet{
+        width: 392px;
+      }
+
+      @include on-desctop{
+        width: 324px;
+      }
 
       &:hover{
         box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.40);
@@ -457,6 +503,8 @@ $nav-text-color: #1D1D1D;
     @include page-grid;
 
     margin-bottom: 16px;
+
+
   }
 
   &__link{
@@ -469,6 +517,8 @@ $nav-text-color: #1D1D1D;
       @include on-desctop{
         grid-column: span 8;
       }
+
+      @include hover(transform, scale(1.05));
     }
 
     &--square{
@@ -479,6 +529,8 @@ $nav-text-color: #1D1D1D;
       @include on-desctop{
         grid-column: span 4;
       }
+
+      @include hover(transform, scale(1.05));
     }
   }
 
@@ -503,16 +555,23 @@ $nav-text-color: #1D1D1D;
 }
 
 .contacts{
+  .section-title{
+    @include on-desctop{
+      font-size: 48px;
+      font-weight: 600;
+    }
+  }
 
   &__container{
   @include page-grid;
 
 
-    &__form{
+    &-form{
       grid-column: 1 / -1;
-      row-gap: 16px;
+
 
       &-name{
+        box-sizing: border-box;
         width: 100%;
         padding-inline: 16px;
         grid-column: 1 / -1;
@@ -520,6 +579,7 @@ $nav-text-color: #1D1D1D;
         border-radius: 40px;
         border: none;
         outline: none;
+        margin-bottom: 16px;
 
         &::placeholder{
           color: #7E7E83;
@@ -530,6 +590,7 @@ $nav-text-color: #1D1D1D;
       }
 
       &-email{
+        box-sizing: border-box;
         width: 100%;
         padding-inline: 16px;
         grid-column: 1 / -1;
@@ -537,6 +598,7 @@ $nav-text-color: #1D1D1D;
         border-radius: 40px;
         border: none;
         outline: none;
+        margin-bottom: 16px;
 
         &::placeholder{
           color: #7E7E83;
@@ -548,6 +610,7 @@ $nav-text-color: #1D1D1D;
       }
 
       &-message{
+        box-sizing: border-box;
         width: 100%;
         padding: 14px 16px;
         grid-column: 1 / -1;
@@ -555,6 +618,8 @@ $nav-text-color: #1D1D1D;
         border-radius: 16px;
         border: none;
         outline: none;
+        margin-bottom: 32px;
+        resize: none;
 
         &::placeholder{
           color: #7E7E83;
@@ -562,12 +627,10 @@ $nav-text-color: #1D1D1D;
           font-weight: 400;
           line-height: 20px
         }
-
       }
 
       &-btn{
         width: 100%;
-
         height: 56px;
         border-radius: 40px;
         border: none;
@@ -576,6 +639,7 @@ $nav-text-color: #1D1D1D;
         font-size: 16px;
         font-weight: 700;
         margin-bottom: 48px;
+        transition: .3s;
 
         &:hover{
           box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.40);
@@ -589,12 +653,16 @@ $nav-text-color: #1D1D1D;
       @include on-tablet{
         grid-column: span 3;
       }
+
+      @include on-desctop{
+        grid-column: span 5;
+      }
     }
 
     .contact-info{
-      // display: flex;
-      // flex-direction: column;
-      // row-gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
 
       &__phone{
         p{
@@ -608,6 +676,8 @@ $nav-text-color: #1D1D1D;
           font-size: 16px;
           font-weight: 500;
           text-decoration: none;
+
+          @include hover(color, #7E7E83);
         }
 
       }
@@ -624,6 +694,8 @@ $nav-text-color: #1D1D1D;
           font-size: 16px;
           font-weight: 500;
           text-decoration: none;
+
+          @include hover(color, #7E7E83);
         }
       }
 
@@ -639,10 +711,35 @@ $nav-text-color: #1D1D1D;
           font-size: 16px;
           font-weight: 500;
           text-decoration: none;
+
+          @include hover(color, #7E7E83);
         }
+      }
+
+      @include on-tablet{
+        grid-column: span 3;
+      }
+
+      @include on-desctop{
+        grid-column: span  3 / 11;
       }
     }
   }
 
 }
 
+.footer{
+  background-image: url(../images/footer-img.png);
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 200px;
+
+  @include on-tablet{
+    height: 480px;
+  }
+
+  @include on-desctop{
+    height: 555px;
+  }
+}
