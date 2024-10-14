@@ -109,15 +109,12 @@
     }
 
     @include mixins.on-desktop {
-      width: calc(300px * 3 + 16px * 2);
+      // width: calc(300px * 3 + 16px * 2);
+      width: 498px;
       margin-top: 0;
       margin-bottom: 120px;
       font-size: 48px;
       line-height: 48px;
-    }
-
-    @include mixins.on-big-desktop {
-      width: calc(324px * 3 + 24px * 2);
     }
   }
 
@@ -177,12 +174,17 @@
   }
 
   &__input {
+    font-family: 'Space Mono', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+
     width: 280px;
     height: 48px;
 
     background-color: #f8f8fa;
     border: #f8f8fa;
     border-radius: 8px;
+    color: #7e7e83;
 
     margin-bottom: 16px;
 
@@ -196,6 +198,22 @@
 
     @include mixins.on-desktop {
       width: 410px;
+      padding-left: 16px;
+
+      &:hover {
+        background-color: #f8f8fa;
+        border: 1px solid #d5d7de;
+      }
+
+      &:focus {
+        background-color: #f8f8fa;
+        border: 1px solid #292929;
+        color: #292929;
+
+        &::placeholder {
+          padding-left: 0;
+        }
+      }
     }
   }
 
@@ -220,6 +238,32 @@
 
     @include mixins.on-desktop {
       width: 410px;
+      padding-left: 16px;
+
+      &:hover {
+        background-color: #f8f8fa;
+        border: 1px solid #d5d7de;
+      }
+
+      &:focus {
+        background-color: #f8f8fa;
+        border: 1px solid #292929;
+        color: #292929;
+
+        &::placeholder {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  &__form {
+    @include mixins.on-tablet {
+      width: 472px;
+    }
+
+    @include mixins.on-big-tablet {
+      width: 600px;
     }
   }
 }
@@ -247,7 +291,7 @@
 
   color: #7e7e83;
 
-  padding-left: 16px;
+  // padding-left: 16px;
 }
 
 .categories {
@@ -280,11 +324,33 @@
   }
 
   &__paragraph-title {
+    position: relative;
     margin-bottom: 40px;
 
     @include mixins.on-tablet {
       font-size: 24px;
       line-height: 34px;
+    }
+
+    @include mixins.on-desktop {
+      width: fit-content;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #292929;
+
+        transition: all 0.3s;
+        transform: scale(0);
+        transform-origin: left;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
     }
   }
 }
@@ -309,15 +375,34 @@
   }
 
   @include mixins.on-desktop {
-    width: 324px;
+    width: 410px;
   }
 
   &__text-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     font-size: 16px;
     line-height: 27px;
     align-self: center;
     text-decoration: none;
     color: #fff;
+  }
+
+  &:hover {
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+
+    .button__text-link {
+      color: #292929;
+    }
+  }
+  &:focus {
+    background-color: #111;
+    border: #111;
+
+    .button__text-link {
+      color: #fff;
+    }
   }
 }
 
@@ -325,6 +410,12 @@
   margin-top: 0;
   margin-bottom: 0;
 
+  @include mixins.on-desktop {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+  }
   &__container {
     @include mixins.on-tablet {
       width: 560px;
@@ -341,12 +432,21 @@
     }
 
     @include mixins.on-desktop {
-      width: 940px;
+      justify-content: center;
+      width: calc(100% - 120px);
+      column-gap: 24px;
+      margin-left: 120px;
       height: 270px;
     }
+  }
 
-    @include mixins.on-big-desktop {
-      width: 1020px;
+  &__title {
+    @include mixins.on-tablet {
+      width: 288px;
+    }
+
+    @include mixins.on-desktop {
+      width: 498px;
     }
   }
 
@@ -378,22 +478,36 @@
     @include mixins.on-desktop {
       width: 498px;
       height: 270px;
-      margin-bottom: 0;
     }
   }
 }
 
 .contact-us {
+  @include mixins.on-tablet {
+    display: flex;
+    justify-content: center;
+  }
+
   @include mixins.on-desktop {
     position: absolute;
+    right: calc(50% + 50px);
+  }
 
-    width: 45%;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mixins.on-desktop {
+      width: 410px;
+    }
   }
 }
 
 .title-on-desktop {
   @include mixins.on-desktop {
-    width: 410px;
+    width: 498px;
+    margin-bottom: 56px;
   }
 }
 

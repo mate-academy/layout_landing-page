@@ -13,38 +13,72 @@
   &--phone {
     background-image: url(../icons/icon-phone.png);
 
-    @include mixins.hover(transform, scale(1.2));
-
     @include mixins.on-tablet {
       background-image: url(../icons/icon-phone-32px.png);
+    }
+
+    @include mixins.on-desktop {
+      position: relative;
+
+      @include mixins.hover(transform, scale(1.2));
+
+      &::after {
+        font-family: Inter, sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        width: 140px;
+        height: 32px;
+        line-height: 32px;
+        letter-spacing: 2px;
+        color: #292929;
+        display: inline-block;
+
+        content: '+1 234 555-55-55';
+
+        text-decoration: none;
+        transform: translateY(-16px);
+        transition: all 0.3s;
+
+        opacity: 0;
+      }
+
+      &:hover::after {
+        transform: translate(-140px, -16px);
+        transform-origin: right;
+
+        opacity: 1;
+      }
     }
   }
 
   &--menu {
     background-image: url(../icons/icon-burger-menu.png);
-    
-    @include mixins.hover(transform, scale(1.2));
-    &:hover {
-      background-image: url(../icons/icon-burger-menu-hover.png);
-    }
 
-    
+    // &:hover {
+    //   background-image: url(../icons/icon-burger-menu-hover.png);
+    // }
 
-    @include mixins.on-tablet {
-      background-image: url(../icons/icon-burger-menu-32px\ \(1\).png);
+    @include mixins.on-desktop {
+      @include mixins.hover(transform, scale(1.2));
       &:hover {
         background-image: url(../icons/icon-bur-menu-hover-desktop.png);
       }
+    }
+
+    @include mixins.on-tablet {
+      background-image: url(../icons/icon-burger-menu-32px\ \(1\).png);
     }
   }
 
   &--close {
     background-image: url(../icons/icon-close.png);
 
-    @include mixins.hover(transform, scale(1.2));
-
     @include mixins.on-tablet {
       background-image: url(../icons/icon-close-32px\ \(1\).png);
+    }
+
+    @include mixins.on-desktop {
+      @include mixins.hover(transform, scale(1.2));
     }
   }
 }
