@@ -28,26 +28,24 @@
     position: relative;
     display: flex;
 
+    @media (max-width: $tablet-min-width) {
+      aspect-ratio: 1 / 1;
+    }
+
     @include move(1, 2);
 
     @include on-tablet {
       grid-column: span 3;
+    }
 
-      &:nth-child(1) {
-        @include on-desktop {
-          grid-column: 2 / 6;
-        }
-      }
-      &:nth-child(2) {
-        @include on-desktop {
-          grid-column: 8 / -2;
-        }
-      }
+    @include on-desktop {
+      grid-column: span 6;
     }
 
     & img {
       cursor: pointer;
       width: 100%;
+      object-fit: cover;
 
       @include hover(transform, scale(1.1));
     }
