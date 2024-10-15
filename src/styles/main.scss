@@ -64,15 +64,21 @@
 
   &__recommended-container {
     @include mixins.on-desktop {
-      display: flex;
-      flex-direction: row;
-      column-gap: 16px;
+      // display: flex;
+      // flex-direction: row;
+      // column-gap: 16px;
+      display: grid;
+      grid-template-areas:
+        'photo photo photo'
+        'title title title'
+        'parag parag parag'
+        'price price price';
+      column-gap: 24px;
     }
 
     @include mixins.on-big-desktop {
-      display: flex;
-      flex-direction: row;
-      column-gap: 24px;
+      // display: flex;
+      // flex-direction: row;
     }
   }
 
@@ -111,11 +117,16 @@
     }
 
     @include mixins.on-desktop {
-      width: 498px;
+      justify-content: flex-start;
+      width: 948px;
       margin-top: 0;
-      margin-bottom: 120px;
+      margin-bottom: 56px;
       font-size: 48px;
       line-height: 48px;
+    }
+
+    @include mixins.on-big-desktop {
+      width: 1020px;
     }
   }
 
@@ -135,9 +146,11 @@
     }
 
     @include mixins.on-desktop {
+      grid-area: photo;
       width: 300px;
       height: 300px;
       margin: 0;
+      margin-bottom: 24px;
     }
 
     @include mixins.on-big-desktop {
@@ -154,7 +167,8 @@
     line-height: 25px;
 
     @include mixins.on-desktop {
-      margin: 16px 0 56px;
+      grid-area: title;
+      margin-bottom: 8px;
       font-size: 24px;
     }
   }
@@ -166,12 +180,21 @@
     margin-top: 0;
     margin-bottom: 12px;
     width: 280px;
+
+    @include mixins.on-desktop {
+      height: 88px;
+      grid-area: parag;
+    }
   }
 
   &__price {
     font-size: 16px;
     margin-top: 0;
     margin-bottom: 40px;
+
+    @include mixins.on-desktop {
+      grid-area: price;
+    }
   }
 
   &__input {
@@ -188,7 +211,7 @@
     border: variables.$input-bg;
     border-radius: 8px;
     color: #7e7e83;
-
+    padding-left: 16px;
     margin-bottom: 16px;
 
     &:hover {
@@ -216,7 +239,6 @@
 
     @include mixins.on-desktop {
       width: 410px;
-      padding-left: 16px;
     }
   }
 
@@ -232,7 +254,7 @@
     background-color: variables.$input-bg;
     border: variables.$input-bg;
     border-radius: 8px;
-
+    padding-left: 16px;
     margin-bottom: 32px;
 
     &:hover {
@@ -260,7 +282,6 @@
 
     @include mixins.on-desktop {
       width: 410px;
-      padding-left: 16px;
     }
   }
 
@@ -327,31 +348,37 @@
   &__paragraph-title {
     position: relative;
     margin-bottom: 40px;
+    width: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: variables.$main-color;
+
+      transition: all 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
 
     @include mixins.on-tablet {
       font-size: 24px;
       line-height: 34px;
     }
+  }
 
-    @include mixins.on-desktop {
-      width: fit-content;
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        display: block;
-        height: 2px;
-        width: 100%;
-        background-color: variables.$main-color;
-
-        transition: all 0.3s;
-        transform: scale(0);
-        transform-origin: left;
-      }
-
-      &:hover::after {
-        transform: scale(1);
-      }
+  &__image {
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(0.9);
+      box-shadow: 0 0 10px variables.$main-color;
     }
   }
 }
@@ -372,12 +399,14 @@
   line-height: 27px;
   align-self: center;
   text-decoration: none;
+  transition: all 0.3s;
 
   &:hover {
     background-color: #f8f8fa;
     border: 2px solid #f0f1f4;
-
+    cursor: pointer;
     color: variables.$main-color;
+    transform: scale(1.05);
   }
 
   &:focus {
