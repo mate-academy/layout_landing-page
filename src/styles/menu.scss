@@ -1,0 +1,94 @@
+@use 'mixins';
+@use 'variables';
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #e5e6e8;
+
+  &__top {
+    margin-bottom: 32px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 56px;
+    }
+  }
+  &__nav {
+    margin-bottom: 48px;
+  }
+  &__content {
+    padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include mixins.on-tablet {
+      padding-inline: 120px;
+    }
+  }
+
+  &__phone-number {
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: variables.$main-color;
+    display: block;
+    margin-bottom: 16px;
+  }
+  &__call-to-order {
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: variables.$main-color;
+    display: block;
+    text-transform: uppercase;
+    border-bottom: 1px solid variables.$main-color;
+    width: fit-content;
+  }
+}
+
+.nav {
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+    height: 22px;
+    line-height: 22px;
+  }
+
+  &__link {
+    position: relative;
+    color: variables.$main-color;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    @include mixins.on-desktop {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: variables.$main-color;
+
+        transition: all 0.3s;
+        transform: scale(0);
+        transform-origin: left;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
