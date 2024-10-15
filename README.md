@@ -8,6 +8,7 @@ Technologies Used:
 
 HTML5
 CSS3
+JavaScript
 Responsive web design principles
 Flexbox and Grid for layout structure
 Figma for design prototyping
