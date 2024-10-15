@@ -28,6 +28,8 @@
     transform: translateX(-100%);
     opacity: 0;
     pointer-events: none;
+
+    overflow: hidden;
   }
 
   &__menu:target {
@@ -177,6 +179,8 @@
     font-weight: 400;
     font-size: 14px;
 
+    outline: none;
+
     width: 280px;
     height: 48px;
 
@@ -187,6 +191,21 @@
 
     margin-bottom: 16px;
 
+    &:hover {
+      background-color: variables.$input-bg;
+      border: 1px solid #d5d7de;
+    }
+
+    &:focus {
+      background-color: variables.$input-bg;
+      border: 1px solid variables.$main-color;
+      color: variables.$main-color;
+
+      &::placeholder {
+        padding-left: 0;
+      }
+    }
+
     @include mixins.on-tablet {
       width: 472px;
     }
@@ -198,21 +217,6 @@
     @include mixins.on-desktop {
       width: 410px;
       padding-left: 16px;
-
-      &:hover {
-        background-color: variables.$input-bg;
-        border: 1px solid #d5d7de;
-      }
-
-      &:focus {
-        background-color: variables.$input-bg;
-        border: 1px solid variables.$main-color;
-        color: variables.$main-color;
-
-        &::placeholder {
-          padding-left: 0;
-        }
-      }
     }
   }
 
@@ -221,11 +225,30 @@
     height: 148px;
     padding-top: 14px;
 
+    // changes
+    resize: none;
+    outline: none;
+
     background-color: variables.$input-bg;
     border: variables.$input-bg;
     border-radius: 8px;
 
     margin-bottom: 32px;
+
+    &:hover {
+      background-color: variables.$input-bg;
+      border: 1px solid #d5d7de;
+    }
+
+    &:focus {
+      background-color: variables.$input-bg;
+      border: 1px solid variables.$main-color;
+      color: variables.$main-color;
+
+      &::placeholder {
+        padding-left: 0;
+      }
+    }
 
     @include mixins.on-tablet {
       width: 472px;
@@ -238,32 +261,13 @@
     @include mixins.on-desktop {
       width: 410px;
       padding-left: 16px;
-
-      &:hover {
-        background-color: variables.$input-bg;
-        border: 1px solid #d5d7de;
-      }
-
-      &:focus {
-        background-color: variables.$input-bg;
-        border: 1px solid variables.$main-color;
-        color: variables.$main-color;
-
-        &::placeholder {
-          padding-left: 0;
-        }
-      }
     }
   }
 
   &__form {
-    @include mixins.on-tablet {
-      width: 472px;
-    }
-
-    @include mixins.on-big-tablet {
-      width: 600px;
-    }
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }
 
@@ -362,6 +366,27 @@
   border-radius: 8px;
   margin-bottom: 96px;
 
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  align-self: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+
+    color: variables.$main-color;
+  }
+
+  &:focus {
+    background-color: #111;
+    border: #111;
+
+    color: variables.$button-text-color-white;
+  }
+
   @include mixins.on-tablet {
     width: 472px;
     margin-bottom: 120px;
@@ -373,33 +398,6 @@
 
   @include mixins.on-desktop {
     width: 410px;
-  }
-
-  &__text-link {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
-    align-self: center;
-    text-decoration: none;
-    color: variables.$button-text-color-white;
-  }
-
-  &:hover {
-    background-color: #f8f8fa;
-    border: 2px solid #f0f1f4;
-
-    .button__text-link {
-      color: variables.$main-color;
-    }
-  }
-  &:focus {
-    background-color: #111;
-    border: #111;
-
-    .button__text-link {
-      color: variables.$button-text-color-white;
-    }
   }
 }
 
@@ -430,9 +428,8 @@
 
     @include mixins.on-desktop {
       justify-content: center;
-      width: calc(100% - 120px);
+      width: 100%;
       column-gap: 24px;
-      margin-left: 120px;
       height: 270px;
     }
   }
@@ -470,6 +467,7 @@
       width: 328px;
       height: 424px;
       margin-bottom: 0;
+      font-stretch: expanded;
     }
 
     @include mixins.on-desktop {
@@ -486,8 +484,8 @@
   }
 
   @include mixins.on-desktop {
-    position: absolute;
-    right: calc(50% + 50px);
+    display: flex;
+    justify-content: unset;
   }
 
   &__container {
