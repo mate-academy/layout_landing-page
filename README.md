@@ -5,4 +5,6 @@ The header features a site menu that expands upon clicking, providing links for 
 The main content area includes interactive blocks where some buttons respond to user actions, making the site engaging and dynamic.
 
 The website leverages technologies such as Flexbox, Grid, BEM, animations, and transforms to create a modern and responsive design.
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+
+ [MET design](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+ [MET web-page](https://natalia646.github.io/layout_landing-page/)
