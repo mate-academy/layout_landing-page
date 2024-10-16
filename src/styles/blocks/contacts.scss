@@ -1,6 +1,13 @@
 .contacts {
-  &__wrapper {
+  &__content {
+    display: grid;
+    row-gap: 48px;
+
     @include page-grid;
+
+    @include on-tablet {
+      row-gap: 80px;
+    }
   }
 
   &__form {
@@ -12,10 +19,14 @@
   }
 
   &__info {
+    & > :not(:last-child) {
+      margin-bottom: 24px;
+    }
+
     grid-column: 1/ -1;
 
     @include on-desktop {
-      grid-column: span 2;
+      grid-column: span 3;
     }
   }
 
@@ -26,9 +37,36 @@
     line-height: 22.4px;
     letter-spacing: 0.15px;
     color: #191919;
+    position: relative;
+
+    &:hover {
+      color: $active-color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $active-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      color: $active-color;
+    }
   }
 
   &__title {
+    margin: 0;
+    margin-bottom: 8px;
+
     font-size: 14px;
     font-weight: 400;
     line-height: 19.6px;
@@ -67,7 +105,7 @@
 
     &:active,
     &:focus {
-      border: 2px solid #f98921;
+      border: 2px solid $active-color;
     }
   }
 
@@ -83,7 +121,7 @@
     border-radius: 8px;
     border: none;
 
-    background-color: #f98921;
+    background-color: $active-color;
     color: #fff;
     font-size: 16px;
     font-weight: 700;
