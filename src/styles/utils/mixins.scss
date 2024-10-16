@@ -1,0 +1,44 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin image-hover-scale($scale: 1.1, $transition-duration: $effectDuration) {
+  transition: transform $transition-duration ease-in-out;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
