@@ -17,7 +17,7 @@
     padding-inline: 72px;
   }
 
-  @include on-desktop() {
+  @include on-desktop {
     padding-inline: 120px;
   }
 }
@@ -47,5 +47,21 @@
   transition: #{$property} $duration;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
   }
 }
