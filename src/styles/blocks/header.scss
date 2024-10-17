@@ -48,8 +48,39 @@
     }
   }
 
+  &__phone {
+    display: none;
+    font-size: 12px;
+    line-height: 16px;
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: 700;
+
+    @include on-tablet {
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+  }
+
+  &__icons-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &:hover .header__phone {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   &__icons {
     display: flex;
+    align-items: center;
     gap: 24px;
 
     @include on-tablet {
@@ -69,11 +100,22 @@
   width: 24px;
   height: 24px;
 
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
   &--phone {
     background-image: url('../images/icon-phone-call.svg');
   }
 
   &--menu {
     background-image: url('../images/menu.svg');
+
+    @include on-tablet {
+      &:hover {
+        background-image: url('../images/menu-hover.svg');
+      }
+    }
   }
 }
