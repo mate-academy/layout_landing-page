@@ -1,38 +1,46 @@
 .explore-online {
+  max-width: 100vw;
+  overflow: hidden;
+
   &__image {
-    width: 280px;
-    height: 277px;
-    margin-inline: auto;
-
-    @include on-tablet {
-      width: 392px;
-      height: 387px;
-    }
-
-    @include on-desktop {
-      width: 324px;
-      height: 320px;
-    }
+    width: 100%;
+    max-width: 324px;
+    height: auto;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+  &__image:hover {
+    transform: scale(1.2);
   }
   &__items {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-inline: auto;
+    justify-content: center;
+    max-width: 1020px;
 
-    @include on-tablet {
-      grid-template-columns: 1fr;
-      column-gap: 24px;
-      margin-inline: auto;
-      box-sizing: border-box;
-    }
+    @include page-grid;
 
     @include on-desktop {
-      grid-template-columns: 1fr 1fr 1fr;
       column-gap: 24px;
+      justify-items: center;
     }
   }
   &__item {
     padding-top: 48px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
   }
   &__title {
     margin-bottom: 0;
@@ -44,6 +52,7 @@
     color: rgba(209, 45, 53, 1);
   }
   &__text {
+    max-width: 300px;
     margin: 0;
     font-family: $explore-onlineFont;
     font-weight: 400;
