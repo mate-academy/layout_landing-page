@@ -1,7 +1,35 @@
-body {
-  margin: 0;
-  font-family: Poppins, sans-serif;
+/* #region variables */
+$main-page-color: #1d1d1d;
+$second-page-color: #c2c2c2;
+$text-color: #1d1d1d;
+
+/* #endregion */
+
+/* #region page */
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 }
+
+/* #endregion */
 
 /* #region header */
 .header {
@@ -9,16 +37,10 @@ body {
   height: 100vh;
   background-position: right;
   background-size: cover;
-  padding: 24px 20px 88px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 
   &__title {
     color: #fff;
@@ -27,25 +49,19 @@ body {
     line-height: 36px;
     letter-spacing: -1.5px;
     text-align: center;
-  }
-
-  &__logo {
-    height: 38px;
-    width: 130px;
+    padding-bottom: 88px;
+    margin: 0;
   }
 }
 
 /* #endregion */
 
 /* #region icon */
-.icons {
-  display: flex;
-  gap: 24px;
-}
 
 .icon {
   width: 24px;
   height: 24px;
+  background-size: cover;
 }
 
 .icon--phone {
@@ -56,9 +72,94 @@ body {
   background-image: url(../images/icon-burger-menu.png);
 }
 
+.icon--close {
+  background-image: url(../images/icon-menu-close.png);
+}
+
 /* #endregion */
 
-/* #region icon */
+/* #region aside-menu */
+.top-bar {
+  padding: 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar__logo {
+  height: 38px;
+  width: 130px;
+  display: flex;
+}
+
+.top-bar__icons {
+  display: flex;
+  gap: 24px;
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #{$second-page-color};
+  font-weight: 600;
+  color: #{$text-color};
+
+  &__top {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    padding-inline: 20px;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__logo {
+    height: 38px;
+    width: 130px;
+  }
+
+  &__phone-number {
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__call-to-book {
+    color: inherit;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    display: block;
+    width: fit-content;
+
+    padding-bottom: 7px;
+    border-bottom: solid 1px #{$text-color};
+  }
+}
+
+.nav__link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
 /* #endregion */
 
