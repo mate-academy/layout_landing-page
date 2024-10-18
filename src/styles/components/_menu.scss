@@ -1,0 +1,110 @@
+.menu {
+  overflow: auto;
+  position: fixed;
+  left: -100%;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  height: 100vh;
+  background-color: $color-bgc-default;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: ease-in-out $transition-time;
+
+  &:target {
+    left: 0;
+    pointer-events: all;
+  }
+
+  &__logo {
+    width: 6.4rem;
+    height: 4.6rem;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-block: 2rem 4rem;
+
+    @extend %flex-between-center;
+  }
+
+  &__contact-order {
+    height: 2.4rem;
+    position: relative;
+    display: inline-block;
+
+    @include font(1.2rem, 1.6rem, 700, 0.2rem);
+
+    &::after {
+      @include link-line(0.1rem, $color-txt-light);
+    }
+  }
+
+  &__contact-title,
+  &__contact-order,
+  &__phone-link {
+    color: $color-txt-light;
+  }
+  &__phone-link {
+    display: block;
+    margin-bottom: 0.8rem;
+    transition: all $transition-time;
+
+    &:hover {
+      color: $color-hover-contact-menu;
+    }
+
+    &:last-of-type {
+      margin-bottom: 1.6rem;
+    }
+  }
+}
+
+.nav {
+  margin-bottom: 3.2rem;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.2rem;
+  }
+
+  &__link {
+    color: $color-txt-light;
+    height: 3rem;
+    position: relative;
+
+    &:hover {
+      &::after {
+        @include link-line(0.1rem, $color-txt-light);
+      }
+    }
+  }
+
+  &__item {
+    color: $color-txt-light;
+    transition: all $transition-time ease-in-out;
+
+    @include font(2.2rem, 2.2rem, 700, 0.2rem);
+  }
+}
+
+.phones {
+  position: fixed;
+  right: -100%;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  height: 100vh;
+  background-color: transparent;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: ease-in-out $transition-time;
+
+  &:target {
+    right: 20%;
+    pointer-events: all;
+  }
+}
