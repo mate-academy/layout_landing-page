@@ -1,13 +1,30 @@
 .menu {
-  // display: none;
-  position: absolute;
-  top: 0;
+  overflow: auto;
+  position: fixed;
+  left: -100%;
   width: 100%;
+  z-index: 999;
+  top: 0;
   height: 100vh;
   background-color: $color-bgc-default;
   text-transform: uppercase;
+  pointer-events: none;
+  transition: ease-in-out 1s;
+
+  &:target {
+    left: 0;
+    pointer-events: all;
+  }
+
+  &__logo {
+    width: 6.4rem;
+    height: 4.6rem;
+  }
 
   &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     padding-block: 2rem 4rem;
 
     @extend %flex-between-center;
@@ -33,6 +50,11 @@
   &__phone-link {
     display: block;
     margin-bottom: 0.8rem;
+    transition: all 1s;
+
+    &:hover {
+      color: $color-hover-contact-menu;
+    }
 
     &:last-of-type {
       margin-bottom: 1.6rem;
@@ -63,7 +85,26 @@
 
   &__item {
     color: $color-txt-light;
+    transition: all 1s ease-in-out;
 
     @include font(2.2rem, 2.2rem, 700, 0.2rem);
+  }
+}
+
+.phones {
+  position: fixed;
+  right: -100%;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  height: 100vh;
+  background-color: transparent;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: ease-in-out 1s;
+
+  &:target {
+    right: 20%;
+    pointer-events: all;
   }
 }

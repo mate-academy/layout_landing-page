@@ -3,24 +3,47 @@
   background-image: url('../public/images/header/header.png');
   background-size: cover;
   background-position: center;
-  margin-bottom: $section-mb-mobile;
 
   &__logo {
     width: 6.4rem;
     height: 4.6rem;
+
+    @include media-tablet {
+      width: 9.1rem;
+      height: 6.6rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
 
-  &__icon {
-    &:first-child {
-      margin-right: $main-gap;
+  &__icons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: $main-gap;
+
+    @include media-tablet {
+      column-gap: 5.5rem;
     }
   }
 
   &__top {
+    max-width: 1260px;
+    margin: 0 auto;
     padding-top: 2.5rem;
     margin-bottom: 12.9rem;
 
     @extend %flex-between-center;
+
+    @include media-tablet {
+      padding-top: 5rem;
+      margin-bottom: 14.1rem;
+    }
+
+    @include media-decstop {
+      padding-top: 5rem;
+      margin-bottom: 8.3rem;
+    }
   }
 
   &__title {
@@ -28,5 +51,42 @@
     text-align: center;
 
     @include font(4rem, 4rem, 700, -0.15rem);
+
+    @include media-tablet {
+      @include font(6.4rem, 6.4rem, 700, -0.15rem);
+    }
+
+    @include media-decstop {
+      @include font(8rem, 8rem, 700, -0.15rem);
+    }
+  }
+
+  &__contacts {
+    opacity: 0;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: absolute;
+    z-index: 300;
+    right: 100%;
+    text-wrap: nowrap;
+    transform: translateX(-16px);
+  }
+
+  &__contact-title,
+  &__phone-link {
+    color: $color-txt-light;
+  }
+  &__phone-link {
+    display: block;
+    &:first-of-type {
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  &__icon--phone:hover + .header__contacts {
+    opacity: 1;
+    transition: 1s ease-in-out;
   }
 }

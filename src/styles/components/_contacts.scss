@@ -5,12 +5,67 @@
 }
 
 .contact {
-  margin-bottom: $article-mb;
+  margin-bottom: 4.8rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  &__wrapper {
+    display: grid;
+
+    @include page-grid(1, 2rem);
+
+    @include media-tablet {
+      @include page-grid(6, $main-gap);
+    }
+
+    @include media-decstop {
+      @include page-grid(12, $main-gap);
+    }
+  }
+
+  &__container {
+    &--address {
+      @include media-mobile-xl {
+        display: grid;
+
+        @include page-grid(2, 2rem);
+      }
+
+      @include media-tablet {
+        display: block;
+        grid-column: 1/4;
+      }
+
+      @include media-decstop {
+        display: grid;
+
+        @include page-grid(2, 2.4rem);
+
+        grid-column: 1/7;
+      }
+    }
+    &--form {
+      @include media-tablet {
+        grid-column: 4/7;
+      }
+
+      @include media-decstop {
+        grid-column: 8/13;
+      }
+    }
+  }
+
   &__title {
     margin-bottom: 1.6rem;
   }
 
+  &__content {
+    width: 100%;
+  }
+
   &__info {
+    width: 100%;
     color: $color-txt-main;
 
     &-title {
@@ -23,6 +78,10 @@
       display: block;
       color: $color-txt-dark;
       margin-bottom: 0.8rem;
+
+      &:hover {
+        color: $color-hover-contact;
+      }
 
       &--adress {
         line-height: 2.24rem;

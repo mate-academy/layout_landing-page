@@ -2,19 +2,47 @@
   display: inline-block;
   width: 2.4rem;
   height: 2.4rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include media-tablet {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 }
 
 .icon-phone {
-  @extend %icon-phone;
+  background-image: url('../public/icons/phone.svg');
 }
 
 .icon-menu {
-  @extend %icon-menu;
+  position: relative;
+  &::before {
+    @extend %menu-icon-content;
+
+    background-image: url('../public/icons/burger.svg');
+    opacity: 1;
+  }
+  &::after {
+    @extend %menu-icon-content;
+
+    background-image: url('../public/icons/burger-hover.svg');
+    opacity: 0;
+  }
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+    &::after {
+      opacity: 1;
+    }
+  }
 }
 
 .icon-close {
-  @extend %icon-close;
+  background-image: url('../public/icons/close.svg');
 }
+
 .icon-logo {
-  @extend %icon-logo;
+  background-image: url('../public/icons/logo.svg');
 }

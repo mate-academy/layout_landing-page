@@ -6,6 +6,15 @@
   &-description {
     text-align: center;
     margin-bottom: $article-mb;
+
+    @include media-tablet {
+      max-width: 40rem;
+      margin: 0 auto 4.8rem;
+    }
+
+    @include media-decstop {
+      max-width: 32.5rem;
+    }
   }
 }
 
@@ -16,6 +25,8 @@
   }
 
   &__images {
+    display: grid;
+
     @include page-grid(2, 2rem);
 
     margin-bottom: $main-gap;
@@ -23,11 +34,54 @@
     &--center {
       @include page-grid(3, 0.8rem);
     }
+
+    @include media-tablet {
+      @include page-grid(6, $main-gap);
+    }
+
+    @include media-tablet-xl {
+      @include page-grid(12, $main-gap);
+    }
   }
 
   &__picture {
     overflow: hidden;
     max-width: 100%;
+
+    @include media-tablet {
+      grid-column: span 2;
+    }
+
+    @include media-tablet-xl {
+      grid-column: span 4;
+    }
+
+    &--wide {
+      @include media-tablet {
+        grid-column: span 4;
+      }
+
+      @include media-tablet-xl {
+        grid-column: span 8;
+      }
+    }
+    &--center {
+      @include media-tablet {
+        grid-column: span 3;
+
+        &:last-of-type {
+          display: none;
+        }
+      }
+
+      @include media-tablet-xl {
+        grid-column: span 4;
+
+        &:last-of-type {
+          display: block;
+        }
+      }
+    }
   }
 
   &__image {
@@ -36,19 +90,28 @@
     object-fit: cover;
   }
 
-  &__image--large {
+  &__image--wide {
     object-position: 18% 0;
-    -webkit-transform: scale(1.4);
     transform: scale(1.4);
+
     &--bottom {
       object-position: 100% 0;
+      transform: scale(1);
+    }
 
+    @include media-tablet {
       transform: scale(1);
     }
   }
 
   &__title {
     color: $color-txt-accent;
+    display: flex;
+    flex-direction: column;
+
+    @include media-tablet {
+      display: block;
+    }
   }
 
   &__button {
@@ -56,5 +119,15 @@
     padding-left: 33.12px;
 
     @extend %font-cinzel;
+
+    @include media-tablet {
+      max-width: 39.2rem;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+
+    @include media-tablet-xl {
+      max-width: 32.4rem;
+    }
   }
 }
