@@ -1,3 +1,74 @@
-body {
+@import './utils/variable';
+@import './utils/mixin';
+@import './icon';
+@import './logo';
+@import './header';
+@import './menu';
+@import './nav';
+@import './section';
+@import './about-us';
+@import './now-on-view';
+@import './explore-online';
+@import './contact-us';
+@import './footer';
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
   margin: 0;
+}
+
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    font-family: Cinzel, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: $main-color;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding-block: 100px;
+
+  @include on-tablet {
+    gap: 140px;
+    padding-block: 140px;
+  }
+
+  @include on-desctop {
+    gap: 140px;
+    padding-block: 140px;
+  }
+
+  @include inline-padding;
 }
