@@ -13,11 +13,13 @@
       row-gap: 48px;
     }
   }
+
   &__exhibition {
     display: grid;
     column-gap: 20px;
     grid-column: 1/-1;
     max-width: 280px;
+    overflow: hidden;
 
     @include on-tablet {
       column-gap: 24px;
@@ -31,6 +33,7 @@
       max-width: 1020px;
     }
   }
+
   &__text {
     font-size: 16px;
     font-weight: 400;
@@ -38,10 +41,14 @@
     text-align: center;
     padding-bottom: 48px;
   }
+
   &__images {
-    column-gap: 24px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    column-gap: 24px;
+    overflow: hidden;
+
     &--three {
       column-gap: 8px;
 
@@ -50,21 +57,22 @@
       }
     }
   }
+
   &__image {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.3s;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     &--46 {
-      object-fit: cover;
-      object-position: 25% 100%;
       width: 130px;
       height: 130px;
-      transition: transform 0.3s;
 
       @include on-tablet {
         width: 392px;
@@ -76,11 +84,10 @@
         height: 320px;
       }
     }
+
     &--47 {
-      margin-inline: auto;
       width: 130px;
       height: 130px;
-      transition: transform 0.3s;
 
       @include on-tablet {
         width: 184px;
@@ -91,15 +98,12 @@
         width: 324px;
         height: 320px;
       }
-      &:hover {
-        transform: scale(1.2);
-      }
     }
+
     &--48,
     &--49 {
       width: 88px;
       height: 87px;
-      transition: transform 0.3s;
 
       @include on-tablet {
         width: 288px;
@@ -110,14 +114,11 @@
         width: 324px;
         height: 320px;
       }
-      &:hover {
-        transform: scale(1.2);
-      }
     }
+
     &--50 {
       width: 88px;
       height: 87px;
-      transition: transform 0.3s;
 
       @include on-tablet {
         display: none;
@@ -128,16 +129,11 @@
         width: 324px;
         height: 320px;
       }
-      &:hover {
-        transform: scale(1.2);
-      }
     }
+
     &--51 {
       width: 130px;
       height: 130px;
-      object-fit: cover;
-      object-position: 100% 100%;
-      transition: transform 0.3s;
 
       @include on-tablet {
         width: 184px;
@@ -148,16 +144,11 @@
         width: 324px;
         height: 320px;
       }
-      &:hover {
-        transform: scale(1.2);
-      }
     }
+
     &--52 {
       width: 130px;
       height: 130px;
-      object-fit: cover;
-      object-position: 100% 100%;
-      transition: transform 0.3s;
 
       @include on-tablet {
         width: 392px;
@@ -168,11 +159,19 @@
         width: 672px;
         height: 320px;
       }
-      &:hover {
-        transform: scale(1.2);
-      }
     }
   }
+
+  &__link {
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+
+    &:hover .now-on-view__image {
+      transform: scale(1.1);
+    }
+  }
+
   &__title {
     margin: 0;
     margin-top: 24px;
@@ -181,43 +180,26 @@
     text-align: left;
     color: rgba(209, 45, 53, 1);
   }
+
   &__button {
     margin: 0;
-
     width: 280px;
     height: 56px;
     background-color: #d12d35;
     color: rgba(255, 255, 255, 1);
     border: none;
-
     font-family: $bodyFont;
     font-size: 16px;
     font-weight: 700;
     line-height: 27px;
-
     grid-column: 1/-1;
 
     @include on-tablet {
       grid-column: 2/-2;
     }
 
-    @include on-tablet {
+    @include on-desktop {
       grid-column: 5/-5;
     }
-  }
-  &__button:hover {
-    background-color: #ae1c23;
-  }
-  &__button::after {
-    background-color: #eb343d;
-  }
-  &__date {
-    margin: 0;
-    color: #161616;
-    font-family: $bodyFont;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 27px;
-    text-align: left;
   }
 }
