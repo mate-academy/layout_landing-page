@@ -1,0 +1,143 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-header-bottom {
+  padding-bottom: 40px;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    padding-bottom: 64px;
+  }
+}
+
+@mixin content-header-title {
+  height: 72px;
+  font-size: 36px;
+  line-height: 36px;
+
+  @include on-tablet {
+    height: 96px;
+    line-height: 48px;
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    line-height: 56px;
+    font-size: 56px;
+    height: 112px;
+  }
+}
+
+@mixin top-bar-logo-size {
+  height: 16px;
+  width: 152px;
+
+  @include on-tablet {
+    height: 24px;
+    width: 228px;
+  }
+
+  @include on-desktop {
+    width: 228px;
+    height: 24px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.7s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --column-number: 2;
+
+  display: grid;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column-number), 1fr);
+
+  @include on-tablet {
+    --column-number: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    justify-items: stretch;
+
+    --column-number: 12;
+  }
+}
+
+@mixin primary-button {
+  transition-duration: 300ms;
+
+  border: none;
+  text-align: center;
+  height: 56px;
+
+  border-radius: 8px;
+
+  background-color: rgba(249, 137, 33, 1);
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: rgba(255, 255, 255, 1);
+
+  &:hover {
+    background-color: rgba(27, 33, 41, 1);
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: rgba(1, 8, 16, 1);
+  }
+}
+
+@mixin contacr-input{
+  font-family: Manrope,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+
+  box-sizing: border-box;
+  padding-left: 16px;
+  height: 48px;
+  margin-bottom: 16px;
+  width: 100%;
+  grid-column: 1/-1;
+  border-radius: 8px;
+  border:rgba(249, 249, 249, 1);
+  color: rgba(126, 126, 131, 1);
+  background-color: rgba(249, 249, 249, 1);
+
+  &:hover{
+    cursor: pointer;
+    border: 1px solid hsla(0deg, 0%, 86%, 1);
+  }
+
+  &:focus{
+    color: rgba(27, 33, 41, 1);
+    outline: none;
+    border: 2px solid rgba(249, 137, 33, 1);
+  }
+}
