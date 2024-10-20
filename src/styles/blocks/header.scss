@@ -1,33 +1,28 @@
 .header {
-  // display: none !important;
-
   box-sizing: border-box;
   height: 100vh;
   background-image: url(../images/header-bg.png);
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  gap: 89px;
   margin-bottom: 100px;
 
-  @mixin on-tablet {
-    gap: 101px;
+  @include on-tablet {
     margin-bottom: 140px;
-    font-size: 64px;
-    line-height: 64px;
-    width: 392px;
-    height: 128px;
   }
 
-  &__bottom {
+  &__sectionTitle {
     height: 80px;
     display: flex;
     justify-content: center;
     width: 100%;
   }
 
+  &__sectionTitle {
+    @include page-grid;
+  }
+
   &__title {
+    grid-column: 1 / -1;
     margin: 0;
     color: $header-text-color;
     font-weight: 700;
@@ -35,7 +30,17 @@
     line-height: 40px;
     letter-spacing: -1.5px;
     text-align: center;
-    width: 280px;
-    height: 80px;
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      line-height: 80px;
+      grid-column: 4 / 10;
+    }
   }
 }
