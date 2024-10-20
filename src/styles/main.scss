@@ -1,3 +1,579 @@
-body {
+@import 'variables';
+@import 'mixins';
+
+/* #region GENERAL */
+.page {
+  font-family: $text-font;
+  color: $text-color;
+  scroll-behavior: smooth;
+  min-width: 320px;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+.page__body {
   margin: 0;
 }
+
+img:hover {
+  transform: scale(1.1);
+  transition: transform $animation-speed;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+}
+
+/* $endregion GENERAL */
+
+/* #region HEADER */
+
+.header {
+  background-image: url('../images/Image.png');
+  background-size: cover;
+  background-position: center;
+
+  &__wrapper {
+    @include content-padding-inline;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__top-bar {
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+      display: flex;
+      width: 152px;
+      height: 16px;
+
+      @include on-tablet {
+        width: 228px;
+        height: 24px;
+      }
+    }
+
+    &-icons {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+
+      @include on-tablet {
+        gap: 32px;
+      }
+    }
+    &-icon--menu {
+      @include set-icon;
+
+      background-image: url('../images/icons/Icon-Burger-menu.png');
+      background-position: center;
+
+      @include on-desktop {
+        &:hover {
+          transform: scale(1.3);
+          background-image: url('../images/icons/Icon-Burger-menu-HOVER.png');
+        }
+      }
+    }
+
+    &-icon--phone {
+      @include set-icon;
+
+      display: flex;
+      align-items: center;
+      position: relative;
+      background-image: url('../images/icons/Icon-Phone-call.png');
+
+      @include on-desktop {
+        &::after {
+          content: '+1 234 555-55-55';
+          font-family: Inter, sans-serif;
+          font-size: 12px;
+          font-weight: $text-weight;
+          line-height: 16px;
+          letter-spacing: 2px;
+          color: $text-color;
+          position: absolute;
+          right: 100%;
+          opacity: 0;
+          transition: opacity $animation-speed;
+          white-space: nowrap;
+        }
+
+        &:hover::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    margin-bottom: 64px;
+
+    &--title {
+      @include text-styles(36px, 36px);
+
+      font-weight: $text-weight;
+      color: #fff;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      @include on-desktop {
+        font-size: 56px;
+        line-height: 56px;
+      }
+    }
+  }
+}
+
+/* #endregion HEADER */
+
+/* #region ASIDE */
+
+.menu {
+  box-sizing: border-box;
+  overflow: auto;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-weight: $text-weight;
+  text-transform: uppercase;
+
+  &__content {
+    @include content-padding-inline;
+
+    position: relative;
+    padding-inline: 72px;
+  }
+
+  &__phone-number {
+    @include text-styles(16px, 22.4px, 2px);
+
+    margin-bottom: 16px;
+  }
+
+  &__call-to-order {
+    @include text-styles(16px, 22.4px, 2px);
+
+    padding-bottom: 4px;
+    border-bottom: 1px solid #1b2129;
+    width: fit-content;
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__top {
+    margin-bottom: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__icon-close {
+    @include set-icon;
+
+    display: block;
+    background-image: url('../images/icons/Icon-Close.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all $animation-speed;
+  transform: translateX(-100%);
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    @include text-styles(22px, 22px, 2px);
+
+    display: inline;
+    position: relative;
+
+    &::after {
+      content: '';
+      background-color: $text-color;
+      display: block;
+      width: 100%;
+      bottom: -4px;
+      height: 1px;
+      position: absolute;
+      transform: scale(0);
+      transition: all $animation-speed;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+/* #endregion ASAIDE */
+
+/* #region MAIN */
+
+.main {
+  display: grid;
+  row-gap: 64px;
+  padding-block: 64px;
+
+  @include on-tablet {
+    row-gap: 120px;
+    padding-block: 120px;
+  }
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 48px;
+  font-weight: $text-weight;
+  font-size: $section-size;
+  line-height: $section-line-height;
+
+  @include on-tablet {
+    font-size: 40px;
+    margin-bottom: 56px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+  }
+}
+
+/* #endregion MAIN */
+
+/* #region RECOMMENDED */
+
+.recommended {
+  &__recommended__products {
+    display: grid;
+    row-gap: 40px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      row-gap: 56px;
+      justify-items: center;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+      justify-items: stretch;
+    }
+
+    &--title {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__product {
+    &__photo {
+      width: 100%;
+    }
+  }
+}
+
+/* #endregion RECOMMENDED */
+
+/* #region CATEGORIES */
+
+.categories {
+  &__wrapper {
+    @include content-padding-inline;
+
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__title {
+    @include content-padding-inline;
+
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+
+    @include on-tablet {
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__button {
+    @include set-button;
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+  }
+
+  &__link {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: $text-weight;
+
+    @include text-styles(18px, 25.2px);
+
+    @include on-tablet {
+      font-size: 24px;
+      line-height: 33.6px;
+    }
+  }
+}
+
+/* #endregion CATEGORIES */
+
+/* #region ABOUT */
+
+.about {
+  position: relative;
+  background-color: #fcfaef;
+  &__content {
+    @include content-padding-inline;
+
+    --columns: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 24px 20px;
+    margin-top: 48px;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      --columns: 6;
+
+      column-gap: 24px;
+      margin-bottom: 120px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+
+      column-gap: 24px;
+    }
+  }
+
+  &__image {
+    background-image: url('../images/about-image.png');
+
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    @include on-desktop {
+      height: 460px;
+    }
+  }
+
+  &__title {
+    @include text-styles(32px, 32px);
+
+    margin: 0;
+    grid-column: 1 / -1;
+    font-weight: $text-weight;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__text {
+    @include text-styles(16px, 22.4px);
+
+    margin: 0;
+    grid-column: 1 / -1;
+    font-weight: 400;
+
+    @include on-tablet {
+      grid-column: 4 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+      letter-spacing: 0.15px;
+    }
+  }
+}
+
+/* #endregion ABOUT */
+
+/* #region CONTACT */
+.contact {
+  @include page-grid;
+
+  row-gap: 16px;
+
+  @include content-padding-inline;
+
+  &-title {
+    grid-column: 1 / -1;
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+
+    @include set-button;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__decription {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__info {
+    &--first {
+      margin: 0;
+      margin-bottom: 8px;
+      font-weight: 400;
+
+      @include text-styles(14px, 19.6px, 0.15px);
+    }
+
+    &--second {
+      margin: 0;
+      margin-bottom: 24px;
+      font-weight: 400;
+
+      @include text-styles(16px, 22.4px, 0.15px);
+    }
+  }
+}
+
+.input {
+  background-color: $input-color;
+  border: 1px solid $input-color;
+  border-radius: 8px;
+  height: 48px;
+  padding-left: 16px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+  }
+
+  &:focus {
+    border: 2px solid $button-color;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+
+    @include text-styles(14px, 19.4px, 0.15px);
+  }
+
+  &--Massage {
+    height: 148px;
+
+    &::placeholder {
+      font-family: Manrope, sans-serif;
+      font-weight: 400;
+
+      @include text-styles(14px, 19.6px, 0.15px);
+    }
+  }
+}
+
+/* #endregion CONTACT */
