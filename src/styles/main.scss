@@ -17,9 +17,11 @@
   margin: 0;
 }
 
-img:hover {
-  transform: scale(1.1);
-  transition: transform $animation-speed;
+img {
+  transition: all $animation-speed ease;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 footer {
@@ -32,8 +34,9 @@ footer {
 /* #region HEADER */
 
 .header {
-  background-image: url('../images/Image.png');
+  background-image: url('../images/image.site.png');
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
 
   &__wrapper {
@@ -312,6 +315,11 @@ footer {
     &__photo {
       width: 100%;
     }
+    &__price {
+      font-weight: 700;
+
+      @include text-styles(16px, 22.4px, normal, $text-color);
+    }
   }
 }
 
@@ -350,6 +358,8 @@ footer {
   }
 
   &__button {
+    cursor: pointer;
+
     @include set-button;
 
     @include on-desktop {
@@ -502,6 +512,7 @@ footer {
   }
 
   &__button {
+    cursor: pointer;
     grid-column: 1 / -1;
     margin-bottom: 48px;
 
@@ -525,16 +536,31 @@ footer {
       margin: 0;
       margin-bottom: 8px;
       font-weight: 400;
+      text-decoration: none;
+      transition: all $animation-speed ease;
 
       @include text-styles(14px, 19.6px, 0.15px);
+
+      &:hover {
+        background-color: $input-color;
+        transform: scale(1.1);
+      }
     }
 
     &--second {
       margin: 0;
       margin-bottom: 24px;
       font-weight: 400;
+      text-decoration: none;
 
       @include text-styles(16px, 22.4px, 0.15px);
+
+      transition: all $animation-speed ease;
+
+      &:hover {
+        background-color: $input-color;
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -566,6 +592,7 @@ footer {
 
   &--Massage {
     height: 148px;
+    resize: none;
 
     &::placeholder {
       font-family: Manrope, sans-serif;
@@ -573,6 +600,27 @@ footer {
 
       @include text-styles(14px, 19.6px, 0.15px);
     }
+  }
+}
+
+button {
+  background-color: $button-color;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  grid-column: 1 / -1;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+
+  &:active {
+    background-color: $button-passed-color;
   }
 }
 
