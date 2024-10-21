@@ -16,7 +16,7 @@
     ```
 12. Make it possible to scroll the menu if it is higher than the viewport;
     ```css
-    .menu {
+    .page {
       overflow: auto; /* to scroll the menu if needed */
     }
     .menu__top {
