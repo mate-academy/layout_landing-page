@@ -1,0 +1,86 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: $padding-inline-mobile;
+
+  @include onTablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: $padding-inline-desktop;
+  }
+}
+
+.container {
+  @include contentPaddingInline();
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.6s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+/* Grid styles */
+
+@mixin page-grid {
+  --column-count: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --column-count: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --column-count: 12;
+  }
+}
+
+/* Font styles */
+
+@mixin font-styles($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+/* Button styles */
+
+@mixin button {
+  font-family: $main-font;
+  @include font-styles(16px, 700, 27px);
+  padding-block: 15px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  background-color: $main-yellow-color;
+  padding-block: 15px;
+  border-radius: $elements-border-radius;
+
+  @include hover(background-color, $main-dark-grey);
+  &:active {
+    background-color: $pressed-button-color;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $main-dark-grey;
+  }
+}
