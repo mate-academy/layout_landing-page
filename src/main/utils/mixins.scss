@@ -1,0 +1,52 @@
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    padding-inline: 120px;
+    max-width: 1260px;
+  }
+}
+
+@mixin page-grid {
+  --colamns: 2;
+
+  display: grid;
+  column-gap: 20px;
+
+  grid-template-columns: repeat(var(--colamns), 1fr);
+
+  @include on-tablet {
+    --colamns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colamns: 12;
+
+    column-gap: 24px;
+  }
+}
+
+@mixin zoom-hover {
+  :hover {
+    transform: scale(1.05);
+  }
+}
