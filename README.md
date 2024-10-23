@@ -11,7 +11,7 @@ There still might be some issues with the layout, but it works fine and smooth.
 
 Checkout the result here:
 
-- [DEMO LINK](https://anderzerfall.github.io/layout_landing-page/index.html)
+- [DEMO LINK](https://anderzerfall.github.io/layout_landing-page/src/index.html)
 
 # Link to the design:
 
