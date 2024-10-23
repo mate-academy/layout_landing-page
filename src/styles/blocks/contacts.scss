@@ -17,6 +17,7 @@
     flex-direction: column;
     gap: 8px;
     font-family: $main-font;
+    position: relative;
   }
 
   &__title {
@@ -28,9 +29,39 @@
 
   &__info {
     @include font-styles(16px, 400, 22px);
-    
+
     color: $second-dark-grey;
     text-decoration: none;
     margin: 0;
+
+    &-text {
+      width: 70%;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 0.5px;
+        position: absolute;
+        bottom: -2px;
+        background-color: $second-dark-grey;
+        width: inherit;
+
+        transform: scale(0);
+        transition: transform $effect-duration;
+        transform-origin: left;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    grid-column: 1 / -1;
   }
 }
+
