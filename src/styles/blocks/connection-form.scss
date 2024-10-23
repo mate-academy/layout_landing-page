@@ -1,0 +1,65 @@
+.connection-form {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  gap: 16px;
+  margin-bottom: 48px;
+
+  @include onDesktop {
+    grid-column: span 6;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    @each $input-type in $inputs {
+      &--#{$input-type} {
+        padding: 14px 16px;
+        border-radius: $elements-border-radius;
+        background-color: $main-light-grey;
+        outline: none;
+        border: none;
+        font-family: $main-font;
+        color: $main-dark-grey;
+
+        @include font-styles(14px, 400, 19px);
+        @include hover(box-shadow, 0 0 0 1px $input-border-hover);
+
+        &:focus {
+          outline-style: none;
+          box-shadow: none;
+          box-shadow: 0 0 0 2px $main-yellow-color;
+        }
+
+        &::placeholder {
+          color: $second-light-grey;
+        }
+      }
+    }
+
+    &--message {
+      height: 148px;
+      resize: none;
+    }
+  }
+
+  &__btn {
+    @include button;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $main-yellow-color;
+  -webkit-box-shadow: 0 0 10px 0.1px $main-yellow-color inset;
+  transition: background-color 1s ease-out 0s;
+}

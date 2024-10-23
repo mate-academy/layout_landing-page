@@ -1,0 +1,60 @@
+.contacts {
+  @include page-grid;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: $main-font;
+    position: relative;
+  }
+
+  &__title {
+    @include font-styles(14px, 400, 19px);
+
+    color: $light-grey-contacts;
+    margin: 0;
+  }
+
+  &__info {
+    @include font-styles(16px, 400, 22px);
+
+    color: $second-dark-grey;
+    text-decoration: none;
+    margin: 0;
+
+    &-text {
+      width: 70%;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 0.5px;
+        position: absolute;
+        bottom: -2px;
+        background-color: $second-dark-grey;
+        width: inherit;
+
+        transform: scale(0);
+        transition: transform $effect-duration;
+        transform-origin: left;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
