@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+// for on-desktop in container
+// max-width: 1260px;
+// margin: 0 auto;
+
+.text-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 168.75%; /* 27/16 */
+  text-decoration: none;
+  color: #fff;
+  background-color: $main-text-color;
+
+  box-sizing: border-box;
+  height: 56px;
+  width: 100%;
+  border: 2px solid $main-text-color;
+  border-radius: 8px;
+
+  &:hover {
+    color: $main-text-color;
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #111;
+    border: 2px solid #111;
+  }
+}
