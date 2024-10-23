@@ -1,10 +1,12 @@
 .exhibitions {
+  // display: none;
   @include content-padding-inline;
   &__wrapper {
     display: grid;
     row-gap: 48px;
   }
 }
+
 .exhibition {
   &__description {
     font-size: 16px;
@@ -21,8 +23,21 @@
   }
 
   &__photos--carpets {
-    @include page-griid;
     --columns: 3;
+
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    @include on-tablet {
+      --columns: 6;
+
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+    }
   }
 
   &__link {
@@ -41,6 +56,7 @@
     &--square {
       height: 0;
       padding-bottom: 100%;
+
       @include on-tablet {
         grid-column: span 2;
       }
@@ -80,7 +96,7 @@
   &__button {
     width: 280px;
     background-color: #d12d35;
-    color: #ffffff;
+    color: #fff;
     font-family: inherit;
     font-size: 16px;
     font-weight: 700;
