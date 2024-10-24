@@ -1,0 +1,64 @@
+.top-bar {
+  padding-block: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    padding-block: 50px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include onTablet {
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    position: relative;
+  }
+
+  &__contacts {
+    opacity: 0;
+    pointer-events: none;
+    text-align: right;
+    text-transform: uppercase;
+    text-wrap: nowrap;
+    padding-right: 16px;
+    font-size: $main-font-size;
+    font-weight: 700;
+    line-height: $main-line-height;
+    color: $main-text-color;
+    transition: all 0.5s;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    &-item-phone {
+      color: $main-text-color;
+      text-decoration: none;
+    }
+  }
+
+  &__phones {
+    @include onDesktop {
+      &:has(.icon--phone:hover, .top-bar__contacts:hover) {
+        .top-bar__contacts {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
