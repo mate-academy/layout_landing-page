@@ -1,0 +1,83 @@
+.museum-hours {
+  display: grid;
+  gap: 32px 24px; // row-gap: 32px; // column-gap: 24px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    &::before {
+      content: 'Plan your visit';
+      color: $accent-color;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: normal;
+    }
+  }
+
+  &__timetable-title {
+    padding: 0;
+    margin: 0 0 16px;
+    font-size: 24px;
+  }
+
+  &__days {
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    column-gap: 3px;
+    margin: 0 0 10px;
+
+    &::after {
+      font-weight: 400;
+      display: grid;
+    }
+
+    &--weekdays-fa::after {
+      content: 'Sun, Mon, Tue, Thu';
+    }
+
+    &--weekend-fa::after {
+      content: 'Fri, Sat';
+    }
+
+    &--wednesday-fa::after {
+      content: 'Wen';
+    }
+
+    &--days-off-fa {
+      &::after {
+        content: 'Thanksgiving Day, Dec 25, Jan 1, and the first Monday in May.';
+      }
+    }
+
+    &--weekdays-c::after {
+      content: 'Thu - Tue';
+    }
+
+    &--wednesday-c::after {
+      content: 'Wen';
+    }
+
+    &--days-off-c {
+      &::after {
+        content: 'Thanksgiving Day, Dec 25, Jan 1.';
+      }
+    }
+  }
+
+  &__wraper {
+    display: grid;
+    row-gap: 24px;
+  }
+
+  &__timetable p:last-of-type {
+    grid-template-columns: 1fr;
+    margin-bottom: 2px ;
+  }
+}

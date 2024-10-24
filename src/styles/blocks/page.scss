@@ -1,0 +1,82 @@
+.page {
+  font-size: 16px;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    box-sizing: border-box;
+    min-width: 320px;
+    font-family: Cinzel, sans-serif;
+    color: $main-dark;
+  }
+
+  &__top-screen {
+    height: 100vh;
+    padding: 25px 20px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+  }
+
+  &__menu:target {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @media (min-width: 576px) {
+    &__top-screen {
+      padding: 50px 72px;
+    }
+  }
+}
+
+.main {
+  display: grid;
+  padding: 100px 20px;
+  row-gap: 100px;
+
+  @include on-tablet {
+    padding: 140px 72px;
+    row-gap: 140px;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.button{
+    background-color: $accent-color;
+    color: $white;
+    border: none;
+    height: 48px;
+    font-family: inherit;
+    min-width: 280px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover-accent-color;
+    }
+
+    &:active {
+      background-color: $click-color;
+    }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
