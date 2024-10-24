@@ -12,7 +12,26 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/icons/icon-phone.png);
+
+    @include onTablet {
+      &::after {
+        position: absolute;
+        content: '+1 234 5555-55-55';
+        color: $main-text-color;
+        text-wrap: nowrap;
+        right: 125%;
+        top: 10%;
+        transition: transform 0.3s;
+        transform: scale(0);
+        transform-origin: right;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
   }
 
   &--menu {
