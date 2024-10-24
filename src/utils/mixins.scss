@@ -1,32 +1,23 @@
 @mixin on-tablet {
-  @media (min-width: 576px) {
+  @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin content-padding-in-line {
-  padding-inline: 20px;
-
-  @include on-tablet {
-    padding-inline: 72px;
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
   }
 }
 
-@mixin content-padding-bottom {
-  padding-bottom: 40px;
-
+@mixin page-grid {
   @include on-tablet {
-    padding-bottom: 64px;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
   }
-}
 
-@mixin title-text-font-size {
-  font-size: 36px;
-  line-height: 36px;
-
-  @include on-tablet {
-    font-size: 48px;
-    line-height: 48px;
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
   }
 }
 
@@ -38,10 +29,15 @@
     width: 228px;
     height: 24px;
   }
+
+  @include on-desktop {
+    width: 228px;
+    height: 24px;
+  }
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3;
+  transition: #{$property} $effect-duration;
   &:hover {
     #{$property}: $toValue;
   }
