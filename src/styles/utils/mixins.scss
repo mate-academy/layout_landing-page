@@ -1,0 +1,74 @@
+@mixin onTablet {
+  @media(min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media(min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesctop {
+    padding-inline: 120px;
+  }
+
+  @include onDesctop {
+    margin-inline: auto;
+
+    max-width: 1020px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid() {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+  }
+
+  @include onDesctop {
+    --columns: 12;
+  }
+}
+
+@mixin stylesButton {
+  background-color: $explore-title-color;
+    color: white;
+
+    font-family: Cinzel, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+
+    border: 0;
+
+    &:hover {
+      background-color:#AE1C23;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: #EB343D;
+    }
+}
