@@ -72,12 +72,14 @@
   width: 100%;
   border: 2px solid #292929;
   border-radius: 8px;
+  transition: all 0.5s;
 }
 
 .button:hover {
   color: #292929;
   background-color: #f8f8fa;
   border: 2px solid #f0f1f4;
+  cursor: pointer;
 }
 
 .button:active {
@@ -193,6 +195,22 @@
 
 .icon--phone {
   background-image: url(../images/icons/icon-phone.svg);
+  position: relative;
+}
+
+.icon--phone:hover::after {
+  content: '+1 234 5555-55-55';
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 200px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Inter, sans-serif;
+  color: #292929;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .icon--menu {
@@ -336,13 +354,14 @@
   }
 }
 
-.product {
-  transition: transform 0.5s;
-}
-
 .product__image {
   width: 100%;
   margin-bottom: 24px;
+  transition: transform 0.5s;
+}
+
+.product__image:hover {
+  transform: scale(1.1);
 }
 
 .product__title {
@@ -363,10 +382,6 @@
 
 .product__price {
   font-weight: 700;
-}
-
-.product:hover {
-  transform: scale(1.1);
 }
 
 .categories {
@@ -484,8 +499,8 @@
   position: sticky;
   z-index: -1;
   overflow: hidden;
-  top: 0;
-  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 @media (min-width: 576px) {
