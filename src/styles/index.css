@@ -1,44 +1,3 @@
-@keyframes bounce-top {
-  0% {
-    transform: translateY(-145px);
-    animation-timing-function: ease-in;
-    opacity: 1;
-    visibility: visible;
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    transform: translateY(-54px);
-    animation-timing-function: ease-in;
-  }
-  65% {
-    transform: translateY(-32px);
-    animation-timing-function: ease-in;
-  }
-  82% {
-    transform: translateY(-16px);
-    animation-timing-function: ease-in;
-  }
-  93% {
-    transform: translateY(-4px);
-    animation-timing-function: ease-in;
-  }
-  25%,
-  55%,
-  75%,
-  87% {
-    transform: translateY(5px);
-    animation-timing-function: ease-out;
-  }
-  100% {
-    transform: translateY(0);
-    animation-timing-function: ease-out;
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
 @keyframes tracking-in-expand-fwd-top {
   0% {
     letter-spacing: -0.5em;
@@ -128,7 +87,67 @@
   }
 }
 
+.header__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  position: absolute;
+  top: 0;
+  right: 120px;
+  transition: opacity 1.1s;
+  opacity: 0;
+  cursor: default;
+}
+
+@media (min-width: 744px) {
+  .header__contacts {
+    right: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__contacts {
+    right: 270px;
+  }
+}
+
+.header__contacts-title {
+  font-family: Cinzel, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+}
+
+@media (max-width: 744px) {
+  .header__contacts-title {
+    font-size: 10px;
+  }
+}
+
+.header__contacts-phone {
+  font-family: Cinzel, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+  text-decoration: none;
+  cursor: default;
+}
+
+@media (max-width: 744px) {
+  .header__contacts-phone {
+    font-size: 10px;
+  }
+}
+
+.header__contacts-phone:hover {
+  color: rgb(83, 192, 98);
+  transition: color 0.3s;
+}
+
 .top-bar {
+  position: relative;
   padding-block: 25px;
   padding-inline: 20px;
   display: flex;
@@ -181,7 +200,7 @@
 }
 
 .top-bar__logo:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media (min-width: 744px) {
@@ -201,7 +220,7 @@
 }
 
 .icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media (min-width: 744px) {
@@ -212,20 +231,21 @@
 }
 
 .icon--phone {
-  opacity: 0;
-  visibility: hidden;
-  animation: bounce-top 2s 5s forwards;
   background-image: url(/src/images/icons/Icon-phone-call.svg);
-  position: relative;
+}
+
+.icon--phone:hover + .header__contacts,
+.icon--phone:focus + .header__contacts {
+  opacity: 1;
+}
+
+.icon--phone:hover + .header__contacts a,
+.icon--phone:focus + .header__contacts a {
+  cursor: pointer;
 }
 
 .icon--menu {
   background-image: url(/src/images/icons/header-bg-mobile.svg);
-}
-
-.icon--menu:hover {
-  background-image: url(/src/images/icons/header-bg-mobile-hover.svg);
-  transform: scale(1.2);
 }
 
 .icon--close {
@@ -570,13 +590,13 @@
 }
 
 .exhibition__link {
-  transition: transform 0.5s;
+  transition: transform 0.3s;
   position: relative;
 }
 
 .exhibition__link:hover {
+  z-index: 1;
   transform: scale(1.1);
-  z-index: 10;
 }
 
 @media (min-width: 744px) {
@@ -764,12 +784,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s;
+  transition: transform 0.3s;
 }
 
 .explores .explore__photo:hover {
   transform: scale(1.1);
-  z-index: 10;
 }
 
 .explores .explore__title {
@@ -898,6 +917,16 @@
   font-weight: 400;
   display: inline-block;
   margin-bottom: 4px;
+}
+
+.contacts .contact-location__phone-number {
+  text-decoration: none;
+  color: #161616;
+}
+
+.contacts .contact-location__phone-number:hover {
+  color: rgb(83, 192, 98);
+  transition: color 0.3s;
 }
 
 .contacts .contact-location__address {
