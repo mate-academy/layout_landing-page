@@ -44,13 +44,17 @@
   box-sizing: border-box;
   padding-bottom: 288px;
   height: 100vh;
-  background-color: #D12D35;
+  background-color: #d12d35;
   font-weight: 700;
   text-transform: uppercase;
+  overflow: auto;
 }
 
 .menu-top {
   margin-bottom: 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .menu__headers {
@@ -98,6 +102,10 @@
   line-height: 27px;
 }
 
+.menu__call-number:hover {
+  color: blueviolet;
+}
+
 .menu__call-to-order {
   color: #fff;
   text-decoration: none;
@@ -131,8 +139,21 @@
   }
 }
 
+.icon__phone-numbers {
+  position: absolute;
+  width: 200px;
+  top: -35px;
+  right: 20px;
+  visibility: hidden;
+}
+
 .icon--phone {
+  position: relative;
   background-image: url(../images/icons/icon-phone-call.png);
+}
+
+.icon--phone:hover .icon__phone-numbers {
+  visibility: visible;
 }
 
 .icon--menu {
@@ -143,17 +164,26 @@
   background-image: url(../images/icons/icon-close.png);
 }
 
-.icon__phone-numbers {
-  position: absolute;
-  top: 55px;
-  left: 900px;
-  visibility: hidden;
-}
-
 .icon__call-number {
+  margin: 0;
+  padding: 0;
+  display: block;
   color: #fff;
   text-decoration: none;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.icon__call-number:hover {
+  color: blueviolet;
+}
+
+.icon__call-headers {
+  margin: 0;
+  padding: 0;
   display: block;
+  color: #fff;
+  text-decoration: none;
   font-size: 16px;
   line-height: 27px;
 }
@@ -177,7 +207,7 @@
 }
 
 .nav__link::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   width: 100%;
@@ -220,6 +250,10 @@
   opacity: 1;
   transform: translateX(0);
   pointer-events: all;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
 
 .top-bar {
@@ -282,6 +316,7 @@
 }
 
 .main {
+  min-height: 200vh;
   display: grid;
   row-gap: 100px;
   padding-block: 100px;
@@ -388,7 +423,7 @@
 .explore__title {
   margin: 0;
   padding-top: 20px;
-  color: #D12D35;
+  color: #d12d35;
   font-size: 24px;
   font-weight: 700;
   line-height: 33.6px;
@@ -471,7 +506,7 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 16.8px;
-  color: #D12D35;
+  color: #d12d35;
 }
 
 .about-us__article {
@@ -631,7 +666,7 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 27px;
-  color: #D12D35;
+  color: #d12d35;
 }
 
 .on-view__description {
@@ -645,7 +680,7 @@
 .on-view__button {
   height: 58px;
   width: 280px;
-  background-color: #D12D35;
+  background-color: #d12d35;
   color: white;
   font-family: Cinzel, sans-serif;
   font-size: 16px;
@@ -657,12 +692,12 @@
 }
 
 .on-view__button:hover {
-  background-color: #AE1C23;
+  background-color: #ae1c23;
   cursor: pointer;
 }
 
 .on-view__button:active {
-  background-color: #EB343D;
+  background-color: #eb343d;
 }
 
 @media (min-width: 576px) {
@@ -767,8 +802,12 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 27px;
-  color: #3E3E3E;
+  color: #3e3e3e;
   text-decoration: none;
+}
+
+.contacts__call-number:hover {
+  color: blueviolet;
 }
 
 .contacts__address {
@@ -777,11 +816,16 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 22.4px;
-  color: #3E3E3E;
+  color: #3e3e3e;
   text-decoration: none;
 }
 
+.contacts__address:hover {
+  color: blueviolet;
+}
+
 .contact__field {
+  padding: 0;
   width: 100%;
   display: grid;
   row-gap: 16px;
@@ -794,13 +838,13 @@
 
 .contact__field--short {
   height: 48px;
-  background-color: #F8F8FA;
+  background-color: #f8f8fa;
   border: 0;
 }
 
 .contact__field--long {
   height: 144px;
-  background-color: #F8F8FA;
+  background-color: #f8f8fa;
   border: 0;
 }
 
@@ -816,7 +860,7 @@
 }
 
 .contact__field:hover {
-  font-family: Cinzel, serif;
+  font-family: Cinzel, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -827,9 +871,9 @@
   margin-top: 32px;
   height: 56px;
   width: 100%;
-  background-color: #D12D35;
+  background-color: #d12d35;
   color: white;
-  font-family: Cinzel, serif;
+  font-family: Cinzel, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 27px;
@@ -838,17 +882,21 @@
 }
 
 .contact__button:hover {
-  background-color: #AE1C23;
+  background-color: #ae1c23;
   cursor: pointer;
 }
 
 .contact__button:active {
-  background-color: #EB343D;
+  background-color: #eb343d;
 }
 
 .footer {
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  padding-top: 100px;
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 180px;
   background-image: url(../images/footer.png);
   background-size: cover;
   background-repeat: no-repeat;
