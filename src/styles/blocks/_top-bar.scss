@@ -15,6 +15,35 @@
     @include on-tablet {
       gap: 32px;
     }
+
+    .icon--phone {
+      position: relative;
+      transition: all 0.3s;
+
+      @include on-desktop {
+        &::before {
+          content: '+12 345-555-5555';
+          color: $main-text-color;
+          font-size: inherit;
+          font-weight: 700;
+          position: absolute;
+          width: 140px;
+          height: inherit;
+          top: 0;
+          left: 0;
+          visibility: hidden;
+          z-index: -1;
+        }
+
+        &:hover::before {
+          display: flex;
+          align-items: center;
+          translate: (-100% 0);
+          visibility: visible;
+          z-index: 1;
+        }
+      }
+    }
   }
 
   &__logo {
