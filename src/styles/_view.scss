@@ -13,17 +13,48 @@
 
 .view-explore {
   @include main-text;
+
   text-align: center;
   margin-bottom: 48px;
 }
 
 .picture-wrapper {
-  @include img-wrapper();
-  gap: 20px;
+  margin-bottom: 24px;
+
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 32px 20px;
+  display: grid;
+  &_link {
+    transition: transform 0.8s ease-in-out;
+    position: relative;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.link-small {
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.link-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.link-tablet {
+  display: block;
 }
 
 .collection-title {
-  @include menu-text();
+  @include menu-text;
+
   color: $accent-color;
 }
 
@@ -32,8 +63,12 @@
 }
 
 .picture-box {
-  @include img-wrapper();
-  gap: 8px;
+  margin-bottom: 24px;
+
+  --columns: 3;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  display: grid;
 }
 
 .view-wrapper {
@@ -41,7 +76,8 @@
 }
 
 .view-link {
-  @include menu-text();
+  @include menu-text;
+
   background-color: $accent-color;
   color: $main-white;
   text-decoration: none;
@@ -50,7 +86,103 @@
   display: inline-block;
   padding: 15px 0;
   margin-top: -8px;
+
   &:hover {
     background-color: $hovered;
+  }
+}
+
+.box-image {
+  width: 88px;
+  height: 88px;
+}
+
+@media (min-width: 744px) {
+  .view-title {
+    font-size: 48px;
+  }
+
+  .picture-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 32px 20px;
+  }
+
+  .picture-wrapper_link {
+    grid-column: span 4;
+  }
+
+  .picture-image {
+    object-fit: cover;
+    position: absolute;
+  }
+
+  .link-small {
+    grid-column: span 2;
+  }
+
+  .picture-item-link {
+    grid-column: span 3;
+    transition: transform 0.8s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .box-image {
+    width: 288px;
+    height: 284px;
+  }
+
+  .picture-box {
+    --columns: 6;
+  }
+
+  .link-tablet {
+    display: none;
+  }
+
+  .view-link {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1260px) {
+  .picture-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px 20px;
+  }
+
+  .picture-wrapper_link {
+    grid-column: span 8;
+  }
+
+  .link-small {
+    grid-column: span 4;
+  }
+
+  .picture-item-link {
+    grid-column: span 4;
+  }
+
+  .box-image {
+    width: 324px;
+    height: 320px;
+  }
+  .picture-box {
+    --columns: 12;
+  }
+
+  .link-tablet {
+    display: block;
+  }
+
+  .view-link {
+    width: 324px;
   }
 }
