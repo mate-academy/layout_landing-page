@@ -1,0 +1,112 @@
+.contacts {
+  &__wrapper {
+    --columns: 1;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    gap: 48px 20px;
+
+    @include on-tablet {
+      --columns: 6;
+
+      grid-template-columns: repeat(var(--columns), 1fr);
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+
+      grid-template-columns: repeat(var(--columns), 1fr);
+    }
+  }
+
+  &__form {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__form-element {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__details {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / span 3;
+    }
+  }
+
+  &__contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+
+  &__contact-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  &__contact-link {
+    text-decoration: none;
+    color: $main-text-color;
+    font-size: 16px;
+    font-weight: 500;
+
+    &:hover {
+      color: #bcbcbc;
+    }
+  }
+
+  &__input {
+    padding: 0;
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    padding-inline: 16px;
+    background-color: $input-background;
+
+    height: $input-height;
+    border-radius: 40px;
+    color: $menu-text-color;
+    border: none;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+
+    &--message {
+      height: 148px;
+      padding: 14px 16px;
+      resize: none;
+      border-radius: 16px;
+      margin-bottom: 32px;
+    }
+
+    &:hover::placeholder {
+      color: $background-color;
+      font-size: 1.2em;
+    }
+
+    &:focus {
+      outline: none;
+      font-family: inherit;
+      font-weight: 900;
+      font-size: inherit;
+    }
+  }
+}
