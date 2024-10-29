@@ -1,0 +1,76 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+  }
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+  }
+
+  &__logo {
+    height: 38px;
+    aspect-ratio: 3.42/1;
+
+    @include image-hover(transform, 0.3s, scale(1.1));
+
+    @include on-tablet {
+      height: 56px;
+      aspect-ratio: 3.34/1;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+
+    @include on-tablet {
+      column-gap: 32px;
+    }
+  }
+
+  &__phone-container {
+    @include on-desktop {
+      position: relative;
+    }
+  }
+
+  &__phone {
+    display: none;
+
+    @include on-desktop {
+      display: inline-block;
+      margin: 0;
+      position: absolute;
+      top: calc(50% - 6px);
+      right: calc($icon-button-size-desktop);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 2px;
+      width: max-content;
+      transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      opacity: 0;
+      transform: translateX(0);
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &__phone-container:hover &__phone {
+    opacity: 1;
+    transform: translateX(-20px);
+  }
+}
