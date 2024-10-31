@@ -1,13 +1,25 @@
-@mixin on-tablet(){
+@mixin on-tablet {
  @media(min-width: 576px) {
   @content;
  }
 }
+// stylelint-disable-next-line scss/at-mixin-pattern
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
 
-@mixin content-padding-inlite() {
+@mixin content-padding-inlite($max-width: 1260px) {
   padding-inline: 20px;
-  
+
   @include on-tablet{
     padding-inline: 36px 72px;
   }
+
+ @include onDesktop{
+    padding-inline: 120px;
+ }
 }
+
+
