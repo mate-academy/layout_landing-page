@@ -1,0 +1,83 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo-img {
+    width: 152px;
+
+    @include on-tablet {
+      width: 228px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__icon {
+    display: block;
+    height: 24px;
+    width: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    &--phone {
+      position: relative;
+      display: flex;
+      background-image: url(../images/phone-icon.svg);
+
+      &::after {
+        position: absolute;
+        width: max-content;
+        padding-inline: 8px;
+        content: '+1 234 5555-55-55';
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $main-text-color;
+        top: 50%;
+        right: 100%;
+
+        transition: transform 0.5s;
+        transform: scale(0) translateY(-50%);
+        transform-origin: right;
+      }
+
+      &:hover::after {
+        transform: scale(1) translateY(-50%);
+      }
+    }
+
+    &--menu {
+      background-image: url(../images/burger-menu-icon.svg);
+
+      &:hover {
+        transform: scale(1.2);
+        background-image: url(../images/burger-menu-hover-icon.svg);
+      }
+    }
+
+    &--close-menu {
+      background-image: url(../images/close-menu-icon.svg);
+    }
+  }
+}
