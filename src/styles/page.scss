@@ -1,0 +1,45 @@
+.page {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  color: $text-color;
+  box-sizing: border-box;
+
+  scroll-behavior: smooth;
+  // overflow-x: hidden;
+
+  &__body {
+    // overflow: hidden;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  &__aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(-100%);
+
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
+
+    overflow: auto;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+
+      transform: translateX(0%);
+    }
+  }
+
+  &:has(.page__aside:target) {
+    overflow: hidden;
+  }
+}
