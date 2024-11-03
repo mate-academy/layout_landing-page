@@ -25,35 +25,60 @@
 .nav-links {
   display: flex;
   gap: 24px;
+  text-align: end;
+  &_box {
+    display: none;
+    position: absolute;
+    top: 3px;
+    right: 216px;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    opacity: 0;
+    // transform: translateX(-20px);
+  }
 }
 
-// tablet
+.phone-title {
+  font-weight: 700;
+  line-height: 27px;
+  color: $main-white;
+}
 
 @media (min-width: 744px) {
   .nav-links {
     gap: 55px;
   }
 
+  .icon--phone {
+    margin-right: 55px;
+  }
+
   .header-tittle {
     font-size: 64px;
     margin-top: 140px;
   }
-
-  .icon--phone:hover {
-    &::before {
-      content: '+1212-535-7710';
-      color: white;
-      position: relative;
-      bottom: 5px;
-      right: 5px;
-    }
-  }
 }
 
-@media (min-width: 1260px) {
+@media (min-width: 1020px) {
   .header-tittle {
     font-size: 80px;
     line-height: 80px;
     margin-top: 140px;
+  }
+
+  .nav-links {
+    align-items: center;
+    gap: 0;
+    &_box {
+      margin-right: 16px;
+    }
+  }
+
+  .icon--phone:hover + .nav-links_box {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
   }
 }

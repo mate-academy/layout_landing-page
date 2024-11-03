@@ -1,8 +1,7 @@
-// aside
 .menu {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -100;
   left: 0;
   padding: 0 20px;
   box-sizing: border-box;
@@ -10,11 +9,16 @@
   background-color: #d12d35;
   opacity: 0;
   pointer-events: none;
+
+  transition:
+    right 0.8s ease,
+    opacity 0.8s ease;
 }
 
 .menu:target {
   opacity: 1;
   pointer-events: all;
+  right: 0;
 }
 
 .menu-nav {
@@ -54,8 +58,23 @@
 
   font-size: 12px;
   text-decoration: none;
-  border-bottom: 1px solid white;
-  padding-bottom: 8px;
+}
+
+.is-active {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.is-active:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background-color: #ffffff;
+  width: 100%;
 }
 
 @media (min-width: 744px) {
