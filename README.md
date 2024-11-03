@@ -1,6 +1,6 @@
-# 🚴‍♂️ MyBIKE Landing Page
+# 🚴‍♂️ MyBiKE Landing Page
 
-Welcome to the MyBIKE landing page! This project showcases an interactive and responsive webpage for a modern bike company, highlighting bike features, comparison options, and user contact capabilities.
+Welcome to the MyBiKE landing page! This project showcases an interactive and responsive webpage for a modern bike company, highlighting bike features, comparison options, and user contact capabilities.
 
 <div style="text-align: center;">
     <img src="https://github.com/user-attachments/assets/a3fad097-6387-4489-8d83-e11f4e68f538" alt="image">
