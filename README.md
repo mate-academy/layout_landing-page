@@ -1,14 +1,34 @@
-Welcome to the MyBike landing page! This is a simple webpage designed to showcase the features and benefits of our innovative bike-sharing service. Below, you'll find information on how to navigate the project and details about the technologies used.
+# 🚴‍♂️ MyBiKE Landing Page
 
-Technologies Used
-The MyBike landing page is built using the following technologies:
+Welcome to the MyBiKE landing page! This project showcases an interactive and responsive webpage for a modern bike company, highlighting bike features, comparison options, and user contact capabilities.
 
-HTML (Hypertext Markup Language): Used for structuring the content of the webpage.
-CSS (Cascading Style Sheets): Utilized for styling and enhancing the visual appearance of the webpage.
-SASS (Syntactically Awesome Style Sheets): A preprocessor scripting language that is compiled into CSS. SASS was used to write cleaner and more efficient CSS code, with features like variables, nesting, and mixins.
+<div style="text-align: center;">
+    <img src="https://github.com/user-attachments/assets/a3fad097-6387-4489-8d83-e11f4e68f538" alt="image">
+</div>
 
-How to Use
-To view the MyBike landing page, simply open the index.html file in a web browser or open my demo link at https://mikezhylka.github.io/layout_landing-page/.
-You can also deploy this webpage to a web server for online access.
+## 🍰 Usage
+
+The landing page includes various sections that users can navigate through:
+
+- **Home:** The main landing area with a welcoming message and a call to action.
+- **Menu:** A navigation menu that provides quick access to different sections of the page.
+- **About Us:** Information about the bike company and its mission.
+- **Compare Bikes:** A section where users can view and compare different bike models.
+- **Details:** Features and specifications of the bikes, including photos and descriptions.
+- **Contact Us:** A form for users to reach out, along with contact details and location information.
+
+Users can click on the menu items or buttons to scroll smoothly to the respective sections.
+
+## 📋 Features
+
+- **Responsive Design:** The page is designed to be mobile-friendly, adapting to various screen sizes.
+- **Smooth Scrolling:** Navigation links allow for a seamless scrolling experience to different sections.
+- **Interactive Elements:** Users can submit contact forms and explore bike details dynamically.
+- **Visual Appeal:** The use of images and styling makes the page visually engaging.
+
+## 🛠️ Built With
+
+- **HTML5:** Structure and layout of the webpage.
+- **CSS (Sass):** Styles for the landing page using Sass for easier styling management.
 
 
