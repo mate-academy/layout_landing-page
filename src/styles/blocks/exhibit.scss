@@ -1,0 +1,63 @@
+.exhibit {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+    position: relative;
+
+    &--hide {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+  }
+
+  &__link {
+    display: grid;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--hide {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: grid;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+    position: relative;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: $red;
+    font-size: 16px;
+  }
+}
