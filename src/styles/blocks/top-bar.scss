@@ -1,0 +1,54 @@
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+    transition: $effectDuration;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 24px;
+    }
+  }
+}
+
+.icon--phone {
+  position: relative;
+
+  &::before {
+    content: '+1 (234) 555-5555';
+    position: absolute;
+    top: 180%;
+    left: -90px;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
