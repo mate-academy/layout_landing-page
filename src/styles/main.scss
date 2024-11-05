@@ -18,11 +18,12 @@
 }
 
 @mixin content-padding-inline() {
-  padding-inline: 120px;
-
-  @include on-phone {
-    padding-inline: 22px;
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1260px;
   }
+
+  padding-inline: 22px;
 
   @include on-tablet {
     padding-inline: 72px;
@@ -81,6 +82,8 @@
   &__icons {
     gap: 32px;
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &_tittle {
@@ -92,10 +95,10 @@
     @include content-padding-inline;
 
     @include on-tablet {
-      font-size: 40px;
+      font-size: 80px;
     }
 
-    font-size: 80px;
+    font-size: 40px;
     font-weight: 700;
     line-height: 80px;
     letter-spacing: -1.5px;
@@ -224,6 +227,8 @@
   width: 32px;
   height: 32px;
   background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   transition: transform 0.3s;
 
   @include on-tablet {
@@ -236,11 +241,15 @@
   }
 
   &--phone {
-    background-image: url(../../images/Vector.png);
+    background-image: url(../../images/telephon.svg);
+    align-items: center;
+    justify-content: center;
   }
 
   &--menu {
-    background-image: url(../../images/Icon-Burger-menu.png);
+    background-image: url(../../images/burger.svg);
+    align-items: center;
+    justify-content: center;
   }
 
   &--close {
@@ -303,6 +312,7 @@
   letter-spacing: -1.5px;
   text-align: center;
   color: #fff;
+  margin-bottom: 48px;
 
   @include on-desktop {
     font-size: 64px;
@@ -485,9 +495,13 @@
 
   @include on-desktop {
     column-gap: 198px;
-    margin-left: 120px;
     padding: 40px;
     display: flex;
+  }
+
+  @include on-tablet {
+    display: flex;
+    gap: 24px;
   }
 
   @include on-phone {
@@ -505,6 +519,19 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @include on-desktop {
+    width: 411px;
+    height: 382px;
+    top: 3678px;
+    left: 120px;
+  }
+
+  @include on-tablet {
+    width: 288px;
+    height: 382px;
+    display: flex;
+  }
 }
 
 form input,
@@ -517,10 +544,6 @@ form textarea {
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   resize: none;
-
-  @include on-tablet {
-    width: 100%;
-  }
 }
 
 form textarea {
@@ -551,6 +574,7 @@ form button:hover {
   margin: 0;
   font-size: 16px;
   line-height: 1.6;
+  margin-bottom: 8px;
 }
 
 .contact-info strong {
