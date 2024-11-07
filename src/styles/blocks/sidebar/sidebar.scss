@@ -22,18 +22,25 @@
   }
 
   &__menu {
+    overflow: hidden;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     opacity: 0;
     pointer-events: none;
-    overflow: hidden;
+    transition: opacity 0.5s ease-in-out;
+
   }
 
   &__menu:target {
     opacity: 1;
     pointer-events: all;
+    overflow: hidden;
+  }
+
+  &__:target ~ body {
+    overflow: hidden; /* Убирает прокрутку страницы */
   }
 
   &__icons {
@@ -74,4 +81,8 @@
     justify-content: center;
     text-align: center;
   }
+}
+
+.menu:has(.sidebar:target) {
+  overflow: hidden;
 }
