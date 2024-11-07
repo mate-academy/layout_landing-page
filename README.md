@@ -1,6 +1,6 @@
 # Landing page
 
-Було створено сторінку як на макеті B&O <<https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-212&node-type=frame>>
+Було створено сторінку інтернет магазину B&O ,як на макеті <<https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-212&node-type=frame>>
 
 Технології які було використано :
 
