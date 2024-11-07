@@ -1,4 +1,15 @@
 .page {
+  --color-page: #485268;
+  --bg-page: #fff;
+
+  background-color: var(--bg-page);
+
+  transition:
+  color 0.3s,
+  background-color 0.3s;
+
+
+
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   line-height: 22px;
@@ -9,6 +20,7 @@
     margin: 0;
     min-width: 320px;
   }
+
 
   &__menu {
     opacity: 0;
@@ -27,4 +39,46 @@
       pointer-events: all;
     }
   }
+
+  &--theme--dark{
+    --color-page: #f5f6fa;
+    --bg-page: #485268;
+
+    color: var(--color-page);
+    background-color: var(--bg-page);
+  }
+
 }
+
+.theme-switcher {
+  width: 60px;
+  background-color: var(--bg-page);
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: inset 10px 10px 10px #0000004d;
+  transition: all 0.3s;
+
+  &::after {
+    content: '';
+    display: block;
+    cursor: pointer;
+    width: 50%;
+    padding-bottom: 50%;
+    background-color: var(--color-page);
+    border-radius: 50%;
+    transition: all 0.3s;
+    transform: translateX(0);
+  }
+
+  &--theme--dark {
+    box-shadow: inset -5px -5px 10px #edefed;
+  }
+
+  &--theme--dark::after{
+    transform: translateX(100%);
+
+   }
+
+}
+
+
