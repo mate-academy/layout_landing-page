@@ -1,4 +1,5 @@
 /* #region mixin */
+
 @mixin on-tablet {
   @media (min-width: 576px) {
     @content;
@@ -51,15 +52,16 @@
     opacity: 0;
     transition: all 0.3s;
     transform: translateX(-100%);
-
     pointer-events: none;
   }
 
   &__menu:target {
     opacity: 1;
     transform: translateX(0);
-    overflow: hidden;
-
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #e5e5e5;
     pointer-events: all;
   }
 }
@@ -71,7 +73,7 @@
 .header {
   box-sizing: border-box;
   height: 100vh;
-  background-image: url(../../images/bikebci.png);
+  background-image: url(../../images/bg_phone.png);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -79,6 +81,10 @@
   justify-content: space-between;
   margin: 0 auto;
   width: 100%;
+
+  @include on-tablet {
+    background-image: url(../../images/bikebci.png);
+  }
 
   &__icons {
     gap: 32px;
@@ -143,7 +149,6 @@
   box-sizing: border-box;
   height: 100vh;
   background-color: #c2c2c2;
-
   overflow: auto;
 
   opacity: 0;
@@ -151,6 +156,15 @@
 
   font-weight: 700;
   text-transform: uppercase;
+
+  //   &__phone-number::-webkit-scrollbar {
+  //     height: 8px;
+  // }
+
+  // &__phone-number::-webkit-scrollbar-thumb {
+  //   background-color: #ccc;
+  //   border-radius: 4px;
+  // }
 
   &__phone-number {
     font-size: 16px;
@@ -253,6 +267,27 @@
     background-image: url(../../images/telephon.svg);
     align-items: center;
     justify-content: center;
+    display: flex;
+  }
+
+  @include on-desktop {
+    &--phone::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: calc(100% + 8px);
+      color: #fff;
+      font-size: 14px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    &--phone:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &--menu {
@@ -299,6 +334,8 @@
 
   @include on-tablet {
     margin-bottom: 132px;
+    display: flex;
+    gap: 94px;
   }
 
   @include on-desktop {
@@ -306,6 +343,7 @@
     margin-bottom: 164px;
     display: flex;
     align-items: center;
+    padding: 0 300px;
   }
 }
 
@@ -320,6 +358,10 @@
   margin-bottom: 48px;
   font-size: 32px;
 
+  @include on-tablet {
+    font-size: 48px;
+  }
+
   @include on-desktop {
     font-size: 64px;
     line-height: 64px;
@@ -332,6 +374,7 @@
   line-height: 32.2px;
   text-align: left;
   color: #fff;
+  margin: 0;
 }
 
 .Bikes {
@@ -348,7 +391,7 @@
 
 .details {
   color: #fff;
-  margin-bottom: 180px;
+  margin-bottom: 80px;
 
   @include content-padding-inline;
 
@@ -356,19 +399,30 @@
     margin-bottom: 120px;
   }
 
-  @include on-phone {
-    margin-bottom: 80px;
+  @include on-desktop {
+    margin-bottom: 180px;
+  }
+
+  &__text {
+    text-align: left;
   }
 
   &__photo {
     margin-top: 48px;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     margin-bottom: 16px;
+    justify-content: center;
+
+    @include on-tablet {
+      grid-template-columns: 2fr 1fr;
+    }
+
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -389,16 +443,22 @@
   }
 
   &__three {
-    margin-top: 48px;
     display: grid;
-    gap: 24px;
+    margin-top: 48px;
+    column-gap: 20px;
     margin-bottom: 16px;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+
+    @include on-tablet {
+      grid-template-columns: 1fr 2fr;
+    }
+
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
-
-    grid-template-columns: 1fr 2fr;
   }
 }
 
@@ -475,10 +535,6 @@
   }
 }
 
-.article__3 {
-  margin-bottom: 48px;
-}
-
 /* #endregion */
 
 /* #region random */
@@ -505,9 +561,15 @@
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-
-  width: 324px;
+  outline: none;
+  border: none;
+  width: 278px;
   height: 56px;
+
+  @include on-tablet {
+    width: 324px;
+    height: 56px;
+  }
 }
 
 .explore-button:hover {
@@ -519,6 +581,10 @@
 
 /* #region contact form */
 
+.Contact {
+  @include content-padding-inline;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -528,8 +594,6 @@
   font-family: inherit;
   outline: none;
   gap: 48px;
-
-  @include content-padding-inline;
 
   @include on-tablet {
     flex-direction: row;
@@ -554,17 +618,17 @@
   flex-direction: column;
   gap: 15px;
 
+  @include on-tablet {
+    // width: 288px;
+    // height: 382px;
+    display: flex;
+  }
+
   @include on-desktop {
     width: 411px;
     height: 382px;
     top: 3678px;
     left: 120px;
-  }
-
-  @include on-tablet {
-    // width: 288px;
-    // height: 382px;
-    display: flex;
   }
 }
 
@@ -579,6 +643,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   resize: none;
   font-family: inherit;
+  outline: none;
 }
 
 .form textarea {
