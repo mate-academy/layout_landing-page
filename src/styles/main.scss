@@ -1,7 +1,7 @@
 /* #region mixin */
 
 @mixin on-tablet {
-  @media (min-width: 576px) {
+  @media (min-width: 650px) {
     @content;
   }
 }
@@ -58,7 +58,6 @@
   &__menu:target {
     opacity: 1;
     transform: translateX(0);
-    position: sticky;
     top: 0;
     z-index: 1;
     background-color: #e5e5e5;
@@ -156,15 +155,6 @@
 
   font-weight: 700;
   text-transform: uppercase;
-
-  //   &__phone-number::-webkit-scrollbar {
-  //     height: 8px;
-  // }
-
-  // &__phone-number::-webkit-scrollbar-thumb {
-  //   background-color: #ccc;
-  //   border-radius: 4px;
-  // }
 
   &__phone-number {
     font-size: 16px;
@@ -273,6 +263,7 @@
   @include on-desktop {
     &--phone::before {
       content: '+1 234 555-55-55';
+      font-family: inherit;
       position: absolute;
       right: calc(100% + 8px);
       color: #fff;
@@ -309,20 +300,10 @@
   display: grid;
   background-color: #1d1d1d;
   align-items: center;
-
-  @include on-desktop {
-    padding-block: 120px;
-  }
-
-  @include on-phone {
-    row-gap: 48px;
-    padding-block: 48px;
-    align-items: center;
-  }
+  padding-block: 48px;
 
   @include on-tablet {
     padding-block: 120px;
-    row-gap: 120px;
   }
 }
 
@@ -343,7 +324,6 @@
     margin-bottom: 164px;
     display: flex;
     align-items: center;
-    padding: 0 300px;
   }
 }
 
@@ -565,10 +545,12 @@
   border: none;
   width: 278px;
   height: 56px;
+  margin-bottom: 80px;
 
   @include on-tablet {
     width: 324px;
     height: 56px;
+    margin-bottom: 50px;
   }
 }
 
@@ -588,7 +570,6 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: #fff;
   background-color: #1d1d1d;
   font-family: inherit;
@@ -602,7 +583,7 @@
 
   @include on-desktop {
     flex-direction: row;
-    padding: 40px;
+    padding: 40px 0;
     gap: 198px;
   }
 }
