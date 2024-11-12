@@ -4,6 +4,9 @@
   row-gap: $mb-main-title;
 
   &__title {
+    margin-block: 16px;
+    margin-block: 0;
+
     @include page-grid;
 
     @include text {
@@ -51,6 +54,7 @@
   &__item {
     &Title {
       margin-top: $null;
+      margin-bottom: 16px;
     }
 
     &Name {
@@ -60,8 +64,11 @@
       @include text(14px);
     }
 
-    &Value {
+    &Wrapper {
       margin-bottom: 8px;
+    }
+
+    &Phone {
       margin-top: $null;
 
       @include text {
@@ -72,12 +79,17 @@
 
     &Address {
       margin-block: $null;
+      text-decoration: none;
 
       @include text {
         font-weight: 700;
         line-height: 22.4px;
         color: #3e3e3e;
       }
+    }
+
+    &Hover:hover {
+      color: #707070;
     }
   }
 
@@ -93,13 +105,41 @@
     &Input {
       display: block;
       margin-bottom: 16px;
+
+      &Field {
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 48px;
+      }
     }
 
     &Item {
       background-color: $bcFormItem;
-      border: none;
-      width: 100%;
-      height: 48px;
+      box-sizing: border-box;
+      padding-left: 10.9px;
+      padding-block: 14px;
+
+      @include text {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      @include on-tablet {
+        padding-left: 11.21px;
+      }
+
+      @include on-desktop {
+        padding-left: 16px;
+      }
+    }
+
+    &Item:hover {
+      border: 1px solid #d5d7de;
+    }
+
+    &Item:focus {
+      border: 1px solid #161616;
     }
 
     &Textarea {
@@ -111,8 +151,8 @@
       height: 144px;
       resize: none;
       border: none;
-      background-color: $bcFormItem;
       width: 100%;
+      outline: none;
     }
 
     &Button {
@@ -131,10 +171,7 @@
       text-align: left;
 
       @include text {
-        font-weight: 400;
-        line-height: 20px;
-        font-family: Sinzel, serif;
-        color: #7e7e83;
+        @include text(14px, 400, 20px, #7e7e83, Cinzel);
       }
     }
   }
