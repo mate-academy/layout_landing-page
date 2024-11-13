@@ -1,0 +1,61 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins' as mix;
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include mix.hover(transform, scale(1.2));
+
+  @include mix.on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/icon-phone.png);
+
+    @include mix.on-tablet {
+     position: relative;
+    }
+
+    &:hover::before {
+      @include mix.on-tablet {
+        content: '+1 234 5555-55-55';
+        display: block;
+        position: absolute;
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: right;
+        right: 35px;
+        top: 10px;
+        width: 200px;
+        color: v.$main-text-color;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../icons/icon-bm-hover.png);
+      background-size: 18px 12px;
+      background-repeat: no-repeat;
+
+      @include mix.on-tablet {
+        background-size: 21.5px 14.5px;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.png);
+  }
+}
