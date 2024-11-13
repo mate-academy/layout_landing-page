@@ -1,14 +1,20 @@
 .exhibition {
   &__images {
-    display: flex;
+    display: grid;
     margin: 48px 0 24px;
 
     &--two {
-      justify-content: space-between;
+      grid-template-columns: repeat(2, 130px);
+      column-gap: 20px;
+
+      @include on-tablet {
+        grid-template-columns: repeat(6, 1fr);
+      }
     }
 
     &--three {
-      justify-content: space-around;
+      grid-template-columns: repeat(3, 88px);
+      column-gap: 8px;
     }
   }
 
@@ -16,11 +22,17 @@
     &--m {
       width: 130px;
       height: 130px;
+      grid-column: span 4;
     }
 
     &--s {
       width: 88px;
       height: 87px;
+    }
+
+    &--l {
+      width: 280px;
+      height: 277px;
     }
 
   }
@@ -31,6 +43,12 @@
     font-size: 16px;
     line-height: 27px;
     font-weight: 700;
+
+    &--m {
+      font-size: 24px;
+      line-height: 33.6px;
+      text-align: center;
+    }
   }
 
   &__dates {
@@ -38,5 +56,12 @@
     line-height: 27px;
     font-weight: 400;
     color: $main-dark
+  }
+
+  &__description {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
   }
 }
