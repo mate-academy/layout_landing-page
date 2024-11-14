@@ -16,12 +16,10 @@ switcher.addEventListener('click', () => {
   }
 });
 
-// eslint-disable-next-line no-unused-vars
 function openMenu() {
   document.body.classList.add('page__body--no-scroll');
 }
 
-// eslint-disable-next-line no-unused-vars
 function closeMenu() {
   document.body.classList.remove('page__body--no-scroll');
 }
