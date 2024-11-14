@@ -1,38 +1,79 @@
 .exhibition {
   &__images {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
     margin: 48px 0 24px;
 
-    &--two {
-      grid-template-columns: repeat(2, 130px);
-      column-gap: 20px;
+    &--mob-special {
+      height: 87px;
+
+      & > last-child {
+        @include on-tablet {
+         display: none;
+        }
+      }
+
+      @media (max-width: 743px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
 
       @include on-tablet {
-        grid-template-columns: repeat(6, 1fr);
+        height: 288px;
+      }
+
+      @include on-desktop {
+        height: 320px;
       }
     }
 
-    &--three {
-      grid-template-columns: repeat(3, 88px);
-      column-gap: 8px;
+    &--standart {
+      height: 130px;
+    }
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 80px);
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 63px);
+      gap: 24px;
     }
   }
 
   &__image {
-    &--m {
-      width: 130px;
-      height: 130px;
-      grid-column: span 4;
+    width: 100%;
+    object-fit: cover;
+
+    &--medium {
+      grid-column: span 1;
+      // height: 130px;
     }
 
-    &--s {
-      width: 88px;
-      height: 87px;
+    &--small {
+      // height: 87px;
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
     }
 
-    &--l {
-      width: 280px;
-      height: 277px;
+    &--large {
+      grid-column: span 2;
+      // height: 277px;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
     }
 
   }
