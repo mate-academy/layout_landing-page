@@ -16,10 +16,10 @@ switcher.addEventListener('click', () => {
   }
 });
 
-function openMenu() {
-  document.body.classList.add('page__body--no-scroll');
-}
+// function openMenu() {
+//   document.body.classList.add('page__body--no-scroll');
+// }
 
-function closeMenu() {
-  document.body.classList.remove('page__body--no-scroll');
-}
+// function closeMenu() {
+//   document.body.classList.remove('page__body--no-scroll');
+// }
