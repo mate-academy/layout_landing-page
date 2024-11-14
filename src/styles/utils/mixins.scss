@@ -1,0 +1,96 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+// stylelint-disable-next-line scss/at-mixin-pattern
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inlite {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+// @mixin hover-effect($property, $toValue, $timing-function: ease) {
+//   transition: #{$property} #{$effect-durations} #{$timing-function};
+//   &:hover {
+//     #{$property}: #{$toValue};
+//   }
+// }
+
+@mixin hover-effect($property, $toValue) {
+  transition: #{$property} $effect-durations;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin infinite-swing($distance: 10px, $duration: 0.5s) {
+  @keyframes swing {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-#{$distance});
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  &:hover {
+    animation: swing #{$duration} ease-in-out infinite;
+    transform: scale(1.1);
+  }
+}
+
+@mixin infinite-scale($scale-factor: 1.1, $duration: 0.5s) {
+  @keyframes scale-effect {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(#{$scale-factor});
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  &:hover {
+    animation: scale-effect #{$duration} ease-in-out infinite;
+  }
+}
+
+
