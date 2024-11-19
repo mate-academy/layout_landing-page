@@ -1,11 +1,6 @@
 .menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  min-height: 100vh;
-
   background-color: $menu-background;
+  overflow: auto;
 
   &__content {
     display: flex;
@@ -14,7 +9,9 @@
   }
 
   &__top {
-    @include settings-top;
+    @include settings-top {
+      @include top-panel-padding;
+    }
   }
 
   &__logo {
@@ -23,6 +20,8 @@
 
   &__image {
     display: block;
+
+    @include logo-size;
   }
 
   &__bottom {
@@ -30,8 +29,40 @@
     gap: 16px;
     flex-direction: column;
 
-    & a {
-      color: $menu-text-color;
+    padding-bottom: 113px;
+  }
+
+  &__phone {
+    display: block;
+    line-height: 27px;
+
+    align-self: flex-start;
+    color: $black-color;
+    font-size: 16px;
+    font-weight: $font-weight-bold;
+    
+    @include hover(transform, scale(1.05));
+  }
+
+  &__call-to-book {
+    display: block;
+    line-height: 16px;
+
+    position: relative;
+
+    align-self: flex-start;
+    color: $black-color;
+    font-size: 12px;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-wide;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      width: 100%;
+      height: 1px;
+      background-color: $black-color;
     }
   }
 }

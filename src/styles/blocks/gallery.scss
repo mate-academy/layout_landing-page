@@ -1,0 +1,40 @@
+.gallery {
+  display: grid;
+  gap: 16px 24px;
+
+  @include gallery-column(12);
+
+  @include laptop {
+    @include gallery-column(6);
+  }
+
+  @include phone {
+    @include gallery-column(2);
+  }
+
+  &__wrap-image {
+    min-height: 321px;
+
+    @include on-tablet {
+      min-height: 187px;
+    }
+
+    @include phone {
+      min-height: 130px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    position: relative;
+
+    @include hover(transform, scale(1.08));
+
+    &:hover {
+      z-index: 1;
+    }
+  }
+}

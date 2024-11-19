@@ -3,17 +3,29 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
 
-  &__content {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+
+  @include on-tablet {
+    background-image: url(../images/header-background-image-small.png);
+    background-position: 88%;
   }
 
   &__top {
-    @include settings-top;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $header-top-background;
+    z-index: 5;
+
+    @include top-panel-padding;
+
+    &-content {
+      @include settings-top;
+    }
   }
 
   &__logo {
@@ -22,22 +34,45 @@
 
   &__image {
     display: block;
+
+    @include logo-size;
   }
 
   &__icons {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
   }
 
   &__botom {
     text-align: center;
     padding-bottom: 203px;
+
+    @include laptop {
+      padding-bottom: 130px;
+    }
+
+    @include phone {
+      padding-bottom: 88px;
+    }
   }
 
   &__title {
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: 80px;
     line-height: 100%;
+    letter-spacing: $letter-spacing-negative;
+
+    @include laptop {
+      font-size: 64px;
+    }
+
+    @include phone {
+      font-size: 36px;
+    }
   }
 }
