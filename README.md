@@ -1,21 +1,55 @@
-# Landing page
+# Landing page MyBike
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+### [DEMO LINK](https://staner1.github.io/layout_landing-page/) - click on the link to explore the web page
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+### [DESIGN LINK](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1) - сlick on the link to view the design
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+MyBike is a single-page, fully responsive website designed to showcase high-tech bicycles. The project is optimized for various devices and ensures responsiveness to user interactions.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+---
+
+### The list of technologies that were used:
+
+<br>
+
+- <img src="https://github.com/staner1/Readme-images/blob/main/images/icons/HTML5_logo_and_wordmark.svg.png?raw=true" alt="HTML" align="center" width="70"/>
+  HTML was used to build the semantic structure of the project
+
+<br>
+
+- <img src="https://github.com/staner1/Readme-images/blob/main/images/icons/css-icon.png?raw=true" alt="CSS" align="center" width="70"/>
+  CSS was used to style the entire visual aspect of the project
+
+<br>
+
+- <img src="https://raw.githubusercontent.com/staner1/Readme-images/087bbf7828379f785b9cdbbdc37858db931b5a95/images/icons/scss-icon.svg" alt="SCSS" align="center" width="70"/>
+  &nbsp;SCSS was used to enhance the styling process by enabling more efficient and maintainable CSS
+
+<br>
+
+
+- <img src="https://raw.githubusercontent.com/staner1/Readme-images/0bb16e5e2f4725519e259e9d55e3955598f6ff4f/images/icons/javascript-logo.svg" alt="SCSS" align="center" width="70"/>
+  &nbsp;JavaScript was used to add an additional class to the HTML structure of the page when clicking on the burger menu
+
+---
+
+### Instructions for Running the Project in a Local Repository
+
+You need to have the following programs installed on your computer:
+
+1. [Git](https://git-scm.com/downloads/win) <br>
+2. [Node.js](https://nodejs.org/en/download/package-manager) (The version should be v20.xx.x) <br>
+3. A code editor (for example, you can use [VSCode](https://code.visualstudio.com/docs/?dv=win))
+
+---
+### Further Actions:
+
+- Fork the project repository on GitHub.
+
+- Clone the project to your local computer.
+
+- Open the project folder using a code editor.
+
+- Run the command: `npm install`.
+
+- Then enter: `npm start`
