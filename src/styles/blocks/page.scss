@@ -1,0 +1,33 @@
+// _page.scss
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    font-family: $font-family;
+    color: $font-color;
+    font-size: 16px;
+    line-height: 140%;
+    margin: 0;
+    background: $background-color;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+  }
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+}
