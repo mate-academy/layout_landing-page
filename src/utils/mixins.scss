@@ -1,0 +1,67 @@
+// MARGINS, PADDINGS AND DISPLAYS
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+.container {
+  @include content-padding-in-line;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+
+// STYLES AND TRANSITIONS
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin button-styles($bg-color, $border-color) {
+  background-color: $bg-color;
+  border-color: $border-color;
+  transition: background-color $effectDuration, border-color $effectDuration;
+}
+
+
