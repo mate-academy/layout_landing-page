@@ -20,6 +20,25 @@
     @include on-tablet {
       column-gap: 24px;
     }
+
+    &--tablet {
+      --columns: 3;
+
+      display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+
+      @include on-tablet {
+        --columns: 2;
+
+        column-gap: 24px;
+      }
+
+      @include on-desktop {
+        --columns: 12;
+      }
+
+    }
+
   }
 
   &__link {
@@ -35,6 +54,7 @@
     }
 
     &--square {
+      display: block;
       height: 0;
       padding-bottom: 100%;
 
@@ -47,11 +67,25 @@
       }
     }
 
-    &--mobile-hidden {
-      display: none;
+    &--tablet-hidden {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &--tablet {
+      grid-column: span 1;
 
       @include on-tablet {
-        display: block;
+        grid-column: span 1;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
       }
     }
   }
