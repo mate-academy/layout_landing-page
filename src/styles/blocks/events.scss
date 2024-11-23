@@ -1,0 +1,130 @@
+.events {
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper {
+    grid-row: 1/-1;
+    display: grid;
+    row-gap: 48px;
+    margin-top: 48px;
+  }
+}
+
+.view-events-button {
+  @include page-grid;
+
+  margin-top: 40px;
+
+  &__link {
+      grid-column: 1/-1;
+      background-color: $main-accent-color;
+      text-align: center;
+      padding-inline: auto;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      text-decoration: none;
+      color: $main-text-color;
+
+      font-family: $main-font-family;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: $line-height-standard;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+
+      @include on-tablet {
+        grid-column: 2/-2;
+      }
+
+      @include on-desktop {
+        grid-column: 5/-5;
+      }
+
+      @include hover-scale-up;
+  }
+}
+
+.event {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+    column-gap: 20px;
+
+    @include on-tablet {
+      column-gap: 24px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--mobile-hidden {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover-scale-up;
+
+    &--right {
+      object-position: 100%;
+    }
+
+    &--left {
+      object-position: 30%;
+    }
+
+    @include on-tablet {
+      object-position: 0;
+    }
+
+    @include on-desktop {
+      object-position: 0;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: $font-weight-bold;
+    font-family: $main-font-family;
+    font-size: 16px;
+    line-height: $line-height-standard;
+    text-align: left;
+    color: $main-accent-color;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+}
