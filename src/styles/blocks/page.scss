@@ -1,0 +1,38 @@
+.page {
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+
+  --heder-h1-height: 80px;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+
+    &:has(.page__menu:target) {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    transition: all $effectDuration ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-100%);
+
+    &:target {
+      z-index: 1;
+      height: 100%;
+      opacity: 1;
+      transform: translate(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
