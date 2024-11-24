@@ -12,8 +12,6 @@
 }
 
 .view-explore {
-  @include main-text;
-
   text-align: center;
   margin-bottom: 48px;
 }
@@ -23,15 +21,19 @@
 
   --columns: 2;
 
+  display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   gap: 32px 20px;
-  display: grid;
+
   &_link {
     transition: transform 0.8s ease-in-out;
     position: relative;
+    overflow: hidden;
+    display: block;
 
     &:hover {
       transform: scale(1.1);
+      z-index: 1;
     }
   }
 }
@@ -53,13 +55,12 @@
 }
 
 .collection-title {
-  @include menu-text;
-
-  color: $accent-color;
+  color: #e74c3c;
 }
 
 .date-title {
-  @include main-text;
+  font-size: 14px;
+  color: #333;
 }
 
 .picture-box {
@@ -67,8 +68,9 @@
 
   --columns: 3;
 
-  grid-template-columns: repeat(var(--columns), 1fr);
   display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 24px;
 }
 
 .view-wrapper {
@@ -76,10 +78,8 @@
 }
 
 .view-link {
-  @include menu-text;
-
-  background-color: $accent-color;
-  color: $main-white;
+  background-color: #e74c3c;
+  color: #fff;
   text-decoration: none;
   text-align: center;
   width: 280px;
@@ -88,7 +88,7 @@
   margin-top: -8px;
 
   &:hover {
-    background-color: $hovered;
+    background-color: #c0392b;
   }
 }
 
@@ -103,18 +103,19 @@
   }
 
   .picture-wrapper {
-    display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 32px 20px;
   }
 
   .picture-wrapper_link {
     grid-column: span 4;
-  }
+    position: relative;
+    overflow: hidden;
 
-  .picture-image {
-    object-fit: cover;
-    position: absolute;
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
   }
 
   .link-small {
@@ -127,6 +128,7 @@
 
     &:hover {
       transform: scale(1.1);
+      z-index: 3;
     }
   }
 
@@ -153,13 +155,17 @@
 
 @media (min-width: 1260px) {
   .picture-wrapper {
-    display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 32px 20px;
   }
 
   .picture-wrapper_link {
     grid-column: span 8;
+    position: relative;
+
+    &:hover {
+      z-index: 4;
+    }
   }
 
   .link-small {
@@ -174,6 +180,7 @@
     width: 324px;
     height: 320px;
   }
+
   .picture-box {
     --columns: 12;
   }
