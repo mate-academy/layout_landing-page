@@ -1,0 +1,91 @@
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+    z-index: 3;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  height: 56px;
+  padding: 0 48px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #1d1d1d;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+  &:focus {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin input {
+  border-radius: 40px;
+  color: #7e7e83;
+  height: 48px;
+  background-color: #f8f8fa;
+  padding: 14px 16px;
+  border: none;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  grid-column: span 2;
+  outline: none;
+
+  &:hover {
+    border: 1px solid #d5d7de;
+    color: #292929;
+  }
+
+  &:focus {
+    border: 1px solid #292929;
+    color: #292929;
+  }
+}
