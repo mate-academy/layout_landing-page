@@ -4,7 +4,7 @@
 - This project is a responsive landing page designed to showcase modern web development approaches. It has a stylish design and provides correct display on different devices.
 
 # Technologies Used
--HTML5: Provides the structure of the page.
+- HTML5: Provides the structure of the page.
 - CSS3 (SCSS): Handles styling, animations, and includes mixins for media queries.
 - Webpack: Manages project building and resource optimization.
 
