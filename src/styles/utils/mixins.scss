@@ -1,0 +1,71 @@
+@mixin laptop {
+  @media(max-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media(max-width: 744px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media(max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $value) {
+  transition: $transition-value;
+
+  &:hover {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin settings-top() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  @content;
+}
+
+@mixin logo-size {
+  @include laptop {
+    width: 130px;
+  }
+}
+
+@mixin top-panel-padding {
+  padding-block: 36px;
+
+  @include phone {
+    padding-block: 24px;
+  }
+}
+
+@mixin gallery-column($value) {
+  grid-template-columns: repeat(#{$value}, 1fr);
+}
+
+@mixin hover-bike() {
+  transition: $transition-value;
+
+  .bike__link:hover & {
+      color: $hover-bike;
+  }
+}
+
+@mixin hover-button {
+  @include hover(box-shadow, 1px 4px 16px 0 rgba($box-shadow-color, 0.4));
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba($box-shadow-color, 0.64);
+  }
+}
+
+@mixin hover-links {
+  @include hover(color, #8d8d8d);
+}
