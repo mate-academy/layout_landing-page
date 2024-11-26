@@ -25,7 +25,8 @@
     }
 
     textarea {
-      border-radius: 10px;
+      resize: none;
+      border-radius: 16px;
       height: 120px;
       padding: 14px;
     }
@@ -76,6 +77,48 @@
 
     p {
       margin-top: 0;
+    }
+
+    a {
+      @include contacts-info;
+
+      text-decoration: none;
+      color: $main-text-color;
+    }
+
+    .contacts-icon {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      width: 22px;
+      height: 22px;
+      background-size: cover;
+      transition:
+        opacity $duration-time ease,
+        left $duration-time ease;
+    }
+
+    .contacts-phone .contacts-icon {
+      background-image: url(/src/icons/icon-phone-call-vector.svg);
+    }
+
+    .contacts-email .contacts-icon {
+      background-image: url(/src/icons/icon-email-vector.svg);
+    }
+
+    .contacts-address .contacts-icon {
+      background-image: url(/src/icons/icon-map-vector.svg);
+    }
+
+    .contacts-phone:hover,
+    .contacts-email:hover,
+    .contacts-address:hover {
+      transform: translate(30px);
+
+      .contacts-icon {
+        opacity: 1;
+        left: -30px;
+      }
     }
   }
 }
