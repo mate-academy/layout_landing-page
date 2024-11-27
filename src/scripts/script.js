@@ -1,3 +1,7 @@
+"scripts": {
+  "test:report": "cypress run --reporter mochawesome"
+}
+
 // Убрать прелоадер после загрузки страницы
 window.addEventListener('load', function () {
   const preloader = document.querySelector('.preloader');
