@@ -1,0 +1,54 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+  transition: transform $duration-time;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/icons/icon-phone-call-vector.svg);
+
+    &__number {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 100%;
+      opacity: 0;
+      white-space: nowrap;
+      color: $main-text-color;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      transition:
+        opacity $duration-time ease,
+        right $duration-time ease;
+    }
+
+    @include on-desktop {
+      &:hover &__number {
+        opacity: 1;
+        right: 150%;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/icons/icon-burger-menu-vector.svg);
+
+    &:hover {
+      background-image: url(/src/icons/Icon-burger-menu-hover-vector.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/icons/icon-close-vector.svg);
+  }
+}

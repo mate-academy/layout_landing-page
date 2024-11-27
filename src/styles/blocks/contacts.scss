@@ -1,0 +1,128 @@
+.contacts {
+  &__wraper {
+    @include page-grid;
+  }
+
+  &__form {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    input {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 170%;
+    }
+
+    textarea {
+      resize: none;
+      border-radius: 16px;
+      height: 120px;
+      padding: 14px;
+    }
+
+    input,
+    button {
+      border-radius: 50px;
+      padding: 14px;
+    }
+
+    input,
+    textarea {
+      color: $form-text-color;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+
+      &:hover,
+      :active {
+        color: $form-text-color-active;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      @include button;
+
+      margin-top: 32px;
+      padding: 14px;
+    }
+  }
+
+  &__info {
+    grid-column: span 2;
+    margin-top: 48px;
+
+    p {
+      margin-top: 0;
+    }
+
+    p:nth-child(3) {
+      margin-bottom: 0;
+    }
+
+    @include on-tablet {
+      grid-column: span 3;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / span 3;
+    }
+
+    a {
+      @include contacts-info;
+
+      text-decoration: none;
+      color: $main-text-color;
+    }
+
+    .contacts-icon {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      width: 22px;
+      height: 22px;
+      background-size: cover;
+      transition:
+        opacity $duration-time ease,
+        left $duration-time ease;
+    }
+
+    .contacts-phone .contacts-icon {
+      background-image: url(/src/icons/icon-phone-call-vector.svg);
+    }
+
+    .contacts-email .contacts-icon {
+      background-image: url(/src/icons/icon-email-vector.svg);
+    }
+
+    .contacts-address .contacts-icon {
+      background-image: url(/src/icons/icon-map-vector.svg);
+    }
+
+    .contacts-phone:hover,
+    .contacts-email:hover,
+    .contacts-address:hover {
+      transform: translate(30px);
+
+      .contacts-icon {
+        opacity: 1;
+        left: -30px;
+      }
+    }
+  }
+}
