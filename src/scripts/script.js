@@ -1,10 +1,7 @@
-"scripts": {
-  "test:report": "cypress run --reporter mochawesome"
-}
-
 // Убрать прелоадер после загрузки страницы
 window.addEventListener('load', function () {
   const preloader = document.querySelector('.preloader');
+
   preloader.style.display = 'none';
 });
 
@@ -38,12 +35,13 @@ window.addEventListener('scroll', () => {
 });
 
 // Testimonials Slider
-let testimonials = document.querySelectorAll('.testimonial');
+const testimonials = document.querySelectorAll('.testimonial');
 let currentTestimonial = 0;
 
 function showTestimonial(index) {
   testimonials.forEach((testimonial, i) => {
     testimonial.classList.remove('active');
+
     if (i === index) {
       testimonial.classList.add('active');
     }
