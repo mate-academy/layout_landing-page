@@ -52,3 +52,10 @@ setInterval(() => {
   currentTestimonial = (currentTestimonial + 1) % testimonials.length;
   showTestimonial(currentTestimonial);
 }, 5000);
+
+const contactForm = document.querySelector('.contact-form form');
+
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  contactForm.reset();
+});
