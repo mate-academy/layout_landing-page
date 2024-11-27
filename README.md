@@ -10,7 +10,7 @@ Technologies Used:
 - Grid Layout and Flexbox for creating a responsive grid and element positioning.
 
 Preview Link
-- https://taniafedortsi.github.io/layout_landing-page/
+[- https://taniafedortsi.github.io/layout_landing-page/](https://taniafedortsi.github.io/layout_landing-page/)
 
 Figma Design Link
 - https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&node-type=canvas&t=FSWdTg36W3wekEwy-0
