@@ -4,10 +4,34 @@
   }
 }
 
-@mixin consten-padding-inline() {
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width){
+    @content;
+  }
+}
+
+
+@mixin contentPaddingInline() {
   padding-inline: 20px;
 
   @include on-tablet {
     padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $to-value;
   }
 }
