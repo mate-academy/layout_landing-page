@@ -9,7 +9,7 @@ module.exports = defineConfig({
     json: true,
   },
   e2e: {
-    baseUrl: baseUrl: "https://QuantumCoder228.github.io/layout_landing-page",
+    baseUrl: baseUrl: "https://QuantumCoder228.github.io/layout_landing-page/src",
     setupNodeEvents(on, config) {
       // implement node event listeners if needed
     },
