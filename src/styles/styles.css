@@ -9,6 +9,7 @@
   --background-color: #f9f9f9;
   --font-family: 'Montserrat', sans-serif;
   --heading-font: 'Playfair Display', serif;
+  --horizontal-padding: 15px; /* Добавлена переменная для горизонтальных отступов */
 }
 
 /* Global Styles */
@@ -21,6 +22,18 @@
 body {
   font-family: var(--font-family);
   color: var(--secondary-color);
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
+  background-color: var(--background-color);
+}
+
+/* Добавлен горизонтальный отступ для контейнера */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
 }
 
 a {
@@ -35,12 +48,6 @@ h3 {
   font-family: var(--heading-font);
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
 .btn {
   display: inline-block;
   background-color: var(--primary-color);
@@ -48,15 +55,29 @@ h3 {
   padding: 15px 30px;
   border-radius: 5px;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn:hover {
   background-color: var(--primary-color-dark);
+  transform: translateY(-2px);
 }
 
 section {
   padding: 80px 0;
+}
+
+/* Добавлены горизонтальные отступы для секций */
+.hero-section,
+.collection-section,
+.parallax-section,
+.about-section,
+.services-section,
+.testimonials-section,
+.contact-section,
+footer {
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
 }
 
 /* Footer Paragraph */
@@ -116,6 +137,7 @@ nav .menu li a:hover::after {
   text-align: center;
   margin-bottom: 50px;
   position: relative;
+  color: #fff; /* Убедились, что заголовок белый */
 }
 
 .parallax-section h2::after {
@@ -131,6 +153,7 @@ nav .menu li a:hover::after {
 
 .parallax-section p {
   font-size: 24px;
+  color: #fff; /* Изменен цвет текста на белый */
 }
 
 /* About Section Heading */
@@ -186,6 +209,7 @@ nav .menu li a:hover::after {
   background-color: var(--primary-color);
 }
 
+/* Preloader */
 .preloader {
   position: fixed;
   inset: 0;
@@ -411,7 +435,7 @@ nav .menu-toggle {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  color: #fff;
+  color: #fff; /* Убедились, что текст белый */
   text-align: center;
   padding: 100px 20px;
   position: relative;
@@ -426,6 +450,12 @@ nav .menu-toggle {
 
 .parallax-section .btn {
   margin-top: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.parallax-section .btn:hover {
+  background-color: var(--primary-color-dark);
 }
 
 /* About Us Section */
@@ -642,11 +672,23 @@ nav .menu-toggle {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .back-to-top:hover {
   background-color: var(--primary-color-dark);
+  transform: translateY(-2px);
+}
+
+/* Добавление стрелочки к кнопке Back to Top */
+.back-to-top::before {
+  content: '';
+  display: inline-block;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  padding: 8px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }
 
 /* Footer */
@@ -660,4 +702,13 @@ footer {
 /* Smooth Scroll for Anchor Links */
 html {
   scroll-behavior: smooth;
+}
+
+/* 1. Стили для автозаполнения полей формы */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset;
+  -webkit-text-fill-color: var(--secondary-color);
+  transition: background-color 5000s ease-in-out 0s;
 }
