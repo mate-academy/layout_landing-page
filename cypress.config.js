@@ -1,20 +1,17 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'http://localhost:3000',
-    supportFile: false,
-    specPattern: 'cypress/integration/**/*.spec.{js,ts,jsx,tsx}',
-  },
-  video: true,
-  viewportHeight: 1920,
-  viewportWidth: 1080,
-  screenshotOnRunFailure: true,
-  reporter: 'mochawesome',
+  reporter: "mochawesome",
   reporterOptions: {
-    reportDir: 'raw_reports',
+    reportDir: "cypress/reports",
     overwrite: false,
-    html: false,
+    html: true,
     json: true,
+  },
+  e2e: {
+    baseUrl: baseUrl: "https://QuantumCoder228.github.io/layout_landing-page/src",
+    setupNodeEvents(on, config) {
+      // implement node event listeners if needed
+    },
   },
 });

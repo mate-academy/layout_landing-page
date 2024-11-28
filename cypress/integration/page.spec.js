@@ -1,8 +1,8 @@
-'use strict';
+/// <reference types="cypress" />
 
-// TODO: edit it
 describe('Page', () => {
   it('should be visitable', () => {
     cy.visit('/');
+    cy.contains('Welcome to Easy Wear').should('be.visible');
   });
 });
