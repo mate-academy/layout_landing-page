@@ -1,9 +1,10 @@
-.icon{
+.icon {
   display: block;
   height: 24px;
   width: 24px;
   background-image: url(/src/icons/icon-menu-2x.png);
   background-size: cover;
+  cursor: default;
 
   @include hover(transform, scale(1.2));
 
@@ -13,7 +14,30 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(/src/icons/icon-phone-2x.png);
+    transition-duration: 1s;
+
+    &:hover::before {
+      position: absolute;
+      width: 110px;
+      height: 16px;
+      content: '+1 234 555-55-55';
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #fff;
+      margin-left: -47px;
+      top: 30px;
+      transition-duration: 1.2s;
+
+      @include on-tablet {
+        font-weight: 600;
+        width: 138px;
+        margin-left: -120px;
+        top: 10px;
+      }
+    }
   }
 
   &--menu {
@@ -28,4 +52,3 @@
     background-image: url(/src/icons/icon-close-2x.png);
   }
 }
-
