@@ -1,25 +1,64 @@
-.icon{
+.icon {
   display: block;
-height: 24px;
-width: 24px;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
 
-@include on-tablet{
-height: 32px;
-width: 32px;
+  @include hover(transform, scale(1.2));
 
-}
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
 
-&--phone{
-  background-image: url(images/phone.png);
-}
+  &--phone {
+    background-image: url(../images/icons/icon-phone.png);
 
-&--menu{
-  background-image: url(images/burger-menu.png);
-}
+    position: relative;
+    cursor: pointer;
 
-&--close{
-  background-image: url(images/close.png);
+    @include on-desktop {
+      &::after {
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        padding: 4px 8px;
+        color: #292929;
+        border-radius: 4px;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s,
+          visibility 0.3s;
 
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: right;
+      }
+    }
 
-}
+    &:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.png);
+  }
 }
