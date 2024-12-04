@@ -4,6 +4,12 @@
   }
 }
 
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin hover($property, $toValue) {
   transition: $property 0.3s;
 
@@ -12,10 +18,28 @@
   }
 }
 
-@mixin content-padding-inline() {
+@mixin content-padding-inline {
   padding-inline: 20px;
 
   @include on-tablet {
     padding-inline: 72px;
   }
+
+  @include on-desktop {
+    margin: 0 auto;
+    max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin title-margin-bottom {
+  margin-bottom: 48px;
+
+  @include on-tablet {
+    margin-bottom: 56px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
 }
