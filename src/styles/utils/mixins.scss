@@ -1,0 +1,60 @@
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonPattern {
+  width: 278px;
+  height: 56px;
+  border-radius: 40px;
+  background-color: #fff;
+  color: #1d1d1d;
+  cursor: pointer;
+
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+
+  &:hover,
+  &:active {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+}
