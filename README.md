@@ -14,4 +14,4 @@ For styling, the SASS preprocessor was used: creating changes, mixins and workin
 
 Also used were such display methods as: flex, grid, and various ways of positioning elements in blocks: relative and absolute.
 
-In addition, for smooth changes, trasition-duration was set, and to change the elements themselves, transform properties were used.
+In addition, for smooth changes, transition-duration was set, and to change the elements themselves, transform properties were used.
