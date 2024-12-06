@@ -1,17 +1,27 @@
 .header {
-  box-sizing: border-box;
-  height: 100vh;
   background-image: url(../images/header-bg-phone.png);
   background-size: cover;
   background-position: right;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include on-tablet {
+    background-image: url(../images/header-bg.png);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   &__bottom {
-    padding-bottom: 40px;
-    @include contentPaddingInLine;
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
   }
 
   &__title {
@@ -21,7 +31,12 @@
     font-size: 36px;
     letter-spacing: -1.5px;
     text-align: center;
+    white-space: nowrap;
     color: $main-text-color;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
   }
 }
 
