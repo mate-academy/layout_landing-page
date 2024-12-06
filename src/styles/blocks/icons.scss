@@ -1,0 +1,87 @@
+.icon {
+  width: 24px;
+  height: 24px;
+
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+
+    background-size: 24px 24px;
+  }
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include hover(transform, scale(1.2));
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+
+        color: #000;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: Inter, sans-serif;
+        letter-spacing: 2px;
+        text-decoration: none;
+
+        height: 100%;
+        text-wrap: nowrap;
+        width: fit-content;
+
+        display: flex;
+        align-items: center;
+
+        position: absolute;
+        right: calc(100% + 8px);
+
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%);
+
+        transition-duration: 0.3s;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+        transform: translate(0%);
+      }
+    }
+  }
+
+  &--menu {
+    background-size: 18px 12px;
+
+    @include on-tablet {
+      background-size: 24px 16px;
+    }
+
+    transition: 0.3s;
+    background-image: url(../images/icons/icon-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-size: 16px 16px;
+
+    @include on-tablet {
+      background-size: 22px 22px;
+    }
+
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
