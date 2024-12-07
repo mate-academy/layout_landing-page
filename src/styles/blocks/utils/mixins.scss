@@ -1,7 +1,41 @@
-@mixin name-mix-ex {
-  padding-inline: 20px;
+$DesktopInit: 1260px;
+$TabletInit: 760px;
 
-  @media (min-width: 576px) {
-    padding-inline: 72px;
+@mixin on-descktoop {
+  @media (min-width: $DesktopInit) {
+    @content;
   }
 }
+
+@mixin on-tablet {
+  @media (min-width: $TabletInit) {
+    @content;
+  }
+}
+
+@mixin header-pading {
+  padding-inline: 20px;
+  padding-block: 24px;
+
+  @media (min-width: $TabletInit) {
+    padding-inline: 72px;
+    padding-block: 36px;
+  }
+
+  @media (min-width: $DesktopInit) {
+    padding-inline: 120px;
+    padding-block: 36px;
+  }
+}
+
+/* ========================== */
+
+@mixin hover($property, $value) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+/* ========================== */
