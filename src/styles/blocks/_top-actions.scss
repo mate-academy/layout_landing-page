@@ -5,6 +5,7 @@
   width: 100%;
 
   &__links {
+    position: relative;
     display: flex;
     gap: 24px;
 
@@ -15,6 +16,7 @@
 
   &__link {
     display: flex;
+    position: relative;
 
     @include square-size(24px);
 
@@ -25,5 +27,39 @@
 
   &__icons {
     display: flex;
+  }
+
+  &__contacts {
+    padding: 0;
+
+    position: absolute;
+    left: 100%;
+  }
+
+  &__location-list {
+    padding-right: 16px;
+
+    position: absolute;
+    right: 100%;
+    top: 50%;
+
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    transform: translateY(-50%);
+    transition: opacity 300ms;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__address {
+    &:hover {
+      .top-actions__location-list {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
   }
 }
