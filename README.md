@@ -1,4 +1,4 @@
-- [DEMO LINK](https://alyonashunevych.github.io/the-met_landing-page/)
+- [DEMO LINK](https://alyonashunevych.github.io/layout_landing-page/)
 - [LAYOUT](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 
 ### The Met Landing Page
