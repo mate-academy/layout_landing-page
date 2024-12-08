@@ -17,28 +17,32 @@
   }
 
   &__form {
+  display: block;
+
     @include on-desktop {
       width: 498px;
     }
   }
+
   &__input {
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.15;
-    border: none;
-    border-radius: 8px;
-    box-sizing: border-box;
-    padding: 16px 14px;
-    background-color: $grey-color;
-    color: $input-text-color;
-    margin-bottom: 16px;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.15;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      box-sizing: border-box;
+      padding: 16px 14px;
+      background-color: $grey-color;
+      color: $input-text-color;
+      margin-bottom: 16px;
   }
+
   &__textarea {
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.15;
+    border: 2px solid transparent;
     box-sizing: border-box;
-    border: none;
     border-radius: 8px;
     width: 100%;
     height: 100px;
@@ -49,13 +53,22 @@
       max-width: 498px;
     }
   }
+
   &__input:hover,
-  &__textarea:hover,
+  &__textarea:hover {
+    @include hover(transform, scale(1.1));
+  }
+
   &__input:focus,
   &__textarea:focus {
-    color: $main-dark-color-text;
-    border-color: $default-button-color;
+    border: 2px solid #f98921;
   }
+
+  &__input::placeholder,
+  &__textarea::placeholder {
+    color: $input-text-color;
+  }
+
   &__button {
     height: 56px;
     border: none;
@@ -63,20 +76,24 @@
     background-color: $main-dark-color-text;
     color: $main-white-color;
   }
+
   &__button:hover {
     background-color: $default-button-color;
   }
+
   &__info {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
+
   &__span {
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.15;
     color: $span-color;
   }
+
   &__paragraph {
     cursor: pointer;
     color: $main-dark-color-text !important;
@@ -87,10 +104,6 @@
 
     @include hover(transform, scale(1.2));
   }
-}
-
-form {
-  display: block;
 }
 
 form input,
