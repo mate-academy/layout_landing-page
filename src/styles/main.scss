@@ -1,6 +1,6 @@
 // #region page
 .page {
-  font-family: 'Cinzel', serif;
+  font-family: Cinzel, serif;
   color: var(--main-dark);
   font-size: 16px;
   line-height: 27px;
@@ -10,6 +10,9 @@
 
 .page__body {
   margin: 0;
+
+  transition: all 0.2s ease-in-out;
+
 }
 
 .page__menu {
@@ -31,6 +34,7 @@
   --main-dark: #161616;
   --main-white: #fcfcfc;
   --accent-main: #d12d35;
+  --hover--color: #c3c3c3;
 }
 
 // #endregion
@@ -50,7 +54,7 @@
 }
 
 .header__title {
-  font-family: Cinzel;
+  font-family: Cinzel, serif;
   font-size: 40px;
   font-weight: 700;
   line-height: 40px;
@@ -66,7 +70,7 @@
   justify-content: center;
   align-items: center;
 
-  padding: 0 20px 288px 20px;
+  padding: 0 20px 288px;
 }
 
 // #endregion
@@ -98,10 +102,17 @@
 
   font-weight: 700;
   text-transform: uppercase;
+
+  overflow: auto; /* to scroll the menu if needed */
 }
 
 .menu__top {
   margin-bottom: 40px;
+
+  position: sticky; /* to keep cross always visible */
+  top: 0;
+  z-index: 1;
+  background-color: #e5e5e5;
 }
 
 .menu__nav {
@@ -120,6 +131,10 @@
   text-decoration: none;
 }
 
+.menu__address-met:hover {
+  color: var(--hover--color)
+}
+
 .menu__phone-number {
   display: block;
   margin-bottom: 8px;
@@ -127,6 +142,10 @@
   line-height: 27px;
   color: var(--main-white);
   text-decoration: none;
+}
+
+.menu__phone-number:hover {
+  color: var(--hover--color)
 }
 
 .menu__call-to-order {
@@ -143,6 +162,10 @@
 
   color: var(--main-white);
   text-decoration: none;
+}
+
+.menu__call-to-order:hover {
+  color: var(--hover--color)
 }
 
 // #endregion
@@ -188,10 +211,29 @@
   background-image: url('../icons/icon-close.png');
 }
 
-// #endregion
+.icon--phone:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
 
-// #region footer
-.footer {
+.icon--menu:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+  background-image: url('../icons/icon-burger-menu-hover.png');
+}
+
+.icon--close:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
 }
 
 // #endregion
+
+// #region footer
+
+// #endregion
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+  /* not to scroll the page */
+}
