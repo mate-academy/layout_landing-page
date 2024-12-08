@@ -1,0 +1,92 @@
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 25px;
+
+  @include on-tablet {
+    padding-block: 50px;
+  }
+
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    position: relative;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include on-tablet {
+      height: 65px;
+    }
+
+    display: flex;
+  }
+
+  &__icon {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+
+    @include transition-transform(scale(1));
+
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    @each $icon in $icons {
+      &--#{$icon} {
+        background-image: url('../images/icon-#{$icon}.png');
+        background-size: cover;
+      }
+    }
+
+    &--menu:hover {
+      background-image: url('../images/icon-menu-hover.png');
+    }
+  }
+
+  &__phone-numbers {
+    display: grid;
+    gap: 8px;
+    position: absolute;
+    right: 100%;
+    top: -130%;
+    color: #fff;
+    padding: 10px 15px;
+    text-align: right;
+    z-index: 10;
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  &__links {
+    position: relative;
+
+    @include on-desktop {
+      &:hover .top-bar__phone-numbers {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
