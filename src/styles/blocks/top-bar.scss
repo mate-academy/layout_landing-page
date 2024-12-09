@@ -1,0 +1,98 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+
+    @include on-tablet {
+      height: 24px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__icons {
+    display: flex;
+    gap: $icons-gap;
+    position: relative;
+  }
+
+  &__phone-number {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $main-text-color;
+    top: 15%;
+    right: $icon-size * 2 + $icons-gap + 8px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition:
+      opacity $effectDuration ease,
+      transform $effectDuration ease;
+
+    @include on-tablet {
+      top: 25%;
+      right: $icon-size-tablet * 2 + $icons-gap + 8px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: $icon-size;
+  height: $icon-size;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: $icon-size-tablet;
+    width: $icon-size-tablet;
+  }
+
+  &--phone {
+    background-image: url(/src/images/icons/Phone-number.svg);
+    position: relative;
+
+    &:hover ~ .top-bar__phone-number {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/images/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/Icon-Close.svg);
+  }
+}
