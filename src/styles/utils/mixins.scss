@@ -5,13 +5,30 @@
 }
 
 @mixin on-desktop {
-  @media (min-width: $desktop-min-width){
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
+@mixin contacts-block-bold() {
+  font-family: 'Space Mono', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: #191919;
+  line-height: 22px;
+  text-decoration: none;
+}
 
-@mixin contentPaddingInline() {
+@mixin contacts-block-thin {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 24px;
+  color: #9393a3;
+}
+
+@mixin content-padding-inline() {
   padding-inline: 20px;
 
   @include on-tablet {
@@ -21,17 +38,38 @@
   @include on-desktop {
     padding-inline: 120px;
     margin-inline: auto;
-    max-width: 1020px;
+
+    // max-width: ;
   }
 }
 
 .container {
-  @include contentPaddingInline;
+  @include content-padding-inline;
 }
 
-@mixin hover($property, $to-value) {
-  transition: #{$property} $effect-duration;
+@mixin hover($property, $value) {
+  transition: transform 0.4s linear;
   &:hover {
-    #{$property}: $to-value;
+    #{$property}: $value;
+  }
+}
+
+@mixin page-grid {
+  --column-grid: 2;
+
+  max-width: 1200px;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column-grid), 1fr);
+
+  @include on-tablet {
+    --column-grid: 6;
+
+    column-gap: 24px;
+    display: grid;
+  }
+
+  @include on-desktop {
+    --column-grid: 12;
   }
 }
