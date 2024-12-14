@@ -1,5 +1,4 @@
 .contacts {
-  // width: 100%;
   &__container {
     @include page-grid;
 
@@ -40,16 +39,8 @@
 
   &__button {
     margin-bottom: 48px;
-    border: 2px solid #f0f1f4;
+    border: 2px solid $main-text-color;
     cursor: pointer;
-
-    &:hover {
-      @include hover(box-shadow, 4px 3px 2px 2px #d5d7de);
-    }
-
-    &:focus {
-      @include hover(box-shadow, 1px 4px 16px 2px $main-text-color);
-    }
   }
 
   @include on-tablet {
@@ -81,11 +72,29 @@
   font-size: 14px;
   font-weight: 400;
 
-  // &:hover {
-  //   border: 1px solid #D5D7DE;
-  // }
-
   &__textarea {
     height: auto;
   }
+
+  &__button {
+    color: #fff;
+    background-color: $main-text-color;
+
+    &:hover {
+      background-color: $contacts-input-background-color;
+      color: $main-text-color;
+    }
+
+    &:focus {
+      @include hover(box-shadow, 1px 4px 16px 2px #111);
+
+      background-color: #111;
+      color: #fff;
+    }
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: inherit !important;
+  box-shadow: 0 0 0 1000px $contacts-input-background-color inset;
 }
