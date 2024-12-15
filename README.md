@@ -1,21 +1,20 @@
-# Landing page
+- [DEMO LINK](https://alyonashunevych.github.io/layout_landing-page/)
+- [LAYOUT](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+### The Met Landing Page
+A visually appealing and responsive landing page designed for The Met, a world-renowned museum. This website provides users with essential information about the museum, including its locations, contact details, and a welcoming interface to inspire cultural exploration.
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+#### Key Features:
+- Interactive layout with hover effects for enhanced user engagement.
+- Smooth scrolling for seamless navigation.
+- Sticky and responsive elements for improved accessibility across devices.
+- Cross-browser compatibility to ensure consistent performance.
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+#### Tech Stack:
+- HTML5: For semantic and structured content.
+- SCSS: To create a modular and maintainable stylesheet with advanced styling techniques.
+- Parcel: Bundler for fast development and optimized production builds.
+- Git: Version control for collaborative development.
+- Figma: For design prototyping and layout planning.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+This project demonstrates modern web development practices while delivering an engaging user experience tailored to a prestigious cultural institution.
