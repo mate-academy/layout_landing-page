@@ -1,6 +1,6 @@
 # Landing page
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [DEMO LINK](https://annaabramovaa.github.io/layout_landing-page/)
+- [DEMO LINK] (https://github.com/annaabramovaa/My-Bike)
 
 # Це адаптивний сайт, створений на основі дизайну з Figma. Він представляє сторінку, присвячену велосипедам, з сучасним і стильним інтерфейсом.
 
