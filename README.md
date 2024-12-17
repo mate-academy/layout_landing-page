@@ -9,8 +9,9 @@ Implemented the page, block by block
 
 -Wrote styles in a .scss file, using the methodology SASS and BEM.
 -I did everything as close to the sample as possible.
--Everything was designed relatively [CHECKLIST](./checklist.md)ю
--Deployed and created a pull request and demo link [DEMO LINK](https://github.com/mate-academy/layout_landing-page/compare/gh-pages...Valbel93:layout_landing-page:gh-pages?expand=1)
+-Everything was designed relatively [CHECKLIST](./checklist.md)
+-Deployed and created a pull request and demo link
+[DEMO LINK](https://github.com/mate-academy/layout_landing-page/compare/gh-pages...Valbel93:layout_landing-page:gh-pages?expand=1)
 
 
 # Tips & Hints
