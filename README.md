@@ -9,9 +9,9 @@ Implemented the page, block by block
 
 -Wrote styles in a .scss file, using the methodology SASS and BEM.
 -I did everything as close to the sample as possible.
-
 -Deployed and created a pull request and demo link:
 https://github.com/mate-academy/layout_landing-page/compare/gh-pages...Valbel93:layout_landing-page:gh-pages?expand=1
+
 [DEMO LINK](https://Valbel93.github.io/layout_landing-page/)
 https://Valbel93.github.io/layout_landing-page/
 
