@@ -7,25 +7,48 @@
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
-  height: 32px;
-  width: 32px;
-}
+    height: 32px;
+    width: 32px;
+    position: relative;
+  }
 
-&--phone {
-  background-image: url(../../images/icons/icon-phone.png);
-}
+  &--phone {
+    background-image: url(../../images/icons/icon-phone.png);
 
-&--menu {
-  background-image: url(../../images/icons/icon-burger-menu.png);
+    @include on-desktop {
+        &::before {
+          content: '+1 234 5555-55-55';
+          display: none;
+          position: absolute;
+          left: -147px;
+          top: 25%;
+          color: $main-text-color;
+          font-weight: 700;
+          height: 16px;
+          line-height: 16px;
+          font-size: 12px;
+          text-align: center;
+          letter-spacing: 2px;
+          white-space: nowrap;
+        }
 
-&:hover {
-  transform: scale(1.2);
-  background-image: url(/images/icons/icon-burger-menu-hover.png);
+        &:hover::before {
+          display: block;
+        }
+  }
+  }
+
+
+  &--menu {
+    background-image: url(../../images/icons/icon-burger-menu.png);
+
+    &:hover {
+      transform: scale(1.2);
+      background-image: url(/images/icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../../images/icons/icon-close.png);
   }
 }
-
-&--close {
-  background-image: url(../../images/icons/icon-close.png);
-  }
-}
-
