@@ -2,7 +2,7 @@
 
 > ❗❗ You will complete this task in the **Landing** topic.
 > Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 6 examples of landing pages. Choose **only one** of them and create your page.
+> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
 
 Choose a design for your landing page:
 
