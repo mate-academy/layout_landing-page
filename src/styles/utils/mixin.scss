@@ -1,0 +1,93 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin card-title() {
+  font-family: 'Space Grotesk', serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+@mixin paragraph-font-style {
+  font-family: 'Space Mono', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin btn-style {
+  height: 56px;
+  width: 100%;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', serif;
+  font-weight: 700;
+  background-color: $main-color-dark;
+  color: #fff;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+
+@mixin btn-style-hover {
+  background-color: $bg-color-btn;
+  border: 2px solid $border-color-btn;
+  color: $main-color-dark;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
