@@ -1,0 +1,126 @@
+.header {
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(../images/bike-bcg.jpeg);
+  background-size: cover;
+  background-position: right;
+
+  @include onTablet {
+    background-position: center;
+  }
+
+  &__top {
+    height: 86px;
+    padding: 0 $mobile-inline-padding;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onTablet {
+      height: 128px;
+      padding: 0 $tablet-inline-padding;
+    }
+
+    @include onDesktop {
+      padding: 0 $desktop-inline-padding;
+    }
+
+    &--logo {
+      width: 130px;
+      height: 38px;
+
+      @include onTablet {
+        width: 187px;
+        height: 56px;
+      }
+    }
+
+    &--icons {
+      display: flex;
+      gap: 24px;
+
+      @include onTablet {
+        gap: 32px;
+      }
+
+      .icon {
+        display: block;
+        height: 18px;
+        width: 18px;
+        padding: 3px 3px;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include onTablet {
+          height: 24px;
+          width: 24px;
+          padding: 4px 4px;
+        }
+
+        &__phone {
+          position: relative;
+          background-image: url(../images/phone-call-icon.png);
+
+          &:hover::after {
+            @include onDesktop {
+              content: '+1 234 555-55-55';
+              position: absolute;
+              width: max-content;
+              z-index: 10;
+              color: $text-color;
+              font-family: $main-font-family, sans-serif;
+              letter-spacing: 2px;
+              transform: translateX(-164px);
+              font-size: 12px;
+              font-weight: 700;
+              line-height: 16px;
+            }
+          }
+        }
+
+        &__menu {
+          background-image: url(../images/burger-menu-icon.png);
+        }
+
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    color: $text-color;
+    text-align: center;
+    padding-bottom: 88px;
+
+    @include onTablet {
+      padding-bottom: 130px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 203px;
+    }
+
+    &--title {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 36px;
+      letter-spacing: $main-letter-spacing;
+
+      @include onTablet {
+        font-size: $titles-font-size-desktop;
+        line-height: $titles-font-size-desktop;
+      }
+
+      @include onDesktop {
+        font-size: 80px;
+        line-height: 80px;
+      }
+    }
+  }
+}
