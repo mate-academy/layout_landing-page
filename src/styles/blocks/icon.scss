@@ -11,24 +11,34 @@
     width: 32px;
   }
 
+  &:hover {
+    cursor: $cursor, auto;
+  }
+
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
     position: relative;
 
-    &::after {
-      content: '+1 234 5555-55-55';
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: $main-text-color;
-      font-size: 14px;
-      white-space: nowrap;
-    }
+    @include on-desktop {
+      &::before {
+        content: '+1 234 5555-55-55';
+        display: none;
+        position: absolute;
+        left: -147px;
+        top: 25%;
+        color: $main-text-color;
+        font-weight: 700;
+        height: 16px;
+        line-height: 16px;
+        font-size: 12px;
+        text-align: center;
+        letter-spacing: 2px;
+        white-space: nowrap;
+      }
 
-    &:hover::after {
-      display: block;
+      &:hover::before {
+        display: block;
+      }
     }
   }
 
