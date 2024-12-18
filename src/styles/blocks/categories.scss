@@ -1,57 +1,65 @@
 .categories {
   margin-top: 96px;
-  &__wrapper {
-    display: grid;
-    row-gap: 40px;
 
-    @include on-tablet {
-      row-gap: 64px;
-    }
+&__wrapper {
+  display: grid;
+  row-gap: 40px;
+
+@include on-tablet {
+  row-gap: 64px;
   }
+}
 }
 
 .category {
-  &__photos {
-    @include page-grid;
+&__photos {
+margin-bottom: 16px;
 
-    margin-bottom: 16px;
+@include page-grid;
+}
+
+&__link {
+  transition-duration: 3ms;
+  position: relative;
+
+&--wide {
+  @include on-tablet {
+  grid-column: span 4;
   }
 
-  &__link {
-    position: relative;
-
-    &--wide {
-      @include on-tablet {
-        grid-column: span 4;
-      }
-
-      @include on-desktop {
-        grid-column: span 8;
-      }
-    }
-
-    &--square {
-      height: 0;
-      padding-bottom: 100%;
-
-      @include on-tablet {
-        grid-column: span 2;
-      }
-
-      @include on-desktop {
-        grid-column: span 4;
-      }
-    }
+@include on-desktop {
+  grid-column: span 8;
+  }
   }
 
-  &__photo {
+&--square {
+  height: 0;
+  padding-bottom: 100%;
+
+@include on-tablet {
+  grid-column: span 2;
+  }
+
+@include on-desktop {
+  grid-column: span 4;
+  }
+}
+
+:hover {
+  position: absolute;
+  border: 1px solid $color-border;
+  transform: scale(1.05);
+  }
+}
+
+&__photo {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  &__title {
+&__title {
     margin: 0;
     font-weight: 700;
     font-size: 24px;
