@@ -1,3 +1,7 @@
+body:has(.page__menu:target) {
+  overflow: hidden;
+}
+
 .page {
   font-family: Manrope, sans-serif;
   color: #1b2129;
@@ -11,20 +15,28 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: auto;
 }
 
 .page__menu {
+  height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   opacity: 0;
   pointer-events: none;
+  transform: translateX(-100%);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .page__menu:target {
   opacity: 1;
   pointer-events: all;
+  transform: translateX(0);
 }
 
 .header {
@@ -39,6 +51,12 @@
   justify-content: space-between;
   font-weight: 700;
   line-height: 36px;
+}
+
+@media (min-width: 1200px) {
+  .header {
+    padding: 36px 120px;
+  }
 }
 
 .header__top {
@@ -115,7 +133,7 @@
 
 .icon--phone::after {
   position: absolute;
-  content: "+1 234 555-55-55";
+  content: '+1 234 555-55-55';
   top: 20%;
   right: 100%;
   white-space: nowrap;
@@ -138,6 +156,12 @@
 
 .icon--menu {
   background-image: url(../images/icons/icon-menu.svg);
+}
+
+.icon--menu:hover {
+  background-image: url(../images/icons/menu-hover.svg);
+  background-repeat: no-repeat;
+  margin: 0;
 }
 
 .icon--close {
@@ -198,12 +222,17 @@
 .categories__photo {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 30px;
   justify-content: space-between;
 }
 
 .categories__photo img {
   width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.categories__photo img:hover {
+  transform: scale(1.1);
 }
 
 .categories__name {
@@ -218,12 +247,18 @@
 
 .good {
   margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+
+.good:hover {
+  transform: scale(1.1);
 }
 
 .good__image {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 @media (min-width: 1200px) {
@@ -265,15 +300,12 @@
   }
 }
 
-.botton--send {
-  width: 100%;
-  height: 56px;
-  margin: 32px 20px 48px;
-  border-radius: 8px;
-  border: none;
+.button-primary:hover {
   background-color: #1b2129;
-  color: #fff;
-  box-sizing: border-box;
+}
+
+.button-primary:active {
+  background-color: #010810;
 }
 
 .about-us {
@@ -362,7 +394,8 @@
   }
 }
 
-.contact__input, .contact__info {
+.contact__input,
+.contact__info {
   flex: 1;
 }
 
@@ -421,6 +454,7 @@
 .input__message {
   height: 148px;
   padding-top: 16px;
+  resize: none;
 }
 
 .input__message::placeholder {
@@ -432,6 +466,19 @@
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+}
+
+.input:hover {
+  border: 1px solid #dbdbdb;
+}
+
+.input:hover::placeholder {
+  color: #1b2129;
+}
+
+.input:focus {
+  border: 2px solid #f98921;
+  outline: none;
 }
 
 /*# sourceMappingURL=main.css.map */
