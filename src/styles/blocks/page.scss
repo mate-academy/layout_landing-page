@@ -1,0 +1,41 @@
+.page {
+  font-family: $font-primary;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 1.4;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+  &__body {
+    margin: 0;
+
+    /* footer sticks to the bottom of the page */
+    min-width: 320px;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+
+    transition: all $hover-effect-duration;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
