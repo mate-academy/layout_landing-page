@@ -1,46 +1,73 @@
-.contacts {// adaptation
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 120px; //
+.contacts {
+  padding-bottom: 120px;
+
+  @include on-tablet {
+    padding-bottom: 102px;
+
+  }
+
+  @include on-desktop {
+    padding-bottom: 164px;
+  }
 
   &__title {
     padding-top: 80px;
+    padding-bottom: 48px;
+
+
+    @include on-tablet {
+      padding-top: 120px;
+      padding-bottom: 48px;
+    }
+
+    @include on-desktop {
+      padding-top: 180px;
+    }
   }
-  &__form {
+
+  &__wrapper {
     @include page-grid;
 
-    width: 280px;
+    row-gap: 48px;
+  }
+
+  &__form {
+    display: grid;
     row-gap: 16px;
 
-    &--element {
-      padding: 0;
-
+    &__wrapper {
       grid-column: span 2;
 
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 5;
+      }
+    }
+
+    &--element {
       box-sizing: border-box;
       height: 48px;
       border: none;
       border-radius: 40px;
-      background-color: #F8F8FA;
+      background-color: #f8f8fa;
       padding: 14px 16px;
 
       &::placeholder {
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
-        color: #7E7E83;
-
+        color: #7e7e83;
       }
       &:hover::placeholder {
         color: #292929;
       }
-
       &:focus {
         outline: none;
         color: #292929;
       }
-
     }
 
     &--message {
@@ -60,9 +87,6 @@
       color: $menu-color-text;
       text-align: center;
 
-      margin-top: 16px;
-      margin-bottom: 48px; //
-
       &:hover {
         box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
       }
@@ -70,21 +94,29 @@
       &:active {
         box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
       }
-
     }
   }
 
   &__info {
     display: grid;
-    grid-column: span 1;
-
-    width: 237px;
+    grid-column: span 2;
+    
+    height: fit-content;
     row-gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / 12;
+    }
+
 
     &__title {
       margin: 0;
       margin-bottom: 8px;
-      color:#fff;
+      color: #fff;
       font-weight: 400;
       font-size: 14px;
       line-height: 19.6px;
