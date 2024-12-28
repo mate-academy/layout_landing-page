@@ -1,0 +1,54 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile-only {
+  @media (max-width: ($tablet-min-width - 1px)) {
+    @content;
+  }
+}
+
+@mixin on-tablet-only {
+  @media (min-width: $tablet-min-width) and (max-width: ($desktop-min-width - 1px)) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+  }
+}
+
+@mixin container-desktop() {
+  margin-inline: auto;
+  max-width: 1020px + $main-padding-inline * 2;
+}
+
+@mixin image-hover($type, $time, $value) {
+  transition: #{$type} $time;
+  &:hover {
+    #{$type}: $value;
+  }
+}
+
+@mixin main-transition($style) {
+  transition: $style 0.2s ease-in-out;
+  &:hover {
+    @content;
+  }
+}
