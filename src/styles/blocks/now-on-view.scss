@@ -1,0 +1,127 @@
+.now-on-view {
+  &__subtitle {
+    margin: 0;
+    font-size: $main-font-size;
+    font-weight: 400;
+    line-height: $main-line-height;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__images {
+    overflow: hidden;
+    position: relative;
+
+    @include page-grid;
+
+    &--triple {
+      display: flex;
+      column-gap: 8px;
+    }
+  }
+
+  &__link {
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--tablet {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    @include hover(transform, scale(1.05));
+
+    &--noTablet {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        @include page-grid;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $main-font-size;
+    line-height: $main-line-height;
+    font-weight: 700;
+    color: $secondary-color;
+    margin-top: 24px;
+  }
+
+  &__info {
+    margin: 0;
+    font-size: $main-font-size;
+    line-height: $main-line-height;
+    font-weight: 400;
+  }
+
+  &__button {
+    display: block;
+    height: 56px;
+    background-color: $secondary-color;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: $main-font-size;
+    line-height: 56px;
+    font-weight: 700;
+    margin-top: 40px;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    @include on-tablet {
+      width: 392px;
+      margin-inline: auto;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      margin-inline: auto;
+    }
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+
+    &:focus {
+      background-color: #eb343d;
+    }
+  }
+}
