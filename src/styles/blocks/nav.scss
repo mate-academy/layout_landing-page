@@ -9,13 +9,26 @@
 
   &__link {
     text-align: left;
-    transition: all ease 0.3s;
     font-size: 22px;
-    line-height: 22px;
+    line-height: 100%;
     letter-spacing: 2px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
+    position: relative;
 
+    &::after {
+      content: "";
+      position: absolute;
+      margin-bottom: -5px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }

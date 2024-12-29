@@ -1,0 +1,90 @@
+.exhibition {
+  @include grid-layout;
+
+  &__img {
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05));
+
+    &--m {
+      height: 130px;
+      grid-column: span 1;
+
+      @include on-tablet {
+        height: 186px;
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        height: 320px;
+        grid-column: span 4;
+      }
+    }
+
+    &--l {
+      height: 130px;
+      grid-column: span 1;
+
+      @include on-tablet {
+        height: 186px;
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        height: 320px;
+        grid-column: span 8;
+      }
+    }
+
+    &--s {
+      height: 87px;
+      grid-column: span 1;
+
+      @include on-tablet {
+        height: 284px;
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        height: 320px;
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__container {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+
+    @include on-tablet {
+      @include grid-layout;
+    }
+
+    & :last-child {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+  }
+
+  &__title {
+    margin-top: 24px;
+    text-align: left;
+    color: $color-accent-main;
+    grid-column: 1 / -1;
+    font-weight: 700;
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+  }
+}
