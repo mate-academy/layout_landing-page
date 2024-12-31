@@ -1,0 +1,122 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin zoom-in {
+  transform: translateY(-5%);
+  transform: scale(105%, 105%);
+  transform-origin: 50% 100%;
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desctop {
+    max-width: 1024px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-desctop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin content-padding-block() {
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-desctop {
+    padding-block: 32px;
+  }
+}
+
+@mixin content-gap() {
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+}
+
+@mixin content-size-logo() {
+  width: 125px;
+  height: 16px;
+
+  @include on-tablet {
+    width: 172px;
+    height: 24px;
+  }
+}
+
+@mixin content-icon-size() {
+  height: 24px;
+  width: 24px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@mixin content-title-h1() {
+  font-size: 36px;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+@mixin content-title-pading() {
+  padding-bottom: 40px;
+
+  @include on-tablet {
+    padding-bottom: 65px;
+  }
+}
+
+@mixin content-margin-bottom-top-bar {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 56px;
+  }
+}
