@@ -12,7 +12,39 @@
   }
 
   &--phone {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
     background-image: url(/src/images/icons/phone-number.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 0;
+
+    /* Вложенность для дополнительного номера телефона */
+    &--additional {
+      position: absolute;
+      left: -450%;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      color: #292929;
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      visibility: hidden; /* Делаем элемент невидимым */
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    &:hover {
+      &--additional{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &--menu {
