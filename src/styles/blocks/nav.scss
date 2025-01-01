@@ -1,14 +1,5 @@
 /* #region nav */
 .nav {
-  &__link {
-    color: inherit;
-    text-decoration: none;
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    font-weight: 700;
-  }
-
   &__list {
     margin: 0;
     padding: 0;
@@ -19,6 +10,34 @@
     gap: 32px;
     font-weight: 700;
     text-transform: uppercase;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      bottom: -8px;
+      background-color: $main-text-color;
+
+      transform: scale(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
 
