@@ -1,0 +1,56 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+}
+// В видео Продвинутый HTML landing / Categories время 4:40 Преподователь говорит какие свойства устанавливает, но не обьясняет почему происходит такое поведение картинок при преименении єтих свойств padding-bottom:100%; position: relative / position: absolute; height: 0; - Зачем делать высоту 0 если мы задаем ее при помощи padding-bottom:100% Ранее для ссылки мы ни где не задавали высоту! Зачем ее обнулять? Для чего ставить позицианирование для блока .category__link position: relative / и для элем. .category__photo / position: absolute ???
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}

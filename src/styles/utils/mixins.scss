@@ -7,34 +7,29 @@
 @mixin onDesktop {
   @media (min-width: $desctop-min-width) {
     max-width: 1020px;
-    margin-inline: auto;
     @content;
   }
-}
-
-@mixin contentPaddingInline() {
-  padding-inline: 20px;
-
-  @include onTablet {
-    padding-inline: 72px;
-  }
-
-  @include onDesktop() {
-    padding-inline: 120px;
-    // max-width: 1020px;
-    // margin-inline: auto;
-    // єлемент стоит по центру и без свойства  margin-inline: auto Потому что контейнер содержит 3 колонки и все они равномерно заняты, а по краям идут падинги по 120px
-    // думаю что параметр миксина нужно описывать в первонач.миксине onDesktop
-  }
-}
-
-.container {
-  @include contentPaddingInline;
 }
 
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
   }
 }
