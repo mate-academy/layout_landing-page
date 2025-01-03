@@ -67,6 +67,7 @@ $main-text-color: #292929;
 
 * {
   transition: all $effectDuration;
+  box-sizing: border-box;
 }
 
 .page {
@@ -155,6 +156,29 @@ $main-text-color: #292929;
 
   &--phone {
     background-image: url(../icons/Phone-number.png);
+
+    &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 36px;
+      display: block;
+      height: 16px;
+      width: 139px;
+
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+      letter-spacing: 2px;
+      color: $main-text-color;
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: right;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &--menu {
@@ -293,6 +317,27 @@ $main-text-color: #292929;
 
   &__content {
     display: grid;
+
+    &__img {
+      background-image: url(/src/images/Img\ 4\ bg.png);
+      background-position: 50%;
+      background-size: cover;
+
+      width: 100%;
+      height: 200px;
+
+      margin-bottom: 48px;
+
+      @include on-tablet {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 56px;
+      }
+
+      @include on-desktop {
+        height: 460px;
+      }
+    }
   }
 }
 
@@ -394,6 +439,10 @@ $main-text-color: #292929;
     font-weight: 700;
     line-height: 100%;
     text-align: left;
+
+    @include on-desktop {
+      align-self: flex-end;
+    }
   }
 }
 
@@ -457,6 +506,11 @@ $main-text-color: #292929;
       @include on-desktop {
         grid-column: span 8;
       }
+
+      &:hover {
+        transition: transform $effectDuration;
+        transform: scale(1.05);
+      }
     }
 
     &--square {
@@ -470,6 +524,11 @@ $main-text-color: #292929;
 
       @include on-desktop {
         grid-column: span 4;
+      }
+
+      &:hover {
+        transition: transform $effectDuration;
+        transform: scale(1.05);
       }
     }
   }
@@ -494,30 +553,6 @@ $main-text-color: #292929;
 
 /* #region about-us */
 .about-us {
-  &__img {
-    background-image: url(/src/images/Img\ 4\ bg.png);
-    background-position: 50%;
-    background-size: cover;
-    grid-column: span 2;
-
-    width: 100vw;
-    height: 200px;
-
-    margin-bottom: 48px;
-
-    @include on-tablet {
-      grid-column: span 6;
-      width: 100vw;
-      height: 400px;
-      margin-bottom: 56px;
-    }
-
-    @include on-desktop {
-      grid-column: span 12;
-      height: 460px;
-    }
-  }
-
   @include page-grid;
 
   &__title {
@@ -571,7 +606,7 @@ $main-text-color: #292929;
     }
 
     @include on-desktop {
-      grid-template-columns: repeat(12, 1fr);
+      // grid-template-columns: repeat(12, 1fr);
     }
   }
 
@@ -581,7 +616,7 @@ $main-text-color: #292929;
     display: flex;
 
     @include on-desktop {
-      grid-column: 1 / span 5;
+      grid-column: 1 / 4;
     }
   }
 
@@ -665,7 +700,7 @@ $main-text-color: #292929;
     }
 
     @include on-desktop {
-      grid-column: 7/13;
+      grid-column: 4;
       margin-top: 0;
     }
   }
