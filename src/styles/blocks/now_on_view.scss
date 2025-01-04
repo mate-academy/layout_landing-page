@@ -27,11 +27,16 @@
     &--3-img {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+
+      @include on-tablet {
+        @include page-grid;
+      }
     }
   }
 
   &__link {
     position: relative;
+    transition-duration: $effectDuration;
     &--wide {
       @include on-tablet {
         grid-column: span 4;
@@ -55,9 +60,24 @@
       }
     }
 
-    &--square-3-img {
-      grid-column: span 1;
-      padding-bottom: 100%;
+    &--2square {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--no-tablet {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
     }
 
     &:hover {
