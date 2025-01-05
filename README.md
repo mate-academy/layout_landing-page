@@ -1,10 +1,7 @@
 Розроблено адаптивний лендінг. Проєкт включає сучасний дизайн, інтерактивні елементи та оптимізовану верстку з використанням HTML, CSS (SASS/SCSS). Забезпечено кросбраузерну сумісність і коректне відображення на мобільних пристроях.
 
-Прев’ю проєкту:
-https://dejisk.github.io/layout_landing-page/
-
-Макет:
-https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&p=f&t=uLylIrRbhO1lgCAR-0
+- [Прев’ю проєкту](https://dejisk.github.io/layout_landing-page/)
+- [Макет](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&p=f&t=uLylIrRbhO1lgCAR-0)
 
 Інструкція для запуску проєкту:
   1. Склонувати репозиторій та відкрити його на своєму пристрої.
