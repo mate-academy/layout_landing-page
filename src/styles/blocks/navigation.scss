@@ -1,23 +1,37 @@
 .nav {
   &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   &__link {
-    color: #1D1D1D;
+    position: relative;
+    color: $menu-text-color;
     text-decoration: none;
     font-size: 22px;
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 2px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $menu-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
