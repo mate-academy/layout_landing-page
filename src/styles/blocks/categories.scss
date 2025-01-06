@@ -1,0 +1,75 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    @include hover(transform, translateY(-10px));
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    @include set-size(100%, 100%);
+
+    position: absolute;
+    object-fit: cover;
+  }
+  &__title {
+    font-family: 'Space Grotesk', sans-serif;
+
+    @include font-style($main-color, 18px, 700, 25px);
+
+    @include on-tablet {
+      font-size: 24px;
+      line-height: 33.6px;
+    }
+  }
+
+  &__btn {
+    @include primary-btn;
+
+    font-weight: 700;
+    line-height: 27px;
+
+    @include on-desktop {
+      max-width: 324px;
+      margin-bottom: 0;
+    }
+  }
+}
