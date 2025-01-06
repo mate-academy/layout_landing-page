@@ -1,0 +1,49 @@
+.top-bar {
+  display: flex;
+  grid-column: 1 / -1;
+
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    @include hover(scale, 1.2);
+
+    @include on-tablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__contacts {
+    position: absolute;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__phones {
+    @include on-desktop {
+      &:has(.icon--phone:hover, .top-bar__contacts:hover) {
+        .top-bar__contacts {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
