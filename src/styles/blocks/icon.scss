@@ -3,6 +3,7 @@
   height: 24px;
   width: 24px;
   background-size: cover;
+  position: relative;
 
   @include on-tablet {
     height: 32px;
@@ -11,6 +12,24 @@
 
   &--phone {
     background-image: url(../images/Icon-phone-call.png);
+    position: relative;
+  }
+
+  @include on-desktop {
+    &--phone:hover::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 20px);
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      z-index: 10;
+      opacity: 0; /* Початково непрозорий */
+      transition: opacity 0.1s ease; /* Плавний перехід для opacity */
+    }
   }
 
   &--menu {
