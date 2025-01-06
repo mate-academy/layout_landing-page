@@ -1,0 +1,61 @@
+.page {
+  font-family: Manrope, sans-serif;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 22.4px;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+
+    transition: all $during;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+.main {
+  background-color: fff;
+
+  &__content {
+    display: grid;
+    row-gap: 64px;
+    padding-block: 64px;
+
+    @include on-tablet {
+      row-gap: 120px;
+      padding-block: 120px;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
+
+// .menu {
+//   overflow: auto; /* to scroll the menu if needed */
+// }
+
+// .menu__top {
+//   position: sticky; /* to keep cross always visible */
+//   top: 0;
+//   z-index: 1;
+//   background-color: #e5e5e5;
+// }
