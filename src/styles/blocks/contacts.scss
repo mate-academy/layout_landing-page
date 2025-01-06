@@ -1,0 +1,88 @@
+.contacts {
+  &__content {
+    @include page-grid;
+
+    grid-row: 48px;
+    padding-block: 48px;
+
+    grid-template-areas:
+      'group-1 group-1'
+      'group-2 group-2'
+      'form form';
+
+    @include on-tablet {
+      grid-template-areas:
+        'group-1 group-1 group-1 form form form'
+        'group-2 group-2 group-2 form form form';
+    }
+
+    @include on-desktop {
+      grid-template-areas: 'group-1 group-1 group-1 group-1 group-2 group-2 group-2 group-2 form form form form';
+    }
+
+    &__title {
+      margin: 0;
+      line-height: 27px;
+    }
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &--1 {
+        grid-area: group-1;
+      }
+
+      &--2 {
+        grid-area: group-2;
+      }
+    }
+
+    &__form {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      grid-area: form;
+
+      &__grey {
+        background-color: #f8f8fa;
+        font-family: inherit;
+        padding: 14px 12px;
+        border: none;
+        resize: none;
+
+        &--msg {
+          height: 144px;
+          box-sizing: border-box;
+        }
+
+        &::placeholder {
+          color: #7e7e83;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &__red {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .contact {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    line-height: 27px;
+    transition-duration: $effectDuration;
+
+    &:hover {
+      font-size: 1.2em;
+      transition-duration: $effectDuration;
+    }
+  }
+}
