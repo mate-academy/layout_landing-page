@@ -13,6 +13,35 @@
 
   &--phone {
     background-image: url(../icons/icon-phone-call.svg);
+
+
+    @include onTablet {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: '+1 234 5555-55-55';
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: right;
+        pointer-events: none;
+        top: 8px;
+        left: -160px;
+        color: #FFF;
+        font-size: 16px;
+
+        transition:
+          transform $effect-duration,
+          opacity $effect-duration;
+      }
+
+      &:hover::before {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+
   }
 
   &--menu {
