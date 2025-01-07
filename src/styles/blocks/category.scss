@@ -1,0 +1,119 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__title {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.2px;
+    text-align: left;
+    color: $main-text-color;
+
+    @include on-tablet {
+      font-size: 24px;
+      line-height: 33.6px;
+    }
+  }
+
+  &--move {
+    @include hover(transform, scale(1.05));
+  }
+
+  &__container {
+    @include page-grid;
+  }
+
+  &__button {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    color: $button-text-color;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 8px;
+    background-color: $main-text-color;
+    text-decoration: none;
+    transition: 0.3s all ease-out;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
+    &:hover {
+      color: $main-text-color;
+      background: #f8f8fa;
+      border: 2px solid #f0f1f4;
+    }
+
+    &:active {
+      color: $button-text-color;
+      background: #111;
+    }
+  }
+}
