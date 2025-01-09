@@ -20,15 +20,16 @@ $main-text-color: #292929;
 }
 
 @mixin content-padding-inline {
-  // padding-inline: 20px;
+  padding-inline: 20px;
 
   @include on-tablet {
-    // padding-inline: 72px;
+    padding-inline: 72px;
   }
 
   @include on-desktop {
     max-width: 1020px;
     margin-inline: auto;
+    padding-inline: 0;
   }
 }
 
@@ -98,7 +99,12 @@ $main-text-color: #292929;
     opacity: 1;
     pointer-events: all;
     transform: translateX(0);
+    overflow: hidden;
   }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
 
 /* #endregion */
@@ -157,27 +163,30 @@ $main-text-color: #292929;
   &--phone {
     background-image: url(../icons/Phone-number.png);
 
-    &::after {
-      content: '+1 234 555-55-55';
-      position: absolute;
-      right: 36px;
-      display: block;
-      height: 16px;
-      width: 139px;
+    @include on-desktop {
+      &::after {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        right: 36px;
+        display: block;
+        height: 16px;
+        width: 139px;
 
-      font-size: 12px;
-      font-weight: 700;
-      text-align: right;
-      letter-spacing: 2px;
-      color: $main-text-color;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: right;
+        letter-spacing: 2px;
+        color: $main-text-color;
 
-      transition: transform $effectDuration;
-      transform: scale(0);
-      transform-origin: right;
-    }
+        transition: transform $effectDuration;
+        transform: scale(0);
+        transform-origin: right;
+      }
 
-    &:hover::after {
-      transform: scale(1);
+      &:hover::after {
+        transform: scale(1);
+        overflow: visible;
+      }
     }
   }
 
@@ -199,7 +208,9 @@ $main-text-color: #292929;
 /* #region menu */
 
 .menu {
+  overflow: auto;
   box-sizing: border-box;
+  position: fixed;
 
   height: 100vh;
   background-color: #e5e6e8;
@@ -249,6 +260,13 @@ $main-text-color: #292929;
       margin-left: 0;
     }
   }
+}
+
+.menu__top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #e5e5e5;
 }
 
 .top-bar {
@@ -770,6 +788,21 @@ $main-text-color: #292929;
     background-color: #f8f8fa;
     border: 2px solid #f0f1f4;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 2px solid #f0f1f4;
+  -webkit-text-fill-color: #292929;
+  -webkit-box-shadow: 0 0 0 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* #endregion */
