@@ -1,13 +1,23 @@
-@use "./header.scss";
-@use "./header-icons.scss";
-@use "./menu_nav.scss";
-@use "./menu.scss";
-@use "./sections.scss";
-@use "./products.scss";
-@use "./about_product.scss";
-@use "./button.scss";
-@use "./contact_us.scss";
+@use './header.scss';
+@use './menu.scss';
+@use './main_sections.scss';
 @use './variables.scss';
+@use './mixin.scss';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
 .page {
   font-family: Poppins, sans-serif;
@@ -15,27 +25,57 @@
 
   scroll-behavior: smooth;
   background-color: #1d1d1d;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: rotate(-50deg) scale(0.1);
+
+    transition:
+      left var(--animation-time) ease,
+      top var(--animation-time) ease,
+      opacity var(--animation-time) ease-in-out,
+      transform var(--animation-time) ease;
+
+    &:target {
+      pointer-events: all;
+      opacity: 1;
+
+      left: 0;
+      top: 0;
+
+      transform: rotate(0) scale(1);
+    }
+  }
+
+  &:has(.page__menu:target) {
+    header,
+    footer,
+    main {
+      display: none;
+    }
+
+    body {
+      overflow: hidden;
+    }
+  }
+
+  &:not(:has(.page__menu:target)) {
+    body {
+      overflow: auto;
+    }
+  }
 }
 
-.page__body {
-  margin: 0;
-}
-
-.page__manu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.page__manu:target {
-  pointer-events: all;
-  opacity: 1;
-}
-
-.footer{
+.footer {
   height: 100vh;
   background-image: url(/src/images/footer-bg-pc.png);
   background-position: center;
