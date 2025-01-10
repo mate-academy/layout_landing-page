@@ -1,0 +1,102 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $dekstop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+
+  --columns: 2;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-parameters {
+  width: 277.96px;
+  border-radius: 40px;
+
+  @include on-tablet {
+    width: 288px;
+  }
+
+  @include on-desktop {
+    width: 411px;
+  }
+}
+
+@mixin form-placeholder {
+  box-sizing: border-box;
+  padding: 14px 16px;
+  outline: none;
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #7e7e83;
+  }
+  &:hover::placeholder {
+    color: #292929;
+  }
+}
+
+@mixin button {
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #1d1d1d;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 0 48px;
+  border-radius: 40px;
+  height: 56px;
+  border: none;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
