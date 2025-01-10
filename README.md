@@ -17,3 +17,5 @@ https://vovanchu.github.io/first-landing/
 
 Посилання на макет:
 https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&p=f&t=gZhxCJT1J2xvvmj6-0
+
+
