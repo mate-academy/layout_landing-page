@@ -1,0 +1,82 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+
+@mixin parametrsForPhoneNumbers() {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin paddingInlineTopBar {
+  padding-inline: 72px;
+}
+
+@mixin sizeTopBarLogo {
+  width: 64px;
+  height: 46px;
+}
+
+@mixin sizeIconInTheBeginning {
+  width: 24px;
+  height: 24px;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttonParameters {
+  width: 100%;
+  font-family: Cinzel;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+
+  background-color: #D12D35;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  border-style: none;
+  height: 56px;
+  margin-top: 40px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #AE1C23;
+  }
+
+  &:active {
+    background-color: #EB343D;
+  }
+}
