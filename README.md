@@ -1,24 +1,42 @@
-# Landing Page
+# Bang & Olufsen Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A modern and visually engaging landing page for **Bang & Olufsen**, showcasing premium audio products. This project is part of my learning journey in front-end web development.
 
-Choose a design for your landing page:
+## ✨ Features
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+- Responsive design with a focus on accessibility.
+- Navigation menu with links to different sections.
+- Product showcase with descriptions and pricing.
+- A contact form for inquiries and company details.
+- Interactive elements like hover effects and clickable links.
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## 🛠️ Technologies Used
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- **HTML5**: For semantic structure and content.
+- **SCSS**: For advanced styling and design consistency.
+- **JavaScript**: To enable interactivity.
+- **Google Fonts**: For the typography (Manrope and Roboto).
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## 🚀 Live Demo
+
+[View Live Demo](https://capadona89.github.io/layout_landing-page/)
+
+
+## 📐 Design
+
+[View Design](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
+
+
+## 📂 Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-link>
+   ```
+
+2. Navigate to the project directory
+    ```bash
+    cd <project-directory>
+    ```
+
+3. Open the index.html file in your browser to view page
