@@ -1,0 +1,50 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  transition: 300ms ease-in-out;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.3);
+  }
+
+  &--phone {
+    background-image: url(../icons/phone.png);
+
+    @include on-desktop {
+      &::after {
+        color: $main-text-color;
+        content: '+1 234 555-55-55';
+        width: 139px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 32px;
+        display: block;
+        position: absolute;
+        opacity: 0;
+        left: -115px;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateY(20px);
+      }
+
+      &:hover::after {
+        opacity: 1;
+        transform: translateY(0); /* Плавно піднімаємо на місце */
+    }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.png);
+  }
+
+  &--close {
+    background-image: url(../images/close.png);
+  }
+}
