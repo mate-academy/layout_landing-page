@@ -1,13 +1,15 @@
 .page {
   font-family: $font-family;
-  color: $font-color;
+  color: $main-text-color;
   font-size: 16px;
-  line-height: 140%;
+  line-height: 22.4px;
+  font-weight: 400;
+  background-color: #1d1d1d;
   scroll-behavior: smooth;
 
   &__body {
     margin: 0;
-    background: $background-color;
+    min-width: 320px;
   }
 
   &__menu {
@@ -15,18 +17,20 @@
     top: 0;
     right: 0;
     left: 0;
+
+    transition: all 0.3s;
     opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease-in-out;
     transform: translateX(-100%);
+    pointer-events: none;
 
     &:target {
       opacity: 1;
+      pointer-events: all;
       transform: translateX(0);
-      pointer-events: auto;
     }
   }
-  &:has(&__menu:target) {
-    overflow: hidden;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
   }
 }
