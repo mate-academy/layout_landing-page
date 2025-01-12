@@ -1,3 +1,50 @@
-body {
-  margin: 0;
+@import "./utils/mixins";
+@import "./variables";
+@import "./header";
+@import "./icon";
+@import "./menu";
+@import "./nav";
+@import "./top-bar";
+@import "./about";
+@import "./section-title";
+@import "./gallery";
+
+.page {
+  font-family: "Cinzel", serif;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+main {
+  display: grid;
+  row-gap: 140px;
+  padding-block: 140px;
+
+  @include content-padding-inline;
+
+  @include on-mobile {
+    padding-block: 100px;
+    row-gap: 100px;
+  }
 }
