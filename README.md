@@ -1,21 +1,26 @@
-# Landing page
+# MyBike-landind
+This catalog application provides users with a seamless shopping experience, allowing them to browse and filter products by categories view product details, add items to a shopping cart or favorites list, and explore similar items.
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+Hover, focus effects and interactive elements add elegance and dynamism to the user experience.
 
-Choose a design for your landing page:
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+# Link by figma design
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
-Follow the videos in this and next lessons to implement the page block by block
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished;
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/)
+Stack technologies were used:
+- VS Code;
+- GitHub;
+- Figma;
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Get the initial code
+Clone the repository:
+git clone in your PC;
+code (name project).
+Run npm install to install the dependencies
+Create a branch for you solution (e.g. git switch -c develop)
+Run npm start to run a development server at http://localhost:3000 (If you need to stop the server press ctrl + c in the terminal window)
+- Deploy and create a Pull Request with a [DEMO LINK](https://KOliinyk.github.io/mybike-landind/)
+
+# Screen Adaptations:
+Desktop >1260px
+Tablet >744px
+Mobile >320px
