@@ -1,0 +1,154 @@
+.menu {
+  box-sizing: border-box;
+  font-family: Cinzel, sans-serif;
+  background-color: $color-accent-main;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  padding: $padding-mobile;
+
+  @include on-tablet {
+    padding: $padding-tablet;
+  }
+
+  @include on-desktop {
+    padding: $padding-desktop;
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__close {
+    background-image: url(/src/images/icons/Icon-Close.svg);
+    width: 24px;
+    height: 24px;
+
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.4);
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    margin-top: 40px;
+    width: 241px;
+
+    &__list {
+      list-style: none;
+      text-transform: uppercase;
+      padding: 0;
+      display: list-item;
+    }
+
+    &__items {
+      margin-bottom: 32px;
+    }
+
+    &__link {
+      text-decoration: none;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 2px;
+      text-align: left;
+      position: relative;
+
+      &::after {
+        content: '';
+        transform-origin: 0;
+        background-color: #fff;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 5px;
+        transition: transform 0.3s;
+        display: block;
+        position: absolute;
+        transform: scale(0);
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    height: 28px;
+    width: 201px;
+
+    @include on-desktop {
+      padding-top: 16px;
+    }
+  }
+  &__numbers {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+    padding-bottom: 8px;
+  }
+
+  &__mobile {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: left;
+
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.1);
+      transform-origin: center center;
+    }
+  }
+
+  &__call {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+    height: 16px;
+    margin-top: 8px;
+
+    &::after {
+      content: '';
+      background-color: #fff;
+      position: absolute;
+      height: 1px;
+      width: 126px;
+      top: 528px;
+      left: 20px;
+
+      @include on-tablet {
+        left: 50px;
+        top: 596px;
+      }
+
+      @include on-desktop {
+        left: 120px;
+        width: 120px;
+        top: 592px;
+      }
+    }
+  }
+}
