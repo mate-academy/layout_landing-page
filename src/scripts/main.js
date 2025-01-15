@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOpen = document.querySelector('.icon--menu');
   const menuClose = document.querySelector('.icon--close');
   const navItems = document.querySelectorAll('.nav__item');
+  const topBarLogos = document.querySelectorAll('.top-bar__logo');
 
   menuOpen.addEventListener('click', () => {
     menu.classList.add('menu--visible');
@@ -18,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     item.addEventListener('click', () => {
       menu.classList.remove('menu--visible');
     });
+  });
+
+  topBarLogos[1].addEventListener('click', () => {
+    menu.classList.remove('menu--visible');
   });
 });
 
