@@ -1,8 +1,12 @@
 .icon {
-  display: block;
+  display: flex;
   height: 24px;
   width: 24px;
+  align-items: center;
+  justify-content: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  transition-duration: $efferctDuration;
 
   @include hover(transform, scale(1.1));
 
@@ -13,11 +17,36 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &--phone::before {
+    content: attr(data-number);
+    display: flex;
+    position: absolute;
+    left: -158px;
+    height: 32px;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: $efferctDuration;
+  }
+
+  &--phone:hover::before {
+    opacity: 1;
+    visibility: visible;
   }
 
   &--menu {
     background-image: url(../images/icons/icon-menu.svg);
-
     &:hover {
       background-image: url(../images/icons/icon-menu-hover.svg);
     }
@@ -25,5 +54,6 @@
 
   &--close {
     background-image: url(../images/icons/icon-close.svg);
+    max-height: 32px;
   }
 }
