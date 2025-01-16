@@ -11,7 +11,13 @@
     text-align: center;
     gap: 48px;
 
-    @media (min-width: 1024px) {
+    @include media-queries('tablet') {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Define duas colunas de tamanho igual */
+      column-gap: 75px;
+    }
+
+    @include media-queries('desktop') {
       flex-direction: row;
       gap: 24px;
       justify-content: center;
@@ -25,7 +31,7 @@
     letter-spacing: -1.5px;
     padding-bottom: 48px;
 
-    @media (min-width: 1024px) {
+    @include media-queries('desktop') {
       text-align: center;
       font-size: 48px;
     }
@@ -33,6 +39,10 @@
 
   &__info {
     text-align: left;
+
+    @media (min-width: 744px) and (max-width: 1024px) {
+      grid-column: 1;
+    }
 
     @media (min-width: 1024px) {
       width: 237px;
@@ -85,7 +95,16 @@
     letter-spacing: 1px;
     transition: all 300ms ease-in-out;
 
-    @media (min-width: 1024px) {
+    @include media-queries('tablet') {
+      display: grid;
+      margin-top: -230px;
+      grid-column: 2;
+      justify-self: start;
+      max-width: 288px;
+      width: 100%;
+    }
+
+    @include media-queries('desktop') {
       width: 376px;
     }
 
@@ -94,6 +113,8 @@
       text-transform: uppercase;
       padding-left: 10.9px;
       border: none;
+      background-color: #f8f8fa;
+      color:#161616;
     }
 
     & *::placeholder {
