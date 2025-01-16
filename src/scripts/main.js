@@ -1,1 +1,3 @@
 'use strict';
+
+AOS.init();
