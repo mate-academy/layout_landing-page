@@ -1,0 +1,93 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    column-gap: 24px;
+
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin subtitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33.6px;
+}
+
+@mixin button {
+  background: #fff;
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 27px;
+
+  &:hover {
+    box-shadow: $button-hovered-shadow;
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: $button-hovered-shadow;
+  }
+}
+
+@mixin form-input-texts {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #292929;
+}
+
+@mixin form-input {
+  height: 48px;
+  background: #f8f8fa;
+  border-radius: 40px;
+  border: none;
+  padding-left: 16px;
+  box-sizing: border-box;
+  width: 100%;
+
+  @include form-input-texts;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    @include form-input-texts;
+
+    color: #7e7e83;
+  }
+}
