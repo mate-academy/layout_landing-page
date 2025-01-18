@@ -1,0 +1,80 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 56px;
+    background-color: rgba(41, 41, 41, 1);
+    color: #fff;
+    border-radius: 8px;
+    transition: transform 300ms;
+    border: none;
+
+    @include hover(transform, scale(1.1));
+
+    @include onTablet {
+      width: 324px;
+    }
+    &:hover {
+      border: 1px solid #f0f1f4;
+      background-color: rgba(248, 248, 250, 1);
+      color: rgba(41, 41, 41, 1);
+    }
+    &:active {
+      background-color: rgba(17, 17, 17, 1);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+  &__link {
+    position: relative;
+    transition: transform 300ms;
+
+    @include hover(transform, scale(1.05));
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
