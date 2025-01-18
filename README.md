@@ -13,7 +13,7 @@ Technologies used
 ________________________________________
 Preview link
 
-- [DEMO LINK](https://Yevhen2802.github.io/BIke-shop/)
+- [DEMO LINK](https://yevhen2802.github.io/layout_landing-page/)
 _________________________________________
 Instructions for starting the project
 
@@ -23,7 +23,7 @@ cd ....
 2. Clone the repository:
 bash
 CopyEdit
-git clone https://github.com/Yevhen2802/BIke-shop.git
+git clone https://yevhen2802.github.io/layout_landing-page/
 
 3. Open project
 code BIke-shop
