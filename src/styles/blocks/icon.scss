@@ -2,19 +2,25 @@
   width: 24px;
   height: 24px;
   display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include on-desktop {
+    width: 32px;
+    height: 32px;
+  }
 
   &--menu {
-    background: url('../../images/Icon-Burger-menu.png');
+    background-image: url('../../images/Icon-Burger-menu.png');
 
     &:hover {
-      background: url('../../images/Icon-Burger-menu-hover.png');
-      background-position: center;
-      background-size: contain;
+      background-image: url('../../images/Icon-Burger-menu-hover.png');
     }
   }
 
   &--phone {
-    background: url('../../images/Icon-Phone-call.png');
+    background-image: url('../../images/Icon-Phone-call.png');
     position: relative;
     color: white;
     font-size: 12px;
@@ -34,13 +40,15 @@
       transition: opacity $effect-duration ease;
     }
 
-    &:hover::before {
-      opacity: 1;
-      pointer-events: all;
+    @include on-desktop {
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 
   &--close {
-    background: url('../../images/Icon-Close.png');
+    background-image: url('../../images/Icon-Close.png');
   }
 }
