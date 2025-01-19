@@ -1,0 +1,55 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-with) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-with) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --column: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include on-tablet {
+    --column: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --column: 12;
+  }
+}
+
+@mixin transition {
+  transition: 0.3s;
+}
+
+@mixin button-hover {
+  &:hover {
+    @include transition;
+
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:active {
+    @include transition;
+
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin hover-img {
+  &:hover {
+    @include transition;
+
+    transform: scale(1.2);
+  }
+}
