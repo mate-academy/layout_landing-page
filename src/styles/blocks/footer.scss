@@ -1,0 +1,132 @@
+.contacts {
+  &__wrapper {
+    @include page-grid;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+      margin-bottom: 0;
+    }
+
+    [id='message'] {
+      resize: none;
+      margin-bottom: 32px;
+      height: 148px;
+    }
+  }
+
+  &__input {
+    font-family: Manrope, sans-serif;
+    padding: 14px 16px;
+    border-radius: 8px;
+    outline: none; // виділення поля у браузері
+    border: none;
+    background-color: #f9f9f9;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+
+    &::placeholder {
+      letter-spacing: 0.15px;
+      color: #7e7e83;
+    }
+
+    &:hover {
+      outline: 1px solid #dbdbdb;
+      color: $main-text-color;
+
+      &::placeholder {
+        color: $main-text-color;
+      }
+    }
+
+    &:active {
+      outline: 2px solid #f98921;
+    }
+
+    &:focus {
+      outline-style: none;
+      box-shadow: 0 0 0 2px #f98921;
+    }
+
+    /* Change Autocomplete styles in Chrome */
+    &:-webkit-autofill,
+    &:-webkit-autofill:active,
+    &:-webkit-autofill:focus {
+      outline: 2px solid #1b2129;
+      -webkit-text-fill-color: #1b2129;
+      -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset;
+
+      // transition: all ease-in-out 0.3s;
+    }
+
+    &:-webkit-autofill:hover {
+      outline: 2px solid #f98921;
+    }
+
+    &:-webkit-autofill:not(:focus) {
+      outline: none;
+    }
+  }
+  &__button {
+    @include button;
+
+    grid-column: 1 / -1;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      grid-column: 1 / -1;
+      font-weight: 400;
+    }
+    &-lable {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19.6px;
+      letter-spacing: 0.15px;
+      color: #9393a3;
+    }
+    &-text {
+      position: relative;
+      font-weight: 400;
+      line-height: 22.4px;
+      letter-spacing: 0.15px;
+
+      &:hover {
+        @include hover(color, #f98921);
+      }
+    }
+  }
+}
