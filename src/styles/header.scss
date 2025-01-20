@@ -1,0 +1,195 @@
+@import './mixin';
+
+.header {
+  box-sizing: border-box;
+  background-image: url(/src/images/header-bg-pc.png);
+  background-size: cover;
+  background-position: center;
+
+  height: 100vh;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0 24px;
+  padding: 36px 120px 0;
+
+  @include on-table {
+    padding: 36px 72px 0;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-phone {
+    padding: 24px 20px 0;
+    gap: 0 20px;
+    grid-template-columns: repeat(2, 1fr);
+
+    background-position: 80% bottom;
+  }
+
+  &__container {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0 24px;
+
+    @include on-table {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include on-phone {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 20px;
+    }
+  }
+
+  &__logo {
+    grid-column: 1 / span 3;
+
+    @include on-phone {
+      grid-row: 1;
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__icons {
+    grid-column: 11 / span 2;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 32px;
+
+    &__icon {
+      display: block;
+      width: 32px;
+      height: 32px;
+
+      @include on-phone {
+        width: 24px;
+        height: 24px;
+        right: 0;
+      }
+    }
+
+    .phone-number {
+      position: absolute;
+      width: 100%;
+      min-width: 200px;
+      right: 100%;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition: all var(--animation-time) ease;
+
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+
+      font-family: Poppins, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+    }
+
+    &__icon--phone {
+      position: relative;
+      background: url(/src/images/Icons/Icon-Phone-call.png) no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+
+      &:hover .phone-number {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @include on-table {
+        &:hover .phone-number {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      @include on-phone {
+        &:hover .phone-number {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    }
+
+    &__icon--menu {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+
+      background-image: url(/src/images/Icons/Icon-Burger-menu.png);
+      background-size: cover;
+
+      transition: background-image var(--animation-time) ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 100%;
+        opacity: 0;
+
+        background-image: url(/src/images/Icons/Icon-Burger-menu-hover.png);
+        background-size: cover;
+        transition: opacity var(--animation-time) ease;
+      }
+
+      &:hover {
+        background-image: url(/src/images/Icons/Icon-Burger-menu-hover.png);
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+
+    @include on-table {
+      grid-column: 5 / -1;
+    }
+
+    @include on-phone {
+      grid-row: 1;
+      grid-column: span 2;
+
+      gap: 0 24px;
+    }
+  }
+
+  &__title {
+    grid-column: 3 / span 8;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Poppins, sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    @include on-table {
+      grid-column: 1 / -1;
+    }
+
+    @include on-phone {
+      grid-column: 1 / -1;
+
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+}
