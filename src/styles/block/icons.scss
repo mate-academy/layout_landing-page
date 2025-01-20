@@ -1,0 +1,46 @@
+.icon {
+  display: block;
+
+  @include sizeIconInTheBeginning;
+
+  background-size: cover;
+  background-position: center;
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--close--after {
+    @include onTablet {
+      @include sizeIconInTheBeginning;
+    }
+  }
+
+  @include hover(transform, scale(1.2));
+
+    &--phone {
+      background-image: url(../img/icon/icon-phone.svg);
+
+      @include onDesktop {
+        &:hover + .call {
+          opacity: 1; /* Показує блок при наведенні */
+          visibility: visible; /* Робить блок видимим */
+          pointer-events: all; /* Дозволяє взаємодіяти з номерами */
+        }
+      }
+    }
+
+    &--menu {
+      background-image: url(../img/icon/icon-burger-menu.svg);
+
+      &:hover {
+        background-image: url(../img/icon/icon-burger-menu-hover.svg);
+      }
+    }
+
+    &--close {
+      background-image: url(../img/icon/icon-close.svg);
+    }
+}
+
