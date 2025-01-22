@@ -1,0 +1,101 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDescktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInLine() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDescktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container{
+  @include contentPaddingInLine
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+
+@mixin pageGrid{
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include onDescktop {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
+
+
+@mixin button{
+  border: none;
+  border-radius: 8px;
+  height: 56px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+
+  background-color: #f98921;
+  color: #fff;
+
+  &:hover{
+    background-color: #1b2129;
+  }
+
+  &:active{
+    background-color: #010810;
+  }
+}
+
+
+@mixin input{
+  width: 100%;
+  padding: 16px 14px;
+  color: #7e7e83;
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+
+  &:hover{
+    border: 1px solid #DBDBDB;
+  }
+  &:focus{
+    outline: none;
+  }
+
+  &:invalid{
+    border: 2px solid #F98921;
+  }
+}
