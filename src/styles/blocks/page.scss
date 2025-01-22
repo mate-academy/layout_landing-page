@@ -1,0 +1,48 @@
+.page {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+
+    &:has(.page__menu:target) {
+      overflow: hidden; /* not to scroll the page */
+    }
+
+    &:has(.phones:target) .icon--phone-visible {
+      display: none;
+      transition-duration: $effectDuration;
+    }
+
+    &:has(.phones:target) .icon--phone-novisible {
+      display: block;
+      transition-duration: $effectDuration;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    background-color: $accent-main-color;
+    z-index: 100;
+    transition-duration: $effectDuration;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
