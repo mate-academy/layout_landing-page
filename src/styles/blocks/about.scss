@@ -1,20 +1,65 @@
 .about {
-  background-image: url('../images/about/about-mobile.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  background-color: rgba(252, 250, 239, 1);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
 
   &__content {
     display: grid;
-    column-gap: 20px;
-    background-color: rgba(252, 250, 239, 1);
+    row-gap: -24px;
+    margin: 0;
+    padding: 0;
+    margin-inline: -20px;
+    padding: 48px 20px;
+
+    @include onTablet {
+      margin-inline: -72px;
+      padding: 120px 72px;
+    }
+
+    @include onDesktop {
+      margin-inline: -120px;
+      padding: 120px 120px;
+    }
   }
 
-  &__description {
+  &__title {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__text {
+    // margin: 0;
+    grid-column: 1 / -1;
     line-height: 22px;
     font-weight: 400;
     font-size: 16px;
     letter-spacing: 1px;
     color: $main-text-color;
+
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
+
+    @include onDesktop {
+      grid-column: 8 / span 5;
+    }
   }
 }
