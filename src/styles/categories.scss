@@ -1,32 +1,110 @@
-.categories {
-  @include contentPaddingInline;
+.category {
 
-  &__images {
-    justify-items: stretch;
-    display: grid;
-    column-gap: 20px;
-    max-width: 100%;
-    height: auto;
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
   }
 
-  &__images__button {
-    width: 100%;
-    height: 56px;
-    border-radius: 8px;
-    margin-top: 40px;
-    background-color: #292929;
-    color: white;
-    cursor: pointer;
-    font-family: Space Grotesk , sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 27px;
-    text-align: center;
+  @media (min-width: 576px) {
+    margin-bottom: 56px;
+  }
 
-    @media (min-width: 1024px) {
-      width: 356px;
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
     }
   }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    @media (min-width: 576px) {
+      font-family: Space Grotesk;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 33.6px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+      font-size: 24px;
+      line-height: 33.6px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 24px;
+      line-height: 33.6px;
+      margin-top: 16px;
+    }
+  }
+
+  @include contentPaddingInline;
+}
+
+.section-title {
+  @include contentPaddingInline;
+}
+
+.button-View {
+  @include pageGrid;
+
+ &__button {
+  width: 100%;
+  grid-column: span 2;
+  // width: calc(100% - 40px);
+  height: 56px;
+  border-radius: 8px;
+  margin-top: 40px;
+  background-color: #292929;
+  color: white;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+
+  @include onTablet {
+    grid-column: span 6;
+  }
+
+  @include onDesktop {
+    grid-column: span 4;
+  }
+ }
+ @include contentPaddingInline;
 }
 
 .categories__last-image img {
@@ -36,60 +114,11 @@
   margin-top: 96px;
 
   @media (min-width: 576px) {
-    width: 100%;
     height: 400px;
     margin-top: 120px;
   }
 
   @media (min-width: 1024px) {
-    width: 100%;
     height: 460px;
-    margin-top: 120px;
-  }
-}
-
-.images-container {
-  display: flex;
-  gap: 20px;
-
-  @include onTablet {
-    justify-items: center;
-    row-gap: 56px;
-  }
-
-  @include onDesktop {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px;
-    justify-items: stretch;
-  }
-}
-
-.images_text {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 25.2px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-
-  @media (min-width: 576px) {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 33.6px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-  }
-
-  @media (min-width: 1024px) {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 33.6px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
   }
 }
