@@ -9,17 +9,16 @@
   background-image: url(../images/Icon-Phone-call.png);
 
   &:hover {
-    color: black;
     transform: scale(1.2);
     transition: transform 0.8s ease, color 0.8s ease;
-    cursor: url("../images/cursor.png"), default;
+    cursor: pointer;
   }
 
   &::after {
     content: "+1 234 5555-55-55";
     position: absolute;
     top: 50%;
-    left: -700%;
+    right: 100%;
     transform: translateY(-50%);
     color: black;
     padding: 5px 10px;
@@ -27,7 +26,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
     opacity: 0;
-    pointer-events: none;
+    pointer-events: auto;
     transition: opacity 0.3s ease;
     font-family: "Inter", sans-serif;
     font-size: 12px;
@@ -38,10 +37,15 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
   }
-}
 
-.icon--phone:hover::after {
-  opacity: 1;
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &:active::after {
+    content: "Copied";
+    color: black;
+  }
 }
 
 .icon--menu {
