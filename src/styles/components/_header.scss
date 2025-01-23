@@ -1,0 +1,233 @@
+@use '../utils/' as u;
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  background-image: url(../assets/images/header_mobile.png);
+  background-position: center right;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1.5px;
+    margin: 0;
+    text-align: center;
+
+    @include u.on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+
+  &__bottom {
+    padding: 0 20px 88px;
+
+    @include u.on-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include u.on-desktop {
+      padding-bottom: 203px;
+    }
+  }
+}
+
+// .top-bar__logo {
+//   max-width: 130px;
+
+//   @include u.on-tablet {
+//     max-width: 187px;
+//   }
+// }
+
+/*   Top Bar  */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
+
+  @include u.on-tablet {
+    padding: 36px 72px;
+  }
+
+  @include u.on-desktop {
+    padding: 36px 120px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo--link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include u.hover(transform, scale(1.2));
+
+    @include u.on-tablet {
+      height: 56px;
+    }
+  }
+}
+
+/* Menu */
+.menu {
+  box-sizing: border-box;
+  background-color: u.$menu-bg-color;
+  font-weight: 500;
+  height: 100vh;
+  text-transform: uppercase;
+  overflow: auto;
+
+  &__top {
+    background-color: u.$menu-bg-color;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 32px;
+
+    @include u.on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    padding-inline: 20px;
+
+    @include u.on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include u.on-desktop {
+      padding-inline: 120px;
+    }
+  }
+
+  &__phone-number {
+    display: block;
+    color: u.$main-text-color;
+    font-size: 16px;
+    margin-bottom: 16px;
+    line-height: 27px;
+    text-decoration: none;
+  }
+
+  &__call-book-test-ride {
+    display: block;
+    color: #1d1d1d;
+    font-size: 12px;
+    width: fit-content;
+    line-height: 16px;
+    padding-bottom: 7px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border-bottom: 1px solid u.$main-text-color;
+  }
+}
+
+/* Nav */
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__link {
+    color: u.$main-text-color;
+    font-size: 22px;
+    position: relative;
+    line-height: 22px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      background-color: u.$main-text-color;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      transform: scale(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Icons */
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: cover;
+  transition: transform 0.3s;
+
+  @include u.hover(transform, scale(1.2));
+
+  @include u.on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../assets/icons/icon_phone_call.svg);
+    position: relative;
+
+    @include u.on-desktop {
+      &:hover::after {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 5px;
+        color: #fff;
+        line-height: 16px;
+        letter-spacing: 2px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../assets/icons/icon_burger_menu.svg);
+    &:hover {
+      background-image: url(../assets/icons/icon_burger_menu_hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../assets/icons/icon_close.svg);
+  }
+}
