@@ -2,63 +2,68 @@
   display: block;
   height: 24px;
   width: 24px;
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/Icon-Phone-call.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.8s ease, color 0.8s ease;
+      cursor: pointer;
+    }
+
+    &::after {
+      content: "+1 234 5555-55-55";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      color: black;
+      padding: 5px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:active::after {
+      content: "Copied";
+      color: black;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/Icon-Burger-menu.png);
+
+    &:hover {
+      color: black;
+      transform: scale(1.2);
+      transition: transform 0.8s ease, color 0.8s ease;
+      cursor: url("../images/cursor.png"), default;
+    }
+  }
+
+  &--close {
+    background-image: url(../images/Icon-Close.png);
+  }
 }
 
-.icon--phone {
-  position: relative;
-  background-image: url(../images/Icon-Phone-call.png);
-
-  &:hover {
-    transform: scale(1.2);
-    transition: transform 0.8s ease, color 0.8s ease;
-    cursor: pointer;
+@media (max-width: 768px) {
+  .icon--phone::after {
+    content: none;
   }
-
-  &::after {
-    content: "+1 234 5555-55-55";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
-    color: black;
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: auto;
-    transition: opacity 0.3s ease;
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 2px;
-    text-align: right;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-
-  &:active::after {
-    content: "Copied";
-    color: black;
-  }
-}
-
-.icon--menu {
-  background-image: url(../images/Icon-Burger-menu.png);
-
-  &:hover {
-    color: black;
-    transform: scale(1.2);
-    transition: transform 0.8s ease, color 0.8s ease;
-    cursor: url("../images/cursor.png"), default;
-  }
-}
-
-.icon--close {
-  background-image: url(../images/Icon-Close.png);
 }
