@@ -1,6 +1,21 @@
 @import './utils/mixins';
 @import './utils/variables';
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 body {
   margin: 0;
 }
@@ -222,20 +237,32 @@ h3 {
   }
 }
 
+.phone-number {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 .icon {
   display: block;
   height: 24px;
   width: 24px;
 
-  &__phone{
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
+  &__phone {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     text-decoration: none;
-    letter-spacing: 2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+
+    &:hover {
+      .phone-number {
+        opacity: 1;
+      }
+    }
   }
 
   @include hover(transform, scale(1.2));
@@ -251,7 +278,7 @@ h3 {
 
     &:hover {
       .icon__phone {
-        opacity: 1!important;
+        opacity: 1 !important;
       }
     }
   }
@@ -368,9 +395,17 @@ h3 {
 }
 
 .product {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   &__photo {
     text-align: center;
     margin-bottom: 32px;
+
+    img {
+      width: 100%;
+    }
   }
 
   &__title {
@@ -394,6 +429,7 @@ h3 {
     font-size: 24px;
     font-weight: 700;
     line-height: 33px;
+    margin-top: auto;
   }
 }
 
@@ -533,9 +569,14 @@ h3 {
       text-decoration: none;
       margin-bottom: 24px;
       display: inline-block;
+      transition: all 0.3s;
 
       &:last-child {
         margin-bottom: 0;
+      }
+
+      &:hover {
+        transform: scale(1.2);
       }
     }
   }
