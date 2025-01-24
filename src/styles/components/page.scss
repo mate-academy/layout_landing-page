@@ -1,0 +1,66 @@
+// #region PAGE
+* {
+  box-sizing: border-box; /* Garantir que padding e border não ultrapassem a largura */
+}
+
+body {
+  overflow-x: hidden; /* Evitar o scroll horizontal */
+}
+
+
+.page {
+  font-family: Poppins, sans-serif;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  &__body {
+    margin: 0;
+    background-color: #1d1d1d;
+    color: #fff;
+  }
+
+  &__grid {
+    margin: auto 20px;
+
+  }
+
+  @media (min-width: 744px) {
+    &__grid  {
+      justify-content: center;
+      margin: auto 72px;
+      display: grid;
+      grid-template-columns: repeat(6, 80px);
+      column-gap: 24px;
+    }
+  }
+
+  @media (min-width: 1260px) {
+    &__grid  {
+      justify-content: center;
+      margin: auto 120px;
+      display: grid;
+      grid-template-columns: repeat(12, 63px);
+      column-gap: 24px;
+    }
+  }
+
+  &__aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__aside:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
+
+// #endregion
+
