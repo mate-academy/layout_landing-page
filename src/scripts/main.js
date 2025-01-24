@@ -1,15 +1,15 @@
 'use strict';
 
-const openMenuIcon = document.querySelector('.icon--menu');
-const closeMenuIcon = document.querySelector('.icon--close');
-
-// Проверяем, что элементы существуют
-if (openMenuIcon && closeMenuIcon) {
-  openMenuIcon.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
-  });
-
-  closeMenuIcon.addEventListener('click', () => {
-    document.body.style.overflow = '';
-  });
+function toggleScrollLock() {
+  if (window.location.hash === '#menu') {
+    document.body.classList.add('scroll-lock'); // Блокируем прокрутку
+  } else {
+    document.body.classList.remove('scroll-lock'); // Разблокируем прокрутку
+  }
 }
+
+// Слушаем изменения хэша в URL
+window.addEventListener('hashchange', toggleScrollLock);
+
+// Проверяем состояние при загрузке страницы
+toggleScrollLock();

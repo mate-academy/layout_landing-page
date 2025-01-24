@@ -10,7 +10,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid green;
+  outline: 1px solid green;
   -webkit-text-fill-color: green;
   -webkit-box-shadow: 0 0 0 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
@@ -18,6 +18,10 @@ select:-webkit-autofill:focus {
 
 body {
   margin: 0;
+}
+
+.scroll-lock{
+  overflow: hidden;
 }
 
 p {
@@ -238,13 +242,18 @@ h3 {
 }
 
 .phone-number {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px;
-  letter-spacing: 2px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 }
 
 .icon {
@@ -398,6 +407,11 @@ h3 {
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: all 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 
   &__photo {
     text-align: center;
