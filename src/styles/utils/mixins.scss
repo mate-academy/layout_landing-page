@@ -1,0 +1,104 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($propretry, $toValue) {
+  transition: #{$propretry} 0.3s;
+  &:hover {
+    #{$propretry}: $toValue;
+  }
+}
+
+@mixin button {
+  font-family: inherit;
+  height: 56px;
+  border-radius: 40px;
+  border: none;
+  background-color: $main-text-color;
+  color: $menu-text-color;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:focus {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin input-form-style {
+  font-family: inherit;
+  box-sizing: border-box;
+  padding: 16px 14px;
+  width: 100%;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  background-color: $form-color-bg;
+  color: $form-color-text;
+  outline: none;
+  border: none;
+
+  &:hover {
+    color: $form-color-text-active;
+    border: 1px solid $form-color-border-hover;
+  }
+
+  &:focus {
+    color: $form-color-text-active;
+    border: 1px solid $form-color-border-focus;
+  }
+}
+
+@mixin page-grid {
+  --colums: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
+  }
+}
