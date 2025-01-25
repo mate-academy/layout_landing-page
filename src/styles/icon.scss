@@ -2,19 +2,70 @@
   display: block;
   height: 32px;
   width: 32px;
+  position: relative;
 
   &--phone {
     background-size: cover;
     background-image: url('../../images/Icon-Phone-call.png');
   }
 
-  &--menu {
-    background-size: cover;
-    background-image: url('../../images/Icon-Burger-menu.png');
-  }
-
   &--close {
     background-size: cover;
     background-image: url('../../images/Icon-Close.png');
   }
+
+  &--menu {
+    background-size: cover;
+    background-image: url('../../images/Icon-Burger-menu.png');
+    position: relative;
+    transition: opacity 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../../images/Icon-Burger-menu-hover.png');
+      background-size: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
 }
+
+
+
+.icon--phone::after {
+  content: attr(data-phone);
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translate(-20px, -50%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  padding: 4px 8px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+.icon--phone:focus::after {
+  opacity: 1;
+  visibility: visible;
+}
+
