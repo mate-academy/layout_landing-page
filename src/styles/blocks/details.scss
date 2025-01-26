@@ -1,0 +1,132 @@
+@use 'sass:color';
+
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+  }
+
+  @include on-tablet {
+    row-gap: 48px;
+  }
+
+  &__button {
+    display: flex;
+    margin: 0 auto;
+    border: none;
+    text-decoration: none;
+
+    border-radius: 40px;
+    width: 278px;
+    height: 56px;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 169%;
+    text-align: center;
+    color: $main-text-color-black;
+    background-color: #fff;
+
+    align-items: center;
+    justify-content: center;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: color.adjust(#f0f0f0, $lightness: 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background-color: color.adjust(#f0f0f0, $lightness: 10%);
+      transform: scale(0.95);
+    }
+  }
+}
+
+.category {
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__photo {
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__link {
+    margin-bottom: 16px;
+    position: relative;
+    display: block;
+    width: 100%;
+
+    &--wide {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+      .category__photo {
+        height: 100%;
+      }
+    }
+
+    &:hover .category__photo {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+
+    &--square {
+      grid-column: span 1;
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__description {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
