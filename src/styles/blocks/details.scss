@@ -54,7 +54,21 @@
 }
 
 .category {
-  
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
   &__photo {
     transition: transform 0.3s ease;
     object-fit: cover;
@@ -62,6 +76,8 @@
 
   &__link {
     position: relative;
+    display: block;
+    width: 100%;
 
     &:hover .category__photo {
       transform: scale(1.1);
