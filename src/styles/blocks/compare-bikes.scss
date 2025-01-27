@@ -1,0 +1,39 @@
+.compare-bikes{
+
+
+  &__products {
+    @include pageGrid;
+
+    row-gap: 40px;
+  }
+
+  &__product {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 2 / -2;
+    }
+
+    @include onDesktop {
+      grid-column: span 4;
+    }
+
+    transform: translateX(-100%);
+    animation-name: move-left;
+    animation-timing-function: linear;
+    animation-range: entry 0%;
+    animation-timeline: view();
+    animation-fill-mode: forwards;
+
+  }
+}
+
+@keyframes move-left{
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
