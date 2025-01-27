@@ -1,0 +1,53 @@
+.icon {
+  display: block;
+  height: $icon-button-size;
+  width: $icon-button-size;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include image-hover(transform, 0.3s, scale(1.2));
+
+  @include on-tablet {
+    width: math.round(calc($icon-button-size) * 1.33);
+    height: math.round(calc($icon-button-size) * 1.33);
+  }
+
+  &--phone {
+    background-image: url('/src/images/icons/phone.svg');
+    color: $main-font-color;
+    @include on-tablet {
+      &::before {
+        white-space: nowrap;
+        justify-content: left;
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        top: 15%;
+        right: 100%;
+        transform: translateX(-8px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+        cursor: pointer;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url('/src/images/icons/menu.svg');
+
+    &:hover {
+      background-image: url('/src/images/icons/menu-hover.svg');
+    }
+  }
+
+  &--close {
+    background-image: url('/src/images/icons/close.svg');
+  }
+}
+
