@@ -12,11 +12,39 @@
     height: 32px;
   }
 
-  &--phone {
+  &__phone {
     background-image: url(/src/img/icons/icon-phone.svg);
+
+    &--tooltip {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      width: 160px;
+      height: 100%;
+      text-align: right;
+
+      position: absolute;
+      top: 0;
+      right: calc(100% + 20px);
+
+      transform: scale(0);
+      transform-origin: right;
+      transition: all 0.2s ease-in-out 0.7s;
+    }
+
+    @include on-desktop {
+      &:hover + &--tooltip,
+      &:focus + &--tooltip {
+        transform: scale(1);
+        transition-delay: 0s;
+      }
+    }
   }
 
-  &--menu {
+  &__menu {
     background-image: url(/src/img/icons/icon-burger-menu.svg);
 
     &:hover {
@@ -24,7 +52,7 @@
     }
   }
 
-  &--close {
+  &__close {
     background-image: url(/src/img/icons/icon-close.svg);
   }
 }
