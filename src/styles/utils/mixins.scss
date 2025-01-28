@@ -1,0 +1,92 @@
+@mixin on-tablet {
+  @media (min-width: $min-tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $min-desktop-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  box-sizing: border-box;
+  padding-inline: 20px;
+  width: 320px;
+  margin-inline: auto;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    width: 744px;
+  }
+
+  @include on-desktop {
+    width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: transform 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin underline() {
+  &::after {
+    position: absolute;
+    bottom: -8px;
+    width: 100%;
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: white;
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin underline-short() {
+  &::after {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: white;
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin underline-short-black() {
+  &::after {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: $color-main-dark;
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
