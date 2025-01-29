@@ -16,8 +16,8 @@
 
   &__info {
     position: absolute;
-    right: 36px;
-    bottom: -48px;
+    bottom: -42px;
+    right: 34px;
 
     display: none;
     flex-direction: column;
@@ -29,13 +29,31 @@
       margin: 0;
 
       text-align: end;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      text-transform: uppercase;
+      color: $header-text-color;
+    }
+
+    &--a {
+      padding: 0;
+      margin: 0;
+
+      text-align: end;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $header-text-color;
+
+      @include animation;
     }
   }
 
   &--phone {
-    background-image: url(/src/images/icons/icon-phone-call.png);
-
-    position: relative;
+    display: block;
     text-decoration: none;
 
     font-size: 16px;
@@ -43,13 +61,29 @@
     line-height: 27px;
     color: $header-text-color;
 
-    &:hover .icon__info {
-      @include on-tablet {
-        display: flex;
+    &--desktop {
+      position: relative;
+      display: none;
+      background-image: url(/src/images/icons/icon-phone-call.png);
+
+      @include on-desktop {
+        display: block;
+      }
+
+      &:hover .icon__info {
+        @include on-tablet {
+          display: flex;
+        }
       }
     }
 
-    @include animation;
+    &--mob {
+      background-image: url(/src/images/icons/icon-phone-call.png);
+
+      @include on-desktop {
+        display: none;
+      }
+    }
   }
 
   &--menu {
@@ -62,7 +96,7 @@
 
   &--close {
     background-image: url(/src/images/icons/Icon-close.png);
-
-    @include animation;
   }
+
+  @include animation;
 }
