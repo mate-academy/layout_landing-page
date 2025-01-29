@@ -1,0 +1,102 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  cursor: pointer;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__info {
+    position: absolute;
+    bottom: -42px;
+    right: 34px;
+
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    width: max-content;
+
+    &--p {
+      padding: 0;
+      margin: 0;
+
+      text-align: end;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      text-transform: uppercase;
+      color: $header-text-color;
+    }
+
+    &--a {
+      padding: 0;
+      margin: 0;
+
+      text-align: end;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $header-text-color;
+
+      @include animation;
+    }
+  }
+
+  &--phone {
+    display: block;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $header-text-color;
+
+    &--desktop {
+      position: relative;
+      display: none;
+      background-image: url(/src/images/icons/icon-phone-call.png);
+
+      @include on-desktop {
+        display: block;
+      }
+
+      &:hover .icon__info {
+        @include on-tablet {
+          display: flex;
+        }
+      }
+    }
+
+    &--mob {
+      background-image: url(/src/images/icons/icon-phone-call.png);
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/images/icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(/src/images/icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/images/icons/Icon-close.png);
+  }
+
+  @include animation;
+}
