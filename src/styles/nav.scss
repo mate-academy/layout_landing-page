@@ -1,9 +1,28 @@
 .nav {
   &__link {
-    color: var(--theme-color);
+    position: relative;
+    color: $theme-color;
     text-decoration: none;
     font-size: 22px;
     letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: $theme-color;
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__list {
