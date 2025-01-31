@@ -17,14 +17,15 @@
 
   &--phone {
     background-image: url(../image/icons/icon-phone.svg);
+    position: relative;
 
     @include on-desktop {
       &::before {
-        display: none;
         content: '+1 234 5555-55-55';
         position: absolute;
         left: -147px;
-        top: 8px;
+        top: 50%;
+        transform: translateY(-50%);
         color: $main-text-color;
         font-weight: 700;
         height: 16px;
@@ -33,10 +34,13 @@
         text-align: center;
         letter-spacing: 2px;
         white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
       }
 
-      &:hover::before {
-        display: block;
+      &:hover::before,
+      &:hover {
+        opacity: 1;
       }
     }
   }
