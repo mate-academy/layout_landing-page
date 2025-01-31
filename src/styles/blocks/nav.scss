@@ -1,9 +1,26 @@
 .nav {
   &__link {
+    position: relative;
     color: inherit;
     text-decoration: none;
     font-size: 22px;
     line-height: 22px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transition: transform $effect-duration ease-in-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
 
   &__list {
