@@ -17,7 +17,7 @@ Follow the instructions in this and next lessons to implement the page block by 
 - Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
 - When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- Deploy and create a Pull Request with a [DEMO LINK](https://github.com/dsliusarchyk/layout_landing-page.git/).
 
 # Tips & Hints
 
