@@ -1,3 +1,19 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin focus($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:focus {
+    #{$property}: $toValue;
+    outline: none;
+    border-width: 2px;
+  }
+}
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -18,15 +34,24 @@
   }
 
   @include on-desktop {
-    max-width: 1020px;
-    margin-inline: auto;
+    //max-width: 1020px;
+    max-width: 1260px;
     padding-inline: 120px;
   }
 }
 
-@mixin hover($property, $toValue) {
-  transition: #{$property} $effectDuration;
-  &:hover {
-    #{$property}: $toValue;
-  }
+@mixin common-style {
+  font-family: $font-family-manrope;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+}
+
+@mixin text-base {
+  font-family: $font-family-manrope;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 1px;
 }
