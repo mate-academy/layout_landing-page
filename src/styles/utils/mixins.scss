@@ -1,0 +1,66 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin focus($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:focus {
+    #{$property}: $toValue;
+    outline: none;
+    border-width: 2px;
+  }
+}
+
+@mixin reset-after-click($property, $default-value) {
+  transition: #{$property} $effectDuration;
+  &:active {
+    #{$property}: $default-value;
+  }
+  &:focus:not(:active) {
+    #{$property}: $default-value;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin common-style {
+  font-family: $font-family-manrope;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+}
+
+@mixin text-base {
+  font-family: $font-family-manrope;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
