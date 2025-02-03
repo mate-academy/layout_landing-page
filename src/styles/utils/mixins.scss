@@ -1,5 +1,11 @@
 @mixin on-tablet {
-  @media (min-width: 576px) {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop{
+  @media(min-width: $desktop-min-width){
     @content;
   }
 }
@@ -56,4 +62,94 @@
   &:hover {
     #{$property}: $toValue;
   }
+}
+
+@mixin section-title-text{
+  margin: 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+
+@mixin section-title{
+  @include on-tablet{
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include on-desktop{
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin section-title-margin-bottom {
+  @include on-tablet {
+    margin-bottom: 48px;
+  }
+}
+
+@mixin content-padding-inline{
+  padding-inline: 20px;
+
+  @include on-tablet{
+    padding-inline: 176px;
+  }
+
+  @include on-desktop{
+    padding-inline: 381px;
+  }
+}
+
+@mixin gallery__photo-1-2-6-7{
+  height: 130px;
+  width: 130px;
+}
+
+@mixin gallery__photo-3-4-5{
+  height: 87px;
+  width: 88px;
+}
+
+@mixin photo-margin-bottom{
+  margin-bottom: 24px;
+}
+
+@mixin photo-rectangle{
+  @include on-tablet {
+      height: 186px;
+      width: 392px;
+    }
+
+    @include on-desktop {
+      height: 320px;
+      width: 672px;
+    }
+}
+
+@mixin photo-square-min{
+  @include on-tablet {
+    width: 184px;
+    height: 186px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      height: 320px;
+    }
+}
+
+@mixin photo-square-max{
+  @include on-tablet {
+      width: 288px;
+      height: 284px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      height: 320px;
+    }
 }
