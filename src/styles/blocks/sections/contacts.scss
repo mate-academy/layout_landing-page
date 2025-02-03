@@ -1,7 +1,6 @@
 .contacts {
 
   &__container {
-
     @include on-desktop {
       display: flex;
       justify-content: space-between;
@@ -31,15 +30,31 @@
 
       &::placeholder {
         color: #7E7E83;
+
         @include common-style;
       }
 
+      &.error {
+        border-color: red;
+      }
+
       @include hover(border-color, #DBDBDB);
-      @include focus(border-color, #F98921)
+      @include focus(border-color, #F98921);
+    }
+
+    .error-message {
+      color: red;
+      font-size: 16px;
+      display: none;
+    }
+
+    .error {
+      border: 1px solid red;
     }
 
     .textarea {
       height: 148px;
+      text-align: left;
       resize: none;
       overflow: auto;
       border-radius: 8px;
@@ -54,12 +69,30 @@
     }
   }
 
+  .success-message {
+    color: #fff;
+    background-color: #4caf50;
+    text-align: center;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+
+  .success-message.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   &__box {
 
     .contact-span {
       display: block;
       color: #9393A3;
       margin-bottom: 8px;
+
       @include common-style;
     }
 
@@ -67,8 +100,10 @@
       display: block;
       min-width: 498px;
       color: #191919;
+      text-decoration: none;
       margin: 0;
       margin-bottom: 24px;
+
       @include text-base;
     }
 

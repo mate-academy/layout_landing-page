@@ -14,6 +14,16 @@
   }
 }
 
+@mixin reset-after-click($property, $default-value) {
+  transition: #{$property} $effectDuration;
+  &:active {
+    #{$property}: $default-value;
+  }
+  &:focus:not(:active) {
+    #{$property}: $default-value;
+  }
+}
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -34,7 +44,6 @@
   }
 
   @include on-desktop {
-    //max-width: 1020px;
     max-width: 1260px;
     padding-inline: 120px;
   }
