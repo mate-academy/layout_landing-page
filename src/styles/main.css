@@ -21,6 +21,85 @@ body {
   color: var(--main-text-color);
 }
 
+/* === Navigation === */
+.btm-navigation a,
+.back-to-services a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.navigation ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--main-text-color);
+  font-weight: bold;
+}
+
+/* === Media queries for navigation === */
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  .navigation {
+    opacity: 0;
+    visibility: hidden;
+    flex-direction: column;
+    position: fixed;
+    top: 65px;
+    right: 5px;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: auto;
+    height: auto;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition:
+      transform 0.5s ease-in-out,
+      opacity 0.3s ease-in-out;
+  }
+
+  .navigation.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 769px) {
+  .burger-menu {
+    display: none;
+  }
+
+  .navigation {
+    display: flex;
+  }
+}
+
+/* === Background image === */
 .background-image {
   position: fixed;
   top: 0;
@@ -32,6 +111,7 @@ body {
   z-index: -1;
 }
 
+/* === Header === */
 header {
   position: fixed;
   top: 0;
@@ -49,15 +129,6 @@ header {
   font-size: 14px;
 }
 
-main {
-  padding-top: 90px;
-  padding-bottom: 80px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 header,
 footer {
   width: 100vw;
@@ -73,6 +144,28 @@ footer {
   z-index: 1000;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+footer > p {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -80,6 +173,7 @@ footer {
   width: 100%;
   padding: 0 20px;
 }
+
 .logo-link {
   text-decoration: none;
   color: inherit;
@@ -93,6 +187,7 @@ footer {
 
 .logo-company {
   display: flex;
+  text-decoration: none;
   align-items: center;
 }
 
@@ -109,12 +204,16 @@ footer {
 .logo-name {
   font-size: 20px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 /* === Main content === */
 main {
+  padding-top: 90px;
+  padding-bottom: 80px;
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -219,14 +318,6 @@ h3,
   color: var(--order-color);
 }
 
-.btm-navigation a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .back-to-services:hover {
   color: var(--order-color);
 }
@@ -237,42 +328,12 @@ h3,
   border-color: #aaa;
 }
 
-.back-to-services a {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-
 .button-container {
   display: inline;
   justify-content: center;
   justify-items: center;
   gap: 20px;
   margin: auto;
-}
-
-/* === Navigation === */
-.navigation {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.navigation ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.navigation ul li a {
-  text-decoration: none;
-  color: var(--main-text-color);
-  font-weight: bold;
 }
 
 .btn-order {
@@ -300,13 +361,11 @@ h3,
 
 .nav-icon:hover {
   transform: scale(1.1);
-  /* Ефект збільшення при наведенні */
 }
 
 /* === Burger menu styles === */
 .burger-menu {
   display: none;
-  /* Ховаємо на великих екранах */
   background: none;
   border: none;
   cursor: pointer;
@@ -326,93 +385,6 @@ h3,
 @media (max-width: 768px) {
   .burger-menu {
     display: block;
-  }
-}
-/* === Mobile navigation menu === */
-.navigation {
-  display: flex;
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .burger-menu {
-    display: flex;
-  }
-
-  .navigation {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 60px;
-    right: 0;
-    background-color: white;
-    width: 220px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    gap: 15px;
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .navigation.active {
-    display: flex;
-    transform: translateX(0);
-  }
-
-  .navigation ul {
-    flex-direction: column;
-  }
-
-  .navigation ul li {
-    margin-bottom: 10px;
-  }
-}
-
-@media (min-width: 769px) {
-  .burger-menu {
-    display: none;
-  }
-
-  .navigation {
-    display: flex;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .header-container {
-    padding: 0 15px;
-    justify-content: space-between;
-  }
-
-  .logo-company {
-    flex: 0 1 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .logo-image {
-    height: 35px;
-    margin-right: 8px;
-  }
-
-  .logo-name {
-    font-size: 18px;
-  }
-
-  .navigation {
-    flex: 1 1 auto;
-    justify-content: flex-end;
-  }
-
-  .navigation ul {
-    gap: 15px;
-  }
-
-  .navigation ul li a {
-    font-size: 14px;
   }
 }
 
@@ -543,8 +515,9 @@ h3,
   color: var(--main-text-color);
 }
 
-/* === Styles for Booking massage === */
+/* === Styles for Booking message === */
 .success-message {
+  display: none;
   max-width: 500px;
   margin: 20px auto;
   padding: 20px;
@@ -563,26 +536,4 @@ h3,
     padding: 15px;
     font-size: 14px;
   }
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-}
-
-footer p {
-  margin: 0;
-  width: 100%;
-  text-align: center;
 }
