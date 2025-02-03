@@ -2,28 +2,34 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Content-Type: application/json'); // Встановлення JSON-заголовка
 
-    // Отримання даних з форми
-    $name = htmlspecialchars($_POST['name']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $email = htmlspecialchars($_POST['email']);
-    $address = htmlspecialchars($_POST['address']);
-    $date = htmlspecialchars($_POST['date']);
-    $time = htmlspecialchars($_POST['time']);
-
-    // Отримання вибраних послуг
+    // Отримання даних з форми та базова валідація
+    $name = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : "";
+    $phone = isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : "";
+    $email = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) : "";
+    $address = isset($_POST['address']) ? htmlspecialchars($_POST['address']) : "";
+    $date = isset($_POST['date']) ? htmlspecialchars($_POST['date']) : "";
+    $time = isset($_POST['time']) ? htmlspecialchars($_POST['time']) : "";
     $services = isset($_POST['services']) ? explode(', ', $_POST['services']) : [];
+
+    // Перевірка, чи всі необхідні поля заповнені
+    if (!$name || !$phone || !$email || !$address || !$date || !$time || empty($services)) {
+        echo json_encode(["status" => "error", "message" => "Please fill in all required fields."]);
+        exit;
+    }
+
+    // Формування списку вибраних послуг
     $servicesList = "<ul>";
     foreach ($services as $service) {
         $servicesList .= "<li>" . htmlspecialchars($service) . "</li>";
     }
     $servicesList .= "</ul>";
 
-    // Ваша електронна адреса
-    $to = "booking@family-cleaning-co.com";
-    $subject = "New Cleaning Booking from $name";
+    // Email адміністратора
+    $adminEmail = "booking@family-cleaning-co.com";
+    $adminSubject = "New Cleaning Booking from $name";
 
-    // Формування повідомлення для адміністратора
-    $message = "
+    // Формування email для адміністратора
+    $adminMessage = "
     <html>
     <head>
     <title>New Cleaning Booking</title>
@@ -41,14 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </html>
     ";
 
-    // Заголовки для відправки HTML-листа
+    // Заголовки email
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: <$email>" . "\r\n";
+    $headers .= "From: Family Cleaning Co. <no-reply@family-cleaning-co.com>" . "\r\n";
 
-    // Відправка листа адміністратору
-    if (mail($to, $subject, $message, $headers)) {
-        // Формування повідомлення для користувача
+    // Відправка email адміністратору
+    $adminMailSent = mail($adminEmail, $adminSubject, $adminMessage, $headers);
+
+    if ($adminMailSent) {
+        // Формування email для клієнта
         $userSubject = "Booking Confirmation";
         $userMessage = "
         <html>
@@ -72,20 +80,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </html>
         ";
 
-        // Заголовки для відправки HTML-листа користувачу
+        // Заголовки email для клієнта
         $userHeaders = "MIME-Version: 1.0" . "\r\n";
         $userHeaders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $userHeaders .= "From: <no-reply@family-cleaning-co.com>" . "\r\n";
+        $userHeaders .= "From: Family Cleaning Co. <no-reply@family-cleaning-co.com>" . "\r\n";
 
-        // Відправка листа користувачу
-        mail($email, $userSubject, $userMessage, $userHeaders);
+        // Відправка email клієнту
+        $userMailSent = mail($email, $userSubject, $userMessage, $userHeaders);
 
-        echo json_encode(["status" => "success"]);
+        if ($userMailSent) {
+            echo json_encode([
+                "status" => "success",
+                "message" => "<h2>Thank You for Your Booking!</h2>
+                              <p>We have received your request and will contact you shortly to confirm your booking and discuss any details.</p>
+                              <p>Have a great day!</p>"
+            ]);
+        } else {
+            // Логування помилки у файл, якщо клієнтський email не надісланий
+            file_put_contents("log.txt", "[" . date("Y-m-d H:i:s") . "] Error sending email to user ($email)\n", FILE_APPEND);
+            echo json_encode(["status" => "error", "message" => "Booking request was sent, but confirmation email failed."]);
+        }
     } else {
-        echo json_encode(["status" => "error"]);
+        // Логування помилки у файл, якщо email адміністратору не надісланий
+        file_put_contents("log.txt", "[" . date("Y-m-d H:i:s") . "] Error sending email to admin ($adminEmail)\n", FILE_APPEND);
+        echo json_encode(["status" => "error", "message" => "Failed to send booking request."]);
     }
 } else {
     header('Content-Type: application/json');
-    echo json_encode(["status" => "invalid_request"]);
+    echo json_encode(["status" => "invalid_request", "message" => "Invalid request method."]);
 }
 ?>
