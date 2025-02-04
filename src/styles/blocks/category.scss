@@ -1,0 +1,52 @@
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+
+    &--triple {
+      @include page-grid(3);
+    }
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__title {
+    margin: 0;
+    color: $main-color-red;
+  }
+}
