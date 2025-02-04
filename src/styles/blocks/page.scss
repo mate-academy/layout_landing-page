@@ -1,25 +1,61 @@
 .page {
-  font-family: 'Space Grotesk', serif;
-  color: rgba(41, 41, 41, 1);
-  font-size: 16px;
-  line-height: 22.4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  color: $main-text-color;
+  line-height: 140%;
   scroll-behavior: smooth;
-}
 
-.page__body {
-  margin: 0;
-}
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
-.page__menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-}
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
 
-.page__menu:target {
-  opacity: 1;
-  pointer-events: all;
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all $effectDuration;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__background {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    &__image {
+      background-image: url(../images/phonepage.png);
+      width: 100%;
+      display: block;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include on-tablet {
+        height: 400px;
+      }
+
+      @include on-desktop {
+        height: 460px;
+      }
+    }
+  }
 }
