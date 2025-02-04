@@ -7,6 +7,11 @@
   height: 18px;
   background-size: contain;
   background-repeat: no-repeat;
+  transition-duration: 300ms;
+
+  &:hover{
+    transform: scale(1.3);
+  }
 
   @include on-tablet {
     margin-block: 48px;
@@ -16,13 +21,75 @@
 
   &--call {
     background-image: url('../img/icons/Icon-Phone-call.png');
+    position: relative;
+
+    &::before {
+      max-width: 140px;
+      display: inline-block;
+      white-space: nowrap;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      bottom: 20px;
+      width: 0;
+      height: 2px;
+      background-color: black;
+    }
+
+    &:hover::before{
+      content: "+1234555-55-55";
+      max-width: 140px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+
+      animation: phoneNumber 500ms forwards ease-in-out;
+
+    }
+
+    &::before {
+      &:not(:hover) {
+        animation: fadeOut 300ms forwards;
+      }
+    }
+
   }
 
   &--burger {
     background-image: url('../img/icons/Icon-Burger-menu.png');
+
+    &:hover{
+      background-image: url('../img/icons/Icon-Burger-menu-hover.png');
+    }
   }
 
   &--close {
     background-image: url('../img/icons/Icon-Close-2.png');
+  }
+}
+
+
+@keyframes phoneNumber{
+  from{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateX(-150px);
+  }
+
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
