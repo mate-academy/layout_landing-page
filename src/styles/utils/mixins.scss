@@ -1,0 +1,94 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $value, $effect) {
+  transition: $property 0.2s $effect;
+
+  &:hover {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin grid-column-about-us {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+
+@mixin margin-for-title {
+  margin: 0;
+  margin-bottom: 48px;
+
+  @include on-tablet {
+    margin-bottom: 56px;
+  }
+}
+
+@mixin style-form-fields {
+  width: 100%;
+  border-radius: 8px;
+  background-color: $color-gray;
+  border: 0 solid;
+  box-sizing: border-box;
+
+  font-family: $main-font;
+  font-size: 14px;
+  color: $font-color;
+  line-height: $line-height;
+
+  padding: 14px 16px;
+
+  &::placeholder {
+    color: $color-placeholder;
+  }
+
+  &:hover {
+    border: 2px solid $border-color;
+  }
+
+  &:target {
+    border-color: 2px solid $font-color;
+  }
+}
+
+@mixin transform-img($size) {
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    transform: scale($size);
+    border-radius: 12px;
+  }
+}
