@@ -276,6 +276,7 @@
 .header__icons {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 @media (min-width: 576px) {
@@ -284,23 +285,41 @@
   }
 }
 
-.header__icons--tel {
-  justify-content: center;
-  background-color: bisque;
-  align-items: center;
+.header__icons .tel-menu {
+  font-family: Cinzel, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: right;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 220px;
+}
+
+@media (min-width: 576px) {
+  .header__icons .tel-menu {
+    gap: 55px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__icons .tel-menu {
+    right: 270px;
+  }
+}
+
+.header .icon--phone:hover ~ .tel-menu {
   opacity: 0;
   pointer-events: none;
 }
 
 @media (min-width: 576px) {
-  .header__icons--tel {
-    gap: 55px;
+  .header .icon--phone:hover ~ .tel-menu {
+    opacity: 1;
+    pointer-events: all;
   }
-}
-
-.header__icons--tel:target {
-  opacity: 1;
-  pointer-events: all;
 }
 
 .header__bottom {
@@ -351,6 +370,10 @@
   background-size: cover;
 }
 
+.page .icon:hover {
+  transform: scale(1.2);
+}
+
 @media (min-width: 576px) {
   .icon {
     height: 32px;
@@ -378,6 +401,7 @@
   font-family: Cinzel, sans-serif;
   font-weight: 700;
   color: #fff;
+  overflow: auto;
 }
 
 .menu__bar {
@@ -640,9 +664,14 @@
 }
 
 .contacts--phone {
+  color: inherit;
+  text-decoration: none;
+  line-height: 27px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
   font-size: 16px;
   font-weight: 700;
-  line-height: 27px;
 }
 
 .contacts--phone,
@@ -651,6 +680,7 @@
 }
 
 .contacts__form {
+  outline-style: none;
   display: grid;
   gap: 16px;
   min-width: 280px;
@@ -662,6 +692,7 @@
 
 .contacts__form--message,
 .contacts__form input {
+  outline: none;
   color: #7e7e83;
   background-color: #f8f8fa;
   border: none;
@@ -691,6 +722,10 @@
   border: none;
 }
 
+.page button:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 576px) {
   .contacts__form {
     margin: 0;
@@ -710,9 +745,9 @@
   color: #161616;
 }
 
-.contacts__form--message:active,
-.contacts__form input:active {
-  border: 1px solid #161616;
+.contacts__form--message:focus-visible,
+.contacts__form input:focus-visible {
+  outline: 1px solid #161616;
 }
 
 .footer {

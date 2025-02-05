@@ -15,24 +15,43 @@
   &__icons {
     display: flex;
     gap: 24px;
+    align-items: center;
 
     @include on-tablet {
       gap: 55px;
     }
-    &--tel {
-      justify-content: center;
-      background-color: bisque;
-      align-items: center;
+
+    .tel-menu {
+      font-family: Cinzel, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      text-align: right;
+      color: #fff;
+
       opacity: 0;
       pointer-events: none;
+      position: absolute;
+      right: 220px;
 
       @include on-tablet {
         gap: 55px;
       }
-      &:target {
-        opacity: 1;
-        pointer-events: all;
+
+      @include on-desktop {
+        right: 270px;
       }
+    }
+  }
+  .icon--phone:hover ~ .tel-menu {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @include on-tablet {
+    .icon--phone:hover ~ .tel-menu {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
