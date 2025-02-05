@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 'use strict';
 
 // TODO: edit it
