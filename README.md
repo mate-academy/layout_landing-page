@@ -1,24 +1,41 @@
-# Landing Page
+# MyBike 🚴‍♂️
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+**MyBike** is a modern and user-friendly landing page designed for a bike shop. It showcases a variety of high-quality bikes, highlights their features, and allows users to explore details, compare models, and contact the shop for inquiries or to book test rides.
 
-Choose a design for your landing page:
+This project focuses on delivering a visually appealing and responsive design to ensure a seamless browsing experience on any device.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## 🚀 Technologies Used
 
-Follow the instructions in this and next lessons to implement the page block by block:
+**HTML5**: For semantic structure.
+**SCSS (Sass)**: For modular and maintainable styling.
+**Google Fonts**: For enhanced typography.
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+## Project Links
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+**SITE**  🔗 - [https://bbbozhena.github.io/MyBike/](https://bbbozhena.github.io/MyBike/)
+**GITHUB**🔗 - [https://github.com/bbbozhena/MyBike](https://github.com/bbbozhena/MyBike)
+**FIGMA** 🔗 - [https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&t=Sdox3iJCKAcfjlPp-1](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&t=Sdox3iJCKAcfjlPp-1)
+
+## ⚙️ Installation and Usage
+
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+   [git clone https://github.com/your-username/mybike.git](https://github.com/bbbozhena/MyBike.git)
+2. Install dependencies:
+   npm install
+3. Start the development server:
+   npm start
+
+## 📌 Features
+
+**Responsive Design**: Adapts beautifully to different screen sizes.
+**Product Comparison**: Compare key features and prices of various bikes.
+**Interactive Navigation**: Smooth scrolling and accessible menu options.
+**Contact Form**: Submit inquiries directly via the page.
+
+## 📂 Project structure
+
+**index.html** — main HTML file
+**styles/** — all SCSS styles
+**images/** — pictures and icons
