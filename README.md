@@ -1,24 +1,46 @@
-# Landing Page
+# Bose Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A responsive landing page for Bose audio equipment, featuring a modern design with smooth animations and interactive elements. The page showcases various audio products, categories, and company information while maintaining high standards of user experience across different device sizes.
 
-Choose a design for your landing page:
+## Project Overview
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+This landing page implements a design that adapts seamlessly across mobile, tablet, and desktop viewports. The implementation features smooth animations, interactive elements, and a well-structured component hierarchy that ensures maintainable and scalable code.
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## Live Demo & Design
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+You can explore the project in two ways:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+The implemented landing page is available here:
+[Live Preview](https://anhrytsan.github.io/layout_landing-page/)
+
+The complete design specifications and visual references can be found here:
+[Figma Design](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version)
+
+## Technologies Used
+
+The project leverages the following technologies and approaches:
+
+- **HTML5** - Semantic markup structure
+- **SCSS/CSS3** - Advanced styling with:
+  - CSS Grid for responsive layouts
+  - Flexbox for component alignment
+  - Custom animations and transitions
+  - BEM methodology for class naming
+  - Media queries for responsive design
+  - CSS variables for maintainable theming
+- **JavaScript** - For interactive elements and menu functionality
+- **Parcel** - Build tool for compiling and bundling assets
+- **Google Fonts** - Manrope typeface
+
+## Key Features
+
+- Responsive design that adapts to mobile, tablet, and desktop viewports
+- Interactive navigation menu with smooth transitions
+- Product showcase with hover animations
+- Contact form with input validation
+- Smooth scrolling to sections
+- Optimized images for different screen sizes
+- Custom animations for enhanced user experience:
+  - Fade-in-scale effect for header
+  - Slide-in-left animation for sections
+  - Hover effects on interactive elements
