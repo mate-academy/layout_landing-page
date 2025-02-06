@@ -1,0 +1,76 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} $transition-speed-fast;
+  &:hover {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin hover-underline($color, $gap) {
+  & {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -#{$gap};
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #{$color};
+
+    transition: transform $transition-speed-fast;
+    transform: scale(0);
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin content-grid($columns, $gap) {
+  & {
+    display: grid;
+    grid-template-columns: #{$columns};
+    gap: #{$gap};
+  }
+}
+
+@mixin adapt-content-image($image-name, $folder-name) {
+  background-image: url('../images/content/mobile/#{$folder-name}/#{$image-name}-mobile.png');
+
+  @include on-tablet {
+    background-image: url('../images/content/tablet/#{$folder-name}/#{$image-name}-tablet.png');
+  }
+
+  @include on-desktop {
+    background-image: url('../images/content/desktop/#{$folder-name}/#{$image-name}-desktop.png');
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat($grid-columns-mobile, 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat($grid-columns-tablet, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($grid-columns-desktop, 1fr);
+  }
+}
