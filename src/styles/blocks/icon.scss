@@ -5,57 +5,68 @@
   height: 24px;
   background-size: cover;
 
-  @include hover(transform, scale(1.2));
-
   @include on-tablet {
     height: 32px;
     width: 32px;
   }
 
-  &--phone {
-    background-image: url(../images/icons/icon-phone-2x.png);
-
-    &-container {
-      position: relative;
-      display: inline-block;
-    }
-  }
-
-  &--phone--dropdown {
-    position: absolute;
-    right: 40px;
-    bottom: 30px;
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    line-height: 1.5;
-    width: 200px;
-    display: none;
-  }
-
-  &--text {
-    margin: 0;
-    text-align: end;
-  }
-
-  &--text:not(:last-child) {
-    margin-bottom: 10px;
-  }
-
-  &:hover &--phone--dropdown {
-    display: block;
-  }
-
-  &--menu {
-    transition: 0.3s;
-    background-image: url(../images/icons/icon-menu-2x.png);
-
-    &:hover {
-      background-image: url(../images/icons/icon-menu-hover-2x.png);
-    }
-  }
-
   &--close {
+    @include hover(transform, scale(1.2));
+
     background-image: url(../images/icons/icon-close-2x.png);
+  }
+}
+
+.top-bar__icon {
+  .top-bar {
+    &__dropdown {
+      display: none;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      text-align: end;
+      position: relative;
+      text-decoration: none;
+    }
+  }
+  &-link {
+    width: 24px;
+    height: 24px;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    display: block;
+    background-size: cover;
+
+    &--phone {
+      @include hover(transform, scale(1.2));
+
+      background-image: url(../images/icons/icon-phone-2x.png);
+    }
+
+    &--menu {
+      @include hover(transform, scale(1.2));
+
+      background-image: url(../images/icons/icon-menu-2x.png);
+      &:hover {
+        background-image: url(../images/icons/icon-menu-hover-2x.png);
+      }
+    }
+  }
+  &:hover {
+    position: relative;
+    .top-bar__dropdown {
+      display: block;
+      position: absolute;
+      width: 200px;
+      right: 20px;
+      top: -45px;
+      margin-top: 16px;
+    }
   }
 }
