@@ -1,0 +1,72 @@
+:root {
+  --main-color: #1d1d1d;
+}
+
+.page {
+  font-family: Poppins, serif;
+  font-weight: 400;
+  color: $main-text-color;
+
+  &__body {
+    margin: 0;
+    background-color: var(--main-color);
+    min-width: 320px;
+    cursor: url('../images/Mice.png'), pointer;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    cursor: url('../images/Cursor-Mouse-Mice.png'), pointer;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+p {
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  cursor: inherit;
+  font-family: inherit;
+  user-select: none;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  border: none
+}
+
+img {
+  @include hover(transform, scale(1.05));
+}
+
+h3 {
+  margin: 0
+}
