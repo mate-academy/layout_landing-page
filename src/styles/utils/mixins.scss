@@ -1,68 +1,11 @@
-@mixin on-tablet {
-  @media (min-width: $tablet-min-width) {
+@mixin tablet {
+  @media (min-width: 744px) {
     @content;
   }
 }
 
-@mixin on-desktop {
-  @media (min-width: $desktop-min-width) {
+@mixin desktop {
+  @media (min-width: 1260px) {
     @content;
   }
-}
-
-@mixin grid-layout($columns) {
-  display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat($columns, 1fr);
-
-  @include on-tablet {
-    column-gap: 24px;
-    grid-template-columns: repeat(6, 1fr);
-  }
-
-  @include on-desktop {
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-
-@mixin content-padding() {
-  padding-inline: 20px;
-
-  @include on-tablet {
-    padding-inline: 72px;
-    max-width: 1020px;
-    margin-inline: auto;
-  }
-}
-
-@mixin underline($color) {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: $color;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    transform: scaleX(1);
-  }
-}
-
-@mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
-
-  &:hover {
-    #{$property}: $toValue;
-  }
-}
-
-.container {
-  @include content-padding;
 }

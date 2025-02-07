@@ -1,39 +1,60 @@
 .header {
-  background-image: url(/src/images/header-bg.png);
-  background-size: cover;
-  background-position: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  z-index: 1;
+}
 
-  &__content {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.body__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header__logo {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 32px;
+  color: $logo-color;
+  text-transform: uppercase;
+  text-align: center;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
   }
+}
 
-  &__title {
-    text-align: center;
-    letter-spacing: -1.5px;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 100%;
-    color: $header-text-color;
-    margin: 0;
+.header__nav {
+  align-self: center;
+}
 
-    @include on-tablet {
-      font-size: 64px;
-    }
-  }
+.nav {
+  display: flex;
+  gap: 24px;
+}
 
-  &__center {
-    align-self: center;
-    padding-bottom: 488px;
+.header__nav-phone--hover {
+  width: 200px;
 
-    @include on-tablet {
-      padding-bottom: 456px;
-    }
+  position: absolute;
+  top: -40px;
+  right: 100%;
+  padding-right: 20px;
 
-    @include on-desktop {
-      padding-bottom: 482px;
-    }
-  }
+  opacity: 0;
+  pointer-events: none;
+  text-align: right;
+  transition: 0.2s;
+}
+
+.header__nav-phone--hover:hover,
+.icon-container--phone:hover .header__nav-phone--hover {
+  width: 200px;
+  opacity: 1;
+  pointer-events: all;
 }
