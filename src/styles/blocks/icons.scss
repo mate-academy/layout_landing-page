@@ -1,0 +1,73 @@
+@use '../blocks/variables' as vars;
+@use '../blocks/mixins' as mix;
+
+.header__icons {
+  display: flex;
+  gap: 24px;
+}
+
+.header__number {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.number {
+  font-family: vars.$main_font;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  color: vars.$main_color;
+  margin-right: 12px;
+
+  position: absolute;
+  right: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+.header__number:hover .number {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 0.3s;
+
+  @include mix.on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.icon--phone {
+  background-image: url(../images/icons/Icon-Phone-call.png);
+}
+
+.icon--menu {
+  background-image: url(../images/icons/Icon-Burger-menu.png);
+}
+
+.icon--close {
+  background-image: url(../images/icons/icon-close-menu.png);
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.icon--menu:hover {
+  background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+}

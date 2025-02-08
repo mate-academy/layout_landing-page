@@ -1,0 +1,46 @@
+@use '../blocks/variables' as vars;
+@use '../blocks/mixins' as mix;
+
+.details {
+  display: grid;
+  row-gap: 40px;
+
+  @include mix.on-tablet {
+    row-gap: 48px;
+  }
+}
+
+.detail {
+  &__images {
+    column-gap: 20px;
+    margin-bottom: 16px;
+
+    @include mix.grid-columns;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--wide {
+      @include mix.on-tablet {
+        grid-column: span 4;
+      }
+
+      @include mix.on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include mix.on-tablet {
+        grid-column: span 2;
+      }
+
+      @include mix.on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+}
