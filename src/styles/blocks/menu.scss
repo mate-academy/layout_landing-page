@@ -1,0 +1,94 @@
+.page {
+  // color: $main-text-color-2;
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    // opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+// git #11
+.page:has(.page__menu:target) {
+  overflow: hidden; // not to scroll the page
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $main-color-menu;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  // transform js
+  // overflow: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s ease-out;
+
+  // transform js
+  &.active {
+    transform: scaleY(1);
+  }
+
+  // git #12
+  overflow: auto;
+
+  &__top {
+    margin-bottom: 24px;
+    box-sizing: border-box;
+
+    // git #12
+    position: sticky; // to keep cross always visible
+    top: 0;
+    z-index: 0;
+    background-color: $main-color-menu;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__phone-number {
+    display: block;
+    color: $main-text-color-2;
+    text-decoration: none;
+
+    margin-bottom: 16px;
+
+    // figma
+    font-family: $main-font-family;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  &__book-a-test-ride {
+    color: $main-text-color-2;
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $main-text-color-2;
+    letter-spacing: 2px;
+
+    // figma
+    width: 137px;
+    height: 24px;
+
+    font-family: $main-font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+}
