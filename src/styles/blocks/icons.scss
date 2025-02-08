@@ -1,7 +1,6 @@
 .icon {
   @include icon-size;
   @include hover(transform, scale(1.2));
-
   position: relative;
   display: block;
   background-size: cover;
@@ -10,14 +9,12 @@
     display: none;
     position: absolute;
     left: -209px;
-
     width: max-content;
   }
 
   &--p {
     padding: 0;
     margin: 0;
-
     text-align: end;
     font-size: 16px;
     font-weight: 700;
@@ -29,7 +26,6 @@
   &--a {
     padding: 0;
     margin: 0;
-
     text-align: end;
     font-size: 16px;
     font-weight: 700;
@@ -41,30 +37,42 @@
 
   &--phone {
     background-image: url(../icons/icon-phone.svg);
+    position: relative;
 
-    &::before{
-      content:
-      The Met Fifth Avenue
-      +1 212-535-7710
-      The Met Cloisters
-      +1 212-923-3700
-      ;
+    &::before {
+      content: "The Met Fifth Avenue"
+      "+1 212-535-7710"
+      "The Met Cloisters"
+      "+1 212-923-3700";
       display: none;
       font-size: 16px;
       width: auto;
       white-space: nowrap;
       position: absolute;
-      right: 34px;
+      right: 34px; // або скільки там по дизайну, поставиш сама
       background-color: inherit;
       color: white;
       margin-right: 20px;
       z-index: 10;
     }
 
-    &:hover::before{
+    &:hover::before {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    &:hover~.icon__info {
+      @include on-tablet {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        text-decoration: none;
+        display: flex;
+        font-size: 10px;
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   }
 
