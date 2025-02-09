@@ -15,19 +15,25 @@ menuClose.addEventListener('click', () => {
   html.classList.remove('no--scroll');
 });
 
+const menuLinks = document.querySelectorAll('.menu__link');
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('menu--active');
+    html.classList.remove('no--scroll');
+  });
+});
+
 const cards = document.querySelectorAll('.card');
 
 cards.forEach(card => {
   card.addEventListener('mouseover', () => {
-    // Удаляем классы у всех карточек перед добавлением новых
     cards.forEach(c => {
       c.classList.remove('active', 'inactive');
     });
 
-    // Добавляем класс "active" к текущей карточке
     card.classList.add('active');
 
-    // Добавляем "inactive" ко всем другим карточкам
     cards.forEach(c => {
       if (c !== card) {
         c.classList.add('inactive');
@@ -36,7 +42,6 @@ cards.forEach(card => {
   });
 
   card.addEventListener('mouseout', () => {
-    // Убираем все классы, когда курсор уходит
     cards.forEach(c => c.classList.remove('active', 'inactive'));
   });
 });
