@@ -1,0 +1,122 @@
+.top-bar {
+  padding-block: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    padding-block: 50px;
+  }
+
+  &--wrap {
+    padding-right: 24px;
+  }
+
+  &__line {
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.5;
+    max-width: max-content;
+    margin-left: auto;
+
+    &--under {
+      position: relative;
+
+      @include underline($header-text-color);
+    }
+
+    &--gap {
+      padding-top: 8px;
+    }
+  }
+
+  &__icons {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+    text-decoration: none;
+  }
+
+  &__logo {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: -1.5px;
+    color: $header-text-color;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 32px;
+      letter-spacing: -1.5px;
+      color: $header-text-color;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    position: relative;
+    text-decoration: none;
+  }
+
+  &__icon {
+    &-link {
+      width: 24px;
+      height: 24px;
+
+      @include on-tablet {
+        height: 32px;
+        width: 32px;
+      }
+
+      display: block;
+      background-size: cover;
+
+      &--phone {
+        @include hover(transform, scale(1.2));
+
+        background-image: url(../images/icons/icon-phone-2x.png);
+      }
+
+      &--menu {
+        @include hover(transform, scale(1.2));
+
+        background-image: url(../images/icons/icon-menu-2x.png);
+        &:hover {
+          background-image: url(../images/icons/icon-menu-hover-2x.png);
+        }
+      }
+    }
+    &:hover {
+      position: relative;
+      .top-bar__dropdown {
+        display: block;
+        position: absolute;
+        width: 200px;
+        right: 20px;
+        top: -45px;
+        margin-top: 16px;
+      }
+    }
+  }
+}
