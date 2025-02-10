@@ -1,24 +1,23 @@
 # Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+- [MET landing link](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+- [DEMO LINK](https://viktoriamyhailiak.github.io/layout_landing-page/)
+- [CHECKLIST](./checklist.md)
 
-Choose a design for your landing page:
+The Met landing page
+## Features & Technical Details
+In this project, I used the following technologies and techniques to enhance the user experience and improve code maintainability:
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+- **CSS Grid**: I utilized CSS Grid layout to create a flexible and responsive design. This allowed me to control the layout of the page more efficiently, ensuring that elements adapt to different screen sizes.
 
-Follow the instructions in this and next lessons to implement the page block by block:
+- **CSS Animations with `transform`**: I implemented animations using the `transform` property, which allowed me to create smooth, interactive transitions for elements on the page. I also practiced using a fixed `transition-duration` to control the timing of these animations for a more predictable user experience.
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- **Flexbox**: Flexbox was used to arrange elements in a more efficient way, especially for components that needed alignment and spacing within their parent containers.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+- **BEM Methodology**: The BEM (Block, Element, Modifier) methodology was employed to structure my CSS classes in a more modular and maintainable way. This helped ensure that the code is scalable and easy to read.
+
+- **SCSS Syntax**: I wrote the styles using SCSS, which offers enhanced features over regular CSS such as variables, nested selectors, and mixins. This made my stylesheets more readable, reusable, and easier to maintain.
+
+- **Icon Animations with `hover` Effects**: I applied CSS animations to the icons with `hover` effects for decoration, providing visual feedback to users when they interact with the icons. This added a playful and engaging touch to the interface.
+
+- **Smooth Navigation**: I incorporated smooth transitions for navigation between pages or sections of the website, enhancing the overall user experience by making the site feel more responsive and fluid.

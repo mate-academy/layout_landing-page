@@ -7,7 +7,7 @@
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  color: rgba(22, 22, 22, 1);
+  color: $dark-color;
   font-size: 16px;
   line-height: 27px;
   box-sizing: border-box;
@@ -18,13 +18,15 @@
     top: 0;
     left: 0;
     right: 0;
+
+    transition: all 0.3s;
     opacity: 0;
+    transform: translateX(-100%);
     pointer-events: none;
-    transition-property: opacity;
-    transition-duration: 300ms;
 
     &:target {
       opacity: 1;
+      transform: translateX(0);
       pointer-events: all;
     }
   }
@@ -33,19 +35,12 @@
     position: relative;
   }
 
-  &__main {
-    @include content-padding-inline;
-    @include section-padding;
-
-    margin-inline: auto;
-  }
-
   &:has(.page__menu:target) {
     overflow: hidden;
   }
 
-  &__content{
-     width: 100%;
-     background-color: #fff;
+  &__content {
+    width: 100%;
+    background-color: $content-background;
   }
 }
