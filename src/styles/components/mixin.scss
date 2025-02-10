@@ -1,0 +1,139 @@
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline-header() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin content-padding-inline-main() {
+  max-width: 280px;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    max-width: 600px;
+    margin-inline: auto;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container-header {
+  @include content-padding-inline-header;
+}
+
+.container-main {
+  @include content-padding-inline-main;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin clickable-element-hover {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin form-input-styles {
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  outline: none;
+  background-color: #f8f8fa;
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  &:hover {
+    &::placeholder {
+      color: #161616;
+    }
+  }
+
+  &:focus {
+    border-color: #161616;
+  }
+
+  &:not(:placeholder-shown) {
+    border-color: transparent;
+    color: #161616;
+  }
+}
+
+@mixin clickable-element-hover-dark {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #3e3e3e;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
