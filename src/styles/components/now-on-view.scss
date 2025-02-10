@@ -1,0 +1,147 @@
+.now-on-view {
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__button {
+    font-family: Cinzel, serif;
+    width: 100%;
+    height: 56px;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    margin: auto;
+    background-color: #d12d35;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      width: 66.6%;
+    }
+
+    @include on-desktop {
+      width: 33.3%;
+    }
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+
+    &:active {
+      background-color: #eb343d;
+    }
+  }
+}
+
+.item {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--square-special {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: $transition-time;
+
+    &:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+
+    &--change1 {
+      @media (max-width: 740px) {
+        content: url(/src/images/product/photo-1-change1.png);
+      }
+    }
+
+    &--change2 {
+      @media (max-width: 740px) {
+        content: url(/src/images/product/photo-7-change2.png);
+      }
+    }
+
+    &--delete {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+  }
+
+  &__content {
+    &--title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+      color: #d12d35;
+    }
+
+    &--overview {
+      font-weight: 400;
+      line-height: 27px;
+      font-size: 16px;
+      color: #161616;
+    }
+  }
+
+  &__section2-container {
+    grid-column: 1 / -1;
+
+    --columns: 3;
+
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    @include on-tablet {
+      --columns: 6;
+
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+    }
+  }
+}
