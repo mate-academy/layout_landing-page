@@ -1,0 +1,41 @@
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin page-margin {
+  margin-inline: 20px;
+
+  @include on-tablet {
+    margin-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 320px;
+
+  @include on-tablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: fit-content;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 1260px;
+  }
+}
