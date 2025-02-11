@@ -16,13 +16,15 @@
     background-image: url(./images/Phone-number.png);
     position: relative;
 
+    @include click;
+
     @include on-desktop {
-      &:hover::before {
+      &::before {
         content: '+1 234 5555-55-55';
         position: absolute;
-        transform: translateY(-50%);
         right: 100%;
         top: 50%;
+        transform: translateX(10px) translateY(-50%);
         font-weight: $accent-font-weight;
         font-size: 12px;
         line-height: 16px;
@@ -32,12 +34,21 @@
         white-space: nowrap;
         display: inline-block;
         padding-right: 8px;
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      }
+
+      &:hover::before {
+        transform: translateX(0) translateY(-50%);
+        opacity: 1;
       }
     }
   }
 
   &--menu {
     background-image: url(./images/Icon-Burger-menu.png);
+
+    @include click;
 
     &:hover {
       background-image: url(./images/Icon-Burger-menu-hover.png);
@@ -46,5 +57,8 @@
 
   &--close {
     background-image: url(./images/Icon-Close.png);
+    margin-right: 7px;
+
+    @include click;
   }
 }
