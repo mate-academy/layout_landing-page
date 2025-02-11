@@ -1,0 +1,59 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/styles/images/icon/Phone-number.svg);
+  }
+
+  &--menu {
+    background-image: url(/src/styles/images/icon/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/styles/images/icon/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/styles/images/icon/Icon-Close.svg);
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s;
+    }
+  }
+  .icon__text {
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+    white-space: nowrap;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: $main-text-color;
+
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity $effect-duration ease-in-out,
+      visibility $effect-duration ease-in-out;
+  }
+
+  &:hover .icon__text {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}
