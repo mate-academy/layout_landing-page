@@ -1,0 +1,56 @@
+.icon {
+  display: block;
+  background-size: contain;
+
+  &--small {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include hover(scale, 1.2);
+
+  &__hint {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    font-family: $secondaryFont;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $mainTextColor;
+    text-decoration: none;
+    text-wrap: nowrap;
+    left: -8px;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    transition: opacity 0.3s;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icons/icon-phone.png);
+
+    &:hover {
+      .icon__hint {
+        @include on-tablet {
+          opacity: 1;
+          pointer-events: initial;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    transition: background-image 0.8s;
+    background-image: url(../images/icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.png);
+  }
+}
