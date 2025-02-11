@@ -81,12 +81,29 @@ a {
 
 .button {
   cursor: pointer;
+  position: relative;
   height: 56px;
 
+  @include button;
   @include hover(transform, scale(1.2), 0.3s);
 
+  &--shadow {
+    transition:
+      transform 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+    }
+  }
+
   &__text {
-    @include button;
     @include text(16px, 27px, 700);
+
+    color: $bg-color !important;
   }
 }
