@@ -22,6 +22,7 @@
 
   &__textarea {
     display: block;
+    resize: none;
 
     @include input(148px, 16px);
   }
@@ -52,9 +53,29 @@
     line-height: 19.6px;
   }
 
-  &__info {
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
     font-weight: 500;
     font-size: 16px;
     line-height: 22.4px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $effectDuration;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
 }
