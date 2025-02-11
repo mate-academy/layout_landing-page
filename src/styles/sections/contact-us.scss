@@ -24,8 +24,8 @@
     height: 364px;
     box-sizing: border-box;
 
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
+
     align-items: center;
 
     @include on-mobile {
@@ -66,6 +66,17 @@
     border-color: transparent;
   }
 
+  &__input:-webkit-autofill {
+    background-color: transparent !important;
+    -webkit-text-fill-color: $input-text-color !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &__input:-webkit-autofill:focus {
+    background-color: transparent !important;
+    -webkit-text-fill-color: $input-text-color !important;
+  }
+
   &__button {
     border: none;
     border-color: transparent;
@@ -86,6 +97,12 @@
 
     & > a {
       margin-bottom: 24px;
+
+      @include hover(transform, scale(1.2), 0.3s);
+
+      &:hover {
+        text-shadow: 1px 1px 2px $bg-menu-color;
+      }
 
       &:last-of-type {
         margin-bottom: 0;
