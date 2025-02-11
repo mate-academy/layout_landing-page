@@ -1,10 +1,12 @@
 .form {
   &__element {
+    box-sizing: border-box;
     background-color: $form-background;
     width: 280px;
     height: 48px;
     border: none;
     margin-bottom: 16px;
+    padding: 14px 11px;
 
     &:focus,
     &:active {
@@ -12,8 +14,20 @@
       border: 1px solid $dark-color;
     }
 
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      font-family: Cinzel, serif;
+      -webkit-text-fill-color: $placeholder-color;
+      background-color: inherit !important;
+    }
+
     @include on-desktop {
       width: 411px;
+      padding-inline: 16px;
     }
 
     &::placeholder {
@@ -22,8 +36,6 @@
       line-height: 20px;
       font-family: Cinzel, serif;
       text-transform: capitalize;
-      padding-block: 14px;
-      padding-left: 10px;
       color: $placeholder-color;
 
       &:hover,
@@ -33,6 +45,7 @@
     }
 
     &--textarea {
+      resize: none;
       width: 280px;
       height: 144px;
       margin-bottom: 32px;
@@ -44,9 +57,11 @@
   }
 
   &__button {
+    cursor: pointer;
+
     @include button-styles;
 
-    width: 288px;
+    width: 280px;
 
     @include on-desktop {
       width: 411px;
