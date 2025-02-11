@@ -17,6 +17,24 @@
   }
 }
 
+@mixin page-grid {
+  --colums: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
+  }
+}
+
 @mixin spacing {
   padding-inline: 20px;
 
@@ -25,10 +43,29 @@
   }
 
   @include on-desktop {
-    max-width: 1260px;
+    max-width: $desktop-min-width;
     margin-inline: auto;
     padding-inline: 120px;
   }
+}
+
+@mixin input($height, $border-radius) {
+  color: $form-input-text-color;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  height: $height;
+  border: none;
+  border-radius: $border-radius;
+  background-color: $form-input-bg-color;
+
+  @include input-text;
+}
+
+@mixin input-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .container {

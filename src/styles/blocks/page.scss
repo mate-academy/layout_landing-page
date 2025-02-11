@@ -1,8 +1,38 @@
-html {
-  font-family: Poppins, sans-serif;
-  color: #fff;
+* {
+  cursor: url('../images/icons/cursor-default.png'), auto !important;
 }
 
-body {
-  margin: 0;
+.page {
+  position: relative;
+  font-family: Poppins, sans-serif;
+  color: #fff;
+  background-color: $main-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all $effectDuration;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
 }
