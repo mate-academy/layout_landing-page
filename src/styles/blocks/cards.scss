@@ -1,0 +1,53 @@
+@use '../utils/mixins.scss' as *;
+@use '../variables.scss' as *;
+
+.card {
+  grid-column: 1 / -1;
+  line-height: 140%;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-duration;
+  }
+  &_link {
+    display: block;
+    width: 100%;
+    margin-bottom: 32px;
+
+    &:hover .card__image {
+      transform: scale(1.15);
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+  &__description {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+    margin-bottom: 0;
+  }
+
+  @include on-desktop {
+    grid-column: span 4;
+  }
+}

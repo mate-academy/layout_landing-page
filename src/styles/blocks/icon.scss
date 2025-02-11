@@ -1,0 +1,84 @@
+@use '../utils/mixins.scss' as *;
+@use '../variables.scss' as *;
+
+$--small-icon-size: 24px;
+$--big-icon-size: 32px;
+
+.icon {
+  width: $--small-icon-size;
+  height: $--small-icon-size;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  &:not(:last-child) {
+    margin-right: $--small-icon-size;
+  }
+
+  @include on-tablet {
+    width: $--big-icon-size;
+    height: $--big-icon-size;
+    &:not(:last-child) {
+      margin-right: $--big-icon-size;
+    }
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icons/icon-phone.svg);
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        white-space: nowrap;
+        color: #fff;
+        opacity: 0;
+        transform: translate(-100%, -50%);
+        pointer-events: none;
+        transition: opacity $transition-duration;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+  &--burger {
+    position: relative;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+      transform-origin: 20% 50%;
+      transition: transform $transition-duration;
+    }
+
+    &::before {
+      background-image: url(../images/icons/icon-burger.svg);
+    }
+    &::after {
+      background-image: url(../images/icons/icon-burger-part.svg);
+    }
+
+    &:hover::before {
+      transform: scaleX(0.5);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
