@@ -1,18 +1,6 @@
 @use '../variables.scss' as *;
 @use '../utils/mixins.scss' as *;
 
-p {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  border: none;
-}
-
 .page {
   scroll-behavior: smooth;
   font-family: Poppins, sans-serif;
@@ -26,6 +14,41 @@ button {
 
   &__section {
     margin-inline: 0;
+
+    &--compare {
+      margin-bottom: 92px;
+
+      @include on-tablet {
+        margin-bottom: 120px;
+      }
+
+      @include on-desktop {
+        margin-bottom: 144px;
+      }
+    }
+
+    &--details {
+      margin-bottom: 80px;
+
+      @include on-tablet {
+        margin-bottom: 120px;
+      }
+
+      @include on-desktop {
+        margin-bottom: 180px;
+      }
+    }
+    &--about-us {
+      margin-bottom: 92px;
+
+      @include on-tablet {
+        margin-bottom: 132px;
+      }
+
+      @include on-desktop {
+        margin-bottom: 164px;
+      }
+    }
   }
 
   &__section-title {
@@ -49,93 +72,91 @@ button {
     text-align: start;
     margin-bottom: 32px;
   }
-}
 
-.page__body {
-  margin: 0;
-}
-
-.page__header {
-  z-index: 0;
-  background-image: url(../images/cover_photo_mobile.jpg);
-  background-position: 95% center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: $page-background-color;
-
-  @include on-tablet {
-    background-image: url(../images/cover_photo_tablet.jpg);
-    background-position: 100% 20%;
+  &__body {
+    margin: 0;
   }
 
-  @include on-desktop {
-    background-image: url(../images/cover_photo.jpg);
+  &__header {
+    z-index: 0;
+    background-image: url(../images/cover_photo_mobile.jpg);
+    background-position: 95% center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: $page-background-color;
+
+    @include on-tablet {
+      background-image: url(../images/cover_photo_tablet.jpg);
+      background-position: 100% 20%;
+    }
+
+    @include on-desktop {
+      background-image: url(../images/cover_photo.jpg);
+    }
   }
-}
 
-.page__menu {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
-  pointer-events: none;
-  transition:
-    opacity linear $transition-duration,
-    background-color linear $transition-duration;
-}
-
-.page__menu:target {
-  pointer-events: all;
-  opacity: 1;
-  background-color: $menu-background-color;
-  transition: opacity linear $transition-duration;
-  & .top-bar {
+  &__menu {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    pointer-events: none;
+    transition:
+      opacity linear $transition-duration,
+      background-color linear $transition-duration;
+  }
+  &__menu:target {
+    pointer-events: all;
+    opacity: 1;
     background-color: $menu-background-color;
-  }
-}
-
-.page:has(.page__menu:target) {
-  overflow: hidden;
-  margin-right: 0;
-}
-
-.page__content {
-  padding-block: 60px 120px;
-  z-index: 0;
-  background-color: $page-background-color;
-
-  @include on-tablet {
-    padding-bottom: 100px;
-    padding-top: 120px;
+    transition: opacity linear $transition-duration;
+    & .top-bar {
+      background-color: $menu-background-color;
+    }
   }
 
-  @include on-desktop {
-    padding-bottom: 164px;
-  }
-}
-
-.page__footer {
-  height: 200px;
-  background-image: url(../images/footer.png);
-  background-position: top;
-  background-size: cover;
-
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  background-color: $page-background-color;
-
-  z-index: -1;
-
-  @include on-tablet {
-    background-image: url(../images/footer-desktop.png);
-    height: 480px;
+  &:has(.page__menu:target) {
+    overflow: hidden;
+    margin-right: 0;
   }
 
-  @include on-desktop {
-    height: 555px;
+  &__content {
+    padding-block: 60px 120px;
+    z-index: 0;
+    background-color: $page-background-color;
+
+    @include on-tablet {
+      padding-bottom: 100px;
+      padding-top: 120px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 164px;
+    }
+  }
+  &__footer {
+    height: 200px;
+    background-image: url(../images/footer.png);
+    background-position: top;
+    background-size: cover;
+
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: $page-background-color;
+
+    z-index: -1;
+
+    @include on-tablet {
+      background-image: url(../images/footer-desktop.png);
+      height: 480px;
+    }
+
+    @include on-desktop {
+      height: 555px;
+    }
   }
 }
