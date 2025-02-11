@@ -28,36 +28,6 @@ document.getElementById('contactForm').addEventListener('submit', function(event
   this.reset();
 });
 
-// //menu functionality
-// document.addEventListener('DOMContentLoaded', () => {
-//   const menu = document.getElementById('menuOpen');
-//   const menuSection = document.getElementById('menuSection');
-//   const menuExit = document.getElementById('menuExit');
-//   const body = document.body;
-//   const menuLinks = document.querySelectorAll('.menu__link-text');
-
-//   // Відкрити меню
-//   menu.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     menuSection.style.display = 'block';
-//     body.style.overflow = 'hidden'; // Заборонити прокрутку сторінки
-//   });
-
-//   // Закрити меню
-//   menuExit.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     menuSection.style.display = 'none';
-//     body.style.overflow = ''; // Дозволити прокрутку сторінки
-//   });
-
-//   // Закрити меню при виборі посилання
-//   menuLinks.forEach(link => {
-//     link.addEventListener('click', () => {
-//       menuSection.style.display = 'none';
-//       body.style.overflow = ''; // Дозволити прокрутку сторінки
-//     });
-//   });
-// });
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('menuOpen');
   const menuSection = document.getElementById('menuSection');
@@ -73,26 +43,23 @@ document.addEventListener('DOMContentLoaded', () => {
     menuSection.style.zIndex = '100';
 
     setTimeout(() => {
-      menuSection.classList.add('menu-active'); // Додаємо клас для відкриття
+      menuSection.classList.add('menu-active');
     }, 10);
 
-    // menuSection.classList.remove('menu-closing'); // Видаляємо клас закриття
-    // menuSection.style.visibility = 'visible'; // Включаємо видимість перед анімацією
-    body.style.overflow = 'hidden'; // Блокуємо прокручування
+    body.style.overflow = 'hidden';
   });
 
   // Закрити меню
   function closeMenu() {
-    menuSection.classList.remove('menu-active'); // Видаляємо клас для відкриття
+    menuSection.classList.remove('menu-active');
 
     setTimeout(() => {
-      menuSection.style.visibility = 'hidden'; // Змінюємо visibility після завершення анімації
+      menuSection.style.visibility = 'hidden';
       menuSection.style.zIndex = '-1';
-      menuSection.classList.remove('menu-closing'); // Очищаємо клас для повторного використання
-    }, 300); // Час затримки анімації
+      menuSection.classList.remove('menu-closing');
+    }, 300);
 
-    // menuSection.classList.add('menu-closing'); // Додаємо клас для закриття
-    body.style.overflow = ''; // Відновлюємо прокручування
+    body.style.overflow = '';
   }
 
   // Закрити меню при натисканні на кнопку закриття
