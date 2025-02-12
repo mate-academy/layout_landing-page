@@ -1,0 +1,87 @@
+@import './variables';
+@import '../utils/mixin';
+
+.top-bar {
+  @include consept-paddinginline;
+
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .dropdown {
+    position: relative;
+
+    &__content {
+      position: absolute;
+      display: none;
+      box-sizing: border-box;
+      top: 50%;
+      right: 100%;
+      width: 201px;
+      transform: translate(5px, -50%);
+    }
+
+    &__content p,
+    &__content a {
+      display: block;
+      text-decoration: none;
+      color: $header-font-color;
+      font-weight: $first-font-weight;
+    }
+
+    &__content a:hover {
+      color: #3e3e3e;
+    }
+  }
+
+  .dropdown:hover .dropdown__content {
+    display: block;
+  }
+
+  @include on-tablet {
+    padding: 50px 72px 0;
+
+    .top-bar__logo-img {
+      width: 87px;
+      height: 65px;
+    }
+
+    .icon {
+      width: $icons-height-width-des;
+      height: $icons-height-width-des;
+    }
+
+    .icon--close {
+      width: $icons-height-width;
+      height: $icons-height-width;
+    }
+  }
+
+  @include on-desctop {
+    padding: 50px 120px 0;
+
+    .icon--close {
+      width: $icons-height-width-des;
+      height: $icons-height-width-des;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+
+    &-img {
+      width: 64px;
+      height: 46px;
+      display: block;
+      box-sizing: border-box;
+
+      @include hover(transform, scale(1.2));
+    }
+  }
+}

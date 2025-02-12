@@ -1,0 +1,98 @@
+@import './variables';
+@import '../utils/mixin';
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $header-bg-color;
+  font-weight: $first-font-weight;
+  text-transform: uppercase;
+  overflow: auto;
+
+  & .top-bar {
+    @include on-tablet {
+      padding: 32px 72px 0;
+    }
+
+    @include on-desctop {
+      padding-left: 121px;
+      padding-right: 120px;
+    }
+  }
+
+  & .top-bar__logo img {
+    @include hover(transform, scale(1.2));
+
+    @include on-desctop {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__top {
+    margin-bottom: 40px;
+
+    @include on-desctop {
+      margin-bottom: 55px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 32px;
+
+    @include on-desctop {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__content {
+    padding: $page-paddinr-mb;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-bottom: 10px;
+
+    @include on-tablet {
+      padding: $page-paddinr-tablet;
+    }
+
+    @include on-desctop {
+      padding: $page-paddinr-desctop;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__contact-phone {
+    display: block;
+    font-size: 1rem;
+    line-height: 27px;
+    text-decoration: none;
+    color: $header-font-color;
+    width: 122px;
+  }
+
+  &__contact-phone:hover {
+    color: #3e3e3e;
+  }
+
+  &__contact-call {
+    display: block;
+    width: fit-content;
+
+    padding-top: 16px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $header-font-color;
+    font-size: 0.75rem;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
