@@ -2,31 +2,51 @@
   display: block;
   height: 24px;
   width: 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  @include hover(transform, scale(1.2));
+  background-size: cover;
+  position: relative;
 
   @include on-tablet {
     height: 32px;
     width: 32px;
   }
 
+  &--logo {
+    width: 152px;
+    height: 16px;
+
+    @include on-tablet {
+      height: 24px;
+      width: 228px;
+    }
+  }
+
   &--phone {
     background-image: url(../images/Icon-Phone-call.svg);
-    position: relative;
 
-    @include on-desktop {
-      &:hover::before {
-        content: '+1 234 5555-55-55';
-        font-size: 14px;
-        color: $main-text-color;
-        position: absolute;
-        display: block;
-        top: 50%;
-        width: 130px;
-        transform: translate(-100%, -50%);
-      }
+    .icon__text {
+      position: absolute;
+      right: calc(100% + 8px);
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: right;
+      white-space: nowrap;
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: $main-text-color;
+
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        opacity $effect-duration ease-in-out,
+        visibility $effect-duration ease-in-out;
+    }
+
+    &:hover .icon__text {
+      display: block;
+      visibility: visible;
+      opacity: 1;
     }
   }
 

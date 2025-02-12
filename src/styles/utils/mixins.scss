@@ -10,6 +10,25 @@
   }
 }
 
+@mixin content-padding-inline() {
+  padding-inline: $padding-inline;
+
+  @include on-tablet {
+    padding-inline: $tablet-padding-inline;
+  }
+
+  @include on-desktop {
+    padding-inline: $desktop-padding-inline;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  max-width: 1260px;
+
+  @include content-padding-inline;
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} $effect-duration;
 
@@ -19,20 +38,25 @@
 }
 
 @mixin content-padding-inline() {
-  padding-inline: 20px;
+  padding-inline: $padding-inline;
 
   @include on-tablet {
-    padding-inline: 72px;
+    padding-inline: $tablet-padding-inline;
   }
 
   @include on-desktop {
-    padding-inline: 120px;
+    padding-inline: $desktop-padding-inline;
     margin-inline: auto;
   }
 }
 
+.container {
+  max-width: 1260px;
+  
+  @include content-padding-inline;
+}
+
 @mixin page-grid {
-  max-width: 1200px;
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat(2, 1fr);
