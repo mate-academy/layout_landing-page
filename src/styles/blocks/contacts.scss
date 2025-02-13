@@ -1,0 +1,102 @@
+.contacts__wrapper {
+  @include page-grid;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  gap: 16px;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 5;
+  }
+
+  &__input {
+    outline: none;
+
+    @include input(48px, 40px);
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px #f8f8fa inset;
+      box-shadow: 0 0 0 1000px #f8f8fa inset;
+      border: 1px solid #f8f8fa;
+    }
+  }
+
+  &__textarea {
+    display: block;
+    resize: none;
+    outline: none;
+
+    @include input(148px, 16px);
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px #f8f8fa inset;
+      box-shadow: 0 0 0 1000px #f8f8fa inset;
+      border: 1px solid #f8f8fa;
+    }
+  }
+
+  &__button {
+    margin-block: 16px;
+    width: 100%;
+  }
+
+  &__input::placeholder,
+  &__textarea::placeholder {
+    color: $form-placeholder-color;
+
+    @include input-text;
+  }
+}
+
+.contact-card {
+  grid-column: span 2;
+
+  @include on-desktop {
+    grid-column: 8 / 11;
+  }
+
+  &__label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22.4px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $effectDuration;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}
