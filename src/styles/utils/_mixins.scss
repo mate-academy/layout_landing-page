@@ -1,0 +1,80 @@
+@mixin on-mobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tab-min-width) and (max-width: 1259.98px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desk-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin logo {
+  width: $logo-width;
+  height: $logo-height;
+
+  @include on-mobile {
+    width: $logo-mob-width;
+    height: $logo-mob-height;
+  }
+}
+
+@mixin text($font-size, $line-height, $font-weight) {
+  font-family: Popins, sans-serif;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  color: #fff;
+}
+
+@mixin hover($property, $toValue, $effectDurration) {
+  transition: #{$property} $effectDurration ease-in-out;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  height: 56px;
+  border-radius: 40px;
+
+  color: $bg-color !important;
+  background-color: $text-color;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin details-grid($colNum, $colWidth) {
+  display: grid;
+  grid-template-columns: repeat($colNum, $colWidth);
+  column-gap: 24px;
+}

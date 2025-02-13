@@ -1,0 +1,66 @@
+.header {
+  background-color: transparent;
+  z-index: 2;
+
+  position: absolute;
+  height: 128px;
+  width: 100%;
+
+  @include on-mobile {
+    height: 86px;
+  }
+
+  &__logo {
+    @include logo;
+    @include hover(transform, scale(1.2), 0.3s);
+
+    & > img {
+      @include logo;
+    }
+  }
+
+  &__buttons {
+    padding-bottom: 6px;
+  }
+
+  &__phone {
+    margin-right: 26px;
+
+    position: relative;
+    display: inline-block;
+    background: transparent;
+
+    &--tooltip {
+      position: absolute;
+      left: -150%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      color: white;
+      padding-right: 20px;
+      border-radius: 5px;
+      white-space: nowrap;
+      opacity: 0;
+      transition:
+        left $animation-duration,
+        opacity $animation-duration;
+
+      @include text(12px, 16px, 700);
+    }
+
+    &:hover .header__phone--tooltip {
+      left: -450%;
+      opacity: 1;
+    }
+
+    & > img {
+      @include hover(transform, scale(1.5), 0.3s);
+    }
+  }
+
+  &__menu {
+    & > img {
+      @include hover(transform, scale(1.5), 0.3s);
+    }
+  }
+}
