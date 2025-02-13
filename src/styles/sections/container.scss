@@ -80,12 +80,6 @@
     padding: $margin-mob;
     max-width: $width-mob;
 
-    @include on-mobile {
-      // @include flex-col;
-
-      // justify-content: center;
-    }
-
     @include on-tablet {
       max-width: 600px;
       padding: $margin-tab;
@@ -110,31 +104,80 @@
   &__contact-us {
     padding: $margin-mob;
 
+    @include flex-col;
+
+    align-items: center;
+
     @include on-tablet {
       padding: $margin-tab;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      column-gap: 24px;
     }
 
     @include on-desktop {
       padding: $margin-desk;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      column-gap: 198px;
     }
 
     &--form {
       @include flex-col;
 
-      justify-content: center;
+      align-items: center;
+
+      @include on-mobile {
+        margin-bottom: 48px;
+      }
 
       @include on-tablet {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        column-gap: 24px;
       }
 
       @include on-desktop {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        column-gap: 198px;
+      }
+    }
+
+    &--contacts-container {
+      display: flex;
+      flex-direction: column;
+
+      left: 0;
+
+      @include on-mobile {
+        position: relative;
+
+        width: $width-mob;
+      }
+
+      & > a {
+        margin-bottom: 24px;
+
+        @include hover(transform, scale(1.2), 0.3s);
+
+        &:hover {
+          text-shadow: 1px 1px 2px $bg-menu-color;
+        }
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      & a > p {
+        color: $text-color;
       }
     }
   }

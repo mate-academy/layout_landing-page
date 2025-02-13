@@ -81,32 +81,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const mainElement = document.querySelector("main");
-
-  function updateBackgroundSize() {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth <= 578) {
-      // Логіка для екрану до 578 пікселів включно
-      mainElement.style.backgroundSize = "578px 480px";
-
-    } else if (screenWidth > 578 && screenWidth < 744) {
-      // Логіка для екрану між 578 і 744 пікселів
-      mainElement.style.backgroundSize = `${screenWidth}px 480px`;
-    } else if (screenWidth >= 744 && screenWidth < 1024) {
-      // Логіка для екрану між 744 і 1024 пікселів
-      mainElement.style.backgroundSize = `${screenWidth}px 628px`;
-    } else {
-      // Логіка для екрану від 1024 пікселів
-      mainElement.style.backgroundSize = `${screenWidth}px 711px`;
-    }
-  }
-
-  // Викликаємо функцію при завантаженні сторінки
-  updateBackgroundSize();
-
-  // Додаємо слухач на зміну розміру вікна
-  window.addEventListener("resize", updateBackgroundSize);
-});
