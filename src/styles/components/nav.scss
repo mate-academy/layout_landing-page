@@ -1,0 +1,203 @@
+@use './helpers/effects';
+
+.header {
+  height: 100vh;
+  .nav::before {
+    content: '';
+    position: absolute;
+    background-image: url('../images/background.png');
+    background-position: 45%;
+    background-size: cover;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+  }
+  .nav {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .header__logo {
+      width: 100%;
+      height: 100%;
+    }
+    .header__link {
+      width: 228px;
+      cursor: pointer;
+      height: 24px;
+      margin: 36px 0 0;
+      margin-left: effects.margin-view-port(120);
+    }
+    .nav__menu-wrapper {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin: 32px 0 0 10px;
+      margin-right: effects.margin-view-port(120);
+      height: fit-content;
+      .nav__menu-close {
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+        justify-content: center;
+        text-decoration: none;
+        display: none;
+        color: black;
+        margin-left: 32px;
+        &:hover {
+          transform: scale(1.2)
+        }
+      }
+      /* stylelint-disable */
+      .nav__menu-open {
+        width: 32px;
+        height: 32px;
+        margin-left: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+        }
+        .menu__line-1, .menu__line-2, .menu__line-3 {
+          transform-origin: left center;
+          border-bottom: 4px solid black;
+          border-radius: 5px;
+          width: 24px;
+          margin-bottom: 2px;
+        }
+        .menu__line-3 {
+          margin: 0;
+        }
+        &:hover {
+          .menu__line-1 {
+            transform: scaleX(0.5);
+          }
+          .menu__line-3 {
+            transform: scaleX(0.75);
+          }
+        }
+      }
+      /* stylelint-enable */
+      .nav__phone-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        height: 32px;
+        align-items: center;
+        .nav__phone-logo {
+          background-image: url('../images/phone.png');
+          background-size: 32px;
+          background-position: center;
+          background-repeat: no-repeat;
+          height: 32px;
+          width: 32px;
+          &:hover + .nav__phone-number::after {
+            content: "+1 234 555-55-55";
+            margin-right: 12px;
+            color: #1B2129;
+          }
+        }
+        .nav__phone-number {
+          height: 20px;
+          text-decoration: none;
+          font-size: 12px;
+          font-family: Inter, sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: end;
+        }
+        }
+    }
+  }
+  .header__menu {
+    margin: 0 0 0 effects.margin-view-port(120);
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 152px;
+    .header__nav-list {
+      padding: 0;
+      margin: 0 0 32px;
+      .header__link {
+        height: 22px;
+        margin-bottom: 32px;
+        list-style: none;
+        &:last-child {
+          margin: 0;
+        }
+        .header__a {
+          text-decoration: none;
+          font-size: 22px;
+          color: #1B2129;
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .header__contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      .header__contact-text {
+        margin: 0 0 16px;
+      }
+      .header__contact-link {
+        list-style: none;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-transform: uppercase;
+        color: #1B2129;
+      }
+    }
+  }
+  .header__text {
+    margin: 0 0 64px effects.margin-view-port(120);
+    position: absolute;
+    bottom: 0;
+    color: white;
+    font-size: 56px;
+    visibility: visible;
+  }
+}
+
+// Functionality when menu button (burger) is clicked on
+
+/* stylelint-disable */
+
+#menu:target ~ .header__text {
+  visibility: hidden;
+}
+
+#menu:target.nav::before {
+  opacity: 0;
+}
+
+#menu:target .nav__phone-wrapper {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#menu:target .nav__menu-close {
+  display: flex;
+}
+
+#menu:target .nav__menu-open {
+  display: none;
+}
+
+#menu:target ~ .header__menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+body:has(#menu:target) {
+  overflow: hidden;
+}
+
+/* stylelint-enable */
