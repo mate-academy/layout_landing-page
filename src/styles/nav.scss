@@ -9,10 +9,29 @@
   }
 
   &__link {
-  color: rgba(29, 29, 29, 1);
+  position: relative;
+  color: $main-text-color;
   text-decoration: none;
   font-size: 22px;
   line-height: 22px;
   letter-spacing: 2px;
+
+    &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    height: 1px;
+    display: block;
+    width: 100%;
+    background-color: $main-text-color;
+
+    transition: transform $transition-time;
+    transform: scale(0);
+    transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 }
