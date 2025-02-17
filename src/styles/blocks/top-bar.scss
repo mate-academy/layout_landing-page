@@ -1,0 +1,72 @@
+.top-bar {
+  padding: 25px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+
+  @media (min-width: 744px) {
+    padding: 50px 70px 0;
+  }
+
+  @media (min-width: 1260px) {
+    padding: 50px 120px 0;
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 30px;
+  }
+
+  &__logo {
+    display: flex;
+    height: 46px;
+    width: 64px;
+
+    @include hover(transform, scale(1.2));
+
+    @media (min-width: 744px) {
+      height: 65px;
+      width: 87px;
+    }
+  }
+}
+
+.top-bar__phone-menu {
+  position: absolute;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  right: 135px;
+  top: -35px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &-item {
+    p {
+      margin: 0;
+      color: white;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+
+.icon--phone:hover + .top-bar__phone-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
