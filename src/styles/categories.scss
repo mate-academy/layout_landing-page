@@ -1,0 +1,100 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    @include page-grid;
+
+    margin-top: 40px;
+
+    @include on-tablet {
+      margin-top: 56px;
+    }
+
+    &--inside {
+      margin: 0 auto;
+      display: block;
+      height: 56px;
+      width: 100%;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-align: center;
+      color: #fff;
+      transition: all $efectDuration;
+      grid-column: 1 / -1;
+
+      @include button;
+
+      @include on-tablet {
+        grid-column: 1 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+
+      &:hover {
+        border: 1px solid $main-text-color;
+        background-color: $main-text-color;
+        cursor: pointer;
+      }
+
+      &:active {
+        border: 1px solid $main-text-color;
+        background-color: $main-active-color;
+        cursor: default;
+      }
+    }
+  }
+
+  .category {
+    &__photos {
+      @include page-grid;
+    }
+
+    &__link {
+      &--left {
+        @include on-tablet {
+          grid-column: span 3;
+        }
+
+        @include on-desktop {
+          grid-column: span 6;
+        }
+      }
+
+      &--right {
+        @include on-tablet {
+          grid-column: span 3;
+        }
+
+        @include on-desktop {
+          grid-column: span 6;
+        }
+      }
+    }
+
+    &__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition: transform $efectDuration;
+
+      @include hover(transform, scale(1.05));
+    }
+
+    &__title {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 32px;
+    }
+  }
+}
