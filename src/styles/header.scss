@@ -1,0 +1,354 @@
+@import './variables';
+
+.header {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background-image: url('../pictures/MET_header_icon.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &__greating {
+    position: absolute;
+    width: 498px;
+    height: 160px;
+    color: $text-header-color;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: -2px;
+    text-align: center;
+    top: 250px;
+  }
+}
+
+.page:has(.container__burger:checked) {
+  overflow: hidden;
+}
+
+.menu {
+  right: 100%;
+  left: -370px;
+  top: 0;
+  height: 100%;
+  background-color: $text-red-color;
+  position: fixed;
+
+  z-index: 5;
+  transition: 400ms;
+
+  &__nav {
+    margin-top: 152px;
+    margin-left: 121px;
+    display: flex;
+    flex-direction: column;
+    width: 231px;
+    height: 238px;
+    gap: 32px;
+
+    &--link {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 2px;
+      text-align: left;
+      text-decoration: none;
+      color: $text-header-color;
+      transition: 300ms;
+    }
+
+    &--link:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__wrap {
+    position: relative;
+  }
+
+  &__wrap a {
+    color: $text-header-color;
+  }
+
+  &__wrap p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    color: $text-header-color;
+    margin: 0;
+  }
+
+  &__wrap p:first-child {
+    margin-top: 20px;
+  }
+
+  &__wrap p:nth-child(2) {
+    margin-bottom: 10px;
+  }
+
+  &__wrap p:nth-child(4) {
+    margin-bottom: 10px;
+  }
+
+  &__wrap--call {
+    color: $text-header-color;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+    position: relative;
+    width: 150px;
+  }
+
+  &__wrap--call::before {
+    content: '';
+    display: block;
+    width: 95%;
+    height: 2px;
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 10;
+    left: 2;
+    bottom: -3;
+    background-color: $text-header-color;
+  }
+}
+
+.menu:focus {
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  height: 65px;
+  width: 100%;
+  margin: 50px 0;
+
+  &__contacts {
+    position: absolute;
+    top: -50;
+    right: 70px;
+    width: 201px;
+    height: 116px;
+    color: $text-header-color;
+    font-family: Cinzel, serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    list-style: none;
+    text-align: right;
+    opacity: 0;
+    transition: 300ms;
+
+    &--phone {
+      a {
+        color: $text-header-color;
+      }
+    }
+  }
+
+  &__contacts-logo {
+    position: absolute;
+    right: 207px;
+    background-image: url('../pictures/Icon-Phone-call.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  &__contacts-logo:hover > .container__contacts {
+    opacity: 1;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 121px;
+    font-family: Cinzel, serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-decoration: none;
+    text-align: center;
+    color: $text-header-color;
+    width: 87px;
+    height: 65px;
+    margin-right: auto;
+    z-index: 10;
+  }
+
+  &__icon:hover {
+    transform: scale(1.05);
+    transition: 300ms;
+  }
+
+  &__burger {
+    right: 120px;
+    position: absolute;
+    background-image: url('../pictures/Icon-Burger-menu.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    transition: 200ms;
+    margin: 0;
+    z-index: 10;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__burger-picture {
+    display: block;
+    background-image: url('../pictures/Icon-Burger-menu.png');
+    position: absolute;
+    right: 120px;
+    top: 66px;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 200ms;
+    z-index: 9;
+  }
+}
+
+.container__burger:checked ~ .menu {
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  position: fixed;
+}
+
+.container__burger:checked ~ .container__burger-picture {
+  background-image: url(../pictures/Icon-Burger-menu-hover.png);
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    &__greating {
+      font-size: 60px;
+      margin-top: 0;
+    }
+  }
+
+  .container {
+    &__icon {
+      top: 40px;
+      left: 40px;
+      font-size: 30px;
+    }
+
+    &__burger {
+      right: 60px;
+      top: 55px;
+      width: 32px;
+      height: 30px;
+    }
+
+    &__burger-picture {
+      right: 60px;
+      top: 55px;
+      width: 32px;
+      height: 30px;
+    }
+
+    &__contacts-logo {
+      right: 130px;
+      top: 55px;
+      width: 30px;
+      height: 30px;
+    }
+
+    &__contacts {
+      font-size: 12px;
+      line-height: 13px;
+      top: -20px;
+      height: 50px;
+    }
+  }
+
+  .menu__nav {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .header__greating {
+    font-size: 40px;
+    width: 300px;
+    line-height: 35px;
+    top: 180px;
+  }
+  .container {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header__greating {
+  top: 120px;
+  height: 80px;
+  width: 180px;
+  font-size: 30px;
+  }
+
+  .container {
+    margin: 0;
+
+    &__contacts {
+      font-size: 9px;
+      right: 40px;
+      line-height: 15px;
+    }
+
+    &__contacts-logo {
+      top: 15px;
+      width: 18px;
+      height: 18px;
+      right: 50px;
+    }
+
+
+    &__icon {
+      font-size: 15px;
+      width: 35px;
+      height: 40px;
+      line-height: 15px;
+      top: 15px;
+      left: 15px;
+      z-index: 5;
+    }
+
+
+
+    &__burger {
+      right: 15px;
+      top: 15px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &__burger-picture {
+      right: 15px;
+      top: 15px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
