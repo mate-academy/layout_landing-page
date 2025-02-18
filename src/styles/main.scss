@@ -1,3 +1,111 @@
-body {
+@import './icons';
+@import './header';
+@import './navigation';
+@import './footer';
+@import './variables';
+@import './mixines';
+@import './compare';
+@import './contacts';
+@import './details';
+@import './about';
+@import './form';
+@import './menu';
+@import './logo';
+
+.page {
+  font-family: Poppins, sans-serif;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+}
+
+.page__body {
   margin: 0;
+  padding: 0;
+}
+
+.page__menu {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  &:target {
+    transition: 0.3s;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.container {
+  @include contentpaddinginline;
+}
+
+.main {
+  background-color: $main-bg-color;
+  box-sizing: border-box;
+  padding: 60px 0 120px;
+
+  @include ontablet {
+    padding: 120px 0 102px;
+  }
+
+  @include ondesktop {
+    padding: 120px 0 164px;
+  }
+}
+
+.section__title {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  text-align: center;
+  line-height: 32px;
+  font-size: 32px;
+  z-index: 1;
+  grid-column: 1 / -1;
+
+  @include ontablet {
+    line-height: 48px;
+    font-size: 48px;
+  }
+
+  @include ondesktop {
+    line-height: 64px;
+    font-size: 64px;
+  }
+}
+
+.button {
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+  padding: 0 48px;
+  gap: 0;
+  border-radius: 40px;
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  height: 56px;
+  color: $menu-text-color;
+  background-color: #fff;
+  border: none;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
 }
