@@ -1,75 +1,90 @@
 .categories {
-  &__wrapper {
-    margin-bottom: 40px;
+  &__catalog {
+    --columns: 1;
+
     display: grid;
-    row-gap: 40px;
-
-    @include on-tablet {
-      row-gap: 56px;
-      margin-bottom: 56px;
-    }
-  }
-
-  &__view-all-link {
-    display: flex;
-    height: 56px;
-    background-color: $orange-accent-color;
-    border-radius: 8px;
-    justify-content: center;
-    align-items: center;
-
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 27px;
-    transition: background-color 0.3s;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 40px;
 
     @include on-desktop {
-      display: inline-block;
-      padding-inline: 133px;
-      line-height: 56px;
-    }
-
-    &:hover {
-      background-color: $main-text-color;
-    }
-
-    &:active {
-      background-color: #010810;
+      --columns: 12;
     }
   }
-}
 
-.category {
-  &__images {
-    @include page-grid;
+  &__category {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
 
-    margin-bottom: 16px;
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+
+    @include on-tablet {
+      column-gap: 24px;
+    }
+
+    @include hover(transform, scale(1.2));
   }
 
-  &__photo {
+  &__link {
+    display: flex;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+
+    @include on-tablet {
+      position: static;
+      padding-bottom: 0;
+      height: 100%;
+    }
+  }
+
+  &__img {
     width: 100%;
     border-radius: 4px;
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
 
     @include on-tablet {
-      grid-column: span 3;
+      border-radius: 0;
+      position: static;
     }
+  }
 
-    @include on-desktop {
-      grid-column: span 6;
-    }
+  &__img--first {
+    grid-column: 1 / 2;
+  }
+
+  &__img--second {
+    grid-column: 2 / -1;
   }
 
   &__title {
     margin: 0;
+
     font-size: 18px;
     font-weight: 700;
-    line-height: 25.2px;
+    line-height: 22.5px;
+
+    grid-column: 1 / -1;
 
     @include on-tablet {
       font-size: 24px;
       line-height: 33.6px;
     }
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__button {
+    @include button;
   }
 }
