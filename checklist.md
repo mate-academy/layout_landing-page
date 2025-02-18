@@ -10,7 +10,7 @@
 10. Ensure that all `nav__links` work smoothly
 11. Disable page scrolling under the menu using the next code:
     ```css
-    .page:has(.page__menu:target) {
+    .menu:has(.page__menu:target) {
       overflow: hidden; /* not to scroll the page */
     }
     ```
