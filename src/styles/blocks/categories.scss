@@ -17,22 +17,30 @@
   }
 
   &__link {
+    aspect-ratio: 1 / 1;
+
     &--wide {
+      grid-column: span 1;
+
       @include on-tablet {
         grid-column: span 3;
       }
 
       @include on-desktop {
+        aspect-ratio: auto;
         grid-column: span 6;
       }
     }
 
     &--square {
+      grid-column: span 1;
+
       @include on-tablet {
         grid-column: span 3;
       }
 
       @include on-desktop {
+        aspect-ratio: auto;
         grid-column: span 6;
       }
     }
@@ -42,8 +50,19 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 4px;
 
-    @include hover(transform, scale(1.1));
+    @include on-desktop{
+      border-radius: 0;
+
+      &:hover {
+        border-radius: 0 !important;
+        box-shadow: 0 4px 10px #191919;
+    }
+  }
+
+    @include hover(border-radius, 4px);
+    @include hover(box-shadow, 0 4px 10px #191919);
   }
 
   &__title {
