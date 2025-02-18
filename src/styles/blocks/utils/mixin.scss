@@ -1,0 +1,94 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --colums: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
+  }
+}
+
+@mixin animation-left {
+  animation: 'animation-left' 2s linear 0.1s 1 normal;
+
+  @keyframes animation-left {
+    0% {
+      transform: translate(-150%);
+      border-radius: 100%;
+    }
+    100% {
+      transform: translateX(0);
+      border-radius: 0;
+    }
+  }
+}
+
+@mixin animation-right {
+  animation: 'animation-right' 2s linear 0.1s 1 normal;
+
+  @keyframes animation-right {
+    0% {
+      transform: translate(+150%);
+      border-radius: 100%;
+    }
+    100% {
+      transform: translateX(0);
+      border-radius: 0;
+    }
+  }
+}
