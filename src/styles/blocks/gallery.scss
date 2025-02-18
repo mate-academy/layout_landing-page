@@ -1,0 +1,133 @@
+.gallery {
+  margin-top: 100px;
+
+  @include on-tablet {
+    margin-top: 140px;
+  }
+
+  &__title {
+    @include section-title;
+
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+  }
+
+  &__exhibition {
+    margin-top: 48px;
+
+    &-title {
+      margin-top: 24px;
+
+      font-size: 16px;
+      line-height: 27px;
+      color: $accent-main;
+      font-weight: bold;
+    }
+
+    &-description {
+      font-size: 16px;
+      line-height: 27px;
+      color: $main-dark;
+    }
+  }
+
+  &__exhibition-preview {
+    @include grid-colums;
+
+    grid-template-rows: 1fr;
+    grid-auto-rows: 0;
+
+    &--three-column {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 8px;
+
+      @include on-tablet {
+        @include grid-colums;
+      }
+
+      @include on-tablet {
+        .gallery__photo-wrapper:last-child {
+          display: none;
+        }
+      }
+
+      @include on-desktop {
+        .gallery__photo-wrapper:last-child {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__photo-wrapper {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--square-2 {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include img-animation;
+  }
+
+  &__button-wrapper {
+    margin-top: 40px;
+
+    @include grid-colums;
+  }
+
+  &__button {
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: 2/5;
+    }
+
+    @include on-desktop {
+      grid-column: 5/9;
+    }
+  }
+}
