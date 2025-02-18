@@ -1,0 +1,77 @@
+.nowOnView{
+    display: grid;
+    row-gap: 24px;
+
+    &__images{
+
+        &--two-sections{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 20px;
+
+            &--wide-short{
+                @include on-tablet{
+                    grid-template-columns: 2fr 1fr;
+                    column-gap: 24px;
+                }
+            }
+
+            &--short-wide{
+                @include on-tablet{
+                    grid-template-columns: 1fr 2fr;
+                    column-gap: 24px;
+                }
+            }
+        }
+
+        &--three-sections{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 8px;
+
+            @include on-tablet{
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 24px;
+
+                .image:nth-child(3) {
+                    display: none;
+                }
+            }
+
+            @include on-desktop{
+                grid-template-columns: repeat(3, 1fr);
+
+                .image:nth-child(3) {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &__title{
+        margin: 0;
+        color: $main-accent-color;
+        font-size: 16px;
+        line-height: 27px;
+    }
+
+    &__date{
+        margin: 0;
+        font-size: 16px;
+        line-height: 27px;
+        font-weight: 400;
+    }
+
+    &__button{
+        justify-self: center;
+
+        @include on-tablet{
+            max-width: 392px;
+        }
+
+        @include on-desktop{
+            max-width: 324px;
+        }
+    }
+
+}
