@@ -1,0 +1,110 @@
+.contacts {
+  &__form,
+  &__links {
+    margin-inline: auto;
+  }
+
+  @include on-tablet {
+    &__container {
+      grid-column: 1 / -1;
+
+      @include grid;
+    }
+  }
+
+  &__form {
+    @include flex-column;
+
+    width: 100%;
+    max-width: 288px;
+    row-gap: 16px;
+
+    @include on-tablet {
+      max-width: none;
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+
+    &-button {
+      margin-top: 16px;
+    }
+
+    &-input,
+    &-textarea,
+    &-button {
+      border-style: none;
+      font-family: Poppins, sans-serif;
+      box-sizing: border-box;
+      padding: 0;
+    }
+
+    &-input,
+    &-textarea {
+      font-size: 14px;
+      outline: none;
+
+      &:hover::placeholder {
+        opacity: 1;
+      }
+    }
+
+    &-input {
+      padding-inline: 16px;
+      border-radius: 40px;
+      height: 48px;
+    }
+
+    &-wrapper {
+      box-sizing: border-box;
+      padding-inline: 16px;
+      padding-block: 12.6px;
+      border-radius: 16px;
+      background-color: $main-text-color;
+    }
+
+    &-textarea {
+      resize: none;
+      height: 120px;
+      width: 100%;
+    }
+  }
+
+  &__links {
+    width: 280px;
+    margin-top: 48px;
+
+    @include flex-column;
+
+    row-gap: 24px;
+
+    @include on-tablet {
+      margin-top: 0;
+      grid-column: 4 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__block {
+    &-text {
+      font-size: 14px;
+      line-height: 19.6px;
+    }
+
+    &-link {
+      display: block;
+      text-decoration: none;
+      color: $main-text-color;
+      transition: text-shadow, $transition-duration;
+
+      &:hover {
+        @include shadow-color(text-shadow, $hover-shadow-color);
+      }
+    }
+  }
+}
