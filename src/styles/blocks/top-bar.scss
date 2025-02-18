@@ -1,0 +1,88 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 25px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include content-padding-inline;
+
+  &__icon {
+    display: block;
+    height: $logo-size;
+    width: $logo-size;
+
+    @include on-tablet {
+      height: $logo-tablet-size;
+      width: $logo-tablet-size;
+    }
+
+    @include hover(transform, scale(1.2));
+
+    &--phone-hover {
+      position: absolute;
+      top: -$logo-size;
+      right: $logo-size * 2;
+
+      width: max-content;
+
+      font-weight: 700;
+      line-height: $logo-size;
+      text-align: center;
+      color: $main-white;
+
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &--phone {
+      position: relative;
+      background-image: url(/src/images/icons/icon-phone-call.svg);
+      background-size: cover;
+
+      &:hover {
+        .top-bar__icon--phone-hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--menu {
+      background-image: url(/src/images/icons/icon-burger-menu.svg);
+      background-size: cover;
+
+      &:hover {
+        background-image: url(/src/images/icons/icon-burger-menu-hover.svg);
+      }
+    }
+
+    &--close {
+      background-image: url(/src/images/icons/Icon-close.svg);
+      background-size: cover;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include on-tablet {
+      height: 65px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+}
