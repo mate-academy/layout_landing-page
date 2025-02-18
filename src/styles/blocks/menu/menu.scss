@@ -1,0 +1,80 @@
+@import './navigation';
+
+.menu {
+  @include viewport-cover;
+
+  z-index: 1;
+  position: absolute;
+  left: -100%;
+  transition: left $d-transition-duration ease-out;
+
+  background-color: $c-main-accent;
+  max-width: 100%;
+
+  overflow: auto;
+
+  box-sizing: border-box;
+
+  @include on-mobile {
+    @include column(40px);
+
+    padding: 25px 20px;
+  }
+
+  @include on-tablet {
+    @include column(40px);
+
+    padding: 50px 72px;
+  }
+
+  @include on-desktop {
+    @include column(55px);
+
+    padding: 50px 120px;
+  }
+
+  &:target {
+    left: 0;
+    right: 100%;
+  }
+
+  &__top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  &__content {
+    @include on-tablet-and-down {
+      @include column(32px);
+    }
+
+    @include on-desktop {
+      @include column(48px);
+    }
+  }
+
+  &__contacts {
+    @include column(16px);
+  }
+
+  &__call {
+    @include text-cinzel($c-light-ink);
+
+    font-size: 12px;
+    font-weight: $fw-bold;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+
+    @include animate-underline-on-hover;
+
+    &::after {
+      width: 100%;
+    }
+
+    &:hover::after {
+      width: 0;
+    }
+  }
+}
