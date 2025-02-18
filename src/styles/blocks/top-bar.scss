@@ -1,0 +1,64 @@
+.top-bar {
+  padding-top: 24px;
+  padding-bottom: 88px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-top: 36px;
+    padding-bottom: 130px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+
+  &__number {
+    opacity: 0;
+    margin-right: 10px;
+    color: $main-text-color;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: transform $effect-duration;
+    transform: scale(0);
+    transform-origin: right;
+
+    @include the-smallest {
+      font-size: 2px; // to avoid displacing the phone icon on smaller devices
+    }
+  }
+
+  @include on-desktop {
+    &:hover &__number {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
