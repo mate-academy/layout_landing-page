@@ -1,0 +1,99 @@
+.container-button {
+  @include page-grid;
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
+
+.container {
+  display: grid;
+  row-gap: 40px;
+
+  @include on-tablet {
+    row-gap: 56px;
+  }
+
+  &__title {
+    @include page-grid;
+
+    &-box {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 5;
+      }
+
+      @include on-desktop {
+        grid-column: span 7;
+      }
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      display: none;
+
+      @include on-tablet {
+        grid-column: span 4;
+        display: block;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      &-phone {
+        display: block;
+
+        @include on-tablet {
+          display: none;
+        }
+      }
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+  }
+}
