@@ -1,3 +1,75 @@
-body {
+@import './utils/vars';
+@import './utils/mixins';
+@import './blocks/main';
+@import './blocks/header';
+@import './blocks/menu';
+@import './blocks/top-bar';
+@import './blocks/nav';
+@import './blocks/icon';
+@import './blocks/product';
+@import './blocks/recommended';
+@import './blocks/about-us';
+@import './blocks/background';
+@import './blocks/categories';
+@import './blocks/contact-us';
+
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  scroll-behavior: smooth;
+  color: $main-text-color;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all $effect-duration;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.section-title {
   margin: 0;
+  margin-bottom: 48px;
+
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+
+  @include on-tablet {
+    margin-bottom: 56px;
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
 }
