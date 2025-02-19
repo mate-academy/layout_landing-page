@@ -1,34 +1,32 @@
 .museum-hours{
-  --columns: 2;
-  display: grid;
-  column-gap: 20px;
-  padding-inline: 20px;
-  grid-template-columns: repeat(var(--columns), 1fr);
+  @include page-grid;
 
-  @include on-tablet{
-    --columns: 6;
-    column-gap: 24px;
-  }
-
-  @include on-desktop{
-    --columns: 12;
+  &__content{
+    grid-column: 1 / -1;
+    @include on-tablet{
+      grid-column: 4 / 7;
+    }
+    @include on-desktop{
+      grid-column: 6 / 13;
+    }
   }
 
   &__tittle{
     grid-column: 1 / -1 ;
-  }
 
-  &__content{
-
+    @include on-tablet{
+      grid-column: 1 / 4;
+    }
   }
 
   &__met-name{
-    grid-column: 1 / -1;
     font-weight: 700px;
     font-size: 24px;
     line-height: 30px;
     margin: 0;
     margin-bottom: 16px;
+
+    grid-column: 1 / -1;
   }
 
   &__schedule{
@@ -39,6 +37,7 @@
 
     display: grid;
     row-gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
 
   }
 
@@ -47,12 +46,16 @@
     padding: 0;
     font-weight: bold;
     list-style: none;
+
+    grid-column: 1 / 2;
   }
 
   &__days{
     margin: 0;
     padding: 0;
     list-style: none;
+
+    grid-column: 2 / 3;
   }
 
   &__closed{
@@ -62,6 +65,8 @@
   }
 
   &__description{
+    grid-column: 1 / -1;
+
     margin: 0;
     padding: 0;
     font-weight: 400;
