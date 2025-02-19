@@ -1,0 +1,34 @@
+.page {
+  font-family: Poppins, serif;
+  color: rgba(255, 255, 255, 1);
+  scroll-behavior: smooth;
+  background-color: rgba(29, 29, 29, 1);
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+  }
+
+  &__menu--fix{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+
+    &:target {
+      transform: translateX(0);
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
+
+.page:has(.page__menu--fix:target) {
+  overflow: hidden;
+}
+
