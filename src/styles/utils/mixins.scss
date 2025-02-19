@@ -1,0 +1,99 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin const-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+
+    // max-width: 1020px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include const-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover-form {
+  transition: all 0.3s;
+  &:hover {
+    border: 1px solid #dbdbdb;
+    outline: none;
+    color: #1b2129;
+  }
+  &:hover::placeholder {
+    color: #1b2129;
+  }
+}
+
+@mixin active-form {
+  transition: all 0.3s;
+  &:focus {
+    border: 2px solid #f98921;
+    color: #1b2129;
+    outline: none;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-style {
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  color: #7e7e83;
+  font-family: Manrope, sans-serif;
+  height: 48px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  font-weight: 400;
+  padding-left: 16px;
+}
