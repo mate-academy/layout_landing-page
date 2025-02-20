@@ -1,47 +1,72 @@
 .museum-hours{
 
+  @include onTablet{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+  }
+
 
   &--title{
-  font-size: 24px;
-  line-height: 30px;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    margin: 0;
 
-  &--p{
+    @include onTablet{
+      margin-left: 72px;
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -1.5px;
+      width: 288px;
+
+    }
+  }
+
+  &--title-red{
     font-size: 12px;
     line-height: 16.8px;
     color: #D12D35;
+    margin-top: 100px;
+
+    @include onTablet{
+      margin-left: 72px;
+      margin-top: 0;
+    }
   }
+
+  &--content{
+    width: 100%;
+
+    &--time{
+      font-size: 24px;
+      line-height: 30px;
+
+      @include onTablet{
+
+        margin-left: 0;
+      }
+    }
   }
 
-&--museum-hours-content{
-  width: 100%;
-  height: 442;
-
-  &--time{
-    font-size: 24px;
-    line-height: 30px;
-  }
-}
-
-&--row{
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 24px;
-
-
-  &--time-info{
-    font-size: 16px;
+  &--box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 24px;
+    margin-top: 16px;
     line-height: 27px;
   }
 
+  &--hours{
+    font-size: 16px;
+  }
 
   &--day{
     font-weight: 400;
     font-size: 16px;
-    line-height: 27px;
-    margin-left:0;
   }
-}
 
   &--close-on{
   height: 81;
@@ -53,5 +78,30 @@
       font-weight: 400;
     }
   }
+
+  &--time{
+    margin-top: 24px;
+  }
+
 }
 
+.museum-hours--hours span,
+.museum-hours--day span {
+  display: block;
+}
+
+@include onTablet {
+  .museum-hours > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .museum-hours > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 288px; /* Чтобы заголовки не сжимались */
+  }
+}
