@@ -1,5 +1,10 @@
 'use strict';
 
-document.querySelector('.contact-us__form').addEventListener('submit', (e) => {
-  e.preventDefault();
-});
+const form = document.querySelector('.contact-us__form');
+
+form.addEventListener('submit', onButtonClick);
+
+function onButtonClick(event) {
+  event.preventDefault();
+  event.target.reset();
+}
