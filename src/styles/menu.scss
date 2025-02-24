@@ -1,0 +1,216 @@
+.main {
+  margin: $main-margin;
+  padding: $main-padding;
+  max-width: $main-max-width;
+
+  @include mobile {
+    padding: 0 20px;
+    overflow-x: hidden;
+    margin-top: 100px;
+  }
+
+  @include tablet {
+    padding: 0 72px;
+  }
+
+  &__content {
+    display: grid;
+    gap: $grid-gap;
+    align-items: start;
+
+    @include desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  // Хедер із заголовками (план відвідування та години роботи)
+  &__header {
+    grid-column: span 12;
+    display: grid;
+
+    @include mobile {
+      order: -1;
+      grid-column: auto;
+      justify-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include tablet {
+      grid-column: span 6;
+    }
+  }
+
+  // Інформація в хедері (заголовки)
+  &__header-info {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+
+    @include mobile {
+      grid-column: auto;
+      align-items: center;
+      text-align: center;
+      order: -1;
+    }
+  }
+
+  &__plan-title {
+    font-weight: $header-plan-title-font-weight;
+    font-size: $header-plan-title-font-size;
+    line-height: $header-plan-title-line-height;
+    color: $header-plan-title-color;
+    margin: 0;
+
+    @include mobile {
+      text-align: left;
+      align-self: flex-start;
+    }
+  }
+
+  &__hours-title {
+    font-weight: $header-hours-title-font-weight;
+    font-size: $header-hours-title-font-size;
+    line-height: $header-hours-title-line-height;
+    color: $header-hours-title-color;
+    margin: 0;
+    grid-column: 5 / span 4;
+
+    @include mobile {
+      grid-column: auto;
+      text-align: center;
+      margin-bottom: $header-hours-title-margin-bottom-mobile;
+    }
+  }
+
+  // Секція з локаціями музеїв
+  &__locations {
+    grid-column: 5 / span 8;
+    display: flex;
+    flex-direction: column;
+    gap: $locations-gap;
+    margin-left: $locations-margin-left;
+
+    @include mobile {
+      grid-column: auto;
+      text-align: center;
+      margin-left: 0;
+    }
+  }
+
+  // Одна локація музею
+  &__location {
+    display: flex;
+    flex-direction: column;
+    gap: $location-gap;
+
+    @include mobile {
+      margin-left: 0;
+    }
+  }
+
+  // Заголовок локації
+  &__location-title {
+    font-size: $location-title-font-size; // 24px
+    font-weight: $header-hours-title-font-weight; // 700
+    margin: 0;
+  }
+
+  // Список розкладу роботи
+  &__schedule {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__schedule-item {
+    font-size: $schedule-item-font-size;
+    margin-bottom: $schedule-item-margin-bottom;
+
+    @include mobile {
+      display: flex;
+      gap: $schedule-item-gap-mobile;
+      align-items: flex-start;
+    }
+  }
+
+  // Час роботи
+  &__time {
+    font-weight: $time-font-weight;
+    margin-right: $time-margin-right;
+    font-size: $time-font-size;
+    line-height: $time-line-height;
+    color: $time-color;
+  }
+
+  // Блок інформації про закриття
+  &__closed {
+    display: flex;
+    align-items: center;
+    gap: $closed-gap;
+  }
+
+  &__closed-alt {
+    display: flex;
+    align-items: center;
+    gap: $closed-gap;
+  }
+
+  &__closed-day {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__closed-info {
+    font-size: $time-font-size;
+    line-height: $time-line-height;
+    color: $time-color;
+    margin: 0;
+  }
+
+  &__location--alt {
+    display: flex;
+    flex-direction: column;
+    gap: $location-gap;
+
+    @include mobile {
+      flex: 0 0 80%;
+    }
+  }
+}
+
+.now-on-view {
+  justify-self: center;
+  grid-column: span 12;
+  text-align: center;
+  font-weight: $header-hours-title-font-weight;
+  font-size: $now-font-size;
+  line-height: $now-line-height;
+  margin: 0;
+  margin-top: $now-margin-top;
+
+  h2 {
+    font-size: $now-h2-font-size;
+    font-weight: $header-hours-title-font-weight;
+    margin: 0;
+  }
+
+  p {
+    font-size: $now-p-font-size;
+    margin: 0;
+    font-weight: $now-p-font-weight;
+    line-height: $now-p-line-height;
+  }
+}
