@@ -8,6 +8,11 @@
   }
 
   &__link {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+
     @include onTablet {
       grid-column: span 3;
     }
@@ -19,13 +24,26 @@
 
   &__photo {
     width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    object-position: center;
+    object-fit: cover;
+    transition: all $timeDuration;
+    transform-origin: center;
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
   }
 
   &__title {
     font-weight: 700;
     font-size: 18px;
     line-height: 25.2px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
 
     @include onTablet {
       font-size: 24px;
