@@ -1,0 +1,64 @@
+.page{
+  scroll-behavior: smooth;
+  min-width: 320px;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  &__menu{
+    position: fixed;
+    top:  0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target{
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.main{
+  &__content{
+    display: grid;
+    row-gap: 64px;
+    padding-block: 64px;
+
+    @include on-tablet{
+      padding-block: 120px;
+      row-gap: 120px;
+    }
+  }
+
+  &__bg{
+    background: url(../images/about-us-img.png);
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include on-tablet{
+      height: 400px;
+    }
+
+    @include on-desktop{
+      height: 460px;
+    }
+  }
+}
+
+.container{
+  @include content-padding-inline;
+}
