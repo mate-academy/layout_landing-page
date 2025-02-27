@@ -1,0 +1,532 @@
+@import '/src/utils/mixins.scss';
+@import '/src/utils/variants/variants.scss';
+
+/* #region body */
+.page {
+  font-family: Cinzel, serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  scroll-behavior: smooth;
+
+  &_body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &_menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0%);
+      pointer-events: all;
+    }
+  }
+}
+
+/* #endregion */
+/* #region header */
+
+.header {
+  display: none;
+  box-sizing: border-box;
+  height: 100vh;
+  background-image: url(/src/images/header-bg.svg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &_title {
+    margin: 0;
+    color: $main-text-color;
+    font-family: Cinzel;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    align-content: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    @include onTable {
+      font-size: 40px;
+      padding-bottom: 215px;
+    }
+
+    @include onDesctop {
+      margin: 0;
+      padding: 0;
+      font-family: Cinzel;
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+      text-align: center;
+      margin-bottom: 496px;
+    }
+  }
+
+  &_bottom {
+    padding-bottom: 288px;
+    @include constentPaddingInline;
+  }
+}
+
+/* #endregion */
+/* #region menu */
+.top-bar {
+  padding-block: 24px;
+  @include constentPaddingInline;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTable {
+    padding-block: 64px;
+  }
+
+  &_icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &_logo-link {
+    display: flex;
+  }
+
+  &_logo {
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include onTable {
+      height: 65px;
+    }
+
+    &_menu {
+      @include onTable {
+        height: 65px;
+      }
+    }
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #d12d35;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &_content {
+    @include constentPaddingInline;
+  }
+
+  &_nav {
+    margin-bottom: 40px;
+  }
+
+  &_fifth-avenue {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-text-color;
+    text-decoration: none;
+
+    &-phone-number {
+      display: block;
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 8px;
+      color: $main-text-color;
+      text-decoration: none;
+    }
+  }
+
+  &_cloisters {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-text-color;
+    text-decoration: none;
+
+    &-phone-number {
+      display: block;
+      font-size: 16px;
+      line-height: 27px;
+      margin-bottom: 16px;
+      color: $main-text-color;
+      text-decoration: none;
+    }
+  }
+
+  &_call-to-order {
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $main-text-color;
+    width: fit-content;
+    color: $main-text-color;
+    text-decoration: none;
+  }
+}
+
+/* #endregion */
+/* #region nav */
+
+.nav_link {
+  position: relative;
+  color: $main-text-color;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+  margin-bottom: 32px;
+  letter-spacing: 2px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: $main-text-color;
+    transform: scale(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.nav_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* #endregion */
+/* #region icon */
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTable {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/images/Icon-Phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(/src/images/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/images/Icon-Close.svg);
+  }
+}
+
+/* #endregion */
+.main {
+  text-align: center;
+  display: grid;
+  row-gap: 100px;
+  padding-block: 100px;
+
+  @include constentPaddingInline;
+
+  @include onDesctop {
+    row-gap: 140px;
+    padding-block: 140px;
+  }
+
+  @include onTable {
+    row-gap: 140px;
+    padding-block: 140px;
+  }
+}
+
+.about-us {
+  @include onTable {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 32px;
+  margin-left: 20px;
+  font-family: Cinzel;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+
+  @include onTable {
+    margin: 0;
+    font-size: 48px;
+    font-family: Cinzel;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -1.5px;
+    width: 288px;
+  }
+
+  @include onDesctop {
+    text-align: center;
+    font-size: 48px;
+    margin: 0;
+    font-family: Cinzel;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -1.5px;
+    white-space: nowrap;
+  }
+
+  &--align--left {
+    text-align: left;
+  }
+}
+
+.visit {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 2px;
+  margin-left: 20px;
+  color: #d12d35;
+  font-family: Cinzel;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16.8px;
+
+  @include onTable {
+    margin: 0;
+  }
+
+  @include onDesctop {
+    margin: 0;
+  }
+}
+
+.museum {
+  margin-left: 20px;
+  @include onTable {
+    margin-right: 72px;
+  }
+
+  @include onDesctop {
+    margin: 0;
+    text-align: left;
+  }
+
+  &__part {
+    margin-bottom: 16px;
+    white-space: nowrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+
+    @include onDesctop {
+      width: 275px;
+    }
+  }
+
+  &__bottom {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &__time {
+    margin: 0;
+    margin-bottom: 8px;
+    text-align: left;
+    font-family: Cinzel;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0px;
+
+    @include onTable {
+    }
+  }
+
+  &__day {
+    margin: 0;
+    margin-bottom: 8px;
+    text-align: left;
+    font-family: Cinzel;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0px;
+
+    @include onTable {
+    }
+  }
+
+  &__where {
+    margin: 0;
+    white-space: nowrap;
+    margin-bottom: 16px;
+    font-family: Cinzel;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0px;
+
+    @include onTable {
+    }
+  }
+}
+// .section-title-now-on-view{
+// font-family: Cinzel;
+//   font-weight: 700;
+//   font-size: 48px;
+//   line-height: 48px;
+//   letter-spacing: -1.5px;
+//   text-align: center;
+//   white-space: nowrap;
+// }
+
+// .old-master{
+//   height: 130px;
+//   width: 130px;
+// }
+
+// .niga{
+//   height: 130px;
+//   width: 130px;
+// }
+
+// .buda{
+//   width: 88;
+//   height: 87;
+// }
+
+// .mozaik{
+//   width: 88;
+//   height: 87;
+// }
+
+// .whatches{
+//   height: 130px;
+//   width: 130px;
+// }
+
+// .sculpture{
+//   height: 130px;
+//   width: 130px;
+// }
+
+.section-title-more {
+  font-family: Cinzel;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 48px;
+
+  @include onTable {
+    font-size: 48px;
+  }
+}
+
+.recomended {
+  &__product {
+    display: grid;
+    row-gap: 12px;
+
+    @include onTable {
+      justify-content: center;
+    }
+
+    @include onDesctop {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 24px;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+.product {
+  &__photo {
+    justify-content: center;
+    width: 280px;
+
+    @include onTable {
+      width: 392px;
+      justify-content: center;
+    }
+
+    @include onDesctop {
+      width: 324px;
+    }
+  }
+
+  &__title {
+    color: #d12d35;
+    font-family: Cinzel;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33.6px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin: 0;
+    margin-top: 22px;
+
+    @include onTable {
+      font-family: Cinzel;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 33.6px;
+      letter-spacing: 0px;
+      text-align: center;
+    }
+  }
+
+  &__information {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+}
