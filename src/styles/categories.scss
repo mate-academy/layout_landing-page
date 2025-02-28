@@ -1,0 +1,107 @@
+.categories {
+  &__wrapper {
+    @include page-grid;
+
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    text-decoration: none;
+    height: 56px;
+    width: 100%;
+    background-color: $main-text-color;
+    color: #fff;
+    font-weight: 700;
+    line-height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color $effectDuration;
+    grid-column: span $columnsMobile;
+
+    @include on-tablet {
+      grid-column: span $columnsTablet;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
+    &:hover {
+      box-sizing: border-box;
+      border: 2px solid #f0f1f4;
+      background-color: #f8f8fa;
+      color: $main-text-color;
+    }
+
+    &:active {
+      background-color: #111;
+      color: #fff;
+    }
+  }
+}
+
+.category {
+  grid-column: 1 / -1;
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $effectDuration;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+}
