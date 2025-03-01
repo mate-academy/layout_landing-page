@@ -1,0 +1,40 @@
+@mixin onTablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1164px) {
+    @content;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin baseGrid {
+  --colums: 2;
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet {
+    --colums: 6;
+    grid-column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --colums: 12;
+    grid-template-columns: repeat(var(--colums), 1fr);
+  }
+}
