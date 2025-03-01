@@ -1,0 +1,89 @@
+@use 'sass:list';
+
+@mixin font-face(
+  $font-name,
+  $font-path,
+  $font-weight: normal,
+  $font-style: normal
+) {
+  @font-face {
+    font-family: '#{$font-name}';
+    src: url('../fonts/#{$font-name}-#{$font-path}.woff2')
+      format('woff2');
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-display: swap;
+  }
+}
+
+@mixin transition($properties...) {
+  $transitions: ();
+
+  @each $prop in $properties {
+    $transitions: list.append(
+      $transitions,
+      $prop
+        $transition-duration
+        $transition-timing-function,
+      comma
+    );
+  }
+
+  transition: $transitions;
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} $transition-duration $transition-timing-function;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-large {
+  @media (min-width: $large-breakpoint) {
+    @content;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin img-cover {
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin img-contain {
+  height: 100%;
+  object-fit: contain;
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include media-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include media-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
