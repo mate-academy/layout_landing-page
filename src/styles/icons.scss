@@ -19,25 +19,9 @@ $timeOfAnimation: 300ms;
     background-image: url('../images/icon/icon-phone-call.png');
     background-position: center;
 
-    &::before {
-        content: "+1 234 555-55-55";
-        letter-spacing: 2px;
-        color: #ffffff;
-        white-space: nowrap;
-        opacity: 0;
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px;
-        transition: opacity .3s;
-        position: absolute;
-        top: 50%;
-        right: calc(100% + 8px);
-        transform: translateY(-50%);
-    }
-
-    &:hover::before {
-      opacity: 1;
-    }
+    // &:hover + .menu__contacts--header {
+    //   display: block;
+    // }
   }
 
   &--menu {
@@ -54,5 +38,25 @@ $timeOfAnimation: 300ms;
   &--close {
     background-image: url('../images/icon/icon-close.png');
     background-position: center;
+  }
+}
+
+.menu__contacts--header {
+  display: none;
+  position: absolute;
+  top: -45px;
+  right: 140px;
+  white-space: nowrap;
+}
+
+@include on-desktop {
+  .header__icons {
+    position: relative;
+  }
+
+  .icon--phone:hover + .menu__contacts,
+  .header__icons:hover .menu__contacts {
+    display: flex;
+    align-items: end;
   }
 }
