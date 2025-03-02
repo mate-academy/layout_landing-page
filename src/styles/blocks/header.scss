@@ -1,0 +1,142 @@
+.header {
+  z-index: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $content-width-mobile;
+  height: $header-height-mobile;
+  box-sizing: content-box;
+  padding-inline: $padding-inline-mobile;
+  padding-top: $top-padding-mobile;
+  overflow: visible;
+  transform-style: flat;
+
+  @include on-tablet {
+    width: $content-width-tab;
+    padding-inline: $padding-inline-tab;
+    height: $header-height-wide;
+    padding-top: $top-padding-wide;
+  }
+
+  @include on-desktop {
+    width: $content-width-desktop;
+    padding-inline: $padding-inline-desktop;
+    height: $header-height-wide;
+    padding-top: $top-padding-wide;
+  }
+
+  &--page {
+    background-image: url('../img/cover.jpg');
+    background-size: auto 100vh;
+    background-position: center top;
+    background-clip: border-box;
+    z-index: 10;
+  }
+
+  &--menu {
+    background-color: transparent;
+    z-index: $menu-z-level;
+    padding-inline: 0;
+    position: sticky;
+  }
+
+  &__logo {
+    display: block;
+    height: 46px;
+    width: 64px;
+    background-image: url('../img/icons/logo.svg');
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include on-tablet {
+      height: 65px;
+      width: 87px;
+    }
+
+    @include hover(
+      (
+        transform: scale(0.8),
+      )
+    );
+    @include on-click(
+      (
+        transform: scale(1.2),
+      )
+    );
+  }
+
+  &__icons {
+    z-index: inherit;
+    display: flex;
+    align-items: center;
+    gap: $icon-size-mobile;
+
+    @include on-tablet {
+      gap: $icon-size-wide;
+    }
+
+    &--menu {
+      z-index: 1.2 * $menu-z-level;
+    }
+  }
+
+  &__contact {
+    margin: 0;
+    display: inline-block;
+    position: sticky;
+    top: $top-padding-mobile;
+    rotate: y 90deg;
+    scale: 1 0 0;
+    z-index: 20;
+    color: $white;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1rem;
+    width: fit-content;
+    letter-spacing: 0;
+    text-shadow: 2px 2px 3rem $main-dark-color;
+    box-shadow: 0.25rem 0.25rem 3rem $main-accent-color;
+    transition: all 2 * $effect-duration;
+    background-color: rgba($dark-accent-color, 0.2);
+    border: 2px $white dashed;
+
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      top: $top-padding-wide;
+    }
+
+    @include on-desktop {
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+    }
+
+    &:first-of-type {
+      right: 50%;
+      transform-origin: right;
+    }
+
+    &:last-of-type {
+      left: 50%;
+      transform-origin: left;
+    }
+
+    &:has(~ .header__icon--phone:hover) {
+      rotate: y 0deg;
+      scale: 1 1 1;
+    }
+
+    &-name {
+      margin-block: 0.25rem;
+    }
+
+    &-phone {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

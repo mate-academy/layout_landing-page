@@ -1,0 +1,62 @@
+.home {
+  background-image: url('../img/cover.jpg');
+  background-size: auto 100vh;
+  background-position: center bottom;
+  background-clip: border-box;
+  height: calc(100vh - $header-height-mobile - $top-padding-mobile);
+  box-sizing: border-box;
+  perspective: 5rem;
+
+  @include page-grid;
+
+  @include on-tablet {
+    height: calc(100vh - $header-height-wide - $top-padding-wide);
+  }
+
+  &__title {
+    margin-top: 8rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: $white;
+    display: block;
+    height: 5rem;
+    text-align: center;
+    letter-spacing: -1.5px;
+    grid-column: span 2;
+    transition: all $effect-duration;
+
+    @include hover(
+      (
+        transform: transition(0 50% 2) rotate(x 3deg),
+        color: $white-modified,
+        text-shadow: 0 -1rem -1rem $main-dark-color,
+        text-decoration: 0.25rem underline double wavy,
+      )
+    );
+
+    @include on-tablet {
+      font-size: 4rem;
+      line-height: 4rem;
+      grid-column: 2 / -2;
+      height: 8rem;
+      margin-top: 9rem;
+
+      @include hover(
+        (
+          transform: transition(0 50% 2) rotate(x 3deg),
+          color: $white-modified,
+          text-shadow: 0.5rem 0 1rem $dark-accent-color,
+        )
+      );
+    }
+
+    @include on-desktop {
+      font-size: 5rem;
+      line-height: 5rem;
+      grid-column: 4 / -4;
+      height: 10rem;
+      margin-top: 5.25rem;
+    }
+  }
+}
