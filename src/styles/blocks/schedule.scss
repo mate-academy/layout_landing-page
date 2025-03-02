@@ -1,0 +1,62 @@
+.schedule {
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: 4 / -1;
+  }
+
+  @include onDesktop {
+    grid-column: span 6 / -2;
+  }
+
+  display: grid;
+  grid-template-columns: [start] 125px [gap] 155px [end];
+  gap: 0.5rem 0;
+
+  @include onTablet {
+    gap: 0.5rem;
+  }
+
+  &__title {
+    display: inline-block;
+    grid-column: start / end;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  &__time {
+    display: inline-block;
+    height: 1.75rem;
+    grid-column: start / gap;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+
+    &--holydays {
+      padding-top: 0.5rem;
+      color: $dark-accent-color;
+    }
+  }
+
+  &__days {
+    display: inline-block;
+    height: 1.75rem;
+    grid-column: gap / end;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    margin: 0;
+
+    &--holydays {
+      grid-column: start / end;
+      height: fit-content;
+      color: $dark-accent-color;
+    }
+  }
+}

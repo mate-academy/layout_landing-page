@@ -1,0 +1,55 @@
+.feedback {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+
+  @include on-desktop {
+    grid-column: span 5 / -1;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__input {
+    background-color: $shade;
+    font-family: Cinzel, serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+    height: 3rem;
+    border: 1px solid $lightgray;
+    border-radius: 0;
+
+    &::placeholder {
+      transition: all $effect-duration;
+      color: $gray;
+    }
+
+    &:hover::placeholder {
+      color: $main-dark-color;
+    }
+
+    &:focus {
+      border: 1px solid $main-dark-color;
+      border-radius: 0;
+
+      &::placeholder {
+        color: $main-dark-color;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px inset $gray;
+    }
+
+    &--message {
+      height: 9rem;
+    }
+
+    transition: all $effect-duration;
+  }
+}

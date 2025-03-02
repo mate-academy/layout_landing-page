@@ -1,0 +1,88 @@
+.page {
+  font-family: Cinzel, serif;
+  font-size: $rem-value;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: $main-dark-color;
+  scroll-behavior: smooth;
+  perspective: $page-perspective;
+  transform-style: preserve-3d;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100vw;
+  }
+
+  &__main {
+    padding-block: 3.25rem;
+
+    @include onTablet {
+      padding-block: 4.5rem;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: $menu-z-level;
+    box-sizing: border-box;
+    transition: transform (2 * $effect-duration);
+    perspective-origin: top;
+    perspective: 50;
+    transform-style: preserve-3d;
+    transform-origin: top;
+    transform: scaleY(0) rotateX(0.25turn);
+
+    $curr-blend-index: 1;
+
+    background-blend-mode: list.nth($list: $blend-modes, $n: $curr-blend-index);
+
+    &:target {
+      transform: scaleY(1);
+    }
+
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: $menu-z-level - 1;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__header {
+    position: sticky;
+    top: 0.13rem - $top-padding-mobile;
+    left: 0;
+    width: 100vw;
+    height: $header-height-mobile + $top-padding-mobile;
+    box-sizing: border-box;
+    z-index: 10;
+
+    @include onTablet {
+      top: 0.13rem - $top-padding-wide;
+      height: $header-height-wide + $top-padding-wide;
+    }
+  }
+
+  &__footer {
+    // position: sticky; *looks awful
+    // bottom: -7rem;
+    height: 11.25rem;
+    z-index: -40;
+    background: url(../img/footer.jpg) center/auto 100% no-repeat;
+
+    @include onTablet {
+      height: 22.5rem;
+      bottom: -12.5rem;
+    }
+  }
+}

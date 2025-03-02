@@ -1,0 +1,86 @@
+.on-view {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: 1.5rem;
+
+  &__image {
+    grid-column: span 1;
+    display: inline-block;
+    object-fit: cover;
+    object-position: left;
+    height: var(--colwidth);
+    width: 100%;
+
+    @include hover(
+      (
+        scale: 1.2,
+      )
+    );
+
+    @include on-tablet {
+      grid-column: span 2;
+      height: calc(2 * var(--colwidth) + var(--colgap));
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+      height: calc(4 * var(--colwidth) + 3 * var(--colgap));
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--collapse {
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &--cut {
+      display: none;
+
+      @include on-mobile {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+
+    grid-column: 1 / -1;
+
+    @include hover(
+      (
+        background-color: $shade,
+      )
+    );
+  }
+
+  &__title {
+    color: $main-accent-color;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  &__viewtime {
+    color: $main-dark-color;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    letter-spacing: 0;
+    margin: 0;
+  }
+}
