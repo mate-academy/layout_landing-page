@@ -1,0 +1,151 @@
+.page {
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: $font-size;
+  line-height: 1.4;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+  background-color: $second-text-color;
+  scroll-padding-top: 20px;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: transform $duration ease;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main {
+  background-color: $second-text-color;
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+.logo {
+  &-link {
+    display: flex;
+  }
+
+  &-img {
+    @include on-desktop {
+      height: 56px;
+      width: auto;
+    }
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    font-size: 64px;
+  }
+}
+
+.button {
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.68;
+  text-align: center;
+  color: #1d1d1d;
+  padding: 14.5px 48px;
+  background: $main-text-color;
+  border-radius: 40px;
+  cursor: pointer;
+  width: 100%;
+  transition: box-shadow $duration;
+
+  &:hover,
+  &:focus {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
+
+.input,
+.textarea {
+  font: inherit;
+  border-radius: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42;
+  color: $placeholder-color;
+  background: $main-text-color;
+  outline: none;
+  border: 1px solid $main-text-color;
+  padding: 13px 15px;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+
+  &:hover {
+    border: 1px solid $border-color;
+    color: $hover-color;
+  }
+
+  &:focus {
+    border: 1px solid $hover-color;
+    color: $hover-color;
+  }
+}
+
+.field__message {
+  border-radius: 16px;
+  resize: none;
+  min-height: 148px;
+}

@@ -1,0 +1,128 @@
+.details {
+  margin-top: 92px;
+
+  @include on-tablet {
+    margin-top: 120px;
+  }
+
+  @include on-desktop {
+    margin-top: 144px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 48px;
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__block-button {
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__button {
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / span 5;
+    }
+  }
+}
+
+.detail {
+  &:not(:last-child) {
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__photos {
+    @include page-grid;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    transition: transform $duration;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: $tablet-width) {
+      height: 0;
+      width: 100%;
+      padding-bottom: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    &--big {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--small {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    margin-top: 16px;
+  }
+
+  &__description {
+    margin-top: 8px;
+  }
+}
+
+.footer {
+  background-image: url(../images/footer-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: right top;
+  position: sticky;
+  background-size: cover;
+  padding-top: 200px;
+  z-index: -1;
+  bottom: 0;
+
+  @include on-tablet {
+    padding-top: 555px;
+  }
+
+  @include on-desktop {
+    background-image: url(../images/footer-bg-desk.jpg);
+    background-position: center top;
+  }
+}
