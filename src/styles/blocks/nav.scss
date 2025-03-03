@@ -1,14 +1,5 @@
 .nav {
 
-  &__link {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-    font-size: 22px;
-    line-height: 22px;
-    letter-spacing: 2px;
-  }
-
   &__list {
     margin: 0;
     padding: 0;
@@ -16,6 +7,37 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+  }
+
+
+  &__link {
+    display: block;
+    width: fit-content;
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after{
+      position: absolute;
+      content: '';
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
 }
