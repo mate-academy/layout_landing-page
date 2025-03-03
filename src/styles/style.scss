@@ -395,12 +395,13 @@
 }
 
 .section-title-now-on-view{
-  font-family: Cinzel;
+  font-family: Cinzel, sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
   letter-spacing: -1.5px;
   text-align: center;
+  margin: 0;
 
   @include on-table{
     font-size: 48px;
@@ -408,29 +409,59 @@
 }
 
 .now-on-view-exhibition{
-  font-family: Cinzel;
     font-weight: 400;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
     text-align: center;
+    width: 100%;
+    margin-bottom: 48px;
+    margin-top: 16px;
 }
 
 .now-on-view--wrapper{
   display: grid;
-  row-gap: 48px;
+  row-gap: 40px;
+
+      @include on-table {
+          row-gap: 48px;
+      }
 }
 
 .now-on-vie{
   &__photos{
     @include page-grid;
+
     margin-bottom: 24px;
+
+    @include on-table{
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   &__photo{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: left;
+    @include hover(transform, scale(1.05));
+
+    @include on-table{
+      object-fit: cover;
+      width: 100%;
+    }
+
+    &--additional {
+      display: none;
+
+      @include on-table {
+        display: inline;
+      }
+
+      @include on-desktop {
+        display: inline-block;
+      }
+   }
   }
 
   &__link{
@@ -438,13 +469,13 @@
       @include on-table{
         grid-column: span 4;
       }
+
       @include on-desktop{
         grid-column: span 8;
       }
     }
 
     &--square{
-
       @include on-table {
         grid-column: span 2;
       }
@@ -452,16 +483,30 @@
       @include on-desktop {
         grid-column: span 4;
       }
+
+      &--onTable {
+        @include on-table {
+          grid-column: span 3;
+        }
+
+       @include on-desktop {
+         grid-column: span 4;
+       }
+      }
     }
+
+
   }
 
+
   &__title{
-    font-family: Cinzel;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 27px;
-      letter-spacing: 0px;
-      color: #d12d35;
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    color: #d12d35;
+    margin-bottom: 0;
 
       @include on-table{
         text-align: left;
@@ -469,14 +514,40 @@
   }
 
   &__paragraph{
-    font-family: Cinzel;
     font-weight: 400;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    margin-top: 0;
 
     @include on-table {
         text-align: left;
+      }
+  }
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__content{
+    text-align: center;
+      font-family: "Cinzel", serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      text-decoration: none;
+      height: 56px;
+      width: 280px;
+      line-height: 56px;
+      background-color: #d12d35;
+      color: #fff;
+
+      &:hover{
+        background-color: #AE1C23;;
+      }
+
+      &:active{
+        background-color: #EB343D;
       }
   }
 }
@@ -561,6 +632,209 @@
       text-align: center;
       margin: 0;
       margin-bottom: 48px;
+    }
+  }
+}
+
+.section-title-contact-us{
+  font-family: Cinzel;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  @include on-table {
+    font-size: 48px;
+  }
+}
+
+.contact {
+  @include on-desktop {
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  &__data {
+    grid-column: span 3;
+  }
+
+  &__name {
+    margin: 0;
+    margin-bottom: 16px;
+    color: #3E3E3E;
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+  }
+
+  &__text {
+    margin: 0;
+    color: #3E3E3E;;
+    font-family: "Cinzel", serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  &__number {
+    margin: 0;
+    margin-bottom: 8px;
+    color:#3E3E3E;
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    text-decoration: none;
+
+    &:hover {
+      color:#d12d35;
+    }
+  }
+
+  &__address {
+    margin: 0;
+    margin-bottom: 48px;
+    color:#3E3E3E;
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    text-decoration: none;
+
+    &:hover {
+      color: #d12d35;
+    }
+  }
+}
+
+.contacts-grid {
+  @include page-grid;
+
+  &__contact {
+    grid-column: 1 / -1;
+
+    @include on-table {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+
+    @include on-table {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 13;
+    }
+  }
+}
+
+.form {
+  margin-top: 48px;
+  &__field {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    color: #7e7e83;
+
+    &-info {
+      box-sizing: border-box;
+      color: #7e7e83;
+      background: #f8f8fa;
+      border: none;
+      outline: none;
+      padding-inline: 10.9px;
+      height: 48px;
+      font-family: "Cinzel", serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      width: 100%;
+      appearance: none;
+
+      &:hover {
+        border: 1px solid #d5d7de;
+        color: #3E3E3E;
+      }
+
+      &:active {
+        color: #3E3E3E;
+      }
+
+      &:focus {
+        border: 1px solid #000;
+        color: #3E3E3E;
+      }
+    }
+  }
+
+  &__textarea {
+    padding: 0;
+    padding-inline: 10.9px;
+    padding-block: 14px;
+    height: 144px;
+    overflow-y: auto;
+    margin-bottom: 48px;
+    resize: none;
+    appearance: none;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+
+    &-text {
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 56px;
+      width: 100%;
+      height: 56px;
+      background-color: #d12d35;
+      color: #fff;
+      font-family: "Cinzel", serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      border: none;
+      outline: none;
+
+      &:hover {
+        background-color: #ae1c23;
+      }
+
+      &:active {
+        background-color: #eb343d;
+      }
+    }
+  }
+}
+
+.footer {
+  &__content {
+    height: 180px;
+    width: 100%;
+    background-image: url(/src/images/footer.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include on-table {
+      height: 359px;
     }
   }
 }
