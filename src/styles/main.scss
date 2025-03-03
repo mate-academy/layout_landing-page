@@ -1,3 +1,621 @@
+@use './abstract/constants';
+@import '../fonts/fonts';
+@import './reset';
+@import './abstract/mixines';
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  font-family: Cinzel, sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  color: constants.$dark-main;
+}
+
+[class*='__container'] {
+  margin: 0 auto;
+  padding-inline: 20px;
+
+  @include tablet {
+    padding-inline: 72px;
+  }
+
+  @include desctop {
+    padding-inline: 120px;
+  }
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.hero {
+  position: relative;
+  margin-bottom: 100px;
+
+  @include tablet {
+    margin-bottom: 140px;
+  }
+
+  &__container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  &__image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  &__title {
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+
+    @include tablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include desctop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.top-bar {
+  @include flex-container(row, space-between, center);
+
+  padding-top: 25px;
+
+  @include tablet {
+    padding-top: 50px;
+  }
+
+  &__wrapper--hero {
+    margin-bottom: 130px;
+
+    @include tablet {
+      margin-bottom: 160px;
+    }
+
+    @include desctop {
+      margin-bottom: 100px;
+    }
+  }
+  &__wrapper--menu {
+    margin-bottom: 40px;
+
+    @include desctop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+
+    @include tablet {
+      width: 85px;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 24px;
+
+    @include tablet {
+      gap: 55px;
+    }
+  }
+}
+
+.line {
+  border-bottom: 1px solid constants.$white;
+  width: 127px;
+}
+
+// MENU
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  height: 100vh;
+  background-color: constants.$accent-main;
+  color: constants.$white;
+  font-weight: bold;
+  text-transform: uppercase;
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__navigation {
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 22px;
+  }
+  &__nav-item {
+    margin-bottom: 32px;
+  }
+  &__nav-item-link {
+    color: constants.$white;
+    text-decoration: none;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+  &__contacts {
+    color: constants.$white;
+    margin-bottom: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    &--active-icon {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      text-align: right;
+      width: 201px;
+      top: -45px;
+      right: 140px;
+    }
+  }
+  &__contact {
+    margin-bottom: 8px;
+  }
+  &__number {
+    color: constants.$white;
+  }
+  &__order {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+
+  @include tablet {
+    width: 32px;
+  }
+
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+
+  &--phone {
+    background-image: url('../img/phone.svg');
+  }
+  &--menu {
+    background-image: url('../img/burger_menu.svg');
+  }
+  &--close {
+    background-image: url('../img/close_menu.svg');
+  }
+}
+
+// HOURS SECTION
+.hours {
+  margin-bottom: 100px;
+
+  @include tablet {
+    margin-bottom: 140px;
+  }
+  &__wrapper {
+    margin: 0 auto;
+    max-width: 280px;
+
+    @include flex-container(column, center, stretch, 32px);
+
+    @include tablet {
+      @include flex-container(row, space-between, stretch, 54px);
+
+      max-width: 600px;
+    }
+
+    @include desctop {
+      max-width: 1020px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    font-weight: bold;
+    color: constants.$accent-main;
+  }
+  &__timetable {
+    @include desctop {
+      padding-right: 68px;
+    }
+  }
+  &__location {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    margin-bottom: 16px;
+  }
+  &__time {
+    font-weight: bold;
+  }
+  &__list {
+    @include flex-container(row, flex-start, stretch, 25px);
+
+    margin-bottom: 16px;
+  }
+}
+
+p.hours__day {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: -1.5px;
+
+  @include tablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+  &--right {
+    text-align: start;
+  }
+  &--margin-bottom {
+    margin-bottom: 8px;
+  }
+  &--third {
+    margin-bottom: 40px;
+  }
+  &--contact {
+    margin-bottom: 48px;
+  }
+}
+
+// VIEW SECTION
+.view {
+  margin-bottom: 100px;
+
+  @include tablet {
+    margin-bottom: 140px;
+  }
+
+  &__title {
+    margin: 0 auto;
+    margin-bottom: 48px;
+    max-width: 354px;
+  }
+  &__subtitle {
+    text-align: center;
+  }
+  &__paintings {
+    margin: 0 auto;
+    margin-bottom: 48px;
+
+    @include mobile {
+      max-width: 280px;
+    }
+
+    @include tablet {
+      max-width: 600px;
+    }
+
+    @include desctop {
+      max-width: 1020px;
+    }
+  }
+  &__imgs {
+    @include flex-container(row, center, stretch, 20px);
+
+    @include tablet {
+      @include flex-container(row, center, stretch, 24px);
+    }
+    &--small {
+      @include flex-container(row, center, stretch, 8px);
+
+      @include tablet {
+        @include flex-container(row, center, stretch, 24px);
+      }
+    }
+
+    margin-bottom: 24px;
+
+    @include tablet {
+      img:nth-child(3) {
+        position: absolute;
+        visibility: hidden;
+      }
+    }
+
+    @include desctop {
+      img:nth-child(3) {
+        position: static;
+        visibility: visible;
+      }
+    }
+  }
+  &__img {
+    width: 130px;
+    object-fit: cover;
+    object-position: left;
+
+    @include tablet {
+      width: 184px;
+    }
+
+    @include desctop {
+      width: 324px;
+    }
+
+    &--long {
+      @include tablet {
+        width: 392px;
+      }
+
+      @include desctop {
+        width: 672px;
+      }
+    }
+    &--small {
+      width: 88px;
+
+      @include tablet {
+        width: 288px;
+      }
+
+      @include desctop {
+        width: 324px;
+      }
+    }
+  }
+  &__paintings-title {
+    color: constants.$accent-main;
+    font-weight: bold;
+  }
+}
+
+// BUTTON
+.button {
+  display: block;
+  color: #ffff;
+  font-weight: bold;
+  text-align: center;
+  background-color: constants.$accent-main;
+  cursor: pointer;
+  height: 56px;
+  line-height: 56px;
+  transition: 0.5s;
+  &:hover {
+    background-color: constants.$accent-hover;
+  }
+  &:active {
+    background-color: constants.$accent-pressed;
+  }
+  &--page {
+    margin: 0 auto;
+    width: 280px;
+
+    @include tablet {
+      min-width: 392px;
+    }
+
+    @include desctop {
+      min-width: 324px;
+    }
+  }
+  &--form {
+    margin-top: 16px;
+  }
+}
+
+// ONLINE SECTION
+.online {
+  margin-bottom: 100px;
+
+  @include tablet {
+    margin-bottom: 140px;
+  }
+  &__wrapper {
+    max-width: 1020px;
+    margin: 0 auto;
+
+    @include flex-container(column, flex-start, stretch, 48px);
+
+    @include desctop {
+      @include flex-container(row, flex-start, stretch, 24px);
+    }
+  }
+  &__exhibit {
+    margin: 0 auto;
+    max-width: 280px;
+
+    @include tablet {
+      max-width: 392px;
+    }
+
+    @include desctop {
+      max-width: 324px;
+    }
+
+    text-align: center;
+  }
+
+  &__img {
+    display: block;
+    width: 280px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      width: 392px;
+    }
+
+    @include desctop {
+      width: 324px;
+    }
+  }
+  &__title {
+    color: constants.$accent-main;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  &__description {
+    font-family: Roboto, sans-serif;
+  }
+}
+
+// CONTACT SECTION
+.contacts-us {
+  margin-bottom: 84px;
+
+  @include tablet {
+    margin-bottom: 156px;
+  }
+
+  @include desctop {
+    margin-bottom: 134px;
+  }
+  &__contacts-and-form {
+    margin: 0 auto;
+    max-width: 280px;
+
+    @include flex-container(column, space-between, stretch, 48px);
+
+    @include tablet {
+      @include flex-container(row, space-between, stretch, 75px);
+
+      max-width: 600px;
+    }
+
+    @include desctop {
+      @include flex-container(row, space-between, stretch);
+
+      max-width: 1020px;
+    }
+  }
+  &__contacts {
+    @include flex-container(column, space-between, stretch, 48px);
+
+    @include desctop {
+      @include flex-container(row, space-between, stretch, 50px);
+    }
+  }
+  &__contact {
+    width: 237px;
+  }
+  &__contact-title {
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  &__subtitle {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  &__info {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  &__contact-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include tablet {
+      width: 288px;
+    }
+
+    @include desctop {
+      width: 411px;
+    }
+  }
+  &__form-input {
+    background-color: #f8f8fa;
+    width: 280px;
+    height: 48px;
+    padding-left: 12px;
+    font-size: 14px;
+    text-align: left;
+    &:focus {
+      transition: box-shadow 0.2s ease-in-out;
+      box-shadow: 0 0 0 1px constants.$dark-main;
+    }
+
+    @include desctop {
+      width: 411px;
+    }
+  }
+  &__form-textarea {
+    width: 280px;
+    height: 144px;
+    font-size: 14px;
+    background-color: #f8f8fa;
+    padding: 14px 12px;
+    text-align: left;
+    &:focus {
+      transition: box-shadow 0.2s ease-in-out;
+      box-shadow: 0 0 0 1px constants.$dark-main;
+    }
+
+    @include desctop {
+      width: 411px;
+    }
+  }
+  &__form-input::placeholder,
+  &__form-textarea::placeholder {
+    color: #7e7e83;
+  }
+}
+
+// FOOTER
+.footer {
+  position: relative;
+  height: 180px;
+
+  @include tablet {
+    height: 360px;
+  }
+  &__image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@include desctop {
+  .top-bar__icons:focus-within .burger-menu__contacts {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s;
+  }
 }
