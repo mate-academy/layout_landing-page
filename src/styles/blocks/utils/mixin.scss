@@ -1,0 +1,76 @@
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @media (min-width: 576px) {
+    padding-inline: 72px;
+  }
+
+  @include desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin grid-collum {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  gap: 16px 20px;
+  height: auto;
+
+  @include tablet {
+    grid-template-columns: repeat(6, 80px);
+    gap: 16px 24px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 63px);
+    gap: 16px 24px;
+  }
+}
+
+@mixin button {
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  height: 56px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+@mixin space-grotesk-fonts {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+}
+
+@mixin space-mono-fonts {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+}
