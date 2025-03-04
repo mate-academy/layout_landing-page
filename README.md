@@ -1,6 +1,6 @@
 # Landing page
 
-> ❗❗ You will  complete this task in the topic **Landing**.
+> ❗❗ You will complete this task in the topic **Landing**.
 > Now just choose a design and do the parts from the videos
 
 Choose a design for your landing page:
