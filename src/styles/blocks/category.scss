@@ -1,0 +1,93 @@
+.category {
+  box-sizing: border-box;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include tablet {
+    padding-top: 0;
+    gap: 56px;
+  }
+
+  &__sections {
+    grid-template-rows: 130px 25px;
+    place-content: center start;
+
+    @include grid-collum;
+
+    @include tablet {
+      grid-template-rows: 184px 34px;
+    }
+
+    @include desktop {
+      grid-template-rows: 324px 34px;
+    }
+
+    &-name {
+      @include hover(transform, scale(1.2));
+
+      font-size: 18px;
+      text-decoration: none;
+      color: #292929;
+      white-space: nowrap;
+
+      @include tablet {
+        font-size: 24px;
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      @include hover(transform, scale(1.05));
+
+      &-big {
+        @include tablet {
+          grid-column: span 4;
+        }
+
+        @include desktop {
+          grid-column: span 8;
+        }
+      }
+
+      &-small {
+        @include tablet {
+          grid-column: span 2;
+        }
+
+        @include desktop {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+
+  &__button {
+    background-color: #292929;
+    display: inline-block;
+    color: #fff;
+    transition: 0.3s;
+
+    @include button;
+
+    @include desktop {
+      width: 324px;
+    }
+  }
+
+  &__button:hover {
+    background-color: #f8f8fa;
+    color: #292929;
+    border: 2px solid #f0f1f4;
+  }
+
+  &__button:active {
+    background-color: #111;
+    color: #fff;
+  }
+}
