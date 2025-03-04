@@ -1,0 +1,51 @@
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include media-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo {
+    @include size(152, 16);
+
+    @include media-tablet {
+      @include size(228, 24);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    column-gap: 24px;
+
+    @include media-tablet {
+      column-gap: 32px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+
+    &::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      top: 50%;
+      left: -8px;
+      transform: translate(-100%, -50%);
+      width: max-content;
+
+      @include transition(opacity, visibility);
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
