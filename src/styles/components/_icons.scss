@@ -1,0 +1,92 @@
+.header__icons {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+
+  @media (max-width: 470px) {
+    gap: 24px;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    content: '';
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    @media (max-width: 470px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .icon--phone {
+    background-image: url(../assets/icons/phone-icon.png);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+
+    &:hover {
+      transform: scale(1.1);
+
+      &::before {
+        content: '+1 234 555-55-55';
+
+        display: flex;
+        align-items: center;
+        height: 40px;
+        width: 200px;
+        margin-left: -150px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 32px;
+        letter-spacing: 2px;
+        text-align: left;
+        opacity: 0;
+        animation: show-content 0.3s 0.3s forwards;
+      }
+    }
+  }
+
+  @media (max-width: 470px) {
+    .icon--phone:hover::before {
+      content: none;
+      display: none;
+    }
+  }
+
+  @keyframes show-content {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .icon--menu {
+    background-image: url(../assets/icons/menu-burguer.png);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .icon--menu:hover {
+    transform: scale(1.1);
+    animation: change-bg 0.2s forwards; // Inicia a animação após 0.3s
+  }
+
+  @keyframes change-bg {
+    0% {
+      background-image: url(../assets/icons/menu-burguer.png);
+    }
+    100% {
+      background-image: url(../assets/icons/menu-hover.png);
+    }
+  }
+}
