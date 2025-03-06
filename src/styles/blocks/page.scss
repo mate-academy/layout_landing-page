@@ -1,0 +1,36 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins.scss' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  font-family: $font-family;
+  color: $font-color;
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: $transition-time;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    @include on-desktop {
+      transform: translateX(-100%);
+    }
+  }
+
+  &__menu:target {
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}

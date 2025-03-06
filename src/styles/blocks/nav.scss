@@ -1,0 +1,42 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins.scss' as *;
+
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: $main-color;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: $main-color;
+      transition: $transition-time;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__menu {
+    margin-bottom: 40px;
+  }
+}
