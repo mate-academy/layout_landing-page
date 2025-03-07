@@ -4,13 +4,27 @@
   }
 
   &__title {
-    margin-bottom: 56px;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 56px;
+    }
   }
 
   &__form {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+      margin-bottom: 120px;
+    }
   }
 
   &__input {
@@ -19,7 +33,7 @@
 
     width: 100%;
     outline: none;
-    background-color: #F8F8FA;
+    background-color: #f8f8fa;
     border: 1px solid transparent;
     border-radius: 8px;
     color: $main-text-color;
@@ -31,16 +45,23 @@
     letter-spacing: 0;
 
     &-message {
-      height: 148px;;
+      height: 148px;
+      min-height: auto;
+      resize: none;
+      overflow: hidden;
+
+      &:focus-visible,
+      :not(:placeholder-shown) {
+        height: auto;
+      }
     }
 
     &::placeholder {
-      color: #7E7E83;
+      color: #7e7e83;
     }
 
-
     &:hover {
-      border: 1px solid #D5D7DE;
+      border: 1px solid #d5d7de;
 
       &::placeholder {
         color: $main-text-color;
@@ -52,7 +73,49 @@
     }
   }
 
-  // &__info {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 
-  // }
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 120px;
+    }
+
+    @include on-desktop {
+      grid-column: 7 / -1;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__type {
+    margin: 0;
+
+    color: #9393a3;
+    font-family: 'Space Grotesk', serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0px;
+
+    height: fit-content;
+  }
+
+  &__value {
+    margin: 0;
+
+    color: #191919;
+    font-family: 'Space Mono', serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+  }
 }
