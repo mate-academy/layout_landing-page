@@ -38,32 +38,38 @@
   }
   &__input,
   &__textarea {
-    width: 280px;
+    box-sizing: border-box;
+    width: 100%;
     padding-block: 14px;
     padding-left: 16px;
     font-size: 14px;
     color: #7e7e83;
     line-height: 20px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid transparent;
+    transition: all 0.3s;
     margin-bottom: 16px;
     background: #f9f9f9;
-    border-color: transparent;
+    outline: none;
+
+    &::placeholder {
+      color: #7e7e83;
+      transition: color 0.3s;
+    }
+
     &:hover {
       color: #1b2129;
       border: 1px solid #dbdbdb;
+      outline: none;
     }
 
     &:focus {
-      border: 4px solid #f98921;
+      color: #1b2129;
+      border-color: #f98921;
     }
 
-    @include on-tablet {
-      width: 412px;
-    }
-
-    @include on-desktop {
-      width: 450px;
+    &:not(:placeholder-shown) {
+      color: #1b2129;
     }
   }
 
