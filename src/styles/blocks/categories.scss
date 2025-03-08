@@ -1,0 +1,103 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    transition: transform 0.3s ease;
+
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    overflow: hidden; /* Додано */
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    transition: transform 0.3s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center; /* Додано */
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    position: relative; /* Додано */
+    z-index: 1; /* Додано */
+  }
+
+  &__photo:hover {
+    transform: scale(1.1);
+  }
+}
+
+.header__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header__explore-button {
+  width: 278px;
+  text-decoration: none;
+  padding: 27px;
+  border-radius: 40px;
+  font-weight: 700;
+  background-color: #fff;
+  color: #1d1d1d;
+  text-align: center;
+  transition: all 0.3s;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e8e8f066;
+    box-shadow: 1px 4px 16px 0;
+  }
+
+  @include on-tablet {
+    width: 392px;
+  }
+
+  @include on-desktop {
+    width: 324px;
+  }
+}
