@@ -1,0 +1,30 @@
+@mixin onTablet {
+  @media (min-width:744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width:1024px) {
+    @content;
+  }
+}
+
+@mixin topActions {
+  display: grid;
+  grid-template-columns: 1fr $top-icon-width 30px $top-icon-width;
+  align-items: center;
+  
+  & :nth-child(2) {
+    grid-column-start: 2;
+  }
+  
+  & :last-child {
+    grid-column-start: 4;
+  }
+  
+  @include onTablet {
+    $top-icon-width: 24px;
+    grid-template-columns: 1fr $top-icon-width 60px $top-icon-width;
+  }
+}
