@@ -35,3 +35,30 @@
     --columns: 12;
   }
 }
+
+@mixin transition {
+  transition: all $effect-duration;
+}
+
+@mixin link-hover {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    @include transition;
+
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: $main-text-color;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
