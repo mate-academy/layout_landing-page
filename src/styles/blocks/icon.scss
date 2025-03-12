@@ -14,6 +14,35 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone-2x.png);
+    position: relative;
+
+    @include on-desktop {
+      &::after {
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        bottom: -25px;
+        display: block;
+        width: max-content;
+        background-color: #dbd4d48c;
+        border: 1px solid #dbd4d4;
+        border-radius: 5px;
+
+        font-family: 'Space Mono', serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        letter-spacing: 0;
+        color: $main-text-color;
+
+        transition: transform $effect-duration;
+        transform: scale(0) translateX(-40%);
+        transform-origin: 10%;
+      }
+
+      &:hover::after {
+        transform: scale(1) translateX(-40%);
+      }
+    }
   }
 
   &--menu {
