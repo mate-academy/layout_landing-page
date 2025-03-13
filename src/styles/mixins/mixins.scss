@@ -1,0 +1,51 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesctop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin contentPaddingBlock() {
+  padding-block-start: 25px;
+
+  @include onTablet {
+    padding-block-start: 50px;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} $hoverDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin reset-link {
+  color: inherit;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
