@@ -1,0 +1,59 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+
+  background-position: center;
+  background-size: contain;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../../icon-phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../../icon-burger-menu.svg);
+    transition: background-image $effct-duration;
+
+    &:hover {
+      background-image: url(../../icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../../cross.svg);
+  }
+
+  &__tooltip {
+    display: block;
+    width: max-content;
+    position: absolute;
+    padding-right: 12px;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: $main-color;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $effct-duration;
+  }
+
+  @include on-desktop {
+    &:hover &__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
