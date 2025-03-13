@@ -1,24 +1,60 @@
 .about {
-  &__schedule {
+  $columns: 2;
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  row-gap: 20px;
+
+  @include onTablet {
+    $columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    $columns: 12;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 25px;
-    grid-column: start;
+    row-gap: 16px;
+
+    @include onTablet {
+      grid-column: 4 / 7;
+    }
   }
 
   &__museum {
-    grid-column: span 2;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  &__schedule {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  &__holidays {
   }
 
   &__time {
-
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
   }
 
   &__days {
-
-  }
-  &__holidays {
-    grid-column: span 2;
-
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
   }
 }
