@@ -1,0 +1,45 @@
+@mixin on-table {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition-property: #{$property};
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin constent-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-table {
+    padding-inline: 72px;
+  }
+}
+
+@mixin page-grid{
+  --columns:2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-table{
+    column-gap: 24px;
+
+    --columns: 6;
+  }
+
+  @include on-desktop{
+    --columns: 12;
+  }
+}
