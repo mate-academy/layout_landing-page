@@ -1,0 +1,68 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-tablet {
+    gap: 56px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+    z-index: 0;
+
+    @include hover(scale, 1.05);
+
+    &-link {
+      position: relative;
+      z-index: 0;
+
+      &:hover {
+        z-index: 1;
+      }
+
+      &.content-grid__item--square {
+        height: 0;
+        padding-bottom: 100%;
+      }
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    width: fit-content;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+
+    @include dynamic-underline-center;
+  }
+
+  &__button {
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
