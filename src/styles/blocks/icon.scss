@@ -1,0 +1,87 @@
+/* #region icon */
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  //background-image: url(/src/images/icon-burger-menu.png);
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+  background-image: url(/src/images/icon-phone-call.svg);
+  position: relative;
+
+    &:hover .icon--phone--tooltip {
+    visibility: visible;
+    opacity: 1;
+    }
+  }
+
+    @include onDesktop {
+    .icon--phone--tooltip {
+    visibility: visible;
+    }
+    }
+
+    .icon--phone--tooltip {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 1s ease-in-out 0.3s;
+      transition-delay: 0.3s;
+      transition-duration: 1s;
+
+      font: "Inter";
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      position: absolute;
+      left: -138px;
+      top: 11px;
+      opacity: 0;
+    }
+
+  &--menu {
+    background-image: url(/src/images/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/images/icon-close.svg);
+  }
+}
+
+.icon--phone {
+  position: relative;
+
+  .icon--phone--tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    .icon--phone--tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+/* #endregion */
