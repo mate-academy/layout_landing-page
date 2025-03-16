@@ -1,0 +1,65 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/phone.png);
+    position: relative;
+
+    @include on-desktop {
+      &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      left: -155px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/menu.png);
+
+    &:hover {
+      background-image: url(../icons/menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/close.png);
+  }
+}

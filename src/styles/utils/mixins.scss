@@ -1,0 +1,68 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+
+  --columns: 2;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-set {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  border-radius: 40px;
+  background: #f8f8fa;
+  font-family: Poppins, serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  padding-left: 16px;
+  margin-bottom: 16px;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  &:hover {
+    &::placeholder {
+      color: #292929;
+    }
+  }
+}
