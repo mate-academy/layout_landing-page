@@ -6,13 +6,39 @@
 
   @include hover(transform, scale(1.2));
 
-  @include onTablet {
+  @include on-tablet {
     height: 32px;
     width: 32px;
   }
 
   &--phone {
+    position: relative;
     background-image: url(/src/images/icons/icon-phone.svg);
+
+    &::before {
+      content: 'The Met Fifth Avenue\A +1 212-535-7710\A The Met Cloisters\A +1 212-923-3700';
+
+      position: absolute;
+      text-align: right;
+      z-index: 10;
+      right: 10px;
+      top: -40px;
+      display: none;
+
+      width: 200px;
+      margin-right: 20px;
+
+      font-weight: 700;
+      font-size: 16px;
+      color: $menu-text-color;
+      white-space: pre-wrap;
+      object-fit: contain;
+      background-color: inherit;
+    }
+
+    &:hover::before {
+      display: flex;
+    }
   }
 
   &--menu {
