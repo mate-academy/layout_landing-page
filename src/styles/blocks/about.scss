@@ -1,27 +1,15 @@
 .about {
-  $columns: 2;
-  display: grid;
+
+  display: none !important;
+
+  @include pageGrid;
   row-gap: 32px;
-
-  grid-template-columns: repeat($columns, 1fr);
-  column-gap: 20px;
-
-
-  @include onTablet {
-    $columns: 6;
-    column-gap: 24px;
-
-  }
-
-  @include onDesctop {
-    $columns: 12;
-  }
 
   &__title {
     grid-column: 1 / -1;
 
     @include onTablet {
-      grid-column: 1 / 4;
+      grid-column: 1 / 3;
     }
 
     @include onDesctop {
@@ -51,25 +39,21 @@
 
   &__schedule {
     display: grid;
-    grid-template-columns: auto auto;  // або 1fr 1fr
+    grid-auto-flow: column;
     column-gap: 24px;
-    row-gap: 8px;
   }
 
-  &__holidays {
-    display: grid;
-
-
-
-    font-size: 16px;
+  &__time,
+  &__days {
     line-height: 27px;
+
+    display: grid;
+    row-gap: 8px;
   }
 
   &__time {
     font-weight: 700;
-
   }
-
   &__days {
     font-weight: 400;
   }
