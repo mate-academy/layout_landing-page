@@ -1,0 +1,66 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform $effectDuration ease;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icon-phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icon-burger-menu.svg);
+
+    &:hover {
+      transform: scale(1.2);
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/buttons.svg);
+  }
+}
+
+.phone-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .phone-number {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+    transform: translateY(-50%);
+    background-color: $main-background-color;
+    padding: 8px 15px;
+    border-radius: 5px;
+    z-index: 10;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform $effectDuration ease-out, opacity $effectDuration ease-out, visibility $effectDuration;
+  }
+
+  .phone-number__color {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  &:hover .phone-number {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-10px) translateY(-50%);
+  }
+}
