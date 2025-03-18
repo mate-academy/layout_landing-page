@@ -2,7 +2,9 @@
   display: block;
   height: 24px;
   width: 24px;
-  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 
   @include hover(transform, scale(1.2));
 
@@ -15,34 +17,38 @@
     position: relative;
     background-image: url(/src/images/icons/icon-phone.svg);
 
-    &::before {
-      content: 'The Met Fifth Avenue\A +1 212-535-7710\A The Met Cloisters\A +1 212-923-3700';
+    @include on-desktop {
 
-      position: absolute;
-      text-align: right;
-      z-index: 10;
-      right: 10px;
-      top: -40px;
-      display: none;
+      &::before {
+        content: 'The Met Fifth Avenue\A +1 212-535-7710\A The Met Cloisters\A +1 212-923-3700';
 
-      width: 200px;
-      margin-right: 20px;
+        position: absolute;
+        text-align: right;
+        z-index: 10;
+        right: 10px;
+        top: -40px;
+        display: none;
 
-      font-weight: 700;
-      font-size: 16px;
-      color: $menu-text-color;
-      white-space: pre-wrap;
-      object-fit: contain;
-      background-color: inherit;
-    }
+        width: 200px;
+        margin-right: 20px;
 
-    &:hover::before {
-      display: flex;
+        font-weight: 700;
+        font-size: 16px;
+        color: $menu-text-color;
+        white-space: pre-wrap;
+        object-fit: contain;
+        background-color: inherit;
+      }
+
+      &:hover::before {
+        display: flex;
+      }
     }
   }
 
   &--menu {
     background-image: url(/src/images/icons/icon-burger-menu.svg);
+
 
     &:hover {
       background-image: url(/src/images/icons/icon-burger-menu-hover.svg);
