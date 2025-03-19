@@ -36,10 +36,24 @@
   @include contentPaddingInline;
 }
 
-@mixin hover ($property, $toValue) {
+@mixin hover($property, $toValue) {
   transition: #{$property} $hoverDuration;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin touch-hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
   }
 }
 
@@ -59,6 +73,7 @@
 
   @include onTablet {
     --columns: 6;
+
     column-gap: 24px;
   }
 
@@ -71,6 +86,7 @@
   @include onTablet {
     grid-column: span #{$tablet};
   }
+
   @include onDesctop {
     grid-column: span #{$desktop};
   }
