@@ -1,0 +1,149 @@
+.now-on-view{
+
+  &__articles{
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  &__description{
+    text-align: center;
+    font-weight: 400;
+    margin-top: 8px;
+    margin-bottom: 48px;
+  }
+
+  &__photos{
+    @include page-grid;
+
+    &--three-columns{
+      grid-template-columns: repeat(3, 1fr);
+
+      @include on-tablet{
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @include on-desktop{
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+  }
+
+  &__photo{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+    &--centered{
+      object-position: 20% 50%;
+    }
+
+    &--right{
+      object-position: right;
+    }
+  }
+
+  &__link{
+    position: relative;
+
+    @include hover(transform, scale(1.05));
+
+    &--tablet-unvisible{
+      @include on-tablet{
+        display: none;
+      }
+
+      @include on-desktop{
+        display: block;
+      }
+    }
+
+    &--wide{
+      @include on-tablet{
+        grid-column: span 4;
+      }
+
+      @include on-desktop{
+        grid-column: span 8;
+      }
+    }
+
+    &--square{
+      padding-bottom: 100%;
+      height: 0;
+
+      @include on-tablet{
+        grid-column: span 2;
+      }
+
+      @include on-desktop{
+        grid-column: span 4;
+      }
+    }
+
+    &--wider-columns{
+      @include on-tablet{
+        grid-column: span 3;
+      }
+
+      @include on-desktop{
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__article-date {
+    font-weight: 400;
+    text-align: left;
+  }
+
+  &__article-title{
+    color: $menu-bg;
+    margin-top: 24px;
+    text-align: left;
+  }
+
+  &__button-link{
+    display: block;
+    text-decoration: none;
+    height: 56px;
+    width: 280px;
+    margin-inline: auto;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+
+  &__button{
+    all: unset;
+    background-color: $menu-bg;
+    color: $main-white;
+    height: 56px;
+    cursor: pointer;
+    width: 280px;
+    text-align: center;
+
+    &:hover {
+      background-color: $hovered-button;
+    }
+
+    &:active {
+      background-color: $active-button;
+    }
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+}
