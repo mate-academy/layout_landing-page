@@ -1,0 +1,45 @@
+.phone-menu {
+  display: flex;
+  flex-direction: column;
+
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: right;
+
+  font-size: 10px;
+  line-height: 14px;
+
+  right: 80px;
+  bottom: 20px;
+  top: 20px;
+
+  @include onTablet {
+    font-size: 16px;
+    line-height: 27px;
+
+    right: 135px;
+    bottom: 25px;
+    top: 26px;
+  }
+
+  opacity: 0;
+  visibility: hidden;
+  transition-duration: $hoverDuration;
+
+  &__phone,
+  &__museum {
+    @include hover(transform, scale(1.1));
+  }
+
+  &__museum:not(:first-child) {
+    margin-top: 8px;
+  }
+}
+
+@include onDesctop {
+  .icon--phone:hover + .phone-menu,
+  .phone-menu:hover {
+    opacity: 1;
+    visibility: visible;
+  }
+}
