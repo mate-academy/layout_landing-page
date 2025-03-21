@@ -1,0 +1,46 @@
+@mixin bold-text {
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+@mixin on-tablet {
+  @media (min-width: $min-tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $min-desktop-width) {
+    @content;
+  }
+}
+
+@mixin on-hover($property, $to-value) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin on-image-hover {
+  @include on-hover(transform, scale(1.05));
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
