@@ -1,0 +1,153 @@
+.now-on-view{
+
+  &__wrapper{
+    display: grid;
+    row-gap: 48px;
+  }
+
+
+  &__title{
+    margin: 0;
+    padding-top: 24px;
+    padding-bottom: 48px;
+
+    font-family: $main-text-font-family;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center
+  }
+}
+
+.view{
+
+  &__photos{
+    @include pageGrid;
+
+    justify-content: center;
+    margin-bottom: 24px;
+
+    @include onTablet{
+      a:nth-child(3){
+        display: none;
+      }
+    }
+
+    @include onDesktop{
+      a:nth-child(3){
+        display: block;
+      }
+    }
+
+    &__box{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 8px;
+
+      @include onTablet{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
+      @include onDesktop{
+
+
+      }
+    }
+  }
+
+  &__link{
+    &--wide{
+      @include onTablet{
+        grid-column: span 4;
+      }
+
+      @include onDesktop{
+        grid-column: span 8;
+      }
+    }
+
+    &--square{
+      @include onTablet{
+        grid-column: span 2;
+      }
+
+      @include onDesktop{
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 20% 100%;
+
+    transition: transform 0.3s;
+
+    @include hover(transform,scale(1.05));
+
+    &--photo-7{
+      object-position: 100% 100%;
+    }
+
+    &__box{
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      height: auto;
+      max-height: 324;
+      }
+  }
+
+  &__title-red{
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $main-text-color-red;
+  }
+
+  &__title{
+    margin: 0;
+
+    font-family: $main-text-font-family;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  &__title-block{
+    padding-top: 15px;
+
+    font-family: $main-text-font-family;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $header-text-color;
+    text-align: center;
+  }
+
+  &__block{
+    width: 280px;
+    height: 56px;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+
+    background-color: $main-text-color-red;
+
+    @include hover(transform,scale(1.2));
+
+    @include onTablet{
+      width: 392px;
+    }
+
+    @include onDesktop{
+      width: 324px;
+    }
+  }
+}
