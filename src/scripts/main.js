@@ -1,13 +1,9 @@
 'use strict';
-// Exemplo com JavaScript comum
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();
+  const form = document.querySelector('.main__contacts__form');
 
-  console.log({
-    name: event.target[0].value,
-    email: event.target[1].value,
-    message: event.target[2].value
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const message = document.createElement('p');
+    message.textContent = 'Formulário enviado!';
+    form.appendChild(message);
   });
-});
-
-
