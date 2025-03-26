@@ -1,12 +1,10 @@
 .page {
-  font-family: "Space Grotesk","Space Mono", sans-serif;
-  font-size: 16px;
-
   scroll-behavior: smooth;
+
+  font-family: 'Space Grotesk', 'Space Mono', sans-serif;
+  font-size: 16px;
   line-height: 140%;
-
   color: $main-text-color;
-
 
   &__body {
     min-width: 320px;
@@ -14,26 +12,26 @@
   }
 
   &__menu {
+    pointer-events: none;
+
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
-
     transform: translateX(-100%);
-    pointer-events: none;
-    opacity: 0;
 
+    opacity: 0;
 
     transition: all 0.3s;
 
     &:target {
-      transform: translateX(0);
       pointer-events: all;
+      transform: translateX(0);
       opacity: 1;
     }
   }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
 }
-
-
-
-
