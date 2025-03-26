@@ -17,6 +17,7 @@
       object-fit: cover;
       width: 130px;
       height: 38px;
+      @include animations;
 
       @include on-tablet{
         object-fit: cover;
@@ -37,6 +38,7 @@
       height: 24px;
       background-repeat: no-repeat;
       background-size: contain;
+      @include animations;
 
       @include on-tablet{
         object-fit: cover;
@@ -60,6 +62,24 @@
       list-style: none;
       padding-block: 32px;
       margin: 0;
+      position: relative;
+      @include animations;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0%;
+        transform: translate(0%);
+        width: 0;
+        height: 1px;
+        background-color: #000;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 50%;
+      }
     }
 
     &__link {
