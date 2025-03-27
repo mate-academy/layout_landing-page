@@ -1,4 +1,6 @@
 .page {
+  $page: &;
+
   font-family: 'Space Grotesk', sans-serif;
   color: $main-text-color;
   font-size: 16px;
@@ -19,12 +21,16 @@
     opacity: 0;
     pointer-events: none;
     transform: translateX(-100%);
-    transition: all 0.3s;
+    transition: transform 0.4s ease-out;
 
     &:target {
       opacity: 1;
       pointer-events: all;
       transform: translateX(0);
     }
+  }
+
+  &:has(#{$page}__menu:target) {
+    overflow: hidden;
   }
 }

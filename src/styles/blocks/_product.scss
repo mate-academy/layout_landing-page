@@ -1,12 +1,35 @@
 .product {
+  $product: &;
+
+  &:hover {
+    #{$product}__image {
+      transform: scale(0.9) rotate(4deg);
+    }
+  }
+
+  &__thumbnail {
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+  }
+
   &__image {
     width: 100%;
+    transition: transform $transition-duration;
   }
 
   &__title {
     margin: 24px 0 8px;
     font-size: 18px;
     line-height: 140%;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+
+    @include link-smooth-underlining-hover(2px, -4px);
   }
 
   &__description {
