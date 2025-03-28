@@ -1,0 +1,64 @@
+
+@mixin on-tablet{
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop{
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin padding{
+  @include on-tablet{
+    padding: 36 72;
+  }
+
+  @include on-desktop{
+    padding: 36 120px;
+  }
+}
+
+@mixin grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+
+  @include on-tablet{
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+    @content;
+  }
+
+  @include on-desktop{
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 1250px;
+    margin: 0 auto;
+    @content;
+  }
+}
+
+@mixin animations {
+  transition: transform 0.5s ease;
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @include on-tablet {
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  @include on-desktop {
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: scale(1.06);
+    }
+  }
+}
+
