@@ -1,0 +1,109 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-with) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin field-size {
+  border: none;
+  padding-block: 14px;
+  padding-left: 16px;
+
+  color: #292929;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin button {
+  background-color: #fff;
+  border-radius: 40px;
+  font-family: Poppins, sans-serif;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #1d1d1d;
+
+  display: block;
+  margin-inline: auto;
+  padding-block: 14.5px;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 1px 4px 16px #e8e8f066;
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px #e8e8f066;
+  }
+}
+
+@mixin contact-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  margin-bottom: 8px;
+}
+
+@mixin contact-information {
+  text-decoration: none;
+  font-family: Poppins, sans-serif;
+  color: #fff;
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+}
