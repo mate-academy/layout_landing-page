@@ -1,0 +1,36 @@
+.page {
+  $page: &;
+
+  font-family: 'Space Grotesk', sans-serif;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 100%;
+  background-color: $white-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-out;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+
+  &:has(#{$page}__menu:target) {
+    overflow: hidden;
+  }
+}
