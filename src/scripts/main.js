@@ -9,4 +9,6 @@ document
 
     button.textContent = 'Form submitted';
     button.style.backgroundColor = 'green';
+
+    this.reset();
   });
