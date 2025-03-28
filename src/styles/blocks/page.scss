@@ -1,0 +1,41 @@
+@import '../variable';
+
+.page {
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+
+  color: $menu-text-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition-duration: 300ms;
+    transform: translateX(-100%);
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+  transition-duration: 0ms;
+
+  .page__menu {
+    transition-duration: 300ms;
+    padding-right: 15.2px;
+  }
+}
