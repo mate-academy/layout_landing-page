@@ -1,0 +1,65 @@
+.page {
+  font-family: 'Space Mono', monospace;
+  scroll-behavior: smooth;
+
+  @include font-style;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.main {
+  &__content {
+    display: grid;
+    row-gap: 96px;
+    padding-block: 96px;
+
+    @include on-tablet {
+      padding-block: 120px;
+      row-gap: 120px;
+    }
+  }
+
+  &__bg {
+    height: 200px;
+    background-image: url(../images/main-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    @include on-desktop {
+      height: 460px;
+    }
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
