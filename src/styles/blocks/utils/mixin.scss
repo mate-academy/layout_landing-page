@@ -1,0 +1,55 @@
+@use "../variables.scss" as *;
+
+@mixin onTablet {
+
+  @media (min-width: $tablet-min-width) {
+   @content;
+  }
+}
+
+@mixin onDesktop {
+
+  @media (min-width: $desktop-min-width) {
+   @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+    }
+
+    @include onDesktop {
+      margin-inline: auto;
+      max-width: 1020px;
+      padding-inline: 120px;
+    }
+  }
+
+
+@mixin hover ($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+
+}
+
+@mixin pageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+
+  }
+}
