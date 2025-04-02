@@ -25,3 +25,7 @@ navItems.forEach((item) => {
     page.classList.remove('page--no-scroll');
   });
 });
+
+document.querySelector('.form').addEventListener('submit', (event) => {
+  event.preventDefault();
+});
