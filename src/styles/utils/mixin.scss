@@ -14,16 +14,14 @@
   padding-inline: 20px;
 
   @include on-tablet {
-    // max-width: 600px;   // try to limit content
-    // margin-inline: auto;
-
+    max-width: 600px;   // try to limit content
+    margin-inline: auto;
     padding-inline: 72px;
   }
 
   @include on-desktop {
-    // max-width: 1020px;   // try to limit content
-    // margin-inline: auto;
-
+    max-width: 1020px;   // try to limit content
+    margin-inline: auto;
     padding-inline: 120px;
   }
 }
@@ -38,15 +36,18 @@
 @mixin grid {
   display: grid;
   column-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(var(--columns,2), 1fr);
 
   @include on-tablet {
+    --columns: 6;
+
     column-gap: 24px;
-    grid-template-columns: repeat(6, 1fr);
   }
 
   @include on-desktop {
-    grid-template-columns: repeat(12, 1fr);
+    --columns: 12;
+
+    column-gap: 24px;
   }
 }
 
