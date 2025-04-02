@@ -1,0 +1,49 @@
+.page {
+  font-family: $main-font-family;
+  color: $main-color-text;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 140%;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+
+      @include hover-effect;
+    }
+  }
+  &__footer {
+    background-size: cover;
+    height: 200px;
+    background-image: url(../images/footer/footer-full-size.png);
+
+    @include on-tablet {
+      height: 400px;
+    }
+
+    @include on-desktop {
+      height: 500px;
+    }
+  }
+}
