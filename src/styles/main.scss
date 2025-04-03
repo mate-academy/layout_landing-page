@@ -17,7 +17,12 @@ html, body {
 
 .main {
   background-color: #000;
-  display: grid;
+
+  @include grid;
+
+  grid-template-rows: auto;
+
+  // display: grid;
   row-gap: 96px;   // Why?
   padding-block: 96px;   // Why?
 
@@ -27,4 +32,29 @@ html, body {
     padding-block: 120px; // Why?
     row-gap: 120px;  // Why?
   }
+
+  .section-title {
+    @include h2;
+
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  .section-title--left {
+    text-align: left;
+  }
+}
+
+.move-free,
+.comparison,
+.details,
+.contacts {
+  grid-column: 1 / -1;
 }
