@@ -1,0 +1,38 @@
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  font-optical-sizing: auto;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    max-width: 100vw;
+
+    &:has(.page__menu:target) {
+      overflow: hidden;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+  }
+}
