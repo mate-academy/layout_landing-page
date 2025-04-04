@@ -1,3 +1,62 @@
-body {
-  margin: 0;
+@import './utils/variables';
+@import './utils/mixin';
+@import 'blocks/header';
+@import 'blocks/icon';
+@import 'blocks/menu';
+@import 'blocks/nav';
+@import 'blocks/page';
+@import 'blocks/top-bar';
+@import 'blocks/comparison';
+@import 'blocks/product';
+@import 'blocks/move-free';
+@import 'blocks/details';
+@import 'blocks/contacts';
+
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.main {
+  background-color: #000;
+
+  @include grid;
+
+  grid-template-rows: auto;
+
+  // display: grid;
+  row-gap: 96px;   // Why?
+  padding-block: 96px;   // Why?
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    padding-block: 120px; // Why?
+    row-gap: 120px;  // Why?
+  }
+
+  .section-title {
+    @include h2;
+
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  .section-title--left {
+    text-align: left;
+  }
+}
+
+.move-free,
+.comparison,
+.details,
+.contacts {
+  grid-column: 1 / -1;
 }
