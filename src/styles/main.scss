@@ -11,6 +11,12 @@
     min-width: 320px;
   }
 
+  /* stylelint-disable-next-line selector-max-id */
+  body:has(#menu:target) {
+    overflow: hidden;
+    height: 100vh;
+  }
+
   &__menu {
     position: fixed;
     top: 0;
@@ -109,6 +115,7 @@
 .phone-number2 {
   display: none;
   position: absolute;
+  pointer-events: auto;
 
   font-weight: 700;
   line-height: 27px;
@@ -123,24 +130,26 @@
   transform: translateX(0);
 }
 
-.phone-number1 {
-  left: -215px;
-  top: -70px;
-}
+@include on-desktop {
+  .phone-number1 {
+    left: -215px;
+    top: -70px;
+  }
 
-.phone-number2 {
-  left: -215px;
-  top: -8px;
-  padding-left: 30px;
-}
+  .phone-number2 {
+    left: -215px;
+    top: -8px;
+    padding-left: 30px;
+  }
 
-.phone-container {
-  position: relative;
-}
+  .phone-container {
+    position: relative;
+  }
 
-.phone-container:hover .phone-number1,
-.phone-container:hover .phone-number2 {
-  display: block;
+  .phone-container:hover .phone-number1,
+  .phone-container:hover .phone-number2 {
+    display: block;
+  }
 }
 
 .menu {
@@ -152,6 +161,7 @@
 
   &__top {
     margin-bottom: 40px;
+    position: relative;
 
     @include on-tablet {
       margin-bottom: 0;
@@ -823,16 +833,17 @@
       font-size: 14px;
       background-color: #f8f8fa;
       color: #7e7e83;
-      border: none;
       padding-top: 14px;
       padding-bottom: 14px;
       padding-left: 10.9px;
       margin-bottom: 16px;
       box-sizing: border-box;
+      border: 1px solid #f8f8fa;
 
       &:focus {
         border: 1px solid #161616;
         color: #161616;
+        outline: none;
       }
 
       &:hover::placeholder {
@@ -880,28 +891,30 @@
   }
 }
 
+img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 /* #endregion */
 
 /* #region footer */
 .footer {
   background-image: url('/photos/footer.png');
   background-size: cover;
-  background-position: center;
+  background-position: bottom center;
   background-repeat: no-repeat;
 
   position: relative;
-  bottom: 0;
   width: 100%;
   min-height: 180px;
 
   @include on-tablet {
-    height: 359px;
-    background-size: cover;
+    min-height: 359px;
   }
 
   @include on-desktop {
-    height: 359px;
-    background-size: cover;
+    min-height: 359px;
   }
 }
 
