@@ -1,0 +1,77 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 24px;
+  }
+
+  &--phone {
+    background-image: url(../icons/phone.png);
+  }
+
+  &--burger {
+    background-image: url(../icons/burger.png);
+
+    &:hover {
+      background-image: url(../icons/burger-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/close.png);
+  }
+}
+
+.phone-numbers {
+  display: none;
+  position: absolute;
+  right: 120px;
+  top: -150%;
+  z-index: 1;
+  text-align: right;
+  min-width: 220px;
+  animation: fadeOut 0.3s ease;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 8px;
+
+  &__item {
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+  }
+}
+
+.toggle-phone:checked ~ .phone-numbers {
+  display: block;
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
