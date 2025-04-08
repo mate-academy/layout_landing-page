@@ -1,0 +1,67 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin button {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+  background-color: $text-color;
+  border-radius: 8px;
+  border: 2px solid $text-color;
+  box-sizing: border-box;
+  height: 56px;
+  cursor:
+    url(../icons/Mice.png) 8 8,
+    pointer;
+
+  &:hover {
+    color: $text-color;
+    background-color: $form-bgc;
+    border-color: #f0f1f4;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #111;
+    border-color: #111;
+  }
+}
+
+@mixin spaceMono {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
