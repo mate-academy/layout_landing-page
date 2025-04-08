@@ -1,0 +1,104 @@
+$main-text-color: #fff;
+
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  & {
+    transition: $property 0.4s;
+  }
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin text48 {
+  margin: 0;
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: -1.5px;
+}
+
+@mixin text32 {
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+}
+
+@mixin text24 {
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+@mixin text16 {
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin text16-italic {
+  font-family: Cinzel, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+@mixin button {
+  color: #fff;
+  height: 56px;
+  cursor: pointer;
+
+  background-color: #d12d35;
+  border: 0;
+
+  &:hover {
+    background-color: #ae1c23;
+  }
+
+  &:active {
+    background-color: #eb343d;
+  }
+}
+
+@mixin image-hover-zoom($scale: 1.06, $duration: 0.3s) {
+  transition: transform $duration ease;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
