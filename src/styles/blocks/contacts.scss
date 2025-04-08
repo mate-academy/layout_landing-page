@@ -1,68 +1,112 @@
 @use './utils/mixin' as *;
 @use './variables' as *;
 
-
 .contact {
-  @include pageGrid;
+  @include page-grid;
 
   margin-top: 64px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-top: 120px;
-}
-
-@include onDesktop {
-  margin-top: 120px;
-}
-
-&__form {
-
-  display: flex;
-  flex-direction: column;
-  grid-column: 1 / -1;
-
-  input,
-  textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
   }
 
-  textarea {
-      height: 100px;
-      resize: none;
+  @include on-desktop {
+    margin-top: 120px;
   }
 
-  @include onTablet {
+  &__form {
+    display: flex;
     grid-column: 1 / -1;
-}
+    flex-direction: column;
 
-@include onDesktop {
-  grid-column: 1 / 7;
+    input,
+    textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      border: 1px solid #f9f9f9;
+      border-radius: 5px;
+
+      transition:
+        all 0.3s ease,
+        color 0.3s ease;
+    }
+
+    textarea {
+      resize: none;
+
+      width: 100%;
+      height: 100px;
+      margin-bottom: 14px;
+      padding: 12px;
+      border: 1px solid #f9f9f9;
+      border-radius: 8px;
+
+      font-family: Manrope, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 140%;
+      color: #1b2129;
+      letter-spacing: 0.15px;
+
+      transition:
+        border-color 0.3s ease,
+        color 0.3s;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #7e7e83;
+    }
+
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+      color: #1b2129;
+    }
+
+    input:hover::placeholder,
+    textarea:hover::placeholder {
+      color: #1b2129;
+    }
+
+    input:hover,
+    textarea:hover {
+      cursor: text;
+      border-color: #dbdbdb;
+    }
+
+    input:focus,
+    textarea:focus {
+      cursor: text;
+      border: 2px solid #f98921;
+      outline: none;
+    }
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
   }
-}
 
-&__info {
-  flex: 0.5;
+  &__info {
+    grid-column: 1 / -1;
+    flex: 0.5;
 
-  a {
-      text-decoration: none;
+    a {
       color: #333;
+      text-decoration: none;
       transition: color 0.3s ease;
 
       &:hover {
-        color: #007BFF;
+        color: #007bff;
       }
-  }
-  grid-column: 1 / -1;
+    }
 
-  @include onTablet {
-}
-
-@include onDesktop {
-  grid-column: 8 / 10;
+    @include on-desktop {
+      grid-column: 8 / 10;
     }
   }
 }

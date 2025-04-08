@@ -1,37 +1,40 @@
 @use './utils/mixin' as *;
 @use './variables' as *;
 
-
 .page {
-  font-family: "Manrope", serif;
-  color: $main-text-color;
-  size: 16px;
-  line-height: 22.4px;
   scroll-behavior: smooth;
+
+  size: 16px;
+
+  font-family: Manrope, serif;
+  line-height: 22.4px;
+  color: $main-text-color;
 
   &:has(.page__menu:target) {
     overflow: hidden;
-}
+  }
 
-&__body {
-  margin: 0;
-  min-width: 320px;
-}
-&__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  &__body {
+    min-width: 320px;
+    margin: 0;
+  }
+  &__menu {
+    pointer-events: none;
 
-  opacity: 0;
-  transition: all 0.3s;
-  transform: translateX(-100%);
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
 
-&:target {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: all;
+    opacity: 0;
+
+    transition: all 0.3s;
+
+    &:target {
+      pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 }
