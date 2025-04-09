@@ -1,27 +1,97 @@
 .top-bar {
-  padding-block: 25px;
-  @include contentPaddingInline();
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  line-height: 0;
+  justify-content: space-between;
 
-  @include onTablet {
+  padding-block: 25px;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+
+  animation: fade-in 1s ease-out;
+
+  @include on-tablet {
     padding-block: 50px;
   }
 
-  &__logo {
+  &__phone {
+    position: relative;
+  }
+
+  &__phone-menu {
+    position: absolute;
+    left: -201px;
+    transform: translateY(-60%);
+
+    z-index: 1000;
+
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+    color: $main-color-ligth;
+  }
+
+  &__phone:hover &__phone-menu {
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__phone-item {
     display: flex;
-    @include onTablet {
+    flex-direction: column;
+    align-items: end;
+  }
+
+  &__phone-label {
+    display: flex;
+  }
+
+  &__phone-link {
+    color: white;
+    text-decoration: none;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
       width: 87px;
       height: 65px;
     }
   }
 
   &__logo--menu {
-    @include onTablet {
+    width: 64px;
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
       width: 64px;
       height: 46px;
+    }
+
+    @include on-desktop {
+      width: 87px;
+      height: 65px;
     }
   }
 
