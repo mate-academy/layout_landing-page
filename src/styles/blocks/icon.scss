@@ -4,6 +4,8 @@
   height: 24px;
   background-size: cover;
 
+  @include hover(transform, scale(1.2));
+
   @media (min-width: 576px) {
     width: 32px;
     height: 32px;
@@ -11,6 +13,23 @@
 
   &--Phone {
     background-image: url(../icon/Icon-Phone-call.png);
+
+    &::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      left: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      color: $page-text-color;
+      font-weight: 700;
+      font-size: 12px;
+      opacity: 0;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
   }
 
   &--Burger {
