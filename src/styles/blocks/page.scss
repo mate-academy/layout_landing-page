@@ -1,0 +1,91 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  @include hover(transform, scale(1.2));
+}
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: $page-font-size;
+  line-height: 140%;
+  color: $primory-font-color;
+  font-weight: $primory-font-weight;
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 96px;
+    max-width: $mb-page-width;
+    margin: 0 auto;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 64px;
+    min-width: $mb-page-width;
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  @media (min-width: $tablet-page-width) {
+    &__body {
+      min-width: $tablet-page-width;
+      gap: 120px;
+    }
+
+    .main {
+      max-width: $tablet-page-width;
+      gap: 120px;
+    }
+  }
+
+  @media (min-width: $des-page-width) {
+    &__body {
+      min-width: $des-page-width;
+    }
+
+    .main {
+      max-width: $des-page-width;
+    }
+  }
+}
