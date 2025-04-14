@@ -1,8 +1,8 @@
 .top-bar {
-  padding-block: 24px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
 
   @include on-tablet {
     padding-block: 32px;
@@ -11,6 +11,8 @@
   &__icons {
     display: flex;
     gap: 24px;
+    align-items: center;
+    justify-content: center;
   }
 
   &__logo-link {
@@ -25,5 +27,39 @@
     @include on-tablet {
       height: 24px;
     }
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      &:hover {
+        .top-bar__phone-number {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__phone-number {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $main-text-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      opacity $effectDuration,
+      visibility $effectDuration;
   }
 }
