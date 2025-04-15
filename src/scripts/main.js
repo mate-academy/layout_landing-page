@@ -1,6 +1,8 @@
 'use strict';
 
 const menu = document.querySelector('.menu');
+const hero = document.querySelector('.hero');
+const main = document.querySelector('.main');
 
 const phoneIcon = document.querySelector('.nav__icon--phone');
 const burgerIcon = document.querySelector('.nav__icon--burger');
@@ -16,27 +18,30 @@ phoneIcon.addEventListener('mouseleave', () => {
   phoneList.classList.add('hidden');
 });
 
-const notMenuBlock = Array.from(document.getElementById('app').children).filter(
-  (el) => !el.classList.contains('menu'),
-);
-
 burgerIcon.addEventListener('click', () => {
-  menu.classList.remove('transition');
+  menu.classList.remove('is-hidden');
+  menu.classList.add('is-visible');
 
-  notMenuBlock.forEach((el) => el.classList.add('transition'));
+  hero.classList.add('is-hidden');
+  hero.classList.remove('is-visible');
 
   setTimeout(() => {
+    hero.classList.add('hidden');
+    main.classList.add('hidden');
     menu.classList.remove('hidden');
-    notMenuBlock.forEach((el) => el.classList.add('hidden'));
   }, 300);
 });
 
 closeIcon.addEventListener('click', () => {
-  menu.classList.add('transition');
-  notMenuBlock.forEach((el) => el.classList.remove('transition'));
+  menu.classList.remove('is-visible');
+  menu.classList.add('is-hidden');
+
+  hero.classList.remove('is-hidden');
+  hero.classList.add('is-visible');
 
   setTimeout(() => {
     menu.classList.add('hidden');
-    notMenuBlock.forEach((el) => el.classList.remove('hidden'));
+    hero.classList.remove('hidden');
+    main.classList.remove('hidden');
   }, 300);
 });

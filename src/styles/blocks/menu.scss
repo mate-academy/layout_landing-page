@@ -5,21 +5,26 @@
 .menu {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
   max-width: 1260px;
   min-height: 100vh;
-  max-height: 100%;
+  height: 100%;
 
-  overflow-y: auto;
-
-  z-index: 4;
+  overflow: auto;
 
   transition:
-    opacity 0.8s ease-in-out,
-    visibility 0s linear 0.8s,
-    transform 0.8s ease-in-out;
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 
   background-color: map.get(variables.$background, menu);
 
@@ -44,17 +49,33 @@
   }
 
   &__item {
+    position: relative;
     padding-bottom: 8px;
     border-bottom: 1px solid transparent;
     width: fit-content;
 
     &:hover {
-      border-bottom: 1px solid map.get(variables.$color, secondary);
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: map.get(variables.$color, secondary);
+      transition: width 0.3s ease;
     }
 
     &--call {
       &:hover {
-        border-bottom: 1px solid transparent;
+        &::before {
+          width: 0;
+        }
       }
 
       &:first-child {
@@ -102,6 +123,7 @@
     &--message {
       padding-bottom: 8px;
       border-bottom: 1px solid map.get(variables.$color, secondary);
+
       cursor: pointer;
 
       @include mixins.content-font-style(
