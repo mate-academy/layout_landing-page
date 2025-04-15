@@ -1,0 +1,86 @@
+@use "sass:map";
+@use "../utils/variables.scss" as variables;
+@use "../utils/mixins.scss" as mixins;
+
+.section {
+  background-color: map.get(variables.$color, secondary);
+
+  &:first-of-type {
+    margin-top: 60px;
+
+    @include mixins.on-tablet {
+      margin-top: 120px;
+    }
+  }
+
+  &:not(:first-of-type) {
+    place-items: center;
+  }
+
+  &__about-us {
+    display: grid;
+    grid-gap: 32px;
+
+    @include mixins.page-grid;
+
+    @include mixins.content-padding-inline;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    color: map.get(variables.$color, primary);
+
+    &--row {
+      @include mixins.on-tablet {
+        grid-column: 1/4;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 5;
+      }
+    }
+
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 2rem,
+          weight: 500,
+          line: 100%,
+          letter: -1.5px
+        ),
+        tablet: (
+          size: 3rem
+        ),
+        desktop: (
+          size: 4rem
+        )
+      )
+    );
+  }
+
+  &__sub-title {
+    grid-column: 1/-1;
+    color: map.get(variables.$color, primary);
+
+    &--row {
+      @include mixins.on-tablet {
+        grid-column: 4/7;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 6;
+      }
+    }
+
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 23px,
+          weight: 500,
+          line: 140%,
+          letter: normal
+        )
+      )
+    );
+  }
+}
