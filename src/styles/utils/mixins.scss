@@ -1,0 +1,73 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: $padding-inline-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+    max-width: 1020px;
+    padding-inline: $padding-inline-desktop;
+  }
+}
+
+@mixin page-grid() {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin fonts-header-text() {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 100%;
+  color: #fff;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    font-size: 56px;
+  }
+}
+
+@mixin fonts-nav-link-text {
+  font-size: 22px;
+}
+
+@mixin fonts-menu-text {
+  font-size: 16px;
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} $transition-duration;
+  &:hover {
+    #{$property}: $value;
+  }
+}
