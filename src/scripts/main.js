@@ -21,11 +21,22 @@ const notMenuBlock = Array.from(document.getElementById('app').children).filter(
 );
 
 burgerIcon.addEventListener('click', () => {
-  menu.classList.remove('hidden');
-  notMenuBlock.forEach((el) => el.classList.add('hidden'));
+  menu.classList.remove('transition');
+
+  notMenuBlock.forEach((el) => el.classList.add('transition'));
+
+  setTimeout(() => {
+    menu.classList.remove('hidden');
+    notMenuBlock.forEach((el) => el.classList.add('hidden'));
+  }, 300);
 });
 
 closeIcon.addEventListener('click', () => {
-  menu.classList.add('hidden');
-  notMenuBlock.forEach((el) => el.classList.remove('hidden'));
+  menu.classList.add('transition');
+  notMenuBlock.forEach((el) => el.classList.remove('transition'));
+
+  setTimeout(() => {
+    menu.classList.add('hidden');
+    notMenuBlock.forEach((el) => el.classList.remove('hidden'));
+  }, 300);
 });

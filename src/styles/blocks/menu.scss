@@ -3,7 +3,24 @@
 @use "../utils/mixins.scss" as mixins;
 
 .menu {
-  padding-bottom: 24px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1260px;
+  min-height: 100vh;
+  max-height: 100%;
+
+  overflow-y: auto;
+
+  z-index: 4;
+
+  transition:
+    opacity 0.8s ease-in-out,
+    visibility 0s linear 0.8s,
+    transform 0.8s ease-in-out;
+
   background-color: map.get(variables.$background, menu);
 
   &__aside {
@@ -42,6 +59,10 @@
 
       &:first-child {
         margin-top: 8px;
+      }
+
+      &:last-child {
+        padding-bottom: 24px;
       }
     }
   }
