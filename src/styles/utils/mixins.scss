@@ -1,0 +1,69 @@
+@use "sass:map";
+@use "./variables.scss" as variables;
+@use "./functions.scss" as functions;
+
+@mixin on-tablet {
+  @media (min-width: map.get(variables.$breakpoints, tablet)) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: map.get(variables.$breakpoints, desktop)) {
+    @content;
+  }
+}
+
+@mixin wrapper {
+  @include on-desktop {
+    max-width: 1260px;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin apply-font-style($styles) {
+  @each $property, $value in $styles {
+    #{$property}: $value;
+  }
+}
+
+@mixin content-font-style($settings) {
+  @each $breakpoint, $property in $settings {
+    $size: map.get($property, size);
+    $weight: map.get($property, weight);
+    $line: map.get($property, line);
+    $letter: map.get($property, letter);
+
+    @if $size != null {
+
+      $styles: functions.font-style($size, $weight, $line, $letter);
+      @if $breakpoint == "base" {
+        @include apply-font-style($styles);
+      }
+
+      @if $breakpoint == "tablet" {
+        @include on-tablet {
+          @include apply-font-style($styles);
+        }
+      }
+
+      @if $breakpoint == "desktop" {
+        @include on-desktop {
+          @include apply-font-style($styles);
+        }
+      }
+    }
+  }
+}
