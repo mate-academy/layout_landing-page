@@ -1,7 +1,8 @@
-# Landing page
+# Landing Page
 
-> ❗❗ You will complete this task in the topic **Landing**.
-> Now just choose a design and do the parts from the videos
+> ❗❗ You will complete this task in the **Landing** topic.
+> Now just choose a design and do the parts from the videos.
+> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
 
 Choose a design for your landing page:
 
@@ -10,6 +11,7 @@ Choose a design for your landing page:
 - [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
 - [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
+
 Follow the videos in this and next lessons to implement the page block by block
 
 - Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
@@ -17,6 +19,7 @@ Follow the videos in this and next lessons to implement the page block by block
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar;
 - When done check yourself using the [CHECKLIST](./checklist.md) when finished;
 - Deploy and create a Pull Request with a [DEMO LINK](https://DenysRaboshchuk.github.io/layout_landing-page/)
+
 
 # Tips & Hints
 
