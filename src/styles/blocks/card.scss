@@ -1,0 +1,65 @@
+@use "sass:map";
+@use "../utils/variables.scss" as variables;
+@use "../utils/mixins.scss" as mixins;
+
+.card {
+  grid-column: 1/-1;
+
+  @include mixins.on-tablet {
+    grid-column: 2/-2;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: span 4;
+  }
+
+  color: map.get(variables.$color, primary);
+
+  &__item {
+    display: grid;
+    grid-gap: 32px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 150px;
+  }
+
+  &__title,
+  &__price {
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 1.5rem,
+          weight: 700,
+          line: 140%,
+          letter: normal
+        )
+      )
+    );
+  }
+
+  &__desc {
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 1rem,
+          weight: 400,
+          line: 140%,
+          letter: normal
+        )
+      )
+    );
+  }
+
+  &__price {
+    margin-top: auto;
+  }
+}
