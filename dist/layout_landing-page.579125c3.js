@@ -1,4 +1,4 @@
-//#region PopUp
+// #region PopUp
 const popUPcloseBtn = document.querySelector('.pop-up__close-btn');
 const popUp = document.querySelector('.pop-up__menu');
 const headerBurgerBtn = document.querySelector('.btn-burger');
@@ -14,12 +14,12 @@ popUPcloseBtn.onclick = function() {
     headerBurgerBtn.classList.toggle('close');
 };
 // #endregion
-//#region Slide
+// #region Slide
 const observer = new IntersectionObserver((entries, obs)=>{
     entries.forEach((entry)=>{
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target); // прибирає спостереження після появи
+            obs.unobserve(entry.target);
         }
     });
 }, {
@@ -29,6 +29,10 @@ document.querySelectorAll('.animation--slide-left').forEach((el)=>observer.obser
 document.querySelectorAll('.animation--slide-right').forEach((el)=>observer.observe(el));
 // #endregion
 // #region FOG
-document.querySelectorAll('.animation--fog').forEach((el)=>observer.observe(el)); // #endregion
+document.querySelectorAll('.animation--fog').forEach((el)=>observer.observe(el));
+// #endregion
+document.querySelector('.btn-phone').addEventListener('click', function() {
+    document.querySelector('.phone-link').click();
+});
 
 //# sourceMappingURL=layout_landing-page.579125c3.js.map

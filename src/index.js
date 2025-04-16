@@ -1,4 +1,4 @@
-//#region PopUp
+// #region PopUp
 
 const popUPcloseBtn = document.querySelector('.pop-up__close-btn');
 const popUp = document.querySelector('.pop-up__menu');
@@ -19,12 +19,13 @@ popUPcloseBtn.onclick = function () {
 
 // #endregion
 
-//#region Slide
+// #region Slide
+
 const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('is-visible');
-      obs.unobserve(entry.target); // прибирає спостереження після появи
+      obs.unobserve(entry.target);
     }
   });
 }, {
@@ -36,5 +37,11 @@ document.querySelectorAll('.animation--slide-right').forEach(el => observer.obse
 // #endregion
 
 // #region FOG
+
 document.querySelectorAll('.animation--fog').forEach(el => observer.observe(el));
+
 // #endregion
+
+document.querySelector('.btn-phone').addEventListener('click', function() {
+  document.querySelector('.phone-link').click();
+});
