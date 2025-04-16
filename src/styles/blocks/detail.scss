@@ -66,7 +66,7 @@
     @include mixins.content-font-style(
       (
         base: (
-          size: 1.4rem,
+          size: 24px,
           weight: 700,
           line: 140%,
           letter: normal
@@ -85,7 +85,11 @@
   }
 
   &__desc {
-    grid-column: span 8;
+    grid-column: 1/-1;
+
+    @include mixins.on-desktop {
+      grid-column: span 8;
+    }
 
     @include mixins.content-font-style(
       (
@@ -97,5 +101,23 @@
         )
       )
     );
+  }
+
+  &__button {
+    width: 278px;
+    margin-top: 40px;
+    border-radius: 40px;
+    text-align: center;
+
+    background-color: map.get(variables.$color, primary);
+
+    @include mixins.on-tablet {
+      width: 392px;
+      margin-top: 48px;
+    }
+
+    @include mixins.on-desktop {
+      width: 324px;
+    }
   }
 }
