@@ -1,0 +1,69 @@
+@use "sass:map";
+@use "../utils/variables.scss" as variables;
+@use "../utils/mixins.scss" as mixins;
+
+.nav {
+  &__items {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include mixins.on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__div {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    @include mixins.on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__icon {
+    width: 75%;
+
+    &--burger {
+      &:hover {
+        content: map.get(variables.$burger, hover);
+      }
+    }
+  }
+}
+
+.phone {
+  &__items {
+    display: none;
+
+    @include mixins.on-tablet {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-115%, -50%);
+      white-space: nowrap;
+      color: map.get(variables.$color, primary);
+    }
+  }
+
+  &__item {
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 0.75rem,
+          weight: 700,
+          line: 16px,
+          letter: 2px
+        )
+      )
+    );
+  }
+}

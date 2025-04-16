@@ -1,0 +1,76 @@
+@use "sass:map";
+@use "../utils/variables.scss" as variables;
+@use "../utils/mixins.scss" as mixins;
+@use "../utils/functions.scss" as functions;
+
+.hero {
+  position: relative;
+  height: 100vh;
+
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    @each $property, $value in map.get(variables.$background, hero) {
+      #{$property}: $value;
+    }
+
+    @include mixins.on-tablet {
+      background-position: center;
+    }
+
+    @include mixins.on-desktop {
+      background-position: center top 60%;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+    color: map.get(variables.$color, primary);
+
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 2.25rem,
+          weight: 700,
+          line: 100%,
+          letter: -1.8px
+        ),
+        tablet: (
+          size: 4rem
+        ),
+        desktop: (
+          size: 5rem
+        )
+      )
+    );
+
+    @include mixins.on-tablet {
+      bottom: 20%;
+    }
+
+    @include mixins.on-desktop {
+      bottom: 31%;
+    }
+  }
+}
