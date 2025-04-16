@@ -40,13 +40,22 @@ const scrollToSection = (id) => {
   }, 100);
 };
 
+const navigationLinks = (links) => {
+  return [...links].filter((link) => {
+    return (
+      !link.classList.contains('menu__link--number') &&
+      !link.classList.contains('menu__link--message')
+    );
+  });
+};
+
 const setupEventListeners = () => {
   const { burgerIcon, closeIcon, menuLinks } = elements();
 
   burgerIcon?.addEventListener('click', () => setMenuVisibility(true));
   closeIcon?.addEventListener('click', () => setMenuVisibility(false));
 
-  menuLinks.forEach((link) => {
+  navigationLinks(menuLinks).forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
 
