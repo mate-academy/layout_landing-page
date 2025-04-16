@@ -1,0 +1,128 @@
+@use '../mixins.scss' as mixins;
+
+$padding-mobile: 24px 20px;
+$padding-tablet: 8 72px;
+$padding-desktop: 0 120px;
+$breakpoint-tablet: 744px;
+$breakpoint-desktop: 1260px;
+
+.page_menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+.menu {
+  background-color: rgba(194, 194, 194, 1);
+  height: 100vh;
+
+  &__logo {
+    @include mixins.logo;
+  }
+
+  &__top {
+    @include mixins.centre-top;
+  }
+
+  .icon {
+    @include mixins.icons;
+
+    &--cross {
+      background-image: url('../images/icon-cross.svg');
+    }
+  }
+
+  &__phone-number {
+    text-decoration: none;
+    color: rgba(29, 29, 29, 1);
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__book-ride {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 16px;
+    display: block;
+    text-decoration: none;
+    color: rgba(29, 29, 29, 1);
+    font-size: 12px;
+    line-height: 16px;
+    border-bottom: 1px solid rgba(29, 29, 29, 1);
+    padding-bottom: 8px;
+    width: fit-content;
+  }
+
+  &__content {
+    padding: $padding-mobile;
+    font-weight: 600;
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: $padding-tablet;
+      margin-top: 8px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: $padding-desktop;
+      margin-top: 24px;
+      font-weight: 700;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(29, 29, 29, 1);
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      background-color: rgba(29, 29, 29, 1);
+      width: 100%;
+
+      transition: transform 0.3s ease-in-out;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__item:nth-last-child(1) {
+    margin-bottom: 40px;
+  }
+}
