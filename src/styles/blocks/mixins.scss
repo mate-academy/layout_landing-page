@@ -1,0 +1,43 @@
+@use '../blocks/variables' as vars;
+
+@mixin on-tablet {
+  @media (min-width: vars.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vars.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  margin-inline: 20px;
+
+  @include on-tablet {
+    margin-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin grid-columns {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
