@@ -2,16 +2,22 @@
 @use "../utils/variables.scss" as variables;
 @use "../utils/mixins.scss" as mixins;
 
-.section {
-  background-color: map.get(variables.$color, secondary);
+.main {
+  display: grid;
+  grid-gap: 92px;
 
-  &:first-of-type {
-    margin-top: 60px;
-
-    @include mixins.on-tablet {
-      margin-top: 120px;
-    }
+  @include mixins.on-tablet {
+    grid-gap: 132px;
   }
+
+  @include mixins.on-desktop {
+    grid-gap: 164;
+  }
+}
+
+.section {
+  display: grid;
+  background-color: map.get(variables.$color, secondary);
 
   &:not(:first-of-type) {
     place-items: center;
@@ -22,7 +28,6 @@
     grid-gap: 32px;
 
     @include mixins.page-grid;
-
     @include mixins.content-padding-inline;
   }
 
@@ -82,5 +87,73 @@
         )
       )
     );
+  }
+
+  &__cards {
+    @include mixins.page-grid;
+
+    @include mixins.content-padding-inline;
+  }
+}
+
+.card {
+  grid-column: 1/-1;
+
+  @include mixins.on-tablet {
+    grid-column: 2/-2;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: span 4;
+  }
+
+  color: map.get(variables.$color, primary);
+
+  &__item {
+    display: grid;
+    grid-gap: 32px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 150px;
+  }
+
+  &__title,
+  &__price {
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 1.5rem,
+          weight: 700,
+          line: 140%,
+          letter: normal
+        )
+      )
+    );
+  }
+
+  &__desc {
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 1rem,
+          weight: 400,
+          line: 140%,
+          letter: normal
+        )
+      )
+    );
+  }
+
+  &__price {
+    margin-top: auto;
   }
 }
