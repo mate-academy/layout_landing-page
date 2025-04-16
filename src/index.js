@@ -45,3 +45,4 @@ document.querySelectorAll('.animation--fog').forEach(el => observer.observe(el))
 document.querySelector('.btn-phone').addEventListener('click', function() {
   document.querySelector('.phone-link').click();
 });
+
