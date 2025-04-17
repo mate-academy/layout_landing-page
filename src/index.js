@@ -46,3 +46,8 @@ document.querySelector('.btn-phone').addEventListener('click', function() {
   document.querySelector('.phone-link').click();
 });
 
+document.addEventListener('click', function (e) {
+  if (e.target.matches('.navigation__link')) {
+    document.querySelector('.pop-up__close-btn').click();
+  }
+});

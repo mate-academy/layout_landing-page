@@ -34,5 +34,8 @@ document.querySelectorAll('.animation--fog').forEach((el)=>observer.observe(el))
 document.querySelector('.btn-phone').addEventListener('click', function() {
     document.querySelector('.phone-link').click();
 });
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.navigation__link')) document.querySelector('.pop-up__close-btn').click();
+});
 
 //# sourceMappingURL=layout_landing-page.579125c3.js.map
