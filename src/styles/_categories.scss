@@ -1,15 +1,16 @@
 .categories{
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-
-  @include onDesktop{
-    grid-template-columns: repeat(12,1fr);
-  }
-
 
   &__title{
     grid-column: 1/ -1;
     text-align: center;
+  }
+
+  &__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
 }
@@ -20,7 +21,8 @@
     grid-template-columns: repeat(2,1fr);
 
     @include onDesktop{
-      grid-template-columns: repeat(12,1fr);
+      grid-template-columns: repeat(12, minmax(0, 63px));
+      gap: 5px;
     }
   }
 
@@ -31,7 +33,8 @@
     object-position: center;
 
     @include onDesktop{
-      grid-column: span 8;
+      width: 100%;
+      grid-column: 1/ 8;
       aspect-ratio: auto;
     }
   }
@@ -40,10 +43,29 @@
     aspect-ratio: 1 / 1;
     object-position: right;
     object-fit: cover;
+
+    @include onDesktop{
+      grid-column: 5 / 12;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+    }
   }
 
   &__photo-square{
     @include onDesktop{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+      grid-column: 9 / 12;
+    }
+  }
+
+  &__photo--square{
+    @include onDesktop{
+      width: 100%;
+      height: 100%;
       grid-column: span 4;
     }
   }
