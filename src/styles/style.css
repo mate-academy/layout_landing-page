@@ -188,43 +188,51 @@
   width: 100%;
 }
 
-.categories__wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.category__photos {
+.categories {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-@media (min-width: 768px) and (max-width: 1023px) {
-  .category__photos {
-    grid-template-columns: repeat(6, 1fr);
+@media (min-width: 1024px) {
+  .categories {
+    grid-template-columns: repeat(12, 1fr);
   }
+}
+.categories__title {
+  grid-column: 1/-1;
+  text-align: center;
+}
+
+.category__photos {
+  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 @media (min-width: 1024px) {
   .category__photos {
     grid-template-columns: repeat(12, 1fr);
   }
 }
-@media (max-width: 767px) {
-  .category__photo-wide {
-    grid-column: span 1;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-  }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  .category__photo-wide {
-    grid-column: span 3;
-    aspect-ratio: auto;
-    height: 130px;
-  }
+.category__photo-wide {
+  aspect-ratio: 1/1;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 @media (min-width: 1024px) {
   .category__photo-wide {
-    grid-column: span 6;
+    grid-column: span 8;
+    aspect-ratio: auto;
+  }
+}
+.category__photo--wide {
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-position: right;
+  object-fit: cover;
+}
+@media (min-width: 1024px) {
+  .category__photo-square {
+    grid-column: span 4;
   }
 }
 
@@ -289,10 +297,16 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 16px;
+  column-gap: 24px;
 }
 @media (min-width: 1024px) {
   .contacts {
     grid-template-columns: repeat(12, 1fr);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contacts {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 .contacts__title {
@@ -307,6 +321,11 @@
     grid-column: span 5;
   }
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contacts__form-container {
+    grid-column: span 3;
+  }
+}
 .contacts__form-form {
   display: flex;
   flex-direction: column;
@@ -316,6 +335,11 @@
 @media (min-width: 1024px) {
   .form__info {
     grid-column: 8/10;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .form__info {
+    grid-column: span 3;
   }
 }
 

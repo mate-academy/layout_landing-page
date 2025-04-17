@@ -1,37 +1,50 @@
-.categories {
-  &__wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.categories{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+
+  @include onDesktop{
+    grid-template-columns: repeat(12,1fr);
   }
+
+
+  &__title{
+    grid-column: 1/ -1;
+    text-align: center;
+  }
+
 }
 .category{
   &__photos{
+    gap: 20px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-
-    @include onTablet{
-      grid-template-columns: repeat(6,1fr);
-    }
 
     @include onDesktop{
       grid-template-columns: repeat(12,1fr);
     }
   }
-  &__photo-wide{
-    @include onMobile{
-      grid-column: span 1;
-      aspect-ratio: 1 /  1;
-      object-fit: cover;
-    }
 
-    @include onTablet{
-      grid-column: span 3;
-      aspect-ratio: auto;
-      height: 130px;
-    }
+  &__photo-wide{
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
     @include onDesktop{
-      grid-column: span 6;
+      grid-column: span 8;
+      aspect-ratio: auto;
+    }
   }
-}
+  &__photo--wide{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-position: right;
+    object-fit: cover;
+  }
+
+  &__photo-square{
+    @include onDesktop{
+      grid-column: span 4;
+    }
+  }
 }
