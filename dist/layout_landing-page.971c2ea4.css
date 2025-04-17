@@ -117,6 +117,10 @@ img {
   color: #fff;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 .animation--slide-right {
   opacity: 0;
   transition: opacity .6s ease-out, transform .6s ease-out;
@@ -165,6 +169,17 @@ img {
     opacity: 1;
     filter: blur();
   }
+}
+
+.pop-up--fog {
+  opacity: 0;
+  filter: blur(20px);
+}
+
+.pop-up--fog.is-visible {
+  opacity: 1;
+  filter: blur();
+  transition: opacity 1.5s, filter 1s;
 }
 
 @media (width >= 320px) {
@@ -439,10 +454,12 @@ img {
   }
 
   .bikes__slider-list {
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 40px;
+    padding: 2px;
     display: flex;
   }
 
@@ -453,11 +470,20 @@ img {
     display: flex;
   }
 
+  .bikes__slider-item > p {
+    transition: all .8s ease-in-out;
+  }
+
   .bikes__slider-item:hover {
     z-index: 10;
     transition: all .8s ease-in-out;
     transform: scale(1.1);
     box-shadow: .1px .1px 25.1px #575756bc;
+  }
+
+  .bikes__slider-item:hover > p {
+    margin-left: 10px;
+    transition: all .8s ease-in-out;
   }
 
   .bikes__slider-item-img {
@@ -563,6 +589,7 @@ img {
     text-align: center;
     max-width: 280px;
     margin: 0 auto;
+    padding-bottom: 164px;
   }
 
   .contacts__wrapper {
@@ -1093,7 +1120,6 @@ img {
 
   .contacts {
     max-width: 100%;
-    padding-bottom: 164px;
   }
 
   .contacts__title {

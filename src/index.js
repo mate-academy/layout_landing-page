@@ -1,3 +1,4 @@
+
 // #region PopUp
 
 const popUPcloseBtn = document.querySelector('.pop-up__close-btn');
@@ -6,15 +7,26 @@ const headerBurgerBtn = document.querySelector('.btn-burger');
 const header = document.querySelector('.header');
 
 headerBurgerBtn.onclick = function () {
+  const willOpen = popUp.classList.contains('close');
+
   popUp.classList.toggle('close');
   headerBurgerBtn.classList.toggle('close');
   header.classList.toggle('close');
+
+  if (willOpen) {
+    popUp.classList.remove('is-visible');
+    void popUp.offsetWidth;
+    popUp.classList.add('is-visible');
+  } else {
+    popUp.classList.remove('is-visible');
+  }
 };
 
 popUPcloseBtn.onclick = function () {
-  popUp.classList.toggle('close');
-  header.classList.toggle('close');
-  headerBurgerBtn.classList.toggle('close');
+  popUp.classList.add('close');
+  header.classList.remove('close');
+  headerBurgerBtn.classList.remove('close');
+  popUp.classList.remove('is-visible');
 };
 
 // #endregion
@@ -39,7 +51,7 @@ document.querySelectorAll('.animation--slide-right').forEach(el => observer.obse
 // #region FOG
 
 document.querySelectorAll('.animation--fog').forEach(el => observer.observe(el));
-
+document.querySelectorAll('.pop-up--fog').forEach(el => observer.observe(el));
 // #endregion
 
 document.querySelector('.btn-phone').addEventListener('click', function() {
