@@ -23,29 +23,23 @@ function eachOpen(query) {
   })
 }
 
+function tabIndexChange(query, value) {
+  query.forEach(item => {
+    item.tabIndex = value
+  })
+}
+
 document.addEventListener('keydown', function(event) {
   if (main.classList.contains('menu--active')) {
-    navLinks.forEach(item => {
-      item.tabIndex = 0
-    })
-    topBarLogo.tabIndex = 0
-    iconCloseMenuAside.tabIndex = 0
-    phoneNumberAside.tabIndex = 0
-    callToOrderAside.tabIndex = 0
-    phoneNumber.tabIndex = 0
+    tabIndexChange(navLinks, 0)
+    tabIndexChange([topBarLogo, iconCloseMenuAside, phoneNumberAside, callToOrderAside, phoneNumber], 0)
 
     if (event.key === 'Tab' && event.target.classList[0] === 'menu__call-to-order') {
       topBarLogo.focus()
     }
   } else {
-    navLinks.forEach(item => {
-      item.tabIndex = -1
-    })
-    topBarLogo.tabIndex = -1
-    iconCloseMenuAside.tabIndex = -1
-    phoneNumberAside.tabIndex = -1
-    callToOrderAside.tabIndex = -1
-    phoneNumber.tabIndex = -1
+    tabIndexChange(navLinks, -1)
+    tabIndexChange([topBarLogo, iconCloseMenuAside, phoneNumberAside, callToOrderAside, phoneNumber], -1)
   }
 });
 
