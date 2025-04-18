@@ -1,5 +1,6 @@
 'use strict';
 
+const page = document.querySelector('.page__body')
 const main = document.querySelector('.menu')
 const iconCloseMenu = document.querySelector('.icon--close')
 const iconOpenMenu = document.querySelector('.icon--menu')
@@ -12,6 +13,7 @@ function eachOpen(query) {
   query.forEach(item => {
     item.addEventListener('click', () => {
       main.classList.toggle('menu--active')
+      page.classList.toggle('page--no-scroll')
     })
   })
 }
