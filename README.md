@@ -1,24 +1,24 @@
-# Landing Page
+1. The MyBike project features a sleek and user-friendly website design. The layout is fully responsive, ensuring a seamless experience across all devices. Below is a detailed breakdown of the website's features:
+  -Hero Section
+The homepage greets users with an engaging hero section, setting the tone for the rest of the site.
+  -Burger Menu
+Upon clicking the burger menu button, a compact and intuitive navigation menu appears, allowing users to quickly jump to specific sections of the website.
+  -Company Section
+This section provides an overview of the company, showcasing its values and services in a clear and concise manner.
+  -Bike Comparison & Pricing
+Users can compare different bike models and easily check their prices. This section helps users make informed decisions based on their preferences.
+  -Advantages of MyBike
+Below the comparison section, the website highlights the key advantages of choosing MyBike, emphasizing the unique features that set it apart from competitors.
+  -Contact Form
+At the bottom of the page, a simple yet effective contact form enables users to reach out directly to MyBike, making it easy for potential customers to inquire or provide feedback.
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+2. Technologies:
+    -Semantic HTML5
+    -CSS3: Grig & Flexbox
+    -Mobile-first workflow
+    -Preprocessor Sass
+    -BEM metodology
+    -Js for scrollup
 
-Choose a design for your landing page:
+3. Links:
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
-
-Follow the instructions in this and next lessons to implement the page block by block:
-
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
-
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
