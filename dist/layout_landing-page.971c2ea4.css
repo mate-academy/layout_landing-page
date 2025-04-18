@@ -1,3 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*, :before, :after {
+  box-sizing: border-box;
+}
+
+.body html, .body, .main {
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input {
+  cursor: pointer;
+  background-color: #0000;
+  border: 0;
+  outline: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
 @font-face {
   font-family: Cinzel, sans-serif;
   font-weight: 400;
@@ -70,51 +112,9 @@
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  color: #fff;
   font-family: Poppins, Roboto, Arial, sans-serif;
   line-height: 140%;
-}
-
-*, :before, :after {
-  box-sizing: border-box;
-}
-
-.body html, .body, .main {
-  width: 100%;
-  height: 100%;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul, ol {
-  list-style: none;
-}
-
-button, input {
-  cursor: pointer;
-  background-color: #0000;
-  border: 0;
-  outline: 0;
-}
-
-img {
-  width: 100%;
-  display: block;
-}
-
-* {
-  color: #fff;
 }
 
 body.no-scroll {
@@ -266,10 +266,6 @@ body.no-scroll {
     display: flex;
   }
 
-  .navigation__list:hover {
-    cursor: url("mouse-pointer.059c3855.svg") 0 0, pointer;
-  }
-
   .navigation__list .navigation__link {
     cursor: inherit;
     text-align: center;
@@ -293,12 +289,16 @@ body.no-scroll {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #1d1d1d;
-    max-width: 320px;
+    max-width: 150px;
     font-family: Poppins, sans-serif;
     font-size: 1.38rem;
     font-weight: 700;
     display: inline;
     position: relative;
+  }
+
+  .navigation__item:hover {
+    cursor: url("mouse-pointer.059c3855.svg") 0 0, pointer;
   }
 
   .phone-and-cta {
@@ -793,8 +793,28 @@ body.no-scroll {
   }
 
   .phone-link {
+    opacity: 0;
+    pointer-events: none;
     width: 100%;
     height: 100%;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    display: block;
+  }
+
+  .phone-link:hover {
+    transition: transform 1.5s ease-in-out;
+  }
+
+  .phone-wrapper {
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+    margin-bottom: 0;
+    display: flex;
+  }
+
+  .phone-wrapper:hover .phone-link {
+    opacity: 1;
   }
 
   .header__btn {
@@ -1173,6 +1193,7 @@ body.no-scroll {
 }
 
 .body, .main {
+  cursor: url("mouse-arrow-default.a477c58d.svg") 0 0, auto;
   background-color: #1d1d1d;
   margin: 0 auto;
   font-size: 16px;
