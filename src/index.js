@@ -5,6 +5,7 @@ const popUPcloseBtn = document.querySelector('.pop-up__close-btn');
 const popUp = document.querySelector('.pop-up__menu');
 const headerBurgerBtn = document.querySelector('.btn-burger');
 const header = document.querySelector('.header');
+const body = document.querySelector('.body');
 
 headerBurgerBtn.onclick = function () {
   const willOpen = popUp.classList.contains('close');
@@ -12,6 +13,7 @@ headerBurgerBtn.onclick = function () {
   popUp.classList.toggle('close');
   headerBurgerBtn.classList.toggle('close');
   header.classList.toggle('close');
+  body.classList.toggle('no-scroll');
 
   if (willOpen) {
     popUp.classList.remove('is-visible');
