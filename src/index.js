@@ -25,6 +25,7 @@ headerBurgerBtn.onclick = function () {
 };
 
 popUPcloseBtn.onclick = function () {
+  body.classList.remove('no-scroll');
   popUp.classList.add('close');
   header.classList.remove('close');
   headerBurgerBtn.classList.remove('close');

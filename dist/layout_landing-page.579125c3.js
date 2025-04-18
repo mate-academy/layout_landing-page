@@ -17,6 +17,7 @@ headerBurgerBtn.onclick = function() {
     } else popUp.classList.remove('is-visible');
 };
 popUPcloseBtn.onclick = function() {
+    body.classList.remove('no-scroll');
     popUp.classList.add('close');
     header.classList.remove('close');
     headerBurgerBtn.classList.remove('close');
