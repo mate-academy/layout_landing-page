@@ -4,6 +4,7 @@ const page = document.querySelector('.page')
 const main = document.querySelector('.menu')
 const iconCloseMenu = document.querySelector('.icon--close')
 const iconOpenMenu = document.querySelector('.icon--menu')
+const phoneNumber = document.querySelector('.icon--phone-number')
 const navItems = document.querySelectorAll('.nav__item')
 const navLinks = document.querySelectorAll('.nav__link')
 const iconCloseMenuAside = document.querySelector('.icon--close-aside')
@@ -31,6 +32,7 @@ document.addEventListener('keydown', function(event) {
     iconCloseMenuAside.tabIndex = 0
     phoneNumberAside.tabIndex = 0
     callToOrderAside.tabIndex = 0
+    phoneNumber.tabIndex = 0
 
     if (event.key === 'Tab' && event.target.classList[0] === 'menu__call-to-order') {
       topBarLogo.focus()
@@ -43,6 +45,7 @@ document.addEventListener('keydown', function(event) {
     iconCloseMenuAside.tabIndex = -1
     phoneNumberAside.tabIndex = -1
     callToOrderAside.tabIndex = -1
+    phoneNumber.tabIndex = -1
   }
 });
 
