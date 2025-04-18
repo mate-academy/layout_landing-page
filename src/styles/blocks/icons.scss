@@ -1,0 +1,98 @@
+.icons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  &__phone-number {
+    pointer-events: none;
+
+    display: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $main-text-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transition: opacity 0.3s;
+  }
+
+  &__icon-phone-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &:hover .icons__phone-number {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+
+  &__icon {
+    display: block;
+
+    width: 24px;
+    height: 24px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__icon--phone {
+    background-image: url(../images/header/icon/icon-phone.svg);
+  }
+
+  &__icon--phone:hover ~ .icons__number {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  &__icon--menu {
+    background-image: url(../images/header/icon/icon-menu.svg);
+
+    &:hover {
+      background-image: url(../images/header/icon/icon-menu-hover.svg);
+    }
+  }
+
+  &__icon--close {
+    background-image: url(../images/header/icon/icon-close.svg);
+  }
+
+  @include on-tablet {
+    &__icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    &__icon-phone-container {
+      &:hover .icons__phone-number {
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  @include on-desktop {
+    &__phone-number {
+      display: block;
+    }
+
+    &__icon-phone-container {
+      &:hover .icons__phone-number {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
