@@ -788,13 +788,17 @@
     margin-bottom: 48px;
   }
   .details__advantage-photoframe {
-    max-width: 100%;
-  }
-  .details_advantage-photo {
-     width: 392px;
-     height: 187px;
-    &:last-child {
+
+    .details_advantage-photo {
+      width: 392px;
+      height: 187px;
+    }
+
+    // Останнє зображення
+    picture:last-of-type .details_advantage-photo {
       width: 184px;
+      height: auto;
+      min-height: 188px;
     }
   }
 
@@ -1012,15 +1016,22 @@
     height: 423px;
   }
   .details__advantage-photoframe {
-    max-width: 100%;
+
     height: 321px;
   }
-  .details_advantage-photo {
-    width: 672px;
-    height: 321px;
-    &:last-child {
-      width: 324px;
-      height: 320px;
+  .details__advantage-photoframe {
+    picture {
+      // Усі зображення всередині <picture>
+      .details_advantage-photo {
+        width: 672px;
+        height: 321px;
+      }
+
+      // Наприклад: друге <picture>, останнє зображення — мобільне/альтернативне
+      &:last-of-type .details_advantage-photo {
+        width: 324px;
+        height: 320px;
+      }
     }
   }
   .details__button-explore {
