@@ -28,18 +28,10 @@ $icon-size-tablet: 32px;
 }
 
 @mixin centre-top() {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  padding: $padding-mobile;
+  padding-block: 24px;
 
   @media (min-width: $breakpoint-tablet) {
-    padding: $padding-tablet;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $padding-desktop;
+    padding-block: 36px;
   }
 }
 
@@ -53,5 +45,49 @@ $icon-size-tablet: 32px;
   @media (min-width: $breakpoint-tablet) {
     width: $icon-size-tablet;
     height: $icon-size-tablet;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
   }
 }

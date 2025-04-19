@@ -28,12 +28,30 @@ $breakpoint-desktop: 1260px;
   background-color: rgba(194, 194, 194, 1);
   height: 100vh;
 
+  &__content {
+    @include mixins.centre-top;
+
+    display: grid;
+    row-gap: 48px;
+
+    @media (min-width: $breakpoint-tablet) {
+      row-gap: 44px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      row-gap: 60px;
+    }
+  }
+
   &__logo {
     @include mixins.logo;
   }
 
   &__top {
-    @include mixins.centre-top;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
   }
 
   .icon {
@@ -65,18 +83,10 @@ $breakpoint-desktop: 1260px;
     width: fit-content;
   }
 
-  &__content {
-    padding: $padding-mobile;
+  &__links {
     font-weight: 600;
 
-    @media (min-width: $breakpoint-tablet) {
-      padding: $padding-tablet;
-      margin-top: 8px;
-    }
-
     @media (min-width: $breakpoint-desktop) {
-      padding: $padding-desktop;
-      margin-top: 24px;
       font-weight: 700;
     }
   }
