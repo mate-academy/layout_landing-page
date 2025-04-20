@@ -5,3 +5,7 @@ AOS.init({
   duration: 800,
   once: true,
 });
+
+AOS.init({
+  disable: 'mobile',
+});
