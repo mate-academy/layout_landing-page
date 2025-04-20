@@ -1,5 +1,11 @@
 @mixin on-table {
-  @media (min-width: 576px) {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
@@ -9,5 +15,33 @@
 
   @include on-table {
     padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-in-line;
+}
+
+@mixin on-grid {
+  --colums: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--colums), 1fr);
+  column-gap: 20px;
+
+  @include on-table {
+    --colums: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
   }
 }
