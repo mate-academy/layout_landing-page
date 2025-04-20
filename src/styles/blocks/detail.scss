@@ -1,0 +1,99 @@
+.detail {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    transition:
+      transform 0.5s ease,
+      box-shadow 0.5s ease;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+      transform: translateY(2px);
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 400;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    margin-top: 46px;
+    margin-inline: auto;
+    background-color: $main-text-color;
+    color: $main-dark-color;
+    font-weight: 700;
+    line-height: 169%;
+    text-align: center;
+    border-radius: 40px;
+    transition: all 0.5s ease;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+      transform: translateY(2px);
+    }
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+}
