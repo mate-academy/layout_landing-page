@@ -1,37 +1,45 @@
 .icon {
   display: block;
-  height: 24px;
+
   width: 24px;
-  background-size: cover;
+  height: 24px;
+
   background-position: center;
+  background-size: cover;
+
   transition: transform 0.4s;
 
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
-    height: 32px;
     width: 32px;
+    height: 32px;
   }
 
   &__phone {
-    background-image: url(../icons/icon--phone.png);
     position: relative;
+    background-image: url(../icons/icon--phone.png);
 
     &::before {
       @include on-desktop {
-        content: "+1 234 5555-55-55";
-        position: absolute;
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px;
-        letter-spacing: 2px;
-        color: $main-text-color;
+        content: '+1 234 5555-55-55';
 
-        left: -170px;
+        position: absolute;
+
+        @include text-styles(
+          $font-size: 12px,
+          $font-weight: 700,
+          $line-height: 16px,
+          $letter-spacing: 2px
+        );
+
         top: 50%;
+        left: -170px;
         transform: translateY(-50%);
+
         visibility: hidden;
         opacity: 0;
+
         transition: all 0.4s ease;
       }
     }
@@ -53,13 +61,13 @@
   }
 
   &__close {
-    background-image: url(../icons/icon--close.png);
-    height: 16px;
     width: 16px;
+    height: 16px;
+    background-image: url(../icons/icon--close.png);
 
     @include on-tablet {
-      height: 24px;
       width: 24px;
+      height: 24px;
     }
   }
 }
