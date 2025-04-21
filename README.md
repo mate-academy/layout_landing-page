@@ -1,10 +1,7 @@
-# Landing Page
+Landing Page
+A responsive landing page for the MyBike electric bicycle brand featuring animated interface elements, an interactive menu, a bike comparison section, and a contact form. Designed with a mobile-first approach, the layout adapts seamlessly to various screen sizes, focusing on modern design and user experience.
 
- A responsive landing page for the MyBike electric bicycle brand featuring animated interface elements, an interactive menu, a bike comparison section, and a contact form. Designed with a mobile-first approach, the layout adapts seamlessly to various screen sizes, focusing on modern design and user experience.
-
-
-Technologies :
-HTML5 – semantic page structure
+Technologies : HTML5 – semantic page structure
 
 SCSS (SASS) – variables, mixins, nesting
 
