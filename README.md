@@ -2,7 +2,7 @@
 # Description
 > This single-page landing website was created for educational purposes as part of a non-commercial project. The main goal is to present the company's product categories, provide contact information, and collect user data via a contact form. The layout is responsive and optimized for various devices.
 
-# Description
+# Technologies Used
 - HTML5
 - SCSS (Sass)
 - Git + GitHub
