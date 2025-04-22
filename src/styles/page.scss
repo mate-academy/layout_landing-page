@@ -1,0 +1,39 @@
+.page {
+  font-family: Manrope, sans-serif;
+  color: $main-text-color;
+  line-height: 140%;
+  font-size: 16px;
+  cursor: url('./icons/cursor-mouse-mice.svg'), auto;
+  scroll-behavior: smooth;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 230px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.7s;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
