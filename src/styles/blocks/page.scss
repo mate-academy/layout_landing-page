@@ -1,0 +1,46 @@
+* {
+  outline: 2px solid transparent;
+}
+
+.page {
+  scroll-behavior: smooth;
+
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    user-select: none;
+    min-width: 320px;
+    margin: 0;
+  }
+
+  &__menu {
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    opacity: 0;
+
+    transition: all 0.4s;
+
+    &:target {
+      pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
