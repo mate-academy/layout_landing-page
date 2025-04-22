@@ -1,0 +1,93 @@
+.icon {
+  position: relative;
+
+  display: inline-block;
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include cursor;
+
+  @include hover(transform, scale(0.8));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--menu {
+    background-image: url(../images/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/hover-menu.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/Icon-Close.svg);
+  }
+}
+
+.icon-phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+
+    background-image: url(../images/icons/Icon-Phone-call.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__number {
+    display: none;
+  }
+
+  @include on-tablet {
+    &__number {
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+
+      display: flex;
+      align-items: center;
+
+      margin-right: 20px;
+
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    &:hover .icon-phone__number {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
