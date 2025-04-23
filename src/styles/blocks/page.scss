@@ -1,0 +1,42 @@
+img {
+  max-width: 100%;
+  display: block
+}
+
+.page {
+  font-family: Poppins, sans-serif;
+  color: $page-text-color;
+  background-color: $page-background-color;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translate(-100%);
+  }
+}
+
+
+.page__menu:target {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+  transition: transform 0.3s ease-in-out;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
