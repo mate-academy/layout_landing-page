@@ -1,3 +1,8 @@
+img {
+  max-width: 100%;
+  display: block
+}
+
 .page {
   font-family: Poppins, sans-serif;
   color: $page-text-color;
@@ -7,31 +12,31 @@
   line-height: 140%;
   scroll-behavior: smooth;
 
-  &:has(.page__menu:target) {
-    overflow: hidden; /* not to scroll the page */
-  }
 
   &__body {
     margin: 0;
-    min-width: 320px;
   }
 
   &__menu {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
     position: fixed;
     top: 0;
-    right: 0;
     left: 0;
-
-    opacity: 0;
-    transition: all 0.3s;
-    transform: translateX(-100%);
-    pointer-events: none;
-
-    &:target {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: all;
-      transition: transform 0.3s ease-in-out;
-    }
+    right: 0;
+    transform: translate(-100%);
   }
+}
+
+
+.page__menu:target {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+  transition: transform 0.3s ease-in-out;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
 }
