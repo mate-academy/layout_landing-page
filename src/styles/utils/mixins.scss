@@ -84,13 +84,14 @@
 
 @mixin section-on-page-width(
   $bottom: 0,
+  $side-spacing,
   $background,
   $background-size: null,
   $background-position: null
 ) {
   content: '';
   position: absolute;
-  inset: 0 -20px $bottom;
+  inset: 0 $side-spacing $bottom;
   background: $background;
   z-index: -1;
 
@@ -100,21 +101,5 @@
 
   @if $background-position {
     background-position: $background-position;
-  }
-
-  @include on-tablet {
-    inset: 0 -72px $bottom;
-
-    @if $bottom == -48px {
-      bottom: -120px;
-    }
-  }
-
-  @include on-desktop {
-    inset: 0 -120px $bottom;
-
-    @if $bottom == -48px {
-      bottom: -120px;
-    }
   }
 }
