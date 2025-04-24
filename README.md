@@ -21,4 +21,5 @@ At the bottom of the page, a simple yet effective contact form enables users to 
     -Js for scrollup
 
 3. Links:
-
+  https://github.com/torry455/layout_landing-page
+  https://torry455.github.io/layout_landing-page/
