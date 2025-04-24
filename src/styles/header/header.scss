@@ -1,0 +1,99 @@
+@use './variables.scss' as vars;
+@use '../mixins.scss' as mixins;
+
+.header {
+  background-image: url('../images/bike-image.png');
+  background-size: cover;
+  background-position: 85% center;
+  height: 100vh;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    background-position: center;
+  }
+
+  &__content {
+    @include mixins.centre-top;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &__logo {
+    @include mixins.logo;
+  }
+
+  &__icons {
+    display: flex;
+    gap: vars.$icon-size-mobile;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      gap: vars.$icon-size-tablet;
+    }
+
+    .icon {
+      @include mixins.icons;
+
+      transition: all 0.3s ease-in-out;
+
+      &--phone {
+        background-image: url('../images/icon-phone.svg');
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+
+        &::before {
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          right: calc(100% + 20px);
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.2s ease-in-out;
+          pointer-events: none;
+          color: rgba(255, 255, 255, 1);
+          position: absolute;
+          content: '+1 234 555-55-55';
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      &--menu {
+        background-image: url('../images/icon-burger-menu.svg');
+
+        &:hover {
+          background-image: url('../images/Icon-Burger-menu-hover.png');
+        }
+      }
+    }
+  }
+
+  &__title {
+    white-space: nowrap;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    margin-top: 270px;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+
+    @media (min-width: vars.$breakpoint-tablet) {
+      font-size: vars.$font-size-tablet;
+      margin-top: 300px;
+    }
+
+    @media (min-width: vars.$breakpoint-desktop) {
+      font-size: vars.$font-size-desktop;
+    }
+  }
+}

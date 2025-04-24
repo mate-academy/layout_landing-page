@@ -1,0 +1,136 @@
+$logo-height-mobile: 38px;
+$logo-width-mobile: 130px;
+$logo-height-tablet: 56px;
+$logo-width-tablet: 187px;
+$padding-mobile: 24px 20px;
+$padding-tablet: 36px 72px;
+$padding-desktop: 36px 120px;
+$breakpoint-tablet: 744px;
+$breakpoint-desktop: 1260px;
+$icon-size-mobile: 24px;
+$icon-size-tablet: 32px;
+
+@mixin logo() {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: $logo-height-mobile;
+    width: $logo-width-mobile;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    img {
+      height: $logo-height-tablet;
+      width: $logo-width-tablet;
+    }
+  }
+}
+
+@mixin centre-top() {
+  padding-block: 24px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding-block: 36px;
+  }
+}
+
+@mixin icons() {
+  width: $icon-size-mobile;
+  height: $icon-size-mobile;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: $icon-size-tablet;
+    height: $icon-size-tablet;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-component {
+  font-family: Poppins, sans-serif;
+  height: 48px;
+  padding-inline: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+
+  grid-column: 1 / -1;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+@mixin button-style {
+  background-color: rgba(255, 255, 255, 1);
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+}
