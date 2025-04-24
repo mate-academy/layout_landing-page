@@ -1,0 +1,118 @@
+.menu {
+  padding: 0 20px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 100vh;
+
+  box-sizing: border-box;
+  pointer-events: none;
+  background-color: $menu-bg-color;
+  opacity: 0;
+
+  @include on-tablet {
+    padding: 0 72px;
+  }
+
+  @include on-desktop {
+    padding: 0 121px;
+  }
+
+  &__logo {
+    width: 130px;
+  }
+
+  &__icon--close {
+    width: 24px;
+
+    @include on-tablet {
+      width: 32px;
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__top {
+    height: 86px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      height: 110px;
+    }
+
+    @include on-desktop {
+      height: 128px;
+    }
+  }
+
+  &__guides {
+    display: grid;
+    grid-template-rows: repeat(5, if);
+    row-gap: 32px;
+    margin-top: 24px;
+    font-weight: 600;
+
+    @include on-desktop {
+      font-weight: 700;
+    }
+  }
+
+  &__guide {
+    text-decoration: none;
+    color: $main-color;
+    line-height: 22px;
+    font-size: 22px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-position: under;
+      text-underline-offset: 8px;
+    }
+  }
+
+  &__contacts {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 16px;
+    margin-top: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    @include on-desktop {
+      font-weight: 700;
+    }
+  }
+
+  &__number {
+    color: $main-color;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  &__book {
+    color: $main-color;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.13em;
+    width: 136px;
+    text-transform: uppercase;
+    padding: 0;
+    text-decoration-thickness: 1px;
+    text-underline-position: under;
+    text-underline-offset: 8px;
+  }
+}
+
+body:has(.menu:target) {
+  overflow: hidden;
+  height: 100vh;
+}
