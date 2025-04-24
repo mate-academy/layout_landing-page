@@ -25,6 +25,9 @@
   margin: 0;
   min-width: 320px;
 }
+.page__body:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
 .page__menu {
   position: fixed;
   top: 0;
@@ -73,7 +76,7 @@
   letter-spacing: 2px;
 }
 .nav__link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -8px;
   display: block;
@@ -124,9 +127,14 @@
   background-color: #e5e5e5;
   font-weight: 700;
   text-transform: uppercase;
+  overflow: auto; /* to scroll the menu if needed */
 }
 .menu__top {
   margin-bottom: 32px;
+  position: sticky; /* to keep cross always visible */
+  top: 0;
+  z-index: 1;
+  background-color: #e5e5e5;
 }
 @media (min-width: 576px) {
   .menu__top {
@@ -144,6 +152,9 @@
   color: inherit;
   text-decoration: none;
 }
+.menu__phone-number:hover {
+  color: #fff;
+}
 .menu__call-to-order {
   display: block;
   width: fit-content;
@@ -154,6 +165,18 @@
   letter-spacing: 2px;
   color: inherit;
   text-decoration: none;
+}
+
+.top-bar__logo {
+  display: none;
+}
+@media (min-width: 576px) {
+  .top-bar__logo {
+    display: block;
+  }
+  .top-bar__logo_cel {
+    display: none;
+  }
 }
 
 .icon {
@@ -206,7 +229,11 @@
 .top-bar__logo {
   height: 16px;
   transition: transform 0.3s;
+  display: flex;
   transition: transform 0.3s;
+}
+.top-bar__logo_cel {
+  display: none;
 }
 .top-bar__logo:hover {
   transform: scale(1.2);
@@ -214,15 +241,30 @@
 @media (min-width: 576px) {
   .top-bar__logo {
     height: 24px;
+    display: flex;
   }
+  .top-bar__logo_cel {
+    display: none;
+  }
+}
+.top-bar__logo_cel {
+  transition: transform 0.3s;
+}
+.top-bar__logo_cel:hover {
+  transform: scale(1.2);
 }
 
 .product__photo {
   width: 100%;
+  transition: transform 0.3s;
+}
+.product__photo:hover {
+  transform: scale(1.1);
 }
 
 .recommended {
   margin: 0;
+  margin-top: 120px;
 }
 .recommended__products {
   --columns: 2;
@@ -247,7 +289,7 @@
 }
 @media (min-width: 576px) {
   .recommended__product {
-    grid-column: 2/-2;
+    grid-column: span 6;
   }
 }
 @media (min-width: 1024px) {
@@ -286,13 +328,13 @@
   height: 460px;
   left: 0;
   width: 100%;
-  background-image: url("../images/timeless_dispositive.jpg");
+  background-image: url('../images/timeless_dispositive.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 .about-us__grid {
-  background-color: #FCFAEF;
+  background-color: #fcfaef;
   --columns: 2;
   display: grid;
   column-gap: 20px;
@@ -316,22 +358,21 @@
 }
 .about-us__grid_title {
   display: flex;
-  height: 100%;
   margin: 0;
   letter-spacing: 0px;
-  font-weight: 700;
+  font-weight: 400;
   grid-column: span 2;
 }
 @media (min-width: 576px) {
   .about-us__grid_title {
     grid-column: span 3;
-    padding-left: 70px;
+    padding-left: 40px;
   }
 }
 @media (min-width: 1024px) {
   .about-us__grid_title {
     grid-column: 1/8;
-    padding-left: 120px;
+    padding-left: 105px;
   }
 }
 .about-us__grid_description {
@@ -344,13 +385,11 @@
 @media (min-width: 576px) {
   .about-us__grid_description {
     grid-column: span 3;
-    padding-right: 70px;
   }
 }
 @media (min-width: 1024px) {
   .about-us__grid_description {
     grid-column: 8/13;
-    padding-right: 130px;
   }
 }
 
@@ -398,6 +437,10 @@
 }
 .categories__img {
   width: 100%;
+  transition: transform 0.3s;
+}
+.categories__img:hover {
+  transform: scale(1.2);
 }
 .categories__title {
   grid-column: span 2;
@@ -425,7 +468,66 @@
 }
 
 .contact-us__title {
-  margin-top: 400px;
+  margin-top: 450px;
+  margin-bottom: 56px;
+}
+.contact-us__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 1024px) {
+  .contact-us__container {
+    flex-direction: row;
+  }
+}
+.contact-us__form {
+  flex-grow: 1;
+  width: 100%;
+}
+.contact-us__form__input {
+  height: 48px;
+  background-color: #f9f9f9;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  width: 100%;
+  border: 0;
+}
+.contact-us__form__textarea {
+  height: 148px;
+}
+.contact-us__data {
+  flex-grow: 1;
+  width: 100%;
+}
+.contact-us__data_label {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #9393a3;
+}
+.contact-us__data_value {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 24px;
+}
+.contact-us__data_value:hover {
+  color: #9393a3;
+}
+@media (min-width: 1024px) {
+  .contact-us__data {
+    margin-left: 180px;
+  }
+}
+.contact-us .buttom {
+  background-color: #1b2129;
+  color: #ffffff;
+  margin-top: 32px;
+}
+.contact-us__link {
+  text-decoration: none;
+  color: #1b2129;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
