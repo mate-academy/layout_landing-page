@@ -1,0 +1,35 @@
+$smallerFont: "Space Mono", sans-serif;
+$mainColor: #292929;
+
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin responsive-width {
+  box-sizing: content-box;
+  width: 280px;
+
+  @include on-tablet {
+    width: 600px;
+  }
+
+  @include on-desktop {
+    width: 1020px;
+  }
+}
+
+
+@mixin hover($property, $toValue){
+  transition: #{$property} 0.3s;
+  &:hover{
+    #{$property}: $toValue
+  }
+}
