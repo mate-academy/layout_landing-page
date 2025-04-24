@@ -12,10 +12,14 @@
 
     &-input {
       @include input-style($light-grey-color, $iron-color, $main-color);
+
+      font-family: "Space Mono", monospace;
     }
 
     &-textarea {
       @include input-style($light-grey-color, $iron-color, $main-color);
+
+      font-family: "Space Mono", monospace;
 
       margin-bottom: 32px;
       height: 148px;
@@ -58,10 +62,29 @@
     }
     &-link {
       color: $dark-text-color;
-      transition: transform 0.3s;
+      position: relative;
 
-      &:hover {
-        transform: scale(1.1);
+      &::after {
+        content: "";
+          display: block;
+          position: absolute;
+          right: 0;
+          bottom: -3px;
+          width: 0;
+          height: 1px;
+          background-color: black;
+          transition: width 0.2s;
+      }
+      &:hover::after {
+        content: "";
+          width: 100%;
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          height: 1px;
+          background-color: black;
+          transition: width 0.2s;
       }
     }
     &-text {
