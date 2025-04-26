@@ -1,0 +1,35 @@
+@use 'variables' as *;
+@use '../utils/mixins' as *;
+
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    font-family: $main-font-family;
+    color: $main-color-text;
+    font-size: 16px;
+    line-height: 140%;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    overflow-y: auto;
+    z-index: 1000;
+    pointer-events: none;
+
+    transform: translateX(-100%);
+    transition: all 0.3s;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
