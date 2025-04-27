@@ -1,0 +1,139 @@
+@use "sass:map";
+@use "../utils/variables.scss" as variables;
+@use "../utils/mixins.scss" as mixins;
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 1260px;
+  min-height: 100vh;
+  height: 100%;
+
+  overflow: auto;
+
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  background-color: map.get(variables.$background, menu);
+
+  &__aside {
+    @include mixins.content-padding-inline;
+
+    margin-top: 86px;
+
+    @include mixins.on-tablet {
+      margin-top: 128px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include mixins.on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    width: fit-content;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: map.get(variables.$color, secondary);
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &--call {
+      &:hover {
+        &::before {
+          width: 0;
+        }
+      }
+
+      &:first-child {
+        margin-top: 8px;
+      }
+
+      &:last-child {
+        padding-bottom: 24px;
+      }
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+
+    @include mixins.content-font-style(
+      (
+        base: (
+          size: 1.4rem,
+          weight: 600,
+          line-height: 22px,
+          letter-spacing: 2px
+        ),
+        desktop: (
+          weight: 700
+        )
+      )
+    );
+
+    &--number {
+      display: block;
+      margin-bottom: 16px;
+
+      @include mixins.content-font-style(
+        (
+          base: (
+            size: 1rem,
+            line-height: 27px,
+            letter-spacing: normal
+          )
+        )
+      );
+    }
+
+    &--message {
+      padding-bottom: 8px;
+      border-bottom: 1px solid map.get(variables.$color, secondary);
+
+      cursor: pointer;
+
+      @include mixins.content-font-style(
+        (
+          base: (
+            size: 1rem,
+            line-height: 16px
+          )
+        )
+      );
+    }
+  }
+}

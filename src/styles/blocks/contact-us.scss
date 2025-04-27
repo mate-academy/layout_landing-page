@@ -1,0 +1,105 @@
+@use "sass:map";
+@use "../utils/variables.scss" as variables;
+@use "../utils/mixins.scss" as mixins;
+
+.contact {
+  &__grid {
+    width: 90%;
+    margin-top: 48px;
+    gap: 48px;
+
+    @include mixins.page-grid;
+
+    @include mixins.on-desktop {
+      width: 1260px;
+      max-width: 1260px;
+      padding-inline: 120px;
+    }
+  }
+
+  &__form {
+    display: grid;
+    grid-column: 1/-1;
+    gap: 16px;
+
+    @include mixins.on-tablet {
+      grid-column: 1/4;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__input {
+    background-color: map.get(variables.$color, primary);
+  }
+
+  &__button {
+    margin-top: 16px;
+    border-radius: 40px;
+
+    background-color: map.get(variables.$color, primary);
+
+    @include mixins.on-tablet {
+      margin-top: 48px;
+    }
+  }
+
+  &__info {
+    display: grid;
+    gap: 24px;
+    grid-column: 1/-1;
+    height: fit-content;
+    margin-top: -8px;
+
+    @include mixins.on-tablet {
+      grid-column: 4/6;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 8/11;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+
+  &__font {
+    color: map.get(variables.$color, primary);
+
+    @include mixins.content-font-style(
+      (
+        base: (
+          line: 140%,
+          letter: normal
+        )
+      )
+    );
+
+    &--label {
+      @include mixins.content-font-style(
+        (
+          base: (
+            size: 0.8rem,
+            weight: 400
+          )
+        )
+      );
+    }
+
+    &--content {
+      @include mixins.content-font-style(
+        (
+          base: (
+            size: 1rem,
+            weight: 500
+          )
+        )
+      );
+    }
+  }
+}
