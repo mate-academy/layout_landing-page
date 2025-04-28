@@ -11,7 +11,7 @@ This is an e-commerce website designed for buying bicycles. Users can explore a 
 
 ## 🌐 Preview
 
--[MyBike](https://sofiia13.github.io/layout_landing-page)
+- [MyBike](https://sofiia13.github.io/layout_landing-page)
 
 ## 🎨 Design Mockup
 
@@ -24,14 +24,14 @@ This is an e-commerce website designed for buying bicycles. Users can explore a 
    git clone https://github.com/your-username/your-repository.git
    ```
 2. Go to the project folder:
-  ```bash
+   ```bash
    cd your-repository
    ```
 3. Run npm install:
-  ```bash
+   ```bash
    npm install
    ```
 4. Run project:
-  ```bash
+   ```bash
    npm start
    ```
