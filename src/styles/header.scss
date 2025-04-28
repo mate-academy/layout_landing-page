@@ -85,14 +85,43 @@
   }
 }
 
+
+.phone-number {
+  @include on-tablet {
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: -120%;
+    transform: translateX(-50%);
+    width: 200px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, left 0.5s ease;
+  }
+}
+
 .icon {
   display: block;
   width: 24px;
   height: 24px;
   background-size: contain;
 
+  @include on-tablet {
+    position: relative;
+  }
+
   &--phone {
     background-image: url(../images/phone-icon.png);
+
+    &:hover .phone-number {
+      opacity: 1;
+      left: -120%;
+    }
   }
 
   &--burger-menu {
@@ -107,9 +136,5 @@
     width: 32px;
     height: 32px;
   }
-
 }
-
-
-
 
