@@ -11,3 +11,11 @@ close.addEventListener('click', () => {
   menu.classList.remove('active');
   document.body.classList.remove('disable-scroll');
 });
+
+document
+  .querySelector('.contact__button')
+  .addEventListener('click', function (event) {
+    event.preventDefault();
+
+    document.querySelector('.contact__form').reset();
+  });
