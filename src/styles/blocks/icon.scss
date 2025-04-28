@@ -11,15 +11,26 @@
   @include hover(transform, scale(1.2));
 
   &__tooltip {
+    pointer-events: none;
+    
     position: absolute;
     top: 25%;
-    padding-right: 45px;
     right: 85px;
+
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    padding-right: 45px;
 
     opacity: 0;
 
+    transition: opacity $effectDuration;
+
     @include on-desktop {
       &:hover {
+        pointer-events: all;
         opacity: 1;
       }
     }
@@ -30,12 +41,26 @@
     padding: 0;
 
     color: #fff;
-    text-decoration: none;
+    text-align: end;
     text-transform: uppercase;
+
+    &--link {
+      display: block;
+      text-decoration: none;
+    }
   }
 
   &--phone {
     background-image: url(../images/icons/icon-call.svg);
+
+    @include on-desktop {
+      transition: opacity $effectDuration;
+
+      &:hover + .icon__tooltip {
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
   }
 
 
