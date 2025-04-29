@@ -12,5 +12,10 @@ function menuClosed() {
   sideBar.style.display = 'none';
 }
 
-menuClicked();
-menuClosed();
+document.querySelector('.menu-icon').addEventListener('click', () => {
+  menuClicked();
+});
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  menuClosed();
+});
