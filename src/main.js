@@ -13,9 +13,15 @@ close.addEventListener('click', () => {
 });
 
 document
-  .querySelector('.contact__button')
-  .addEventListener('click', function (event) {
+  .querySelector('.contact__form')
+  .addEventListener('submit', function (event) {
+    if (!this.checkValidity()) {
+      return;
+    }
+
     event.preventDefault();
 
-    document.querySelector('.contact__form').reset();
+    alert('Form successfully submitted!');
+
+    this.reset();
   });
