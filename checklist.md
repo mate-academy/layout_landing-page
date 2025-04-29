@@ -1,5 +1,5 @@
-1. Use the logo as a favicon
-2. Use the landing name as a page title
+1. Use the logo as a favicon - done
+2. Use the landing name as a page title - done
 3. All logos should be links to the top of the page
 4. Change text color on hover for phone, email, and address
 5. Make sure phone icons and phone numbers are real links to start a call
@@ -30,6 +30,6 @@
 14. Placeholders should give examples of what should be added, to make the expected format clear
 15. The page shouldn't be reloaded on form submit, but the fields should be cleared. Use:
     ```html
-    <form onsubmit="this.reset(); return false;">
+    <form onsubmit="this.reset(); return false;"></form>
     ```
 16. Make the `footer` sticky at the bottom with `z-index: -1` to get a `fixed` background effect.
