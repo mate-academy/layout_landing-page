@@ -1,0 +1,237 @@
+html {
+  font-family: Poppins, sans-serif;
+  color: #1d1d1d;
+}
+
+body {
+  margin: 0;
+}
+
+/* #headerregion */
+.header {
+  background-image: url(/src/image/header_photo.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 90px;
+
+    @include onTablet {
+      padding-bottom: 64px;
+    }
+  }
+}
+
+/* #headerregionClose */
+
+/* #topBarRegion */
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    padding-block: 40px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include onTablet {
+      height: 56px;
+    }
+  }
+}
+
+/* #topBarRegionClose */
+
+/* #regionIcon */
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/icons/Icon-Phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(/src/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/icons/IconBurgerHOVERvector.png);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/icons/Icon-Close.png);
+  }
+}
+
+/* #regionIconClose */
+
+/* #region menu */
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #c2c2c2;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &__top {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__phone-number {
+    color: inherit;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 27px;
+    text-decoration: none;
+    display: block;
+  }
+
+  &__call-to-order {
+    color: inherit;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #1d1d1d;
+    width: fit-content;
+    padding-bottom: 7px;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+/* #end region menu */
+
+/* #navRegion */
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: black;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+/* #navRegionClose */
+
+/* #pageregion */
+.page {
+  font-family: Poppins, sans-serif;
+  color: #1d1d1d;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+/* #pageregionClose */
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
