@@ -1,0 +1,90 @@
+@use 'variables' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $aside-bg-color;
+  color: $aside-color-text;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &__top {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__phone-number {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__test-ride {
+    color: inherit;
+    padding-bottom: 7px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $aside-color-text;
+    width: fit-content;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      display: block;
+      width: 100%;
+      background-color: $aside-color-text;
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.disable-scroll {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

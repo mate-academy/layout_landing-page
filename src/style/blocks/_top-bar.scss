@@ -1,0 +1,61 @@
+@use 'variables' as *;
+@use '../utils/mixins' as *;
+
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 72px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+.icon--phone {
+  display: none;
+
+  @include on-dekstop {
+    &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      display: block;
+      text-align: right;
+      padding-right: 25px;
+      width: 140px;
+      color: $main-color-text;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateX(-65%);
+
+      @include hover(transform, translateX(-100%));
+    }
+
+    &:hover::after {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+  }
+}

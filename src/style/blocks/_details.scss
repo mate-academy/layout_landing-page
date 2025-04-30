@@ -1,0 +1,87 @@
+@use 'variables' as *;
+@use '../utils/mixins' as *;
+
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include hover(transform, scale(1.05));
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-dekstop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-dekstop {
+        grid-column: span 4;
+      }
+
+      @include hover(transform, scale(1.05));
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__wrapper--btn {
+    margin-top: 40px;
+
+    @include page-grid;
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include hover(box-shadow, 1px 4px 16px rgba(232, 232, 240, 0.4));
+    @include active(box-shadow, 1px 4px 16px rgba(232, 232, 240, 0.64));
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-dekstop {
+      grid-column: 5 / -5;
+    }
+  }
+}
