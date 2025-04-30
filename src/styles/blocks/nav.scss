@@ -1,0 +1,44 @@
+.nav {
+  &__link {
+    position: relative; // necessário  para o efeito hover da opção 2
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    /* Opção 1
+    &:hover {
+      padding-bottom: 8px;
+      border-bottom: 1px solid $color-text-secundary;
+    }
+      */
+
+    // Opção 2
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1px;
+      bottom: -8px;
+      width: 100%;
+      background-color: $color-text-secundary;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
