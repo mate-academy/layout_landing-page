@@ -12,6 +12,15 @@ close.addEventListener('click', () => {
   document.body.classList.remove('disable-scroll');
 });
 
+const menuLinks = document.querySelectorAll('.nav__link');
+
+menuLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('active');
+    document.body.classList.remove('disable-scroll');
+  });
+});
+
 document
   .querySelector('.contact__form')
   .addEventListener('submit', function (event) {
