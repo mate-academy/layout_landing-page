@@ -1,11 +1,11 @@
-@mixin onTablet {
-  @media (width >= 576px) {
+@mixin on-tablet {
+  @media (min-width: 576px) {
     @content;
   }
 }
 
-@mixin onDesktop {
-  @media (width >= 1024px) {
+@mixin on-desktop {
+  @media (min-width: 1024px) {
     @content;
   }
 }
@@ -20,54 +20,38 @@
 }
 
 @mixin section-text-base {
-  // @include contentPaddingInline;
+  // @include content-padding-inline;
   font-family: Poppins, sans-serif;
   font-weight: 500;
   color: #fff;
 }
 
-@mixin section__title {
+@mixin section-title {
   @include section-text-base;
+
   font-size: 32px;
   line-height: 100%;
   letter-spacing: -1.5px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     font-size: 64px;
   }
 }
 
-@mixin section__text {
+@mixin section-text {
   @include section-text-base;
+
   font-family: Poppins, sans-serif;
   font-size: 23px;
   line-height: 140%;
   letter-spacing: 0;
 }
 
-@mixin article__card-base-text {
-  letter-spacing: 0;
-  line-height: 140%;
-  color: #fff;
-}
-
-@mixin article__card-title {
-  @include article__card-base-text;
-  font-weight: 700;
-  font-size: 24px;
-}
-
-@mixin article__card-text {
-  @include article__card-base-text;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-@mixin btn__primary {
+@mixin btn-primary {
   width: 280px;
   height: 56px;
   border-radius: 40px;
@@ -89,44 +73,44 @@
   }
 }
 
-@mixin contentPaddingInline() {
+@mixin content-padding-inline() {
   padding-inline: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 72px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding-inline: 120px;
-    // margin-inline: auto;
     max-width: 1020px;
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   column-gap: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     --columns: 6;
+    
     column-gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     --columns: 12;
   }
 
   &__section-title {
     grid-column: 1 / -1;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / 4;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 5;
     }
   }
@@ -135,11 +119,11 @@
   &__text {
     grid-column: 1 / -1;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 4 / -1;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 6;
     }
   }
@@ -148,13 +132,12 @@
   &__card {
     grid-column: 1 / -1;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 2 / 6;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 4;
     }
   }
-
 }
