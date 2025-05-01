@@ -14,14 +14,19 @@
 
   &__tooltip {
     position: absolute;
-    top: -40px;
-    left: -210px;
-    transition: opacity 0.8s ease;
-    transition-delay: 0.3s;
-
+    width: 201px;
+    top: -37px;
+    right: 100px;
     opacity: 0;
     pointer-events: none;
     text-align: right;
+    transition: opacity 0.8s;
+    @include on-desktop {
+      &:hover {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
 
     &-item {
       margin: 0;
@@ -35,15 +40,13 @@
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
 
-    @include on-desktop {
+      @include on-desktop {
       &:hover + .icon__tooltip {
         pointer-events: all;
         opacity: 1;
-        transition-delay: 0s;
       }
-    }
   }
-
+  }
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.png);
 
