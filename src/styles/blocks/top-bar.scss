@@ -18,6 +18,25 @@
     display: flex;
   }
 
+  &__phones {
+    position: relative;
+    display: inline-block;
+
+    // За замовчуванням, на мобільних пристроях номер телефону буде прихований
+    .icon--phone-number {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    @include onDesktop {
+      &:hover .icon--phone-number {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+    }
+  }
+
   &__logo {
     height: 16px;
     transition: transform 0.3s;
@@ -26,6 +45,8 @@
       height: 24px;
     }
 
-    @include hover(transform, scale(1, 2));
+    @include onDesktop {
+      @include hover(transform, scale(1, 2));
+    }
   }
 }
