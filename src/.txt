@@ -1,0 +1,71 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  & .container {
+    align-items: center;
+    height: 128px;
+  }
+
+  &__logo {
+    grid-column: span 4;
+  }
+
+  &__nav {
+    grid-column: 9 / -1;
+    justify-self: end;
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  &__nav-item {
+    display: flex;
+    gap: 20px;
+    line-height: 32px;
+    font-size: 12px;
+    align-items: center;
+  }
+
+  &__nav-item-text {
+    font-weight: 700;
+    line-height: 16px;
+    display: none;
+  }
+
+  &__nav-item:has(.header__nav-item-phoneicon:hover) .header__nav-item-text {
+    display: block;
+  }
+
+  &__nav-item--burger {
+    position: relative;
+
+    .header__nav-item-hamburgericon,
+    .header__nav-item-hamburgericon-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .header__nav-item-hamburgericon-hover {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover {
+      .header__nav-item-hamburgericon {
+        opacity: 0;
+      }
+
+      .header__nav-item-hamburgericon-hover {
+        opacity: 1;
+      }
+    }
+  }
