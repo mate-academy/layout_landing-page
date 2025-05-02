@@ -9,21 +9,20 @@
   left: 0;
   pointer-events: none;
   opacity: 0;
+  z-index: 5;
+  transform: translateX(-100%);
+  transition: all 0.3s;
 }
 
-.top-bar {
-  padding: 24px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #e5e5e5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.menu__top {
+  margin-bottom: 32px;
+
+  @include onTabled {
+    margin-bottom: 0;
+  }
 }
 
 .menu {
-  // overflow: auto;
   box-sizing: border-box;
   height: 100vh;
   background-color: #e5e6e8;
@@ -34,6 +33,7 @@
   &:target {
     opacity: 1;
     pointer-events: all;
+    transform: translateX(0);
   }
 
   &__phone-number {
@@ -54,13 +54,9 @@
     line-height: 140%;
     letter-spacing: 2px;
     padding-bottom: 7px;
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid $main-text-color;
     width: fit-content;
   }
-}
-
-.icon--close {
-  background-image: url(../images/Icon-Close.png);
 }
 
 .nav {
@@ -85,8 +81,4 @@
 
 .menu__nav {
   margin-bottom: 48px;
-}
-
-.menu__content {
-  padding-inline: 20px;
 }
