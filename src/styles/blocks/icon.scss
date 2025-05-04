@@ -4,6 +4,7 @@
   height: 24px;
   background-image: url(/src/images/icons/icon-burger-menu-white.svg);
   background-size: cover;
+  position: relative;
 
   @include hover(transform, scale(1.2));
 
@@ -15,46 +16,93 @@
   &--phone {
     background-image: url(/src/images/icons/icon-phone-white.svg);
 
+    @include onTablet {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        width: 200px;
+        height: 40px;
+        pointer-events: none;
+      }
 
+      &:hover {
+        &::before {
+          pointer-events: auto;
+        }
+
+        .icon__phone-number {
+          display: block;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
   }
 
   &--menu {
     background-image: url(/src/images/icons/icon-burger-menu-white.svg);
-
   }
 
   &--close {
     background-image: url(/src/images/icons/icon-close.svg);
   }
 
- &__phone-number {
+  &__phone-number {
     display: none;
     white-space: nowrap;
     margin-right: 20px;
-    transform: translateY(-50%);
     right: 100%;
     top: 50%;
+    transform: translateY(-50%);
     color: $main-text-color;
     position: absolute;
     visibility: hidden;
     opacity: 0;
+    padding: 8px 12px;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s;
+    z-index: 10;
 
+    @media (max-width: #{$tablet-min-width - 1px}) {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
 
-}
+    @include onTablet {
+      &:hover {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
 
- @include onTablet{
-  &--phone:hover &__phone-number {
+  @include onTablet {
+    &--phone {
+      &:hover {
+        .icon__phone-number {
+          display: block;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  @include onDesktop {
     display: block;
-    opacity: 1;
-    visibility: visible;
-  }
- }
 
- @include onDesktop{
-  display: block;
-  &--phone:hover &__phone-number {
-    opacity: 1;
-    visibility: visible;
+    &--phone {
+      &:hover {
+        .icon__phone-number {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
   }
- }
 }
