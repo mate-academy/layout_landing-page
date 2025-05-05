@@ -3,8 +3,6 @@
   height: 24px;
   width: 24px;
   background-size: cover;
-  background-position: center;
-  position: relative;
 
   @include onTablet {
     height: 32px;
@@ -14,14 +12,25 @@
   &--phone,
   &--menu,
   &--close {
-    @include onDesktop {
-      @include hover(transform, scale(1, 2));
-    }
+    // застосовуємо твій міксин для ховера на всіх розмірах
+    @include hover(transform, scale(1.2));
   }
 
   &--phone {
     background-image: url(./img/icon-phone.svg);
-    transition: transform .3s, z-index .3s;
+    transition: transform 0.3s, z-index 0.3s;
+  }
+
+  &--menu {
+    background-image: url(./img/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(./img/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(./img/icon-close.svg);
   }
 
   &--phone-number {
@@ -42,17 +51,5 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
-  }
-
-  &--menu {
-    background-image: url(./img/icon-burger-menu.svg);
-
-    &:hover {
-      background-image: url(./img/icon-burger-menu-hover.svg);
-    }
-  }
-
-  &--close {
-    background-image: url(./img/icon-close.svg);
   }
 }
