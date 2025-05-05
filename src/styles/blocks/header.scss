@@ -11,32 +11,33 @@ body {
 /* #headerregion */
 .header {
   background-image: url(/src/image/header-bg-mobile.png);
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   @include on-tablet {
     background-image: url(/src/image/header-bg-tablet.png);
   }
 
-  @include on-desktop{
+  @include on-desktop {
     background-image: url(/src/image/header-bg-desctop.png);
   }
 
   &__content {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
   }
 
   &__title {
     margin: 0;
-    color: #fff;
+
     font-size: 36px;
     font-weight: 700;
-    letter-spacing: -1.5px;
+    color: #fff;
     text-align: center;
+    letter-spacing: -1.5px;
 
     @include on-tablet {
       font-size: 40px;
@@ -56,10 +57,10 @@ body {
 
 /* #topBarRegion */
 .top-bar {
-  padding-block: 24px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
 
   @include on-tablet {
     padding-block: 40px;
@@ -90,34 +91,40 @@ body {
 /* #regionIcon */
 .icon {
   display: block;
-  height: 24px;
+
   width: 24px;
+  height: 24px;
+
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
+  background-size: cover;
 
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
-    height: 32px;
     width: 32px;
+    height: 32px;
   }
 
   &--phone {
     background-image: url(/src/icons/Icon-Phone-call.svg);
 
     &::before {
-      content: "+1 234 5555-55-55";
+      content: '+1 234 5555-55-55';
+
+      position: absolute;
+      z-index: 100;
+      top: 100%;
+      transform: translateX(-80%);
+
+      display: none;
+
       font-size: 16px;
       font-weight: 700;
       color: #fff;
-      display: none;
       text-decoration: none;
-      position: absolute;
       white-space: pre;
-      top: 100%;
-      z-index: 100;
-      transform: translateX(-80%);
+
       transition: transform 0.3s;
     }
 
@@ -145,9 +152,11 @@ body {
 .menu {
   box-sizing: border-box;
   height: 100vh;
-  background-color: #c2c2c2;
-  text-transform: uppercase;
+
   font-weight: 600;
+  text-transform: uppercase;
+
+  background-color: #c2c2c2;
 
   &__top {
     margin-bottom: 32px;
@@ -162,24 +171,28 @@ body {
   }
 
   &__phone-number {
-    color: inherit;
+    display: block;
+
     margin-bottom: 16px;
+
     font-size: 16px;
     line-height: 27px;
+    color: inherit;
     text-decoration: none;
-    display: block;
   }
 
   &__call-to-order {
-    color: inherit;
-    letter-spacing: 2px;
-    border-bottom: 1px solid #1d1d1d;
+    display: block;
+
     width: fit-content;
     padding-bottom: 7px;
+    border-bottom: 1px solid #1d1d1d;
+
     font-size: 12px;
     line-height: 16px;
+    color: inherit;
     text-decoration: none;
-    display: block;
+    letter-spacing: 2px;
   }
 }
 
@@ -188,34 +201,41 @@ body {
 /* #navRegion */
 .nav {
   &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
   }
 
   &__link {
     position: relative;
-    color: inherit;
-    text-decoration: none;
+
     font-size: 22px;
     line-height: 22px;
+    color: inherit;
+    text-decoration: none;
     letter-spacing: 2px;
 
     &::after {
       content: '';
+
       position: absolute;
       bottom: -8px;
+      transform-origin: left;
+      transform: scale(0);
+
       display: block;
-      height: 1px;
+
       width: 100%;
+      height: 1px;
+
       background-color: black;
 
       transition: transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
     }
 
     &:hover::after {
@@ -228,33 +248,35 @@ body {
 
 /* #pageregion */
 .page {
-  font-family: Poppins, sans-serif;
-  color: #1d1d1d;
-  font-size: 16px;
-  line-height: 140%;
-
   scroll-behavior: smooth;
 
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: #1d1d1d;
+
   &__body {
-    margin: 0;
     min-width: 320px;
+    margin: 0;
   }
 
   &__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    transition: all 0.3s;
-    opacity: 0;
-    transform: translateX(-100%);
     pointer-events: none;
 
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    opacity: 0;
+
+    transition: all 0.3s;
+
     &:target {
-      opacity: 1;
-      transform: translateX(0);
       pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 }
