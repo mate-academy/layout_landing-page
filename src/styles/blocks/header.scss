@@ -105,29 +105,35 @@ body {
 
   &--phone {
     background-image: url(/src/icons/Icon-Phone-call.svg);
+    position: relative;
 
     &::before {
       content: '+1 234 5555-55-55';
       font-size: 16px;
+      line-height: 38px;
       font-weight: 700;
       color: #fff;
-      display: none;
       text-decoration: none;
       position: absolute;
       white-space: pre;
-      top: 100%;
+      right: calc(100% + 20px);
       z-index: 100;
-      transform: translateX(-50%);
-      transition: transform 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      display: none;
 
-      @include onTablet {
-        top: 5px;
-        left: -100px;
+      @include onDesktop {
+        display: flex;
+        opacity: 0;
       }
     }
 
-    &:hover::before {
-      display: block;
+    @include onDesktop {
+      &:hover::before {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 
@@ -147,6 +153,7 @@ body {
 /* #regionIconClose */
 
 /* #region menu */
+
 .menu {
   box-sizing: border-box;
   height: 100vh;
