@@ -1,0 +1,54 @@
+@use '../variables';
+@use '../mixins';
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding-left: 11px;
+  border: none;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: variables.$main-dark;
+
+  background-color: variables.$input-background;
+
+  @include mixins.on-tablet {
+    padding-left: 12px;
+  }
+
+  @include mixins.hover-duration(border);
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border: 1px solid #d5d7de;
+
+    @include mixins.hover-duration(color);
+
+    &::placeholder {
+      color: variables.$main-dark;
+    }
+  }
+
+  &:focus {
+    border: 1px solid variables.$main-dark;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.textarea {
+  height: unset;
+  padding: 14px 11px;
+  border: 1px solid variables.$input-background;
+
+  @include mixins.on-tablet {
+    padding: 14px 12px;
+  }
+}

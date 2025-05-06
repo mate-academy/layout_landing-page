@@ -1,0 +1,378 @@
+@use '../mixins';
+@use '../variables';
+
+.section {
+  padding-top: 100px;
+
+  @include mixins.on-tablet {
+    padding-top: 140px;
+  }
+
+  &__content {
+    --grid-column: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--grid-column), 1fr);
+    column-gap: 20px;
+
+    &_images {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-column), 1fr);
+      column-gap: 20px;
+
+      padding-top: 40px;
+      padding-bottom: 24px;
+
+      &--1 {
+        --grid-column: 1;
+
+        @include mixins.on-desktop {
+          --grid-column: 12;
+        }
+      }
+
+      &--2 {
+        --grid-column: 2;
+
+        @include mixins.on-tablet {
+          --grid-column: 6;
+        }
+
+        @include mixins.on-desktop {
+          --grid-column: 12;
+        }
+      }
+
+      &--3 {
+        --grid-column: 3;
+
+        @include mixins.on-tablet {
+          --grid-column: 6;
+        }
+
+        @include mixins.on-desktop {
+          --grid-column: 12;
+        }
+      }
+    }
+
+    &_about-us {
+      grid-column: 1 / -1;
+
+      @include mixins.on-tablet {
+        grid-column: 4 / -1;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: 5 / -1;
+      }
+    }
+
+    &_gallery {
+      grid-column: 1 / -1;
+
+      &:nth-last-of-type(1) {
+        padding-top: 55px;
+
+        @include mixins.on-tablet {
+          padding-top: 40px;
+        }
+
+        @include mixins.on-desktop {
+          grid-column: 5 / 8;
+          padding-top: 55px;
+        }
+      }
+    }
+
+    &_explore-online {
+      grid-column: 1 / -1;
+
+      & .section__content_images {
+        padding-bottom: 0;
+      }
+
+      @include mixins.on-tablet {
+        grid-column: 2 / 6;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &_contacts {
+      grid-column: 1 / -1;
+
+      @include mixins.on-tablet {
+        grid-column: 1 / 4;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 3;
+      }
+
+      &-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        & .button {
+          margin-top: 16px;
+        }
+
+        @include mixins.on-tablet {
+          grid-area: 2 / 4 / 4 / 7;
+        }
+
+        @include mixins.on-desktop {
+          grid-area: 2 / 8 / 3 / -1;
+        }
+      }
+    }
+
+    @include mixins.on-tablet {
+      --grid-column: 6;
+
+      column-gap: 24px;
+    }
+
+    @include mixins.on-desktop {
+      --grid-column: 12;
+
+      column-gap: 24px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+
+    &--about-us {
+      grid-column: 1 / -1;
+      padding-bottom: 8px;
+      text-align: left;
+
+      @include mixins.on-tablet {
+        grid-column: 1 / 3;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: 1 / 5;
+      }
+    }
+
+    &--gallery {
+      grid-column: 1 / -1;
+      padding-bottom: 0;
+
+      @include mixins.on-tablet {
+        grid-column: 2 / 6;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: 5 / 9;
+      }
+    }
+
+    &--explore-online {
+      grid-column: 1 / -1;
+      padding-bottom: 40px;
+
+      @include mixins.on-tablet {
+        grid-column: 2 / 6;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: 4 / 10;
+      }
+    }
+
+    &--contacts {
+      grid-column: 1 / -1;
+      padding-bottom: 48px;
+
+      @include mixins.on-tablet {
+        padding-bottom: 48px;
+      }
+    }
+
+    &-prefix {
+      font-size: 12px;
+      line-height: 140%;
+      color: variables.$accent-main;
+      letter-spacing: 0;
+    }
+
+    &-main {
+      font-size: 32px;
+      line-height: 32px;
+      letter-spacing: -1.5px;
+
+      @include mixins.on-tablet {
+        font-size: 48px;
+        line-height: 48px;
+      }
+    }
+  }
+
+  &__description {
+    padding-bottom: 8px;
+    font-weight: 400;
+  }
+
+  &__subtitle {
+    padding-top: 24px;
+    padding-bottom: 16px;
+
+    font-size: 24px;
+    font-weight: 700;
+    font-style: normal;
+
+    &--red {
+      padding-bottom: 4px;
+      color: variables.$accent-main;
+    }
+
+    &--small {
+      padding: 0;
+      font-size: 16px;
+    }
+
+    &--contacts {
+      padding-top: 0;
+      padding-bottom: 16px;
+      font-size: 16px;
+    }
+
+    &--active {
+      color: variables.$text;
+      text-decoration: none;
+
+      @include mixins.hover-duration(color);
+
+      &:hover {
+        cursor: pointer;
+        color: variables.$accent-main;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 24px;
+    padding-bottom: 16px;
+
+    &-item {
+      padding-top: 0;
+      padding-bottom: 8px;
+    }
+  }
+
+  &__span--no-wrap {
+    white-space: nowrap;
+  }
+
+  &_image {
+    &--left {
+      object-position: left;
+    }
+
+    &--right {
+      object-position: right;
+    }
+
+    &--hover {
+      @include mixins.hover-duration(transform);
+
+      &:hover {
+        transform: scale(120%);
+      }
+    }
+  }
+
+  &_oblong {
+    position: relative;
+    overflow: hidden;
+
+    @include mixins.on-tablet {
+      display: grid;
+      grid-column: span 4;
+    }
+
+    @include mixins.on-desktop {
+      display: grid;
+      grid-column: span 8;
+    }
+
+    &_image {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+  &_square {
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &--span2 {
+      @include mixins.on-tablet {
+        display: grid;
+        grid-column: span 2;
+      }
+
+      @include mixins.on-desktop {
+        display: grid;
+        grid-column: span 4;
+      }
+    }
+
+    &--span3 {
+      display: grid;
+      grid-column: span 1;
+
+      @include mixins.on-tablet {
+        display: grid;
+        grid-column: span 3;
+      }
+
+      @include mixins.on-desktop {
+        display: grid;
+        grid-column: span 4;
+      }
+    }
+
+    &_image {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    &:nth-of-type(3) {
+      @include mixins.on-tablet {
+        display: none;
+      }
+
+      @include mixins.on-desktop {
+        display: block;
+      }
+    }
+  }
+}
