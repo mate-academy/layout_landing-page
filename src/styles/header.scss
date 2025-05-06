@@ -1,0 +1,148 @@
+.top-bar {
+  @include content-padding-block;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
+
+.header {
+  margin: 0;
+  background-image: url('../images/header-photo-mobile.png');
+  height: 100vh;
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+
+  @include on-tablet {
+    background-image: url('../images/header-photo.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__content {
+    @include content-padding-inline;
+
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 203px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    margin: 0;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    justify-content: center;
+
+    @include on-tablet {
+      font-weight: 700;
+      font-size: 64px;
+      letter-spacing: -1.5px;
+    }
+
+    @include on-desktop {
+      font-weight: 700;
+      font-size: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+}
+
+.phone-number {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: -120%;
+    transform: translateX(-50%);
+    width: 250px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.5s ease,
+      left 0.5s ease;
+  }
+}
+
+.phone-number:hover {
+  opacity: 1;
+  left: 0;
+  pointer-events: auto;
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+
+  @include on-tablet {
+    position: relative;
+  }
+
+  &--phone {
+    background-image: url(../images/phone-icon-svg.svg);
+
+    &:hover .phone-number {
+      @include on-tablet {
+        opacity: 1;
+        left: 0;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &--burger-menu {
+    background-image: url(../images/burger-menu-icon-svg.svg);
+  }
+
+  &--close {
+    background-image: url(../images/close-icon-svg.svg);
+  }
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
