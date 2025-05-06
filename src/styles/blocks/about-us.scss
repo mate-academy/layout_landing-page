@@ -1,10 +1,38 @@
 .about-us {
-  @include page-grid;
+  position: relative;
+  right: 50%;
+  left: 50%;
+
+  display: grid;
+
+  width: 100vw;
+  margin-right: -50vw;
+  margin-left: -50vw;
+  padding-bottom: 80px;
 
   background-color: #fcfaef;
 
+  @include on-tablet {
+    padding-bottom: 120px;
+  }
+
   &__content {
-    display: contents;
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 40px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    @include on-tablet {
+      padding: 0 72px;
+      text-align: left;
+    }
+
+    @include on-desktop {
+      padding: 0 120px;
+    }
   }
 
   &__image {
@@ -18,9 +46,8 @@
 
     img {
       display: block;
-      width: 100vw;
-      max-width: none;
-      margin-left: calc(-50vw + 50%);
+      width: 100%; /* Изображение занимает всю ширину родителя */
+      height: auto;
     }
 
     @include on-tablet {
@@ -29,9 +56,13 @@
   }
 
   &__title {
-    grid-column: 1 / -1;
+    margin-bottom: 0;
+
     font-size: 32px;
+    font-weight: 700;
     line-height: 100%;
+    text-align: center;
+    letter-spacing: -1.5px;
 
     @include on-tablet {
       grid-column: 1 / 4;
@@ -45,8 +76,7 @@
   }
 
   &__description {
-    margin: 0;
-    margin-bottom: 56px;
+    margin-bottom: 0;
 
     font-size: 16px;
     font-weight: 400;
@@ -58,7 +88,7 @@
     }
 
     @include on-desktop {
-      grid-column: 8 / 12;
+      grid-column: 8 / 13;
     }
   }
 }
