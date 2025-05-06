@@ -1,0 +1,284 @@
+html {
+  scroll-behavior: smooth;
+  font-family: Poppins, sans-serif;
+  color: #1d1d1d;
+}
+
+body {
+  margin: 0;
+}
+
+/* #headerregion */
+.header {
+  background-image: url(/src/image/header-bg-mobile.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include on-tablet {
+    background-image: url(/src/image/header-bg-tablet.png);
+  }
+
+  @include on-desktop {
+    background-image: url(/src/image/header-bg-desctop.png);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include on-tablet {
+      font-size: 40px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 90px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+  }
+}
+
+/* #headerregionClose */
+
+/* #topBarRegion */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 40px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
+  }
+}
+
+/* #topBarRegionClose */
+
+/* #regionIcon */
+.icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/icons/Icon-Phone-call.svg);
+
+    &::before {
+      content: '+1 234 5555-55-55';
+
+      position: absolute;
+      z-index: 100;
+      top: 5px;
+      left: -160px;
+
+      display: none;
+
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      white-space: pre;
+
+      transition: transform 0.3s;
+    }
+
+    &:hover::before {
+      display: block;
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/icons/IconBurgerHoverVector.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/icons/Icon-Close.svg);
+  }
+}
+
+/* #regionIconClose */
+
+/* #region menu */
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+
+  font-weight: 600;
+  text-transform: uppercase;
+
+  background-color: #c2c2c2;
+
+  &__top {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__phone-number {
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 27px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__call-to-order {
+    display: block;
+
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #1d1d1d;
+
+    font-size: 12px;
+    line-height: 16px;
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+}
+
+/* #end region menu */
+
+/* #navRegion */
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+
+    font-size: 22px;
+    line-height: 22px;
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -8px;
+      transform-origin: left;
+      transform: scale(0);
+
+      display: block;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: black;
+
+      transition: transform 0.3s;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+/* #navRegionClose */
+
+/* #pageregion */
+.page {
+  scroll-behavior: smooth;
+
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: #1d1d1d;
+
+  &__body {
+    min-width: 320px;
+    margin: 0;
+  }
+
+  &__menu {
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    opacity: 0;
+
+    transition: all 0.3s;
+
+    &:target {
+      pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* #pageregionClose */
