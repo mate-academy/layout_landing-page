@@ -1,0 +1,169 @@
+/* chamei a classe containerHeader */
+.containerHeader {
+  /* defini as dimenções do container */
+  width: 100%;
+  height: 628px;
+  /* defini a propriedade position relativa para técnica de sobreposição primeiramente com o elemento pai
+  para depois sobrepor os demais */
+  position: relative;
+
+  /* chamei a classe filha do container */
+  &--imagem {
+    /* defini as dimenções da imagem */
+    width: 100%;
+    height: 628px;
+    /* defini a pespectiva da imagem */
+    object-fit: cover;
+  }
+
+  &--texto {
+    /* defini a propriedade position absolute para técnica de sobreposição primeiramente como elemento filho */
+    position: absolute;
+    font-size: 30px;
+    width: 500px;
+    color: white;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    /* defini o z-index informando q esse será o elemento que ira sobrepor */
+    z-index: 2;
+    /* NÃO FICO MUITO CLARO ESSA PARTE, mas sei que foi para dimensionar a posição do elemento sobre o container*/
+    left: 50%;
+    top: 74%;
+    transform: translate(-50%, -50%);
+  }
+
+  &--nav {
+    /* foi aqui definido position como absolute para que venha a sobrepor o elemento pai*/
+    position: absolute;
+    /*definido as dimenções do container*/
+    height: 128px;
+    width: 100%;
+    /*definido a ordem de sobrepeposição*/
+    z-index: 2;
+    /* NÃO FICO MUITO CLARO ESSA PARTE, mas sei que foi para dimensionar a posição do elemento sobre o container*/
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+
+    &-logo {
+      margin-top: 35px;
+      margin-left: 50px;
+      width: 187px;
+      height: 56px;
+      /*como havia dois elementos na nav, usamos o
+      justify-content: space-between & float: left para conseguir alinhar este elemento a esqueda*/
+      justify-content: space-between;
+      float: left;
+    }
+
+    &-menuSuspenso {
+      /*definido as dimenções*/
+      width: 96px;
+      height: 32px;
+      /*colocamos o display como flex para conseguir usar o espaçamento entre elementos e alinha no centro vertical
+      como align-items: center;*/
+      display: flex;
+      align-items: center;
+      margin-top: 45px;
+      margin-right: 50px;
+      /*como havia dois elementos na nav, usamos o
+      justify-content: space-between & float: left para conseguir alinhar este elemento a direita*/
+      justify-content: space-between;
+      float: right;
+    }
+  }
+}
+
+/* chamei a classe containerHeader */
+.containerAside {
+  width: 100%;
+  height: 628px;
+  background-color: #c2c2c2;
+  display: flex;
+  flex-direction: column;
+
+  &--menuTop {
+    height: 128px;
+    width: 100%;
+
+    &-logo {
+      margin-top: 35px;
+      margin-left: 50px;
+      width: 187px;
+      height: 56px;
+      /*como havia dois elementos na nav, usamos o
+      justify-content: space-between & float: left para conseguir alinhar este elemento a esqueda*/
+      justify-content: space-between;
+      float: left;
+    }
+
+    &-menuFechar {
+      /*definido as dimenções*/
+      width: 96px;
+      height: 32px;
+      /*colocamos o display como flex para conseguir usar o espaçamento entre elementos e alinha no centro vertical
+      como align-items: center;*/
+      display: flex;
+      align-items: center;
+      margin-top: 45px;
+      margin-right: -6px;
+      /*como havia dois elementos na nav, usamos o
+      justify-content: space-between & float: left para conseguir alinhar este elemento a direita*/
+      justify-content: space-between;
+      float: right;
+    }
+  }
+
+  &--menu {
+    display: flex;
+    flex-direction: column;
+
+    &-sections {
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+      margin-left: 50px;
+      width: 199px;
+      height: 238px;
+
+      &-section {
+        font-family: Poppins, sans-serif;
+        font-size: 22px;
+        color: #1D1D1D;
+        text-decoration: none;
+      }
+
+      &-number {
+        display: flex;
+        flex-direction: column;
+
+        &-cell {
+          font-family: Poppins, sans-serif;
+          font-size: 16px;
+          color: #1D1D1D;
+          text-decoration: none;
+        }
+        &-book {
+                      font-family: Poppins, sans-serif;
+          font-size: 16px;
+          color: #1D1D1D;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page__menu:target {
+  opacity: 1;
+  pointer-events: all;
+}
