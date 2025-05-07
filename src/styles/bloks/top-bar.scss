@@ -27,17 +27,29 @@
   }
 
   &__icons {
+    position: relative;
     display: flex;
-    gap: 24px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
-    @include mixins.on-tablet {
-      gap: 43px;
-    }
+    &-contacts {
+      position: absolute;
+      top: 0;
+      right: 100%;
 
-    @include mixins.on-desktop {
-      gap: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+
+      text-align: right;
+
+      opacity: 0;
+
+      @include mixins.hover-duration(opacity);
+
+      @include mixins.on-tablet {
+        top: unset;
+      }
     }
   }
 
@@ -63,7 +75,22 @@
     }
 
     &--phone {
+      padding: 0 24px 0 16px;
+
+      @include mixins.on-tablet {
+        padding: 0 43px 0 16px;
+      }
+
+      @include mixins.on-desktop {
+        padding: 0 55px 0 16px;
+      }
+
       background-image: url('../images/icon-phone-call.png');
+      background-size: contain;
+
+      &:hover + .top-bar__icons-contacts {
+        opacity: 1;
+      }
     }
   }
 }
