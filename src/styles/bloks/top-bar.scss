@@ -1,0 +1,106 @@
+@use '../variables';
+@use '../mixins';
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0 8px;
+
+  @include mixins.on-tablet {
+    padding-top: 32px;
+  }
+
+  @include mixins.on-desktop {
+    padding-top: 50px;
+  }
+
+  &__logo {
+    display: inline-flex;
+    width: 64px;
+    height: 46px;
+
+    @include mixins.on-desktop {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    position: relative;
+
+    display: flex;
+    gap: 27px;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include mixins.on-tablet {
+      gap: 43px;
+    }
+
+    @include mixins.on-desktop {
+      gap: 55px;
+    }
+
+    &-contacts {
+      pointer-events: none;
+
+      position: absolute;
+      z-index: 0;
+      top: -100%;
+      right: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+
+      padding-right: 10px;
+
+      text-align: right;
+
+      opacity: 0;
+
+      @include mixins.hover-duration(opacity);
+
+      &:hover {
+        pointer-events: all;
+        z-index: 100;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include mixins.on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &--close {
+      background-image: url('../images/icon-close.png');
+    }
+
+    &--burger-menu {
+      background-image: url('../images/icon-burger-menu.png');
+    }
+
+    &--phone {
+      padding-left: 16px;
+      background-image: url('../images/icon-phone-call.png');
+      background-size: contain;
+
+      &:hover + .top-bar__icons-contacts {
+        pointer-events: all;
+        z-index: 100;
+        opacity: 1;
+      }
+    }
+  }
+}

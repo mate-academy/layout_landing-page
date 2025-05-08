@@ -1,0 +1,114 @@
+@use '../variables';
+@use '../mixins';
+
+.menu {
+  overflow: auto;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: variables.$accent-main;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: flex-start;
+
+    height: 100vh;
+
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    text-transform: uppercase;
+
+    @include mixins.on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    &--phone {
+      padding-bottom: 8px;
+
+      @include mixins.hover-duration(color);
+
+      &-hover:hover {
+        color: variables.$main-dark;
+      }
+    }
+
+    &--call-to-order {
+      padding-top: 16px;
+      font-size: 12px;
+      line-height: 16px;
+
+      @include mixins.hover-duration(border-bottom);
+
+      &:hover {
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    justify-content: flex-start;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    color: #fff;
+    text-decoration: none;
+
+    @include mixins.hover-duration(border-bottom);
+
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+  }
+}
+
+.page__menu {
+  pointer-events: none;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  opacity: 0;
+
+  @include mixins.hover-duration(opacity);
+
+  &:target {
+    pointer-events: all;
+    opacity: 1;
+
+    .top-bar {
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      background-color: variables.$accent-main;
+    }
+  }
+}
