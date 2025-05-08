@@ -1,11 +1,9 @@
 .contacts {
   @include page-grid-mix;
 
-  &__title {
-    & .section-title {
-      width: 100%;
-    }
+  grid-column: 1 / -1;
 
+  &__title {
     grid-column: 1 / -1;
 
     @include on-tablet-mix {
@@ -14,13 +12,26 @@
     }
 
     @include on-desctop-mix {
-      grid-column: span 5;
+      grid-column: 1 / 5;
+    }
+
+    & .section-title {
+      width: 100%;
     }
   }
   &__inputs {
-    display: grid;
-    grid-column: 1 / 6;
     gap: 16px;
+    display: grid;
+    grid-column: 1 / -1;
+
+    @include on-tablet-mix {
+      grid-column: 1 / -1;
+      gap: 16px;
+    }
+
+    @include on-desctop-mix {
+      grid-column: 1 / 4;
+    }
   }
 
   &__input {
@@ -29,10 +40,13 @@
     padding: 0 0 0 16px;
     height: 48px;
     color: $link-input-color;
+    background-color: $link-mob-click;
+    border: none;
     font-family: 'Space Mono', monospace;
     font-size: 14px;
     font-weight: 400;
     line-height: 140%;
+    border-radius: 8px;
 
     &:hover {
       transition: all 0.3s;
@@ -40,7 +54,7 @@
       border: 1px solid $input-hover-color;
     }
 
-    &:focus {
+    &:active {
       color: $main-text-color;
       border: 1px solid $main-text-color;
       transition: all 0.3s;
@@ -52,16 +66,33 @@
     padding: 0 0 0 16px;
     height: 48px;
     color: $link-input-color;
+    background-color: $link-mob-click;
+    border: none;
     font-family: 'Space Mono', monospace;
     font-size: 14px;
     font-weight: 400;
     line-height: 140%;
+    border-radius: 8px;
+
+    &:hover {
+      transition: all 0.3s;
+      color: $main-text-color;
+      border: 1px solid $input-hover-color;
+    }
+
+    &:active {
+      color: $main-text-color;
+      border: 1px solid $main-text-color;
+      transition: all 0.3s;
+    }
   }
   &__text {
     box-sizing: border-box;
     margin: 0;
     display: flex;
     color: $link-input-color;
+    background-color: $link-mob-click;
+    border: none;
     font-family: 'Space Mono', monospace;
     font-size: 14px;
     font-weight: 400;
@@ -70,6 +101,20 @@
     justify-content: flex-start;
     vertical-align: text-top;
     padding: 14px 16px 148px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+
+    &:hover {
+      transition: all 0.3s;
+      color: $main-text-color;
+      border: 1px solid $input-hover-color;
+    }
+
+    &:active {
+      color: $main-text-color;
+      border: 1px solid $main-text-color;
+      transition: all 0.3s;
+    }
   }
 
   &__content {
@@ -81,13 +126,14 @@
     grid-column: 1 / -1;
 
     @include on-tablet-mix {
-      grid-column: 1 / 3;
+      grid-column: 1 / -1;
     }
 
     @include on-desctop-mix {
       grid-column: 7 / 13;
     }
   }
+
   &__content-block {
     display: flex;
     margin-bottom: 24px;
@@ -97,6 +143,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 140%;
+
     & .menu__address {
       color: $content-block-text;
       font-family: 'Space Mono', monospace;
