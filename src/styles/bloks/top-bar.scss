@@ -28,18 +28,33 @@
 
   &__icons {
     position: relative;
+
     display: flex;
+    gap: 27px;
     align-items: center;
     justify-content: flex-start;
 
+    @include mixins.on-tablet {
+      gap: 43px;
+    }
+
+    @include mixins.on-desktop {
+      gap: 55px;
+    }
+
     &-contacts {
+      pointer-events: none;
+
       position: absolute;
-      top: 0;
+      z-index: 0;
+      top: -100%;
       right: 100%;
 
       display: flex;
       flex-direction: column;
       justify-items: center;
+
+      padding-right: 10px;
 
       text-align: right;
 
@@ -47,8 +62,10 @@
 
       @include mixins.hover-duration(opacity);
 
-      @include mixins.on-tablet {
-        top: unset;
+      &:hover {
+        pointer-events: all;
+        z-index: 100;
+        opacity: 1;
       }
     }
   }
@@ -75,20 +92,13 @@
     }
 
     &--phone {
-      padding: 0 24px 0 16px;
-
-      @include mixins.on-tablet {
-        padding: 0 43px 0 16px;
-      }
-
-      @include mixins.on-desktop {
-        padding: 0 55px 0 16px;
-      }
-
+      padding-left: 16px;
       background-image: url('../images/icon-phone-call.png');
       background-size: contain;
 
       &:hover + .top-bar__icons-contacts {
+        pointer-events: all;
+        z-index: 100;
         opacity: 1;
       }
     }
