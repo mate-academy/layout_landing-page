@@ -1,0 +1,116 @@
+@import '/src/styles/utils/variables';
+@import '/src/styles/utils/mixins';
+
+.contacts__container {
+  --columns: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  row-gap: 40px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+    column-gap: 24px;
+  }
+}
+
+
+.contact {
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 1 / 4;
+  }
+
+  @include onDesktop {
+    grid-column: 1 / 4;
+  }
+
+  &--2 {
+    @include onTablet {
+      grid-column: 1 / 4;
+    }
+
+    @include onDesktop {
+      grid-column: 4 / 7;
+    }
+  }
+}
+
+
+
+.info-contact{
+  &__lower{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 27px;
+    letter-spacing: 0;
+    margin-bottom: 4px;
+
+  }
+
+  &__upper{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-decoration: none;
+    color: $secondary-text-color;
+    margin-bottom: 4px;
+
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  grid-column: 1 / -1;
+
+  @include onTablet {
+    grid-column: 4 / 7;
+  }
+
+  @include onDesktop {
+    grid-column: 8 / 13;
+  }
+
+  &__input {
+    background-color: rgba(248, 248, 250, 1);
+    font-size: 14px;
+    line-height: 20px;
+    padding: 14px;
+    margin-bottom: 16px;
+    border: none;
+    font-family: $font-family;
+    color: rgba(126, 126, 131, 1);
+
+    &::placeholder {
+      color: rgba(126, 126, 131, 1);
+    }
+
+    &--message {
+      height: 144px;
+    }
+  }
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  background-color: #ae1c23;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 27px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 16px;
+}
+

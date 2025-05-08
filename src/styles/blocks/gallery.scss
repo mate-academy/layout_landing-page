@@ -1,0 +1,108 @@
+@import '/src/styles/utils/mixins';
+@import '/src/styles/utils/variables';
+
+.gallery {
+  &__item {
+    margin-top: 48px;
+  }
+
+  &__images {
+    display: grid;
+    margin-bottom: 24px;
+    grid-template-rows: repeat(2, auto);
+  }
+
+  &__image {
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+
+    @include onTablet {
+      height: 200px;
+    }
+
+    @include onDesktop {
+      height: 320px;
+    }
+
+    &--seven {
+      object-fit: cover;
+      object-position: right;
+    }
+
+    &--one {
+      object-fit: cover;
+      object-position: 20% 80%;
+    }
+  }
+
+  &__images--two {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+
+  &__images--three {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+  }
+
+  @include onTablet {
+    &__images--three {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+    }
+
+    &__image--one,
+    &__image--seven {
+      grid-row: span 4;
+    }
+
+    &__image--two,
+    &__image--six {
+      grid-row: span 2;
+    }
+
+    &__image--hidden {
+      display: none;
+    }
+  }
+
+  @include onDesktop {
+    &__image {
+      width: 100%;
+    }
+
+    &__images--two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__images--three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__image--hidden {
+      display: block;
+    }
+
+    &__image--one,
+    &__image--seven {
+      grid-row: span 8;
+    }
+
+    &__image--two,
+    &__image--six {
+      grid-row: span 4;
+    }
+  }
+}
+
+.container-title-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  margin: 0 auto;
+}

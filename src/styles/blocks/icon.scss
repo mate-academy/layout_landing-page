@@ -1,0 +1,72 @@
+@import '/src/styles/utils/mixins';
+
+.icon{
+  display: block;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.5s;
+
+@include hover(transform, scale(1.2));
+
+@include onTablet {
+  width: 32px;
+  height: 32px;
+}
+
+&--phone{
+  background-image: url(../icons/icon-call.svg);
+  background-size: contain;
+}
+
+&--menu{
+  background-image: url(../icons/icon-burger-menu.svg);
+  background-size: contain;
+}
+
+&--close{
+  background-image: url(../icons/icon-close.svg);
+  background-size: contain;
+}
+}
+
+.phone-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .phone-tooltip {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $main-text-color;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 8px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include onTablet {
+      background-color: transparent;
+    }
+
+
+    .phone-title {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .phone-number {
+      font-size: 14px;
+    }
+  }
+
+  &:hover .phone-tooltip {
+    opacity: 1;
+  }
+}
