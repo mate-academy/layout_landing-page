@@ -13,7 +13,33 @@
   }
 
   &--phone {
+    position: relative;
     background-image: url(../images/Icons/Icon-Phone-call.svg);
+
+    &--number {
+      position: absolute;
+      top: 25%;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      pointer-events: none;
+
+      opacity: 0;
+      transform: translateY(0) translateX(-90%);
+      transition:
+        transform $effective-duration,
+        opacity $effective-duration;
+    }
+
+    @include on-desktop {
+      &:hover &--number {
+        transform: translateY(0) translateX(-120%);
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
