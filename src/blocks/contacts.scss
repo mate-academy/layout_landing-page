@@ -1,0 +1,106 @@
+.contacts {
+  margin-top: 80px;
+  padding-bottom: 120px;
+
+  @include on-tablet {
+    margin-top: 120px;
+  }
+
+  @include on-desktop {
+    margin-top: 180px;
+    padding-bottom: 164px;
+  }
+
+  &__wrapper {
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__form {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+
+    .form-contacts {
+      &__input {
+        margin-bottom: 16px;
+      }
+
+      &__button {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  &__info {
+    @media (max-width: $tablet-width) {
+      margin-top: 48px;
+    }
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: -6 / -1;
+    }
+
+    .info {
+      &__block {
+        &:not(:last-child) {
+          margin-bottom: 24px;
+        }
+      }
+
+      &__title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.4;
+        color: $main-text-color;
+        margin-bottom: 8px;
+      }
+
+      &__text,
+      &__link {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.4;
+        color: $main-text-color;
+        text-decoration: none;
+      }
+
+      &__link {
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          bottom: -8px;
+          background-color: $main-text-color;
+          transform: scale(0);
+          transition: transform $duration;
+          transform-origin: left;
+        }
+
+        &:hover::after,
+        &:focus::after {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icon-phone.svg);
+    position: relative;
+    text-decoration: none;
+
+    @include on-tablet {
+      &::before {
+        content: attr(data-text);
+        display: block;
+        margin-left: -160px;
+        padding-top: 8px;
+        padding-right: 20px;
+        padding-bottom: 8px;
+        top: calc(50% - 8px);
+        width: max-content;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 1.33;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        color: $main-text-color;
+        text-decoration: none;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(50%);
+        transition:
+          transform $duration,
+          opacity $duration;
+      }
+
+      &:hover::before,
+      &:focus::before {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon-burger-menu.svg);
+
+    &:hover,
+    &:focus {
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.svg);
+  }
+}
