@@ -12,7 +12,50 @@
   }
 
   &--phone {
-    background-image: url('../images/icons/icon-phone-call.svg');
+    position: relative;
+    text-decoration: none;
+    background-image: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../images/icons/icon-phone-call.svg');
+      background-size: cover;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    @include on-tablet {
+      &:hover {
+        &::before {
+          opacity: 0;
+        }
+
+        .icon__number {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__number {
+    display: inline-block;
+    opacity: 0;
+    position: absolute;
+    left: -200px;
+    top: 5px;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
   }
 
   &--menu {
