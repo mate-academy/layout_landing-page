@@ -1,0 +1,144 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+    cursor: default;
+  }
+}
+
+@mixin section-text-base {
+  // @include content-padding-inline;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  color: #fff;
+}
+
+@mixin section-title {
+  @include section-text-base;
+
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    font-size: 64px;
+  }
+}
+
+@mixin section-text {
+  @include section-text-base;
+
+  font-family: Poppins, sans-serif;
+  font-size: 23px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+@mixin btn-primary {
+  width: 280px;
+  height: 56px;
+  border: none;
+  border-radius: 40px;
+
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: $color-text-secundary;
+
+  background-color: #fff;
+
+  &:hover {
+    box-shadow: 1 4 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 1 4 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+
+  &__section-title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  // About Page
+  &__text {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 4 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  // Compare Page
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
