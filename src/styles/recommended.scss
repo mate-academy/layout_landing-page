@@ -1,20 +1,26 @@
 .recommended {
   &__products {
-    display: grid;
+    @include pageGrid;
     row-gap: 40px;
-    font-family: 'Space Mono', monospace;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
+  }
+
+  &__product {
+    grid-column: 1 / -1;
 
     @include onTabled {
-      justify-items: center;
+      grid-column: 2 / -2;
     }
 
     @include onDesktop {
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: 24px;
-      justify-items: stretch;
+      grid-column: span 4;
+    }
+  }
+
+  .product__photo {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }

@@ -5,7 +5,7 @@
 }
 
 @mixin onDesktop {
-  max-width: 1020px;
+  max-width: 1260px;
   mask-image: auto;
   @media (min-width: $desktop-min-width) {
     @content;
@@ -28,5 +28,21 @@
   transition: #{$property} 0.3s;
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTabled {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --colums: 12;
   }
 }
