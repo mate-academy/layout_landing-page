@@ -1,0 +1,38 @@
+@import '../utils/variables';
+
+.page {
+  font-family: Manrope, sans-serif;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    font-family: Manrope, sans-serif;
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__body:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translate(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all $effectDuration;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}

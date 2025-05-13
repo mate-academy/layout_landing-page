@@ -1,0 +1,45 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: $max-width;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --coluns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--coluns), 1fr);
+  gap: 20px;
+
+  @include on-tablet {
+    --coluns: 6;
+
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    --coluns: 12;
+  }
+}
