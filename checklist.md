@@ -1,5 +1,4 @@
-1. Use the logo as a favicon
-2. Use the landing name as a page title
+
 3. All logos should be links to the top of the page
 4. Change text color on hover for phone, email, and address
 5. Make sure phone icons and phone numbers are real links to start a call
