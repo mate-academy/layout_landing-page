@@ -24,10 +24,32 @@
   }
 }
 
+.container {
+  @include content-padding-inline;
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
 
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --collumns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--collumns), 1fr);
+
+  @include on-tablet {
+    --collumns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --collumns: 12;
   }
 }
