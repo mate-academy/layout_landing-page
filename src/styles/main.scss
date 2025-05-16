@@ -25,7 +25,7 @@ h2 {
 button {
   font-size: 16px;
   border: 0;
-  transition-duration: 0.1s;
+  transition-duration: $duration-highlight;
   &:hover {
     box-shadow: 0 0 0.5vh white;
   }
@@ -40,7 +40,7 @@ button {
   top: 0;
   display: flex;
   flex-direction: row;
-  padding: $header-padding-vertical 38px;
+  padding: $header-padding-vertical $header-padding-horizontal;
   height: $header-height;
   margin: 0;
   background: linear-gradient($color-background, transparent);
@@ -63,12 +63,37 @@ button {
     padding: 0;
     margin: auto;
     flex-grow: 1;
+    position: relative;
+    align-content: center;
     img {
       display: block;
       height: $header-height * 0.6;
       padding: 0;
       margin: auto;
     }
+  }
+
+  @media (min-width: 500px) {
+    &__call:hover::before {
+      content: "+38 (096) 284-04-31";
+      position: absolute;
+      left: -190px;
+      width: 190px;
+      text-align: right;
+      color: white;
+    }
+  }
+
+  &__menu div {
+    background-image: url("../images/menu.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: $header-height * 0.6;
+    width: $header-height * 0.6;
+    margin: auto;
+  }
+  &__menu:hover div {
+    background-image: url("../images/menu-hover.png");
   }
 }
 
@@ -135,6 +160,9 @@ button {
     margin: auto;
     border-radius: max(2vh, 2vw);
   }
+}
+
+.footer {
   &__contact-us-title {
     text-align: center;
   }
@@ -188,6 +216,70 @@ button {
   }
   &__contact-us-button:active {
     box-shadow: 0 0 1vh white;
+  }
+  &__last {
+    width: 100vw;
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
+}
+
+.menu {
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: $color-menu;
+  &__top {
+    display: flex;
+    flex-direction: row;
+    height: $header-height;
+    margin: 0;
+    padding: $header-padding-vertical $header-padding-horizontal;
+  }
+  &__logo {
+    align-content: center;
+    display: block;
+    padding: 0;
+    margin: auto;
+    flex-grow: 8;
+    img {
+      display: block;
+      height: $header-height;
+      padding: 0;
+      margin: auto;
+      margin-left: 0;
+    }
+  }
+  &__close {
+    display: block;
+    padding: 0;
+    margin: auto;
+    flex-grow: 1;
+    img {
+      display: block;
+      height: $header-height * 0.6;
+      padding: 0;
+      margin: auto;
+    }
+  }
+  &__home, &__about-us, &__compare-bikes, &__details, &__phone, &__book {
+    padding: $header-padding-vertical * 0.6 $header-padding-horizontal;
+    margin: 0;
+    text-transform: uppercase;
+    color: $color-background;
+    position: relative;
+  }
+  &__phone {
+    padding-top: $header-padding-vertical * 2;
+  }
+  &__book {
+    text-decoration: underline 2px;
+    text-underline-offset: 10px;
   }
 }
 
