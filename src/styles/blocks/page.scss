@@ -1,0 +1,44 @@
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth; /* чтоб навигация происходила плавно */
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed; /* чтоб меню было вверху */
+    top: 0;
+    right: 0;
+    left: 0; /* топ, райт и лефт 0 для того, чтоб растянулось меню на всею поверхность */
+
+    transition: all 0.3s;
+    opacity: 0; /* делает скрытое меню невидимым */
+    transform: translateX(100%);
+    pointer-events: none; /* делает скрытое меню неактивным */
+
+    &:target {
+      opacity: 1; /* делает скрытое меню видимым, когда жмем иконку */
+      transform: translateX(0);
+      pointer-events: all; /* делает скрытое меню активным */
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* чтобы страница не прокручивалась под меню, когда открыто меню */
+  }
+}
+
+/* .space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+} */

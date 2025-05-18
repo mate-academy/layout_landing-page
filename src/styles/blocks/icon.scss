@@ -1,0 +1,54 @@
+.icon {
+  display: block; /* чтоб иконки появились, т.к. ссылки инлайновые элементы */
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    /*  иконки увеличиваются, при увеличении экрана  */
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icon/Icon-Phone-call.svg);
+
+    &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 100%; // ставит правый край псевдоэлемента к левому краю иконки
+      margin-right: 8px; // добавляет небольшой отступ между иконкой и текстом
+      top: 50%; // вертикально центрирует псевдоэлемент
+      transform: translateY(
+        -50%
+      ); //  смещает вверх на 50% своей высоты, чтобы быть ровно по центру
+
+      color: $main-text-color;
+      white-space: nowrap; // не переносит текст на новую строку
+      opacity: 0; // сначала скрывает псевдоэлемент
+      pointer-events: none; // делает псевдоэлемент неактивным для взаимодействия
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icon/Icon-Burger-menu-hover.svg);
+      transform: scale(1.2);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon/Icon-Close.svg);
+  }
+}
