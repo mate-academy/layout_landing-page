@@ -1,0 +1,39 @@
+.page {
+  font-size: 16px;
+  color: $main-text-color;
+  line-height: 169%;
+  font-family: $font-cinzel;
+  scroll-behavior: smooth;
+  height: 100%;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto; /*  main, footer */
+    min-height: 100vh;
+    overflow: hidden scroll;
+  }
+  &__menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+    z-index: 999;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0%);
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
