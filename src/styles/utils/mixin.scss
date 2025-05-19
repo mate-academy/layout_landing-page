@@ -1,0 +1,92 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    /*  иконки и паддинги увеличиваются, при увеличении экрана  */
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    /*  иконки и паддинги увеличиваются, при увеличении экрана  */
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  /* горизонтальные паддинги при увеличении ширины экрана, увеличение иконок */
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  /* отвечает за горизонтальные ограничения ( по ширине) */
+  @include content-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin button-base {
+  display: grid;
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+  margin-top: 32px;
+  background-color: #292929;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  cursor: pointer;
+
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+
+  &:hover {
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+    color: #292929;
+  }
+
+  &:active {
+    background-color: #111;
+    color: #fff;
+  }
+}

@@ -1,0 +1,81 @@
+.categories {
+  // position: relative;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+  &__button-wrapper {
+    @include page-grid;
+  }
+  &__button {
+    @include button-base;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px; /* отодвигаем заголовок от фото */
+  }
+
+  &__link {
+    position: relative; /* действия, чтоб гарантировать, что картинка всегда будет квадратной, даже если исходник не квадратный */
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0; /* действия, чтоб гарантировать, что картинка всегда будет квадратной, даже если исходник не квадратный */
+      padding-bottom: 100%; /* действия, чтоб гарантировать, что картинка всегда будет квадратной, даже если исходник не квадратный */
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute; /* действия, чтоб гарантировать, что картинка всегда будет квадратной, даже если исходник не квадратный */
+    width: 100%; /* чтоб растянулись только на ширину экрана */
+    height: 100%; /* чтоб растянулись на всю ширину грида */
+    object-fit: cover; /* чтоб картинка не деформировалась */
+
+    transition: transform 300ms ease;
+  }
+
+  &__photo:hover {
+    transform: scale(1.05);
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px; /* переделать на планшет 24рх */
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+}
