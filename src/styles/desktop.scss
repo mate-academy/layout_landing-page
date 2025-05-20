@@ -1,0 +1,384 @@
+@use 'main';
+
+// Header
+.header {
+  border: solid 1px white;
+  background-color: black;
+  padding: 0 120px;
+  height: 128px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  .header__label {
+    font-size: 32px;
+  }
+
+  .header__options {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    .header__number {
+      display: block;
+    }
+
+    .header__menu-button {
+      background-image: url(../images/menu.png);
+      height: 32px;
+      width: 32px;
+      background-position: center center;
+      background-size: contain;
+
+      &:hover {
+        background-image: url(../images/menu-open.png);
+        background-size: contain;
+        background-position: center center;
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    .header__number:hover {
+      color: lime;
+    }
+
+    .header__number:has(+ .header__phone-button:hover) {
+      color: lime;
+    }
+  }
+}
+
+// Main: rollerblades block
+.rollerblades {
+  @include main.grid;
+
+  grid-template-columns: repeat(12, 1fr);
+  margin: 0 120px;
+
+  .rollerblades__main-image {
+    grid-area: 1/1 / span 1 / span 12;
+    width: 1000px;
+    height: 1000px;
+    justify-self: center;
+  }
+  .rollerblades__phrase {
+    grid-area: 1/1 / span 1 / span 12;
+    font-size: 96px;
+    place-self: center;
+  }
+
+  .rollerblades__preview {
+    grid-area: 2/1 / span 1 / span 12;
+  }
+
+  // Primary lineup cards grid areas
+  .rollerblades__card-frx {
+    @include main.card;
+
+    grid-area: 3/1 / span 1 / span 3;
+    width: main.$desktop-primary-image;
+
+    .rollerblades__card-frx-image {
+      width: main.$desktop-primary-image;
+      height: main.$desktop-primary-image;
+    }
+
+    .rollerblades__card-frx-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-frx-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__card-fr3 {
+    @include main.card;
+
+    grid-area: 3/4 / span 1 / span 3;
+    width: main.$desktop-primary-image;
+
+    .rollerblades__card-frx-image {
+      width: main.$desktop-primary-image;
+      height: main.$desktop-primary-image;
+    }
+
+    .rollerblades__card-fr3-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-fr3-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__card-fr2 {
+    @include main.card;
+
+    grid-area: 3/7 / span 1 / span 3;
+    width: main.$desktop-primary-image;
+
+    .rollerblades__card-fr2-image {
+      width: main.$desktop-primary-image;
+      height: main.$desktop-primary-image;
+    }
+
+    .rollerblades__card-fr2-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-fr2-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__card-fr1 {
+    @include main.card;
+
+    grid-area: 3/10 / span 1 / span 3;
+    width: main.$desktop-primary-image;
+
+    .rollerblades__card-fr1-image {
+      width: main.$desktop-primary-image;
+      height: main.$desktop-primary-image;
+    }
+
+    .rollerblades__card-fr1-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-fr1-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__variations {
+    grid-area: 4/1 / span 1 / span 12;
+    font-size: 96px;
+    text-align: center;
+    place-self: center;
+  }
+
+  // Colors
+  .rollerblades__colors {
+    grid-area: 5/1 / span 1 / span 3;
+    background-image: linear-gradient(to right, gray, black);
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  .rollerblades__color-card-blue {
+    grid-area: 5/4 / span 1 / span 3;
+    position: relative;
+
+    .card__image {
+      width: 200px;
+      height: 200px;
+    }
+
+    &::after {
+      content: 'Blue';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__color-card-grey {
+    grid-area: 5/7 / span 1 / span 3;
+    position: relative;
+
+    .card__image {
+      width: 200px;
+      height: 200px;
+    }
+
+    &::after {
+      content: 'Grey Blue';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__color-card-minty {
+    grid-area: 5/10 / span 1 / span 3;
+    position: relative;
+
+    .card__image {
+      width: 200px;
+      height: 200px;
+    }
+
+    &::after {
+      content: '"Minty" green';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  // Wheels
+  .rollerblades__wheels {
+    grid-area: 6/1 / span 1 / span 3;
+    background-image: linear-gradient(to right, gray, black);
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  .rollerblades__wheel-card-310 {
+    @include main.wheel-background;
+
+    grid-area: 6/4 / span 1 / span 4;
+    height: main.$desktop-small-image;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 55%,
+        rgba(255, 255, 255, 0) 65%
+      ),
+      url(../images/fr1-310-black.jpg);
+
+    &::after {
+      content: '3 x 110mm';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 50%;
+    }
+  }
+
+  .rollerblades__wheel-card-90 {
+    @include main.wheel-background;
+
+    grid-area: 6/9 / span 1 / span 4;
+    height: main.$desktop-small-image;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 55%,
+        rgba(255, 255, 255, 0) 65%
+      ),
+      url(../images/fr1-90-black.jpg);
+
+    &::after {
+      content: '4 x 90mm';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 50%;
+    }
+  }
+
+  // Women and children
+  .rollerblades__women-and-children {
+    grid-area: 7/1 / span 1 / span 3;
+    background-image: linear-gradient(to right, gray, black);
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  .rollerblades__women-and-children-card-FRJ-boy {
+    grid-area: 7/4 / span 1 / span 3;
+    position: relative;
+
+    .card__image {
+      width: main.$desktop-small-image;
+      height: main.$desktop-small-image;
+    }
+
+    &::after {
+      content: 'FRJ boys';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__women-and-children-card-FRJ-girl {
+    grid-area: 7/7 / span 1 / span 3;
+    position: relative;
+
+    .card__image {
+      width: main.$desktop-small-image;
+      height: main.$desktop-small-image;
+    }
+
+    &::after {
+      content: 'FRJ girls';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__women-and-children-card-FRW {
+    grid-area: 7/10 / span 1 / span 3;
+    position: relative;
+
+    .card__image {
+      width: main.$desktop-small-image;
+      height: main.$desktop-small-image;
+    }
+
+    &::after {
+      content: 'FRW';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+// Form
+.form-box {
+  grid-area: 8/1 / span 1 / span 12;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  font-size: 32px;
+  padding: 24px;
+  border: solid white 1px;
+  border-radius: 10px;
+
+  .form-box__text {
+    align-self: flex-start;
+  }
+  .form-box__form {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    .form-box__name {
+      @include main.form-fields;
+    }
+    .form-box__email {
+      @include main.form-fields;
+    }
+    .form-box__question {
+      @include main.form-fields;
+
+      height: 150px;
+    }
+    .form-box__submit {
+      border: 1px solid white;
+      border-radius: 5px;
+      box-shadow: -2px 2px white;
+      align-self: center;
+      color: white;
+      background-color: black;
+    }
+  }
+}
