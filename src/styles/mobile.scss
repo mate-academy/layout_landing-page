@@ -1,0 +1,386 @@
+@use 'main';
+
+// Header
+.header {
+  border: solid 1px white;
+  background-color: black;
+  padding: 0 30px;
+  height: 128px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  .header__label {
+    font-size: 32;
+  }
+
+  .header__options {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    .header__number {
+      display: none;
+    }
+
+    .header__menu-button {
+      background-image: url(../images/menu.png);
+      height: 32px;
+      width: 32px;
+      background-position: center center;
+      background-size: contain;
+
+      &:hover {
+        background-image: url(../images/menu-open.png);
+        background-size: contain;
+        background-position: center center;
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    .header__number:hover {
+      color: lime;
+    }
+
+    .header__number:has(+ .header__phone-button:hover) {
+      color: lime;
+    }
+  }
+}
+
+// Main: rollerblades block
+.rollerblades {
+  @include main.grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin: 0 20px;
+
+  // Main image
+  .rollerblades__main-image {
+    grid-area: 1/1 / span 1 / span 12;
+    width: 300px;
+    height: 300px;
+    justify-self: center;
+  }
+  .rollerblades__phrase {
+    grid-area: 1/1 / span 1 / span 12;
+    font-size: 48;
+    place-self: center;
+  }
+
+  // Primary preview
+  .rollerblades__preview {
+    grid-area: 2/1 / span 1 / span 12;
+  }
+
+  // Primary cards
+  .rollerblades__card-frx {
+    @include main.card;
+    grid-area: 3/1 / span 1 / span 12;
+    width: main.$mobile-primary-image;
+
+    .rollerblades__card-frx-image {
+      width: main.$mobile-primary-image;
+      height: main.$mobile-primary-image;
+    }
+
+    .rollerblades__card-frx-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-frx-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__card-fr3 {
+    @include main.card;
+    grid-area: 4/1 / span 1 / span 12;
+    width: main.$mobile-primary-image;
+
+    .rollerblades__card-fr3-image {
+      width: main.$mobile-primary-image;
+      height: main.$mobile-primary-image;
+    }
+
+    .card__info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-fr3-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__card-fr2 {
+    @include main.card;
+    grid-area: 5/1 / span 1 / span 12;
+    width: main.$mobile-primary-image;
+
+    .rollerblades__card-fr2-image {
+      width: main.$mobile-primary-image;
+      height: main.$mobile-primary-image;
+    }
+
+    .rollerblades__card-fr2-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-fr2-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  .rollerblades__card-fr1 {
+    @include main.card;
+    grid-area: 6/1 / span 1 / span 12;
+    width: main.$mobile-primary-image;
+
+    .rollerblades__card-fr1-image {
+      width: main.$mobile-primary-image;
+      height: main.$mobile-primary-image;
+    }
+
+    .rollerblades__card-fr1-info {
+      color: main.$off-white;
+    }
+
+    .rollerblades__card-fr1-info::first-line {
+      font-size: 28px;
+    }
+  }
+
+  // Variations
+  .rollerblades__variations {
+    grid-area: 7/1 / span 1 / span 12;
+    font-size: 48;
+    text-align: center;
+    place-self: center;
+  }
+
+  // Colors
+  .rollerblades__colors {
+    grid-area: 8/1 / span 1 / span 12;
+    background-image: linear-gradient(to bottom, gray, black);
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px white;
+  }
+
+  // Color cards
+  .rollerblades__color-card-blue {
+    @include main.card;
+    grid-area: 9/1 / span 1 / span 12;
+    position: relative;
+
+    .rollerblades__color-card-blue-image {
+      width: main.$mobile-small-image;
+      height: main.$mobile-small-image;
+    }
+
+    &::after {
+      content: 'Blue';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__color-card-grey {
+    @include main.card;
+    grid-area: 10/1 / span 1 / span 12;
+    position: relative;
+
+    .rollerblades__color-card-grey-image {
+      width: main.$mobile-small-image;
+      height: main.$mobile-small-image;
+    }
+
+    &::after {
+      content: 'Grey Blue';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__color-card-minty {
+    @include main.card;
+    grid-area: 11/1 / span 1 / span 12;
+    position: relative;
+
+    .rollerblades__color-card-minty-image {
+      width: main.$mobile-small-image;
+      height: main.$mobile-small-image;
+    }
+
+    &::after {
+      content: '"Minty" green';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  // Wheels
+  .rollerblades__wheels {
+    grid-area: 12/1 / span 1 / span 12;
+    background-image: linear-gradient(to bottom, gray, black);
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px white;
+  }
+
+  .rollerblades__wheel-card-310 {
+    grid-area: 13/1 / span 1 / span 12;
+    @include main.wheel-background-mobile;
+    height: main.$mobile-small-image;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 55%,
+        rgba(255, 255, 255, 0) 65%
+      ),
+      url(../images/fr1-310-black.jpg);
+
+    &::after {
+      content: '3 x 110mm';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 70%;
+    }
+  }
+
+  .rollerblades__wheel-card-90 {
+    grid-area: 14/1 / span 1 / span 12;
+    @include main.wheel-background-mobile;
+    height: main.$mobile-small-image;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 55%,
+        rgba(255, 255, 255, 0) 65%
+      ),
+      url(../images/fr1-90-black.jpg);
+
+    &::after {
+      content: '4 x 90mm';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 70%;
+    }
+  }
+
+  // Women and children
+  .rollerblades__women-and-children {
+    grid-area: 15/1 / span 1 / span 12;
+    background-image: linear-gradient(to bottom, gray, black);
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px white;
+  }
+
+  .rollerblades__women-and-children-card-FRJ-boy {
+    @include main.card;
+    grid-area: 16/1 / span 1 / span 12;
+    position: relative;
+
+    .rollerblades__women-and-children-card-FRJ-boy-image {
+      width: main.$mobile-small-image;
+      height: main.$mobile-small-image;
+    }
+
+    &::after {
+      content: 'FRJ boys';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__women-and-children-card-FRJ-girl {
+    @include main.card;
+    grid-area: 17/1 / span 1 / span 12;
+    position: relative;
+
+    .rollerblades__women-and-children-card-FRJ-girl-image {
+      width: main.$mobile-small-image;
+      height: main.$mobile-small-image;
+    }
+
+    &::after {
+      content: 'FRJ girls';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .rollerblades__women-and-children-card-FRW {
+    @include main.card;
+    grid-area: 18/1 / span 1 / span 12;
+    position: relative;
+
+    .rollerblades__women-and-children-card-FRW-image {
+      width: main.$mobile-small-image;
+      height: main.$mobile-small-image;
+    }
+
+    &::after {
+      content: 'FRW';
+      color: main.$off-white;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+// Form
+.form-box {
+  grid-area: 19/1 / span 1 / span 12;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  font-size: 32;
+  padding: 24px;
+  border: solid white 1px;
+  border-radius: 10px;
+
+  .form-box__text {
+    align-self: flex-start;
+  }
+  .form-box__form {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    .form-box__name {
+      @include main.form-fields;
+    }
+    .form-box__email {
+      @include main.form-fields;
+    }
+    .form-box__question {
+      @include main.form-fields;
+      height: 150px;
+    }
+    .form-box__submit {
+      border: 1px solid white;
+      border-radius: 5px;
+      box-shadow: -2px 2px white;
+      align-self: center;
+      color: white;
+      background-color: black;
+    }
+  }
+}
