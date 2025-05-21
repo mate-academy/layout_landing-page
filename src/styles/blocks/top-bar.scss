@@ -1,0 +1,64 @@
+.top-bar {
+  padding-block: 24px;
+
+  @include content-padding-inline;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding: 36px 72px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.1));
+
+    @include on-tablet {
+      height: 56px;
+    }
+  }
+
+  @include on-desktop {
+    &__phone {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 20px;
+
+      &:hover .top-bar__phone-number {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__phone-number {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%) translateX(10px);
+    opacity: 0;
+
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+    transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  }
+}
