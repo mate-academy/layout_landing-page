@@ -27,8 +27,19 @@ $header-top-mobile--height: 86px;
   &-top {
     height: $header-top-desktop--height;
     padding: 0 $margin-desktop-lg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: transparent;
 
     @include flex(space-between);
+
+    &--scrolled {
+      background-color: $bg-color;
+      box-shadow: 0 6px 30px rgba(255, 255, 255, 0.11);
+    }
 
     @include respond-to(desktop) {
       padding: 0 $margin-desktop-md;
@@ -44,7 +55,6 @@ $header-top-mobile--height: 86px;
 
     &__link {
       position: relative;
-      z-index: 1000;
       transition: color 0.3s ease-in-out;
 
       @include text-style(
@@ -83,17 +93,9 @@ $header-top-mobile--height: 86px;
   }
 
   &-bottom {
-    margin-top: 300px;
-
-    @include respond-to(desktop) {
-      margin-top: 305px;
-    }
-
-    @include respond-to(tablet, phone) {
-      margin-top: 270px;
-    }
-
     &__title {
+      padding-top: $header-top-desktop--height + 300px;
+
       @include text-style(
         $title-font-size-large-desktop-lg,
         $font-weight-bold,
@@ -104,10 +106,12 @@ $header-top-mobile--height: 86px;
 
       @include respond-to(desktop) {
         font-size: $title-font-size-large-desktop-md;
+        padding-top: $header-top-desktop--height + 305px;
       }
 
       @include respond-to(tablet, phone) {
         font-size: $title-font-size-large-phone;
+        padding-top: $header-top-mobile--height + 270px;
       }
     }
   }
@@ -151,7 +155,6 @@ $header-top-mobile--height: 86px;
 
 .burger-menu__icon {
   position: relative;
-  z-index: 1000;
   background: url(../assets/icons/icon-burger-menu.svg) no-repeat;
   background-size: contain;
   background-position: center;
@@ -165,6 +168,11 @@ $header-top-mobile--height: 86px;
 }
 
 body[data-menu='open'] {
+  .header-top {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
   .header-top__link {
     color: $text-color-dark;
   }
@@ -173,5 +181,9 @@ body[data-menu='open'] {
     background: url(../assets/icons/icon-burger-menu-close.svg) no-repeat;
     background-size: contain;
     background-position: center;
+  }
+
+  .phone__icon {
+    display: none;
   }
 }
