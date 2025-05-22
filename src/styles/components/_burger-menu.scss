@@ -1,0 +1,112 @@
+.burger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  padding: 0 $margin-desktop-lg;
+  z-index: 999;
+  background-color: $burger-menu-bg-color;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+
+  @include respond-to(desktop) {
+    padding: 0 $margin-desktop-md;
+  }
+
+  @include respond-to(tablet, phone) {
+    padding: 0 $margin-mobile;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    position: absolute;
+    top: $header-top-desktop--height;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include respond-to(phone) {
+      height: $header-top-mobile--height;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__link {
+    position: relative;
+
+    @include text-style(
+      22px,
+      $font-weight-semi-bold,
+      2px,
+      100%,
+      $text-color-dark
+    );
+
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background-color: $bg-color;
+      transition:
+        width 0.3s ease,
+        left 0.3s ease;
+      transform-origin: center;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone,
+  &__button {
+    @include text-style(
+      $text-font-size-medium,
+      $font-weight-bold,
+      0,
+      100%,
+      $text-color-dark
+    );
+
+    text-transform: uppercase;
+  }
+
+  &__button {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+
+    @include text-style(
+      12px,
+      $font-weight-regular,
+      2px,
+      100%,
+      $text-color-dark
+    );
+  }
+}

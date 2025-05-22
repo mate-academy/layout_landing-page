@@ -1,0 +1,189 @@
+$icon-desktop--size: 32px;
+$icon-mobile--size: 24px;
+$header-top-desktop--height: 128px;
+$header-top-mobile--height: 86px;
+
+.header {
+  height: 100svh;
+  width: auto;
+  background: url(../assets/images/header_bg-img.webp) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include respond-to(desktop) {
+    height: 711px;
+  }
+
+  @include respond-to(tablet) {
+    height: 628px;
+    background-position: right;
+  }
+
+  @include respond-to(phone) {
+    height: 480px;
+    background-position: right;
+  }
+
+  &-top {
+    height: $header-top-desktop--height;
+    padding: 0 $margin-desktop-lg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: transparent;
+
+    @include flex(space-between);
+
+    &--scrolled {
+      background-color: $bg-color;
+      box-shadow: 0 6px 30px rgba(255, 255, 255, 0.11);
+    }
+
+    @include respond-to(desktop) {
+      padding: 0 $margin-desktop-md;
+    }
+
+    @include respond-to(tablet, phone) {
+      padding: 0 $margin-mobile;
+    }
+
+    @include respond-to(phone) {
+      height: $header-top-mobile--height;
+    }
+
+    &__link {
+      position: relative;
+      transition: color 0.3s ease-in-out;
+
+      @include text-style(
+        $title-font-size-small-desktop-lg,
+        $font-weight-bold,
+        1.5px
+      );
+
+      text-align: center;
+
+      @include respond-to(tablet, phone) {
+        font-size: $title-font-size-small-phone;
+      }
+    }
+
+    &__list {
+      @include flex(space-between);
+
+      gap: $icon-desktop--size;
+
+      @include respond-to(phone) {
+        gap: $icon-mobile--size;
+      }
+    }
+
+    &__icon {
+      display: block;
+      width: $icon-desktop--size;
+      height: $icon-desktop--size;
+
+      @include respond-to(phone) {
+        width: $icon-mobile--size;
+        height: $icon-mobile--size;
+      }
+    }
+  }
+
+  &-bottom {
+    &__title {
+      padding-top: $header-top-desktop--height + 300px;
+
+      @include text-style(
+        $title-font-size-large-desktop-lg,
+        $font-weight-bold,
+        -1.5px
+      );
+
+      text-align: center;
+
+      @include respond-to(desktop) {
+        font-size: $title-font-size-large-desktop-md;
+        padding-top: $header-top-desktop--height + 305px;
+      }
+
+      @include respond-to(tablet, phone) {
+        font-size: $title-font-size-large-phone;
+        padding-top: $header-top-mobile--height + 270px;
+      }
+    }
+  }
+}
+
+.phone__icon {
+  position: relative;
+  background: url(../assets/icons/icon-phone.svg) no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  &::after {
+    content: '+1 234 555-55-55';
+    position: absolute;
+    right: 100%;
+    left: auto;
+    top: 50%;
+    padding-right: 20px;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right center;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    opacity: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include text-style(12px, $font-weight-bold, 2px);
+  }
+
+  &:hover::after {
+    transform: translateY(-50%) scaleX(1);
+    opacity: 1;
+
+    @include respond-to(tablet, mobile) {
+      transform: translateY(-50%) scaleX(0);
+      opacity: 0;
+    }
+  }
+}
+
+.burger-menu__icon {
+  position: relative;
+  background: url(../assets/icons/icon-burger-menu.svg) no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+
+  &:hover {
+    background: url(../assets/icons/icon-burger-menu-hover.svg) no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
+
+body[data-menu='open'] {
+  .header-top {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .header-top__link {
+    color: $text-color-dark;
+  }
+
+  .burger-menu__icon {
+    background: url(../assets/icons/icon-burger-menu-close.svg) no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .phone__icon {
+    display: none;
+  }
+}

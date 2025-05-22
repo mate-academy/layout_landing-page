@@ -1,0 +1,46 @@
+@mixin text-style(
+  $font-size: $text-font-size-medium,
+  $font-weight: $font-weight-regular,
+  $letter-spacing: 0,
+  $line-height: 100%,
+  $text_color: $text-color-white
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  color: $text_color;
+}
+
+@mixin flex($justify: center, $align: center, $direction: row, $wrap: nowrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-flow: $direction $wrap;
+}
+
+@mixin grid($columns: 12, $column-gap: 24px, $row-gap: 0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $row-gap $column-gap;
+}
+
+@mixin respond-to($device1, $device2: null) {
+  @if $device1 == phone or $device2 == phone {
+    @media (max-width: #{$breakpoint-phone}) {
+      @content;
+    }
+  }
+
+  @if $device1 == tablet or $device2 == tablet {
+    @media (min-width: #{ $breakpoint-phone }) and (max-width: #{$breakpoint-tablet}) {
+      @content;
+    }
+  }
+
+  @if $device1 == desktop or $device2 == desktop {
+    @media ((min-width: #{ $breakpoint-tablet }) and (max-width: #{$breakpoint-desktop})) {
+      @content;
+    }
+  }
+}
