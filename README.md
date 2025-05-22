@@ -1,7 +1,7 @@
 # [🚴‍♂️ MyBike – Landing Page](https://mybike-by-gtailde.netlify.app)
 
-**Primary live demo:** [Netlify](https://mybike-by-gtailde.netlify.app)
-**Backup live demo:** [gh pages](https://gtailde.github.io/layout_landing-page)
+## **Primary live demo:** [Netlify](https://mybike-by-gtailde.netlify.app)
+## **Backup live demo:** [gh pages](https://gtailde.github.io/layout_landing-page)
 
 ## 🖼️ Preview
 
