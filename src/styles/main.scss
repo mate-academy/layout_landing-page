@@ -1,3 +1,47 @@
-body {
+@import './blocks/variables';
+@import './blocks/top-bar';
+@import './blocks/icon';
+@import './blocks/header';
+@import './blocks/menu';
+@import './blocks/title';
+@import './blocks/recommended';
+@import './blocks/categories';
+@import './blocks/how-to-buy';
+@import './blocks/contacts';
+@import './blocks/footer';
+
+:root {
+  --overflow-scroll: auto;
+}
+
+html {
+  font-family: Inter, sans-serif;
+  scroll-behavior: smooth;
+  color: #292929;
+  overflow-y: var(--overflow-scroll);
+}
+
+html:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+* {
   margin: 0;
+  padding: 0;
+}
+
+.page {
+  &__menu {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: all 150ms linear;
+
+    &:target {
+      left: 0;
+
+      --overflow-scroll: hidden;
+    }
+  }
 }
