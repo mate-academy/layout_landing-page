@@ -3,6 +3,10 @@
 **Primary live demo:** [Netlify](https://mybike-by-gtailde.netlify.app)
 **Backup live demo:** [gh pages](https://gtailde.github.io/layout_landing-page)
 
+## 🖼️ Preview
+
+![Preview](https://i.postimg.cc/fbdqsjWx/2025-05-22-03-09-48.png)
+
 **MyBike** is a responsive landing page created to present a modern bike brand. It’s built with clean code, semantic HTML, SCSS architecture, and dynamic user interaction powered by JavaScript.
 
 ---
@@ -33,8 +37,11 @@
 ---
 
 ## 🧩 SCSS Mixins
+Here are some key SCSS mixins used in the project. These help keep the styles modular, reusable, and maintainable across the entire stylesheet.
 
 **Text Styling**
+A mixin to apply consistent text styles including font size, weight, spacing, line height, and color.
+
 ```scss
 @mixin text-style(
   $font-size: $text-font-size-medium,
@@ -52,6 +59,7 @@
 ```
 
 **Flexbox Layout**
+A flexible mixin to quickly set up flexbox containers with customizable alignment, direction, and wrapping options.
 ```scss
 @mixin flex($justify: center, $align: center, $direction: row, $wrap: nowrap) {
   display: flex;
@@ -62,6 +70,7 @@
 ```
 
 **Grid Layout**
+A reusable grid layout mixin that allows setting the number of columns and spacing between rows and columns.
 ```scss
 @mixin grid($columns: 12, $column-gap: 24px, $row-gap: 0) {
   display: grid;
@@ -71,6 +80,8 @@
 ```
 
 **Responsive Media Queries**
+A powerful mixin to handle media queries for different device breakpoints, making the layout responsive and adaptive.
+
 ```scss
 @mixin respond-to($device1, $device2: null) {
   @if $device1 == phone or $device2 == phone {
@@ -96,6 +107,8 @@
 ---
 
 **Responsive Animation Logic**
+This function provides flexible control over the visibility threshold for `IntersectionObserver` animations depending on the screen size and the type of content block. It helps ensure animations trigger smoothly and appropriately on different devices.
+
 ```js
 export function getResponsiveThreshold(blockType) {
   const width = window.innerWidth;
@@ -113,15 +126,11 @@ export function getResponsiveThreshold(blockType) {
   return blockThresholds[sizeKey];
 }
 ```
----
-
-## 🎯 Responsive Animation Logic
-
-This function provides flexible control over the visibility threshold for `IntersectionObserver` animations depending on the screen size and the type of content block. It helps ensure animations trigger smoothly and appropriately on different devices.
 
 ---
 
 ## 📐 Code Style & Structure
+The project follows best practices for code organization and style, focusing on clarity, accessibility, and performance.
 
 - **BEM methodology** for CSS classes, improving clarity and maintainability.
 - **Semantic HTML5** tags used to enhance accessibility and SEO.
@@ -131,6 +140,23 @@ This function provides flexible control over the visibility threshold for `Inter
 - Images are **optimized and compressed** for faster loading times.
 
 ---
+
+## 🚀 Local Setup
+
+If you’d like to run the project locally:
+
+```bash
+git clone https://github.com/gtailde/layout_landing-page.git
+cd layout_landing-page
+npm install
+npm run start
+```
+
+---
+
+## 🛠️ Technology Badges
+
+Technologies and tools used in this project, represented with badges for easy recognition.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
