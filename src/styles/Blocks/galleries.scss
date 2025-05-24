@@ -1,0 +1,157 @@
+.galleries {
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__section-title {
+    margin: 0;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  &__info {
+    margin: 0;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &__wrapper {
+    @include page-grid;
+
+    row-gap: 48px;
+  }
+}
+
+.gallery {
+  grid-column: 1 / -1;
+
+  &__photos {
+    margin-bottom: 24px;
+
+    &--second-article {
+      --columns: 3;
+
+      gap: 8px;
+    }
+
+    @include page-grid;
+  }
+
+  &__link {
+    overflow: hidden;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        width: auto;
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--square-2x {
+      @include on-tablet {
+        width: auto;
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      filter: brightness(0.9);
+    }
+  }
+
+  &__photo--old-masters-wide-2x {
+    object-position: -45px 0;
+  }
+
+  &__photo--power-square-2x {
+    @include on-tablet {
+      display: none;
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+  }
+
+  &__photo--french-decorative-wide-2x {
+    object-position: right;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: left;
+    letter-spacing: 0;
+    color: $defauly-color;
+  }
+
+  &__days {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: left;
+    letter-spacing: 0;
+    color: $main-content-text-color;
+  }
+
+  &__button {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / -5;
+    }
+  }
+}
+
+.button {
+  width: 100%;
+  padding: 0;
+  padding-block: 15px;
+  border: none;
+  cursor: pointer;
+
+  font-family: Cinzel, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include button-states(#d12d35, #ae1c23, #eb343d);
+}
