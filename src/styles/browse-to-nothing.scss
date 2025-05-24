@@ -1,0 +1,99 @@
+@use './mixins.scss' as mixins;
+
+.browse-nothing {
+  .categories__wrapped {
+    display: grid;
+    row-gap: 40px;
+
+    @include mixins.on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include mixins.page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include mixins.on-tablet {
+        grid-column: span 4;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include mixins.on-tablet {
+        grid-column: span 2;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+
+  &__title {
+    font-family: 'Space Mono', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+
+  &__button {
+    @include mixins.page-grid;
+  }
+}
+
+.category__button-link {
+  display: inline-block;
+  height: 56px;
+  width: 100%;
+  grid-column: span 2;
+
+  background-color: #000; /* Темний фон */
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-decoration: none;
+
+  font-family: 'Space Mono', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+
+  letter-spacing: 0;
+  text-align: center;
+
+  &:hover {
+    background-color: #f8f8fa;
+    color: #000;
+    border: 1px solid #ccc;
+  }
+
+  @include mixins.on-tablet {
+    grid-column: span 6;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: 1/5;
+  }
+}
