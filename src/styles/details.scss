@@ -1,0 +1,84 @@
+@import './variables';
+@import './utils/mixins';
+
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+ @include onTablet {
+      row-gap: 64px;
+    }
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.detail {
+  &__photos {
+      display: grid;
+
+    @include pageGrid;
+
+    margin-bottom: 16px;
+
+
+  }
+
+  &__link {
+    position: relative;
+    overflow: hidden;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+
+      }
+
+      @include onDesktop {
+       grid-column: span 8;
+    }
+  }
+    &--square {
+       height: 0;
+    padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+        @include onDesktop {
+       grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+     @include hover(transform, scale(1.2));
+
+
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 140%;
+  }
+ }
+
