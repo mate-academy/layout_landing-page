@@ -1,4 +1,5 @@
 .icon {
+  position: relative;
   display: block;
   height: 24px;
   width: 24px;
@@ -14,6 +15,30 @@
 
   &--phone--call {
     background-image: url(../images/icons/icon-phone-call.png);
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        display: block;
+        position: absolute;
+        top: 25%;
+        right: 100%;
+        margin-right: 20px;
+        white-space: nowrap;
+
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: right;
+        text-transform: uppercase;
+        color: #fff;
+        opacity: 0;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
   }
 
   &--burger--menu {
