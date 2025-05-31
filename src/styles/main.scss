@@ -1,225 +1,118 @@
+@import './mixins/breakpoints';
+
+// ==========================================================================
+// VARIABLES
+// ==========================================================================
+
+// Typography
+$font-family: Manrope, sans-serif;
 $h2-size: 32px;
 $h3-size: 18px;
 $text-size: 16px;
-$placeholder-size: 14px;
+$small-size: 14px;
+$list-size: 22px;
+
+// Font weights
 $h-weight: 700;
 $text-weight: 400;
 $price-weight: 700;
-$font-color: #1b2129;
 
-body {
+// Colors
+$font-color: #1b2129;
+$background-light: #f9f9f9;
+$background-story: #fcfaef;
+$color-primary: #f98921;
+$color-secondary: #1b2129;
+$color-active: #010810;
+$white: #fff;
+$input-text: #7e7e83;
+$item-title: #9393a3;
+
+// Spacing
+$spacing-xs: 10px;
+$spacing-s: 16px;
+$spacing-m: 20px;
+$spacing-l: 24px;
+$spacing-xl: 30px;
+$spacing-xl-plus: 32px;
+$spacing-2xl: 40px;
+$spacing-title: 48px;
+$spacing-3xl: 50px;
+$spacing-3xl-plus: 56px;
+$spacing-4xl: 64px;
+$spacing-5xl: 72px;
+
+// ==========================================================================
+// RESET & BASE STYLES
+// ==========================================================================
+
+* {
   margin: 0;
-  overflow-x: hidden;
-  font-family: Manrope, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
   color: $font-color;
 }
 
-.container {
-  padding: 0 20px;
+h1,
+h2,
+h3,
+p,
+section {
+  margin: 0;
+  line-height: 1;
 }
 
-.header {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+main {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4xl;
 
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
+  @include tablet {
+    gap: 120px;
+  }
 
-    &-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
+  @include desktop {
+    gap: 120px;
+  }
+
+  section:first-child {
+    margin-top: $spacing-4xl;
+
+    @include tablet {
+      margin-top: 120px;
     }
-  }
-  &__slogan {
-    position: absolute;
-    bottom: 40px;
-    left: 20px;
-    z-index: 2;
 
-    &-text {
-      color: white;
-      font-size: 36px;
-      font-weight: 700;
-      font-family: Manrope, sans-serif;
-      line-height: 1;
-    }
-  }
-  &__top {
-    position: relative;
-    z-index: 2;
-    height: 72px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-
-  &__icons {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  &__icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    &-img {
-      width: 100%;
-      height: 100%;
+    @include desktop {
+      margin-top: 120px;
     }
   }
 
-  &__logo-img {
-    width: 152px;
-    height: 16px;
-  }
-}
+  section:last-child {
+    margin-bottom: $spacing-4xl;
 
-.recommended {
-  .products-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
+    @include tablet {
+      margin-bottom: 120px;
+    }
 
-  margin-top: 60px;
-  margin-bottom: 70px;
-}
-
-.story {
-  margin-top: 60px;
-  margin-bottom: 50px;
-  background-color: #fcfaef;
-
-  .container {
-    padding: 0;
-    display: grid;
-    grid-template-columns: 20px 1fr 20px; // Прості фіксовані відступи
-    row-gap: 40px;
-  }
-  &__img {
-    vertical-align: top;
-  }
-  &__image {
-    grid-column: 1 / -1;
-  }
-  &__title {
-    font-size: 30px;
-    margin-bottom: 40px;
-  }
-  &__content {
-    grid-column: 2;
-    margin-bottom: 40px;
-  }
-}
-
-input,
-textarea {
-  width: 100%;
-  background-color: #f9f9f9;
-  color: #7e7e83;
-  border: none;
-  border-radius: 8px;
-  font-size: $placeholder-size;
-  font-weight: $text-weight;
-}
-
-textarea {
-  min-height: 148px;
-  resize: vertical;
-}
-
-.product {
-  &-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  &-image-container {
-    margin-bottom: 24px;
-
-    img {
-      vertical-align: top; // Усуває додатковий простір під зображенням
+    @include desktop {
+      margin-bottom: 120px;
     }
   }
-}
-
-.categories {
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    .image-gallery {
-      display: flex;
-      gap: 20px;
-    }
-  }
-
-  &__button {
-    background-color: #f98921;
-    color: white;
-  }
-}
-
-.contact {
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  &-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  &__button {
-    background-color: #1b2129;
-    color: #fff;
-    font-size: $text-size;
-    font-weight: $h-weight;
-  }
-}
-
-button {
-  border-radius: 8px;
-  width: 100%;
-  height: 56px;
-  border: none;
-  font-size: $text-size;
-  font-weight: $h-weight;
 }
 
 h2 {
   font-size: $h2-size;
   font-weight: $h-weight;
+
+  @include tablet {
+    font-size: 40px;
+  }
 }
 
 h3 {
   font-size: $h3-size;
   font-weight: $h-weight;
-  margin: 0;
 }
 
 p,
@@ -232,10 +125,676 @@ span {
   font-weight: $price-weight;
 }
 
-h1,
-h2,
-p,
-section {
-  margin: 0;
-  line-height: 1;
+.header__logo {
+  display: flex;
+
+  img {
+    vertical-align: top; // Removes extra space below images
+  }
+}
+
+.container {
+  padding: 0 $spacing-m;
+
+  @include tablet {
+    padding: 0 $spacing-5xl;
+  }
+
+  @include desktop {
+    padding: 0 120px;
+  }
+}
+
+// ==========================================================================
+// FORM ELEMENTS
+// ==========================================================================
+
+input,
+textarea {
+  width: 100%;
+  outline: 0;
+  background-color: $background-light;
+  color: $input-text;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: $small-size;
+  font-weight: $text-weight;
+  padding: 14px $spacing-s;
+}
+
+input {
+  height: 56px;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+  }
+
+  &:focus {
+    border: 1px solid $color-primary;
+  }
+}
+
+textarea {
+  min-height: 148px;
+  resize: vertical;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+  }
+
+  &:focus {
+    border: 1px solid $color-primary;
+  }
+}
+
+// ==========================================================================
+// HEADER
+// ==========================================================================
+
+.phone {
+  &-number {
+    text-decoration: none;
+    opacity: 0;
+    display: none;
+    transform: translateX(-100px);
+    transition: transform 0.3s ease;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    @include desktop {
+      display: block;
+    }
+  }
+}
+
+.phone-icon:hover .phone-number {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.burger-icon svg rect {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.burger-icon:hover svg rect:nth-child(1) {
+  width: 15px;
+}
+
+.burger-icon:hover svg rect:nth-child(3) {
+  width: 11px;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../assets/images/header-bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  &__top {
+    position: relative;
+    z-index: 2;
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $spacing-m;
+  }
+
+  &__logo-img {
+    width: 152px;
+    height: 16px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: $spacing-l;
+  }
+
+  &__icon {
+    // width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    column-gap: $spacing-s;
+
+    &-img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+
+    // &-img {
+    //   width: 100%;
+    //   height: 100%;
+    //   object-fit: cover;
+    //   object-position: center center;
+    // }
+  }
+
+  &__slogan {
+    position: absolute;
+    bottom: $spacing-2xl;
+    left: $spacing-m;
+    z-index: 2;
+
+    &-text {
+      color: $white;
+      font-size: 36px;
+      font-weight: $h-weight;
+      font-family: $font-family;
+      line-height: 1;
+    }
+  }
+
+  @include tablet {
+    background-position: center center;
+    background-image: url('../assets/images/tablet-header-bg.png');
+
+    &__top {
+      padding: 0 $spacing-5xl;
+    }
+
+    &__slogan {
+      bottom: 64px;
+      left: $spacing-5xl;
+
+      &-text {
+        font-size: 48px;
+      }
+    }
+  }
+
+  @include desktop {
+    background-position: center center;
+    background-image: url('../assets/images/desktop-header-bg.png');
+
+    &__top {
+      padding: 0 120px;
+    }
+
+    &__slogan {
+      bottom: 64px;
+      left: 120px;
+
+      &-text {
+        font-size: 56px;
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// BURGER MENU
+// ==========================================================================
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background-light;
+    padding: 0 $spacing-m $spacing-m $spacing-m;
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-2xl;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    @include tablet {
+      padding: 0 $spacing-5xl $spacing-5xl $spacing-5xl;
+    }
+
+    @include desktop {
+      padding: 0 120px 120px;
+    }
+  }
+
+  &.active &__content {
+    transform: translateX(0);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+  }
+
+  &__close {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover span {
+      background-color: $color-primary;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $font-color;
+    font-size: $list-size;
+    font-weight: 700;
+    display: block;
+    padding: $spacing-xs 0;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-secondary;
+      transition: width;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: $spacing-m;
+    border-top: 1px solid $background-light;
+  }
+
+  &__call {
+    text-decoration: none;
+    padding-bottom: 4px;
+    display: inline-block;
+    position: relative;
+    font-size: $text-size;
+    font-weight: 700;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $color-secondary;
+    }
+  }
+
+  &__contact {
+    p {
+      font-size: $text-size;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: $spacing-s;
+    }
+  }
+}
+
+// ==========================================================================
+// RECOMMENDED PRODUCTS
+// ==========================================================================
+
+.recommended {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-title;
+
+    @include tablet {
+      gap: $spacing-3xl-plus;
+    }
+
+    @include desktop {
+      gap: $spacing-3xl-plus;
+    }
+  }
+
+  .products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+
+    @include tablet {
+      gap: $spacing-3xl-plus;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      column-gap: $spacing-l;
+    }
+  }
+}
+
+// ==========================================================================
+// PRODUCT
+// ==========================================================================
+
+.product {
+  &-details {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &-image-container {
+    margin-bottom: $spacing-l;
+    display: flex;
+
+    @include tablet {
+      justify-content: center;
+    }
+  }
+}
+
+// ==========================================================================
+// STORY
+// ==========================================================================
+
+.story {
+  background-color: $background-story;
+
+  .container {
+    padding: 0;
+    display: grid;
+
+    grid-template-columns: $spacing-m 1fr $spacing-m;
+    row-gap: $spacing-title;
+
+    @include tablet {
+      grid-template-columns: $spacing-5xl 1fr $spacing-l 1fr $spacing-5xl;
+      row-gap: 120px;
+    }
+
+    @include desktop {
+      grid-template-columns: $spacing-5xl 1fr $spacing-l 1fr $spacing-5xl;
+      row-gap: 120px;
+    }
+  }
+
+  &__image {
+    grid-column: 1 / -1;
+
+    &-img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include desktop {
+      height: 460px;
+      object-position: center;
+    }
+  }
+
+  &__title {
+    grid-column: 2;
+    font-size: 30px;
+
+    @include tablet {
+      font-size: 40px;
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      font-size: 48px;
+      margin-bottom: 0;
+      grid-column: 2;
+    }
+  }
+
+  &__text {
+    grid-column: 2;
+    margin-bottom: $spacing-2xl;
+
+    @include tablet {
+      grid-column: 4;
+      margin-bottom: 120px;
+    }
+
+    @include desktop {
+      grid-column: 4;
+      margin-bottom: 120px;
+    }
+  }
+}
+
+// ==========================================================================
+// CATEGORIES
+// ==========================================================================
+
+.categories {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+
+    @include tablet {
+      gap: $spacing-3xl-plus;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-s;
+
+    .image-gallery {
+      display: flex;
+      gap: $spacing-m;
+
+      @include tablet {
+        gap: 24px;
+      }
+
+      &__picture {
+        flex: 1;
+      }
+
+      &__item {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__button {
+    background-color: $color-primary;
+    color: $white;
+    border-radius: 8px;
+    width: 100%;
+    height: 56px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-secondary;
+    }
+
+    &:active {
+      background-color: $color-active;
+    }
+  }
+}
+
+// ==========================================================================
+// CONTACT
+// ==========================================================================
+
+.contact {
+  &__content {
+    display: flex;
+
+    @include desktop {
+      flex-direction: row;
+      gap: 120px;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: $spacing-title;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-s;
+
+      @include desktop {
+        width: 50%;
+      }
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+
+        &-title {
+          font-size: $small-size;
+          font-weight: $text-weight;
+          color: $item-title;
+        }
+
+        &-number {
+          text-decoration: none;
+        }
+
+        &-address {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-l;
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+
+  .form-example {
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-s;
+    width: 100%;
+  }
+
+  &__button {
+    background-color: $color-primary;
+    border-radius: 8px;
+    width: 100%;
+    height: 56px;
+    border: none;
+    cursor: pointer;
+    color: $white;
+    font-size: $text-size;
+    font-weight: $h-weight;
+    margin-bottom: $spacing-title;
+
+    @include tablet {
+      margin-bottom: 80px;
+    }
+
+    &:hover {
+      background-color: $color-secondary;
+    }
+
+    &:active {
+      background-color: $color-active;
+    }
+  }
+}
+
+// ==========================================================================
+// MEDIA QUERIES
+// ==========================================================================
+
+@media (max-width: 480px) {
+  .nav-menu__content {
+    width: 100%;
+  }
+}
+
+// Prevent body scroll when menu is open
+body.menu-open {
+  overflow: hidden;
 }
