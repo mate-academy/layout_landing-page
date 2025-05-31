@@ -1,5 +1,13 @@
+@use '../variables.scss)' as *;
+
 @mixin on-tablet {
-  @media (min-width: 576px) {
+  @media (min-width: $table-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
     @content;
   }
 }
@@ -9,5 +17,16 @@
 
   @include on-tablet {
     padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
   }
 }
