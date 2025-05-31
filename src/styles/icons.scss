@@ -1,0 +1,55 @@
+@use './variables.scss' as vars;
+
+.icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media (max-width: 320px) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.icon--menu {
+  background-image: url(../images/icons/icon-burger-menu.svg);
+  &:hover {
+    background-image: url(../images/icons/icon-Burger-menu-hover.svg);
+  }
+}
+
+.icon--phone {
+  background-image: url(../images/icons/icon-phone-call.svg);
+
+  position: relative;
+
+  &::after {
+    content: '+1 234 555-55-55';
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 20px);
+    transform: translateY(-50%);
+    color: vars.$color-of-text;
+    font-size: vars.$font-size-xhs;
+    padding: 4px 8px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.icon--close {
+  background-image: url(../images/icons/icon__close.svg);
+
+  @media (max-width: 320px) {
+    display: flex;
+    padding-right: 20px;
+  }
+}
