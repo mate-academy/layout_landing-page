@@ -285,13 +285,6 @@ textarea {
     z-index: 1;
     display: flex;
     justify-content: center;
-
-    // &-img {
-    //   width: 100%;
-    //   height: 100%;
-    //   object-fit: cover;
-    //   object-position: center center;
-    // }
   }
 
   &__slogan {
@@ -328,9 +321,8 @@ textarea {
   }
 
   @include desktop {
-    background-position: center center;
     background-image: url('../assets/images/desktop-header-bg.png');
-
+    background-position: 44%;
     &__top {
       padding: 0 120px;
     }
@@ -386,7 +378,6 @@ textarea {
     padding: 0 $spacing-m $spacing-m $spacing-m;
     display: flex;
     flex-direction: column;
-    row-gap: $spacing-2xl;
     transform: translateX(100%);
     transition: transform 0.3s ease;
 
@@ -408,6 +399,11 @@ textarea {
     justify-content: space-between;
     align-items: center;
     height: 72px;
+    margin-bottom: 32px;
+
+    @include tablet {
+      margin-bottom: 56px;
+    }
   }
 
   &__close {
@@ -438,7 +434,8 @@ textarea {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 32px;
+    margin-bottom: 48px;
   }
 
   &__link {
@@ -447,23 +444,12 @@ textarea {
     font-size: $list-size;
     font-weight: 700;
     display: block;
-    padding: $spacing-xs 0;
     position: relative;
     width: fit-content;
+    border: 1px solid transparent;
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: $color-secondary;
-      transition: width;
-    }
-
-    &:hover::after {
-      width: 100%;
+    &:hover {
+      border-bottom: $color-secondary 1px solid;
     }
   }
 
@@ -475,11 +461,11 @@ textarea {
 
   &__call {
     text-decoration: none;
-    padding-bottom: 4px;
     display: inline-block;
     position: relative;
     font-size: $text-size;
     font-weight: 700;
+    letter-spacing: 2px;
 
     &::after {
       content: '';
@@ -583,12 +569,12 @@ textarea {
     row-gap: $spacing-title;
 
     @include tablet {
-      grid-template-columns: $spacing-5xl 1fr $spacing-l 1fr $spacing-5xl;
+      grid-template-columns: $spacing-5xl 1fr $spacing-5xl;
       row-gap: 120px;
     }
 
     @include desktop {
-      grid-template-columns: $spacing-5xl 1fr $spacing-l 1fr $spacing-5xl;
+      grid-template-columns: 120px 1fr 120px;
       row-gap: 120px;
     }
   }
@@ -607,6 +593,26 @@ textarea {
     }
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-l;
+    margin-bottom: 48px;
+    grid-column: 2;
+
+    @include tablet {
+      flex-direction: row;
+      column-gap: $spacing-l;
+      margin-bottom: 120px;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      column-gap: 111px;
+      margin-bottom: 120px;
+    }
+  }
+
   &__title {
     grid-column: 2;
     font-size: 30px;
@@ -614,27 +620,30 @@ textarea {
     @include tablet {
       font-size: 40px;
       margin-bottom: 0;
+      width: 50%;
     }
 
     @include desktop {
       font-size: 48px;
       margin-bottom: 0;
       grid-column: 2;
+      width: 50%;
     }
   }
 
   &__text {
     grid-column: 2;
-    margin-bottom: $spacing-2xl;
+
+    line-height: 140%;
 
     @include tablet {
       grid-column: 4;
-      margin-bottom: 120px;
+      width: 50%;
     }
 
     @include desktop {
       grid-column: 4;
-      margin-bottom: 120px;
+      width: 50%;
     }
   }
 }
@@ -716,10 +725,11 @@ textarea {
 .contact {
   &__content {
     display: flex;
+    flex-direction: column;
 
     @include desktop {
       flex-direction: row;
-      gap: 120px;
+      gap: 111px;
     }
   }
 
@@ -729,6 +739,14 @@ textarea {
 
     h2 {
       margin-bottom: $spacing-title;
+
+      @include tablet {
+        margin-bottom: 56px;
+      }
+
+      @include desktop {
+        margin-bottom: 56px;
+      }
     }
 
     .info {
@@ -765,10 +783,16 @@ textarea {
   &-form {
     display: flex;
     flex-direction: column;
-    gap: $spacing-l;
+    margin-bottom: 48px;
+    row-gap: $spacing-xl-plus;
+
+    @include tablet {
+      margin-bottom: 80px;
+    }
 
     @include desktop {
       width: 50%;
+      margin-bottom: 0;
     }
   }
 
@@ -789,11 +813,6 @@ textarea {
     color: $white;
     font-size: $text-size;
     font-weight: $h-weight;
-    margin-bottom: $spacing-title;
-
-    @include tablet {
-      margin-bottom: 80px;
-    }
 
     &:hover {
       background-color: $color-secondary;

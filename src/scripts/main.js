@@ -1,10 +1,41 @@
 'use strict';
 
 // ==========================================================================
+// HASH NAVIGATION HANDLING
+// ==========================================================================
+
+function handleHashNavigation() {
+  if (window.location.hash) {
+    const targetId = window.location.hash;
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+      setTimeout(() => {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }, 300);
+    }
+  }
+}
+
+function scrollToSection(targetId) {
+  const targetSection = document.querySelector(targetId);
+  if (targetSection) {
+    targetSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+}
+
+// ==========================================================================
 // BURGER MENU FUNCTIONALITY
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Handle hash navigation on page load
+
   // Get elements
   const burgerToggle = document.getElementById('burger-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -12,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const navOverlay = document.getElementById('nav-overlay');
   const navLinks = document.querySelectorAll('.nav-menu__link');
   const body = document.body;
-  const callButton = document.getElementById('phone-icon');
+  const callButton = document.querySelector('.phone-icon');
 
   function makeCall() {
     window.location.href = 'tel:+123455555555';
@@ -38,19 +69,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Close menu when clicking on navigation links
   navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
+    console.log('Adding click event to link:', link);
+    link.addEventListener('click', (e) => {
+      // Close menu first
       closeMenu();
 
-      // Smooth scroll to section (optional)
-      const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      if (targetSection) {
+      // Get the target from href attribute
+      const href = link.getAttribute('href');
+
+      // If it's a hash link, handle the scrolling after menu closes
+      if (href && href.startsWith('#')) {
+        e.preventDefault(); // Prevent default jump behavior
+
+        // Wait for menu to close before scrolling
         setTimeout(() => {
-          targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }, 300); // Wait for menu to close
+          scrollToSection(href);
+          // Update URL hash
+          window.history.pushState(null, null, href);
+        }, 100); // Adjust timing based on your menu close animation
       }
     });
   });
@@ -69,6 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+// Handle hash changes (when user clicks browser back/forward)
+window.addEventListener('hashchange', handleHashNavigation);
 
 // ==========================================================================
 // CONTACT FORM HANDLING
