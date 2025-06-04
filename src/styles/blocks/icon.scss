@@ -1,0 +1,60 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+    position: relative;
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 5555-555-55';
+        display: block;
+        position: absolute;
+        line-height: 14px;
+        font-size: 12px;
+        font-weight: 700;
+        left: -130px; /* Відстань тексту від іконки */
+        top: 50%; /* Центрування по вертикалі */
+        transform: translateY(-20%) scale(0); /* Центрування і початковий масштаб */
+        color: rgba(27, 33, 41, 1);
+        transform-origin: right;
+        width: 140px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: transform 0.3s;
+      }
+
+      &:hover {
+        &::before {
+          transform: translateY(-50%) scale(1.2); /* Масштабування на ховері */
+          transform-origin: right;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
