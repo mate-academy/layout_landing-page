@@ -1,16 +1,12 @@
-/* eslint-env browser */
 'use strict';
 
-// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function () {
-  // Get all navigation links
-  const navLinks = document.querySelectorAll('.nav__link, .menu__link');
+  const navLinks = document.querySelectorAll('.nav__link');
 
   navLinks.forEach((link) => {
     link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
 
-      // Check if it's an internal link (starts with #)
       if (href.startsWith('#')) {
         e.preventDefault();
 
@@ -18,14 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const targetElement = document.getElementById(targetId);
 
         if (targetElement) {
-          // Close mobile menu if open
           const menu = document.getElementById('menu');
 
           if (menu && window.location.hash === '#menu') {
             window.location.hash = '';
           }
 
-          // Smooth scroll to target
           const headerHeight = 80;
           const targetPosition = targetElement.offsetTop - headerHeight;
 
@@ -34,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
             behavior: 'smooth',
           });
 
-          // Update URL hash
           setTimeout(() => {
             window.history.pushState(null, null, href);
           }, 100);
@@ -43,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Header scroll effect
   const header = document.querySelector('.header');
 
   window.addEventListener('scroll', function () {
@@ -58,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Close mobile menu when clicking outside
   document.addEventListener('click', function (e) {
     const menu = document.getElementById('menu');
     const menuToggle = document.querySelector('.header__menu-toggle');
@@ -70,20 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Form submission success message
-  const contactForm = document.querySelector('.contact__form');
+  const contactForm = document.querySelector('.form');
 
   if (contactForm) {
     contactForm.addEventListener('submit', function () {
-      // Form is already set to reset in HTML, but we can add success feedback
       setTimeout(() => {
-        // eslint-disable-next-line no-alert
         window.alert("Thank you for your message! We'll get back to you soon.");
       }, 100);
     });
   }
 
-  // Intersection Observer for animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
@@ -98,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, observerOptions);
 
-  // Observe elements for animation
   const animateElements = document.querySelectorAll(
     '.product-card, .feature, .section-title',
   );
@@ -110,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(el);
   });
 
-  // Image hover effects for product cards
   const productCards = document.querySelectorAll('.product-card');
 
   productCards.forEach((card) => {
@@ -129,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Add loading class removal after page load
   window.addEventListener('load', function () {
     document.body.classList.add('loaded');
   });
