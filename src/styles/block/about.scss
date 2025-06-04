@@ -1,0 +1,70 @@
+@use '../utils' as *;
+
+.about {
+  background-color: #fcfaef;
+
+  @include section-margin-top;
+
+  &__media {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    @include about-image-height;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  &__content {
+    @include padding-inline;
+    @include about-content-padding-block;
+    @include about-content-gap;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding-inline: $about-content-padding-inline;
+    }
+  }
+
+  &__title {
+    grid-column: 1;
+
+    font-weight: 700;
+
+    font-size: 32px;
+    line-height: 32px;
+
+    @include on-tablet {
+      font-size: 40px;
+      line-height: 100%;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__description {
+    grid-column: 2;
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 400;
+    letter-spacing: $letter-spacing;
+  }
+}
