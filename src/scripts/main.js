@@ -52,10 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('click', function (e) {
     const menu = document.getElementById('menu');
-    const menuToggle = document.querySelector('.header__menu-toggle');
+    const menuToggle = document.querySelector('.icon--menu');
 
     if (menu && window.location.hash === '#menu') {
-      if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+      if (
+        !menu.contains(e.target) &&
+        menuToggle &&
+        !menuToggle.contains(e.target)
+      ) {
         window.location.hash = '';
       }
     }
@@ -85,9 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, observerOptions);
 
-  const animateElements = document.querySelectorAll(
-    '.product-card, .feature, .section-title',
-  );
+  const animateElements = document.querySelectorAll('.product, .section-title');
 
   animateElements.forEach((el) => {
     el.style.opacity = '0';
@@ -96,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
     observer.observe(el);
   });
 
-  const productCards = document.querySelectorAll('.product-card');
+  const productCards = document.querySelectorAll('.product');
 
   productCards.forEach((card) => {
-    const img = card.querySelector('.product-card__img');
+    const img = card.querySelector('.product__photo');
 
     card.addEventListener('mouseenter', function () {
       if (img) {
