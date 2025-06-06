@@ -1,5 +1,5 @@
 @mixin onDesktop {
-  @media (min-width: 1024px) {
+  @media (min-width: 1020px) {
     @content;
   }
 }
@@ -9,3 +9,29 @@
     @content;
   }
 }
+
+@mixin pageGrid {
+  --grid-columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --grid-columns: 6;
+    column-gap: 30px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    --grid-columns: 12;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+

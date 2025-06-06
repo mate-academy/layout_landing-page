@@ -13,40 +13,79 @@
 }
 
 .category {
-  display: grid;
 
   &__photos {
-    display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
-
-  @include onTablet {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 24px;
+    @include pageGrid;
+    margin-bottom: 16px;
   }
 
-  @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
-  }
-  }
   &__link {
-    display: block;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    &--big {
+      @include onTablet {
+        grid-column: span 4;
+        grid-row: 1;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+        grid-row: 1;
+      }
+    }
+
+    &--small {
+      height: 0;
+      padding-bottom: 100%;
+      @include onTablet {
+        grid-column: span 2;
+        grid-row: 1;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+        grid-row: 1;
+      }
+    }
+
+    &--row--2 {
+      height: 0;
+      padding-bottom: 100%;
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
   }
+
 
   &__photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
   }
 
   &__title {
+    padding-top: 24px;
     margin: 0;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
     color: rgba(209, 45, 53, 1);
+    text-transform: uppercase;
+    grid-column: 2 / 2;
+
+    @include onTablet {
+      grid-column: span  4;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+
   }
 
   &__subtitle {
@@ -55,19 +94,15 @@
     font-size: 16px;
     line-height: 27px;
     color: rgba(22, 22, 22, 1);
+    text-transform: uppercase;
+    grid-column: 2 / 2;
+    @include onTablet {
+      grid-column: span  4;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+
   }
-}
-
-.category__link--small {
-  grid-column: 2 / 4;
-  grid-row: 1;
-}
-
-.category__link--big {
-  grid-column: 8 / 12;
-  grid-row: 1;
-}
-
-.category__link--row--2 {
-  grid-row: span 2;
 }
