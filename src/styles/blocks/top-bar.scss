@@ -1,0 +1,56 @@
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__number {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+  }
+
+  &__logo {
+    display: flex;
+  }
+}
+
+.phone-number {
+  display: none;
+
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 10px);
+  transform: translateY(-50%);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+
+  @include on-desktop {
+    display: inline-block;
+  }
+}
+
+.top-bar__number:hover .phone-number {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
