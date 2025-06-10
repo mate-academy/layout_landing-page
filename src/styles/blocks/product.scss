@@ -1,0 +1,50 @@
+@use '../variables' as *;
+@use '../utils/mixins' as *;
+
+.product {
+  @include link;
+
+  &__img-wrap {
+    overflow: hidden;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+
+  &__img {
+    @include hover(transform, scale(1.1));
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background-color: $whiteSmoke;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    margin-bottom: 12px;
+
+    @include on-tablet {
+      margin-bottom: 34px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    letter-spacing: 0;
+
+    &::before {
+      content: '$ ';
+    }
+  }
+}

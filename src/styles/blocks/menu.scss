@@ -1,0 +1,45 @@
+@use '../variables' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  height: 100vh;
+  background-color: $whiteSmoke;
+  font-weight: 700;
+  padding-top: 104px;
+  overflow: auto;
+
+  @include on-tablet {
+    padding-top: 152px;
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__call {
+    @include link;
+
+    display: block;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    width: fit-content;
+
+    &:last-child {
+      margin-top: 16px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid $primary;
+    }
+  }
+
+  &:target ~ .header .icon--phone {
+    display: none;
+  }
+
+  &:target ~ .header .icon--menu {
+    display: none;
+  }
+
+  &:target ~ .header .icon--close {
+    display: block;
+  }
+}

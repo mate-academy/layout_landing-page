@@ -1,0 +1,44 @@
+@use '../variables' as *;
+@use '../utils/mixins' as *;
+
+.page {
+  background-color: $white;
+  font-family: Manrope, sans-serif;
+  color: $primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
+  &__body {
+    margin-inline: auto;
+    padding-bottom: 64px;
+    min-width: 320px;
+
+    &:has(.menu:target) {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    @include on-tablet {
+      padding-bottom: 120px;
+    }
+  }
+
+  &__sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    transition: transform $effectDuration $effectTimingFunction;
+    transform: translateX(100%);
+
+    &:target {
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+  }
+}

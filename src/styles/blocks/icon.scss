@@ -1,0 +1,77 @@
+@use '../utils/mixins' as *;
+@use '../variables' as *;
+
+.icon {
+  @include background-image;
+
+  display: block;
+  height: 24px;
+  aspect-ratio: 1;
+  background-image: url(../images/icons/menu.svg);
+
+  @include on-tablet {
+    height: 32px;
+  }
+
+  &--phone {
+    @include background-image;
+
+    position: relative;
+    background-image: url(../images/icons/phone.svg);
+
+    &::before {
+      position: absolute;
+      content: '+1 234 555-55-55';
+      top: 50%;
+      right: calc(100% + 8px);
+      transform: translateY(-50%);
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 133%;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: $primary;
+      white-space: nowrap;
+      text-align: right;
+      overflow: hidden;
+      width: 0;
+      transition: width $effectDuration $effectTimingFunction;
+    }
+
+    &:is(:hover, :focus)::before {
+      width: 150px;
+    }
+  }
+
+  &--menu {
+    @include background-image;
+
+    position: relative;
+    background-image: url(../images/icons/menu-hover.svg);
+
+    &::before {
+      @include background-image;
+
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-image: url(../images/icons/menu.svg);
+      opacity: 100%;
+      transition: width $effectDuration $effectTimingFunction;
+    }
+
+    &:is(:hover, :focus)::before {
+      opacity: 0;
+    }
+  }
+
+  &--close {
+    @include background-image;
+    @include hover(transform, rotate(180deg));
+
+    display: none;
+    background-image: url(../images/icons/close.svg);
+    align-self: flex-end;
+  }
+}
