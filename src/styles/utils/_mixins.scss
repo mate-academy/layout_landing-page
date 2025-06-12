@@ -1,16 +1,16 @@
-@mixin onMob {
+@mixin on-mob {
   @media (min-width: 320px) {
     @content;
   }
 }
 
-@mixin onTabl {
+@mixin on-tabl {
   @media (min-width: 744px) {
     @content;
   }
 }
 
-@mixin onDesc {
+@mixin on-desc {
   @media (min-width: 1260px) {
     @content;
   }
@@ -25,34 +25,37 @@
 }
 
 .container {
-  padding-inline: 20px;
   height: 100%;
+  padding-inline: 20px;
 
-  @include onTabl {
+  @include on-tabl {
     max-width: 744px;
     margin-inline: auto;
     padding-inline: 72px;
   }
 
-  @include onDesc {
+  @include on-desc {
     max-width: 1020px;
     padding-inline: 120px;
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --column: 2;
-  display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(var(--column), 1fr);
 
-  @include onTabl {
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  column-gap: 20px;
+
+  @include on-tabl {
     --column: 6;
+
     column-gap: 24px;
   }
 
-  @include onDesc {
+  @include on-desc {
     --column: 12;
+
     column-gap: 24px;
   }
 }
