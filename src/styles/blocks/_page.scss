@@ -1,0 +1,37 @@
+.page {
+  scroll-behavior: smooth;
+  font-family: Poppins, 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+
+  &__body {
+    background-color: $basicFont;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+
+    transition: all 0.4s ease-in-out;
+    &:target {
+      pointer-events: all;
+      opacity: 1;
+
+      @include on-desc {
+        & .top-bar__logo,
+        .icon--close {
+          @include cursor-black;
+        }
+      }
+    }
+  }
+}
