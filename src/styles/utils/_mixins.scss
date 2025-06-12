@@ -1,0 +1,76 @@
+@mixin on-mob {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin on-tabl {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desc {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+.container {
+  height: 100%;
+  padding-inline: 20px;
+
+  @include on-tabl {
+    max-width: 744px;
+    margin-inline: auto;
+    padding-inline: 72px;
+  }
+
+  @include on-desc {
+    max-width: 1020px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --column: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  column-gap: 20px;
+
+  @include on-tabl {
+    --column: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desc {
+    --column: 12;
+
+    column-gap: 24px;
+  }
+}
+
+@mixin cursor-custom($x: 4, $y: 4) {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='37' viewBox='0 0 32 37'><path d='M9.3335 27.6666V6.33325L25.3335 22.3333H16.0002L9.3335 28.9999V27.6666Z' fill='black' stroke='white' stroke-width='2' stroke-linecap='square'/></svg>")
+      #{$x} #{$y},
+    auto;
+}
+
+@mixin cursor-black($x: 2, $y: 2) {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='29' viewBox='0 0 20 29'><path d='M1.3335 24.6667V3.33337L17.3335 19.3334H8.00016L1.3335 26V24.6667Z' fill='%231D1D1D' stroke='%231D1D1D' stroke-width='2' stroke-linecap='square'/></svg>")
+      #{$x} #{$y},
+    pointer;
+  transition: cursor 0.3s;
+}
