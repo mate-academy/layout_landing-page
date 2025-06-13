@@ -1,0 +1,112 @@
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin input-power {
+  box-sizing: border-box;
+  padding: 14px 16px;
+  align-items: center;
+  border-radius: 8px;
+  border: 2px solid #f9f9f9;
+  width: 100%;
+
+  background-color: #f9f9f9;
+  color: #7e7e83;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.15px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+    color: #1b2129;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid #f98921;
+    color: #1b2129;
+  }
+}
+
+@mixin button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 56px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  background-color: #f98921;
+
+  color: #fff;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+
+  &:hover {
+    background-color: #1b2129;
+  }
+  &:active {
+    background-color: #010810;
+  }
+
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
