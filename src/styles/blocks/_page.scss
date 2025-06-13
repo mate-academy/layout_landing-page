@@ -1,5 +1,4 @@
 .page {
-  scroll-behavior: smooth;
   font-family: Poppins, 'Segoe UI', Arial, sans-serif;
   color: #fff;
 
@@ -7,9 +6,13 @@
     background-color: $basicFont;
   }
 
+  // if you leave it like this then there will be jumps, because there is a scroll on the page, but not in the menu
+
+  /*
   &:has(.page__menu:target) {
     overflow: hidden;
   }
+  */
 
   &__menu {
     pointer-events: none;
@@ -21,15 +24,22 @@
 
     opacity: 0;
 
+    transition: opacity 0.3s ease-in-out;
+
     &:target {
       pointer-events: all;
       opacity: 1;
+      z-index: 1;
 
       @include on-desc {
         & .top-bar__logo,
         .icon--close {
           @include cursor-black;
         }
+      }
+
+      & .page {
+        overflow: hidden;
       }
     }
   }
