@@ -1,17 +1,64 @@
+@use '../utils' as *;
+
+$icon-size-mobile: 16px;
+$icon-size-tablet: 32px;
+
 .icon {
-  width: 24px;
-  height: 24px;
   display: block;
-}
+  height: $icon-size-mobile;
+  width: $icon-size-mobile;
+  background-size: cover;
 
-.icon--phone {
-  background-image: url(/src/images/icons/phone-icon.png);
-}
+  @include on-tablet {
+    height: $icon-size-tablet;
+    width: $icon-size-tablet;
+  }
 
-.icon--menu {
-  background-image: url(/src/images/icons/burger-menu.png);
-}
+  &--phone {
+    background-image: url(/src/images/icons/phone-icon.png);
+    position: relative;
 
-.icon--close {
-  background-image: url(/src/images/icons/close-icon.png);
+    &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 120%;
+      top: 50%;
+
+      transform: translateY(-50%);
+      border-radius: $border-radius;
+      padding: 4px 8px;
+      color: #000;
+
+      white-space: nowrap;
+      visibility: hidden;
+      opacity: 0;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 10;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &--menu {
+    background-image: url(/src/images/icons/burger-menu.png);
+  }
+
+  &--menu:hover {
+    background-image: url(/src/images/icons/burger-menu-hover.png);
+  }
+
+  &--close {
+    background-image: url(/src/images/icons/close-icon.png);
+  }
 }
