@@ -1,0 +1,169 @@
+@use 'mixins' as *;
+
+.menu__phones {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%) translateX(-4px);
+
+  padding: 24px 20px;
+  min-width: 220px;
+
+
+  color: white;
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: right;
+
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &-item {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    p,
+    a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 0;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  padding-bottom: 288px;
+  height: 100vh;
+  background-image: url('../images/header.png');
+  background-size: cover;
+  background-position: center;
+
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: flex-start;
+
+
+    @include on-tablet {
+      padding: 0 40px;
+      background-repeat: no-repeat;
+    }
+
+    @include on-desktop{
+      background-repeat: no-repeat;
+      padding: 0 120px;
+    }
+
+  }
+
+  &__logo-link {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 0;
+
+    @include on-tablet {
+      margin-top: 50px;
+    }
+  }
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    @include on-tablet {
+      width: 87px;
+      height: 65px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__icons {
+    display: flex;
+    gap: 25px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 36px;
+
+    @include on-tablet {
+      margin-top: 66px;
+    }
+  }
+
+
+   .header__icon-wrapper {
+  position: relative;
+
+    &:hover .menu__phones {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+   }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+    &--phone {
+      background-image: url('../images/menu/phone-menu.svg');
+    }
+
+    &--menu {
+      background-image: url('../images/menu/burger-menu.svg');
+
+      &:hover {
+        background-image: url('../images/menu/burger-menu-hover.svg');
+      }
+    }
+  }
+}
+
+.header__content{
+  &--title {
+    font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  color: white;
+  letter-spacing: -1.5px;
+  padding: 200px 20px 258px;
+  margin: 0 auto;
+  text-align: center;
+
+  @include on-tablet {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  @include on-desktop{
+    font-size: 80px;
+    line-height: 80px;
+  }
+
+  }
+}
