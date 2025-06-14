@@ -1,36 +1,40 @@
 .page {
+  scroll-behavior: smooth;
+
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
   font-family: Manrope, sans-serif;
   font-size: 16px;
   color: $main-text-color;
 
-  scroll-behavior: smooth;
-  :has(.page__menu:target) {
+  &:has(.page__menu:target) {
     overflow: hidden; /* not to scroll the page */
   }
 
   &__body {
-    margin: 0;
     min-width: 320px;
+    margin: 0;
   }
 
   &__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    transition: all 0.3s;
-    opacity: 0;
-    transform: translateX(-100%);
     pointer-events: none;
 
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    opacity: 0;
+
+    transition: all 0.3s;
+
     &:target {
-      opacity: 1;
-      transform: translateX(0);
       pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
     }
   }
   h6 {
