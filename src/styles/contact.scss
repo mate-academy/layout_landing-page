@@ -1,14 +1,16 @@
 @use 'mixins' as *;
+@use 'butons' as *;
 
 .contacts__wrapper {
   @include page-grid;
 
-  padding-block: 100px;
-  padding-inline: 20px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   row-gap: 64px;
 
   @include on-tablet {
-    padding-block: 140px;
+    padding-top: 48px;
+    padding-bottom: 140px;
     row-gap: 100px;
   }
 }
@@ -36,14 +38,14 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   text-transform: uppercase;
 }
 
 .contacts__description {
   font-weight: 400;
   font-size: 14px;
-  margin: 0 0 4px;
+  margin-bottom: 8px;
   text-transform: uppercase;
   color: rgba(22, 22, 22, 1);
 }
@@ -51,7 +53,7 @@
 .contacts__text {
   font-weight: 700;
   font-size: 16px;
-  margin: 0 0 16px;
+  margin-bottom: 8px;
   text-transform: uppercase;
   color:  rgba(62, 62, 62, 1);
   cursor: pointer;
@@ -66,6 +68,12 @@
 
 .contacts__form {
   grid-column: 1 / -1;
+  padding: 0;
+
+  form {
+    margin: 0;
+    width: 100%;
+  }
 
   @include on-tablet {
     grid-column: span 3;
@@ -77,11 +85,17 @@
 }
 
 .form{
+  box-sizing: border-box;
+  max-width: 100%;
   display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
+    align-items: stretch;
 
     &__input {
+      box-sizing: border-box;
+      max-width: 100%;
       width: 100%;
       padding: 12px 16px;
       font-size: 14px;
@@ -105,6 +119,8 @@
     }
   }
       &__textarea {
+        box-sizing: border-box;
+        max-width: 100%;
         width: 100%;
         padding: 12px 16px;
         font-size: 14px;
@@ -127,5 +143,63 @@
         &:focus {
           border: 1px solid rgba(22, 22, 22, 1);
       }
+    }
+
+    .form__submit {
+      font-family: Cinzel, sans-serif;
+      font-weight: 700;
+      line-height: 27px;
+      letter-spacing: 0;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      max-width: 100%;
+      width: 100%;
+      padding-block: 16px;
+      font-size: 14px;
+      text-transform: uppercase;
+
+      &--primary {
+        background-color: rgba(209, 45, 53, 1);
+        color: #fff;
+        width: 392px;
+        height: 56px;
+        padding: 0 48px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: rgba(174, 28, 35, 1);
+        }
+      }
+    }
+  }
+
+  .contacts__title--section{
+    font-family: Cinzel, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: rgba(22, 22, 22, 1);
+    margin-top: 140px;
+     margin-bottom: 48px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -1.5px;
+    }
+
+    @include on-desktop {
+      font-size: 58px;
+      line-height: 48px;
+      letter-spacing: -1.5px;
     }
   }
