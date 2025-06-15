@@ -1,0 +1,57 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-descktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin vibration($duration: 1s, $scale: 1.1) {
+  @keyframes vibration {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(#{$scale});
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(#{$scale});
+    }
+  }
+
+  animation: vibration $duration ease-in-out;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 1.25rem;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 1.5rem;
+  }
+
+  @include on-descktop {
+    --columns: 12;
+  }
+}
