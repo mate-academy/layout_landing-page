@@ -1,6 +1,25 @@
 const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
 const closeNav = document.getElementById('close');
 
-hamburger.onclick.sidebar.style.left = '0';
+let isOpen = false;
 
-closeNav.onclick.sidebar.style.left = '-100%';
+hamburger.onclick = function () {
+  if (isOpen) {
+    sidebar.style.left = '-100%';
+  } else {
+    sidebar.style.left = '0';
+  }
+  isOpen = !isOpen;
+};
+
+let isClosed = false;
+
+closeNav.onclick = function () {
+  if (isClosed) {
+    sidebar.style.left = '0';
+  } else {
+    sidebar.style.left = '-100%';
+  }
+  isClosed = !isClosed;
+};
