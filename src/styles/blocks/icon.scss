@@ -2,23 +2,55 @@
   width: 24px;
   height: 24px;
   display: block;
-  background-image: url(../images/icons/menu.png);
   background-size: cover;
+  background-position: center;
 
-  @media (min-width: 576px) {
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
     height: 32px;
     width: 32px;
   }
 
   &--phone {
-    background-image: url(../images/icons/phone.png);
+    background-image: url(../images/icons/phone.svg);
+    position: relative;
+
+    &::before {
+      content: '+1 234 555-55-55';
+      color: #1b2129;
+      font-weight: 700;
+      position: absolute;
+      left: -140px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      visibility: hidden;
+      white-space: nowrap;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      transition:
+        opacity $effectDuration,
+        visibility $effectDuration;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &--menu {
-    background-image: url(../images/icons/menu.png);
+    background-image: url(../images/icons/menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/menu-hover.svg);
+    }
   }
 
   &--close {
-    background-image: url(../images/icons/close.png);
+    background-image: url(../images/icons/close.svg);
   }
 }

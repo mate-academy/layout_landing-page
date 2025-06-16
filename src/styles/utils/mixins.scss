@@ -1,7 +1,89 @@
-@mixin content-paddingi-nline() {
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
   padding-inline: 20px;
 
-  @media (min-width: 576px) {
+  @include on-tablet {
     padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  gap: 24px 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+// .container-menu {
+//   @include content-padding-inline;
+// }
+
+@mixin button {
+  background-color: #f98921;
+  text-align: center;
+  padding: 14.5px;
+  line-height: 100%;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $main-text-color;
+  }
+
+  &:active {
+    background-color: #010810;
+  }
+}
+
+@mixin input {
+  padding: 14px 16px;
+  background-color: #f9f9f9;
+  color: #7e7e83;
+  border: none;
+  border-radius: 8px;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+  }
+
+  &:focus {
+    border: 2px solid #f98921;
   }
 }
