@@ -1,13 +1,19 @@
+
+@use './../utils/variables.scss' as *;
+@use './../utils/mixins.scss' as *;
+
 .icon {
   display: block;
   height: 24px;
   width: 24px;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  transition: trabsform 0.3s;
 
-  @include hover(transform, scale(1.2));
+  &:hover {
+    transform: scale(1.2);
+  }
 
-  @include onTablet {
+  @media (min-width: $breakpoint-tablet) {
     height: 32px;
     width: 32px;
   }
@@ -16,8 +22,12 @@
     background-image: url(../images/icon-phone-call.png);
   }
 
-  &--menu {
+  &--burger {
     background-image: url(../images/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../images/icon-burger-hover-menu.png);
+    }
   }
 
   &--close {
