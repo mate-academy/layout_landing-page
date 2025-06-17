@@ -65,3 +65,62 @@
 @mixin border-radius($value) {
   border-radius: $value;
 }
+
+@mixin autofill-style($bg-color: #fff) {
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #{$bg-color} inset;
+    box-shadow: 0 0 0 1000px #{$bg-color} inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+}
+
+// animation
+@mixin animation-duration() {
+  transition: $effectDuration ease;
+}
+
+@mixin animation-apper-right {
+  transform: translateX(150%);
+  opacity: 0;
+
+  @include animation-duration;
+
+  &.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@mixin animation-apper-left {
+  transform: translateX(-150%);
+  opacity: 0;
+
+  @include animation-duration;
+
+  &.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@mixin animation-apper-below() {
+  transform: translateY(120%);
+  opacity: 0;
+
+  @include animation-duration;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@mixin animation-scale {
+  transform: scale(0);
+
+  @include animation-duration;
+
+  &.show {
+    transform: scale(1);
+  }
+}
