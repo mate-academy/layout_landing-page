@@ -30,3 +30,44 @@
     background-image: url(../images/icons/icon-close.svg);
   }
 }
+
+.phone-wrapper {
+  position: relative;
+  display: inline-block;
+
+  &--phone {
+    z-index: 1;
+    position: relative;
+  }
+
+  .phone-number {
+    display: none;
+  }
+
+  @include on-desktop {
+    .phone-number {
+      display: inline-block;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+      margin-right: 8px;
+      font-size: 14px;
+      color: #1b2129;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+      z-index: 0;
+    }
+
+    &:hover .phone-number {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+}
