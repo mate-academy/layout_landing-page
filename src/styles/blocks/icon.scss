@@ -17,14 +17,38 @@
 
   &--phone {
     background-image: url(../images/icon/icon-phone.png);
+
+   &:hover::before {
+      content: "+1 234 555 55 55";
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: max-content;
+      padding-right: 12px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: $main-text-color;
+      pointer-events: none;
+      opacity: 0;
+
+      @include on-desktop {
+        pointer-events: all;
+        opacity: 1;
+      }
+
+      @include hover(opacity, 1);
+    }
   }
 
   &--menu {
     background-image: url(../images/icon/icon-menu.png);
 
-    &:hover {
-      background-image: url(../images/icon/icon-menu-hover.png);
-    }
+    @include hover(background-image, url(../images/icon/icon-menu-hover.png));
   }
 
   &--close {
