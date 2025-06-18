@@ -23,7 +23,28 @@
 
   &--phone {
     background-image: url(images/icons/Icon-Phone-call.svg);
+  position: relative;
+
+  &::after {
+    content: "+1 234 5555-55-55";
+    position: absolute;
+    top: 100%; // під іконкою
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 4px;
+    font-size: 14px;
+    color: #000;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
   }
+
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 
   &--menu {
     background-image: url(images/icons/Icon-Burger-menu.svg);
@@ -38,4 +59,5 @@
   &--close {
     background-image: url(images/icons/Icon-Close.svg);
   }
+
 }
