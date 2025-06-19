@@ -1,0 +1,49 @@
+.page {
+  font-family: "Space Grotesk", sans-serif;
+  /* font-family: 'Space Mono', monospace; */
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all $effectDuration;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: inherit;
+    z-index: -1;
+    background-color: transparent;
+  }
+}
