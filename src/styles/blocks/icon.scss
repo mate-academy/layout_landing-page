@@ -5,8 +5,6 @@
   background-size: cover;
   background-position: center;
 
-  @include hover(transform, scale(1.2));
-
   @include on-tablet {
     height: 32px;
     width: 32px;
@@ -14,6 +12,31 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+    position: relative;
+
+    .icon__phone--text {
+      position: absolute;
+      right: 120%;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 16px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    &:hover .icon__phone--text {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &--menu {
