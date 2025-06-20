@@ -2,7 +2,6 @@
 @use './../utils/mixins.scss' as *;
 
 .now-on-view {
-  justify-content: center;
   display: flex;
   flex-direction: column;
   gap: 48px;
@@ -21,35 +20,37 @@
 
   &__photos {
     display: flex;
-    flex-flow: wrap;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-
-    gap: 16px;
   }
 
   &__image {
     transition: all 0.3s;
-    max-width: 100%;
-    height: auto;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       cursor: pointer;
     }
-  }
 
-  &__image--tablet {
-    display: none;
-    @media (min-width: $breakpoint-tablet) and (max-width: 1259px) {
-      display: block;
+    @media (min-width: $breakpoint-tablet) {
+      display: none;
     }
-  }
 
-  &__image--desktop {
-    display: none;
-    @media (min-width: $breakpoint-desktop) {
-      display: block;
+    &--tablet {
+      display: none;
+
+      @media (min-width: $breakpoint-tablet) and (max-width: 1259px) {
+        display: block;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @media (min-width: $breakpoint-desktop) {
+        display: block;
+      }
     }
   }
 
@@ -58,7 +59,7 @@
     font-size: 16px;
     font-weight: 700;
     line-height: 27px;
-    color: $accent-color;
+    color: $color-accent;
   }
 
   &__description-date {
