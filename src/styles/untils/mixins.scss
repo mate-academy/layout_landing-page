@@ -1,0 +1,36 @@
+@mixin tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 1240px) {
+    @content;
+  }
+}
+
+@mixin icon-size {
+  height: $iconSmall;
+  width: $iconSmall;
+
+  @include tablet {
+    height: $iconMedium;
+    width: $iconMedium;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include laptop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
