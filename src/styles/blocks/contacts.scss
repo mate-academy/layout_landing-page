@@ -1,0 +1,153 @@
+@use 'sass:color';
+
+.contacts {
+  &__general {
+    @include page-grid;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    grid-column: 1 / -1;
+    border-radius: 40px;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__field {
+    display: block;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    margin-top: 48px;
+
+    @include on-tablet {
+      grid-column: 4 / -1;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__info-block {
+    flex-direction: column;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    margin-bottom: 24px;
+  }
+
+  &__info-title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  &__info-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 140%;
+  }
+
+  &__input {
+    border-radius: 40px;
+    border: none;
+    width: 100%;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    color: #292929;
+    height: 48px;
+
+    &:hover,
+    &:focus {
+      color: #292929;
+      outline: none;
+    }
+  }
+
+  &__textarea {
+    border-radius: 16px;
+    border: none;
+    width: 100%;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    color: #292929;
+    height: 148px;
+
+    &:hover,
+    &:focus {
+      color: #292929;
+      outline: none;
+    }
+  }
+
+  &__input::placeholder,
+  &__textarea::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+    color: #7e7e83;
+  }
+
+  &__button {
+    display: flex;
+    grid-column: span 2;
+
+    border: none;
+    text-decoration: none;
+
+    border-radius: 40px;
+    height: 48px;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 169%;
+    text-align: center;
+    color: $main-text-color-black;
+    background-color: #fff;
+
+    align-items: center;
+    justify-content: center;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: color.adjust(#f0f0f0, $lightness: 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background-color: color.adjust(#f0f0f0, $lightness: 10%);
+      transform: scale(0.95);
+    }
+  }
+}
