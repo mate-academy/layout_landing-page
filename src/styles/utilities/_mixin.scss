@@ -1,0 +1,73 @@
+
+@mixin onTablet {
+  @media (min-width: $tablet-size) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-size) {
+    @content;
+  }
+}
+
+@mixin contentMainPadding {
+  @include onTablet {
+    padding-inline: 176px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+ 
+@mixin menuTopPadding {
+  padding: 24px 20px ;
+
+  @media (min-width: $tablet-size) {
+    padding: 36px 72px;
+  }
+
+  @media (min-width: $desktop-size) {
+    padding: 36px 120px;
+  }
+}
+
+
+@mixin bgCoverCenter {
+  background-size: cover;
+  background-position: center center;
+}
+
+// MIXIN HOVER 
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+// 
+@mixin bikeImage {
+  @include onTablet {
+    width: $tablet-bike-width-img;
+    height: $tablet-bike-height-img;
+  }
+
+  @include onDesktop {
+    width: $desktop-bike-width-img;
+    height: $desktop-bike-height-img;
+  }
+}
