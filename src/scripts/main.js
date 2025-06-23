@@ -9,6 +9,7 @@ hamburger.onclick = function () {
     sidebar.style.left = '-100%';
   } else {
     sidebar.style.left = '0';
+    document.body.style.overflow = 'hidden';
   }
   isOpen = !isOpen;
 };
@@ -20,6 +21,7 @@ closeNav.onclick = function () {
     sidebar.style.left = '0';
   } else {
     sidebar.style.left = '-100%';
+    document.body.style.overflow = 'auto';
   }
   isClosed = !isClosed;
 };
