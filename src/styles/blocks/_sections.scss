@@ -4,9 +4,9 @@
   margin: 0 auto;
   padding-inline: 20px;
 
-@include onTablet {
- padding: 0;
-}
+  @include onTablet {
+    padding: 0;
+  }
 
   @include onDesktop {
     padding: 0;
@@ -15,27 +15,26 @@
 
 // First Section
 .compare-bikes {
+  
+  &__container {
+  display: grid;
+  grid-template-columns: 1fr; // мобільний — 1 колонка
+  gap: 24px;
+  padding-inline: 20px;
 
-&__container {
- @include onTablet {
-    // відступи по бокам суто для цієї секції
-   padding-inline: 176px;
+  @include onTablet {
+    grid-template-columns: 1fr;
+    padding-inline: 72px;
   }
 
- @include onDesktop {
-// відступи по бокам суто для цієї секції
+  @include onDesktop {
+     grid-template-columns: repeat(3, 1fr);
+ 
     padding-inline: 120px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: center;
-    justify-items: center;
-    // опускаю вниз заголовок 2 секції при 1260px;
-    margin-bottom: 144px;
- }
+  }
 }
 
-//заголовок першої секції 
+  //заголовок першої секції
   &__title {
     display: flex;
     flex-direction: column;
@@ -62,7 +61,7 @@
       font-size: 48px;
       line-height: 100%;
     }
-   //загаловок при 1260px
+    //загаловок при 1260px
     @include onDesktop {
       padding-inline: 381px;
       margin-top: 164px;
@@ -80,39 +79,37 @@
 
     &:last-child {
       margin-bottom: 92px;
-      
     }
 
     @include onTablet {
       // відступи між Item при 576px;
       margin-bottom: 48px;
 
-    // опускаю заголовок 2 секції при від 576px;
-     &:last-child {
-      margin-bottom: 120px;
-     }
-   
-    }
+      // опускаю заголовок 2 секції при від 576px;
+      &:last-child {
+        margin-bottom: 120px;
+      }
+        @include onDesktop {
+    grid-column: span 4; // займає 4 з 12 колонок
   }
+ }
+}
 
-  &__image {
-    width: 280px;
-    height: 228px;
-    background-repeat: no-repeat;
-    align-items:start;
-   
-   //  розмір фото  велосипедів  при 576px;
-    @include onTablet {
-      width: 392px;
-      height: 319px;
-    }
-  //  розмір фото велосипедів при 1260px;
-    @include onDesktop {
-      width: 324px; ;
-      height: 256px; ;
-    }
+  // &__image {
+  //   width: 280px;
+  //   height: 228px;
 
-  }
+  //   //  розмір фото  велосипедів  при 576px;
+  //   @include onTablet {
+  //     width: 392px;
+  //     height: 319px;
+  //   }
+  //   //  розмір фото велосипедів при 1260px;
+  //   @include onDesktop {
+  //     width: 324px;
+  //     height: 256px;
+  //   }
+  // }
 
   &__text {
     display: flex;
@@ -120,8 +117,7 @@
     text-align: left;
 
     @include onTablet {
-    text-align: start;
-
+      text-align: start;
     }
   }
 
@@ -215,83 +211,62 @@
   &__item {
     margin-bottom: 40px;
     display: flex;
-    align-items:left;
+    align-items: left;
     flex-direction: column;
     &:last-child {
       margin-bottom: 40px;
     }
   }
-  // 
+  //
   &__images {
-  display: grid;
-  grid-template-columns:1fr 1fr;
-  gap: 20px;
-  margin-bottom: 16px;
-  height: 130px;
-
-
-  @include onTablet {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    height: 100%;
-  }
-
-  @include onDesktop {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-     height: 100%;
-  }
-}
-
-&__image {
-  object-fit: contain;
-  background-position: center;
-  transition: width 0.3s, height 0.3s;
-
-  &--big {
-
-  height: 100%;
-  width: 100%;
+    gap: 20px;
+    margin-bottom: 16px;
+    height: 130px;
 
     @include onTablet {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      height: 100%;
+    }
+
+    @include onDesktop {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      height: 100%;
+    }
+  }
+
+  &__image {
+    background-size: contain;
+    background-position: center;
+
+
+    &--big {
       height: 100%;
       width: 100%;
-    
     }
-    @include onDesktop {
+
+    &--small {
       height: 100%;
-        width: 100%;
+      width: 100%;
     }
   }
 
-  &--small {
-  height: 100%;
-  width: 100%;
-
-    @include onTablet {
-     height: 100%;
-     width: 100%;
-    }
-    @include onDesktop {
-     height: 100%;
-  width: 100%;
-    }
-  }
-}
-
- &__text {
+  &__text {
     display: flex;
     flex-direction: column;
     text-align: left;
 
     @include onTablet {
-    text-align: start;
+      text-align: start;
     }
     @include onDesktop {
       text-align: start;
     }
-  } 
-  
+  }
+
   &__name {
     color: $text-color;
     font-weight: 700;
@@ -326,7 +301,7 @@
 }
 // Third Section
 .contact-us {
-    margin: 0 auto;
+  margin: 0 auto;
   box-sizing: border-box;
 
   &__title {
@@ -336,15 +311,37 @@
     line-height: 32px;
     letter-spacing: -1.5px;
     color: $text-color;
+
+    @include onTablet {
+      margin-bottom: 48px;
+      font-size: 48px;
+      line-height: 100%;
+
+      @include onDesktop {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @include onDesktop {
+      gap: 198px;
+    }
   }
 
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 48px;
     margin: 0 auto;
-    padding-inline: 20px;
   }
 
   &__name,
@@ -398,26 +395,42 @@
     line-height: 27px;
     color: $btn-text-color;
     margin-bottom: 48px;
+
+    @include onTablet {
+      box-shadow: 1px 4px 16px 0px rgba(232, 232, 240, 0.4);
+    }
   }
 
   // Contact-us card
   &__card {
     display: flex;
-   flex-direction: column;
-   text-align: left;
+    flex-direction: column;
   }
 
   &__item {
     display: flex;
     flex-direction: column;
-    
+
     &:last-child {
+      text-align: start;
       margin-bottom: 120px;
+    }
+
+    @include onTablet {
+      text-align: start;
+      &:last-child {
+        margin-bottom: 102px;
+      }
+    }
+
+    @include onDesktop {
+      &:last-child {
+        margin-bottom: 164px;
+      }
     }
   }
 
   &__label {
-
     width: 150px;
     height: 20px;
 
@@ -441,21 +454,22 @@
     margin-bottom: 24px;
   }
 }
-// FOOTER 
+// FOOTER
 .footer {
   &__image {
-    width: 100%;
+    background-size: cover;
+    background-position: center;
 
+    width: 100%;
+    height: 320px;
     background-image: url(/public/footer-image/footer-img.svg);
-    
+
     @include onTablet {
       height: 480px;
     }
-    
+
     @include onDesktop {
       height: 555px;
     }
   }
 }
-
-
