@@ -2,34 +2,37 @@
 @use './../utils/mixins.scss' as *;
 
 .explore-online {
-  &__cards {
-   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 48px;
+   &__cards {
+    --columns: 2;
 
-    @media (min-width: $breakpoint-tablet) and (max-width: 1259px) {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 20px;
+
+    @media (min-width: $breakpoint-tablet) {
+      --columns: 6;
+
+      gap: 24px;
     }
 
     @media (min-width: $breakpoint-desktop) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: start;
+      --columns: 12;
+
+      gap: 24px;
     }
   }
 
   &__image {
     margin: 0 0 24px;
-    max-width: 280px;
+    width: -webkit-fill-available;
+    grid-column: span 2;
 
-
-    @media (min-width:$breakpoint-tablet) {
-      max-width: 392px;
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: 2/6;
     }
+
     @media (min-width: $breakpoint-desktop) {
-      max-width: 324px;
+      grid-column: span 4;
     }
   }
 
@@ -38,15 +41,14 @@
     flex-direction: column;
     align-items: center;
     transition: all 0.3s;
-    max-width: 280px;
+    grid-column: span 2;
 
-
-    @media (min-width:$breakpoint-tablet) {
-      max-width: 392px;
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: 2/6;
     }
 
     @media (min-width: $breakpoint-desktop) {
-      max-width: 324px;
+      grid-column: span 4;
     }
 
     &:hover {
