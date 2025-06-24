@@ -1,0 +1,66 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  &--phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: url('../fotos/icons/Icon-Phone-call.png');
+
+    @include on-tablet {
+      background-image: url('../fotos/icons/Icon-Phone-call-tablet.png');
+    }
+
+    &::before {
+      position: absolute;
+      content: '+1 234 555-55-55';
+      width: max-content;
+      right: 100%;
+      margin-right: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      pointer-events: none; // щоб текст не заважав при наведенні
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url('../fotos/icons/Icon-Burger-menu.png');
+    transition: all 0.3s ease;
+
+    @include on-tablet {
+      background-image: url('../fotos/icons/Icon-Burger-menu-tablet.png');
+    }
+
+    &:hover {
+      background-image: url('../fotos/icons/Icon-Burger-menu-hover.png');
+
+      @include on-tablet {
+        background-size: cover;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url('../fotos/icons/Icon-Close.svg');
+
+    @include on-tablet {
+      background-image: url('../fotos/icons/Icon-Close-tablet.png');
+    }
+  }
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+}
