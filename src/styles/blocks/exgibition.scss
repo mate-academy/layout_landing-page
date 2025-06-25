@@ -1,0 +1,100 @@
+.exgibition {
+  &__photos {
+    @include page-grid;
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+  }
+
+  &__link {
+    &--wide {
+      padding-right: 100%;
+      width: 0;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desctop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desctop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &--three {
+    .exgibition__photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      @include on-tablet {
+        .one, .two {
+          grid-column: span 3;
+        }
+        .exgibition__link--hid{
+          display: none;
+        }
+
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @include on-desctop {
+        .exgibition__link--hid{
+          display: block;
+        }
+
+        grid-template-columns: repeat(12, 1fr);
+        .exgibition__link {
+          grid-column: span 4;
+        }
+      }
+    }
+
+    .exgibition__link {
+      &--square {
+        @include on-tablet {
+          grid-column: span 2;
+        }
+
+        @include on-desctop {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    &--shift {
+      object-position: 30%;
+    }
+
+    &--right {
+      object-position: right;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    color: $main-accent-color;
+    font-weight: 700;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}
