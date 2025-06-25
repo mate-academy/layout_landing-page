@@ -1,24 +1,37 @@
-# Landing Page
+### 🔹 Short Project Description
+This is a landing page project developed as part of a course assignment, based on a provided design. The main goal was to practice layout building, SCSS structuring, and responsive design. I created a fully responsive page using modern layout techniques like CSS Grid and followed the BEM methodology for class naming.
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+### The page includes the following sections:
 
-Choose a design for your landing page:
+- `Header` with a `Top-bar` and a `Nav` block;
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+- `Menu` (reusing the same `Top-bar`);
 
-Follow the instructions in this and next lessons to implement the page block by block:
+- `Main` with sections: `Hours`, `Now` include a `View` block, `More`, `Contact`;
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://Joloka.github.io/layout_landing-page/).
+- `Footer`.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+### 🔧 Technologies Used
+- **HTML5** — for page structure;
+
+- **CSS3 / SCSS** — for styling, mixins, nesting, and variables;
+
+- **BEM** — for consistent class naming;
+
+- **CSS Grid / Flexbox** — for layout and positioning;
+
+- **Mobile-first responsive design** — optimized first for mobile, then adapted for tablets and desktops;
+
+- **Git / GitHub** — for version control and project hosting;
+
+- **VS Code** — main development environment;
+
+- **GitHub Pages** — for deployment;
+
+- **Node.js** — included in the project setup (scripts were provided by the course, not written by me).
+
+### 🔗 Live Preview
+- [👉 View Live Site]https://joloka.github.io/layout_landing-page/
+
+### 🎨 Design Mockup
+- [👉 View Figma Mockup]https://www.figma.com/design/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=8590-29&p=f&t=Z1C5YCcOAQ0mHosz-0
