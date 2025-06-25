@@ -1,11 +1,10 @@
 .top-bar {
   padding-block: 24px;
 
-  @include content-padding-inline;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   @include on-tablet {
     padding-block: 50px;
@@ -14,6 +13,10 @@
   &__icons {
     display: flex;
     gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
   }
 
   &__logo-link {
@@ -29,6 +32,39 @@
     @include on-tablet {
       height: 65px;
       width: 87px;
+    }
+  }
+
+  &__icon-wrapper {
+    &:hover .top-bar__text {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__text {
+    display: none;
+    
+    @include on-desktop {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      gap: 8px;
+      margin: 0;
+      margin-top: 24px;
+      inset: 0 135px 0 auto;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    &--hover{
+      font-size: 16px;
+      line-height: 27px;
+      text-align: right;
+      text-transform: uppercase;
+      color: #fff;
     }
   }
 }
