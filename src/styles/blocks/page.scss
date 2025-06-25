@@ -1,0 +1,41 @@
+@use './../utils/variables.scss' as *;
+@use './../utils/mixins.scss' as *;
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  overflow-x: hidden;
+  max-width: 100vw;
+  color: $main-text-color;
+  font-family: Cinzel, sans-serif;
+  font-weight: 400;
+  line-height: 27px;
+
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}

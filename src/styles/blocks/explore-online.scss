@@ -1,0 +1,76 @@
+@use './../utils/variables.scss' as *;
+@use './../utils/mixins.scss' as *;
+
+.explore-online {
+   &__cards {
+    --columns: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 20px;
+
+    @media (min-width: $breakpoint-tablet) {
+      --columns: 6;
+
+      gap: 24px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      --columns: 12;
+
+      gap: 24px;
+    }
+  }
+
+  &__image {
+    margin: 0 0 24px;
+    width: -webkit-fill-available;
+    grid-column: span 2;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: 2/6;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-column: span 4;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s;
+    grid-column: span 2;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: 2/6;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-column: span 4;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: $accent-color;
+    margin: 0 0 4px;
+  }
+
+  &__description {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    margin: 0;
+  }
+}

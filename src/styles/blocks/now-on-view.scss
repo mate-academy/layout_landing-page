@@ -1,0 +1,119 @@
+@use './../utils/variables.scss' as *;
+@use './../utils/mixins.scss' as *;
+
+.now-on-view {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__subtitle {
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+  }
+
+  &__photos {
+    --columns: 6;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 20px;
+
+    @media (min-width: $breakpoint-tablet) {
+      gap: 24px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      --columns: 12;
+
+      gap: 24px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    transition: all 0.3s;
+    grid-column: span 2;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: span 3;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-column: span 4;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+
+  &__image--small {
+    grid-column: span 3;
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: span 2;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-column: span 4;
+    }
+  }
+
+  &__image--center {
+    @media (min-width: $breakpoint-tablet) {
+      display: none;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      display: block;
+    }
+  }
+
+  &__image--big {
+    grid-column: span 3;
+    @media (min-width: $breakpoint-tablet) {
+      grid-column: span 4;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-column: span 8;
+    }
+  }
+
+  &__image--tablet {
+    display: none;
+    @media (min-width: $breakpoint-tablet) and (max-width: 1259px) {
+      display: block;
+    }
+  }
+
+  &__image--desktop {
+    display: none;
+    @media (min-width: $breakpoint-desktop) {
+      display: block;
+    }
+  }
+
+  &__description-title {
+    margin: 24px 0 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: $accent-color;
+  }
+
+  &__description-date {
+    margin: 0;
+  }
+}
+
