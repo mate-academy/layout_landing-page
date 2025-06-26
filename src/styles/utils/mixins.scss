@@ -1,8 +1,48 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin contentPaddingInline() {
   padding-inline: 20px;
 
-  @media (min-width: 576px) {
-    padding: 72px;
+  @include onTablet {
+    padding-inline: 72px;
   }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+
+
+  @include onTablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
 }
 
