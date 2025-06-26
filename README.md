@@ -1,24 +1,48 @@
-# Landing Page
+# 🔥 Landing Page Project
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+This is a single-page landing website built from a design mockup using HTML, SCSS, and Parcel.
+The project was created for practicing responsive layout and modern frontend development techniques.
 
-Choose a design for your landing page:
+## 🛠️ Technologies Used
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+- HTML
+- SCSS (SASS)
+- Parcel (bundler)
+- BEM methodology
+- CSS Grid & Flexbox
+- Responsive design (Mobile First)
+- Scroll-driven animation (`animation-timeline: view()`) — experimental, works only in Chrome 115+; limited support on MacOS
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## ✨ Features
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- Fully responsive layout
+- Clean and semantic HTML structure
+- Scroll-based animations
+- Mobile-first approach
+- Fast build and live reload via Parcel
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## 🔗 Links
+
+- 📌 [GitHub](https://github.com/KazymyrYan/layout_landing-page)
+- 🧪 [Demo Link](https://KazymyrYan.github.io/layout_landing-page)
+- 🖼️ [Design Mockup (Figma)](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-212&t=i3oTocf8RP9zdfnx-0)
+
+## 🚀 Getting Started Locally
+1. Clone the repository:
+    git clone https://github.com/KazymyrYan/layout_landing-page.git
+2. Navigate to the project directory:
+    cd layout_landing-page
+3. Install dependencies:
+    npm install
+4. Start server:
+    npm run start
+
+## ⚠️ Notes
+- Scroll-driven animation using animation-timeline: view() is experimental and supported only in Chrome 115 and newer.
+- Support on MacOS browsers is not guaranteed.
+
+## 👤 Author
+Yan Kazymyr
+Email: kazymyr.yan@gmail.com
+Telegram: @kayzer2008
+
