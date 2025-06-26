@@ -11,13 +11,11 @@ The project was created for practicing responsive layout and modern frontend dev
 - BEM methodology
 - CSS Grid & Flexbox
 - Responsive design (Mobile First)
-- Scroll-driven animation (`animation-timeline: view()`) — experimental, works only in Chrome 115+; limited support on MacOS
 
 ## ✨ Features
 
 - Fully responsive layout
 - Clean and semantic HTML structure
-- Scroll-based animations
 - Mobile-first approach
 - Fast build and live reload via Parcel
 
@@ -36,10 +34,6 @@ The project was created for practicing responsive layout and modern frontend dev
     npm install
 4. Start server:
     npm run start
-
-## ⚠️ Notes
-- Scroll-driven animation using animation-timeline: view() is experimental and supported only in Chrome 115 and newer.
-- Support on MacOS browsers is not guaranteed.
 
 ## 👤 Author
 Yan Kazymyr
