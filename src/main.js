@@ -10,7 +10,5 @@ import './styles/components/menu.css';
 import './styles/utils.css';
 
 import showMenu from './utils/menu-nav';
-import Modal from './utils/modal';
 
 showMenu();
-Modal();
