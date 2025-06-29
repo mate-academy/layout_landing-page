@@ -1,23 +1,26 @@
 'use strict';
 
+const form = document.getElementById('form');
 const campName = document.querySelector(
   '.sectionMain__contactUs-contactUs-data-name'
 );
-
 const campEmail = document.querySelector(
   '.sectionMain__contactUs-contactUs-data-email'
 );
-
 const campMessage = document.querySelector(
   '.sectionMain__contactUs-contactUs-data-message'
 );
 
-const buttonSend = document.querySelector(
-  '.sectionMain__contactUs-contactUs-data-send'
-);
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-buttonSend.addEventListener('click', () => {
-  campName.value = '';
-  campEmail.value = '';
-  campMessage.value = '';
+  if (
+    campName.value !== '' ||
+    campEmail.value !== '' ||
+    campMessage.value !== ''
+  ) {
+    campName.value = '';
+    campEmail.value = '';
+    campMessage.value = '';
+  }
 });
