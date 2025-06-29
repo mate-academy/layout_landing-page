@@ -1,15 +1,15 @@
 'use strict';
 
-import '../styles/modern-normalize.css';
+import '../styles/modern-normalize.scss';
 import '../styles/style.scss';
-import '../styles/components/hero.css';
-import '../styles/components/hours.css';
-import '../styles/components/view.css';
-import '../styles/components/more.css';
-import '../styles/components/contact.css';
-import '../styles/components/footer.css';
-import '../styles/components/menu.css';
-import '../styles/utils.css';
+import '../styles/components/hero.scss';
+import '../styles/components/hours.scss';
+import '../styles/components/view.scss';
+import '../styles/components/more.scss';
+import '../styles/components/contact.scss';
+import '../styles/components/footer.scss';
+import '../styles/components/menu.scss';
+import '../styles/utils.scss';
 import showMenu from '../utils/menu-nav.js';
 
 showMenu();
