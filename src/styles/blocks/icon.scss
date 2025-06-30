@@ -1,55 +1,63 @@
-.icon {
+.icone {
   display: block;
-  height: 24px;
+
   width: 24px;
-  background-size: contain;
+  height: 24px;
+
+  background-position: center;
+  background-size: cover;
 
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
-    height: 32px;
     width: 32px;
-  }
-
-  &__number {
-    display: none;
-    position: absolute;
-    color: #fff;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 133%;
-    letter-spacing: 0.17em;
-    right: 110%;
-    top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
-    z-index: 2;
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
-    visibility: hidden;
+    height: 32px;
   }
 
   &--phone {
-    background-image: url(../images/icons/icon-phone.svg);
     position: relative;
+    background-image: url(images/icons/icon-phone-call-3x.png);
 
-    &:hover .icon__number {
-      display: inline;
-      visibility: visible;
-      opacity: 1;
+    @include on-tablet {
+      &::after {
+        content: '+1 234 5555-55-55';
+
+        position: absolute;
+        top: 40%;
+        right: calc(100% + 20px);
+        transform-origin: left;
+        transform: scale(0);
+
+        display: block;
+
+        height: 1px;
+
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing: 2px;
+        white-space: nowrap;
+
+        transition: transform $effectDuration;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
     }
   }
 
   &--menu {
-    background-image: url(../images/icons/icon-burger-menu.svg);
+    background-image: url(images/icons/icon-burger-menu-3x.png);
 
     &:hover {
-      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+      background-image: url(images/icons/icon-burger-menu-hover-3x.png);
     }
   }
 
   &--close {
-    background-image: url(../images/icons/icon-close.svg);
+    background-image: url(images/icons/icon-close-3x.png);
   }
 }
