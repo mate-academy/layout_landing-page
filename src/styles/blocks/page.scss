@@ -1,25 +1,39 @@
 .page {
-  scroll-behavior: smooth;
+  padding-bottom: 200px;
+
+  @include on-tablet {
+    padding-bottom: 480px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 556px;
+  }
+
   font-family: Poppins, sans-serif;
-  background-color: $main-text-color;
+  color: #fff;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
   &__body {
-    min-width: 320px;
     margin: 0;
-
-    &:has(.page__menu:target) {
-      overflow: hidden;
-    }
+    min-width: 320px;
   }
 
   &__menu {
     position: fixed;
     top: 0;
-    right: 0;
     left: 0;
-    opacity: 0;
+    right: 0;
+
     transition: all 0.3s;
     transform: translateX(-100%);
+    opacity: 0;
     pointer-events: none;
 
     &:target {
