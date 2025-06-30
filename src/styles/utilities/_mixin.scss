@@ -1,0 +1,87 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-size) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-size) {
+    @content;
+  }
+}
+
+@mixin content-main-padding {
+  @include on-tablet {
+    padding-inline: 176px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin menu-top-padding {
+  padding: 24px 20px;
+
+  @media (min-width: $tablet-size) {
+    padding: 36px 72px;
+  }
+
+  @media (min-width: $desktop-size) {
+    padding: 36px 120px;
+  }
+}
+
+@mixin bg-cover-center {
+  background-size: cover;
+  background-position: center center;
+}
+
+// MIXIN HOVER
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin bike-image {
+  @include on-tablet {
+    width: $tablet-bike-width-img;
+    height: $tablet-bike-height-img;
+  }
+
+  @include on-desktop {
+    width: $desktop-bike-width-img;
+    height: $desktop-bike-height-img;
+  }
+}
+
+.details__images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}

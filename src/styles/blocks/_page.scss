@@ -1,0 +1,40 @@
+.page {
+  overflow-x: hidden;
+  font-family: Poppins, sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    background-color: $page-color;
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: white;
+
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0%);
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+

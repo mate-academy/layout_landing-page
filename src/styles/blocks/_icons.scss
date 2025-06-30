@@ -1,0 +1,64 @@
+.icon {
+  display: block;
+  width: $icon-mobile-size;
+  height: $icon-mobile-size;
+  background-size: cover;
+  transition-duration: 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: $icon-tablet-size;
+    width: $icon-tablet-size;
+  }
+
+  &--phone {
+    background-image: $icon-phone-img;
+    position: relative;
+    display: inline-block;
+    
+    // Hover effect for phone icon to show phone number
+    &:hover .phone-number {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &--menu {
+    background-image: $icon-menu-img;
+
+    &:hover {
+      background-image: $icon-hover-menu-img;
+    }
+  }
+
+  &--close {
+    background-image: $icon-close-img;
+  }
+}
+
+.phone-number {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  background-color: rgba(72, 72, 72, 0.8);
+  color: white;
+  padding: 8px 12px;
+
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  margin-right: 8px;
+  border-radius: 15px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+  }
+}
