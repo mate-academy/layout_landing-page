@@ -9,39 +9,17 @@
   }
 }
 
-.category {
+.detail {
   &__photos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    @include page-grid;
 
-    @include on-tablet {
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
-    }
-
-    @include on-desktop {
-      grid-template-columns: repeat(12, 1fr);
-    }
-  }
-
-  &__photo {
-    transition: transform 0.3s ease;
-    object-fit: cover;
-    width: 100%;
+    margin-bottom: 16px;
   }
 
   &__link {
-    margin-bottom: 16px;
     position: relative;
-    display: block;
-    width: 100%;
-    height: 320px;
     overflow: hidden;
-
     &--wide {
-      grid-column: span 1;
-
       @include on-tablet {
         grid-column: span 4;
       }
@@ -49,18 +27,9 @@
       @include on-desktop {
         grid-column: span 8;
       }
-      .category__photo {
-        height: 100%;
-      }
-    }
-
-    &:hover .category__photo {
-      transform: scale(1.1);
-      transition: transform 0.3s ease;
     }
 
     &--square {
-      grid-column: span 1;
       height: 0;
       padding-bottom: 100%;
 
@@ -74,17 +43,64 @@
     }
   }
 
+  &__photo {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform $effectDuration;
+
+    &:hover {
+      z-index: 1;
+      transform: scale(1.2);
+    }
+  }
+
   &__title {
     margin: 0;
-    font-weight: 700;
+    margin-bottom: 8px;
+
     font-size: 24px;
+    font-weight: 700;
     line-height: 140%;
   }
 
   &__description {
-    margin-top: 8px;
-    font-weight: 400;
+    margin: 0;
     font-size: 16px;
+    font-weight: 400;
     line-height: 140%;
+  }
+
+  &__button {
+    @include page-grid;
+  }
+
+  &__butt {
+    cursor: pointer;
+
+    grid-column: 1 / -1;
+
+    height: 56px;
+    border: none;
+    border-radius: 40px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #1d1d1d;
+
+    @include hover(box-shadow, (1px 4px 16px 0 rgba(232, 232, 240, 0.4)));
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
   }
 }

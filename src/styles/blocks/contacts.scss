@@ -41,68 +41,89 @@
   }
 
   &__textarea {
-    border-radius: 16px;
-    border: none;
-    width: 100%;
-    padding: 14px 16px;
-    box-sizing: border-box;
-    color: #292929;
-    height: 148px;
+    resize: none;
 
-    &:hover,
+    box-sizing: border-box;
+    height: 148px;
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    border-radius: 16px;
+
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #292929;
+
+    &::placeholder {
+      font-family: Roboto, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
     &:focus {
-      color: #292929;
       outline: none;
     }
   }
 
-  &__input::placeholder,
-  &__textarea::placeholder {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 143%;
-    color: #7e7e83;
+  &__button {
+    cursor: pointer;
+
+    box-sizing: border-box;
+    height: 56px;
+    border: none;
+    border-radius: 40px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #1d1d1d;
+
+    @include hover(box-shadow, (1px 4px 16px 0 rgba(232, 232, 240, 0.4)));
+  }
+}
+
+.contacts {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 3;
   }
 
-  &__button {
-    display: flex;
-    grid-column: span 2;
+  @include on-desktop {
+    grid-column: 8 / -1;
+  }
 
-    border: none;
-    text-decoration: none;
+  &__info {
+    display: grid;
+    row-gap: 24px;
 
-    border-radius: 40px;
-    height: 48px;
-
-    @include on-tablet {
-      grid-column: span 3;
+    &-adress-link {
+      color: #fff;
+      text-decoration: none;
     }
 
-    @include on-desktop {
-      grid-column: span 5;
+    &-label {
+      margin: 0;
+      margin-bottom: 8px;
     }
 
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 169%;
-    text-align: center;
-    color: $main-text-color-black;
-    background-color: #fff;
+    &-number {
+      transform-origin: left;
 
-    align-items: center;
-    justify-content: center;
-    transition:
-      background-color 0.3s ease,
-      transform 0.2s ease;
+      display: block;
 
-    &:hover {
-      background-color: color.adjust(#f0f0f0, $lightness: 10%);
-      transform: scale(1.05);
-    }
+      margin: 0;
 
-    &:active {
-      background-color: color.adjust(#f0f0f0, $lightness: 10%);
-      transform: scale(0.95);
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
