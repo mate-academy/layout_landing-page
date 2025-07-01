@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Toggle mobile menu
   function toggleMenu() {
+    if (!menuOpener) return;
+    
     const isMenuOpen = window.location.hash === '#menu';
     
     if (isMenuOpen) {
@@ -34,7 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
     menuClose.addEventListener('click', function(e) {
       e.preventDefault();
       history.pushState('', document.title, window.location.pathname);
-      menuOpener.classList.remove('active');
+      if (menuOpener) {
+        menuOpener.classList.remove('active');
+      }
     });
   }
 
@@ -42,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
   menuLinks.forEach(link => {
     link.addEventListener('click', function() {
       history.pushState('', document.title, window.location.pathname);
-      menuOpener.classList.remove('active');
+      if (menuOpener) {
+        menuOpener.classList.remove('active');
+      }
     });
   });
 
@@ -50,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.header');
   
   function handleScroll() {
+    if (!header) return;
+    
     const scrolled = window.scrollY > 50;
     
     if (scrolled) {
@@ -79,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        const headerHeight = header.offsetHeight;
+        const headerHeight = header ? header.offsetHeight : 0;
         const targetPosition = targetElement.offsetTop - headerHeight;
         
         window.scrollTo({
@@ -140,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function scrollToSection(sectionId) {
     const targetElement = document.getElementById(sectionId);
     if (targetElement) {
-      const headerHeight = header.offsetHeight;
+      const headerHeight = header ? header.offsetHeight : 0;
       const targetPosition = targetElement.offsetTop - headerHeight;
       
       window.scrollTo({
@@ -194,9 +202,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle close button
     const closeBtn = notification.querySelector('.notification__close');
-    closeBtn.addEventListener('click', () => {
-      hideNotification(notification);
-    });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        hideNotification(notification);
+      });
+    }
 
     // Auto-hide after 5 seconds
     setTimeout(() => {
@@ -231,8 +241,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   productCards.forEach(card => {
     card.addEventListener('click', function() {
-      const productName = this.querySelector('.product-card__title').textContent;
-      showNotification(`Showing details for ${productName}`, 'info');
+      const productTitle = this.querySelector('.product-card__title');
+      if (productTitle) {
+        const productName = productTitle.textContent;
+        showNotification(`Showing details for ${productName}`, 'info');
+      }
     });
   });
 
@@ -259,7 +272,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Escape key to close mobile menu
     if (e.key === 'Escape' && window.location.hash === '#menu') {
       history.pushState('', document.title, window.location.pathname);
-      menuOpener.classList.remove('active');
+      if (menuOpener) {
+        menuOpener.classList.remove('active');
+      }
     }
   });
 
@@ -277,6 +292,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function handleSwipe() {
+    if (!menuOpener) return;
+    
     const swipeThreshold = 100;
     const swipeDistance = touchEndX - touchStartX;
     
@@ -337,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Bang & Olufsen Landing Page Loaded Successfully! 🎵');
   
   // Handle initial load with hash
-  if (window.location.hash === '#menu') {
+  if (window.location.hash === '#menu' && menuOpener) {
     menuOpener.classList.add('active');
   }
 });
