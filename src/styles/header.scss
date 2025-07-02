@@ -51,10 +51,10 @@
   padding: 0 var(--main-horisontal-pad);
   visibility: hidden;
   &.is-active {
-    animation: 0.3s fadeInMenu ease-in-out forwards;
+    animation: 0.3s fade-in ease-in-out forwards;
   }
   &.is-closed {
-    animation: 0.3s fadeOutMenu ease-in-out forwards;
+    animation: 0.3s fade-out ease-in-out forwards;
   }
   .top-line-container {
     display: flex;
@@ -96,13 +96,6 @@
       text-transform: uppercase;
       color: var(--main-color);
       text-decoration: none;
-      &:hover {
-        &::before {
-          width: 100%;
-          opacity: 1;
-        }
-      }
-
       &::before {
         content: '';
         position: absolute;
@@ -113,6 +106,12 @@
         background: var(--main-color);
         opacity: 0;
         transition: 0.3s ease all;
+      }
+      &:hover {
+        &::before {
+          width: 100%;
+          opacity: 1;
+        }
       }
     }
   }
@@ -129,7 +128,18 @@
   }
 
   li {
-    a {
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--main-color);
+      opacity: 0;
+      transition: 0.3s ease all;
+    }
+    .link-nav {
       font-weight: 700;
       font-size: 22px;
       line-height: 22px;
@@ -146,22 +156,10 @@
           opacity: 1;
         }
       }
-
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--main-color);
-        opacity: 0;
-        transition: 0.3s ease all;
-      }
     }
   }
 }
-@keyframes fadeOutMenu {
+@keyframes fade-out {
   0% {
     visibility: visible;
     left: 0;
@@ -172,7 +170,7 @@
   }
 }
 
-@keyframes fadeInMenu {
+@keyframes fade-in {
   0% {
     visibility: hidden;
     left: -100vw;
