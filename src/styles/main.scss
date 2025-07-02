@@ -1,3 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@501&display=swap');
+@import './variables';
+@import './mixins';
+@import './styleReset';
+@import './burger';
+@import './sections/01_header';
+@import './sections/02_about-us';
+@import './sections/03_compare-bikes';
+@import './sections/04_details';
+@import './sections/05_contact-us';
+@import './sections/06_footer';
+
+// scroll
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
+  font-family: Poppins, sans-serif;
+  color: $color-text;
+  line-height: 140%;
+  width: 100vw;
+  background-color: $color-background;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 1260px;
+  padding: 36px 120px;
+
+  @include respond-to(tablet) {
+    padding: 36px 72px;
+  }
+
+  @include respond-to(mobile) {
+    padding: 36px 20px;
+  }
+}
+
+.container--full {
+  width: 100vw;
+  max-width: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: #fff;
+  text-wrap: nowrap;
+
+  font-size: 2rem;
+
+  @include respond-up(tablet) {
+    font-size: 3rem;
+  }
+
+  @include respond-up(desktop) {
+    font-size: 4rem;
+  }
+}
+
+.description {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  color: #fff;
+}
+
+.text-bold {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 140%;
+}
+
+.btn {
+  color: $color-background;
+  background-color: #fff;
+  padding-block: 14.5px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+
+  outline: none;
+  border: none;
+
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba($color: #e8e8f066, $alpha: 0.4);
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
+
+.menu {
+  overflow: auto; /* to scroll the menu if needed */
+}
+
+.menu__links {
+  position: sticky; /* to keep cross always visible */
+  top: 0;
+  z-index: 1;
+}
+
+// effects
+.bike-card,
+.details__img-wrapper > a,
+footer > a {
+  display: block;
+  overflow: hidden;
+}
+
+picture > img {
+  transition: transform 0.2s ease;
+  a:hover & {
+    transform: scale(1.1);
+  }
 }
