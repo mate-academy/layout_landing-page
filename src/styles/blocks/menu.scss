@@ -1,6 +1,10 @@
 .menu {
   box-sizing: border-box;
   height: 100vh;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
 
   background-color: #c2c2c2;
   font-weight: 600;
@@ -9,14 +13,36 @@
   letter-spacing: 2px;
   text-transform: uppercase;
 
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 63px);
+  }
+
   &__content {
-    @include contentPaddingInline;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__top {
-    margin-bottom: 24px;
-    @include onTablet {
-      margin-bottom: 8px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-tablet {
+      grid-column: span 12;
     }
   }
 
@@ -33,7 +59,6 @@
     font-size: 16px;
     letter-spacing: 0;
     line-height: 27px;
-    letter-spacing: 0;
   }
 
   &__book-test-ride {

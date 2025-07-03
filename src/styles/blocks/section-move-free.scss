@@ -1,16 +1,49 @@
 .move-free {
   padding-top: 60px;
-  @include onTablet {
-    padding-top: 120px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
+
+  @include on-tablet {
+    padding-top: 120px 0;
+    column-gap: 24px;
+    grid-template-columns: repeat(6, 80px);
   }
 
-  &__title.title{
+  @include on-desktop {
+    grid-template-columns: repeat(12, 63px);
+  }
+
+  .title {
+    grid-column: span 2;
+
     line-height: 100%;
     margin-bottom: 32px;
     text-align: start;
+
+    @include on-tablet {
+      font-size: 48px;
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      font-size: 64px;
+      grid-column: span 5;
+    }
   }
 
-  &__text{
+  &__text {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
     font-size: 23px;
     line-height: $basic-line-height;
     letter-spacing: 0;
