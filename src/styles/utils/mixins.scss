@@ -1,0 +1,40 @@
+@mixin onTablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin animationWithTransition($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin mainTitle {
+  margin: 0;
+  margin-bottom: 48px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+
+  @include onTablet {
+    margin-bottom: 56px;
+    font-size: 40px;
+  }
+
+  @include onDesktop {
+    font-size: 48px;
+  }
+}
+
+@mixin scaleWithTransition {
+  @include animationWithTransition(transform, scale(1.05));
+}
