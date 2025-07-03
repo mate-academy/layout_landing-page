@@ -1,48 +1,61 @@
-// Grid variables
-$column-count: 12;
-$column-width: 63px;
-$gutter-width: 24px;
-$margin-width: 120px;
-$max-width: 1260px;
-$section-spacing:100px;
+/* stylelint-disable */
 
-// Shared grid container class
+// _shared.scss
+$desktop-columns: 12;
+$desktop-column-width: 63px;
+$desktop-gutter: 24px;
+$desktop-margin: 120px;
+$desktop-max-width: 1020px;
+$desktop-width: 1020px;
+$section-spacing: 20px;
+
+// Tablet grid settings
+$tablet-columns: 6;
+$tablet-column-width: 73px;
+$tablet-gutter: 25px;
+$tablet-margin: 90.5px;
+$tablet-max-width: 744px;
+$tablet-spacing: 20px;
+$tablet-width: 744px;
+
+// Mobile grid settings
+$mobile-columns: 2;
+$mobile-column-width: 130px;
+$mobile-gutter: 10px;
+$mobile-margin: 20px;
+$mobile-max-width: 320px;
+$mobile-spacing: 20px;
+$mobile-width: 320px;
+
+$grid-width: ($tablet-column-width * $tablet-columns) +
+  ($tablet-gutter * ($tablet-columns - 1));
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat($column-count, $column-width);
-  column-gap: $gutter-width;
-  margin: 0 auto;
-  max-width: $max-width;
-  padding-left: $margin-width;
-  padding-right: $margin-width;
+  grid-template-columns: repeat($desktop-columns, $desktop-column-width);
+  column-gap: $desktop-gutter;
+
   box-sizing: border-box;
-  margin-bottom: $section-spacing;
+  max-width: $desktop-max-width;
+  margin: 0 auto;
+  padding-right: $desktop-margin;
+  padding-left: $desktop-margin;
 
+  @media (max-width: 744px) {
+    grid-template-columns: repeat($tablet-columns, $tablet-column-width);
+    column-gap: $tablet-gutter;
 
-}
-
-// Tablet
-@media (max-width: 744px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(8, $column-width);
-    column-gap: $gutter-width;
-    padding-left: 24px; // Reduced margins for tablet
-    padding-right: 24px;
-    max-width: 744px;
-
+    max-width: $tablet-max-width;
+    padding-right: $tablet-margin;
+    padding-left: $tablet-margin;
   }
-}
 
-// Mobile
-@media (max-width: 320px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(6, $column-width);
-    column-gap: $gutter-width;
-    padding-left: 0px;
-    padding-right: 0px;
-    max-width: 320px;
+  @media (max-width: 320px) {
+    grid-template-columns: repeat($mobile-columns, $mobile-column-width);
+    column-gap: $mobile-gutter;
 
+    max-width: $mobile-max-width;
+    padding-right: $mobile-margin;
+    padding-left: $mobile-margin;
   }
 }
