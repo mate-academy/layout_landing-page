@@ -1,51 +1,14 @@
 .compare-bikes {
-  margin: 92px 0;
-
-  @include on-tablet {
-    margin: 132px 156px 120px;
-  }
-
-  @include on-desktop {
-    margin: 164px 100px 144px;
-  }
+  // display: none;
+  @include margin-block-compare-bikes;
 }
 
 .recommended__bike {
-  grid-template-columns: repeat(2, 130px);
-  display: grid;
-  justify-content: center;
-  column-gap: 20px;
-
-  @include on-tablet {
-    grid-template-columns: repeat(6, 80px);
-    column-gap: 24px;
-
-    .bike {
-      grid-column: 2 / -2;
-      padding-top: 48px;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-    }
-  }
-
-  @include on-desktop {
-    grid-template-columns: repeat(12, 63px);
-
-    .bike {
-      grid-column: span 4;
-      padding-top: 56px;
-
-      &:last-child {
-        padding-bottom: 0;
-      }
-    }
-  }
+  @include grid-adaptive;
 }
 
 .bike {
-  grid-column: 1 / -1;
+  @include grid-column-bike;
   padding-top: 40px;
 
   &:first-child {
@@ -55,9 +18,19 @@
   &:last-child {
     padding-bottom: 0;
   }
+
+  @include on-tablet {
+    padding-top: 48px;
+  }
+
+  @include on-desktop {
+    &:first-child {
+      padding-top: 56px;
+    }
+    padding-top: 56px;
+  }
   &__name {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: $h3-price-font-size;
     margin-top: 32px;
   }
 
@@ -88,7 +61,7 @@
   }
 
   &__price {
-    font-size: 24px;
+    font-size: $h3-price-font-size;
     line-height: $basic-line-height;
     font-weight: 700;
   }
