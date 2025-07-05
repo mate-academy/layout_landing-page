@@ -1,6 +1,37 @@
 .contacts {
   padding: 0 20px;
 
+  @include on-desktop {
+    margin-bottom: 164px;
+  }
+
+  &--wrapper {
+    width: 100%;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .form {
+      grid-area: 1 / 1 / 2 / 4;
+      @include on-desktop {
+        grid-area: 1 / 1 / 2 / 6;
+      }
+    }
+    .list {
+      grid-area: 1 / 4 / 2 / 6;
+      @include on-desktop {
+        grid-area: 1 / 8 / 2 / 11;
+      }
+    }
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -68,6 +99,10 @@
         font-style: Regular;
         font-size: 14px;
         line-height: 140%;
+
+        @include on-desktop {
+          font-size: 20px;
+        }
       }
       .default {
         margin-top: 8px;
@@ -75,6 +110,10 @@
         font-style: Medium;
         font-size: 16px;
         line-height: 140%;
+
+        @include on-desktop {
+          font-size: 22px;
+        }
       }
     }
   }
