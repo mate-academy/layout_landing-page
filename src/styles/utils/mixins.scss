@@ -1,0 +1,80 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-size) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-size) {
+    @content;
+  }
+}
+
+@mixin inline-padding {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+
+    column-gap: 32px;
+  }
+}
+
+@mixin font($size, $weight: 400, $lineHeight: 1.4) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin transition($subject) {
+  transition: #{$subject} $transition-duration;
+}
+
+@mixin column($mobile: '1 / -1', $tablet: '1 / -1', $desktop: '1 / -1') {
+  grid-column: #{$mobile};
+
+  @include on-tablet {
+    grid-column: #{$tablet};
+  }
+
+  @include on-desktop {
+    grid-column: #{$desktop};
+  }
+}
+
+@mixin column-flex() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin animation($name, $direction: 'linear', $mode: 'infinite') {
+  animation: #{$name} #{$direction} 0.8s #{$mode};
+}

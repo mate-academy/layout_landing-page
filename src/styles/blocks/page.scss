@@ -1,0 +1,38 @@
+.page {
+  scroll-behavior: smooth;
+  min-width: 320px;
+  font-family: Poppins, sans-serif;
+  color: $main-text-color;
+
+  @include font(16px, 400);
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    overflow: auto;
+
+    opacity: 0;
+
+    @include transition('all');
+  }
+
+  &__menu:target {
+    pointer-events: all;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+}

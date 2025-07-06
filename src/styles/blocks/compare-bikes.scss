@@ -1,0 +1,31 @@
+.compare-bikes {
+  &__title {
+    margin-bottom: 48px;
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__bikes {
+    @include page-grid;
+
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+
+  &__bike {
+    @include column('1 / -1', 2 / span 4, span 4);
+  }
+
+  &:target &__bike:first-child {
+    @include animation('slide-from-left', $mode: 'forwards');
+  }
+
+  &:target &__bike:last-child {
+    @include animation('slide-from-right', $mode: 'forwards');
+  }
+}

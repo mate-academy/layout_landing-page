@@ -1,0 +1,43 @@
+.nav {
+  &__list {
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include column-flex;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    @include font(22px, 600, 22px);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -8px;
+      transform-origin: left;
+      transform: scale(0);
+
+      display: block;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: $main-dark-color;
+
+      transition: transform 0.3s;
+    }
+
+    @include hover {
+      &:hover::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
