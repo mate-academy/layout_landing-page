@@ -1,9 +1,120 @@
 .now-on-view {
-  width: 100%;
-
   &__exhibition {
-    display: grid;
-    grid-column: 2;
-    row-gap: 48px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &--photo-regular {
+      justify-content: space-between;
+      object-fit: cover;
+      width: 48%;
+      height: 130px;
+
+      &:hover {
+        @include hover(transform, scale(1.05));
+      }
+
+      @include on-tablet {
+        width: 36%;
+        height: 186px;
+      }
+
+      @include on-desktop {
+        width: 38%;
+        height: 320px;
+      }
+
+      &-mid {
+        object-fit: cover;
+        width: 30%;
+        height: 88px;
+
+        &:hover {
+          @include hover(transform, scale(1.05));
+        }
+
+        @include on-tablet {
+          width: 47%;
+          min-height: 288px;
+          flex-shrink: 0;
+          margin-bottom: 10px;
+        }
+
+        @include on-desktop {
+          width: 30%;
+          height: 324px;
+        }
+      }
+    }
+
+    &-scroll {
+      @include on-tablet {
+        display: flex;
+        overflow-x: auto;
+        gap: 5%;
+        scroll-behavior: smooth;
+
+        &::-webkit-scrollbar {
+          height: 8px;
+          width: 100%;
+          background: #fff;
+          padding: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgb(209, 209, 209); /* колір "повзунка" */
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      }
+
+      @include on-desktop {
+        overflow-x: hidden;
+      }
+    }
+
+    &--photo-big {
+      object-fit: cover;
+      width: 47%;
+      height: 130px;
+
+      &:hover {
+        @include hover(transform, scale(1.05));
+      }
+
+      @include on-tablet {
+        width: 60%;
+        height: 186px;
+      }
+
+      @include on-desktop {
+        width: 60%;
+        height: 320px;
+      }
+    }
+  }
+
+  &__name-exhibition {
+    color: $accent-text-color;
+    font-weight: 700;
+    margin-bottom: 0;
+
+    @include on-tablet {
+      &--photo-big {
+        width: 60%;
+      }
+    }
+
+    @include on-desktop {
+      &--photo-big {
+        width: 60%;
+      }
+    }
+  }
+
+  &__open {
+    margin: 0 0 48px;
   }
 }
