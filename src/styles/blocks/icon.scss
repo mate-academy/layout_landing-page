@@ -1,6 +1,6 @@
 .icon {
   display: block;
-
+  position: relative;
   width: 24px;
   height: 24px;
 
@@ -9,10 +9,36 @@
 
   &--phone {
     background-image: url('../images/icons/icon-phone-call.svg');
+
+    &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 20px;
+      color: $main-text-color;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+
+      @include transition('opacity');
+      @include font(12px, 700, 16px);
+    }
+
+    @include hover {
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
   }
+
   &--menu {
     background-image: url('../images/icons/icon-burger-menu.svg');
   }
+
   &--close {
     background-image: url('../images/icons/icon-close.svg');
   }
@@ -26,19 +52,7 @@
 
   @include hover {
     &:hover {
-      animation: scaling 0.5s ease-in-out infinite;
+      @include animation('scaling', ease-in-out);
     }
-  }
-}
-
-@keyframes scaling {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
   }
 }
