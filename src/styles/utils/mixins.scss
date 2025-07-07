@@ -1,0 +1,83 @@
+@import 'variables';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin button-settings {
+  width: 280px;
+  height: 56px;
+  background-color: $red-unique-color;
+  text-decoration: none;
+  color: $white-unique-color;
+  transition: background-color $transition-duration;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+
+  &:active {
+    background-color: $button-pressed-color;
+  }
+}
+
+@mixin input-settings {
+  box-sizing: border-box;
+  padding: 14px 11px;
+
+  border: 1px solid $inputs-bg-color;
+  background-color: $inputs-bg-color;
+
+  color: $dark-unique-color;
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+
+  &::placeholder {
+    color: $inputs-text-color;
+  }
+
+  &:hover {
+    color: $dark-unique-color;
+    border: 1px solid #D5D7DE;
+
+    &::placeholder {
+      color: $dark-unique-color;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $dark-unique-color;
+    border-radius: 0;
+  }
+}
+
+@mixin hover($property, $toValue, $duration) {
+  transition: #{$property} #{$duration};
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
