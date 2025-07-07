@@ -1,4 +1,4 @@
-/* #region page */
+
 .page {
   font-family: Cinzel, serif;
 
@@ -9,15 +9,20 @@
   &__menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 100%;
     height: 100%;
     background-color: white;
-    transition: right 0.5s ease;
+    transition: transform 0.5s ease;
     z-index: 1000;
-
-    &.menu--active {
-      right: 0;
-    }
+    transform: translateX(100%);
   }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.page__menu:target {
+  transform: translateX(0);
 }
