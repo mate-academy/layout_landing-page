@@ -9,7 +9,36 @@
   &--phone {
     @include icon-phone-size;
 
+    position: relative;
     background-image: url(../images/icons/icon-phone.svg);
+
+    &:before {
+      content: '+1 234 555-55-55';
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      position: absolute;
+      top: 60%;
+      left: -24px;
+      width: 140px;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
+    }
+
+    &:hover {
+      &:before {
+        transform: translate(-43%, 100%);
+        opacity: 1;
+
+        @include on-tablet {
+          transform: translate(-100%, -50%);
+        }
+      }
+    }
   }
 
   &--menu {
