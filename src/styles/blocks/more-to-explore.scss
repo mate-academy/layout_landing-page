@@ -11,15 +11,16 @@
 
   &__sections {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     gap: 24px;
   }
 
   &__item {
     display: flex;
     flex-direction: column;
-    flex: 1;
     gap: 24px;
+    flex: 1 1 calc(33.333% - 16px); // 3 в ряд с отступами
+    box-sizing: border-box;
   }
 
   &__image {
@@ -47,5 +48,23 @@
     font-size: 19px;
     line-height: 27px;
     text-align: center;
+  }
+}
+
+/* Tablet: 2 в ряд */
+@media (max-width: 744px) {
+  .more-to-explore {
+    &__item {
+      flex: 1 1 calc(50% - 12px);
+    }
+  }
+}
+
+/* Mobile: 1 в колонку */
+@media (max-width: 480px) {
+  .more-to-explore {
+    &__item {
+      flex: 1 1 100%;
+    }
   }
 }
