@@ -35,13 +35,14 @@
   }
 
   &__images {
-    display: contents;
+    display: contents; /* чтобы картинки ложились в грид */
   }
 
   &__image-long {
     width: 100%;
     height: auto;
     grid-column: span 2;
+    max-width: 100%;
   }
 
   &__image-square {
@@ -89,5 +90,58 @@
     text-align: center;
 
     margin: 0 auto;
+  }
+}
+
+/* Планшеты и маленькие экраны — переключаем грид на 2 колонки */
+@media (max-width: 744px) {
+  .now-on-view {
+    &__content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    &__image-long {
+      grid-column: span 1; /* длинная картинка занимает 1 из 2 колонок */
+      max-width: 100%;
+    }
+
+    &__image-square {
+      grid-column: span 1;
+    }
+
+    &__info {
+      grid-column: 1 / -1;
+      padding: 0 10px;
+    }
+
+    &__button {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
+
+/* Мобильные — 1 колонка, картинки вертикально, без прокрутки */
+@media (max-width: 480px) {
+  .now-on-view {
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    &__image-long,
+    &__image-square {
+      grid-column: span 1;
+      max-width: 100%;
+    }
+
+    &__info {
+      padding: 0 5px;
+    }
+
+    &__button {
+      max-width: 100%;
+    }
   }
 }
