@@ -1,7 +1,33 @@
 @import 'variables';
 
+@mixin page-grid {
+  display: grid;
+  gap: 40px 24px;
+  place-items: start;
+
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    row-gap: 48px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
 @mixin on-tablet {
   @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 992px) {
     @content;
   }
 }
@@ -11,6 +37,12 @@
 
   @include on-tablet {
     padding-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: $padding-inline-dsktop;
   }
 }
 

@@ -1,17 +1,27 @@
-@import '../utils/variables';
-@import '../utils/mixins';
-
 .top-bar {
   padding-block: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  padding-inline: $padding-inline-mobile;
 
-  @include content-padding-inline;
+  @include on-tablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $padding-inline-dsktop;
+  }
 
   &__menu {
-    margin-top: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
   }
 
   &__logo-link {
