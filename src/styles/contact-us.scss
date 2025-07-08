@@ -1,0 +1,143 @@
+@use 'sass:color';
+
+.contact-us {
+  @include on-desktop {
+    padding-block: 120px;
+  }
+
+  @include page-grid;
+
+  .section-title {
+    grid-column: 1 / -1;
+  }
+
+  &__layout {
+    display: flex;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin-bottom: 56px;
+      & > *:first-child {
+        grid-column: 1 / span 6;
+      }
+      & > *:last-child {
+        grid-column: 1 / span 6;
+      }
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      & > *:first-child {
+        grid-column: 1 / span 6;
+      }
+      & > *:last-child {
+        grid-column: 8 / span 5;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__field {
+    display: block;
+    margin-bottom: 16px;
+
+    input,
+    textarea {
+      resize: vertical;
+
+      width: 100%;
+      min-height: 48px;
+      padding: 14px 20px;
+      border: 1px solid var(--clr-border, #d1d1d1);
+      border-radius: 4px;
+
+      font: inherit;
+
+      background: transparent;
+
+      &::placeholder {
+        color: #999;
+      }
+      &:focus {
+        outline: 2px solid var(--clr-accent, #6c4bd7);
+      }
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+
+    align-self: stretch;
+
+    width: 100%;
+    padding: 14px 56px;
+    border: none;
+    border-radius: 6px;
+
+    font-weight: 600;
+    color: #fff;
+
+    background: var(--clr-accent, #1b2129);
+
+    transition: 0.3s;
+
+    &:hover {
+      background: color.adjust(#1b2129, $lightness: -8%);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    font-style: normal;
+    line-height: 1.4;
+
+    .contact-us__info-item {
+      width: 411px;
+      height: 50px;
+      margin: 0;
+    }
+
+    .contact-us__info-item__span {
+      width: 411px;
+      height: 96px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-item span {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  &__label {
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: Regular;
+    line-height: 140%;
+    color: #9393a3;
+    letter-spacing: 0.15px;
+  }
+}
