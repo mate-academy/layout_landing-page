@@ -1,0 +1,31 @@
+/* stylelint-disable */
+@mixin onTable {
+  @media (min-width: $minWidthTb) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $minWidthDt) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: $paddingInlieMb;
+  margin-inline: auto;
+
+  @include onTable {
+    padding-inline: $paddingInlieTb;
+    max-width: 600px;
+  }
+
+  @include onDesktop {
+    padding-inline: $paddingInlieDt;
+    max-width: 1020px;
+  }
+}
+
+.container {
+  @include contentPaddingInline();
+}
