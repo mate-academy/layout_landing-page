@@ -1,0 +1,77 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 24px;
+  margin-bottom: 48px;
+
+  @include on-sm {
+    margin-top: 36px;
+    margin-bottom: 44px;
+  }
+
+  @include on-lg {
+    margin-bottom: 60px;
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    gap: 24px;
+
+    @include on-sm {
+      gap: 32px;
+    }
+  }
+
+  &__phone-wrapper {
+    position: relative;
+
+    @include on-lg {
+      &:hover {
+        .top-bar__phone-number-flyout {
+          opacity: 1;
+          transform: translateX(-20px);
+        }
+      }
+    }
+  }
+
+  &__phone-link {
+    display: inline-block;
+  }
+
+  &__phone-number-flyout {
+    position: absolute;
+    right: 110%;
+    top: 25%;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    color: $color-light-text;
+
+    opacity: 0;
+    transform: translateX(0);
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+
+    @include social-hover-light;
+  }
+
+  &__logo {
+    display: flex;
+    height: 38px;
+
+    @include hover(transform, scale($icon-hover-scale));
+
+    @include on-sm {
+      height: 56px;
+    }
+  }
+}

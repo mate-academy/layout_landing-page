@@ -1,0 +1,149 @@
+@mixin on-sm {
+  @media (min-width: $grid-breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin on-md {
+  @media (min-width: $grid-breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin on-lg {
+  @media (min-width: $grid-breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin on-xl {
+  @media (min-width: $grid-breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin on-xxl {
+  @media (min-width: $grid-breakpoint-xxl) {
+    @content;
+  }
+}
+
+@mixin content-container {
+  max-width: $max-container-width;
+  overflow: hidden;
+
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @include on-sm {
+    padding-inline: 72px;
+  }
+
+  @include on-xl {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-md {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-lg {
+    --columns: 12;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin shared-input-styles {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+@mixin primary-button {
+  @include shared-input-styles;
+
+  padding: 14.5px 48px;
+  border-radius: 40px;
+  border: none;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-decoration: none;
+
+  color: $color-dark-text;
+  background: #fff;
+
+  cursor: pointer;
+
+  @include hover(box-shadow, 1px 4px 16px 0 $color-primary-btn-hover);
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 $color-primary-btn-pressed;
+  }
+}
+
+@mixin form-input {
+  @include shared-input-styles;
+
+  padding: 13px 16px;
+  border-radius: 40px;
+  border: 1px solid transparent;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  color: $color-form-item-text;
+  background-color: $color-form-item-background;
+
+  @include hover(border, 1px solid $color-form-item-hover-border);
+
+  &::placeholder {
+    color: $color-form-item-text-placeholder;
+  }
+
+  &:focus {
+    border: 1px solid $color-form-item-border;
+    outline: none;
+  }
+}
+
+@mixin form-textarea {
+  @include form-input;
+
+  min-height: 148px;
+
+  border-radius: 16px;
+}
+
+@mixin social-hover-light {
+  &:hover {
+    @include hover(color, $color-light-text-hover);
+  }
+}
+
+@mixin social-hover-dark {
+  &:hover {
+    @include hover(color, $color-dark-text-hover);
+  }
+}

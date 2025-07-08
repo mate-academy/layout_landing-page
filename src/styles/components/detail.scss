@@ -1,0 +1,62 @@
+.detail {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    &-link {
+      position: relative;
+
+      @include hover(transform, scale($image-hover-scale));
+
+      &:hover {
+        z-index: 1;
+      }
+
+      &--wide {
+        @include on-md {
+          grid-column: span 4;
+        }
+
+        @include on-lg {
+          grid-column: span 8;
+        }
+      }
+
+      &--square {
+        height: 0;
+        padding-bottom: 100%;
+
+        @include on-md {
+          grid-column: span 2;
+        }
+
+        @include on-lg {
+          grid-column: span 4;
+        }
+      }
+    }
+
+    &-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+}
