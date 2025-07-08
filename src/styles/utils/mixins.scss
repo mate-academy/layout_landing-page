@@ -1,0 +1,123 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1260px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($propety, $toValue) {
+  transition: #{$propety} $effectDuration;
+  &:hover {
+    #{$propety}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+
+  $columns: 2;
+
+  column-gap: 20px;
+  grid-template-columns: repeat($columns, 1fr);
+
+  @include on-tablet {
+    $columns: 6;
+
+    column-gap: 24px;
+    grid-template-columns: repeat($columns, 1fr);
+  }
+
+  @include on-desktop {
+    $columns: 12;
+
+    grid-template-columns: repeat($columns, 1fr);
+  }
+}
+
+@mixin primary-button {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 14.5px 48px;
+  border-radius: 40px;
+  border: none;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  text-decoration: none;
+
+  color: $dark-text-color;
+  background: #fff;
+
+  cursor: pointer;
+
+  @include hover(box-shadow, 1px 4px 16px 0 $hover-color);
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 $active-color;
+  }
+}
+
+@mixin form-input {
+  font-family: Poppins, sans-serif;
+  padding: 13px 16px;
+  border-radius: 40px;
+  border: 1px solid transparent;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  color: $form-item-text-color;
+  background-color: $form-item-background-color;
+
+  @include hover(border, 1px solid $form-item-hover-border-color);
+
+  &::placeholder {
+    color: $form-item-text-placeholder-color;
+  }
+
+  &:focus {
+    border: 1px solid $form-item-border-color;
+    outline: none;
+  }
+}
+
+@mixin form-textarea {
+  @include form-input;
+
+  min-height: 148px;
+
+  border-radius: 16px;
+}
+
+@mixin social-hover-light {
+  &:hover {
+    @include hover(color, $light-text-hover-color);
+  }
+}
