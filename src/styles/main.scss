@@ -14,6 +14,7 @@
   line-height: $line-height-base;
   scroll-behavior: smooth;
   transition-duration: 0.3s;
+  overflow-x:hidden;
 }
 
 .page__body {
@@ -25,10 +26,12 @@
 }
 
 .top-bar {
+  box-sizing: border-box;
   padding: $spacing-lg $spacing-md;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 
   @include tablet {
     padding: $spacing-xl $spacing-3xl;
@@ -59,6 +62,8 @@
 }
 
 .page__menu {
+  box-sizing: border-box;
+  width: 100vw;
   position: fixed;
   top: 0;
   right: 0;
@@ -102,8 +107,6 @@
 
 .top-bar__title {
   width: 100%;
-  margin-left: $spacing-md;
-  margin-right: $spacing-md;
   text-align: center;
   font-size: $font-size-xl;
   font-weight: 700;
@@ -120,7 +123,13 @@
 }
 
 .icon--close {
+  box-sizing: border-box;
   background-image: url(../icons/Icon-Close.png);
+  background-repeat: no-repeat;
+
+  @include desktop{
+    margin-right: 15px;
+  }
 }
 
 .menu {
@@ -153,6 +162,7 @@
   font-size: $font-size-base;
   line-height: $line-height-base;
   text-decoration: none;
+  margin-top: 48px;
 }
 
 .call-to-order {
@@ -185,7 +195,31 @@
   font-size: $font-size-lg;
   line-height: $line-height-tight;
   letter-spacing: $letter-spacing-wide;
+  position: relative;
 }
+
+.nav__link::after{
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  background-color: #FFF;
+  height: 1px;
+  width: 0;
+  left: 0;
+}
+
+.nav__link:hover::after{
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  background-color: #FFF;
+  height: 1px;
+  width: 100%;
+  bottom: -8px;
+  left: 0;
+  transition-duration: 0.3s;
+}
+
 
 .menu__content {
   margin-left: $spacing-md;
@@ -204,7 +238,7 @@
 .logo-link {
   height: $logo-height;
   width: $logo-width;
-
+  transition: transform 0.3s ease;
   @include tablet {
     background: url(../images/Big-logo.png);
     background-repeat: no-repeat;
@@ -214,6 +248,15 @@
     }
   }
 }
+
+.logo-link:hover{
+  @include tablet{
+    transform: scale(1.2);
+  }
+
+}
+
+
 
 .top-bar__numbers {
   position: absolute;
@@ -272,4 +315,12 @@
     height: 100%;
     object-fit: cover;
   }
+}
+
+img {
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
 }
