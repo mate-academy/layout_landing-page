@@ -1,0 +1,98 @@
+@import 'variables';
+
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  gap: 40px 24px;
+  place-items: start;
+
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    row-gap: 48px;
+  }
+
+  @include on-small-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: $padding-inline-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include on-small-desktop {
+    margin-inline: auto;
+    padding-inline: $padding-inline-dsktop;
+  }
+}
+
+@mixin icons-size {
+  height: $icon-size-mobile;
+  width: $icon-size-mobile;
+
+  @include on-tablet {
+    height: $icon-size-tablet;
+    width: $icon-size-tablet;
+  }
+
+  @include on-large-desktop {
+    height: $icon-size-large-dsktop;
+    width: $icon-size-large-dsktop;
+  }
+}
+
+@mixin icons-gap {
+  gap: $gap-icons-mobile;
+
+  @include on-tablet {
+    gap: $gap-icons-tablet;
+  }
+
+  @include on-large-desktop {
+    gap: $gap-icons-large-dsktop;
+  }
+}
+
+@mixin logo-height {
+  height: $logo-height-mobile;
+
+  @include on-tablet {
+    height: $logo-height-tablet;
+  }
+
+  @include on-large-desktop {
+    height: $logo-height-large-dsktop;
+  }
+}
+
+@mixin hover-animation($property, $toValue) {
+  transition: #{$property} $transition-fast;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
