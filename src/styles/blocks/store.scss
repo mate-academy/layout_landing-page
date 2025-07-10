@@ -1,0 +1,123 @@
+.store {
+  padding: 60px 0;
+  background-color: #fff;
+
+  &__container {
+    max-width: 1160px;
+    width: 100%;
+    margin-inline: auto;
+    box-sizing: border-box;
+
+    @include store-padding-inline;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    @include between-mobile {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include between-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__row {
+    display: grid;
+    gap: 24px;
+
+    &--default {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &--inverted {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    @include between-tablet {
+      &--default {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      }
+
+      &--inverted {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      }
+    }
+
+    @include between-mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  &__item {
+    overflow: hidden;
+    border-radius: 8px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 324px;
+      object-fit: cover;
+
+      @include hover(transform, scale(1.2));
+
+      @include between-tablet {
+        height: 184px;
+      }
+
+      @include between-mobile {
+        height: 130px;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111;
+
+    @include between-mobile {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+
+  &__button {
+    display: block;
+    width: 100%;
+    max-width: 324px;
+    margin: 20px 0 0;
+    padding: 12px 24px;
+    background: #111;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #333;
+    }
+
+    @include between-mobile {
+      width: 100%;
+    }
+  }
+}

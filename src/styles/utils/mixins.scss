@@ -1,0 +1,70 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin between-mobile {
+  @media (max-width: 430px) {
+    @content;
+  }
+}
+
+@mixin between-tablet {
+  @media (min-width: 431px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin store-padding-inline {
+  padding-inline: 72px;
+
+  @include between-tablet {
+    padding-inline: 60px;
+  }
+
+  @include between-mobile {
+    padding-inline: 16px;
+  }
+}
+
+%container-grid {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding-inline: 120px;
+
+  @media (max-width: 1260px) {
+    padding-inline: 40px;
+  }
+
+  @include between-tablet {
+    padding-inline: 20px;
+  }
+
+  @include between-mobile {
+    padding-inline: 20px;
+  }
+}
+
+.about-banner {
+  display: block;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+}
