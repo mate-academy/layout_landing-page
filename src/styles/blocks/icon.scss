@@ -6,6 +6,7 @@
   width: 24px;
   background-size: cover;
   transition: transform 0.3s;
+  text-decoration: none;
 
   @include hover(transform, scale(1.2));
 
@@ -17,25 +18,30 @@
   &--phone {
     background-image: url(./../images/icons/icon-phone-call.svg);
 
-    @include on-desktop {
-      &:hover {
-        &::before {
-          content: 'The Met Fifth Avenue\A+1 212-535-7710\AThe Met Cloisters\A+1 212-923-3700';
-          display: block;
-          white-space: pre-line;
-          height: 200px;
-          width: 200px;
-          margin-left: -230px;
-          margin-top: -35px;
-          text-decoration: none;
-          color: #fff;
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 27px;
-          text-align: right;
-        }
-      }
-    }
+    // @include on-desktop {
+
+    //   &:focus {
+    //     &::before {
+    //       content: 'The Met Fifth Avenue\A+1 212-535-7710\AThe Met Cloisters\A+1 212-923-3700';
+    //       display: block;
+    //       white-space: pre-line;
+    //       height: 200px;
+    //       width: 200px;
+    //       margin-left: -230px;
+    //       margin-top: -35px;
+    //       border: none;
+    //       color: #fff;
+    //       font-weight: 700;
+    //       font-size: 16px;
+    //       line-height: 27px;
+    //       text-align: right;
+    //     }
+    //   }
+
+    //    &::before {
+    //     display: none;
+    //   }
+    // }
   }
 
   &--menu {
@@ -44,5 +50,43 @@
 
   &--close {
     background-image: url(./../images/icons/icon-close.svg);
+  }
+}
+
+.contact-tooltip {
+  display: none;
+}
+
+@include on-desktop {
+  .top-bar__icons {
+    position: relative;
+
+    .contact-tooltip {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: -40px;
+      left: -230px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-align: right;
+
+      &-p {
+        color: #fff;
+        line-height: 27px;
+        margin: 0 0 10px;
+      }
+
+      &-a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    &:hover .contact-tooltip,
+    .icon--phone:focus + .contact-tooltip {
+      display: block;
+    }
   }
 }
