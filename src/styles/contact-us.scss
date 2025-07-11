@@ -1,29 +1,47 @@
-@use 'sass:color';
-
 .contact-us {
+  @include page-grid;
+
+  padding-block: 56px;
+
+  @include on-tablet {
+    padding-block: 80px;
+  }
+
   @include on-desktop {
     padding-block: 120px;
   }
 
-  @include page-grid;
-
   .section-title {
     grid-column: 1 / -1;
+
+    font-family: Manrope, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #1b2129;
+
+    @include on-tablet {
+      width: 496px;
+      font-size: 40px;
+    }
+
+    @include on-desktop {
+      font-size: 40px;
+    }
   }
 
   &__layout {
-    display: flex;
+    display: grid;
     grid-column: 1 / -1;
-    flex-direction: column;
     gap: 24px;
 
     @include on-tablet {
-      display: grid;
       grid-template-columns: repeat(6, 1fr);
       margin-bottom: 56px;
+
       & > *:first-child {
         grid-column: 1 / span 6;
       }
+
       & > *:last-child {
         grid-column: 1 / span 6;
       }
@@ -31,10 +49,11 @@
 
     @include on-desktop {
       grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
+
       & > *:first-child {
         grid-column: 1 / span 6;
       }
+
       & > *:last-child {
         grid-column: 8 / span 5;
       }
@@ -45,20 +64,20 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    margin: 0;
   }
 
   &__field {
-    display: block;
-    margin-bottom: 16px;
+    margin-bottom: 0;
 
     input,
     textarea {
-      resize: vertical;
+      resize: none;
 
       width: 100%;
       min-height: 48px;
       padding: 14px 20px;
-      border: 1px solid var(--clr-border, #d1d1d1);
+      border: 1px solid #d1d1d1;
       border-radius: 4px;
 
       font: inherit;
@@ -68,31 +87,52 @@
       &::placeholder {
         color: #999;
       }
-      &:focus {
-        outline: 2px solid var(--clr-accent, #6c4bd7);
+
+      @include on-tablet {
+        min-height: 48px;
+        font-size: 16px;
       }
+
+      @include on-desktop {
+        font-size: 16px;
+      }
+    }
+
+    textarea {
+      height: 148px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid #6c4bd7;
     }
   }
 
   &__btn {
     cursor: pointer;
 
-    align-self: stretch;
-
     width: 100%;
+    height: 55px;
+    margin-top: 16px;
     padding: 14px 56px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
 
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
     font-weight: 600;
     color: #fff;
 
-    background: var(--clr-accent, #1b2129);
+    background: #1b2129;
 
     transition: 0.3s;
 
+    @include on-tablet {
+      max-width: 600px;
+    }
+
     &:hover {
-      background: color.adjust(#1b2129, $lightness: -8%);
+      background: adjust(#1b2129, 8%);
     }
   }
 
@@ -101,43 +141,49 @@
     flex-direction: column;
     gap: 24px;
 
+    font-size: 16px;
+    font-weight: 400;
     font-style: normal;
     line-height: 1.4;
+    color: #191919;
 
     .contact-us__info-item {
-      width: 411px;
-      height: 50px;
-      margin: 0;
-    }
+      max-width: 280px;
 
-    .contact-us__info-item__span {
-      width: 411px;
-      height: 96px;
-    }
+      @include on-tablet {
+        max-width: 392px;
+      }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+      @include on-desktop {
+        max-width: 411px;
+      }
 
-    &-item span {
-      display: block;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
+      span {
+        display: block;
 
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
-  }
+        margin-bottom: 8px;
 
-  &__label {
-    font-family: Manrope, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    font-style: Regular;
-    line-height: 140%;
-    color: #9393a3;
-    letter-spacing: 0.15px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #9393a3;
+        letter-spacing: 0.15px;
+      }
+
+      a {
+        font-family: Manrope, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: #191919;
+        text-decoration: none;
+        letter-spacing: 0.15px;
+
+        transition: text-decoration 0.3s;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }

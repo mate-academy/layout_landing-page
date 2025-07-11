@@ -198,6 +198,7 @@
 }
 
 .page__body {
+  overflow-x: hidden;
   min-width: 320px;
   margin: 0;
 }
@@ -236,6 +237,16 @@
 
 .icon--phone {
   background-image: url(../icons/icon-phone.png);
+}
+
+.icon--phone:hover {
+  width: 179px;
+  height: 24px;
+
+  background-image: url(../icons/phone-number-hover.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
 }
 
 .icon--menu {
@@ -327,7 +338,7 @@
 
 .main__content {
   display: grid;
-  row-gap: 64px;
+  row-gap: 56px;
   padding-block: 40px;
 }
 
@@ -339,19 +350,31 @@
 }
 
 .about-us {
+  position: relative;
+  right: 50%;
+  left: 50%;
+
+  width: 100vw;
+  height: auto;
+  margin: -120px -50vw;
+  padding-block: 120px;
+
+  background-color: #fcfaef;
+}
+
+.about-us .container {
   --columns: 2;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   gap: 20px;
+  align-items: start;
 
-  margin-bottom: 0;
-
-  background-color: #fcfaef;
+  height: 100%;
 }
 
 @media (min-width: 576px) {
-  .about-us {
+  .about-us .container {
     --columns: 6;
 
     column-gap: 24px;
@@ -359,62 +382,72 @@
 }
 
 @media (min-width: 1024px) {
-  .about-us {
+  .about-us .container {
     --columns: 12;
   }
 }
 
-.about-us__title {
+.about-us .title {
   grid-column: 1/-1;
+  align-self: start;
+
+  margin: 0;
+
+  font-family: Manrope, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 @media (min-width: 576px) {
-  .about-us__title {
+  .about-us .title {
     grid-column: 1/4;
+    font-size: 40px;
   }
 }
 
 @media (min-width: 1024px) {
-  .about-us__title {
-    grid-column: 1/6;
+  .about-us .title {
+    grid-column: 1/7;
+    font-size: 48px;
   }
 }
 
-.about-us__content {
+.about-us .text {
   grid-column: 1/-1;
+  align-self: start;
+
+  margin: 24px 0 0;
+
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.15px;
 }
 
 @media (min-width: 576px) {
-  .about-us__content {
+  .about-us .text {
     grid-column: 4/7;
+    font-size: 15px;
   }
 }
 
-@media (min-width: 576px) and (min-width: 1024px) {
-  .about-us__content {
-    grid-column: 7/13;
+@media (min-width: 1024px) {
+  .about-us .text {
+    grid-column: 8/13;
+    font-size: 16px;
   }
-}
-
-.about-us__description {
-  margin: 0;
-
-  font-family: Manrope, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: Regular;
-  line-height: 140%;
-  letter-spacing: 0.15px;
 }
 
 .categories__wrapper {
   display: grid;
-  row-gap: 40px;
+  row-gap: 56px;
 }
 
 @media (min-width: 576px) {
   .categories__wrapper {
-    row-gap: 64px;
+    row-gap: 56px;
   }
 }
 
@@ -484,12 +517,7 @@
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   gap: 20px;
-}
-
-@media (min-width: 1024px) {
-  .contact-us {
-    padding-block: 120px;
-  }
+  padding-block: 56px;
 }
 
 @media (min-width: 576px) {
@@ -506,20 +534,48 @@
   }
 }
 
+@media (min-width: 576px) {
+  .contact-us {
+    padding-block: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-us {
+    padding-block: 120px;
+  }
+}
+
 .contact-us .section-title {
   grid-column: 1/-1;
+
+  font-family: Manrope, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1b2129;
+}
+
+@media (min-width: 576px) {
+  .contact-us .section-title {
+    width: 496px;
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-us .section-title {
+    font-size: 40px;
+  }
 }
 
 .contact-us__layout {
-  display: flex;
+  display: grid;
   grid-column: 1/-1;
-  flex-direction: column;
   gap: 24px;
 }
 
 @media (min-width: 576px) {
   .contact-us__layout {
-    display: grid;
     grid-template-columns: repeat(6, 1fr);
     margin-bottom: 56px;
   }
@@ -534,7 +590,6 @@
 @media (min-width: 1024px) {
   .contact-us__layout {
     grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
   }
   .contact-us__layout > *:first-child {
     grid-column: 1 / span 6;
@@ -548,21 +603,21 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin: 0;
 }
 
 .contact-us__field {
-  display: block;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .contact-us__field input,
 .contact-us__field textarea {
-  resize: vertical;
+  resize: none;
 
   width: 100%;
   min-height: 48px;
   padding: 14px 20px;
-  border: 1px solid var(--clr-border, #d1d1d1);
+  border: 1px solid #d1d1d1;
   border-radius: 4px;
 
   font: inherit;
@@ -575,31 +630,58 @@
   color: #999;
 }
 
+@media (min-width: 576px) {
+  .contact-us__field input,
+  .contact-us__field textarea {
+    min-height: 48px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-us__field input,
+  .contact-us__field textarea {
+    font-size: 16px;
+  }
+}
+
+.contact-us__field textarea {
+  height: 148px;
+}
+
 .contact-us__field input:focus,
 .contact-us__field textarea:focus {
-  outline: 2px solid var(--clr-accent, #6c4bd7);
+  outline: 2px solid #6c4bd7;
 }
 
 .contact-us__btn {
   cursor: pointer;
 
-  align-self: stretch;
-
   width: 100%;
+  height: 55px;
+  margin-top: 16px;
   padding: 14px 56px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
 
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
   font-weight: 600;
   color: #fff;
 
-  background: var(--clr-accent, #1b2129);
+  background: #1b2129;
 
   transition: 0.3s;
 }
 
+@media (min-width: 576px) {
+  .contact-us__btn {
+    max-width: 600px;
+  }
+}
+
 .contact-us__btn:hover {
-  background: rgb(10.8, 13.2, 16.4);
+  background: adjust(#1b2129, 8%);
 }
 
 .contact-us__info {
@@ -607,57 +689,69 @@
   flex-direction: column;
   gap: 24px;
 
+  font-size: 16px;
+  font-weight: 400;
   font-style: normal;
   line-height: 1.4;
+  color: #191919;
 }
 
 .contact-us__info .contact-us__info-item {
-  width: 411px;
-  height: 50px;
-  margin: 0;
+  max-width: 280px;
 }
 
-.contact-us__info .contact-us__info-item__span {
-  width: 411px;
-  height: 96px;
+@media (min-width: 576px) {
+  .contact-us__info .contact-us__info-item {
+    max-width: 392px;
+  }
 }
 
-.contact-us__info:last-child {
-  margin-bottom: 0;
+@media (min-width: 1024px) {
+  .contact-us__info .contact-us__info-item {
+    max-width: 411px;
+  }
 }
 
-.contact-us__info-item span {
+.contact-us__info .contact-us__info-item span {
   display: block;
-  margin-bottom: 4px;
-  font-weight: 600;
-}
 
-.contact-us__info a {
-  color: inherit;
-  text-decoration: underline;
-}
+  margin-bottom: 8px;
 
-.contact-us__label {
-  font-family: Manrope, sans-serif;
   font-size: 14px;
-  font-weight: 400;
-  font-style: Regular;
-  line-height: 140%;
+  font-weight: 600;
   color: #9393a3;
   letter-spacing: 0.15px;
 }
 
-.smart-banner-head {
+.contact-us__info .contact-us__info-item a {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #191919;
+  text-decoration: none;
+  letter-spacing: 0.15px;
+
+  transition: text-decoration 0.3s;
+}
+
+.contact-us__info .contact-us__info-item a:hover {
+  text-decoration: none;
+}
+
+.category--button {
   --columns: 2;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   gap: 24px;
-  margin-block: 80px;
+
+  margin-top: 56px;
+  margin-bottom: 120px;
 }
 
 @media (min-width: 576px) {
-  .smart-banner-head {
+  .category--button {
     --columns: 6;
 
     column-gap: 24px;
@@ -665,12 +759,12 @@
 }
 
 @media (min-width: 1024px) {
-  .smart-banner-head {
+  .category--button {
     --columns: 12;
   }
 }
 
-.smart-banner-head__btn {
+.categories__button {
   cursor: pointer;
 
   display: flex;
@@ -696,18 +790,18 @@
 }
 
 @media (min-width: 576px) {
-  .smart-banner-head__btn {
+  .categories__button {
     grid-column: 1/7;
   }
 }
 
 @media (min-width: 1024px) {
-  .smart-banner-head__btn {
+  .categories__button {
     grid-column: 1/5;
   }
 }
 
-.smart-banner-head__btn:hover {
+.categories__button:hover {
   background: adjust(#f89821, 8%);
   outline: 2px solid #06f;
   outline-offset: 0;
@@ -715,12 +809,16 @@
 
 .smart-banner-img {
   width: 100vw;
+  margin-bottom: 0;
   margin-inline: calc(-50vw + 50%);
 }
 
 .smart-banner-img img {
   display: block;
+
   width: 100%;
   height: auto;
+  margin-bottom: 0;
+
   object-fit: cover;
 }
