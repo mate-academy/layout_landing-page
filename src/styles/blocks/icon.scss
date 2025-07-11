@@ -4,6 +4,7 @@
   width: 24px;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 
   @include hover(transform, scale(1.2));
 
@@ -21,11 +22,33 @@
 
   &--phone {
     background-image: url(../icons/phone.png);
+    position: relative;
 
-    &:hover {
-      background-image: url(../icons/phone-number-hover.png);
-    }
+     &:before {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      margin-right: 10px;
+      font-family: Inter;
+font-weight: 700;
+font-style: Bold;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 2px;
+text-align: right;
+vertical-align: middle;
+text-transform: uppercase;
+color: #1B2129;
+opacity: 0;
+
   }
+   &:hover:before {
+    opacity: 1;
+}
+}
 
   &--menu {
     background-image: url(../icons/icon-burger-menu.png);
