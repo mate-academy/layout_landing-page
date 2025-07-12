@@ -1,24 +1,31 @@
-# Landing Page
+1. Це односторінковий лендинг, створений для [THE MET]. Сайт має адаптивний дизайн, підтримує взаємодію з користувачем і оптимізований для мобільних пристроїв, планшетів та персональних компютерів.
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+2. Використані технології:
+HTML5
+CSS3 (включно з Flexbox, Grid та медіа-запитами)
 
-Choose a design for your landing page:
+3. Посилання на прев’ю:
+(https://vasylzelenchuk.github.io/layout_landing-page/).
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+4. Посилання на макет
+(https://www.figma.com/design/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=8590-29&p=f&t=8wlcZ76LQIlGT1HP-0).
 
-Follow the instructions in this and next lessons to implement the page block by block:
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+
+
+1.This is a one-page landing site created for [THE MET]. The website features a responsive design, supports user interaction, and is optimized for mobile devices, tablets, and desktop computers.
+
+2.Technologies used:
+HTML5
+CSS3 (including Flexbox, Grid, and media queries)
+
+3.Preview link:
+https://vasylzelenchuk.github.io/layout_landing-page/
+
+4.Design mockup link:
+https://www.figma.com/design/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=8590-29&p=f&t=8wlcZ76LQIlGT1HP-0
+
+
+
+
