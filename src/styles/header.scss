@@ -8,6 +8,14 @@
   background-size: cover;
   background-position: center right;
 
+  @include on-tablet {
+    background-image: url(//src/images/background_image_tablet.png);
+  }
+
+  @include on-desktop {
+    background-image: url(/src/images/background\ image_desktop.svg);
+  }
+
   &__content {
     @include content-padding-in-line;
 
@@ -16,30 +24,56 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  &__bottom {
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    padding-bottom: 90px;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 40px;
+    }
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+  }
 }
 
-.header__icons {
+.top-bar {
   display: flex;
-  gap: 32px;
-}
-
-.header__bottom {
-  text-align: center;
-  color: rgba(255, 255, 255, 1);
-  vertical-align: middle;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 100%;
-  letter-spacing: -1.5px;
-  padding-bottom: 90px;
-  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+  width: 100%;
 
   @include on-tablet {
-    font-size: 40px;
+    padding-block: 40px;
   }
 
-  @include on-tablet {
-    padding-bottom: 64px;
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
   }
 }
 
@@ -64,10 +98,35 @@
 
 .icon--phone {
   background-image: url(/src/images/Icon_Phone_call_mobile.svg);
+  &::before {
+    content: '+1 234 5555-55-55';
+
+    position: absolute;
+    z-index: 100;
+    top: 5px;
+    left: -160px;
+
+    display: none;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    white-space: pre;
+
+    transition: transform 0.3s;
+  }
+
+  &:hover::before {
+    display: block;
+  }
 }
 
 .icon--menu {
   background-image: url(/src/images/Icon_Burger_menu_mobile.svg);
+  &:hover {
+    background-image: url(/src/images/Burger_hover.svg);
+  }
 }
 
 // #endregion
