@@ -34,6 +34,10 @@
         }
 
         @include on-tablet {
+          &-none {
+            display: none;
+          }
+
           width: 47%;
           min-height: 288px;
           flex-shrink: 0;
@@ -41,37 +45,13 @@
         }
 
         @include on-desktop {
-          width: 30%;
+          &-none {
+            display: block;
+          }
+
+          width: 32%;
           height: 324px;
         }
-      }
-    }
-
-    &-scroll {
-      @include on-tablet {
-        display: flex;
-        overflow-x: auto;
-        gap: 5%;
-        scroll-behavior: smooth;
-
-        &::-webkit-scrollbar {
-          height: 8px;
-          width: 100%;
-          background: #fff;
-          padding: 10px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-          background: rgb(209, 209, 209); /* колір "повзунка" */
-        }
-
-        &::-webkit-scrollbar-thumb:hover {
-          background: #555;
-        }
-      }
-
-      @include on-desktop {
-        overflow-x: hidden;
       }
     }
 
@@ -79,6 +59,7 @@
       object-fit: cover;
       width: 47%;
       height: 130px;
+      transition: all 0.3s;
 
       &:hover {
         @include hover(transform, scale(1.05));
