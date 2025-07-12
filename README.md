@@ -12,6 +12,8 @@ CSS3 (включно з Flexbox, Grid та медіа-запитами)
 
 
 
+
+
 1.This is a one-page landing site created for [THE MET]. The website features a responsive design, supports user interaction, and is optimized for mobile devices, tablets, and desktop computers.
 
 2.Technologies used:
