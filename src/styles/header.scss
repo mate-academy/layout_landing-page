@@ -104,7 +104,15 @@
 
 .icon--phone {
   background-image: url(/src/images/Icon_Phone_call_mobile.svg);
+
   &::before {
+
+    visibility: hidden;
+
+    @include on-desktop {
+      visibility: visible;
+    };
+
     content: '+1 234 5555-55-55';
 
     position: absolute;
@@ -124,6 +132,9 @@
   }
 
   &:hover::before {
+
+    @include on-desktop;
+
     display: block;
   }
 }
