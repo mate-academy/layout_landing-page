@@ -18,8 +18,8 @@
 }
 
 // #region section
-.section {
 
+.section {
   display: grid;
   row-gap: 80px;
 
@@ -50,7 +50,7 @@
     }
 
     @include on-desktop {
-      grid-column: span 5;
+      grid-column: span 6;
     }
   }
 
@@ -74,32 +74,81 @@
 // #endregion
 // #region section 2
 
+.recomended {
+  @include page-grid;
 
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns) 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+  &__content {
+    grid-column: 1 /-1;
+
+    @include on-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
 
 .product {
   display: grid;
 
-  grid-template-columns: repeat(var(--columns), 1fr);
-  @include on-desktop {
-    grid-column: span 5;
+  @include page-grid;
+  @include content-padding-in-line;
+
+  grid-template-columns: repeat(var(--columns) 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
   }
-&__title {
-  font-family: Poppins, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  font-style: bold;
-  color: #fff;
-  line-height: 140%;
+
+  @include on-desktop {
+    --columns: 12;
+  }
+  &__title {
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: bold;
+    color: #fff;
+    line-height: 140%;
+  }
+  &__value {
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: bold;
+    color: #fff;
+    line-height: 140%;
+  }
 }
-&__value {
-  font-family: Poppins, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  font-style: bold;
-  color: #fff;
-  line-height: 140%;
-}
-}
+
 // #endregion
 // #region section 3
 .categories {
