@@ -1,65 +1,91 @@
 @use './shared' as *;
 
 .footer {
-  overflow: hidden;
-  display: block;
+  position: fixed;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 
-  box-sizing: border-box;
-  width: 1260px;
-  margin: 0 auto;
-  margin-top: 140px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  margin: 0;
+
+  transition: opacity 0.3s ease;
 }
 
 .footer__image {
   width: 1260px;
+  max-width: 100%;
   height: 359px;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 359px;
 }
 
 @media (max-width: 744px) {
   .footer {
+    pointer-events: none;
+
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+
     overflow: hidden;
+
     width: 100%;
-    max-width: 744px;
-    margin: 0 auto;
   }
 
   .footer__image {
-    position: relative;
-    left: 40%;
-    transform: translate(-50%);
+    width: 1259px;
+    height: 359px;
+    object-fit: cover;
+  }
 
-    width: 1260px;
-    max-width: none;
-    height: auto;
-    margin-top: 150px;
+  body {
+    padding-bottom: 359px;
   }
 }
 
 @media (max-width: 320px) {
   .footer {
-    overflow: hidden;
+    pointer-events: none;
 
-    width: 100%;
-    max-width: 320px;
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    left: 21.5%;
+    transform: translateX(-50%);
+
+    width: 320px;
+    max-width: 630px;
+    height: 180px;
     margin: 0;
-    padding: 0;
   }
 
   .footer__image {
-    width: 400px; // Make image container full width
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer__image picture,
+  .footer__image img {
+    width: 320px;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  body {
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
-
-    picture {
-      display: block;
-      width: 100%;
-    }
-
-    img {
-      display: block; // Remove any default spacing
-      width: 100%; // Make image full width
-      max-width: none; // Override any max-width constraints
-      height: auto;
-    }
+    padding-bottom: 70%;
   }
 }

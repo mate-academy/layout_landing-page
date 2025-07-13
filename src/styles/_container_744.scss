@@ -7,10 +7,13 @@
     background-image: url(../images/gown@744.png);
   }
 
-  .welcome-image__content {
-    grid-template-columns: repeat($tablet-columns, $tablet-column-width);
-    padding-right: $tablet-margin;
-    padding-left: $tablet-margin;
+  .welcome-page__logo {
+    position: relative;
+    top: 50px;
+    left: 72px;
+
+    width: 87px;
+    height: 65px;
   }
 
   .welcome-image__text {
@@ -24,11 +27,11 @@
     line-height: 64px;
   }
 
-  h1 {
-    top: 6%;
-    left: 6%;
-    width: 87px;
-    height: 65px;
+  .welcome-image__text-image {
+    position: absolute;
+    top: 256px;
+    left: 176px;
+    display: block;
   }
 
   .index-nav__menu {
@@ -69,22 +72,48 @@
 
       width: 32px;
       height: 32px;
-    }
-
-    img {
-      opacity: 0;
-    }
-
-    &:hover {
       &::after {
-        opacity: 1;
-      }
-      img {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
         opacity: 0;
+        background-image: url(../images/Icon-Burger-menu-hover.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        transition: opacity 0.3s ease;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+        img {
+          opacity: 0;
+        }
       }
     }
   }
+}
 
+@media (max-width: 744px) {
   .phone-icon {
     top: 10%;
     right: 20%;
@@ -114,14 +143,55 @@
       visibility 0.3s ease;
   }
 
-  .hover-overlay p {
-    margin: 8px 0;
-    font-size: 18px;
-    font-weight: 400;
-  }
+  @media (max-width: 744px) {
+    .phone-icon {
+      top: 10%;
+      right: 20%;
+    }
 
-  .phone-icon:hover ~ .hover-overlay {
-    visibility: visible;
-    opacity: 1;
+    .hover-overlay {
+      position: absolute;
+      z-index: 4;
+      top: 5%;
+      left: 47%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: right;
+      justify-content: center;
+
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      text-align: right;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .hover-overlay:hover,
+    .phone-icon:hover + .hover-overlay {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .hover-overlay a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: #d12d35;
+      }
+    }
+
+    .hover-overlay p {
+      margin: 8px 0;
+      font-size: 18px;
+      font-weight: 400;
+    }
   }
 }

@@ -16,51 +16,144 @@
   background-position: center;
 }
 
-.welcome-image__content {
+.welcome-page__logo {
   position: relative;
-  z-index: 1;
+  top: 52px;
+  left: 120px;
 
-  display: grid;
-  grid-template-columns: repeat($desktop-columns, $desktop-column-width);
-  column-gap: $desktop-gutter;
+  width: 87px;
+  height: 65px;
+}
+
+.menu-page__button {
+  position: relative;
+  z-index: 2;
+}
+
+.burger-icon a::after {
+  content: '';
+
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
-  padding-right: $desktop-margin;
-  padding-left: $desktop-margin;
+
+  opacity: 0;
+  background-image: url(../images/Icon-Burger-menu-hover.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: opacity 0.3s ease;
 }
 
-.welcome-image__text {
+.menu-page__button img {
   position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 1;
+
+  transition: opacity 0.3s ease;
+}
+
+.burger-icon a img {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transition: opacity 0.3s ease;
+}
+
+.menu-page__button a {
+  cursor: pointer;
+
+  position: relative;
+
+  display: block;
+
+  width: 32px;
+  height: 32px;
+}
+
+.menu-page__button a::after {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  background-image: url(../images/Icon-Burger-menu-hover.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: opacity 0.3s ease;
+}
+
+.menu-page__button a:hover {
+  &::after {
+    opacity: 1;
+  }
+  img {
+    opacity: 0;
+  }
+}
+
+.burger-icon {
+  position: relative;
   z-index: 2;
-  top: 24%;
-  left: 32%;
 
   max-width: 498px;
-  height: 160px;
+  height: 32px;
 
-  font-size: 80px;
-  font-weight: 700;
-  line-height: 100%;
   color: #fff;
   text-align: center;
   letter-spacing: -1.5px;
   vertical-align: middle;
 }
 
-h1 {
-  position: absolute;
-  z-index: 2;
-  top: 7%;
-  left: 11%;
+.burger-icon a {
+  cursor: pointer;
 
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 80%;
-  color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
+  position: relative;
+
+  display: block;
+
+  width: 32px;
+  height: 32px;
+}
+
+.burger-icon a:hover::after {
+  opacity: 1;
+}
+
+.burger-icon a:hover img {
+  opacity: 0;
+}
+
+.welcome-image__text {
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-image__text-image {
+  position: absolute;
+  top: 200px;
+  left: 381px;
+  display: block;
 }
 
 .index-nav__menu {
@@ -72,62 +165,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.burger-icon {
-  position: relative;
-  z-index: 2;
-
-  a {
-    cursor: pointer;
-
-    position: relative;
-
-    display: block;
-
-    width: 32px;
-    height: 32px;
-
-    &::after {
-      content: '';
-
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      opacity: 0;
-      background-image: url(../images/Icon-Burger-menu-hover.png);
-      background-repeat: no-repeat;
-      background-size: contain;
-
-      transition: opacity 0.3s ease;
-    }
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      opacity: 1;
-
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover {
-      &::after {
-        opacity: 1;
-      }
-      img {
-        opacity: 0;
-      }
-    }
-  }
+  vertical-align: top;
 }
 
 .phone-icon {
@@ -135,11 +174,6 @@ h1 {
   position: absolute;
   top: 10%;
   right: 12%;
-}
-
-.phone-icon,
-.hover-overlay {
-  cursor: url('../images/cursor.png'), pointer;
 }
 
 .hover-overlay {
@@ -166,9 +200,37 @@ h1 {
     visibility 0.3s ease;
 }
 
+.hover-overlay:hover,
+.hover-connector:hover ~ .hover-overlay,
 .phone-icon:hover ~ .hover-overlay {
+  cursor: url('../images/cursor.png'), pointer;
   visibility: visible;
   opacity: 1;
+}
+
+.hover-connector {
+  position: absolute;
+  z-index: 3;
+  top: 3%;
+  left: 68%;
+
+  width: 28%;
+  height: 100px;
+
+  visibility: hidden;
+}
+
+.hover-overlay a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: #d12d35;
+
+    a {
+      color: #d12d35;
+    }
+  }
 }
 
 .hover-overlay p {
