@@ -1,0 +1,154 @@
+@import './vars';
+@import './mixins';
+
+// #region header
+
+.header {
+  height: 100dvh;
+  background-image: url('/src/images/background_image_header_mobile.svg');
+  background-size: cover;
+  background-position: center right;
+
+  @include on-tablet {
+    background-image: url('/src/images/background__image__tablet.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 100%;
+  }
+
+  @include on-desktop {
+    background-image: url(/src/images/background\ image_desktop.svg);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+  }
+
+  &__content {
+    height: 100dvh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
+  }
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 40px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
+  }
+}
+
+// #endregion
+// #region icon
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.icon--phone {
+  background-image: url(/src/images/Icon_Phone_call_mobile.svg);
+
+  &::before {
+    visibility: hidden;
+
+    @include on-desktop {
+      visibility: visible;
+    }
+
+    content: '+1 234 5555-55-55';
+
+    position: absolute;
+    z-index: 100;
+    top: 5px;
+    left: -160px;
+
+    display: none;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    white-space: pre;
+
+    transition: transform 0.3s;
+  }
+
+  &:hover::before {
+    @include on-desktop;
+
+    display: block;
+  }
+}
+
+.icon--menu {
+  background-image: url(/src/images/Icon_Burger_menu_mobile.svg);
+  &:hover {
+    background-image: url(/src/images/Burger_hover.svg);
+  }
+}
+
+// #endregion
+// #region logo
+// #endregion
