@@ -1,0 +1,354 @@
+@use './shared' as *;
+
+// This file contains the styles for the submenu component
+.menu-page {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+  overflow: auto;
+  overflow-y: auto;
+  display: none;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 0 121px;
+
+  font-family: Cinzel, sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+
+  background-color: #d12d35;
+}
+
+.menu-page:target {
+  display: grid;
+  grid-template-columns: repeat($desktop-columns, 100px);
+  grid-template-rows: auto auto auto;
+  row-gap: 20px;
+}
+
+.page:has(.menu-page:target) {
+  overflow: hidden;
+}
+
+.menu-page__top {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+  display: grid;
+  grid-template-columns: repeat($desktop-columns, 100px);
+  row-gap: 20px;
+
+  width: 100%;
+  width: calc(100% + 242px);
+  max-width: 1260px;
+  padding: 0;
+
+  background-color: #d12d35;
+}
+
+.menu-page__button {
+  cursor: url('../images/Cursor-Mouse-Mice.png'), auto;
+
+  grid-column: 12 / span 1;
+  grid-row: 1;
+  place-self: center start;
+
+  width: 32px;
+  height: 32px;
+}
+
+.menu-page__logo {
+  grid-column: 2 / 5;
+  grid-row: 1;
+  align-self: center;
+
+  max-width: 87px;
+  height: 65px;
+  margin-top: 32px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.menu-nav__menu {
+  cursor: url('../images/Cursor-Mouse-Mice.png'), auto;
+
+  display: grid;
+  grid-column: 1 / span 5;
+  grid-row: 3;
+  align-self: start;
+
+  height: fit-content;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  & ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & li {
+    margin: 15px 0;
+    font-size: 24px;
+    text-align: left;
+  }
+
+  & a {
+    display: block;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu-contact {
+  display: grid;
+  grid-column: 1 / span 5;
+  grid-row: 5;
+  row-gap: 8px;
+  align-self: center;
+
+  max-width: 100%;
+  margin-bottom: 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  div {
+    margin-bottom: 2px;
+  }
+
+  div:nth-child(even) {
+    margin-top: 2px;
+    margin-bottom: 4px;
+  }
+
+  div:nth-of-type(3) {
+    margin-top: 0;
+  }
+
+  .call-to-action {
+    cursor: url('../images/Cursor-Mouse-Mice.png'), auto;
+
+    margin-top: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 744px) {
+  .menu-page {
+    overflow-y: auto;
+    grid-template-columns: repeat(6, 100px);
+    grid-template-rows: auto fit-content(100%) auto;
+    row-gap: 20px;
+
+    width: 744px;
+    height: 842px;
+    max-height: 100vh;
+    margin: 0 auto;
+    padding: 0 $tablet-margin;
+  }
+
+  .menu-page__top {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    row-gap: 20px;
+
+    width: 100%;
+    width: calc(100% + 242px);
+    max-width: 744px;
+    padding: 0;
+
+    background-color: #d12d35;
+  }
+
+  .menu-page__logo {
+    grid-column: 1 / span 1;
+    grid-row: 1;
+  }
+
+  .menu-nav__menu {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    height: fit-content;
+  }
+
+  .menu-nav__menu li {
+    margin: 20px 0;
+  }
+
+  .menu-page__button {
+    grid-column: 6 / span 1;
+    justify-self: end;
+    width: 24px;
+    height: 24px;
+  }
+
+  .menu-contact {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    row-gap: 8px;
+
+    max-width: 100%;
+
+    font-size: 16px;
+    font-weight: 700;
+    text-wrap: balance;
+
+    .call-to-action {
+      cursor: pointer;
+
+      margin-top: 30px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      vertical-align: top;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .menu-page {
+    overflow-y: auto;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: auto auto auto;
+    row-gap: 10px;
+
+    width: 320px;
+    max-width: 320px;
+    height: auto;
+    min-height: 568px;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  .menu-page__top {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: min-content;
+    row-gap: 10px;
+
+    width: 100%;
+    width: calc(100% + 130px);
+    max-width: 320px;
+    margin-top: 0;
+    padding: 0;
+
+    background-color: #d12d35;
+  }
+
+  .menu-page__logo {
+    grid-column: 1 / span 1;
+    grid-row: 1;
+    align-self: center;
+
+    width: 64px;
+    max-width: none;
+    height: 46px;
+  }
+
+  .menu-nav__menu {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+
+    & ul {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    & li {
+      margin: 15px 0;
+      font-size: 24px;
+      text-align: left;
+    }
+
+    & a {
+      display: block;
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .menu-page__button {
+    grid-column: 2 / span 1;
+    justify-self: end;
+    width: 24px;
+    height: 24px;
+  }
+
+  .menu-contact {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    row-gap: 8px;
+
+    max-width: 100%;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    .call-to-action {
+      cursor: pointer;
+
+      margin-top: 30px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      vertical-align: top;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
