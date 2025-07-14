@@ -1,0 +1,111 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Загальний стиль для всіх елементів форми */
+.form-element {
+  width: 100%;
+  padding: 18px 24px;
+  background: $color-light; /* Білий фон */
+  color: $color-dark; /* Чорний текст */
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+/* Стиль для полів введення */
+.form-input {
+  @extend .form-element;
+  height: 60px;
+
+  &::placeholder {
+    color: rgba($color-dark, 0.6);
+  }
+}
+
+/* Стиль для текстової області */
+.form-textarea {
+  @extend .form-element;
+  min-height: 150px;
+  resize: none;
+  line-height: 1.5;
+
+  &::placeholder {
+    color: rgba($color-dark, 0.6);
+  }
+}
+
+/* Фінальний стиль для кнопки */
+.submit-button {
+  @extend .form-element;
+  background: $color-light; /* Такий самий фон як у полів */
+  color: $color-dark; /* Чорний текст */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  text-transform: none; /* Вимкнено перетворення регістру */
+
+  &:hover {
+    background: darken($color-light, 10%);
+  }
+}
+
+/* Інші стилі залишаються незмінними */
+.field-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.inner-label {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba($color-dark, 0.6);
+  pointer-events: none;
+  transition: all 0.3s;
+  font-size: 16px;
+
+  .form-input:focus + &,
+  .form-input:not(:placeholder-shown) + &,
+  .form-textarea:focus + &,
+  .form-textarea:not(:placeholder-shown) + & {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .form-element {
+    padding: 16px 20px;
+    font-size: 15px;
+  }
+
+  .form-input, .submit-button {
+    height: 56px;
+  }
+
+  .inner-label {
+    font-size: 15px;
+    left: 20px;
+  }
+}
