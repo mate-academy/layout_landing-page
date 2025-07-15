@@ -1,4 +1,5 @@
 .icon {
+  position: relative;
   display: block;
   height: 24px;
   width: 24px;
@@ -14,6 +15,33 @@
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+
+    &::after {
+      content: "+1 234 555-55-55";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(100% + 8px);
+      padding: 8px 0;
+      color: $dark-color;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
   }
 
   &--menu {
