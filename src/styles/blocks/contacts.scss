@@ -8,7 +8,10 @@
     display: flex;
     flex-direction: column;
 
-    @include page-grid;
+    @include on-desktop {
+      @include page-grid;
+    }
+
     &__login {
       grid-column: 1 / 6;
       &-form {
@@ -46,6 +49,7 @@
           font-size: inherit;
           line-height: inherit;
           padding: 14px 16px;
+          resize: none;
         }
         &__send-button {
           margin-top: 16px;
@@ -61,6 +65,7 @@
           line-height: 27px;
           letter-spacing: 0;
           text-align: center;
+          cursor: pointer;
 
           @include on-tablet {
             margin-bottom: 80px;
@@ -108,6 +113,9 @@
       }
 
       &--data {
+        @include hover(transform, scale(1.1));
+
+        display: inline-block;
         font-family: $font-family_second;
         font-weight: $font-weight_medium;
         font-size: 16px;
@@ -115,6 +123,7 @@
         letter-spacing: 0;
         color: #191919;
         margin: 0;
+        text-decoration: none;
       }
     }
   }
