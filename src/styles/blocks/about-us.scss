@@ -1,43 +1,78 @@
+@use '../utils/mixins' as *;  // Importa mixins
+@use '../utils/variables' as *;  // Importa mixins
+
 .about-us {
-  height: 350px;
   background-color: #FCFAEF;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
 
-  --colums: 2;
-
-  display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(var(--colums), 1fr);
-
-
-  @include onTablet {
-    --colums: 6;
-
-    column-gap: 24px;
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    padding: 0;
+    max-height: 340px;
+    @include onTablet {
+      max-height: 420px;
+    }
+    @include onDesktop {
+      max-height: 480px;
+    }
   }
 
-  @include onDesktop {
-    --colums: 12;
-
-    column-gap: 24px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: #FCFAEF;
+    padding: 40px 20px;
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      padding: 64px 72px;
+    }
+    @include onDesktop {
+      padding: 80px 120px;
+      gap: 80px;
+    }
   }
 
   &__title {
-    grid-column: 1 / -1;
-
-    @include contentPaddingInline;
-
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $main-text-color;
+    margin: 0;
+    flex: 1 1 40%;
     @include onTablet {
-      grid-column: 1 / 4;
+      font-size: 2.5rem;
+      text-align: left;
+    }
+    @include onDesktop {
+      font-size: 3rem;
     }
   }
 
   &__description {
-    grid-column: 1 / -1;
-
-    @include contentPaddingInline;
-
+    font-size: 1rem;
+    color: $main-text-color;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1 1 60%;
     @include onTablet {
-      grid-column: 4 / 7;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+    @include onDesktop {
+      font-size: 1.15rem;
     }
   }
 }
