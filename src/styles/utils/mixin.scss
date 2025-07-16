@@ -1,13 +1,42 @@
-@mixin padding-inline {
-  padding-inline: 20px;
-
+@mixin onTablet {
   @media (min-width: 576px) {
-    padding-inline: 72px;
+    @content;
   }
 }
 
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
 
-@mixin icon-width  {
+@mixin paddingInline {
+  padding-inline: 20px;
+
+ @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include paddingInline();
+}
+$effect-duration: 0.3s;
+
+@mixin hover ($property, $to-value) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin iconWidth  {
   width: 24px;
   height: 24px;
 
@@ -18,7 +47,7 @@
 }
 
 
-@mixin title-width  {
+@mixin titlePosition  {
 top: 456px;
   width: 280px;
   height: 72px;
@@ -40,4 +69,22 @@ top: 456px;
 }
 
 
+@mixin pageGrid {
 
+    display: grid;
+    row-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+
+
+    @include onTablet {
+      row-gap: 24px;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+      @content;
+    }
+
+
+}
