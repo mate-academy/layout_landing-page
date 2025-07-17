@@ -4,7 +4,7 @@
 + 4. Change text color on hover for phone, email, and address
 5. Make sure phone icons and phone numbers are real links to start a call
 + 6. All addresses should be links to some location on Google Maps. Open them in a new tab with `target="_blank"`.
-7. Increase all images on hover (make them links to #, if there is no better option)
++ 7. Increase all images on hover (make them links to #, if there is no better option)
 + 8. Make sure everything looks neat on mobile and without horizontal scrolling
 + 9. The speed of animations should be the same throughout the page (for example, increasing when hovering or moving blocks when scrolling)
 + 10. Ensure that all `nav__links` work smoothly
@@ -14,7 +14,7 @@
       overflow: hidden; /* not to scroll the page */
     }
     ```
-12. Make it possible to scroll the menu if it is higher than the viewport;
++ 12. Make it possible to scroll the menu if it is higher than the viewport;
     ```css
     .menu {
       overflow: auto; /* to scroll the menu if needed */

@@ -13,6 +13,42 @@
 
    &--phone {
     background-image: url(../images/icons/icon-phone.svg);
+
+    @include onDesktop {
+      position: relative;
+
+      &::after {
+        content: "+1 234 5555-55-55";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-110%, -50%);
+        pointer-events: none;
+        white-space: nowrap;
+
+        color: $main-dark-blue;
+        background-color: $main-white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+        font-family: Monrope, sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0.15px;
+        line-height: 1.2;
+        text-align: center;
+
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
   }
 
   &--menu {
