@@ -1,0 +1,95 @@
+$width-schedule-block: 280px;
+$schedule-time-padding: 8px;
+$time-left-shift-pl1: 120px;
+$time-left-shift-pl2: 145px;
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  width: $width-schedule-block;
+  &__title-1 {
+    text-align: left;
+  }
+  &__pre-title {
+    font-size: 11px;
+  }
+  &__place {
+    display: block;
+    // width: $width-schedule-block;
+    padding-top: 32px;
+    line-height: 27px;
+
+    &--subtitle {
+      padding-bottom: 16px;
+    }
+  }
+}
+
+.schedule__time {
+  display: flex;
+  flex-direction: column;
+
+  &--item {
+    padding-bottom: $schedule-time-padding;
+    position: relative;
+    & span {
+      position: absolute;
+      left: $time-left-shift-pl1;
+    }
+  }
+}
+
+.second {
+  // for second place
+  padding-bottom: $schedule-time-padding;
+  position: relative;
+  & span {
+    position: absolute;
+    left: $time-left-shift-pl2;
+  }
+}
+
+.closed-on {
+  // for closed-on time place
+  padding-top: $schedule-time-padding;
+  & span {
+    position: relative;
+    left: 0;
+  }
+}
+
+@media (min-width: 744px) {
+  .schedule {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 288px 288px;
+    grid-template-rows: auto auto;
+    column-gap: 24px;
+    &__pre-title {
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+    &__title {
+      grid-row: 1 / span 2;
+      grid-column: 1;
+      height: 100%;
+    }
+
+    .place1 {
+      grid-column: 2;
+      grid-row: 1;
+      padding-top: 0;
+    }
+
+    .place2 {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+}
+@media (min-width: 1260px) {
+  .schedule {
+    width: 1020px;
+    grid-template-columns: 411px 516px;
+  }
+}
