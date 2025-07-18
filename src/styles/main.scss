@@ -1,7 +1,6 @@
 .page {
   scroll-behavior: smooth;
-
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 27px;
@@ -11,7 +10,9 @@
 .page__body {
   min-width: 320px;
   margin: 0;
+  overflow-x: hidden;
 }
+
 
 @media (min-width: 744px) {
   .header {
@@ -20,14 +21,16 @@
 }
 
 .header {
-  background-image: url(/images/header-bg.png);
+  background-image: url(../images/header-bg.png);
   background-repeat: no-repeat;
-  background-position: 50%;
+  background-position: center top;
   background-size: cover;
+
+  top: 2px;
 }
 
 .header__bottom {
-  padding-bottom: 288px;
+  padding-bottom: 150px;
 }
 
 @media (min-width: 600px) {
@@ -38,16 +41,25 @@
   }
 }
 
-.header__title {
-  margin-top: 200px;
+@media (max-width: 480px) {
+  .header__title {
+    font-size: 32px;
+  }
+}
 
-  font-family: Cinzel, sans-serif;
-  font-size: 40px;
+.header__title {
+  margin-top: 260px;
+  background-attachment: fixed;
+  font-family: 'Cinzel', sans-serif;
+  font-size: 70px;
   font-weight: 700;
   line-height: 100%;
   color: #fff;
   text-align: center;
   letter-spacing: -1.5px;
+
+  top: 200px;
+
 }
 
 @media (min-width: 600px) {
@@ -58,18 +70,17 @@
 }
 
 .top-bar {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-
+  align-items: center;
   padding-top: 25px;
   padding-bottom: 0;
+  display: flex;
 }
 
 @media (min-width: 600px) {
   .top-bar__logo {
-    width: 87px;
-    height: 65px;
+    padding-top: 32px;
+    padding-bottom: 0;
   }
 }
 
@@ -85,13 +96,16 @@
 
 .top-bar__icons {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 
 .header__top {
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  top: 52px;
+
 }
 
 .header__content {
@@ -106,6 +120,10 @@
   width: 64px;
   height: 46px;
   transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 @media (min-width: 744px) {
@@ -116,8 +134,12 @@
 }
 
 .header__icons {
+  gap: 30px;
   display: flex;
-  gap: 24px;
+  width: 119px;
+  height: 32px;
+  top: 68px;
+  left: 1021px;
 }
 
 @media (min-width: 600px) {
@@ -128,25 +150,28 @@
 }
 
 .icon--burger {
-  background-image: url(/images/menu.png);
+  background-image: url(../images/menu.png);
+  width: 32px;
+  height: 32px;
+  margin-top: 4px;
+
+  transform: scale(1.02);
 }
 
 @media (min-width: 744px) {
   .icon {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 22px;
+
   }
 }
 
 .icon--phone {
-  background-image: url(/images/Icon-Phone-call.png);
+  background-image: url(../images/Icon-Phone-call.png);
 }
 
 .icon {
   display: block;
-
-  width: 24px;
-  height: 24px;
 
   background-position: 50%;
   background-size: cover;
@@ -156,11 +181,11 @@
 
 .menu__phone-number {
   display: block;
-
   font-size: 16px;
   line-height: 27px;
   color: #fff;
   text-decoration: none;
+  top: 32px;
 }
 
 .icon--burger:hover {
@@ -168,11 +193,30 @@
 }
 
 .icon--close {
-  background-image: url(/images/Icon-Close.png);
+  width: 32px;
+  height: 32px;
+  background-image: url(../images/Icon-Close.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  block-size: 24px 24px;
+  border: none;
+  border-color: transparent;
+  cursor: pointer;
+
+  margin-top: 0px;
+  align-self: flex-start;
+}
+
+.icon--close:hover {
+  transform: scale(1.2);
 }
 
 .menu__nav {
-  margin-bottom: 32px;
+  margin-bottom: 26px;
+}
+
+.menu__nav a {
+  outline: none;
 }
 
 @media (min-width: 744px) {
@@ -182,27 +226,26 @@
 }
 
 .menu {
+  padding-left: 64px;
+  padding-right: 64.8px;
   box-sizing: border-box;
-  height: 100vh;
-
-  font-weight: 700;
   text-transform: uppercase;
-
   background-color: #d12d35;
+  height: 100vh;
+  font-weight: 700;
 }
 
 .page__menu {
+  opacity: 0;
   pointer-events: none;
-
+  transition: all .3s;
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   transform: translate(-100%);
+  padding-inline: 200px;
 
-  opacity: 0;
-
-  transition: all 0.3s;
 }
 
 .menu--active {
@@ -212,7 +255,12 @@
 }
 
 .menu__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 40px;
+  position: relative;
+  padding-top: 32px;
 }
 
 .nav__list {
@@ -286,17 +334,15 @@
   margin: 0 0 8px;
 }
 
-.about__schedule-hours {
+.about__schedule-hours,
+.about__schedule-days {
   display: flex;
   flex-direction: column;
-
+  gap: 8px;
   font-size: 16px;
   font-weight: 700;
   line-height: 27px;
   color: #161616;
-}
-
-.about__schedule-days {
   display: flex;
   flex-direction: column;
 
@@ -322,22 +368,19 @@
   margin: 0;
   font-size: 24px;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 200px;
+  padding-left: 70px;
+  white-space: nowrap;
+  width: 498px;
+  height: 30px;
+  top: 980px;
+  left: 555px;
+  font-family: 'Cinzel', sans-serif;
+
 }
 
 .about__location-name--cloisters {
   margin-top: 24px;
-}
-
-.about__title {
-  margin: 0 0 32px;
-
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 100%;
-  color: #161616;
-  text-align: left;
-  letter-spacing: -1.5px;
 }
 
 .about__close-on {
@@ -492,9 +535,9 @@
 .now-on-view__title {
   margin: 0;
 
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 700;
-  line-height: 100%;
+  line-height: 48px;
   color: #161616;
   text-align: center;
 }
@@ -524,28 +567,37 @@
   text-align: center;
 }
 
-.now-on-view__photos {
-  display: flex;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  flex-direction: row;
-  gap: 32px;
-  align-items: center;
-  justify-content: space-between;
-
-  margin: 40px auto;
-}
-
 @media (min-width: 744px) {
   .now-on-view__image {
     display: none;
   }
 }
 
+.now-on-view__image:not(:last-child) {
+  margin-right: 10px;
+}
+
+.now-on-view__photos {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 40px auto;
+}
+
 .now-on-view__image {
   cursor: pointer;
   display: block;
-  width: 100%;
+  min-width: 50%;
+}
+
+.now-on-view__image--wide {
+  flex: 2 1 0;
+  max-width: 60%;
+
 }
 
 .now-on-view__image:hover {
@@ -602,10 +654,10 @@
   line-height: 27px;
   color: #fff;
   text-align: center;
-
+  text-decoration: none;
   background-color: #d12d35;
 
-  transition: background-color 0.3s;
+
 }
 
 @media (min-width: 744px) {
@@ -629,18 +681,20 @@
 
 @media (min-width: 600px) {
   .explore__cards {
-    --columns: 6;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    column-gap: 24px;
+@media (min-width: 1024px) {
+  .explore__cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .explore__cards {
-  --columns: 2;
-
   display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-  gap: 48px 20px;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
 .card__photo {
@@ -662,7 +716,7 @@
 .card__description {
   margin: 0;
 
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 27px;
@@ -691,7 +745,7 @@
 .explore__card-title {
   margin-bottom: 0 0 8px;
 
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
   font-size: 24px;
   font-weight: bold;
   color: #d12d35;
@@ -699,7 +753,7 @@
 }
 
 .explore__card-description {
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: #161616;
@@ -712,35 +766,137 @@
   }
 }
 
+.about {
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+  display: grid;
+}
+
 .container {
   padding-right: 20px;
   padding-left: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 20px;
 }
 
 @media (min-width: 600px) {
   .about {
-    --columns: 6;
-
-    column-gap: 24px;
+    --columns: 2;
+    column-gap: 20px;
   }
 }
 
-.about {
-  --columns: 2;
+.museum-hours {
+  padding: 40px 20px;
 
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-  column-gap: 20px;
+  &__title-block {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .about__subtitle {
+    color: #d12d35;
+    margin-bottom: 8px;
+    padding: 0;
+    padding-right: 200px;
+    font-family: 'Cinzel', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 140%;
+    text-transform: uppercase;
+    white-space: nowrap;
+    letter-spacing: 0px;
+    font-style: Bold;
+    letter-spacing: 0px;
+    width: 100px;
+    height: 17px;
+    top: 980px;
+    left: 120px;
+  }
+
+  .about__title {
+    margin: 0 0 32px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px;
+    color: #161616;
+    font-family: 'Cinzel', sans-serif;
+    text-align: left;
+    font-style: Bold;
+    letter-spacing: -1.5px;
+    margin-top: 100px;
+    width: 411px;
+    height: 48px;
+    top: 999px;
+    left: 120px;
+  }
+
+  &__info {
+    display: grid;
+    gap: 32px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 }
 
-.about__subtitle {
-  margin: 0 0 2px;
-  padding: 0;
+.museum {
+  background-color: #f9f9f9;
+  padding: 24px;
+  border-radius: 12px;
 
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 140%;
-  color: #d12d35;
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  &__schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+    }
+  }
+
+  &__days {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  &__time {
+    font-size: 16px;
+    margin: 0;
+    text-align: right;
+  }
+
+  &__closed-on {
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+    margin-top: 8px;
+  }
+
+  &__closed-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  &__closed-text {
+    font-size: 14px;
+    margin: 0;
+  }
 }
 
 @media (min-width: 600px) {
@@ -861,7 +1017,7 @@
   padding: 14px 16px;
   border: none;
 
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -880,7 +1036,7 @@
   padding: 14px 16px;
   border: none;
 
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -978,7 +1134,7 @@
   padding: 14px 11px;
   border: none;
 
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
 
   background-color: #f8f8fa;
   outline: none;
@@ -988,7 +1144,7 @@
   padding: 14px 11px;
   border: none;
 
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
 
   background-color: #f8f8fa;
   outline: none;
@@ -1000,7 +1156,7 @@
   padding: 14px 11px 110px;
   border: none;
 
-  font-family: Cinzel, sans-serif;
+  font-family: 'Cinzel', sans-serif;
 
   background-color: #f8f8fa;
   outline: none;
@@ -1019,9 +1175,9 @@
   display: grid;
   row-gap: 100px;
 
-  max-width: 280px;
+  max-width: 40px;
   margin: 0;
-  padding: 100px 20px;
+  padding: 95px 268px;
 }
 
 .main {
@@ -1156,7 +1312,21 @@ p {
 
   height: 180px;
 
-  background-image: url(/images/footer-fashion-desktop.png);
+  background-image: url(../images/footer-fashion-desktop.png);
   background-position: top;
   background-size: cover;
+}
+
+.image-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-row img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
 }
