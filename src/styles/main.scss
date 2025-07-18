@@ -63,6 +63,14 @@ a {
     font-style: normal;
     font-size: 36px;
     line-height: 100%;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 56px;
+    }
   }
 
   &__bottom {
@@ -184,6 +192,36 @@ a {
 /* #endregion */
 
 /* #region icon */
+.phone {
+  &-number {
+    position: absolute;
+    background: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $effectDuration ease;
+    top: 100%;
+    left: 37%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    z-index: 10;
+  }
+
+  &-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover .phone-number {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
 .icon {
   height: 24px;
   width: 24px;
@@ -192,6 +230,11 @@ a {
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+
+    &:hover {
+      transform: scale(1.2);
+      transition: all $effectDuration ease;
+    }
   }
 
   &--menu {
@@ -232,10 +275,13 @@ a {
 
 /* #region main */
 .main {
+  overflow: hidden;
+
   &__content {
     display: grid;
     row-gap: 96px;
-    padding-bottom: 96px;
+    padding-block: 96px;
+    padding-top: 64px;
 
     @include on-tablet {
       row-gap: 120px;
@@ -260,7 +306,7 @@ a {
     display: block;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       transition: all $effectDuration ease;
     }
   }
@@ -322,20 +368,21 @@ a {
 
 /* #endregion */
 
+.full-width-wrapper {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 .hero {
-  margin-inline: -20px;
-  background: lightblue;
   text-align: center;
+  width: 100%;
 
-  @include on-tablet {
-    margin-inline: -72px;
-  }
-
-  @include on-desktop {
-    margin-inline: -120px;
-  }
-
-  img {
+  .hero-image {
     display: block;
     width: 100%;
     height: auto;
@@ -397,7 +444,7 @@ a {
     position: relative;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       transition: all $effectDuration ease;
     }
 
@@ -513,6 +560,7 @@ a {
 
   &__textarea {
     height: 120px;
+    resize: none;
   }
 
   &__textarea,
