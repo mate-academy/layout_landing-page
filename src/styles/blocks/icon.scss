@@ -21,26 +21,33 @@
   }
 
   &__tooltip {
-    position: absolute;
-    top: 50%;
-    right: calc(100% + 12px);
-    transform: translateY(-50%) translateX(10px);
-    font-family: $primary-font;
-    font-size: 12px;
-    font-weight: $font-weight-bold;
-    color: $primary-color;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all $animation-duration ease;
-    z-index: 10;
+    display: none;
+
+    @include on-desktop {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 12px);
+      transform: translateY(-50%) translateX(10px);
+      font-family: $primary-font;
+      font-size: 12px;
+      font-weight: $font-weight-bold;
+      color: $primary-color;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all $animation-duration ease;
+      z-index: 10;
+    }
   }
 
   &:hover {
-    .phone--icon__tooltip {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(-50%) translateX(0);
+    @include on-desktop {
+      .phone--icon__tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(0);
+      }
     }
   }
 }
