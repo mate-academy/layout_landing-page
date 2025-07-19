@@ -1,0 +1,73 @@
+@import '../mixins';
+
+.icon {
+  display: block;
+  transition: transform $animation-duration;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include hover-scale;
+}
+
+.phone--icon {
+  background-image: url(../images/icons/Icon-Phone-call.svg);
+  height: $spacing-large;
+  width: $spacing-large;
+  position: relative;
+
+  @include on-desktop {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 12px);
+    transform: translateY(-50%) translateX(10px);
+    font-family: $primary-font;
+    font-size: 12px;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $animation-duration ease;
+    z-index: 10;
+  }
+
+  &:hover {
+    .phone--icon__tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+}
+
+.burger--icon {
+  background-image: url(../images/icons/Icon-Burger-menu.svg);
+  height: $spacing-large;
+  width: $spacing-large;
+
+  @include hover-scale;
+  &:hover {
+    background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+  }
+
+  @include on-desktop {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.icon--close {
+  background-image: url(../images/icons/Icon-Close.png);
+  height: $spacing-large;
+  width: $spacing-large;
+
+  @include on-desktop {
+    height: 32px;
+    width: 32px;
+  }
+}

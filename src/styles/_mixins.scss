@@ -1,0 +1,37 @@
+@mixin hover-scale($scale: 1.1) {
+  transition: transform $animation-duration ease;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
