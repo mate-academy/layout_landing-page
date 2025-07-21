@@ -1,0 +1,72 @@
+.icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../img/icons/icon-phone-call.svg);
+    &-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      @include on-desktop {
+        &:hover {
+          .icon--phone-hover {
+            pointer-events: auto;
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &-hover {
+      pointer-events: none;
+
+      position: absolute;
+      right: 100%;
+
+      display: inline-block;
+
+      margin-right: 20px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      color: $main-text-color;
+      letter-spacing: 2px;
+      white-space: nowrap;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition: opacity $effectDuration;
+    }
+  }
+
+  &--menu {
+    background-image: url(../img/icons/icon-burger-menu.svg);
+
+    &:hover {
+      transform: scale(1.2);
+      background-image: url(../img/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../img/icons/icon-close.svg);
+  }
+}
