@@ -1,12 +1,15 @@
+$font-width-bold: 700;
+
 .menu {
   box-sizing: border-box;
-  height: 568px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
   background: #d12d35;
   overflow: auto;
-
-  @media (min-width: 1240px) {
-    height: 840px;
-  }
 
   &__top {
     position: sticky; /* to keep cross always visible */
@@ -17,13 +20,18 @@
     display: flex;
   }
   &__info {
-    font-size: 14px;
+    font-size: 16px;
     &--adress {
       margin: 0;
-      font-weight: 400;
+      font-weight: $font-width-bold;
+      letter-spacing: 1px;
+      padding-bottom: 8px;
     }
     &--phone {
+      font-size: 14px;
       color: inherit;
+      font-weight: $font-width-bold;
+      letter-spacing: 0.6px;
     }
   }
   &__order--button {
@@ -32,7 +40,7 @@
     color: inherit;
 
     line-height: 27px;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 12px;
     letter-spacing: 1px;
     width: max-content;
@@ -62,16 +70,28 @@
   }
   &__list {
     margin: 0;
-    padding: 0;
+    padding-bottom: 16px;
     list-style: none;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 2px;
 
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 32px;
   }
   &__link {
     color: inherit;
+  }
+  &__item {
+    font-size: 22px;
+
+    @media (min-width: 1240px) {
+      transition: 1s;
+      &:hover {
+        border-bottom: 1px solid #fff;
+        transform: scale(1.05);
+        transition: 1s;
+      }
+    }
   }
 }
