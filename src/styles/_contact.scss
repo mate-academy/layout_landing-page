@@ -1,11 +1,27 @@
-// ==========================================================================
-// CONTACT (Corrigido)
-// ==========================================================================
+// Placeholder para estilos de formulário compartilhados
+%form-element-base {
+    width: 100%;
+    padding: $spacing-md;
+    font-size: 1rem;
+    font-family: $font-body;
+    border: 1px solid $gray-border;
+    background-color: $white;
+    transition: border-color $transition-speed, box-shadow $transition-speed;
+
+    &::placeholder {
+        color: $gray-placeholder;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $red;
+        box-shadow: 0 0 8px rgba($red, 0.3);
+    }
+}
 
 .contact {
     padding: $spacing-xl $spacing-lg;
-    background-color: $gray-bg; // Usando a variável de fundo
-
+    
     &__title {
         text-align: center;
         font-size: 2.2rem;
@@ -13,58 +29,23 @@
     }
 
     &__form {
-        max-width: $content-max-width; // Usando a variável de largura
+        max-width: $content-max-width;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
     }
 
-    &__input,
-    &__textarea {
-        width: 100%;
-        padding: $spacing-md;
-        font-size: 1rem;
-        font-family: $font-body;
-        border: 1px solid $gray-border;
-        background-color: $white;
-        transition: border-color $transition-speed, box-shadow $transition-speed;
-
-        &::placeholder {
-            color: $gray-placeholder;
-        }
-
-        // CORREÇÃO APLICADA AQUI
-        // O :focus agora está aninhado dentro do seletor principal.
-        &:focus {
-            outline: none;
-            border-color: $red;
-            box-shadow: 0 0 8px rgba($red, 0.3);
-        }
+    // CORREÇÃO APLICADA:
+    // Usando @extend para garantir a ordem correta dos seletores
+    // e evitar problemas de especificidade.
+    &__input {
+        @extend %form-element-base;
     }
 
     &__textarea {
+        @extend %form-element-base;
         resize: vertical;
         min-height: 150px;
-    }
-
-    &__button {
-        padding: $spacing-md;
-        font-size: 1rem;
-        font-weight: bold;
-        color: $white;
-        background-color: $red;
-        border: none;
-        cursor: pointer;
-        text-transform: uppercase;
-        transition: background-color $transition-fast, transform $transition-fast;
-
-        &:hover {
-            background-color: $red-dark;
-        }
-
-        &:active {
-            transform: scale(0.98);
-        }
     }
 }
