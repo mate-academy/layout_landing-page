@@ -1,0 +1,96 @@
+.page {
+  font-family: Cinzel, serif;
+  color: $main-text-color;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  line-height: 27px;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    transform: translateX(-100%);
+    transition: all 0.3s;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+
+    &:target {
+      transform: translateX(0);
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 75px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.main {
+  position: relative;
+  background-color: #fff;
+  z-index: 1;
+
+  &__content {
+    padding-block: 100px;
+    row-gap: 100px;
+    display: grid;
+
+    @include on-tablet {
+      row-gap: 140px;
+      padding-block: 140px;
+    }
+
+    @include on-desktop {
+      row-gap: 140px;
+      padding-block: 140px;
+    }
+  }
+}
+
+.section {
+  &-title {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 35px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 32px;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include on-tablet {
+      margin-bottom: 48px;
+      line-height: 48px;
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 48px;
+      line-height: 48px;
+      font-size: 48px;
+    }
+  }
+}
