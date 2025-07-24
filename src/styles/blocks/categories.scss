@@ -1,0 +1,115 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.category {
+  &__name {
+    @include basic-type;
+
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+  }
+}
+
+.categories__button {
+  @include basic-type;
+
+  cursor: url('../styles/images/Vector.png'), auto;
+  font-size: 16px;
+  line-height: 27px;
+  height: 56px;
+  border-radius: 8px;
+  width: 280px;
+  color: #fff;
+  background-color: $main-text-color;
+
+  @include on-tablet {
+    width: 600px;
+  }
+
+  @include on-desktop {
+    width: 324px;
+  }
+
+  &:hover {
+    color: $main-text-color;
+    background-color: #f8f8fa;
+    border: 2px solid #f8f8fa;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #111;
+  }
+}
+
+.categories__button-wrapper {
+  margin-top: 24px;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include on-desktop {
+    display: block;
+  }
+}
