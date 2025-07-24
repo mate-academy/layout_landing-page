@@ -89,6 +89,7 @@ $main-text-color: red;
   &__bottom {
     padding: 280px;
     @include contentPaddingInline;
+
   }
 
   &-title {
@@ -104,6 +105,27 @@ $main-text-color: red;
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    @include onTablet {
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 64px;
+      line-height: 64px;
+      letter-spacing: -1.5px;
+      text-align: center;
+      vertical-align: middle;
+
+    }
+
+    @include onDesktop{ font-weight: 700;
+    font-style: Bold;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+
+  }
   }
 }
 
@@ -114,9 +136,7 @@ $main-text-color: red;
   justify-content: space-between;
   align-items: center;
 
-  @media (min-width:576px) {
-    padding: 64px 72px;
-  }
+ 
 
 
   &__icons {
@@ -170,6 +190,7 @@ $main-text-color: red;
   pointer-events: none;
 
   &__top {
+
     display: flex;
     justify-content: space-between;
   }
@@ -393,63 +414,72 @@ $main-text-color: red;
     row-gap: 64px;
   }
 }
-
 .now-on-view {
   &__photos {
     @include pageGrid;
     margin-bottom: 16px;
+    &-grid {
+      --columns: 3;
+      @include onTablet {
+        column-gap: 24px;
+        --columns: 6;
+      }
+      @include onDesktop {
+        --columns: 12;
+      }
+    }
   }
 
   &__link {
-
     @include onTablet {
       grid-column: span 3;
     }
-
     @include onDesktop {
       grid-column: span 4;
     }
-
-
-  &--wide {
-    @include onTablet {
-      grid-column: span 4;
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
     }
-
-    @include onDesktop {
-      grid-column: span 8;
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+    &-vanish {
+      display: block;
+      @include onTablet {
+        display: none;
+      }
+      @include onDesktop {
+        display: block;
+      }
     }
   }
 
-  &--square {
-    @include onTablet {
-      grid-column: span 2;
-    }
-
-    @include onDesktop {
-      grid-column: span 4;
-    }
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
+  &__title {
+    font-family: Cinzel;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 27px;
+    letter-spacing: 0px;
+    color: #d12d35;
   }
-&__photo {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
 }
-
-&__title {
-  font-family: Cinzel;
-  font-weight: 700;
-  font-style: Bold;
-  font-size: 16px;
-  leading-trim: NONE;
-  line-height: 27px;
-  letter-spacing: 0px;
-  color: #D12D35;
-}
-}
-
 .explore {
 
 
@@ -495,81 +525,84 @@ $main-text-color: red;
 }
 
 
-  .contact-info {
-    display: grid;
-    gap: 20px;
-    grid-column: 1/-1;
+.contact-info {
+  display: grid;
+  gap: 20px;
+  grid-column: 1/-1;
 
 
-    @include onTablet {
-      grid-column: span 3;
-    }
-
-    @include onDesktop {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .branch {
-      font-size: 14px;
-
-      h3 {
-        font-weight: bold;
-        font-size: 16px;
-        margin-bottom: 4px;
-      }
-
-      .label {
-        text-transform: uppercase;
-        font-size: 12px;
-        margin-top: 12px;
-        font-weight: 600;
-      }
-
-      address {
-        font-style: normal;
-      }
-    }
+  @include onTablet {
+    grid-column: span 3;
   }
 
-  .contact-form {
-    display: grid;
-    flex-direction: column;
-    gap: 10px;
-    grid-column: span var(--columns);
+  @include onDesktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-    @include onTablet {
-      grid-column: span 3;
-    }
+  .branch {
+    font-size: 14px;
 
-    @include onDesktop {
-      grid-column: span 8;
-    }
-
-    input,
-    textarea {
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: #a6192e;
-      color: white;
-      padding: 12px;
+    h3 {
       font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .label {
       text-transform: uppercase;
-      border: none;
-      cursor: pointer;
+      font-size: 12px;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    address {
+      font-style: normal;
     }
   }
+}
 
-.footer{
+.contact-form {
+  display: grid;
+  flex-direction: column;
+  gap: 10px;
+  grid-column: span var(--columns);
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+
+  @include onDesktop {
+    grid-column: span 8;
+  }
+
+  input,
+  textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    background-color: #a6192e;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color:  #AE1C23;
+  }
+}
+
+.footer {
   object-position: center;
   object-fit: cover;
 
-  &__image{
-height: 100 vh;
-  width: 100%;
+  &__image {
+    height: 100 vh;
+    width: 100%;
   }
-  
+
 }
