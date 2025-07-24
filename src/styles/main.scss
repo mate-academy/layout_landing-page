@@ -1,3 +1,608 @@
-body {
+$tablet-min-width: 576px;
+$desktop-min-width: 1024px;
+$effectDuration: 0.3s;
+$main-text-color: red;
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    column-gap: 24px;
+    --columns: 6;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+
+}
+
+@mixin onTablet {
+  @media(min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+
+  }
+}
+
+.page {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+
+.header {
+  display: flex;
+  background-image: url(/src/images/bg.png);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  &__bottom {
+    padding: 280px;
+    @include contentPaddingInline;
+
+  }
+
+  &-title {
+    font-size: 40px;
+    line-height: 100%;
+    margin: 0;
+    display: flex;
+    color: white;
+    font-weight: 700;
+    font-style: Bold;
+    letter-spacing: -1.5px;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @include onTablet {
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 64px;
+      line-height: 64px;
+      letter-spacing: -1.5px;
+      text-align: center;
+      vertical-align: middle;
+
+    }
+
+    @include onDesktop{ font-weight: 700;
+    font-style: Bold;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+
+  }
+  }
+}
+
+.top-bar {
+  padding-block: 24px;
+  @include contentPaddingInline;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+ 
+
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+
+  @media (min-width:576px) {
+    height: 32px;
+    width: 32px;
+  }
+
+  &_phone {
+    background-image: url(../icons/Icon-Phone.png);
+  }
+
+  &_burger {
+    background-image: url(../icons/Icon-Burger.png);
+  }
+
+  &_close {
+    background-image: url(/src/icons/Icon-Close.png);
+  }
+
+}
+
+
+
+
+
+
+
+
+
+.menu {
+  background-color: #D12D35;
+  height: 100vh;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+
+  &__top {
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    @include contentPaddingInline;
+  }
+}
+
+
+
+
+
+.nav-list {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+
+}
+
+.nav-link {
+  color: #FFFF;
+  text-decoration: none;
+}
+
+.the-met-avenue {
+  display: block;
+  color: #FFFF;
+  text-decoration: none;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.the-met-cloisters {
+  color: #FFFF;
+  text-decoration: none;
+  display: block;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+
+}
+
+.call-order {
+  width: fit-content;
+  border-bottom: #FFFF 1px solid;
+  color: #FFFF;
+  text-decoration: none;
+  display: block;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: Cinzel;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 32px;
+  leading-trim: NONE;
+  line-height: 48px;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  &__align-left {
+    text-align: left;
+    grid-column: 1/-1;
+
+
+    @include onTablet {
+      grid-column: 1/4;
+    }
+
+    @include onDesktop {
+      grid-column: 1/6;
+    }
+  }
+}
+
+.main {
+  display: grid;
+  row-gap: 96px;
+  padding-block: 96px;
+  @include contentPaddingInline;
+
+  @include onTablet {
+    padding-block: 120px;
+    row-gap: 120px;
+  }
+}
+
+.about-us {
+  @include pageGrid;
+
+  &__content {
+    grid-column: 1/-1;
+
+    @include onTablet {
+      grid-column: 4/7;
+    }
+
+    @include onDesktop {
+      grid-column: span 5;
+    }
+  }
+}
+
+.about-us__subheading {
+  font-family: Cinzel;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 24px;
+  leading-trim: NONE;
+  line-height: 30px;
+  letter-spacing: 0px;
+
+}
+
+.about-us__schedule {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.about-us__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0px;
+
+}
+
+.about-us__days {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: Cinzel;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0px;
+
+}
+
+
+.about-us__under-heading {
+  font-family: Cinzel;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 140%;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  color: #D12D35;
+}
+
+.now-on-views_subtitle {
+  font-family: Cinzel;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 27px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.now-on-view__subtitle {
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 27px;
+  letter-spacing: 0px;
+
+}
+
+.now-on-views {
+  &wrapper {
+    display: grid;
+    row-gap: 40px;
+  }
+
+  @include onTablet {
+    row-gap: 64px;
+  }
+}
+.now-on-view {
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+    &-grid {
+      --columns: 3;
+      @include onTablet {
+        column-gap: 24px;
+        --columns: 6;
+      }
+      @include onDesktop {
+        --columns: 12;
+      }
+    }
+  }
+
+  &__link {
+    @include onTablet {
+      grid-column: span 3;
+    }
+    @include onDesktop {
+      grid-column: span 4;
+    }
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+    &-vanish {
+      display: block;
+      @include onTablet {
+        display: none;
+      }
+      @include onDesktop {
+        display: block;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__title {
+    font-family: Cinzel;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 27px;
+    letter-spacing: 0px;
+    color: #d12d35;
+  }
+}
+.explore {
+
+
+
+  &__photo {
+    width: 100%;
+  }
+
+  &__title {
+    font-family: Cinzel;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    leading-trim: NONE;
+    line-height: 140%;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #D12D35;
+  }
+
+  &__description {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 27px;
+    letter-spacing: 0px;
+    text-align: center;
+
+  }
+}
+
+.testimonials {
+  &__explores {
+    display: grid;
+    row-gap: 40px;
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+    }
+  }
+}
+
+
+.contact-info {
+  display: grid;
+  gap: 20px;
+  grid-column: 1/-1;
+
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .branch {
+    font-size: 14px;
+
+    h3 {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .label {
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    address {
+      font-style: normal;
+    }
+  }
+}
+
+.contact-form {
+  display: grid;
+  flex-direction: column;
+  gap: 10px;
+  grid-column: span var(--columns);
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+
+  @include onDesktop {
+    grid-column: span 8;
+  }
+
+  input,
+  textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    background-color: #a6192e;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color:  #AE1C23;
+  }
+}
+
+.footer {
+  object-position: center;
+  object-fit: cover;
+
+  &__image {
+    height: 100 vh;
+    width: 100%;
+  }
+
 }
