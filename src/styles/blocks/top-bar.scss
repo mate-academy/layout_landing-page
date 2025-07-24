@@ -5,7 +5,7 @@
   padding-block: 24px;
 
   @include on-tablet {
-    padding-block: 72px;
+    padding-block: 32px;
   }
 
   &__icons {
@@ -13,13 +13,49 @@
     gap: 24px;
   }
 
+  &__phone {
+    position: relative;
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+
+        position: absolute;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #1b2129;
+        white-space: nowrap;
+
+        top: 8px;
+        right: 52px;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
   &__logo {
     display: flex;
     width: 152px;
     height: 16px;
 
-    &:hover {
-      @include hover-cursor;
+    @include hover-animation;
+
+    @include on-tablet {
+      width: 228px;
+      height: 24px;
+    }
+
+    @include on-desktop {
+      width: 228px;
+      height: 24px;
     }
   }
 }
