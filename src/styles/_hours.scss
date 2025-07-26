@@ -1,0 +1,164 @@
+@use './shared' as *;
+
+.museum-hours {
+  display: grid;
+  grid-template-columns: repeat($desktop-columns, $desktop-column-width);
+  column-gap: $desktop-gutter;
+
+  box-sizing: border-box;
+  width: $desktop-width;
+  max-width: $desktop-max-width;
+  margin: 0 auto;
+}
+
+@media (max-width: 744px) {
+  .museum-hours {
+    grid-template-columns: repeat($tablet-columns, $tablet-column-width);
+    justify-content: space-between;
+
+    width: $tablet-width;
+    max-height: none;
+    margin: 0 auto;
+  }
+}
+
+.museum-hours__plan {
+  display: grid;
+  grid-column: 2 / span 4;
+  grid-row: 1;
+  grid-template-columns: repeat($desktop-columns, $desktop-column-width);
+  align-items: baseline;
+
+  width: 100%;
+  height: 67px;
+  margin-top: 40px;
+}
+
+.museum-hours__plan-title {
+  grid-column: 1 / span 2;
+
+  margin-right: 8px;
+
+  font-size: 12px;
+  font-weight: 800;
+  color: #d12d35;
+}
+
+.museum-hours__plan-subtitle {
+  grid-column: 1 / span 7;
+
+  font-size: 48px;
+  font-weight: 700;
+  color: #161616;
+  white-space: nowrap;
+}
+
+@media (max-width: 744px) {
+  .museum-hours__plan {
+    display: grid;
+    grid-column: 1 / span 8;
+    grid-row: 1;
+    grid-template-columns: repeat($tablet-columns, $tablet-column-width);
+  }
+  .museum-hours__plan-title {
+    grid-column: 2 / span 2;
+  }
+  .museum-hours__plan-subtitle {
+    grid-column: 2 / span 3;
+    white-space: normal;
+  }
+}
+
+.museum-hours__locations {
+  grid-column: 7 / span 6;
+  grid-row: 1;
+
+  width: 100%;
+  margin-top: 15px;
+
+  color: #161616;
+
+  @media (max-width: 744px) {
+    grid-column: 5 / span 4;
+    grid-row: 1;
+  }
+}
+
+.museum-hours__locations-title {
+  grid-column: 6 / span 5;
+
+  margin-top: 20px;
+  margin-bottom: 16px;
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #161616;
+
+  @media (max-width: 744px) {
+    grid-column: 4 / span 4;
+  }
+}
+
+.hours-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+
+  @media (max-width: 744px) {
+    margin-bottom: 6px;
+  }
+}
+
+.museum-hours__locations-hours {
+  width: 120px;
+  height: 27px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (max-width: 744px) {
+  .museum-hours__locations-hours {
+    width: 120px;
+    min-width: 80px;
+  }
+}
+
+.museum-hours__locations-days {
+  padding-left: 16px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 27px;
+  white-space: normal;
+}
+
+.closed-on-row {
+  flex-direction: column;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  .museum-hours__locations-hours {
+    margin-bottom: 10px;
+  }
+
+  .museum-hours__locations-days-extended {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 15px;
+  }
+}
+
+@media (max-width: 744px) {
+  .closed-on-row {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .closed-on-row .museum-hours__locations-days-extended {
+    width: 259px;
+    font-size: 16px;
+    line-height: 14px;
+  }
+}
