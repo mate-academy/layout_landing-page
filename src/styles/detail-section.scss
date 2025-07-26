@@ -1,88 +1,88 @@
+.details {
+  letter-spacing: 0;
 
-.detail-section {
   &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+
+  &__button {
     display: flex;
-    row-gap: 80px;
+    justify-content: center;
+
+    &__link {
+      width: 280px;
+
+      @include on-tablet {
+        width: 390px;
+      }
+
+      @include on-desktop {
+        width: 325px;
+      }
+    }
   }
 }
 
 .detail {
-  @include pageGrid;
-  margin-bottom: 16px;
-  row-gap: 20px;
-
-
   &__photos {
-    grid-column: 1 / -1;
-    @include pageGrid;
-    gap: 16px;
+    @include page-grid;
+
+    margin-bottom: 16px;
   }
 
   &__link {
     position: relative;
     &--wide {
-      @include OnTablet {
+      @include on-tablet {
         grid-column: span 4;
       }
-      @include OnDesktop {
+
+      @include on-desktop {
         grid-column: span 8;
       }
     }
     &--square {
+      height: 0;
       padding-bottom: 100%;
-      @include OnTablet {
+
+      @include on-tablet {
         grid-column: span 2;
       }
-      @include OnDesktop {
+
+      @include on-desktop {
         grid-column: span 4;
       }
     }
   }
+
   &__photo {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    transition: transform $duration;
+
     &:hover {
       transform: scale(1.05);
     }
   }
 
   &__title {
-    grid-column: 1 / -1;
-    margin-bottom: 8px;
-    font-size: 24px;
     font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 140%;
-
-
-    @include OnTablet {
-      font-size: 32px;
-      grid-column: 1 / -1;
-    }
+    font-size: 24px;
+    margin-bottom: 8px;
   }
 
-  &__info {
-    display: block;
-    grid-column: 1 / -1;
-    margin: 0;
+  &__text {
+    font-weight: 400;
     font-size: 16px;
-
-    @include OnTablet {
-      grid-column: 1 / -1;
-      font-size: 18px;
-    }
-
-    @include OnDesktop {
-      grid-column: span 8;
-    }
   }
-
-
- }
-
+}
 
 
 
