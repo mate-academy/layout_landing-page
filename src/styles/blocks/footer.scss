@@ -1,0 +1,135 @@
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-width: 1260px;
+  margin: 0 auto;
+
+  @include responsive-template(padding-inline, 20px, 72px, 120px);
+  @include responsive-template(margin-bottom, 64px, 120px, 120px);
+
+  &__contacts {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__title {
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__form-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__form {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__textarea {
+    height: 148px;
+    resize: none;
+  }
+
+  &__input {
+    height: 48px;
+  }
+
+  &__input,
+  &__textarea {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    background-color: $placehoolder-bg-color;
+    color: $placehoolder-text-color;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Manrope, sans-serif;
+
+    &::placeholder {
+      box-sizing: border-box;
+    }
+
+    &:hover {
+      outline: 1px solid $color-outline;
+    }
+
+    &:focus {
+      outline: 1px solid $color-orange;
+      color: $color-dark-blue;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    background-color: $color-orange;
+    color: $color-white;
+    border: none;
+    border-radius: 8px;
+    height: 56px;
+
+    @include hover(background-color, $color-dark-blue);
+    @include active(background-color, $color-black);
+  }
+
+  &__address {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    gap: 24px;
+
+    @include on-desktop {
+      margin: 0;
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-label {
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+      color: $color-gray;
+      letter-spacing: 0.15px;
+    }
+
+    &-link {
+      font-weight: 400;
+      font-size: 16px;
+      text-decoration: none;
+      font-style: normal;
+      letter-spacing: 0.15px;
+      color: $text-link-color;
+
+      @include hover(color, $color-orange);
+    }
+  }
+}

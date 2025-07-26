@@ -1,0 +1,46 @@
+// Для Планшетів
+@mixin on-tablet {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+// Для Десктопу
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+// Шаблон для стилів
+@mixin responsive-template($property, $mobile, $tablet, $desktop: null) {
+  #{$property}: #{$mobile};
+
+  @include on-tablet {
+    #{$property}: #{$tablet};
+  }
+
+  @if $desktop {
+    @include on-desktop {
+      #{$property}: #{$desktop};
+    }
+  }
+}
+
+// Шаблон для плавного hover
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+// Шаблон для плавного натискання кнопки
+@mixin active($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:active {
+    #{$property}: $toValue;
+  }
+}
