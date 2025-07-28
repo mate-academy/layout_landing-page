@@ -1,0 +1,1137 @@
+@use 'variables';
+@use 'animation';
+
+@media (min-width: 320px) {
+  .container {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  // #region Pop Up
+  .pop-up__menu {
+    opacity: 0.97;
+    transition: 0.3s ease all;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    gap: 24px;
+    background-color: #c2c2c2;
+
+    &:hover {
+      cursor:
+        url(../assets/icons/mouse-arrow.svg) 0 0,
+        auto;
+    }
+  }
+
+  .pop-up__head {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    height: 86px;
+    margin: 0 20px;
+  }
+
+  .pop-up__logo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pop-up__logo-wrapper {
+    width: 130px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      .pop-up__logo {
+        --pop-up-logo-color: #fff;
+      }
+    }
+  }
+
+  .close {
+    display: none;
+  }
+
+  .pop-up__close-btn {
+    width: 24px;
+    height: 24px;
+    background-image: url(../assets/icons/Icon-Close.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &:hover {
+      transition: all 0.3s ease;
+      transform: scale(1.3);
+    }
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    margin: 0 100px 0 20px;
+  }
+
+  .navigation__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+
+    .navigation__link {
+      cursor: inherit;
+      justify-content: start;
+      align-items: center;
+      text-align: center;
+      position: relative;
+
+      &:hover {
+        &::after {
+          content: '';
+          height: 2px;
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          right: 0;
+          border: 2px solid black;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .navigation__item {
+    max-width: 150px;
+    display: inline;
+    position: relative;
+    font-size: 1.38rem;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: variables.$forLightBG-text-color;
+
+    &:hover {
+      cursor:
+        url(../assets/icons/mouse-pointer.svg) 0 0,
+        pointer;
+    }
+  }
+
+  .phone-and-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    color: variables.$forLightBG-text-color;
+  }
+
+  .pop-up__phone {
+    cursor: inherit;
+    font-size: 1rem;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    transition: all 1.5s ease-in-out;
+
+    &:hover {
+      transition: all 1.5s ease;
+      transform: translateX(20px);
+      cursor:
+        url(../assets/icons/mouse-pointer.svg) 0 0,
+        pointer;
+    }
+  }
+
+  .call-to-order {
+    font-family: Poppins, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: variables.$forLightBG-text-color;
+  }
+
+  // #endregion
+
+  // #region Header
+
+  .header {
+    height: 86px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    width: 130px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      .logo {
+        --logo-color: variables.$icon-hover-color;
+      }
+    }
+  }
+
+  .btn-menu {
+    display: flex;
+    width: 72px;
+    height: 24px;
+    gap: 24px;
+  }
+
+  .phone-link {
+    display: none;
+  }
+
+  .btn-phone {
+    background-image: url(../assets/icons/phone-icon.svg);
+    height: 100%;
+    width: 100%;
+  }
+
+  .header__btn {
+    height: 24px;
+    width: 24px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .btn-burger {
+    background-image: url(../assets/icons/burger-menu-full.svg);
+    height: 100%;
+    width: 100%;
+    transition: all 1.5s ease;
+
+    &:hover {
+      transition: all 1.5s ease;
+      background-image: url(../assets/icons/burger-menu-hover.svg);
+    }
+  }
+
+  // #endregion
+
+  // #region Hero
+
+  .hero {
+    width: 100%;
+    min-height: 578px;
+    background-image: url(../assets/images/hero__bg-bicycle-320.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 88px;
+  }
+
+  .hero__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    font-family: Poppins, sans-serif;
+  }
+
+  // #endregion
+
+  // #region Bikes
+
+  .bikes {
+    display: flex;
+    flex-direction: column;
+    margin: 60px 20px 92px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bikes__moto {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: start;
+    justify-content: center;
+    text-align: start;
+    max-width: 255px;
+    margin-bottom: 92px;
+    margin-left: 10%;
+  }
+
+  .bikes__title {
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+
+  .bikes__subtitle {
+    font-size: 1.4rem;
+
+    font-weight: 500;
+  }
+
+  .bikes__slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .bikes__slider-title {
+    font-size: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 48px;
+  }
+
+  .bikes__slider-list {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 2px;
+  }
+
+  .bikes__slider-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+    transition: all 1.5s ease-in-out;
+    box-shadow: 0.1px 0.1px 25.1px #57575645;
+    & > p {
+      transition: all 0.8s ease-in-out;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      transition: all 0.8s ease-in-out;
+      box-shadow: 0.1px 0.1px 25.1px #575756e0;
+      z-index: 10;
+
+      & > p {
+        transition: all 0.8s ease-in-out;
+      }
+    }
+  }
+
+  .bikes__slider-item-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+    width: 280px;
+    height: 228px;
+  }
+
+  .slider__card-title {
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .slider__card-subscribe {
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+
+  .slider__card-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  // #endregion
+
+  // #region Details
+
+  .details {
+    max-width: 280px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+
+  }
+
+  .details__title {
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .details__advantage-photoframe {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+    transition: all 1.5s ease-in-out;
+
+
+  }
+
+  .details__advantage-wrapp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    &:last-of-type {
+      .details__advantage-photoframe {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  .details_advantage-photo {
+    width: 130px;
+    height: 130px;
+    transition: all 1.5s ease-in-out;
+
+    &:hover {
+      transition: all 0.8s ease-in-out;
+      transform: translateY(-10px);
+    }
+  }
+
+  .details__advantage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .details__advantage-title {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .details__advantage-description {
+    font-size: 1rem;
+  }
+
+  .details__button-explore {
+    border-radius: 48px;
+    padding: 15px 108px;
+    place-self: center;
+    background-color: variables.$light-BTN-color;
+    color: variables.$forLightBG-text-color;
+    font-family: Poppins, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+
+    &:hover {
+      transition: all 0.2s ease;
+      box-shadow: 1px 1px 10px rgba(255, 255, 255, 1);
+    }
+
+    &:active {
+      outline: 1px solid black;
+      text-shadow: 1px 1px 1px #fff;
+      box-shadow: 1px 1px 10px rgba(255, 255, 255, 1);
+    }
+  }
+
+  // #endregion
+
+  // #region Contacts
+
+  .contacts {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 280px;
+    padding-bottom: 164px;
+  }
+
+  .contacts__wrapper {
+    justify-content: space-between;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 48px;
+    margin-bottom: 120px;
+  }
+
+  .contacts__title {
+    font-family: Poppins, sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 50px;
+    line-height: 100%;
+  }
+
+  .business-card {
+    justify-content: start;
+    text-align: start;
+    margin: 0 24px;
+    max-width: 240px;
+    height: 250px;
+    font-size: 1rem;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+
+    & > * {
+      font-style: normal;
+    }
+  }
+
+  .business-card-label {
+    text-transform: capitalize;
+    font-family: Poppins, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .business-card__phone-wrapper {
+    white-space: nowrap;
+    transition: all 1.5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 1.5s ease;
+    }
+
+    margin-bottom: 24px;
+  }
+
+  .email-wrapper {
+    transition: all 1.5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 1.5s ease;
+    }
+
+    margin-bottom: 24px;
+  }
+
+  .address-wrapper {
+    transition: all 1s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 1.5s ease;
+    }
+
+    margin-bottom: 24px;
+  }
+
+  // #endregion
+
+  // #region Form
+
+  .contacts__form {
+    background-color: variables.$dark-BG-color;
+    color: variables.$form-dark-color;
+  }
+
+  .form__btn {
+    font-family: Poppins, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: variables.$forLightBG-text-color;
+    height: 60px;
+    width: 100%;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: variables.$light-BG-color;
+
+    &:active {
+      border: 1px solid black;
+      text-shadow: 1px 1px 1px #fff;
+      box-shadow: 1px 1px 10px rgba(255, 255, 255, 1);
+    }
+
+    &:hover {
+      box-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
+    }
+  }
+
+  .form__input {
+    opacity: 0.9;
+    background-color: variables.$light-BG-color;
+    color: variables.$input-placeholder-active;
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 40px;
+    padding: 14px 16px;
+
+    &:active {
+      color: variables.$forLightBG-text-color;
+
+      &::placeholder {
+        color: variables.$form-dark-color;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .input {
+    &-name {
+      height: 48px;
+    }
+
+    &-email {
+      height: 48px;
+    }
+
+    &-message {
+      margin-bottom: 32px;
+      min-height: 150px;
+      border-radius: 16px;
+      resize: none;
+    }
+  }
+
+  // #endregion
+
+  // #region Footer
+  .footer {
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 200px;
+    background-image: url(../assets/images/footer-bg-mobile.webp);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  // #endregion
+}
+
+@media (min-width: 744px) {
+  .container {
+    padding: 0 72px;
+  }
+
+  // #region Pop Up
+
+  .pop-up__head {
+    height: 128px;
+    margin: 0 72px;
+  }
+
+  .pop-up__logo-wrapper {
+    width: 187px;
+    height: 56px;
+  }
+
+  .pop-up__close-btn {
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      cursor:
+        url(../assets/icons/mouse-pointer.svg) 0 0,
+        pointer;
+    }
+  }
+
+  .navigation {
+    margin-left: 72px;
+  }
+
+  // #endregion
+
+  // #region Header
+  .header {
+    left: 72px;
+    right: 96px;
+    z-index: 10;
+    height: 128px;
+  }
+
+  .logo-wrapper {
+    width: 187px;
+    height: 56px;
+  }
+
+  .btn-menu {
+    width: 96px;
+    height: 32px;
+    gap: 32px;
+  }
+
+  .phone-link {
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+    transition:
+      opacity 1.5s ease-in-out,
+      transform 1.5s ease-in-out;
+    pointer-events: none;
+
+    &:hover {
+      transition: transform 1.5s ease-in-out;
+    }
+  }
+
+  .phone-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+    margin-bottom: 0;
+
+    &:hover {
+      .phone-link {
+        opacity: 1;
+      }
+    }
+  }
+
+  .header__btn {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn-burger {
+    display: flex;
+    min-width: 32px;
+    height: 32px;
+    background-image: url(../assets/icons/burger-menu-full.svg);
+  }
+
+  // #endregion
+
+  // #region Hero
+  .hero {
+    position: relative;
+    background-image: url(../assets/images/hero__bg-bicycle-740.webp);
+    padding-bottom: 130px;
+    height: 128px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #28292b, #1d1d1d);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    &::after {
+      height: 120px;
+      bottom: -50px;
+      filter: blur(25px);
+    }
+  }
+
+  .hero__title {
+    font-size: 4rem;
+    line-height: 100%;
+  }
+
+  // #endregion
+
+  // #region Bikes
+  .bikes {
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0 120px;
+  }
+
+  .bikes__moto {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    max-width: 600px;
+    margin-bottom: 132px;
+    margin-left: 0;
+  }
+
+  .bikes__title {
+    font-size: 3rem;
+  }
+
+  .bikes__subtitle {
+    font-size: 1.5rem;
+    max-width: 290px;
+  }
+
+  .bikes__slider {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .bikes__slider-title {
+    font-size: 3rem;
+    letter-spacing: -1.5px;
+    margin-bottom: 48px;
+  }
+
+  .bikes__slider-list {
+    gap: 48px;
+  }
+
+  .bikes__slider-item {
+    width: 392px;
+    height: 487px;
+  }
+
+  .bikes__slider-item-img {
+    width: auto;
+    height: auto;
+  }
+
+  .slider__card-title {
+    font-size: 1.5rem;
+  }
+
+  .slider__card-subscribe {
+    font-size: 1rem;
+  }
+
+  // #endregion
+
+  // #region Details
+  .details {
+    max-width: 600px;
+  }
+
+  .details__title {
+    font-size: 3rem;
+    margin-bottom: 64px;
+  }
+
+  .details__advantage-wrapp {
+    margin-bottom: 48px;
+  }
+
+  .details__advantage-photoframe {
+    .details_advantage-photo {
+      width: 392px;
+      height: 187px;
+    }
+
+    picture:last-of-type .details_advantage-photo {
+      width: 184px;
+      height: auto;
+      min-height: 188px;
+    }
+  }
+
+  .details__advantage-title {
+    font-size: 1.5rem;
+  }
+
+  .details__advantage-description {
+    font-size: 1rem;
+  }
+
+  .details__button-explore {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding: 15px 165px;
+  }
+
+  // #endregion
+
+  // #region Contacts
+
+  .contacts__title {
+    font-size: 3rem;
+    letter-spacing: -1.5px;
+  }
+
+  .contacts__wrapper {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .contacts__form {
+    min-width: 288px;
+    width: 100%;
+  }
+
+  // #endregion
+
+  // #region Footer
+  .footer {
+    background-image: url(../assets/images/footer-bg-tablet.webp);
+    width: 100%;
+    height: 480px;
+  }
+
+  // #endregion
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1260px;
+    padding: 0 120px;
+  }
+
+  // #region Pop Up
+
+  .pop-up__head {
+    height: 128px;
+    margin: 0 120px;
+  }
+
+  .navigation {
+    margin-left: 121px;
+  }
+
+  // #endregion
+
+  // #region Header
+  .header {
+    left: 120px;
+    right: 120px;
+  }
+
+  .logo-wrapper {
+    width: 187px;
+    height: 56px;
+  }
+
+  .btn-menu {
+    display: flex;
+    align-items: center;
+    width: 254px;
+    height: 32px;
+  }
+
+  .phone-link {
+    display: block;
+    opacity: 0;
+    transition:
+      opacity 1.5s ease-in-out,
+      transform 1.5s ease-in-out;
+    pointer-events: none;
+
+    &:hover {
+      transition: transform 1.5s ease-in-out;
+    }
+  }
+
+  .phone-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 190px;
+    margin-bottom: 0;
+
+    &:hover {
+      .phone-link {
+        opacity: 1;
+      }
+    }
+  }
+
+  .header__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+
+    &:hover {
+      transform: rotateY(45deg);
+      transform: scale(1.2);
+      transition: all 0.3s ease;
+    }
+  }
+
+  // #endregion
+
+  // #region Hero
+  .hero {
+    background-image: url(../assets/images/hero__bg-bicycle.webp);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-bottom: 203px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #28292b, #1d1d1d);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, #28292b, rgba(29, 29, 29, 0));
+      filter: blur(10px);
+      z-index: 0;
+      pointer-events: none;
+    }
+  }
+
+  .hero__title {
+    font-size: 5rem;
+  }
+
+  // #endregion
+
+  // #region Bikes
+  .bikes {
+    margin: 120px 0 144px;
+  }
+
+  .bikes__moto {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+    margin-bottom: 164px;
+  }
+
+  .bikes__title {
+    font-size: 4rem;
+    max-width: 450px;
+    white-space: nowrap;
+  }
+
+  .bikes__subtitle {
+    font-size: 1.5rem;
+    max-width: 500px;
+  }
+
+  .bikes__slider {
+    max-width: 100%;
+  }
+
+  .bikes__slider-title {
+    letter-spacing: -1.5px;
+    white-space: nowrap;
+    font-size: 4rem;
+    margin-bottom: 56px;
+  }
+
+  .bikes__slider-list {
+    width: 100%;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .bikes__slider-item {
+    width: 324px;
+    height: 446px;
+    max-width: 100%;
+  }
+
+  .bikes__slider-item-img {
+    width: 324px;
+    height: 256px;
+  }
+
+  // #endregion
+
+  // #region Details
+  .details {
+    max-width: 100%;
+    margin: 0 auto 180px;
+  }
+
+  .details__title {
+    font-size: 4rem;
+  }
+
+  .details__advantage-wrapp {
+    max-width: 100%;
+    height: 423px;
+  }
+
+  .details__advantage-photoframe {
+    height: 321px;
+
+    picture {
+      .details_advantage-photo {
+        width: 672px;
+        height: 321px;
+      }
+
+      &:last-of-type .details_advantage-photo {
+        width: 324px;
+        height: 320px;
+      }
+    }
+  }
+
+  .details__button-explore {
+    padding: 15px 130px;
+  }
+
+  // #endregion
+
+  // #region Contacts
+  .contacts {
+    max-width: 100%;
+  }
+
+  .contacts__title {
+    font-size: 4rem;
+    margin-bottom: 48px;
+  }
+
+  .contacts__wrapper {
+    gap: 200px;
+  }
+
+  .contacts__form {
+    max-width: 411px;
+  }
+
+  // #endregion
+
+  .footer{
+    background-image: url(../assets/images/footer-bg.webp);
+  }
+}
