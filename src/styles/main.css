@@ -46,7 +46,6 @@ header .logo {
 header .extra_nav {
   display: flex;
   align-items: center;
-  gap: 32px;
 }
 
 header .extra_nav nav {
@@ -55,7 +54,7 @@ header .extra_nav nav {
   height: 0;
   position: absolute;
   inset: 0;
-  transition: all 0.7s ease;
+  transition: all 0.3s ease;
   overflow: hidden;
   z-index: 5;
 }
@@ -79,27 +78,20 @@ header .extra_nav nav ul li a {
 }
 
 header .extra_nav nav ul li a::after {
-  transition: all 0.5s ease;
+  display: block;
+  transition: width 0.3s ease;
+  content: '';
+  width: 0;
+  height: 1px;
+  background-color: #fff;
 }
 
 header .extra_nav nav ul li a:hover::after {
-  content: '';
   width: 100%;
-  height: 1px;
-  background-color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
 }
 
 header .extra_nav nav ul li .link--active::after {
-  content: '';
   width: 100%;
-  height: 1px;
-  background-color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
   top: 24px;
 }
 
@@ -140,7 +132,7 @@ header .extra_nav nav ul li:last-of-type a {
 header .extra_nav .nav_open {
   height: 100vh;
   padding: 120px 0 0 120px;
-  transition: all 0.7s ease;
+  transition: all 0.3s ease;
 }
 
 header .extra_nav__call {
@@ -149,17 +141,14 @@ header .extra_nav__call {
   height: 32px;
   position: relative;
   cursor: pointer;
-  transition: all 0.7s ease;
+  transition: all 0.3s ease;
+  margin-right: 32px;
 }
 
-header .extra_nav__call::before {
-  transition: all 0.3s linear;
-  content: '+1 234 555-55-55';
+header .extra_nav__call_number {
+  transition: all 0.3s ease;
   text-wrap: nowrap;
-  position: absolute;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
+  font-family: Poppins, sans-serif;
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
@@ -167,7 +156,7 @@ header .extra_nav__call::before {
   overflow: hidden;
 }
 
-header .extra_nav__call--active::before {
+header .extra_nav__call_number--active {
   width: 120px;
 }
 
@@ -187,7 +176,7 @@ header .extra_nav__burger_menu span {
   border-radius: 2px;
   width: 100%;
   height: 3px;
-  transition: all 0.3s linear;
+  transition: all 0.3s ease;
 }
 
 header .extra_nav__burger_menu--active span:nth-of-type(2) {
@@ -330,11 +319,23 @@ main {
   margin-bottom: 48px;
 }
 
+.the_details__auto_unlock .image-wrapper,
+.the_details__range_and_lights .image-wrapper,
+.the_details__hydraulic_disc_brakes .image-wrapper {
+  flex: 1 0 0;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
 .the_details__auto_unlock img,
 .the_details__range_and_lights img,
 .the_details__hydraulic_disc_brakes img {
   height: auto;
-  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .the_details__auto_unlock h2,
@@ -362,21 +363,29 @@ main {
   font-weight: 400;
 }
 
-.the_details__auto_unlock img:first-of-type,
-.the_details__range_and_lights img:first-of-type {
+.the_details__image_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.the_details__auto_unlock .image-wrapper:first-of-type,
+.the_details__range_and_lights .image-wrapper:first-of-type {
   max-width: calc(66.6% - 12px);
 }
 
-.the_details__auto_unlock img:last-of-type,
-.the_details__range_and_lights img:last-of-type {
+.the_details__auto_unlock .image-wrapper:last-of-type,
+.the_details__range_and_lights .image-wrapper:last-of-type {
   max-width: calc(33.3% - 12px);
 }
 
-.the_details__hydraulic_disc_brakes img:last-of-type {
+.the_details__hydraulic_disc_brakes .image-wrapper:last-of-type {
   max-width: calc(66.6% - 12px);
 }
 
-.the_details__hydraulic_disc_brakes img:first-of-type {
+.the_details__hydraulic_disc_brakes .image-wrapper:first-of-type {
   max-width: calc(33.3% - 12px);
 }
 
@@ -444,27 +453,41 @@ main {
 }
 
 .contact_us__info .contacts_title,
-.contact_us__info p {
+.contact_us__info .contacts_text {
   line-height: 140%;
+}
+
+.contact_us__info .contacts_text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  transition: color 0.3s ease;
+}
+
+.contact_us__info .contacts_text:hover {
+  color: #7e7e83;
+  cursor: pointer;
 }
 
 .contact_us__info .contacts_title {
   display: block;
   font-size: 14px;
   font-weight: 400;
-  margin-bottom: 8px !important;
-}
-
-.contact_us__info p {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 footer {
   background: url('../assets/images/footer.jpg') center/cover no-repeat;
   width: 100vw;
   height: min(555px, 100vh);
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 320px) and (max-width: 743px) {
@@ -559,6 +582,10 @@ footer {
   .the_details__range_and_lights,
   .the_details__hydraulic_disc_brakes {
     margin-bottom: 40px;
+  }
+
+  .the_details__image__container {
+    gap: 20px;
   }
 
   .the_details__explore {

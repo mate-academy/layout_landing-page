@@ -4,9 +4,10 @@ const body = document.querySelector('body');
 const phoneNumber = document.querySelector('.extra_nav__call');
 const burgerMenu = document.querySelector('.extra_nav__burger_menu');
 const nav = document.querySelector('nav');
+const phoneNumberInner = document.querySelector('.extra_nav__call_number');
 
 phoneNumber.addEventListener('click', () => {
-  phoneNumber.classList.toggle('extra_nav__call--active');
+  phoneNumberInner.classList.toggle('extra_nav__call_number--active');
 });
 
 burgerMenu.addEventListener('click', () => {

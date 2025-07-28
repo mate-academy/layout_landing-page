@@ -46,7 +46,6 @@ header {
   .extra_nav {
     display: flex;
     align-items: center;
-    gap: 32px;
 
     nav {
       background-color: $main_background-color;
@@ -54,7 +53,7 @@ header {
       height: 0;
       position: absolute;
       inset: 0;
-      transition: all 0.7s ease;
+      transition: all 0.3s ease;
       overflow: hidden;
       z-index: 5;
 
@@ -75,7 +74,12 @@ header {
           }
 
           a::after {
-            transition: all 0.5s ease;
+            display: block;
+            transition: width 0.3s ease;
+            content: '';
+            width: 0;
+            height: 1px;
+            background-color: #fff;
           }
 
           a:hover::after {
@@ -132,7 +136,7 @@ header {
     .nav_open {
       height: 100vh;
       padding: 120px 0 0 120px;
-      transition: all 0.7s ease;
+      transition: all 0.3s ease;
     }
 
     &__call {
@@ -142,25 +146,22 @@ header {
       height: 32px;
       position: relative;
       cursor: pointer;
-      transition: all 0.7s ease;
-
-      &::before {
-        transition: all 0.3s linear;
-        content: '+1 234 555-55-55';
-        text-wrap: nowrap;
-        position: absolute;
-        top: 50%;
-        right: 30px;
-        transform: translateY(-50%);
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        width: 0;
-        overflow: hidden;
-      }
+      transition: all 0.3s ease;
+      margin-right: 32px;
     }
 
-    &__call--active::before {
+    &__call_number {
+      transition: all 0.3s ease;
+      text-wrap: nowrap;
+      font-family: Poppins, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      width: 0;
+      overflow: hidden;
+    }
+
+    &__call_number--active {
       width: 120px;
     }
 
@@ -179,7 +180,7 @@ header {
         border-radius: 2px;
         width: 100%;
         height: 3px;
-        transition: all 0.3s linear;
+        transition: all 0.3s ease;
       }
     }
 
@@ -315,9 +316,19 @@ main {
   &__hydraulic_disc_brakes {
     margin-bottom: 48px;
 
+    .image-wrapper {
+      flex: 1 0 0;
+      display: block;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
     img {
       height: auto;
-      display: inline-block;
+      width: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     h2,
@@ -338,23 +349,31 @@ main {
     }
   }
 
+  &__image_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
   &__auto_unlock,
   &__range_and_lights {
-    img:first-of-type {
+    .image-wrapper:first-of-type {
       max-width: calc(66.6% - 12px);
     }
 
-    img:last-of-type {
+    .image-wrapper:last-of-type {
       max-width: calc(33.3% - 12px);
     }
   }
 
   &__hydraulic_disc_brakes {
-    img:last-of-type {
+    .image-wrapper:last-of-type {
       max-width: calc(66.6% - 12px);
     }
 
-    img:first-of-type {
+    .image-wrapper:first-of-type {
       max-width: calc(33.3% - 12px);
     }
   }
@@ -424,21 +443,27 @@ main {
 
   &__info {
     .contacts_title,
-    p {
+    .contacts_text {
       line-height: 140%;
+    }
+
+    .contacts_text {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .contacts_text:hover {
+      color: #7e7e83;
+      cursor: pointer;
     }
 
     .contacts_title {
       display: block;
       font-size: 14px;
       font-weight: 400;
-      margin-bottom: 8px !important;
-    }
-
-    p {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 24px;
+      margin-bottom: 8px;
     }
   }
 }
@@ -447,6 +472,14 @@ footer {
   background: url('../assets/images/footer.jpg') center/cover no-repeat;
   width: 100vw;
   height: min(555px, 100vh);
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
 }
 
 // ************************************************************************
@@ -548,6 +581,10 @@ footer {
     &__range_and_lights,
     &__hydraulic_disc_brakes {
       margin-bottom: 40px;
+    }
+
+    &__image__container {
+      gap: 20px;
     }
 
     &__explore {
