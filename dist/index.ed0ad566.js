@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",function(){var e=document.querySelector(".menu-toggle"),t=document.querySelector(".side-menu"),n=document.querySelector(".overlay");if(e&&t&&n){var o=function(){t.classList.toggle("is-open"),n.classList.toggle("is-active"),document.body.style.overflow=t.classList.contains("is-open")?"hidden":""};e.addEventListener("click",o),n.addEventListener("click",o)}});
+//# sourceMappingURL=index.ed0ad566.js.map
