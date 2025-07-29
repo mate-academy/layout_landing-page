@@ -1,51 +1,65 @@
-// Placeholder para estilos de formulário compartilhados
-%form-element-base {
-    width: 100%;
-    padding: $spacing-md;
-    font-size: 1rem;
-    font-family: $font-body;
-    border: 1px solid $gray-border;
-    background-color: $white;
-    transition: border-color $transition-speed, box-shadow $transition-speed;
+// styles/_contact.scss
 
-    &::placeholder {
-        color: $gray-placeholder;
-    }
-
-    &:focus {
-        outline: none;
-        border-color: $red;
-        box-shadow: 0 0 8px rgba($red, 0.3);
-    }
-}
+@use 'variables' as *;
 
 .contact {
-    padding: $spacing-xl $spacing-lg;
-    
-    &__title {
-        text-align: center;
-        font-size: 2.2rem;
-        margin-bottom: $spacing-lg;
-    }
+  padding: 80px $content-padding;
+  background-color: $color-background-light;
 
-    &__form {
-        max-width: $content-max-width;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-md;
-    }
+  &__title {
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
 
-    // CORREÇÃO APLICADA:
-    // Usando @extend para garantir a ordem correta dos seletores
-    // e evitar problemas de especificidade.
-    &__input {
-        @extend %form-element-base;
-    }
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    &__textarea {
-        @extend %form-element-base;
-        resize: vertical;
-        min-height: 150px;
+  &__field {
+    display: flex;
+    flex-direction: column;
+
+    &--full {
+      grid-column: 1 / -1; // Faz o campo ocupar as 2 colunas
     }
+  }
+
+  &__label {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  &__input,
+  &__textarea {
+    border: none;
+    border-bottom: 1px solid $color-black;
+    background-color: transparent;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-family: $font-sans-serif;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border-bottom-color: $color-primary-red;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  &__button-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 20px;
+  }
 }
