@@ -4,7 +4,7 @@ body {
 
   height: 100%;
 
-  font-family: Cinze, serif;
+  font-family: Cinzel, serif;
   font-size: 22px;
   font-weight: 700;
   font-style: Bold;
@@ -42,7 +42,17 @@ body {
   margin: 50px 120px 0;
 }
 
+.image-hover {
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
 .header__logo {
+  cursor: pointer;
+
   font-family: Cinzel, serif;
   font-size: 40px;
   font-weight: 700;
@@ -51,9 +61,9 @@ body {
   letter-spacing: -1.5px;
   vertical-align: middle;
 
-  transition:
-    transform 0.3s,
-    color 0.3s;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .header__icons {
@@ -66,13 +76,28 @@ body {
 .call {
   position: relative;
 
-  font-family: Cinzel, serif;
-  font-size: 16px;
-  font-weight: 700;
-  font-style: Bold;
-  line-height: 27px;
-  text-transform: uppercase;
-  vertical-align: middle;
+  .for-hover {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 320px;
+    background: #fff;
+    color: #000;
+    border-radius: 24px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+    padding: 32px 40px;
+    z-index: 10;
+  }
+
+  &:hover .for-hover {
+    display: block;
+  }
+
+  &:hover .for-hover,
+  .icon--phone:focus + .for-hover {
+    display: block;
+  }
 }
 
 .menu__phone-number {
@@ -82,59 +107,73 @@ body {
   line-height: 27px;
   color: #fff;
   text-decoration: none;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .icon--phone {
   background-image: url(../images/Icon-Phone-call.png);
   background-position: 50%;
+  &:hover {
+    transform: scale(1.2);
+    @media (min-width: 744px) {
+      &::before {
+        content: "The Met Fifth Avenue\A+1 212-535-7710\AThe Met Cloisters\A+1 212-923-3700";
+        display: block;
+        height: 40px;
+        width: 200px;
+        margin-left: -220px;
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 32px;
+        letter-spacing: 2px;
+        text-align: right;
+        white-space: pre;
+      }
+    }
+  }
 }
+
 
 .icon {
   width: 32px;
   height: 32px;
 }
 
-a {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-  transition:
-    transform 0.2s,
-    color 0.2s;
-}
-
-.for-hover {
-  cursor: pointer;
-
-  position: absolute;
-  top: -67px;
-  right: -10px;
-
-  display: none;
-
-  width: 260px;
-  height: 116px;
-  padding: 25px 55px 0 0;
-
-  color: #fff;
-  text-align: right;
-}
-
 .text {
-  display: none;
+  display: block;
   color: #fff;
 }
 
 .phone-number {
   display: none;
   margin-bottom: 8px;
-  color: #fff;
+  color: #222;
   text-decoration: none;
 }
 
 .icon--menu {
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
   background-image: url(../images/menu.png);
   background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .header__center {
@@ -168,10 +207,15 @@ a {
 
   font-weight: 700;
   text-transform: uppercase;
+  padding-inline: 100px;
 
   background-color: #d12d34;
 
   transition: transform 0.3s;
+
+  &.menu--active {
+    transform: translateX(0);
+  }
 }
 
 .menu__top {
@@ -188,6 +232,10 @@ a {
 
 img {
   transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 img,
@@ -200,17 +248,34 @@ svg {
 
 .menu__icon--close {
   cursor: pointer;
-
   position: relative;
-
-  display: inline-block;
-
   width: 24px;
   height: 24px;
-}
+  &::before,
+  &::after {
+    content: '';
 
-.menu__icon--close::before {
-  transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+
+    background: #fff;
+    transition: transform 0.3s ease;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .menu__icon--close::before,
@@ -248,7 +313,7 @@ ol {
   list-style: none;
 }
 
-.na__link {
+.nav__link {
   position: relative;
 
   font-size: 22px;
@@ -299,7 +364,11 @@ ol {
 }
 
 .container {
-  margin: 140px 120px;
+  margin: 120px;
+
+  @media (max-width: 768px) {
+    margin: 40px 16px;
+  }
 }
 
 .hours {
@@ -478,24 +547,27 @@ ol {
 }
 
 .now-on-view__button {
+  cursor: pointer;
+
   width: 324px;
   height: 56px;
   margin: 0 auto;
-  border: 0;
+  border: none;
+  border-radius: 28px;
 
   font-family: Cinzel, serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 27px;
   color: #fff;
-  text-align: center;
-  letter-spacing: 0;
 
   background-color: #d12d34;
 
-  transition:
-    background-color 0.3s,
-    transform 0.2s;
+  transition: background 0.3s;
+}
+
+.now-on-view__button:hover {
+  background: #b8232d;
 }
 
 .more-to-explore__title {
@@ -527,6 +599,14 @@ ol {
 .more-to-explore__image {
   width: 100%;
   height: auto;
+
+  .image-hover {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .more-to-explore__description {
@@ -588,10 +668,19 @@ ol {
   line-height: 27px;
 }
 
-.contact__info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.contact-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &:hover .contact-info {
+    display: block;
+  }
 }
 
 .contact__label {
@@ -605,7 +694,8 @@ ol {
   font-family: Cinzel, serif;
   font-size: 16px;
   font-weight: 700;
-  line-height: 27px;
+  line-height: 34px;
+  color: #000;
 }
 
 .contact__form-wrapper {
@@ -653,6 +743,30 @@ ol {
   transition:
     background-color 0.3s,
     transform 0.2s;
+}
+
+.contact__button,
+.now-on-view__button {
+  cursor: pointer;
+
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  color: #fff;
+
+  background: #d12d35;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.contact__textarea::placeholder {
+  color: #6c6c6c;
+  opacity: 1;
 }
 
 .footer {

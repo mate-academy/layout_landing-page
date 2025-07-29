@@ -1,9 +1,9 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const burger = document.querySelector('.icon--burger');
-  const close = document.querySelector('.icon--close');
-  const menu = document.querySelector('.page__menu');
+  const burger = document.querySelector('.icon--menu');
+  const close = document.querySelector('.menu__icon--close');
+  const menu = document.querySelector('.menu');
   const body = document.body;
 
   if (burger && menu && close) {
