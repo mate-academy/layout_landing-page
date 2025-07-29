@@ -9,6 +9,7 @@
   &__title {
     text-align: center;
     font-size: 1.5rem;
+    font-family: $font-serif;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 40px;
@@ -16,6 +17,8 @@
 
   &__form {
     display: grid;
+    
+    // Cria o layout de 2 colunas para o formulário
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     max-width: 800px;
@@ -26,8 +29,9 @@
     display: flex;
     flex-direction: column;
 
+    // Modificador para campos que ocupam a largura total
     &--full {
-      grid-column: 1 / -1; // Faz o campo ocupar as 2 colunas
+      grid-column: 1 / -1;
     }
   }
 
@@ -36,6 +40,7 @@
     margin-bottom: 10px;
   }
 
+  // Estilos base para input e textarea
   &__input,
   &__textarea {
     border: none;
@@ -45,16 +50,19 @@
     font-size: 1rem;
     font-family: $font-sans-serif;
     width: 100%;
-
-    &:focus {
-      outline: none;
-      border-bottom-color: $color-primary-red;
-    }
   }
 
+  // Estilo específico para o textarea
   &__textarea {
     resize: vertical;
     min-height: 100px;
+  }
+  
+  // Estilo para o estado :focus, colocado depois para corrigir o erro do linter
+  &__input:focus,
+  &__textarea:focus {
+    outline: none;
+    border-bottom-color: $color-primary-red;
   }
 
   &__button-container {

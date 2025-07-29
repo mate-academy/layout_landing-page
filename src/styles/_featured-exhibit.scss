@@ -1,0 +1,97 @@
+// styles/_featured-exhibit.scss
+
+@use 'variables' as *;
+
+.featured-exhibit {
+  padding: 80px $content-padding;
+
+  // Grid principal que divide a seção em duas colunas
+  &__grid {
+    display: grid;
+    // A coluna da esquerda (showcase) é 2x mais larga que a da direita
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: stretch; // Faz as colunas terem a mesma altura
+  }
+
+  // Contêiner da coluna da esquerda
+  &__showcase {
+    position: relative; // Essencial para posicionar o texto sobreposto
+  }
+
+  // Grid de 6 imagens dentro da coluna da esquerda
+  // ...
+  &__image-grid {
+    display: grid;
+    grid-template-columns: 1fr; // ALTERADO: Agora com apenas 1 coluna
+    gap: 5px;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+
+  // Camada de texto sobreposta
+  &__text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color-black, 0.3); // Fundo escuro semitransparente
+    color: $color-white;
+
+    // Centraliza o conteúdo de texto
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  &__subtitle {
+    margin-top: 1rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  // Contêiner da imagem principal na coluna da direita
+  &__main-image {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Legenda abaixo do grid
+  &__caption {
+    margin-top: 20px;
+    
+    h3 {
+      font-family: $font-sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: $color-text-light;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+  }
+}
