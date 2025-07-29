@@ -1,22 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Seleciona os elementos do DOM
-  const menuToggle = document.querySelector('.menu-toggle');
-  const sideMenu = document.querySelector('.side-menu');
-  const overlay = document.querySelector('.overlay');
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.header__menu-toggle');
+    const menuClose = document.querySelector('.menu__close');
+    const menu = document.getElementById('main-menu');
 
-  // Verifica se todos os elementos necessários existem
-  if (menuToggle && sideMenu && overlay) {
-    // Função para alternar o menu
-    const toggleMenu = () => {
-      sideMenu.classList.toggle('is-open');
-      overlay.classList.toggle('is-active');
-      // Impede o scroll do body quando o menu está aberto
-      document.body.style.overflow = sideMenu.classList.contains('is-open') ? 'hidden' : '';
-        };
-        // Adiciona o evento de clique ao botão do menu
-        menuToggle.addEventListener('click', toggleMenu);
+    if (menuToggle && menuClose && menu) {
+        menuToggle.addEventListener('click', () => {
+            menu.classList.add('is-active');
+        });
 
-    // Adiciona o evento de clique ao overlay para fechar o menu
-    overlay.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', () => {
+            menu.classList.remove('is-active');
+        });
     }
 });
