@@ -34,172 +34,163 @@ header {
   align-items: center;
   justify-content: space-between;
   background: transparent;
+}
 
-  .logo {
-    background: url('../assets/images/logo.png') center/cover no-repeat;
-    width: 187px;
-    height: 56px;
-    cursor: pointer;
-    z-index: 10;
+.logo {
+  background: url('../assets/images/logo.png') center/cover no-repeat;
+  width: 187px;
+  height: 56px;
+  z-index: 10;
+}
+
+.extra_nav {
+  display: flex;
+  align-items: center;
+
+  &__nav {
+    background-color: $main_background-color;
+    width: 100vw;
+    height: 0;
+    position: absolute;
+    inset: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 5;
   }
 
-  .extra_nav {
+  &__list {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+
+    &::after {
+      display: block;
+      transition: width 0.3s ease;
+      content: '';
+      width: 0;
+      height: 1px;
+      background-color: #fff;
+    }
+
+    &:hover::after {
+      @include link-after;
+    }
+  }
+
+  &__item:nth-of-type(-n + 4) {
+    margin-bottom: 32px;
+  }
+
+  &__item:nth-of-type(-n + 5) &__link {
+    font-size: 22px;
+  }
+
+  &__item:nth-of-type(-n + 5) &__link:hover::after {
+    top: 40px;
+  }
+
+  &__item:nth-of-type(5) {
+    margin-bottom: 40px;
+  }
+
+  &__item:nth-of-type(6) {
+    margin-bottom: 16px;
+  }
+
+  &__item:nth-of-type(6) &__link {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__item:nth-of-type(6) &__link:hover::after {
+    top: 32px;
+  }
+
+  &__item:last-of-type &__link {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__call {
+    background: url('../assets/images/Icon-Phone-call.png') center/cover
+      no-repeat;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 32px;
+  }
+
+  &__call_number {
+    transition: all 0.3s ease;
+    text-wrap: nowrap;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    width: 0;
+    overflow: hidden;
+  }
+
+  &__call_number--active {
+    width: 120px;
+  }
+
+  &__burger_menu {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 24px;
+    flex-direction: column;
+    row-gap: 3.5px;
+    cursor: pointer;
+    z-index: 10;
 
-    nav {
-      background-color: $main_background-color;
-      width: 100vw;
-      height: 0;
-      position: absolute;
-      inset: 0;
+    span {
+      background-color: white;
+      border-radius: 2px;
+      width: 100%;
+      height: 3px;
       transition: all 0.3s ease;
-      overflow: hidden;
-      z-index: 5;
-
-      ul {
-        display: flex;
-        align-items: start;
-        justify-content: start;
-        flex-direction: column;
-
-        li {
-          list-style: none;
-
-          a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            position: relative;
-          }
-
-          a::after {
-            display: block;
-            transition: width 0.3s ease;
-            content: '';
-            width: 0;
-            height: 1px;
-            background-color: #fff;
-          }
-
-          a:hover::after {
-            @include link-after;
-          }
-
-          .link--active::after {
-            @include link-after;
-
-            top: 24px;
-          }
-        }
-
-        li:nth-of-type(-n + 4) {
-          margin-bottom: 32px;
-        }
-
-        li:nth-of-type(-n + 5) {
-          a {
-            font-size: 22px;
-          }
-
-          a:hover::after {
-            top: 40px;
-          }
-        }
-
-        li:nth-of-type(5) {
-          margin-bottom: 40px;
-        }
-
-        li:nth-of-type(6) {
-          margin-bottom: 16px;
-
-          a {
-            font-size: 16px;
-            line-height: 27px;
-          }
-
-          a:hover::after {
-            top: 32px;
-          }
-        }
-
-        li:last-of-type {
-          a {
-            font-size: 12px;
-            line-height: 16px;
-          }
-        }
-      }
-    }
-
-    .nav_open {
-      height: 100vh;
-      padding: 120px 0 0 120px;
-      transition: all 0.3s ease;
-    }
-
-    &__call {
-      background: url('../assets/images/Icon-Phone-call.png') center/cover
-        no-repeat;
-      width: 32px;
-      height: 32px;
-      position: relative;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-right: 32px;
-    }
-
-    &__call_number {
-      transition: all 0.3s ease;
-      text-wrap: nowrap;
-      font-family: Poppins, sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 16px;
-      width: 0;
-      overflow: hidden;
-    }
-
-    &__call_number--active {
-      width: 120px;
-    }
-
-    &__burger_menu {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      flex-direction: column;
-      row-gap: 3.5px;
-      cursor: pointer;
-      z-index: 10;
-
-      span {
-        background-color: white;
-        border-radius: 2px;
-        width: 100%;
-        height: 3px;
-        transition: all 0.3s ease;
-      }
-    }
-
-    &__burger_menu--active {
-      span:nth-of-type(2) {
-        display: none;
-      }
-
-      span:first-of-type {
-        transform-origin: center center;
-        transform: rotate(-45deg) translateY(4.5px);
-      }
-
-      span:last-of-type {
-        transform-origin: center center;
-        transform: rotate(45deg) translateY(-4.5px);
-      }
     }
   }
+
+  &__burger_menu--active {
+    span:nth-of-type(2) {
+      display: none;
+    }
+
+    span:first-of-type {
+      transform-origin: center center;
+      transform: rotate(-45deg) translateY(4.5px);
+    }
+
+    span:last-of-type {
+      transform-origin: center center;
+      transform: rotate(45deg) translateY(-4.5px);
+    }
+  }
+}
+
+.link--active::after {
+  @include link-after;
+
+  top: 24px;
+}
+
+.nav_open {
+  height: 100vh;
+  padding: 120px 0 0 120px;
+  transition: all 0.3s ease;
 }
 
 main {
@@ -213,7 +204,7 @@ main {
   padding: 0 120px;
   aspect-ratio: 1260 / 711;
 
-  h1 {
+  &__title {
     color: white;
     font-weight: 700;
     font-size: 80px;
@@ -224,13 +215,13 @@ main {
 }
 
 .move_free {
-  margin: 120px 207px 164px 120px;
+  padding: 120px 207px 164px 120px;
   display: flex;
   align-items: start;
   justify-content: center;
   gap: 100px;
 
-  h1 {
+  &__title {
     font-weight: 500;
     font-size: 64px;
     text-wrap: nowrap;
@@ -244,10 +235,9 @@ main {
 }
 
 .compare_bikes {
-  padding: 0 120px;
-  margin-bottom: 144px;
+  padding: 0 120px 144px;
 
-  h1 {
+  &__title {
     font-size: 64px;
     font-weight: 500;
     text-align: center;
@@ -272,17 +262,10 @@ main {
       display: block;
     }
 
-    h1,
+    h3,
     p,
     .bike_price {
       line-height: 140%;
-    }
-
-    h1 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      text-align: left;
     }
 
     p {
@@ -299,15 +282,22 @@ main {
   }
 }
 
+.bike-name {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  text-align: left;
+}
+
 .the_details {
   font-size: 64px;
   font-weight: 500;
   text-align: center;
-  margin: 0 auto 180px;
-  padding: 0 120px;
+  margin: 0 auto;
+  padding: 0 180px 120px;
   max-width: 1240px;
 
-  h1 {
+  &__title {
     margin-bottom: 48px;
   }
 
@@ -320,7 +310,7 @@ main {
       flex: 1 0 0;
       display: block;
       overflow: hidden;
-      margin-bottom: 16px;
+      padding-bottom: 16px;
     }
 
     img {
@@ -331,13 +321,13 @@ main {
       display: block;
     }
 
-    h2,
+    h4,
     p {
       line-height: 140%;
       text-align: left;
     }
 
-    h2 {
+    h4 {
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 8px;
@@ -393,10 +383,9 @@ main {
 }
 
 .contact_us {
-  margin-bottom: 164px;
-  padding: 0 120px;
+  padding: 0 120px 164px;
 
-  h1 {
+  &__title {
     text-align: center;
     font-size: 48px;
     font-weight: 600;
@@ -450,7 +439,7 @@ main {
     .contacts_text {
       font-size: 16px;
       font-weight: 500;
-      margin-bottom: 24px;
+      padding-bottom: 24px;
       transition: color 0.3s ease;
     }
 
@@ -463,15 +452,18 @@ main {
       display: block;
       font-size: 14px;
       font-weight: 400;
-      margin-bottom: 8px;
+      padding-bottom: 8px;
     }
   }
 }
 
-footer {
-  background: url('../assets/images/footer.jpg') center/cover no-repeat;
+.footer {
   width: 100vw;
-  height: min(555px, 100vh);
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+  }
 }
 
 .zoom-image {
@@ -536,27 +528,26 @@ footer {
     height: 480px;
     background-position: 85% center;
 
-    h1 {
-      font-size: 33px;
+    &__title {
+      font-size: 36px;
       padding-top: 300px;
     }
   }
 
   .move_free {
     display: block;
-    margin: 60px 20px 92px;
+    padding: 60px 20px 92px;
 
-    h1 {
+    &__title {
       font-size: 32px;
       margin-bottom: 32px;
     }
   }
 
   .compare_bikes {
-    padding: 0 20px;
-    margin-bottom: 92px;
+    padding: 0 20px 92px;
 
-    & > h1 {
+    & > h2 {
       font-size: 32px;
     }
 
@@ -570,10 +561,9 @@ footer {
   }
 
   .the_details {
-    padding: 0 20px;
-    margin-bottom: 80px;
+    padding: 0 20px 80px;
 
-    h1 {
+    &__title {
       font-size: 32px;
     }
 
@@ -595,13 +585,11 @@ footer {
   }
 
   .contact_us {
-    margin-bottom: 80px;
+    padding: 0 20px 80px;
 
-    h1 {
+    &__title {
       font-size: 32px;
     }
-
-    padding: 0 20px;
 
     &__inner {
       display: block;
@@ -609,12 +597,8 @@ footer {
 
     &__form {
       width: 100%;
-      margin-bottom: 48px;
+      padding-bottom: 48px;
     }
-  }
-
-  footer {
-    height: min(200px, 100vh);
   }
 }
 
@@ -629,21 +613,21 @@ footer {
   .take_the_streets {
     padding: 0 72px;
 
-    h1 {
+    &__title {
       font-size: 64px;
     }
   }
 
   .move_free {
-    margin: 120px 72px 132px;
+    padding: 120px 72px 132px;
 
-    h1 {
+    &__title {
       font-size: 48px;
     }
   }
 
   .compare_bikes {
-    & > h1 {
+    & > h2 {
       font-size: 48px;
       margin-bottom: 48px;
     }
@@ -658,16 +642,15 @@ footer {
   }
 
   .the_details {
-    padding: 0 72px;
-    margin-bottom: 120px;
+    padding: 0 72px 120px;
 
-    h1 {
+    &__title {
       font-size: 48px;
     }
   }
 
   .contact_us {
-    padding: 0 72px;
+    padding: 0 72px 102px;
 
     &__inner {
       gap: 24px;
