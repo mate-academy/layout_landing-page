@@ -1,0 +1,107 @@
+@use '../base/mixins' as *;
+
+.details-card{
+  display: grid;
+  gap: 16px 20px;
+  grid-template-columns: 1fr 1fr;
+
+  @include on-tablet{
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop{
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__image-left{
+    @include on-tablet{
+      grid-column: 1/5;
+    }
+
+    @include on-desktop{
+      grid-column: 1/9;
+    }
+  }
+
+  &__image-right{
+    @include on-tablet{
+      grid-column: 5/-1;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / -1;
+    }
+
+
+  }
+
+   &__image-right--expand{
+    transform: scaleX(-1);
+   }
+
+  &__content{
+    grid-column: 1/-1;
+
+    @include on-desktop{
+      grid-column: 1 / 9;
+    }
+  }
+
+
+  &__header{
+    font-size: 24px;
+    line-height: 140%;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &__text{
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  &__image-left img,
+  &__image-right img{
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    transition: transform .3s;
+    cursor: pointer;
+
+    &:hover{
+      transform: scale(1.03);
+    }
+
+    @include on-tablet{
+      height: 187px;
+    }
+
+    @include on-desktop{
+      height: 321px;
+    }
+  }
+
+  &:nth-child(3){
+    .details-card__image-left{
+      @include on-tablet{
+        grid-column: 1/3;
+      }
+
+      @include on-desktop{
+        grid-column: 1/5;
+      }
+
+    }
+    .details-card__image-right{
+      @include on-tablet{
+        grid-column: 3/-1;
+      }
+
+      @include on-desktop{
+        grid-column: 5/-1;
+      }
+    }
+  }
+
+}
