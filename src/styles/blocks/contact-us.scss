@@ -1,0 +1,141 @@
+.contacts {
+
+
+  &__wrapper {
+    --columns: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    align-items: end;
+
+    @include on-tablet {
+      --columns:6;
+
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+    }
+  }
+
+
+  &__input, &__input-area {
+    grid-column: 1 / -1;
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  &__data {
+    grid-column: 1 / -1;
+  }
+
+  @include on-tablet{
+    &__input, &__input-area {
+      grid-column: span 4;
+    }
+
+    &__button {
+      grid-column: span 4;
+      max-width: 100%;
+    }
+
+    &__data{
+      grid-column: 5;
+
+      width: 100%;
+
+      &-phone {
+        grid-row: 1;
+      }
+
+      &-email {
+        grid-row: 2;
+      }
+
+      &-address {
+        grid-row: 3;
+        padding-bottom: 32px;
+      }
+    }
+  }
+
+
+
+  @include on-desktop {
+    &__input, &__input-area {
+      grid-column: span 5;
+    }
+
+    &__button {
+      grid-column: span 5;
+      max-width: 100%;
+    }
+
+    &__data{
+      grid-column: 9;
+      width: 100%;
+    }
+  }
+
+
+
+  &__input {
+    border: none;
+
+    color: $theme-color;
+    background-color: $contacts-input-color;
+    height: 48px;
+    border-radius: 40px;
+    width: 100%;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    padding-left: $placeholder-padding;
+  }
+
+  &__button {
+    margin-bottom: 48px;
+  }
+
+  &__input-area {
+    box-sizing: border-box;
+    height: 148px;
+    padding-top: 14px;
+    padding-left: $placeholder-padding;
+    border: none;
+    margin-bottom: 32px;
+    border-radius: 16px;
+
+    color: $theme-color;
+
+    background-color: #fff;
+  }
+
+  &__data {
+    &-tag {
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      font-style: Regular;
+      line-height: 140%;
+      letter-spacing: 0px;
+    }
+
+    &-text {
+      margin: 0;
+
+      color:#fff;
+      font-weight: 500;
+      font-size: 16px;
+      font-style: Medium;
+      line-height: 140%;
+      letter-spacing: 0px;
+      text-decoration: none;
+    }
+  }
+
+}
+

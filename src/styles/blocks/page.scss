@@ -1,30 +1,99 @@
 /* #region page */
 .page {
-  font-family: Poppins, sans-serif;
-  color: $main-text-color;
+  font-family: Poppins;
   font-size: 16px;
+  color: $main-text-color;
+
   line-height: 140%;
+
   scroll-behavior: smooth;
+
   box-sizing: border-box;
 
+  background-color: $theme-color;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
   &__body {
+    position: relative;
     margin: 0;
+    box-sizing: border-box;
+    min-width: 320px;
+    padding-bottom: 200px;
+
+    @include on-tablet {
+      padding-bottom: 480px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 555px;
+    }
   }
 
   &__menu {
+    width: 100%;
+    box-sizing: border-box;
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    inset: 0;
 
+    transition: all 0.3s;
     opacity: 0;
+    transform: translateX(-100%);
     pointer-events: none;
 
     &:target {
       opacity: 1;
+      transform: translateX(0);
       pointer-events: all;
     }
   }
 }
 
+.text {
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0px;
+}
+
+.text-small {
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0px;
+}
+
 /* #endregion */
+
+.photo:hover {
+
+  transform: scale(1.05);
+
+  transition: transform $effectDuration;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-image: url("/src/images/last-bg-3x.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+
+  @include on-tablet {
+
+    height: 480px;
+  }
+
+  @include on-desktop {
+    height: 555x;
+  }
+}
+
