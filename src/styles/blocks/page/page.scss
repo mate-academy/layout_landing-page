@@ -1,0 +1,40 @@
+.page {
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition:
+      transform $main-animation-speed ease-in-out,
+      opacity $main-animation-speed ease-in-out;
+
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+h2,
+h3 {
+  margin: 0;
+}

@@ -1,0 +1,65 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  padding-block: 24px;
+  flex-direction: row;
+
+  @include onTablet {
+    padding-block: 36px;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    height: 24px;
+
+    @include onTablet {
+      height: 32px;
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    height: 38px;
+    width: 130px;
+
+    @include onTablet {
+      height: 56px;
+      width: 187px;
+    }
+
+    @include hoverSimpleScale(transform, scale(1.1));
+  }
+
+  &__phone {
+    position: relative;
+
+    @include onDesktop {
+      &::before {
+        content: '+1 234 5555-55-55';
+
+        position: absolute;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: $main-font-color;
+        white-space: nowrap;
+
+        top: 8px;
+        right: 52px;
+
+        opacity: 0;
+        transition: opacity $main-animation-speed;
+        pointer-events: none;
+      }
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+}
