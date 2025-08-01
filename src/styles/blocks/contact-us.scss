@@ -1,0 +1,135 @@
+.contacts {
+  &__wrapper {
+    --columns: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    align-items: end;
+
+    @include on-tablet {
+      --columns: 6;
+
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: 48px;
+    margin-bottom: 16px;
+    padding-left: $placeholder-padding;
+    border-radius: 40px;
+    color: $theme-color;
+
+    background-color: $contacts-input-color;
+  }
+
+  &__input-area {
+    height: 148px;
+    margin-bottom: 32px;
+    padding-top: 14px;
+    padding-left: $placeholder-padding;
+    border-radius: 16px;
+    color: $theme-color;
+    resize: none;
+    background-color: #fff;
+  }
+
+  &__input,
+  &__input-area {
+    grid-column: 1 / -1;
+
+    font-family: inherit;
+    box-sizing: border-box;
+
+    outline: none;
+    border: 1px solid transparent;
+    transition: border-color $effectDuration ease;
+
+    &:hover {
+      border-color: #D5D7DE;
+    }
+
+    &:focus {
+      border-color: #292929;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    margin-bottom: 48px;
+  }
+
+  &__data {
+    grid-column: 1 / -1;
+
+    &-tag {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
+    &-text {
+      margin: 0;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 140%;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  @include on-tablet {
+    &__input,
+    &__input-area {
+      grid-column: span 4;
+    }
+
+    &__button {
+      grid-column: span 4;
+      max-width: 100%;
+    }
+
+    &__data {
+      grid-column: 5;
+      width: 100%;
+
+      &-phone {
+        grid-row: 1;
+      }
+
+      &-email {
+        grid-row: 2;
+      }
+
+      &-address {
+        grid-row: 3;
+        padding-bottom: 32px;
+      }
+    }
+  }
+
+  @include on-desktop {
+    &__input,
+    &__input-area {
+      grid-column: span 5;
+    }
+
+    &__button {
+      grid-column: span 5;
+      max-width: 100%;
+    }
+
+    &__data {
+      grid-column: 9;
+      width: 100%;
+    }
+  }
+}
