@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.querySelector('.header__menu-toggle');
   const menuClose = document.querySelector('.menu__close');
@@ -12,4 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
       menu.classList.remove('is-active');
     });
   }
+
+  // Função para impedir reload do formulário
+  window.naoReload = function (event) {
+    event.preventDefault();
+    alert('Formulário enviado com sucesso!');
+  };
 });
