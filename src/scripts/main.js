@@ -14,9 +14,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Função para impedir reload do formulário
+  // Função para limpar o formulário
+  function clearForm(form) {
+    if (form) {
+      form.reset();
+    }
+  }
+
+  // Função para impedir o reload do formulário
   window.naoReload = function (event) {
     event.preventDefault();
+
+    // Acessa o formulário que disparou o evento diretamente
+    const form = event.target;
+
+    clearForm(form);
+
     alert('Formulário enviado com sucesso!');
   };
 });
