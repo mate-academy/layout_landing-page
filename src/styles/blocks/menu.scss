@@ -1,0 +1,92 @@
+.menu {
+  box-sizing: border-box;
+  background-color: $menu-and-form-bg;
+  height: 100vh;
+  overflow: auto;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s;
+  transform: translateX(-100%);
+
+  &__content {
+    display: grid;
+
+    @include page-grid;
+    @include padding-inline;
+  }
+
+  &__top {
+    margin-bottom: 32px;
+    grid-column: #{$grid-full};
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    @include on-tablet-and-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__navigation {
+    margin-bottom: 48px;
+    grid-column: #{$grid-full};
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+
+  &__call-options {
+    grid-column: #{$grid-full};
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: 1 / 3;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__call-link {
+    font-size: $font-size-main;
+    text-decoration: none;
+    color: inherit;
+    font-weight: $font-weight-bold;
+    letter-spacing: 2px;
+    line-height: $base-line-hight;
+    cursor: $hover-cursor;
+
+    @include hovers(color, $actions-color, none);
+  }
+
+  &--call-to-order {
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $base-color;
+    width: fit-content;
+    cursor: $hover-cursor;
+
+    @include hovers(border-bottom, 1px solid $actions-color, none);
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+}

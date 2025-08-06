@@ -1,0 +1,81 @@
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin on-tablet-and-desktop {
+  @include on-tablet {
+    @content;
+  }
+
+  @include on-desktop {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin title-params($mob-margin: 48px, $tab-margin: 56px, $desk-margin: 56px) {
+  font-size: 32px;
+  line-height: 32px;
+  margin-bottom: $mob-margin;
+
+  @include on-tablet {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: $tab-margin;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 48px;
+    margin-bottom: $desk-margin;
+  }
+}
+
+@mixin hovers(
+  $property,
+  $value: scale(1.2),
+  $hover-transition: $transition-value
+) {
+  @include on-desktop {
+    transition: #{$property} #{$hover-transition};
+
+    &:hover {
+      #{$property}: $value;
+      @content;
+    }
+  }
+}
