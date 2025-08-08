@@ -1,0 +1,96 @@
+.phone-toggle-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+  }
+}
+
+// Estilos para o container do dropdown de telefones
+.phone-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 30px;
+  z-index: 1001;
+
+  // Esconde o menu por padrão
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px); // Efeito de entrada
+  transition:
+    visibility 0s 0.3s,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  background-color: #d12d35;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+}
+
+// Estilos para o overlay
+.phone-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  // Esconde por padrão
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s 0.3s,
+    opacity 0.3s ease;
+}
+
+// Quando a classe 'active' é adicionada via JS
+// Isso mostra o overlay e o dropdown
+.phone-menu-dropdown.active,
+.phone-overlay.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0); // Volta para a posição original
+  transition-delay: 0s; // Garante que a transição comece imediatamente
+}
+
+// Estilos dos itens da lista
+.phone-item {
+  border-bottom: 1px solid;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.phone-item__title {
+  font-size: 1rem;
+  margin: 0 8px;
+  color: $white;
+}
+
+.phone-item__number {
+  color: $white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:hover {
+    text-decoration: none;
+    color: $hover-yellow;
+    cursor: pointer;
+  }
+}
