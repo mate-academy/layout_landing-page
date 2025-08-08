@@ -197,6 +197,8 @@ section {
   margin-bottom: 48px;
   text-align: center;
 
+
+
   &:last-child {
     margin-bottom: 40px;
   }
@@ -206,6 +208,8 @@ section {
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     margin-bottom: 24px;
+
+
 
     &--one {
       grid-template-columns: repeat(1, 1fr);
@@ -217,6 +221,14 @@ section {
           grid-column: 2/6;
         }
       }
+      @include onDesktop {
+        grid-template-columns: repeat(6, 1fr);
+
+        .img--one {
+          grid-column: span 6;
+        }
+      }
+
     }
 
     @include onTablet {
@@ -251,8 +263,16 @@ section {
       height: 100%;
       display: block;
       object-fit: cover;
+      transition: all 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow:0 0 15px rgba(192, 29, 24, 1) ;
+      }
     }
   }
+
 
   &__title {
     padding: 0;
@@ -303,28 +323,20 @@ section {
 }
 
 .explore-content {
+
   @include onDesktop {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     margin: 0 auto;
     text-align: center;
     gap: 12px;
 
     .event {
       margin: 0 auto;
-      &__images {
-        &--one {
-          grid-template-columns: repeat(1, 1fr);
-        }
-
-        &img {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          margin-bottom: 20px;
-        }
+      grid-column: span 4;
+      width: 100%;
       }
     }
   }
-}
+
 /* stylelint-enable */
