@@ -1,0 +1,102 @@
+/* stylelint-disable */
+.icon {
+  display: block;
+
+  @include hover(transform, scale(1.2));
+
+  &--phone {
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/icons/icon-phone.png);
+    position: relative;
+    z-index: 2;
+    @include backgroundProperty;
+    @include topBarIconPhone;
+  }
+
+  &--menu {
+    width: 18px;
+    height: 12px;
+    background-image: url(../images/icons/icon-menu-burger.png);
+    @include backgroundProperty;
+    @include topBarIconMenu;
+
+    &:hover {
+      background-image: url(../images/icons/icon-menu-hover.png);
+    }
+  }
+
+  &--close {
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/icons/icon-menu-close.png);
+    @include backgroundProperty;
+    @include topBarIconClose;
+  }
+}
+/* #endregion icon */
+
+.top-bar__icons {
+
+  .icon--phone {
+
+  }
+
+  .contacts-menu {
+    position: absolute;
+    top: -200%;
+    right: 100%;
+    background-color: transparent;
+    border-radius: 6px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    width: max-content;
+    min-width: 250px;
+    z-index: 1;
+  }
+
+  // Поява меню при hover на іконку
+  .icon--phone:hover + .contacts-menu,
+  .contacts-menu:hover {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @include onDesktop {
+    position: relative; // потрібен для абсолютного позиціонування меню
+
+  .icon--phone {
+    position: relative;
+    z-index: 2; // щоб була вище
+  }
+
+  .contacts-menu {
+    position: absolute;
+    top: -200%;
+    right: 100%;
+    background-color: transparent;
+    border-radius: 6px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    width: max-content;
+    min-width: 250px;
+    z-index: 1;
+  }
+
+  // Поява меню при hover на іконку
+  .icon--phone:hover + .contacts-menu,
+  .contacts-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+}
+
+
+/* stylelint-enable */
