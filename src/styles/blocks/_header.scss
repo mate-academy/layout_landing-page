@@ -1,0 +1,49 @@
+@use '../utils/mixins';
+@use '../vars/colors';
+@use '../vars/breakpoints';
+
+.header {
+  box-sizing: border-box;
+}
+
+.header__container {
+  background: url(../images/header-bg.png) top / cover no-repeat; // 100% 100% instead of cover no-repeat
+  height: 100vh;
+  margin: 0 auto;
+
+  @include mixins.on-desktop {
+    width: breakpoints.$breakpoint-l;
+  }
+}
+
+.header__title {
+  margin: 0;
+  color: colors.$white-color;
+
+  @include mixins.manrope-font(700, 36px, 100%, 0);
+
+  @include mixins.on-tablet {
+    @include mixins.manrope-font(700, 48px, 100%, 0);
+  }
+
+  @include mixins.on-desktop {
+    @include mixins.manrope-font(700, 56px, 100%, 0);
+  }
+}
+
+.header__bottom {
+  position: absolute;
+  color: colors.$primary-color;
+  margin-left: 20px;
+  bottom: 40px;
+
+  @include mixins.on-tablet {
+    margin-left: 72px;
+    bottom: 64px;
+  }
+
+  @include mixins.on-desktop {
+    margin-left: 120px;
+    bottom: 64px;
+  }
+}

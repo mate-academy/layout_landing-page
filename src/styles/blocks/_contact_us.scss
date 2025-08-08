@@ -1,0 +1,202 @@
+@use '../vars/colors';
+@use '../utils/mixins';
+@use '../vars/contact_us_size';
+
+.contact-us {
+  grid-column: 2;
+
+  .contact-us__content {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 48px 0;
+    height: 100%;
+
+    @include mixins.on-tablet {
+      gap: 80px 0;
+    }
+
+    @include mixins.on-desktop {
+      grid-template-rows: none;
+      grid-template-columns: 498px 111px 411px;
+    }
+  }
+
+  .contact-us__form {
+    grid-column: auto;
+    row-gap: 0;
+    display: grid;
+
+    @include mixins.on-tablet {
+      grid-column: auto;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 1;
+    }
+
+    .primary-button {
+      color: colors.$white-color;
+      background: colors.$primary-button-bg-color;
+      border-radius: 8px;
+      border: none;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 56px;
+      width: contact_us_size.$form-width-s;
+
+      @include mixins.on-tablet {
+        width: contact_us_size.$form-width-m;
+      }
+
+      @include mixins.on-desktop {
+        width: contact_us_size.$form-width-l;
+      }
+
+      @include mixins.manrope-font(700, 16px, 27px, 0);
+
+      &:hover {
+        background: colors.$contact-us-button-bg-color;
+      }
+    }
+  }
+
+  .contact-us__details {
+    grid-column: auto;
+    height: fit-content;
+
+    @include mixins.on-tablet {
+      grid-column: auto;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 3;
+    }
+
+    dt {
+      color: colors.$contact-us-label-color;
+
+      @include mixins.manrope-font(400, 14px, 140%, 0.15px);
+    }
+
+    dd {
+      color: colors.$contact-us-data-color;
+
+      a {
+        color: colors.$primary-color;
+        &:visited {
+          color: colors.$primary-color;
+        }
+      }
+
+      @include mixins.manrope-font(400, 16px, 140%, 0.15px);
+    }
+
+    dt + dd {
+      margin-top: 8px;
+    }
+
+    dd + dt {
+      margin-top: 24px;
+    }
+
+    .contact-us__address {
+      display: block;
+      margin-top: 24px;
+    }
+  }
+
+  .contact-us__input {
+    min-width: contact_us_size.$form-width-s;
+    height: contact_us_size.$input-field-height;
+    margin-bottom: 16px;
+    border-radius: 8px;
+
+    color: colors.$primary-color;
+    background-color: colors.$bg-color;
+    border: 1px solid colors.$bg-color;
+    padding: 14px 16px;
+
+    @include mixins.manrope-font(400, 14px, 140%, 0.15px);
+
+    &:hover {
+      border: 1px solid colors.$input-border-color-hover;
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid colors.$input-border-color-focus;
+      width: 278px;
+      height: 46px;
+    }
+
+    &::placeholder {
+      color: colors.$contact-us-placeholder-color;
+
+      @include mixins.manrope-font(400, 14px, 140%, 0.15px);
+    }
+
+    @include mixins.on-tablet {
+      width: contact_us_size.$form-width-m;
+      max-width: contact_us_size.$form-width-m;
+
+      &:focus {
+        width: 598px;
+        height: 46px;
+      }
+    }
+
+    @include mixins.on-desktop {
+      width: contact_us_size.$form-width-l;
+      max-width: contact_us_size.$form-width-l;
+
+      &:focus {
+        width: 496px;
+        height: 46px;
+      }
+    }
+  }
+
+  .contact-us__textarea {
+    min-width: contact_us_size.$form-width-s;
+    height: contact_us_size.$textarea-field-height;
+    margin-bottom: 16px;
+    border-radius: 9px;
+
+    color: colors.$primary-color;
+    background-color: colors.$bg-color;
+    border: 1px solid colors.$bg-color;
+    padding: 14px 16px;
+
+    @include mixins.manrope-font(400, 14px, 140%, 0.15px);
+
+    &:hover {
+      border: 1px solid colors.$input-border-color-hover;
+    }
+
+    &:focus {
+      outline: none;
+      border: 2px solid colors.$input-border-color-focus;
+      margin: -1px;
+    }
+
+    &::placeholder {
+      color: colors.$contact-us-placeholder-color;
+
+      @include mixins.manrope-font(400, 14px, 140%, 0.15px);
+    }
+
+    @include mixins.on-tablet {
+      width: contact_us_size.$form-width-m;
+      max-width: contact_us_size.$form-width-m;
+      height: contact_us_size.$textarea-field-height;
+    }
+
+    @include mixins.on-desktop {
+      width: contact_us_size.$form-width-l;
+      max-width: contact_us_size.$form-width-l;
+      height: contact_us_size.$textarea-field-height;
+    }
+  }
+}

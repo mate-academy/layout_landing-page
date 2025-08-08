@@ -1,0 +1,53 @@
+@use '../utils/mixins';
+
+.recommended {
+  grid-column: 2;
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 40px 24px;
+    max-width: 100%;
+    overflow: hidden;
+
+    @include mixins.on-tablet {
+      row-gap: 56px;
+      grid-template-columns: 1fr;
+    }
+
+    @include mixins.on-desktop {
+      row-gap: 56px;
+    }
+  }
+
+  &__product {
+    grid-column: span 12;
+    grid-row: span 1;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+    &-container {
+      width: 280px;
+    }
+
+    .product__description {
+      word-break: break-word;
+    }
+
+    @include mixins.on-tablet {
+      &-container {
+        width: 600px;
+      }
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 4;
+
+      &-container {
+        width: 324px;
+      }
+    }
+  }
+}

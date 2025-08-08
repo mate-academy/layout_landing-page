@@ -1,0 +1,54 @@
+@use '../vars/breakpoints';
+
+@mixin manrope-font(
+  $weight,
+  $size,
+  $lineHeight: normal,
+  $letterSpacing: normal
+) {
+  font-family: Manrope, sans-serif;
+  font-size: $size;
+  font-optical-sizing: auto;
+  font-weight: $weight;
+  font-style: normal;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin inter-font($weight, $size, $lineHeight: normal, $letterSpacing: normal) {
+  font-family: Manrope, sans-serif;
+  font-size: $size;
+  font-optical-sizing: auto;
+  font-weight: $weight;
+  font-style: normal;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: #{(breakpoints.$breakpoint-m)}) and (max-width: #{(breakpoints.$breakpoint-l - 1px)}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media screen and (min-width: #{(breakpoints.$breakpoint-l)}) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    justify-items: stretch;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+    justify-items: center;
+  }
+}
