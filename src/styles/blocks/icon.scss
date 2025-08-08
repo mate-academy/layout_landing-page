@@ -15,31 +15,28 @@
 
   &--phone {
     background-image: url(../icons/icon-phone-call.svg);
-    transform: 3s;
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 200%;
+    @include on-desktop {
+      &::after {
+        content: '';
+        position: absolute;
+        margin-top: 8px;
+        right: calc(100% + 8px);
 
-      background-image: url(../icons/phone-number.svg);
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      transform: translateY(50%);
+        background-image: url(../icons/phone-number.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
 
-      opacity: 0;
-      transition: opacity 0.5s ease;
-
-      @include on-desktop {
         height: 16px;
         width: 138px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
       }
-    }
 
-    &:hover::after {
-      opacity: 1;
+      &:hover::after {
+        opacity: 1;
+      }
     }
   }
 
