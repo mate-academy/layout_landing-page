@@ -5,12 +5,41 @@
   background-size: contain;
   image-rendering: -webkit-optimize-contrast;
   background-repeat: no-repeat;
+  position: relative; 
+  cursor: pointer;
 
   @include hover(transform, scale(1.2));
 
   @include on-tablet {
     height: 32px;
     width: 32px;
+  }
+
+
+  @media (min-width: 1260px) {
+    &--phone,
+    &--menu {
+      &::after {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        right: calc(100% + 48px);
+        top: 50%;
+        transform: translateY(-50%) translateX(10px);
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
   }
 
   &--phone {

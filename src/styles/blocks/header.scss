@@ -5,14 +5,24 @@
   position: relative;
   min-height: 100vh;
   justify-content: space-between;
-  max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 
-  background-image: url(../images/header-bg.svg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
+
+  background: {
+    image: url(../images/header-bg-mobile.svg);
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+    attachment: local;
+  }
+
+
+  @media (min-width: $tablet-min-width) {
+    background-image: url(../images/header-bg.svg);
+  }
 
   &__content {
     flex: 1;
@@ -21,60 +31,88 @@
     justify-content: space-between;
     padding: 20px 0;
     box-sizing: border-box;
-    max-width: 100%;
-    }
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
 
-
-  &__title {
-    margin: 0 auto;
-    font-family: Poppins, sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    line-height: 100%;
-    letter-spacing: -0.5px;
-    text-align: center;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    vertical-align: middle;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    padding: 0 20px;
-    display: block;
-    max-width: 100%;
-    word-break: normal;
-    overflow-wrap: break-word;
+  &__bike-image {
     position: absolute;
-
-    bottom: 160px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    font-size: clamp(52px, 6vw, 122px);
-    white-space: nowrap;
+    width: 100%;
+    max-width: 1260px;
+    z-index: 1;
 
-
-
-    @include on-mobile {
-      font-size: 32px;
-    }
-
-    @include on-tablet {
-      font-size: 64px;
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
   }
 
+  &__title {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.5px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(32px, 6vw, 122px);
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 3;
 
+  bottom: 120px;
+
+
+  @include on-mobile {
+    font-size: 58px;
+    bottom: 15%;
+    transform: translate(-50%, 360px);
+  }
+
+  @include on-tablet {
+    font-size: clamp(64px, 6vw, 122px);
+    bottom: 15%;
+    transform: translate(-50%, 300px);
+  }
+
+  @include on-desktop {
+    bottom: 15%;
+    transform: translate(-50%, 430px);
+  }
+}
 
   &__bottom {
     margin-top: auto;
     padding-bottom: 80px;
     text-align: center;
     width: 100%;
+    position: relative;
+    z-index: 2;
 
     @include on-mobile {
       padding-bottom: 120px;
-  }
+    }
 
     @include on-tablet {
-      padding-bottom: 64px;
+      padding-bottom: 80px;
     }
   }
+}
+
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
