@@ -13,6 +13,17 @@
 @import "blocks/footer.scss";
 @import "blocks/section.scss";
 
+*
+ {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 1020px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
 
 .page {
   font-family: Poppins, sans-serif;
@@ -66,7 +77,6 @@
 }
 
 .header {
-  box-sizing: border-box;
   background-image: url(/src/images/header-bg.png);
   background-size: cover;
   background-position: center;
@@ -204,14 +214,9 @@
   padding-block: 92px;
   padding-inline: 20px;
   row-gap: 48px;
+  
 }
 
-.container {
-  width: 100%;
-  max-width: 1020px;
-  margin-inline: auto;
-  padding-inline: 20px;
-}
 
 .section-title {
   margin: 0;
@@ -254,7 +259,7 @@
 }
 
 .bikes__article {
-  grid-column: span 1;
+  grid-column: 1 / -1;
 }
 
 .details {}
@@ -262,6 +267,7 @@
 .details__wrapper {
   display: grid;
   row-gap: 40px;
+  align-items: center;
 }
 
 .details__item {}
@@ -593,12 +599,14 @@
   }
 
   .bikes__products {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr); // 6 колонок
 
   }
 
   .bikes__article {
-    grid-column: span 3; // планшет: 6 колонок — буде 2 в ряд
+        max-width: 500px;
+    margin: 0 auto; // центр
+   grid-column: 1 / -1; // теж в стовпчик
 
   }
 
@@ -638,7 +646,7 @@
   }
 }
 
-@media (min-width: 1260px) {
+@media (min-width: 1000px) {
   .about-us__content {
     --colums: 12;
     gap: 26px;
@@ -660,7 +668,7 @@
   }
 
   .bikes__article {
-    grid-column: span 4;
+   grid-column: span 4;
 
   }
 
