@@ -1,0 +1,147 @@
+.now-on-view {
+  .wrapper {
+    display: grid;
+    row-gap: 20px;
+
+    @include onTablet {
+      row-gap: 24px;
+    }
+  }
+
+  &__button {
+    @include button;
+    margin-inline: auto;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      width: 392px;
+    }
+
+    @include onDesktop {
+      width: 324px;
+    }
+  }
+
+  &__description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+    margin: 0 0 48px;
+  }
+}
+
+.exhibition-items {
+  &__photos {
+    margin-bottom: 24px;
+    @include pageGrid;
+
+    &--three {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 8px;
+
+      @include onTablet {
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 24px;
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 24px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--squer {
+      padding-bottom: 100%;
+      height: 0;
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--tablet-hidden {
+      @include onTablet {
+        display: none;
+      }
+
+      @include onDesktop {
+        display: block;
+        grid-column: 9 / span 4;
+      }
+    }
+
+    &--tablet-left {
+      @include onTablet {
+        grid-column: 1 / span 3;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / span 4;
+      }
+    }
+
+    &--tablet-right {
+      @include onTablet {
+        grid-column: 4 / span 3;
+      }
+
+      @include onDesktop {
+        grid-column: 5 / span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--focus-left {
+      object-position: 15% 10%;
+    }
+
+    &--focus-right {
+      object-position: right bottom;
+    }
+  }
+
+  &__title {
+    margin: 24px 0 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: #d12d35;
+    line-height: 27px;
+  }
+
+  &__date {
+    margin: 0 0 48px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &:last-child {
+    .exhibition-items__date {
+      margin-bottom: 40px;
+    }
+  }
+}
