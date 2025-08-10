@@ -1,0 +1,60 @@
+@use './mixins.scss' as mixins;
+
+.recommended {
+  margin: 0;
+}
+
+.recommended__products {
+  display: block;
+  width: 100%; // розтягує по всій ширині колонки
+  height: auto; // зберігає пропорції
+  object-fit: cover;
+
+  @include mixins.page-grid;
+
+  row-gap: 40px;
+}
+
+.recommended__product {
+  grid-column: 1/-1;
+  transition: 200ms all;
+
+  &:hover {
+    transition: 300ms all;
+    transform: translateY(-3px);
+  }
+
+  @include mixins.on-tablet {
+    grid-column: span 6;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: span 4;
+  }
+}
+
+.product__description {
+  display: grid;
+  grid-column: 1/-1;
+  font-family: 'Space Mono', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: -0.5;
+
+  @include mixins.on-tablet {
+    grid-column: span 4;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.product__price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0;
+}

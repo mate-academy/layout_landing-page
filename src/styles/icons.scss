@@ -1,0 +1,51 @@
+@use './mixins.scss' as mixins;
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.icon--tell {
+  position: relative;
+  background-image: url('../i/Phone-number.png');
+  transition: 200ms all;
+
+  &::before {
+    content: '+1 234 555-55-55';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%) translateX(-20px); // далі ліворуч
+    opacity: 0;
+    color: #292929;
+    font-size: 12px;
+    font-weight: 700;
+    width: max-content;
+    line-height: 16px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-10px); // ближче до іконки (можеш поставити 0, якщо треба притул)
+  }
+}
+
+.icon--menu {
+  background-image: url('../i/Icon-Burger-menu-2.png');
+  transition: 200ms all;
+
+  &:hover {
+    background-image: url('../i/Icon-Burger-menu-hover.png');
+    transition: 300ms all;
+  }
+}
+
+.icon--close {
+  background-image: url('../i/Icon-Close.png');
+}
