@@ -5,6 +5,11 @@
 }
 
 .recommended__products {
+  display: block;
+  width: 100%; // розтягує по всій ширині колонки
+  height: auto; // зберігає пропорції
+  object-fit: cover;
+
   @include mixins.page-grid;
 
   row-gap: 40px;
@@ -20,7 +25,7 @@
   }
 
   @include mixins.on-tablet {
-    grid-column: 2/-2;
+    grid-column: span 6;
   }
 
   @include mixins.on-desktop {
@@ -29,11 +34,21 @@
 }
 
 .product__description {
+  display: grid;
+  grid-column: 1/-1;
   font-family: 'Space Mono', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 140%;
-  letter-spacing: 0;
+  letter-spacing: -0.5;
+
+  @include mixins.on-tablet {
+    grid-column: span 4;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: span 6;
+  }
 }
 
 .product__price {
