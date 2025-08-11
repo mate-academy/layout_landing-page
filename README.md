@@ -1,6 +1,6 @@
 # Landing Page
 
-# Short Desctiption
+# Short Description
 
 Its a web site related for promoting and selling brand new bikes under company MyBike (pet project).
 
