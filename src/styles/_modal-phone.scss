@@ -1,96 +1,57 @@
-.phone-toggle-button {
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-
-  svg {
-    width: 32px;
-    height: 32px;
-    color: white;
-  }
-}
-
-// Estilos para o container do dropdown de telefones
-.phone-menu-dropdown {
+/* Dropdown telefone ajustado */
+.phone-dropdown {
   position: absolute;
-  top: 100%;
-  right: 30px;
-  z-index: 1001;
-
-  // Esconde o menu por padrão
-  visibility: hidden;
+  top: 20px;
+  left: 0;
+  color: $white;
+  font-size: 0.4rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  padding: 0.5rem;
   opacity: 0;
-  transform: translateY(-10px); // Efeito de entrada
+  pointer-events: none;
+  transform: translateY(-10px);
   transition:
-    visibility 0s 0.3s,
     opacity 0.3s ease,
     transform 0.3s ease;
+  z-index: 1003;
 
-  background-color: #d12d35;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 250px;
-}
+  /* Estado ativo */
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 
-// Estilos para o overlay
-.phone-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+    .phone-item__number {
+      text-decoration: none;
+      color: $white;
 
-  // Esconde por padrão
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    visibility 0s 0.3s,
-    opacity 0.3s ease;
-}
-
-// Quando a classe 'active' é adicionada via JS
-// Isso mostra o overlay e o dropdown
-.phone-menu-dropdown.active,
-.phone-overlay.active {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0); // Volta para a posição original
-  transition-delay: 0s; // Garante que a transição comece imediatamente
-}
-
-// Estilos dos itens da lista
-.phone-item {
-  border-bottom: 1px solid;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-
-  &:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
+      &:hover {
+        color: $hover-blue;
+      }
+    }
   }
-}
 
-.phone-item__title {
-  font-size: 1rem;
-  margin: 0 8px;
-  color: $white;
-}
+  /* Ajuste para telas de até 1260px */
+  @media screen and (max-width: 1260px) {
+    left: 740px; /* mais próximo do ícone */
+    top: 20px;
+    font-size: 1.5rem; /* aumenta a legibilidade */
+    padding: 1rem;
+  }
 
-.phone-item__number {
-  color: $white;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  /* Ajuste para telas de até 768px */
+  @media screen and (max-width: 768px) {
+    left: 390px;
+    top: 20px;
+    font-size: 0.9rem; /* ainda mais legível no mobile */
+    padding: 0.8rem;
+  }
 
-  &:hover {
-    text-decoration: none;
-    color: $hover-yellow;
-    cursor: pointer;
+  @media screen and (max-width: 320px) {
+    left: 70px;
+    top: 20px;
+    font-size: 0.5rem; /* ainda mais legível no mobile */
+    padding: 0.5rem;
   }
 }
