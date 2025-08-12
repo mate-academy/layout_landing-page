@@ -5,8 +5,6 @@ const menuClose = document.getElementById('menu-close');
 const body = document.querySelector('body');
 const menuLink = document.querySelectorAll('.menu__link');
 
-console.log(menuLink);
-
 const test = document.querySelector('.test-ride__link');
 
 body.className = '';
