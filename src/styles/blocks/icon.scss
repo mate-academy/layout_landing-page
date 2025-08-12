@@ -1,0 +1,98 @@
+.icon {
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include icon-size();
+
+  @include hover(transform, scale(1.2));
+
+  &--call {
+    background-image: url('../images/Call.png');
+  }
+
+  &--menu {
+    background-image: url('../images/Menu.png');
+    &:hover {
+      background-image: url('../images/Menu-hover.png');
+    }
+  }
+
+  &--close {
+    background-image: url('../images/icon-close.png');
+    position: absolute;
+    top: 40px;
+    right: 20px;
+
+    @include onTablet {
+      top: 43px;
+      right: 72px;
+    }
+
+    @include onDesktop {
+      top: 48px;
+      right: 120px;
+    }
+  }
+}
+
+.icon-phone {
+  position: relative;
+
+  &__info {
+    display: none;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: #ffffff;
+    box-shadow: 18px 4px 26px 0 rgba(0, 0, 0, 0.44);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color $effectDuration;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &:hover {
+    color: $hover-on-dark;
+    }
+  }
+}
+
+@include onDesktop {
+  .icon-phone {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:hover .icon-phone__info {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%);
+    }
+  }
+
+  .icon-phone__info {
+    display: block; // теперь подсказка существует
+    position: absolute;
+    margin-right: 16px;
+
+    top: 50%;
+    right: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%);
+    transition:
+      opacity 0.3s,
+      transform 0.3s,
+      visibility 0.3s;
+  }
+}
