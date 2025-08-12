@@ -2,7 +2,18 @@
 
 const headerBurger = document.getElementById('header-burger');
 const menuClose = document.getElementById('menu-close');
-const body = document.getElementsByClassName('body');
+const body = document.querySelector('body');
 
-headerBurger.onclick(body.classList.add('menu--is-active'));
-menuClose.onclick(body.classList.remove('menu--is-active'));
+body.className = '';
+
+headerBurger.addEventListener('click', activate);
+
+menuClose.addEventListener('click', deactivate);
+
+function activate() {
+  body.className = 'menu--is-active';
+}
+
+function deactivate() {
+  body.className = '';
+}
