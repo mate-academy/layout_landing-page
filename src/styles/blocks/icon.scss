@@ -15,9 +15,23 @@
   }
 }
 
-// модифікатор
-.icon--phone {
-  background-image: url('../images/icons/phone-number.png');
+.top-bar__phone-number {
+  position: relative;
+  overflow: hidden;
+  width: 32px;
+  transition: width 0.5s;
+
+  // display: inline-block;
+
+  @include on-desktop {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      width: 200px;
+    }
+  }
 }
 
 // модифікатор
@@ -32,4 +46,44 @@
 // модифікатор
 .icon--close {
   background-image: url('../images/icons/icon-close.png');
+}
+
+.icon--phone {
+  background-image: url('../images/icons/phone-number.png');
+
+  @include on-desktop {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+  }
+}
+
+.icon-phone-full {
+  display: none;
+
+  @include on-desktop {
+    pointer-events: none;
+
+    top: 0;
+    left: 100%;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition: opacity 0.5s;
+  }
+}
+
+.top-bar__phone-number:hover .icon-phone-full {
+  @include on-desktop {
+    pointer-events: auto;
+    opacity: 1;
+  }
 }
