@@ -3,19 +3,40 @@
   background-color: #000;
   position: relative;
 
+
   @include content-padding-inline;
 
-  &__main-title {
+  &__section-title {
     font-family: Poppins, sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 32px;
     color: #fff;
     margin-bottom: 30px;
-    text-align: left;
+    text-align: center;
+    letter-spacing: -1.5px;
+    line-height: 32px;
 
     @include on-tablet {
-      font-size: 40px;
+      font-family: Poppins, sans-serif;
+      font-weight: 500;
+      font-size: 48px;
       margin-bottom: 40px;
+      line-height: 100%;
+      letter-spacing: -1.5px;
+      text-align: center;
+      color: #fff;
+
+    }
+
+    @include on-desktop {
+      font-family: Poppins, sans-serif;
+      font-weight: 500;
+      font-size: 64px;
+      letter-spacing: -1.5px;
+      line-height: 100%;
+      color: #fff;
+      text-align: center;
+
     }
   }
 
@@ -59,13 +80,7 @@
     }
   }
 
-  &__feature-card {
-    padding-bottom: 20px;
 
-    @include on-tablet {
-      padding-bottom: 30px;
-    }
-  }
 
   &__images {
     display: grid;
@@ -74,8 +89,34 @@
     margin-bottom: 20px;
 
     @include on-tablet {
+      grid-template-columns: 2fr 1fr;
       gap: 24px;
     }
+
+    @include on-desktop {
+    grid-template-columns: 2fr 1fr; // перше зображення вдвічі ширше
+    gap: 24px;
+  }
+
+
+  }
+
+  &__feature-card {
+    padding-bottom: 20px;
+
+    @include on-tablet {
+      padding-bottom: 30px;
+    }
+
+    &--reverse {
+      .details__images {
+        @include on-desktop {
+          grid-template-columns: 1fr 2fr; // перше фото менше, друге більше
+        }
+      }
+    }
+
+
   }
 
   &__photo {
