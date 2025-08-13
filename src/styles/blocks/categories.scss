@@ -1,0 +1,127 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 2px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: $effect-duration;
+
+    &:hover {
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+    text-decoration: none;
+    letter-spacing: 0;
+
+    &:hover {
+      color: $main-text-color;
+    }
+
+    &:visited {
+      color: $main-text-color;
+    }
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__button {
+    display: grid;
+    grid-column: 1 / -1;
+    align-content: center;
+    align-items: center;
+
+    min-width: 100%;
+    max-width: 280px;
+    height: 56px;
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 27px;
+    color: #fff;
+    text-align: center;
+
+    background-color: #292929;
+
+    transition: $effect-duration;
+
+    @include on-tablet {
+      min-width: 324px;
+      max-width: 600px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+      min-width: 324px;
+      max-width: 324px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: #f0f1f4;
+      color: #292929;
+      background-color: #f8f8fa;
+
+      @include hover(transform, scale(1.1));
+    }
+
+    &:active {
+      color: #fff;
+      background-color: #111;
+    }
+  }
+}
