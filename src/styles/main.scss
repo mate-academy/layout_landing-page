@@ -1,3 +1,322 @@
-body {
+$red-color: #d12d35;
+$black-color: #161616;
+$white-color: #fff;
+
+.page__body {
+  //body
   margin: 0;
 }
+
+.page {
+  //html
+  font-family: 'Cinzel', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  scroll-behavior: smooth;
+}
+
+.container {
+  padding-inline: 20px;
+}
+
+.title {
+  font-family: Cinzel;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: Cinzel;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+  margin: 0;
+}
+
+.text {
+  font-family: Cinzel;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.label {
+  font-family: Cinzel;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+.header {
+  background-color: $black-color; //временно убрать белую полоску
+  padding-block: 25px 288px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-image: url(../images/background.png);
+  background-position: center;
+  background-size: cover;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 64px;
+      height: 46px;
+      transition: transform, 0.3s;
+    }
+    img:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    color: $white-color;
+    margin-top: 129px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+  }
+
+  .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &--phone {
+      background-image: url(../icons/icon-phone-call.png);
+    }
+    &--menu {
+      background-image: url(../icons/Iicon-burger-menu.png);
+
+      &:hover {
+        transform: scale(1.2);
+        background-image: url(../icons/Icon-Burger-menu-hover.png);
+      }
+    }
+  }
+}
+
+.menu {
+  padding-block: 25px 31px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: $red-color;
+  transition: all 0.5s;
+
+  &__page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      width: 64px;
+      height: 46px;
+      transition: transform, 0.3s;
+    }
+    img:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    transition: transform, 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .icon--close {
+    background-image: url(../icons/Icon-Close.svg);
+  }
+
+  .nav {
+    margin-top: 40px;
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    &__link {
+      position: relative;
+      font-size: 22px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-align: left;
+      color: $white-color;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    //так негарно через те, що внизу є такий же клас nav__link, і щоб його не зачепати використовую таку вкладенність. Якщо б я не використовував внизу такий же клас, писав би все блоці вище &__link
+    .nav__list .nav__link::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: $white-color;
+      position: absolute;
+      bottom: -8px;
+      width: 100%;
+      transform: scale(0);
+      transform-origin: left;
+      transition: 0.3s;
+    }
+    .nav__list .nav__link:hover::after {
+      transform: scale(1);
+    }
+
+    &__link--bottom {
+      font-size: 16px;
+      line-height: 1.69;
+    }
+    &__contacts {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .nav__link {
+        display: block;
+      }
+
+      &-contact-block {
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.69;
+        letter-spacing: normal;
+        text-align: left;
+        color: $white-color;
+      }
+      &-contact-order {
+        margin-top: 16px;
+        padding-bottom: 7px;
+        border-bottom: 1px $white-color solid;
+        width: fit-content;
+      }
+    }
+  }
+}
+
+.about {
+  padding-top: 100px;
+
+  &__visit {
+    color: $red-color;
+    font-family: Cinzel;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%
+  }
+
+  &__title {
+    color: $black-color;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+    color: $black-color;
+  }
+
+  &__content {
+    .about__subtitle {
+      margin-top: 24px;
+    }
+
+    &-line {
+      display: flex;
+      gap: 24px;
+    }
+    &-line:nth-child(6), &-line:nth-child(7){
+      .about__content-label {
+        width: 121px;
+      }
+    }
+    &-line--flex-column {
+      flex-direction: column;
+      gap: 0;
+
+      .about__content-text {
+        margin-bottom: 0;
+      }
+      .about__content-label {
+        margin-top: 8px;
+        margin-bottom: 0;
+      }
+    }
+    &-label {
+      color: $black-color;
+      margin-bottom: 8px;
+    }
+    &-text {
+      color: $black-color;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.view {
+  padding-top: 132px;
+
+  &__title {
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  &__descr {
+    text-align: center;
+  }
+}
+
+
+
+
+@import 'media';
