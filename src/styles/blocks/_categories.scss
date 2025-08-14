@@ -1,0 +1,94 @@
+@use '../utils/mixins';
+@use '../vars/colors';
+@use '../vars/articles_size';
+
+.categories {
+  grid-column: 2;
+
+  .categories__articles {
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 56px;
+
+    .categories__article {
+      .article__images {
+        display: flex;
+        flex-direction: row;
+        column-gap: articles_size.$articles-gap-s;
+
+        @include mixins.on-tablet {
+          column-gap: articles_size.$articles-gap-m;
+        }
+
+        @include mixins.on-desktop {
+          column-gap: articles_size.$articles-gap-l;
+        }
+
+        .article__image {
+          width: 50%;
+          min-width: 130px;
+          min-height: 130px;
+          box-sizing: border-box;
+          border: articles_size.$article-border solid transparent;
+
+          &:hover {
+            transform: scale(1.1);
+            border: articles_size.$article-border solid colors.$white-color;
+          }
+
+          @include mixins.on-tablet {
+            width: 50%;
+            min-width: 288px;
+            min-height: 184px;
+          }
+
+          @include mixins.on-desktop {
+            width: 50%;
+            min-width: 498px;
+            min-height: 324px;
+          }
+        }
+      }
+
+      .article__link {
+        display: block;
+        color: colors.$primary-color;
+        margin-top: 16px;
+
+        &:visited {
+          color: colors.$primary-color;
+        }
+
+        @include mixins.manrope-font(700, 24px, 140%, 0);
+      }
+    }
+  }
+
+  .primary-button {
+    color: colors.$white-color;
+    background: colors.$primary-button-bg-color;
+    border: 1px colors.$primary-button-bg-color solid;
+    border-radius: 8px;
+    width: 280px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 56px;
+
+    &:hover {
+      background: colors.$contact-us-button-bg-color;
+      border-color: colors.$contact-us-button-bg-color;
+    }
+
+    @include mixins.manrope-font(700, 16px, 27px, 0);
+
+    @include mixins.on-tablet {
+      width: 600px;
+    }
+
+    @include mixins.on-desktop {
+      width: 324px;
+    }
+  }
+}

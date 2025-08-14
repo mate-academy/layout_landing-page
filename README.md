@@ -1,3 +1,19 @@
+# parcel daemon
+npm i -D parcel
+
+# parcel watch
+File | Settings -> Tools | File Watchers -> ...
+npx parcel src/index.html
+
+# parcel vs npm run buid
+Для разработки и быстрой проверки изменений всегда используй npx parcel src/index.html.
+Для финальной сборки — npm run build.
+Почему, как думаешь, hot reload удобнее для верстки?
+
+# stylelint
+IDE settings: run stylelint --fix on save (save up 15% of dev time)
+npx stylelint ./src/styles/style.css --fix (save for issue of empty lines before media, etc as well)
+
 # Landing Page
 
 > ❗❗ You will complete this task in the **Landing** topic.
@@ -17,7 +33,7 @@ Follow the instructions in this and next lessons to implement the page block by 
 - Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
 - **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
 - When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- Deploy and create a Pull Request with a [DEMO LINK](https://cooper85.github.io/layout_landing-page/).
 
 # Tips & Hints
 - Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.

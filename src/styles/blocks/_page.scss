@@ -1,0 +1,46 @@
+@use '../vars/colors';
+@use '../vars/breakpoints';
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  color: colors.$primary-color;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+.page__body {
+  margin: 0;
+  padding: 0;
+  min-width: breakpoints.$breakpoint-s;
+  overflow-x: hidden;
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: 750ms all;
+}
+
+.page__menu:target {
+  opacity: 1;
+  pointer-events: all;
+}
+
+a {
+  text-decoration: none;
+  cursor: url(../images/cursor-mouse.png), auto;
+}
+
+img {
+  transition: transform .3s linear;
+}

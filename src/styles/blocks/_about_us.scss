@@ -1,0 +1,102 @@
+@use '../utils/mixins';
+@use '../vars/colors';
+@use '../vars/about_us_sizes' as *;
+@use '../vars/main_sizes' as *;
+
+.about-us {
+  grid-column: 1 / -1;
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+
+  .about-us__image {
+    width: 100%;
+    height: $bg-image-height-s;
+    background: url(../images/about-us.png) center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include mixins.on-tablet {
+      height: $bg-image-height-m;
+    }
+
+    @include mixins.on-desktop {
+      height: $bg-image-height-l;
+    }
+  }
+
+  .about-us__content {
+    background-color: colors.$about-us-bg-color;
+    align-items: center;
+    column-gap: 12px;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 1fr 24px 1fr;
+    padding: 48px 20px;
+
+    @include mixins.on-tablet {
+      grid-template-columns: calc($main-border-column-width-m + 1px) 1fr 24px 1fr $main-border-column-width-m;
+      grid-template-rows: 1fr;
+      padding: $main-border-column-width-l 0;
+    }
+
+    @include mixins.on-desktop {
+      grid-template-columns: $main-border-column-width-l 1fr 111px 1fr $main-border-column-width-l;
+      grid-template-rows: 1fr;
+      padding: $main-border-column-width-l 0;
+    }
+
+    .about-us__slogan {
+      grid-area: 1 / 1 / 1 / -1;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 100%;
+      min-width: 0;
+
+      @include mixins.manrope-font(700, 32px, 32px, 0);
+
+      @include mixins.on-tablet {
+        grid-area: 2 / 2;
+        width: 287px;
+        max-width: 498px;
+
+        @include mixins.manrope-font(700, 40px, 40px, 0);
+      }
+
+      @include mixins.on-desktop {
+        grid-area: 2 / 2;
+        width: 100%;
+        max-width: 498px;
+
+        @include mixins.manrope-font(700, 48px, 48px, 0);
+      }
+    }
+
+    .about-us__text {
+      grid-area: 3 / 1 / 3 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+
+      @include mixins.on-tablet {
+        grid-area: 2 / 4;
+        width: 288px;
+        max-width: 411px;
+
+        @include mixins.manrope-font(400, 16px, 140%, 0.15px);
+      }
+
+      @include mixins.on-desktop {
+        grid-area: 2 / 4;
+        width: 100%;
+        max-width: 411px;
+      }
+
+      @include mixins.manrope-font(400, 16px, 140%, 0.15px);
+    }
+  }
+}
