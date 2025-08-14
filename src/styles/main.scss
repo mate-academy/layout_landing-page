@@ -1,20 +1,19 @@
 @import "./mixins";
-@import "blocks/page.scss";
-@import "blocks/header.scss";
-@import "blocks/top-bar.scss";
-@import "blocks/icon.scss";
-@import "blocks/menu.scss";
-@import "blocks/nav.scss";
-@import "blocks/section-title.scss";
-@import "blocks/about-us.scss";
-@import "blocks/compare-bikes.scss";
-@import "blocks/contacts.scss";
-@import "blocks/details.scss";
-@import "blocks/footer.scss";
-@import "blocks/section.scss";
+@import "blocks/page";
+@import "blocks/header";
+@import "blocks/top-bar";
+@import "blocks/icon";
+@import "blocks/menu";
+@import "blocks/nav";
+@import "blocks/section-title";
+@import "blocks/about-us";
+@import "blocks/compare-bikes";
+@import "blocks/contacts";
+@import "blocks/details";
+@import "blocks/footer";
+@import "blocks/section";
 
-*
- {
+* {
   box-sizing: border-box;
 }
 
@@ -36,12 +35,15 @@
 }
 
 .page__menu {
+  pointer-events: none;
+
   position: fixed;
+
   top: 0;
+
   right: 0;
   left: 0;
   opacity: 0;
-  pointer-events: none;
 
 }
 
@@ -54,10 +56,39 @@
   overflow: hidden;
 }
 
+// menu styles
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: rgba(194, 194, 194, 1);
+
+  font-weight: 700;
+
+  padding-inline: 10px;
+
+  text-transform: uppercase;
+
+
+}
+
+.menu__top {
+  margin-bottom: 32px;
+
+}
+
+
+.menu__nav {
+  margin-top: 24px;
+
+  margin-bottom: 40px;
+
+}
+
 .menu__phone-number {
   display: block;
-  margin-bottom: 16px;
+  margin-top: 16px;
   font-size: 16px;
+
   line-height: 27px;
   color: black;
   text-decoration: none;
@@ -69,11 +100,32 @@
   width: fit-content;
   border-bottom: 1px solid black;
   font-size: 12px;
+
   line-height: 16px;
   letter-spacing: 2px;
   color: black;
   text-decoration: none;
 }
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.nav__link {
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+// header styles
 
 .header {
   background-image: url(/src/images/header-bg.png);
@@ -115,8 +167,18 @@
   height: 100%;
 }
 
+.header__content {
+  width: 100%;
+  max-width: 1020px;
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .top-bar {
-  padding: 20px 20px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -132,60 +194,10 @@
   display: flex;
 }
 
-.header__content {
-  width: 100%;
-  max-width: 1020px;
-  margin-inline: auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 
 .top-bar__logo img {
   width: 130px;
   height: auto;
-}
-
-.menu {
-  box-sizing: border-box;
-  height: 100vh;
-  background-color: rgba(194, 194, 194, 1);
-  font-weight: 700;
-  text-transform: uppercase;
-  padding-inline: 10px;
-
-}
-
-.menu__top {
-  margin-bottom: 32px;
-
-
-}
-
-.menu__nav {
-  margin-top: 24px;
-  margin-bottom: 40px;
-}
-
-
-.nav__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.nav__link {
-  color: black;
-  text-decoration: none;
-  font-size: 22px;
-  line-height: 22px;
-  letter-spacing: 2px;
-  font-weight: 600;
 }
 
 .icon {
@@ -198,6 +210,12 @@
 
 .icon--phone {
   background-image: url(/src/images/icons/icon-phone.png);
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  cursor: pointer;
 }
 
 .icon--menu {
@@ -208,9 +226,10 @@
   background-image: url(/src/images/icons/icon-close.png);
 }
 
+// main content
 .main {
   display: grid;
-  padding-block: 92px;
+  padding-block: 20px;
   padding-inline: 20px;
   row-gap: 48px;
 
@@ -219,8 +238,7 @@
 
 .section-title {
   margin: 0;
-  margin-bottom: 48px;
-  font-family: Poppins;
+  margin-top: 32px;
   text-align: center;
   font-weight: 500;
   font-size: 32px;
@@ -234,10 +252,12 @@
   text-align: left;
 }
 
+// about us
+
 .about-us__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 15px;
 }
 
 .about-us__text {
@@ -245,7 +265,7 @@
   grid-column: 1 /-1;
 }
 
-
+// compaire bikes
 .bike__photo {
   width: 100%;
 }
@@ -261,17 +281,12 @@
   grid-column: 1 / -1;
 }
 
-.details {
-
-}
-
+// details
 .details__wrapper {
   display: grid;
   row-gap: 40px;
   align-items: center;
 }
-
-.details__item {}
 
 .details__photos {
   display: grid;
@@ -280,8 +295,6 @@
   margin-bottom: 16px;
 
 }
-
-.details__link {}
 
 .details__photo {
   width: 100%;
@@ -296,8 +309,6 @@
   font-size: 24px;
   line-height: 140%;
 }
-
-.details__text {}
 
 .details__button-wrapper {
   display: flex;
@@ -325,29 +336,27 @@
   }
 }
 
+// contacts
 .contacts {
-  padding-block: 92px; // Задайте відповідний відступ, можливо, 92px, як у .main
-  background-color: rgba(29, 29, 29, 1); // Фоновий колір, як на скріншоті
-  color: white; // Колір тексту
+  padding-block: 92px;
+  background-color: rgba(29, 29, 29, 1);
+  color: white;
   text-align: center;
 
 }
 
 .contacts__content {
   display: grid;
-  gap: 24px; // Відстань між формою та інформацією
-  max-width: 800px; // Обмежте максимальну ширину контейнера
-  margin-inline: auto; // Центруйте контейнер
-
-  /* Мобільний вигляд (одна колонка) */
+  gap: 48px;
+  margin-inline: auto;
   grid-template-columns: 1fr;
 }
 
 .contacts__form {
   display: grid;
-  gap: 16px; // Відстань між полями форми
-  background-color: rgba(29, 29, 29, 1); // Фон форми, якщо потрібно окремо
-  padding: 0; // Залежить від дизайну, на скріншоті немає внутрішніх відступів
+  gap: 16px;
+  background-color: rgba(29, 29, 29, 1);
+  padding: 0;
 }
 
 .contacts__input,
@@ -355,35 +364,29 @@
   width: 100%;
   padding: 16px 20px;
   border: none;
-  border-radius: 8px;
-  background-color: #2e2e2e; // Колір фону полів вводу
-  color: white;
+  border-radius: 15px;
+  background-color: #fff;
+  color: rgb(0, 0, 0);
   font-family: Poppins, sans-serif;
   font-size: 16px;
   line-height: 140%;
-  box-sizing: border-box; // Включаємо padding у ширину елемента
 
   &::placeholder {
-    color: #999; // Колір плейсхолдера
+    color: #cfc6c6;
   }
 
   &:focus {
-    outline: 2px solid #555; // Обведення при фокусі
+    outline: 2px solid #565353;
   }
-}
-
-.contacts__textarea {
-  resize: vertical; // Дозволити зміну розміру по вертикалі
-  min-height: 120px; // Мінімальна висота для текстового поля
 }
 
 .contacts__button {
   width: 100%;
   padding: 16px 20px;
-  background-color: white; // Колір кнопки
+  background-color: white;
   color: black;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   font-family: Poppins, sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -397,137 +400,137 @@
 
 .contacts__info {
   display: grid;
-  gap: 24px; // Відстань між контактними елементами
-  text-align: left; // Вирівнювання тексту контактної інформації
+  gap: 24px;
+  text-align: left;
 }
 
 .contacts__info-item {
   .contacts__label {
-    margin: 0 0 4px 0;
+    margin: 0 0 4px;
     font-size: 14px;
-    color: #ccc; // Світліший колір для лейбла
+    color: #ccc;
   }
 
   .contacts__value {
     margin: 0;
     font-size: 18px;
     font-weight: 500;
-    color: white; // Основний колір для значення
-    text-decoration: none; // Прибрати підкреслення для посилань (телефон, email)
-    display: block; // Забезпечити, щоб посилання займали всю ширину
+    color: white;
+    text-decoration: none;
+    display: block;
   }
 
   address {
-    font-style: normal; // Прибрати курсив для address
+    font-style: normal;
   }
 }
 
-
+// footer
 .footer {
   width: 100%;
-  overflow: hidden; // Приховати можливі виступи зображення
-  line-height: 0; // Прибираємо зайвий простір під зображенням
+  overflow: hidden;
+  line-height: 0;
 
   .footer__image {
     width: 100%;
     height: auto;
-    display: block; // Щоб уникнути зайвого простору під зображенням
-    object-fit: cover; // Забезпечити заповнення контейнера без спотворення
+    display: block;
+    object-fit: cover;
   }
 }
 
 
 
-@media (min-width: 321px) {
-  .header {
-    padding: 20px;
-  }
+// @media (min-width: 321px) {
+//   .header {
+//     padding: 20px;
+//   }
 
-  .header__title {
-    font-size: 36px;
-  }
+//   .header__title {
+//     font-size: 36px;
+//   }
 
-  .header__bottom {
-    padding-bottom: 88px;
-  }
-
-
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .top-bar {
-    padding: 20px 20px;
-  }
-
-  .top-bar__logo img {
-    width: 130px;
-    height: auto;
-  }
-
-  .menu {
-    padding-inline: 10px;
-  }
-
-  .menu__button-book {
-    font-size: 14px;
-  }
-
-  .main {
-    padding-block: 40px;
-  }
-
-  .about-us__content {
-    --colums: 2;
-    display: grid;
-    grid-template-columns: repeat(var(--colums), 1fr);
-    gap: 10px;
-    flex-direction: column;
-    gap: 24px;
-    align-items: flex-start;
-
-  }
-
-  .about-us__title {}
-
-  .section-title--align--left {
-    font-size: 32px;
-    margin: 0;
-  }
+//   .header__bottom {
+//     padding-bottom: 88px;
+//   }
 
 
-  .section-title--align--left {
-    text-align: left;
-  }
+//   .icon {
+//     width: 24px;
+//     height: 24px;
+//   }
+
+//   .top-bar {
+//     padding: 20px 20px;
+//   }
+
+//   .top-bar__logo img {
+//     width: 130px;
+//     height: auto;
+//   }
+
+//   .menu {
+//     padding-inline: 10px;
+//   }
+
+//   .menu__button-book {
+//     font-size: 14px;
+//   }
+
+//   .main {
+//     padding-block: 40px;
+//   }
+
+//   .about-us__content {
+//     --colums: 2;
+//     display: grid;
+//     grid-template-columns: repeat(var(--colums), 1fr);
+//     gap: 10px;
+//     flex-direction: column;
+//     gap: 24px;
+//     align-items: flex-start;
+
+//   }
+
+//   .about-us__title {}
+
+//   .section-title--align--left {
+//     font-size: 32px;
+//     margin: 0;
+//   }
 
 
-  .bikes__products {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px;
+//   .section-title--align--left {
+//     text-align: left;
+//   }
 
-  }
 
-  .details__wrapper {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(1, 1fr);
-  }
+//   .bikes__products {
+//     grid-template-columns: repeat(3, 1fr);
+//     column-gap: 24px;
 
-  .details__item--wide {
-    grid-column: span 1;
-  }
+//   }
 
-  .details__item--square {
-    grid-column: span 1;
-  }
-}
+//   .details__wrapper {
+//     display: grid;
+//     gap: 16px;
+//     grid-template-columns: repeat(1, 1fr);
+//   }
 
+//   .details__item--wide {
+//     grid-column: span 1;
+//   }
+
+//   .details__item--square {
+//     grid-column: span 1;
+//   }
+// }
+
+// media queries 744
 @media (min-width: 744px) {
   .header {
     padding: 30px;
     background-position-x: 40%;
-
   }
 
   .header__title {
@@ -540,7 +543,7 @@
   }
 
   .top-bar {
-    padding: 10px 10px;
+    padding: 10px;
   }
 
   .top-bar__logo img {
@@ -572,24 +575,45 @@
   .main {
     padding-block: 120px;
 
+
   }
 
-  .section-title {
-    font-size: 48px;
-    margin-bottom: 64px;
-    grid-column: 1 /4;
+  .icon--phone::after {
+    content: " +1 234 5555–55–55";
+    position: absolute;
+    top: 50%;
+    right: 110%;
+    transform: translateY(-50%);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+
   }
+
+  .icon--phone:hover::after {
+    opacity: 1;
+  }
+
+.section-title {
+  font-size: 48px;
+  margin-bottom: 64px;
+  grid-column: 1 / -1; 
+}
 
   .about-us__content {
-    --colums: 6;
     gap: 20px;
-    flex-direction: row; // у рядок
+    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+
   }
 
   .section-title--align--left {
-    flex: 0 0 auto; // не розтягується
+    flex: 0 0 auto;
   }
 
   .about-us__text {
@@ -600,66 +624,101 @@
   }
 
   .bikes__products {
-    grid-template-columns: repeat(6, 1fr); // 6 колонок
+    grid-template-columns: repeat(6, 1fr);
 
   }
 
   .bikes__article {
     max-width: 500px;
-    margin: 0 auto; // центр
-    grid-column: 1 / -1; //  в стовпчик
+    margin: 0 auto;
+    grid-column: 1 / -1;
 
   }
 
-  .details__wrapper {
+  .bike__photo {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .bike__photo:hover {
+    transform: scale(1.05);
+  }
+
+  .details__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .details__photo:hover {
+    transform: scale(1.03);
+  }
+
+  .details__photos {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
   }
 
-  .details__item--wide {
-    grid-column: span 4;
+  .details__link--wide {
+    grid-column: 1 / span 4;
+    grid-row: 1;
   }
 
-  .details__item--square {
-    grid-column: span 2;
+  .details__link--square {
+    grid-column: 5 / span 2;
+    grid-row: 1;
+  }
+
+
+  .details__item:last-child .details__link--square {
+    grid-column: 1 / span 2;
+  }
+
+  .details__item:last-child .details__link--wide {
+    grid-column: 3 / span 4;
   }
 
   .contacts {
-    padding-block: 120px; // Збільшуємо відступи для більших екранів
+    padding-block: 120px;
   }
 
   .contacts__content {
     grid-template-columns: 1fr 1fr;
-    gap: 40px; // Збільшуємо відступ між колонками
+    gap: 40px;
   }
 
   .contacts__form {
-    grid-column: 1 / 2; // Форма займає першу колонку
+    grid-column: 1 / 2;
   }
 
   .contacts__info {
-    grid-column: 2 / 3; // Інформація займає другу колонку
-    gap: 32px; // Відступ між елементами контактної інформації
+    grid-column: 2 / 3;
+    gap: 32px;
+  }
+
+  // .section-title {
+  //   grid-column: 1 / -1;
+  // }
+}
+
+// media queries 1000
+@media (min-width: 1000px) {
+  .about-us__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .about-us__text {
+    grid-column: 6 / -2;
   }
 
   .section-title {
-    grid-column: 1 / -1; // Заголовок все ще займає всю ширину
-  }
-}
-
-@media (min-width: 1000px) {
-  .about-us__content {
-    --colums: 12;
-    gap: 26px;
-    flex-direction: row; // у рядок
-    align-items: flex-start;
-    justify-content: space-between;
-    grid-column: span 6;
-  }
-
-
-  .about-us__text {
-
-    grid-column: span 4;
+    grid-column: 1 / 4;
   }
 
   .bikes__products {
@@ -668,24 +727,59 @@
   }
 
   .bikes__article {
-   grid-column: span 4;
-
-  }
-
-  .details__wrapper {
-    grid-template-columns: repeat(12, 1fr); // десктоп
-  }
-
-  .details__item--wide {
-    grid-column: span 8;
-  }
-
-  .details__item--square {
     grid-column: span 4;
+
   }
+
+  .bike__photo {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .bike__photo:hover {
+    transform: scale(1.05);
+  }
+
+  .details__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .details__photo:hover {
+    transform: scale(1.02);
+  }
+
+  .details__photos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+
+  .details__link--wide {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+  }
+
+  .details__link--square {
+    grid-column: 5 / span 2;
+    grid-row: 1;
+  }
+
+  .details__item:last-child .details__link--square {
+    grid-column: 1 / span 2;
+  }
+
+  .details__item:last-child .details__link--wide {
+    grid-column: 3 / span 4;
+  }
+
 
   .contacts__content {
-    grid-template-columns: 1fr 1fr; // Зберігаємо 2 колонки, але з більшим max-width
-    gap: 80px; // Можна збільшити відступ для десктопу
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
   }
+
 }
