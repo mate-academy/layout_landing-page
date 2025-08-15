@@ -1,0 +1,54 @@
+@use '../abstracts' as *;
+
+.menu {
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__phone-number {
+    display: block;
+    margin-top: 40px;
+    text-transform: uppercase;
+
+    @include font(16px, 27px, 600, $menu-color);
+
+    @include hover(opacity) {
+      opacity: 0.5;
+    }
+  }
+
+  &__test-ride {
+    display: block;
+    width: fit-content;
+    margin-top: 16px;
+    padding-bottom: 8px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $menu-color;
+    text-transform: uppercase;
+
+    @include font(12px, 16px, 600, $menu-color);
+    @extend %link-hover;
+  }
+}
+
+.page__menu {
+  height: 100vh;
+  color: $menu-color;
+  background-color: $menu-bg-color;
+
+  position: fixed;
+  inset: 0;
+
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: inherit;
+
+  transition-property: opacity, transform;
+  transition-duration: $transition-duration;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
