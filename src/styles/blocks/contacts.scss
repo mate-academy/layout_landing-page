@@ -26,9 +26,10 @@
     }
   }
   &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     grid-column: 1 / -1;
-    display: grid;
-    row-gap: 24px;
 
     @include on-tablet {
       grid-column: 1 / -1;
@@ -52,6 +53,15 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 140%;
+      text-decoration: none;
+      &:hover {
+        color: $input-txt-clr;
+      }
+      &:focus,
+      &:active,
+      &:visited {
+        text-decoration: none;
+      }
     }
   }
   &__button {
@@ -61,29 +71,50 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    background-color: $main-text-color;
+    background-color: $category-button-color;
     color: $main-white-color;
-    border: 1px transparent;
+    border: transparent;
     border-radius: 8px;
+    &:hover {
+      background-color: $main-text-color;
+      color: $main-white-color;
+    }
+    &:active {
+      background-color: $main-black-clr;
+      color: $main-white-color;
+    }
   }
 }
 
 .input {
+  &__name,
+  &__email,
+  &__message {
+    padding: 14px 16px;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
   background-color: $alt-bgc;
   height: 48px;
-  border: 1px transparent;
+  border: 1px solid transparent;
   border-radius: 8px;
+  outline: none;
   &__message {
     height: 148px;
   }
   &::placeholder {
     font-family: Manrope, sans-serif;
-    padding-left: 16px;
-    padding-top: 14px;
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
     letter-spacing: 0.15px;
     color: $input-txt-clr;
+  }
+  &:hover {
+    border: solid 1px $on-hover-input-clr;
+  }
+  &:focus {
+    border: 2px solid $category-button-color;
   }
 }
