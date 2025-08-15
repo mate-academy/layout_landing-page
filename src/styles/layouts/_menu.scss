@@ -1,6 +1,15 @@
 @use '../abstracts' as *;
 
 .menu {
+  overflow: auto;
+
+  &__top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $menu-bg-color;
+  }
+
   &__nav {
     margin-top: 24px;
   }
@@ -28,27 +37,5 @@
 
     @include font(12px, 16px, 600, $menu-color);
     @extend %link-hover;
-  }
-}
-
-.page__menu {
-  height: 100vh;
-  color: $menu-color;
-  background-color: $menu-bg-color;
-
-  position: fixed;
-  inset: 0;
-
-  opacity: 0;
-  transform: translateX(100%);
-  pointer-events: inherit;
-
-  transition-property: opacity, transform;
-  transition-duration: $transition-duration;
-
-  &:target {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: all;
   }
 }
