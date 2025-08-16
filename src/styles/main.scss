@@ -13,6 +13,11 @@ $white-color: #fff;
   font-optical-sizing: auto;
   scroll-behavior: smooth;
 }
+main, header, aside {
+  position: relative;
+  z-index: 1;
+  background-color: $white-color;
+}
 
 .container {
   padding-inline: 20px;
@@ -106,7 +111,7 @@ $white-color: #fff;
     }
 
     &--phone {
-      background-image: url(../images/phone-4x.png);
+      background-image: url(../images/phone-3xl.png);
       background-size: cover;
     }
     &--menu {
@@ -124,9 +129,10 @@ $white-color: #fff;
 .menu {
   padding-block: 25px 31px;
   box-sizing: border-box;
-  min-height: 100vh;
   background-color: $red-color;
   transition: all 0.5s;
+  height: 100vh;
+  overflow-y: auto;
 
   &__page {
     position: fixed;
@@ -134,6 +140,7 @@ $white-color: #fff;
     left: 0;
     right: 0;
     transform: translateX(-100%);
+    z-index: 10;
 
     opacity: 0;
     pointer-events: none;
@@ -336,6 +343,7 @@ $white-color: #fff;
       display: flex;
 
       &-large {
+        display: block;
         width: 130px;
         height: 130px;
         margin-right: 20px;
@@ -344,6 +352,7 @@ $white-color: #fff;
         }
       }
       &-small {
+        display: block;
         width: 88px;
         height: 87px;
         margin-right: 8px;
@@ -355,6 +364,7 @@ $white-color: #fff;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: 0.3s;
       }
     }
     &-label {
@@ -399,12 +409,14 @@ $white-color: #fff;
   &__card {
 
     &-photo {
+      display: block;
       width: 100%;
       height: 277px;
       margin-bottom: 24px;
       img {
         width: 100%;
         height: 100%;
+        transition: 0.3s;
       }
     }
     &-label {
@@ -444,6 +456,10 @@ $white-color: #fff;
     display: block;
     color: #3E3E3E;
     margin-bottom: 8px;
+
+    &:hover {
+      color: $red-color;
+    }
   }
   &__label-lh140 {
     line-height: 140%;
@@ -510,10 +526,13 @@ $white-color: #fff;
 
 .footer {
   height: 180px;
-  background-image: url('../images/view-images/footer-bg.png');
+  background-image: url('../images/footer-4x.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
 }
 
 button:hover {
@@ -521,6 +540,10 @@ button:hover {
 }
 button:focus {
   background-color: #EB343D;
+}
+img:hover {
+  transform: scale(110%);
+  transition: 0.3s;
 }
 
 @import 'media';
