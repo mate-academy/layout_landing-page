@@ -3,28 +3,30 @@ $black-color: #161616;
 $white-color: #fff;
 
 .page__body {
-  //body
   margin: 0;
 }
 
 .page {
-  //html
   font-family: Cinzel, serif;
   font-optical-sizing: auto;
   scroll-behavior: smooth;
 }
-main, header, aside {
+
+main,
+header,
+aside {
   position: relative;
   z-index: 1;
   background-color: $white-color;
 }
 
-.container {
-  padding-inline: 20px;
+img:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
 }
 
 .title {
-  font-family: Cinzel;
+  font-family: Cinzel, sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -34,7 +36,7 @@ main, header, aside {
 }
 
 .subtitle {
-  font-family: Cinzel;
+  font-family: Cinzel, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -43,7 +45,7 @@ main, header, aside {
 }
 
 .text {
-  font-family: Cinzel;
+  font-family: Cinzel, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -51,499 +53,55 @@ main, header, aside {
 }
 
 .label {
-  font-family: Cinzel;
+  font-family: Cinzel, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 27px;
 }
 
-.header {
-  background-color: $black-color;
-  padding-block: 25px 288px;
-  box-sizing: border-box;
-  min-height: 100vh;
-  background-image: url(../images/background.png);
-  background-position: center;
-  background-size: cover;
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
 
-  &__hover {
-    display: none;
+  &:hover {
+    transform: scale(1.2);
   }
 
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    img {
-      width: 64px;
-      height: 46px;
-      transition: transform, 0.3s;
-    }
-    img:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  &__icons {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-  }
-
-  &__title {
-    margin: 0;
-    color: $white-color;
-    margin-top: 140px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 40px;
-    letter-spacing: -1.5px;
-  }
-
-  .icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-
-    &--phone {
-      background-image: url(../images/phone-3xl.png);
-      background-size: cover;
-    }
-    &--menu {
-      background-image: url(../images/menu-4x.png);
-      background-size: cover;
-
-      &:hover {
-        transform: scale(1.2);
-        background-image: url(../icons/Icon-Burger-menu-hover.png);
-      }
-    }
-  }
-}
-
-.menu {
-  padding-block: 25px 31px;
-  box-sizing: border-box;
-  background-color: $red-color;
-  transition: all 0.5s;
-  height: 100vh;
-  overflow-y: auto;
-
-  &__page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    transform: translateX(-100%);
-    z-index: 10;
-
-    opacity: 0;
-    pointer-events: none;
-
-    &:target {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: all;
-    }
-  }
-
-  &__top {
-    display: flex;
-    justify-content: space-between;
-
-    img {
-      width: 64px;
-      height: 46px;
-      transition: transform, 0.3s;
-    }
-    img:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  .icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-    transition: transform, 0.3s;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  .icon--close {
+  &--close {
     background-image: url(../icons/Icon-Close.svg);
   }
 
-  .nav {
-    margin-top: 40px;
-
-    &__list {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-    &__link {
-      position: relative;
-      font-size: 22px;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: 2px;
-      text-align: left;
-      color: $white-color;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    //так негарно через те, що внизу є такий же клас nav__link, і щоб його не зачепати використовую таку вкладенність. Якщо б я не використовував внизу такий же клас, писав би все блоці вище &__link
-    .nav__list .nav__link::after {
-      content: '';
-      display: block;
-      height: 1px;
-      background-color: $white-color;
-      position: absolute;
-      bottom: -8px;
-      width: 100%;
-      transform: scale(0);
-      transform-origin: left;
-      transition: 0.3s;
-    }
-    .nav__list .nav__link:hover::after {
-      transform: scale(1);
-    }
-
-    &__link--bottom {
-      font-size: 16px;
-      line-height: 1.69;
-    }
-    &__contacts {
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .nav__link {
-        display: block;
-      }
-
-      &-contact-block {
-        font-size: 16px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.69;
-        letter-spacing: normal;
-        text-align: left;
-        color: $white-color;
-      }
-      &-contact-order {
-        margin-top: 16px;
-        padding-bottom: 7px;
-        border-bottom: 1px $white-color solid;
-        width: fit-content;
-      }
-    }
+  &--phone {
+    background-image: url(../images/phone-3xl.png);
+    background-size: cover;
   }
-}
-
-.about {
-  padding-top: 100px;
-
-  &__visit {
-    color: $red-color;
-    font-family: Cinzel;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%
-  }
-
-  &__title {
-    color: $black-color;
-  }
-
-  &__subtitle {
-    margin-bottom: 16px;
-    color: $black-color;
-  }
-
-  &__content {
-    .m24px {
-      margin-top: 24px;
-    }
-
-    &-line {
-      display: flex;
-      gap: 24px;
-    }
-    &-line:nth-child(7), &-line:nth-child(8){
-      .about__content-label {
-        width: 121px;
-      }
-    }
-    &-line--flex-column {
-      flex-direction: column;
-      gap: 0;
-
-      .about__content-text {
-        margin-bottom: 0;
-      }
-      .about__content-label {
-        margin-top: 8px;
-        margin-bottom: 0;
-      }
-    }
-    &-label {
-      color: $black-color;
-      margin-bottom: 8px;
-      width: 96px;
-    }
-    &-text {
-      color: $black-color;
-      margin-bottom: 8px;
-    }
-  }
-}
-
-.view {
-  padding-top: 132px;
-
-  &__wrapper {
-    display: grid;
-    row-gap: 48px;
-  }
-
-  &__title {
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  &__descr {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  &__card {
-    display: flex;
-    flex-direction: column;
-
-    &-photos {
-      width: 100%;
-      margin-bottom: 24px;
-      display: flex;
-
-      &-large {
-        display: block;
-        width: 130px;
-        height: 130px;
-        margin-right: 20px;
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      &-small {
-        display: block;
-        width: 88px;
-        height: 87px;
-        margin-right: 8px;
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.3s;
-      }
-    }
-    &-label {
-      color: $red-color;
-    }
-    &-label-short {
-      width: 225px; //перенос слова на моб версії
-    }
-  }
-  &__btn {
-    width: 100%;
-    height: 56px;
-    background-color: $red-color;
-    flex-shrink: 0;
-    font-family: inherit;
-    border-color: $red-color;
-    text-transform: uppercase;
-    color: $white-color;
-    text-align: center;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 27px;
-    cursor: pointer;
-    margin-top: 40px;
-    transition: 0.3s;
-  }
-}
-
-.explore {
-  padding-top: 100px;
-
-  &__wrapper {
-    display: grid;
-    row-gap: 48px;
-  }
-
-  &__title {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  &__card {
-
-    &-photo {
-      display: block;
-      width: 100%;
-      height: 277px;
-      margin-bottom: 24px;
-      img {
-        width: 100%;
-        height: 100%;
-        transition: 0.3s;
-      }
-    }
-    &-label {
-      font-size: 24px;
-      line-height: 140%;
-      color: $red-color;
-      text-align: center;
-    }
-    &-text {
-      text-align: center;
-      font-family: Roboto;
-    }
-  }
-}
-
-.contacts {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  &__wrapper {
-    display: grid;
-    row-gap: 48px;
-  }
-  &__title {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-  &__content-m-48 {
-    margin-bottom: 48px;
-  }
-  &__subtitle {
-    font-size: 16px;
-    line-height: 27px;
-    margin-bottom: 16px;
-  }
-  &__label {
-    text-decoration: none;
-    display: block;
-    color: #3E3E3E;
-    margin-bottom: 8px;
+  &--menu {
+    background-image: url(../images/menu-4x.png);
+    background-size: cover;
 
     &:hover {
-      color: $red-color;
+      transform: scale(1.2);
+      background-image: url(../icons/Icon-Burger-menu-hover.png);
     }
   }
-  &__label-lh140 {
-    line-height: 140%;
-    margin-bottom: 0;
-  }
-  &__text {
-    font-size: 14px;
-  }
-  &__search {
-    display: block;
-    &-bar {
-      display: block;
-      width: 100%;
-      height: 48px;
-      background-color: #F8F8FA;
-      border: none;
-      font-family: 'Cinzel', sans-serif;
-      margin-bottom: 16px;
-      padding-left: 11px;
-      box-sizing: border-box;
-
-      &::placeholder {
-        color: #7E7E83;
-        font-family: Cinzel;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 20px;
-      }
-
-      &-big {
-        height: 144px;
-        padding-top: 14px;
-        margin-bottom: 0;
-      }
-
-      &:hover::placeholder {
-        color: $black-color;
-      }
-      &:focus::placeholder {
-        color: $black-color;
-      }
-    }
-  }
-  &__btn {
-    width: 100%;
-    height: 56px;
-    background-color: $red-color;
-    flex-shrink: 0;
-    font-family: inherit;
-    border-color: $red-color;
-    text-transform: uppercase;
-    color: $white-color;
-    text-align: center;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 27px;
-    cursor: pointer;
-    margin-top: 40px;
-    transition: 0.3s;
-  }
-}
-
-.footer {
-  height: 180px;
-  background-image: url('../images/footer-4x.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: sticky;
-  bottom: 0;
-  z-index: -1;
 }
 
 button:hover {
-  background-color: #AE1C23;
-}
-button:focus {
-  background-color: #EB343D;
-}
-img:hover {
-  transform: scale(110%);
-  transition: 0.3s;
+  background-color: #ae1c23;
 }
 
-@import 'media';
+button:focus {
+  background-color: #eb343d;
+}
+
+@import './blocks/container';
+@import './blocks/header';
+@import './blocks/menu';
+@import './blocks/about';
+@import './blocks/view';
+@import './blocks/explore';
+@import './blocks/contacts';
+@import './blocks/footer';

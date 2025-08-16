@@ -1,0 +1,149 @@
+.menu {
+  padding-block: 25px 31px;
+  box-sizing: border-box;
+  background-color: $red-color;
+  transition: all 0.5s;
+  height: 100vh;
+  overflow-y: auto;
+
+  &__page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    z-index: 10;
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+    transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .nav {
+    margin-top: 40px;
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    &__link {
+      position: relative;
+      font-size: 22px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-align: left;
+      color: $white-color;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    // так негарно через те, що внизу є такий же клас nav__link, і щоб його не зачепати використовую таку вкладенність. Якщо б я не використовував внизу такий же клас, писав би все блоці вище &__link
+    .nav__list .nav__link::after {
+      content: ' ';
+      display: block;
+      height: 1px;
+      background-color: $white-color;
+      position: absolute;
+      bottom: -8px;
+      width: 100%;
+      transform: scale(0);
+      transform-origin: left;
+      transition: 0.3s;
+    }
+    .nav__list .nav__link:hover::after {
+      transform: scale(1);
+    }
+
+    &__link--bottom {
+      font-size: 16px;
+      line-height: 1.69;
+    }
+    &__contacts {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .nav__link {
+        display: block;
+      }
+
+      &-contact-block {
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.69;
+        letter-spacing: normal;
+        text-align: left;
+        color: $white-color;
+      }
+      &-contact-order {
+        margin-top: 16px;
+        padding-bottom: 7px;
+        border-bottom: 1px $white-color solid;
+        width: fit-content;
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .menu {
+    padding-block: 32px 298px;
+
+    &__top {
+      img {
+        width: 64px;
+        height: 46px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1260px) {
+  .menu {
+    padding-bottom: 106px;
+
+    .nav {
+      margin-top: 55px;
+
+      &__contacts {
+        margin-top: 48px;
+      }
+    }
+
+    &__top {
+      img {
+        width: 87px;
+        height: 65px;
+      }
+    }
+  }
+}
