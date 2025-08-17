@@ -1,0 +1,115 @@
+.gallerys {
+  &__wrappe {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.pozition--photo {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-pc {
+    grid-column: span 12;
+  }
+
+  display: grid;
+  column-gap: 20px;
+
+  --columns: 3;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  margin: 0;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-pc {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
+
+.gallery {
+  &--photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+
+    &--text {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-pc {
+        grid-column: span 12;
+      }
+    }
+  }
+  &--link {
+    position: relative;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-pc {
+        grid-column: span 8;
+      }
+    }
+    &--veb {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-pc {
+        grid-column: span 4;
+      }
+    }
+  }
+  &--photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.button {
+  padding-top: 40px;
+  height: 56px;
+
+  @include page-grid;
+  &--item {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-pc {
+      grid-column: 4 / -4;
+    }
+
+    background-color: $color-red;
+    box-sizing: none;
+    color: $color-white;
+    border: none;
+  }
+}
