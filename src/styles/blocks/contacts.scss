@@ -1,0 +1,149 @@
+.contact {
+  &__form-and-info {
+    @include page-grid;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    grid-column: 1 /-1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+
+    &--button {
+      margin-bottom: 48px;
+      height: 56px;
+      background-color: $main-text-color;
+      border-radius: 40px;
+
+      &--text {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 27px;
+        text-align: center;
+        color: $main-color;
+      }
+
+      &:hover {
+        box-shadow: 1px 4px 16px 0 #e8e8f066;
+        cursor: pointer;
+
+        @include hover(transform, scale(0.95));
+      }
+
+      &:active {
+        box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+      }
+    }
+
+    &--info {
+      margin: 0;
+      text-align: left;
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: 8 / 11;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.info__item {
+  margin: 0;
+  color: $main-text-color;
+  text-align: left;
+  margin-bottom: 24px;
+
+  &--title {
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  &--text {
+    position: relative;
+    margin: 0;
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: $main-text-color;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.5s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      outline: none;
+    }
+  }
+}
+
+.form__input {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+  height: 48px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+
+  &__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $main-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form__textarea {
+  box-sizing: border-box;
+  display: grid;
+  height: 148px;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 32px;
+
+  resize: none;
+
+  &--text {
+    font-weight: 400;
+    height: 120px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $main-color;
+
+    gap: 10px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
