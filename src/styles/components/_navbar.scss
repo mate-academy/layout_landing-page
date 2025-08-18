@@ -1,0 +1,279 @@
+.line {
+  position: absolute;
+  display: block;
+  width: 100%;
+  max-width: 18px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform $effect-duration ease-out;
+
+  @include on-tablet {
+    max-width: 24px;
+  }
+
+  &:nth-child(1) {
+    top: 0;
+  }
+
+  &:nth-child(2) {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:nth-child(3) {
+    bottom: 0;
+  }
+}
+
+.navbar {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  margin: auto;
+  width: auto;
+  max-width: $content-max-width;
+  height: 65px;
+  padding-inline: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    text-align: start;
+    max-width: 87px;
+
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $header-text-color;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 80%;
+
+    @include on-tablet {
+      font-size: 40px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__phone,
+  &__phone a,
+  &__dropdown-phone,
+  &__dropdown-phone a {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: $header-text-color;
+    text-decoration: none;
+  }
+
+  &__phone,
+  &__dropdown-phone {
+    margin-bottom: 4px;
+
+    a {
+      @include hover(color, #33a1e0);
+    }
+  }
+
+  &__dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 201px;
+    text-align: right;
+    position: absolute;
+    left: 0;
+    transform: translateX(calc(-100% - 16px));
+    transition: opacity $effect-duration ease;
+    opacity: 0;
+
+    .navbar__dropdown-phone,
+    .navbar__dropdown-phone a {
+      font-size: 14px;
+      line-height: 120%;
+
+      @include on-tablet {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__navigation-phone {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover .navbar__dropdown {
+      opacity: 1 !important;
+    }
+  }
+
+  &__navigation-icon {
+    width: 18px;
+    height: 18px;
+
+    @include on-tablet {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__navigation-button {
+    position: relative;
+    width: 24px;
+    height: 12px;
+
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 32px;
+      height: 16px;
+    }
+
+    &--active {
+      height: 24px;
+
+      @include on-tablet {
+        height: 32px;
+      }
+
+      .line {
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:nth-child(1) {
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__menu {
+    list-style: none;
+    box-sizing: border-box;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -100vw;
+
+    max-width: $content-max-width;
+    margin-top: 130px;
+    padding: 0;
+    transition: left $effect-duration ease-out;
+    transition-delay: calc($effect-duration / 2);
+
+    @include on-tablet {
+      margin-top: 155px;
+    }
+
+    &--active {
+      left: 20px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 30px;
+
+    &:nth-child(6) {
+      margin-bottom: 8px;
+    }
+
+    &:nth-child(7) {
+      margin-bottom: 16px;
+    }
+
+    &:nth-child(8) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $header-text-color;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: $header-text-color;
+      transition: width $effect-duration ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:not(:hover)::after {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    position: relative;
+    display: inline;
+    color: $header-text-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $header-text-color;
+    }
+  }
+}
