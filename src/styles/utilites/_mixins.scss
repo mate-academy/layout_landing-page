@@ -1,0 +1,43 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-width) and (max-width: $decktop-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $decktop-width) {
+    @content;
+  }
+}
+
+@mixin grid {
+  --grid-column: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--grid-column), 1fr);
+  gap: $gutter-width;
+
+  @include on-tablet {
+    --grid-column: 6;
+  }
+
+  @include on-desktop {
+    --grid-column: 12;
+  }
+}
+
+@mixin bg-responsive($mobile, $tablet: null, $desktop: null) {
+  background: url('../images/#{$mobile}') center/cover no-repeat;
+
+  @if $tablet {
+    @include on-tablet {
+      background-image: url('../images/#{$tablet}');
+    }
+  }
+
+  @if $desktop {
+    @include on-desktop {
+      background-image: url('../images/#{$desktop}');
+    }
+  }
+}
