@@ -35,21 +35,32 @@
 }
 
 .icon-phone-wrapper {
+  cursor: pointer;
+
   position: relative;
-  display: inline-block;
+
+  display: inline-flex;
+  align-items: center;
+
+  background: transparent;
 }
 
 .tel {
+  cursor: pointer;
+
   position: absolute;
   top: 50%;
   right: 100%;
   transform: translateY(-50%);
 
-  display: block;
+  display: none;
 
-  margin-right: 8px;
+  width: auto;
+  max-width: 600px;
+  margin-right: 0;
 
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 700;
   color: $main-text-color;
   text-decoration: none;
   white-space: nowrap;
@@ -57,10 +68,15 @@
   visibility: hidden;
   opacity: 0;
 
-  transition: opacity 0.2s;
+  transition: opacity 0.3s;
+
+  @include on-tablet {
+    display: block;
+  }
 }
 
-.icon-phone-wrapper:hover .tel {
+.icon-phone-wrapper:hover .tel,
+.icon-phone-wrapper:focus-within .tel {
   visibility: visible;
   opacity: 1;
 }
