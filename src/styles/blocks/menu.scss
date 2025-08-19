@@ -1,0 +1,88 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 100vh;
+  background-color: #e5e6e8;
+
+  transition: transform 0.3s;
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+
+  &.menu--open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 56px 0 0 120px;
+
+    @include on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include on-mobile {
+      padding: 32px 0 0 20px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    list-style: none;
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 22px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__order {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__number {
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  &__call-link {
+    font-size: 16px;
+    line-height: 140%;
+    text-transform: uppercase;
+  }
+}
+
+.icon--close {
+  background-image: url('../images/icons/icon-close.svg');
+  cursor: pointer;
+}
