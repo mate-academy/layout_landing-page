@@ -1,26 +1,13 @@
 @import 'utilites/variables';
 @import 'utilites/mixins';
+@import 'blocks/page';
+@import 'blocks/top-bar';
 @import 'blocks/header';
-@import 'blocks/navbar';
+@import 'blocks/nav';
+@import 'blocks/menu';
+@import 'blocks/conection';
 @import 'blocks/button';
 @import 'blocks/hero';
-
-html {
-  font-family: $font-family;
-  font-size: 16px;
-  line-height: 1.5;
-  color: $font-color;
-}
-
-.page {
-  margin: 0;
-  background-color: $background-color;
-  min-height: 2000px;
-
-  &:has(.page__menu:target) {
-    overflow: hidden; /* not to scroll the page */
-  }
-}
 
 .visually-hidden {
   position: absolute;
@@ -34,6 +21,14 @@ html {
 }
 
 .container {
-  max-width: $max-width;
+  max-width: calc(100% - 2 * 20px);
   margin-inline: auto;
+
+  @include on-tablet {
+    max-width: 600px;
+  }
+
+  @include on-desktop {
+    max-width: $max-width;
+  }
 }
