@@ -1,0 +1,97 @@
+.header {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 100vw;
+  height: 568px;
+
+  background-image: url('../images/img.png');
+  background-position: center;
+  background-size: cover;
+  z-index: 10;
+
+  @include on-tablet {
+    height: 840px;
+  }
+
+  &__ribbon {
+    position: absolute;
+    width: 0;
+    height: 25%;
+    left: 0;
+    transition: width $effect-duration ease-out calc($effect-duration);
+
+    background-color: $red-color;
+
+    &:nth-child(even) {
+      left: auto;
+      right: 0;
+    }
+
+    @for $i from 0 through 3 {
+      &:nth-child(#{$i}) {
+        top: calc(25% * $i);
+      }
+    }
+  }
+
+  &__ribbons {
+    pointer-events: none;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+
+    &--active {
+      .header__ribbon {
+        width: 100% !important;
+        transition-delay: 0s;
+      }
+    }
+  }
+
+  &__warpper {
+    max-width: $content-max-width;
+    margin-inline: auto;
+  }
+
+  &__top {
+    padding-top: 25px;
+    margin-bottom: 141px;
+
+    @include on-tablet {
+      padding-top: 50px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 83px;
+    }
+  }
+
+  &__title {
+    max-width: 280px;
+    text-align: center;
+    margin-inline: auto;
+
+    color: $header-text-color;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+
+    @include on-tablet {
+      max-width: 392px;
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include on-desktop {
+      max-width: 498px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+}
