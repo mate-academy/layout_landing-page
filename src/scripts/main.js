@@ -14,5 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     RIBBONS.classList.toggle('header__ribbons--active');
     DROPDOWN_MENU.classList.toggle('navbar__menu--active');
     HEADER.classList.toggle('fixed');
+    document.body.classList.toggle('block-scrolling');
   });
 });
