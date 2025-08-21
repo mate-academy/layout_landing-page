@@ -1,0 +1,125 @@
+.header {
+  background-image: url('../assets/image/Image.png');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+
+  @media (max-width: 600px) {
+    height: auto;
+    min-height: 320px;
+    padding-bottom: 12px;
+  }
+}
+
+.header__bottom {
+  @include flex-center(column, flex-start, flex-start);
+}
+
+.top-bar {
+  top: 0;
+  left: -20px;
+  z-index: 10;
+
+  @include flex-center(row, space-between, center);
+
+  padding: 24px 20px 0;
+}
+
+.menu {
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0;
+
+  @include transition(opacity, 0.5s);
+
+  pointer-events: none;
+  position: fixed;
+  background: $color-bg;
+  z-index: 100;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.nav__link {
+  color: $color-text;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  @include transition(color, 0.2s);
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.footer {
+  background-color: $color-footer;
+  padding: $spacing-md;
+  z-index: 1;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  margin-top: $spacing-lg;
+}
+
+// layout.scss
+
+.recommended__products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.product {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.product__image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.product__title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.product__description {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.product__price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0078d7;
+}
+
+@media (max-width: 900px) {
+  .recommended__products {
+    grid-template-columns: 1fr; // 1 coluna em telas pequenas
+  }
+}

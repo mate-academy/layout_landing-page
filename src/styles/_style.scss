@@ -1,0 +1,213 @@
+/* ========================================
+   VARIABLES
+   (futuro _variables.scss)
+======================================== */
+$primary-color: #0078d7;
+$text-color: #292929;
+$background-color: #fff;
+$font-family: 'Space Grotesk', Roboto, Arial, sans-serif;
+$border-radius: 8px;
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+
+/* ========================================
+   MIXINS
+   (futuro _mixins.scss)
+======================================== */
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/* ========================================
+   BASE
+   (futuro _base.scss)
+======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: $font-family;
+  color: $text-color;
+  background: $background-color;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: $border-radius;
+  transition: transform $transition-medium;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.header {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/image/Image.png');
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+
+  &__bottom {
+    @include flex-center(column, flex-start, flex-start);
+
+    padding: 2rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+  }
+}
+
+.top-bar {
+  @include flex-center(row, space-between, center);
+
+  padding: 24px 20px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: $background-color;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 100;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav__link {
+    color: $text-color;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+/* ========================================
+   RECOMMENDED PRODUCTS GRID
+   (futuro _layout.scss)
+======================================== */
+.recommended__products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 2rem;
+
+  .product {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: $border-radius;
+
+    &__image {
+      margin-bottom: 1rem;
+    }
+
+    &__title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &__description {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &__price {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ========================================
+   BROWSE, ACCESSORIES, ABOUT-US, CONTACTS
+======================================== */
+.browse__container,
+.accessories__image,
+.contacts__container {
+  margin: 2rem 0;
+}
+
+.accessories__view-all {
+  padding: 0.5rem 1rem;
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+}
+
+.about-us__text,
+.contacts-us__text {
+  margin-top: 1rem;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+.footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ========================================
+   MEDIA QUERIES
+======================================== */
+@media (max-width: 1200px) {
+  .main,
+  .recommended,
+  .contacts-us__container,
+  .about-us {
+    max-width: 100%;
+    margin: 0 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .recommended__products {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: auto;
+    min-height: 320px;
+    padding-bottom: 12px;
+  }
+}
