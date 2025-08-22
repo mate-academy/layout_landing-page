@@ -1,19 +1,24 @@
-.home {
-  margin: 0 auto;
+.top {
+  max-width: 1260px;
   height: 100vh;
-  position: relative;
+  margin: 0 auto;
   background-image: url(../images/cover.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 
   .header {
+    position: fixed;
     top: 0;
     padding: 36px 120px;
-    display: flex;
-    place-content: center space-between;
-    background: transparent;
+    height: auto;
+    width: 100vw;
+    max-width: 1260px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
     z-index: 1000;
+    box-sizing: border-box;
 
     .header__icons {
       width: 96px;
@@ -68,26 +73,22 @@
         cursor: pointer;
       }
 
-      .burger-icon {
-        display: none;
-      }
-
-      .dropdown-menu {
+      .page__menu {
         z-index: 9999;
         position: fixed;
         top: 0;
         left: 0;
         overflow: auto;
         margin: 0 auto;
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.5s ease;
         color: $secondary-text-color;
         background-color: #c2c2c2;
 
-        .menu__head {
+        .menu__top {
           position: sticky;
           top: 0;
           z-index: 1;
@@ -96,12 +97,12 @@
           display: flex;
           place-content: center space-between;
 
-          .x-label {
+          .x-icon {
             width: 16px;
             height: 16px;
           }
 
-          .x-label:hover {
+          .x-icon:hover {
             cursor: pointer;
           }
         }
@@ -172,19 +173,27 @@
         }
       }
 
-      .burger-icon:checked ~ .dropdown-menu {
+      .page__menu:target {
         opacity: 1;
         pointer-events: auto;
       }
     }
   }
 
-  .home__text {
+  .home {
+    position: absolute;
+    top: 0;
     margin: 0 auto;
-    padding-top: 300px;
-    font-weight: $strong-font-weight;
-    font-size: 80px;
-    text-align: center;
-    color: $text-color;
+    height: 100vh;
+
+    .home__text {
+      margin: 0 auto;
+      padding-top: 428px;
+      font-weight: $strong-font-weight;
+      font-size: 80px;
+      text-align: center;
+      color: $text-color;
+      width: 100vw;
+    }
   }
 }
