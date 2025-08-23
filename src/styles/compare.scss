@@ -1,0 +1,106 @@
+.compare__bikes-container {
+  @include padding-mobile-left-right;
+
+  display: grid;
+  grid-template-areas:
+    'title'
+    'card1'
+    'card2'
+    'card3';
+  justify-content: center;
+
+  @include on-desktop {
+    padding-left: 120px;
+    padding-right: 120px;
+    grid-template-areas:
+      'title title title'
+      'card1 card2 card3';
+    gap: 24px;
+  }
+}
+
+.compare__title {
+  @include section-titles-font-mobile;
+
+  text-align: center;
+  margin-top: 92px;
+  grid-area: title;
+
+  @include on-tablet {
+    margin-top: 132px;
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+  }
+
+  @include on-desktop {
+    margin-top: 164px;
+    font-size: 64px;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+  }
+}
+
+.compare__bikes-card {
+  margin-top: 40px;
+  width: 280px;
+  height: 418px;
+
+  &--1 {
+    grid-area: card1;
+  }
+  &--2 {
+    grid-area: card2;
+  }
+  &--3 {
+    grid-area: card3;
+  }
+
+  @include on-tablet {
+    margin-top: 48px;
+    width: 392px;
+    height: 484px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+    width: 324px;
+    height: 424px;
+  }
+}
+
+.bike-img {
+  width: 280px;
+  height: 228px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include on-tablet {
+    width: 392px;
+    height: 316px;
+  }
+
+  @include on-desktop {
+    width: 324px;
+    height: 256px;
+  }
+}
+
+@for $i from 1 through 3 {
+  .bike-img--#{$i} {
+    background-image: url(../images/bike#{$i}.png);
+  }
+}
+
+.bike-name {
+  @include bikes-name;
+}
+
+.bike-description {
+  @include bikes-description;
+}
+
+.bike-price {
+  @include bikes-price;
+}
