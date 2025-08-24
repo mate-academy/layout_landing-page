@@ -1,0 +1,195 @@
+.home {
+  margin: 0 auto;
+  height: 100vh;
+  position: relative;
+  background-image: url(../images/cover.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .header {
+    top: 0;
+    padding: 36px 120px;
+    display: flex;
+    place-content: center space-between;
+    background: transparent;
+    z-index: 1000;
+
+    .header__icons {
+      width: 96px;
+      height: 32px;
+      display: grid;
+      grid-template-columns: repeat(2, 24px);
+      justify-content: space-between;
+      align-items: center;
+
+      .header__phone {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        a {
+          align-self: center;
+          height: 24px;
+          width: 24px;
+        }
+
+        &::before {
+          content: '+1 234 555-55-55';
+          position: absolute;
+          left: -135px;
+          top: 50%;
+          transform: translateY(-50%) translateX(35%);
+          width: 138px;
+          order: -1;
+          margin-right: 20px;
+          font-weight: $strong-font-weight;
+          font-size: 12px;
+          color: $text-color;
+          opacity: 0;
+          transition:
+            opacity 0.5s ease,
+            transform 0.5s ease;
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          transform: translateY(-50%) translateX(0%);
+        }
+      }
+
+      .burger-label {
+        height: 24px;
+        width: 24px;
+      }
+
+      .burger-label:hover {
+        cursor: pointer;
+      }
+
+      .burger-icon {
+        display: none;
+      }
+
+      .dropdown-menu {
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        margin: 0 auto;
+        height: 100vh;
+        width: 100vw;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+        color: $secondary-text-color;
+        background-color: #c2c2c2;
+
+        .menu__head {
+          position: sticky;
+          top: 0;
+          z-index: 1;
+          margin: 0 auto;
+          padding: 36px 120px;
+          display: flex;
+          place-content: center space-between;
+
+          .x-label {
+            width: 16px;
+            height: 16px;
+          }
+
+          .x-label:hover {
+            cursor: pointer;
+          }
+        }
+
+        .menu__links {
+          margin-top: 20px;
+          padding-left: 121px;
+
+          .menu__list {
+            width: 201px;
+            position: relative;
+            list-style: none;
+            padding-left: 0;
+
+            .menu__items {
+              width: 300px;
+            }
+
+            .menu__items:hover {
+              text-decoration: underline #1D1D1D;
+              text-underline-offset: 8px;
+            }
+
+            .menu__items:not(:first-child) {
+              margin-top: 32px;
+            }
+
+            a {
+              font-weight: $strong-font-weight;
+              font-size: 22px;
+              letter-spacing: 2px;
+              text-transform: uppercase;
+              text-decoration: none;
+              color: $secondary-text-color;
+            }
+          }
+        }
+
+        .menu__info {
+          position: relative;
+          height: 67px;
+          width: 155px;
+          margin-top: 40px;
+          padding-left: 121px;
+
+          .menu__info__link {
+            text-decoration: none;
+            color: $secondary-text-color;
+
+            .menu__number {
+              font-weight: $strong-font-weight;
+              font-size: 16px;
+            }
+          }
+
+          .menu__test {
+            margin-top: 16px;
+            font-weight: $strong-font-weight;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+          }
+
+          .menu__test::after {
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 137px;
+            border: 1px solid $secondary-text-color;
+            bottom: -1px;
+            left: 121px;
+          }
+        }
+      }
+
+      .burger-icon:checked ~ .dropdown-menu {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  .home__text {
+    margin: 0 auto;
+    padding-top: 300px;
+    font-weight: $strong-font-weight;
+    font-size: 80px;
+    text-align: center;
+    color: $text-color;
+  }
+}
