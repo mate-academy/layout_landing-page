@@ -20,7 +20,6 @@ Here I used basic CSS technologies, such as:
 
 Link - [https://predator-bites.github.io/layout_landing-page/]
 
-
 # Design
 
 Link - [https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=41317-185&t=gf3jtLYr6Gi9UWIY-0]
