@@ -5,8 +5,6 @@
   background-size: cover;
   background-position: center;
 
-  @include hover(transform, scale(1.2));
-
   @include on-tablet {
     height: 32px;
     width: 32px;
@@ -14,6 +12,22 @@
 
   &--phone {
     background-image: url(../images/icons/Icon-Phone-call.svg);
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &--number {
+    opacity: 0;
+    transform: translateX(100px);
+    text-decoration: none;
+    color: $main-text-color;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 32px;
+    width: 180px;
+
+    transition: 0.3s;
   }
 
   &--menu {
@@ -22,9 +36,24 @@
     &:hover {
       background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
     }
+    @include hover(transform, scale(1.2));
   }
 
   &--close {
     background-image: url(../images/icons/Icon-Close.svg);
+    @include hover(transform, scale(1.2));
+  }
+}
+
+.phone-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include on-desktop {
+    &:hover .icon--number {
+    opacity: 1;
+    transform: translateX(0);
+  }
   }
 }

@@ -19,6 +19,6 @@ JavaScript (scroll animations)
 # Additional Instructions
 
 Clone the repository:
-1.git clone https://github.com/yourusername/my-landing-page.git
-2.Open index.html in your browser.
+1. git clone https://github.com/yourusername/my-landing-page.git
+2. Open index.html in your browser.
 
