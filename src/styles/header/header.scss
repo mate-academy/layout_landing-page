@@ -1,0 +1,125 @@
+.header {
+  background-image: url('../assets/images/header-bg.png');
+  background-size: cover;
+  background-position: center;
+
+  @include on-tablet {
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    padding-block: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      padding-block: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+    @include animation-with-transition(transform, scale(105%));
+  }
+
+  &__logo-image {
+    height: 16px;
+
+    @include on-tablet {
+      height: 24px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 56px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 40px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__icon {
+    display: block;
+    height: $mobileIconsSize;
+    width: $mobileIconsSize;
+    background-size: cover;
+    background-position: center;
+
+    @include on-tablet {
+      height: $desktopIconsSize;
+      width: $desktopIconsSize;
+    }
+
+    @include animation-with-transition(transform, scale(115%));
+
+    &--phone {
+      background-image: url('../assets/icons/icon-phone-call.png');
+      &::after {
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        top: 50%;
+        left: -200px;
+        transform: translateY(-50%);
+        color: $mainTextColor;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          left 0.3s ease,
+          opacity 0.3s ease;
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      &:hover::after {
+        left: -120px;
+        opacity: 1;
+      }
+    }
+
+    &--menu {
+      background-image: url('../assets/icons/icon-burger-menu.png');
+      transition: all 0.3s;
+
+      &:hover {
+        background-image: url('../assets/icons/icon-burger-menu-hover.png');
+      }
+    }
+
+    &--close {
+      background-image: url('../assets/icons/icon-close.png');
+    }
+  }
+}
