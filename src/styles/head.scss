@@ -1,0 +1,178 @@
+/* #region head */
+
+.page {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+}
+
+.header {
+  height: 100vh;
+  background-image: url(/src/images/background-image.png);
+  background-size: cover;
+  background-position: 85%;
+  transition: all $transition__time;
+
+  @include on-tablet {
+    background-position: center;
+  }
+
+  &__title {
+    font-weight: $max__weight;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+
+    margin-bottom: 88px;
+    font-size: 36px;
+
+    @include on-tablet {
+      margin-bottom: 130px;
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 203px;
+      font-size: 80px;
+    }
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.container {
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+.topBar {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__logo {
+    @include hover(transform, scale(1.2));
+
+    margin: 0;
+
+    display: flex;
+    align-self: center;
+    background-size: cover;
+    height: 38px;
+    width: 130px;
+    transition: all, $transition__time;
+
+    @include on-tablet {
+      height: 56px;
+      width: 187px;
+    }
+
+    &--black {
+      background-image: url('/src/images/black-logo.png');
+    }
+
+    &--white {
+      background-image: url('/src/images/white-logo.png');
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__icon {
+    @include hover(transform, scale(1.2));
+
+    display: block;
+    background-size: cover;
+    transition: all, $transition__time;
+
+    height: 24px;
+    width: 24px;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    &--phone {
+      background-image: url(/src/images/icons/icon-phone-call.png);
+
+      @include on-desktop {
+        &::after {
+          color: #fff;
+          font-weight: $max__weight;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+
+          position: fixed;
+
+          top: 8px;
+          left: -150px;
+
+          content: '+1 234 555-55-55';
+          transition: opacity $transition__time;
+          opacity: 0;
+        }
+
+        &:hover::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--menu {
+      background-image: url(/src/images/icons/icon-burger-menu.png);
+
+      &:hover {
+        background-image: url(../images/icons/icon-burget-menu-hover.png);
+      }
+    }
+
+    &--close {
+      background-image: url('/src/images/icons/icon-close.png');
+    }
+  }
+}
+
+/* #endregion */
