@@ -18,7 +18,7 @@ Here I used basic CSS technologies, such as:
 
 # Preview
 
-Link -
+Link - [https://predator-bites.github.io/layout_landing-page/]
 
 
 # Design
