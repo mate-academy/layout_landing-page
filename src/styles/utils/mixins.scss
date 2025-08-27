@@ -1,0 +1,109 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding: 32px 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} 0.3s ease;
+
+  &:hover {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin page-grid {
+  --columns-count: 2;
+
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+
+  @include on-tablet {
+    --columns-count: 6;
+
+    column-gap: 32px;
+  }
+
+  @include on-desktop {
+    --columns-count: 12;
+
+    column-gap: 32px;
+  }
+}
+
+.col-4 {
+  grid-column: span 2; // базово на мобільному (2 з 2 колонок = 100%)
+
+  @include on-tablet {
+    grid-column: span 6; // займає 4 з 6 колонок
+  }
+
+  @include on-desktop {
+    grid-column: span 4; // займає 4 з 12 колонок
+  }
+}
+
+@mixin custom-cursor {
+  cursor: url('../images/icons/cursor.png'), pointer;
+}
+
+@mixin image-hover-scale(
+  $scale: $image-hover-scale,
+  $duration: $image-hover-duration,
+  $timing: $image-hover-timing
+) {
+  overflow: hidden;
+
+  img {
+    transition: transform #{$duration} #{$timing};
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale(#{$scale});
+    }
+  }
+}
+
+@mixin image-link {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    transition: transform $image-hover-duration $image-hover-timing;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &:hover {
+      transform: scale($image-hover-scale);
+    }
+  }
+}
