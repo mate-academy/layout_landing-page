@@ -1,0 +1,35 @@
+@import '../variables';
+@import '../utils/mixins';
+
+.page {
+  @include font-grotesk;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all $image-hover-duration ease;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: auto;
+
+      transform: translateX(0);
+    }
+  }
+}

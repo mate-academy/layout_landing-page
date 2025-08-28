@@ -1,0 +1,107 @@
+.product-categories {
+  @include page-grid;
+
+  &__grid {
+    grid-column: 1 / -1; // займає всю ширину
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+
+    @include on-desktop {
+      row-gap: 56px;
+    }
+  }
+  &__item {
+    display: grid;
+    row-gap: 16px;
+
+    @include on-tablet {
+      row-gap: 32px;
+    }
+
+    @include on-desktop {
+      row-gap: 40px;
+    }
+  }
+
+  &__media {
+    @include page-grid;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    border-radius: 4px;
+  }
+
+  &__link {
+    position: relative;
+
+    @include image-link;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      aspect-ratio: 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__title {
+    @include font-grotesk(700);
+
+    font-size: 18px;
+    line-height: 140%;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+
+    @include on-desktop {
+      font-size: 24px;
+    }
+  }
+
+  &__title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color $image-hover-duration ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__cta {
+    margin-top: $section-spacing-small;
+
+    @include on-tablet {
+      margin-top: $section-spacing-small-tablet;
+    }
+
+    @include on-desktop {
+      margin-top: $section-spacing-small-desktop;
+    }
+  }
+}

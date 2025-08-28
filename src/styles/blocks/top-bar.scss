@@ -1,0 +1,55 @@
+@import '../variables';
+@import '../utils/mixins';
+
+.top-bar {
+  grid-column: 1 / -1; /* Span all grid columns when inside header grid */
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-desktop {
+    padding-block: 32px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+    transition: transform $image-hover-duration $image-hover-timing;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include on-tablet {
+      height: 24px;
+    }
+  }
+
+  // Modifier for top-bar in menu context
+  &.menu__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: #e5e5e5;
+    margin-bottom: 32px;
+
+    @include content-padding-inline; /* Add consistent horizontal padding */
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+}
