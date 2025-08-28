@@ -1,3 +1,6 @@
+@import '../variables';
+@import '../utils/mixins';
+
 /* #region icons */
 .icon {
   width: 24px;
@@ -19,6 +22,23 @@
 
   &--phone {
     background-image: url('../images/icons/icon-phone.png');
+    position: relative;
+
+    &:hover {
+      &::after {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 8px); /* 8px to the left of the icon */
+        transform: translateY(-50%) translateX(-10px); /* Start 10px further left */
+        padding: 4px 8px;
+        white-space: nowrap;
+        font-size: 16px;
+        color: $font-color;
+        opacity: 0;
+        animation: slide-in-from-left $image-hover-duration ease forwards;
+      }
+    }
   }
 
   &--menu {
@@ -31,6 +51,17 @@
 
   &--close {
     background-image: url('../images/icons/icon-close.png');
+  }
+}
+
+@keyframes slide-in-from-left {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
   }
 }
 
