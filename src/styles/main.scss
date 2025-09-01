@@ -1,3 +1,211 @@
+@import 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap';
+
+:root {
+  --grid-cols-desktop: 12;
+  --grid-cols-tablet: 6;
+  --grid-cols-mobile: 2;
+  --bg: #fff;
+  --ink: #111;
+  --ink-soft: #6b6b6b;
+  --muted: #f2f2f2;
+  --divider: #e6e6e6;
+  --accent: #b10f17;
+  --accent-dark: #8f0c12;
+  --h1: clamp(34px, 5vw, 64px);
+  --h2: clamp(22px, 3vw, 28px);
+  --h3: clamp(14px, 2vw, 16px);
+  --lead: 18px;
+  --text: 15px;
+  --small: 13px;
+  --ease: 200ms ease;
+  --page-w: 1260px;
+  --side-pad: 120px;
+  --col: 63px;
+  --gut: 24px;
+  --grid-inner: 1020px;
+  --grid-w: 1020px;
+  --menu-bg-1: #b10f17;
+  --menu-bg-2: #c2262d;
+  --navpanel-h: 700px;
+}
+
+@mixin md {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin responsive-grid($desktop-col-width: var(--col), $gut: var(--gut)) {
+  display: grid;
+  column-gap: $gut;
+  grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
+
+  @media (min-width: 744px) {
+    grid-template-columns: repeat(var(--grid-cols-tablet), minmax(0, 1fr));
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(var(--grid-cols-desktop), $desktop-col-width);
+  }
+}
+
+@mixin grid {
+  width: 100%;
+  max-width: var(--grid-w);
+  margin-inline: auto;
+  row-gap: var(--gut);
+
+  @include responsive-grid;
+}
+
+.grid {
+  @include grid;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  font-family: Cinzel, sans-serif, serif;
+  font-size: var(--text);
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+img:hover {
+  transform: scale(1.03);
+  transition: transform var(--ease);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--page-w);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 24px);
+
+  @media (min-width: 1200px) {
+    max-width: var(--page-w);
+    padding-inline: var(--side-pad);
+  }
+}
+
+.grid-12 {
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(12, var(--col));
+    column-gap: var(--gut);
+    justify-content: center;
+  }
+}
+
+/* 6-колонна й 2-колонна сітки (як і раніше, флюїдні) */
+@media (min-width: 744px) and (max-width: 1199.98px) {
+  .grid-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 20px;
+  }
+}
+
+@media (max-width: 743.98px) {
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  overflow: hidden;
+}
+
+@import 'navpanel';
+@import 'header';
+@import 'hours';
+@import 'view';
+@import 'moreExplore';
+@import 'contacts';
+
+.bottom {
+  position: relative;
+  width: 100%;
+  max-width: var(--page-w);
+  height: 359px;
+  margin: 134px auto 0;
+}
+
+.bottom__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-top: 1px solid var(--divider);
+}
+
+.footer {
+  padding: 18px 0 28px;
+  color: var(--ink-soft);
+  text-align: center;
+  font-size: var(--small);
+  border-top: 1px solid var(--divider);
+}
+
+section + section {
+  border-top: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.page:has(.navpanel.is-open),
+body:has(.navpanel.is-open) {
+  overflow: hidden;
+}
+
+@media (min-width: 744px) and (max-width: 1199.98px) {
+  .bottom {
+    margin: 156px auto 0;
+  }
+}
+
+@media (max-width: 743.98px) {
+  .bottom {
+    margin: 84px auto 0;
+  }
 }
