@@ -1,6 +1,10 @@
+function getById(id) {
+  return document.getElementById(id);
+}
+
 const toggleMenu = () => {
-  document.getElementById('menu').classList.toggle('menu--opened');
-  document.getElementById('header').classList.toggle('header--moved');
+  getById('menu').classList.toggle('menu--opened');
+  getById('header').classList.toggle('header--moved');
   document.body.classList.toggle('scroll-blocked');
 
   window.scrollTo({
@@ -8,3 +12,6 @@ const toggleMenu = () => {
     behavior: 'smooth',
   });
 };
+
+getById('open-menu').addEventListener('click', toggleMenu);
+getById('close-menu').addEventListener('click', toggleMenu);
