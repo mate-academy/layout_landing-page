@@ -1,0 +1,59 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../icons/icon_phone_call.svg);
+
+    &::after {
+      content: '+1 234 555-55-55';
+
+      position: absolute;
+      top: 50%;
+      left: -375%;
+      transform-origin: right;
+      transform: translateY(-50%) scale(0);
+
+      color: $main-text-color;
+      text-decoration: none;
+      white-space: nowraw;
+
+      background-color: transparent;
+
+      transition: transform 0.7s;
+    }
+    &:hover::after {
+      transform: translateY(-50%) scale(1);
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon_burger_menu.svg);
+
+    &:hover {
+      background-image: url(../icons/icon_burger_menu_hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon_close.svg);
+  }
+}
