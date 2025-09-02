@@ -1,3 +1,237 @@
-body {
-  margin: 0;
+$tablet-min-width: 576px;
+$menu-color: #1d1d1d;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin constent-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  background-image: url('../assets/images/header-background.svg');
+  background-size: cover;
+  background-position: top;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 36px;
+    color: white;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+  }
+
+  &__bottom {
+    margin-bottom: 88px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    @include on-tablet {
+      margin-bottom: 130px;
+      margin-left: 72px;
+      margin-right: 72px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--menu {
+    background-image: url('../assets/icons/icon-menu.svg');
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('../assets/icons/Icon-Burger-menu-hover.svg');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &--phone {
+    background-image: url('../assets/icons/icon-phone.svg');
+    background-repeat: no-repeat;
+  }
+
+  &--close {
+    background-image: url('../assets/icons/icon-close.svg');
+    background-repeat: no-repeat;
+  }
+}
+
+.page {
+  scroll-behavior: smooth;
+  font-family: Poppins, sans-serif;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateX(-100%);
+    transition: all 0.3s;
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.top-bar {
+  padding: 24px;
+
+  @include constent-padding-inline;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo--link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 56px;
+    }
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #c2c2c2;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &__top {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    @include constent-padding-inline;
+  }
+
+  &__phone-number {
+    display: block;
+    margin-bottom: 16px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    color: $menu-color;
+  }
+
+  &__book-a-test {
+    display: block;
+    width: fit-content;
+    border-bottom: 1px solid $menu-color;
+    padding-bottom: 7px;
+    font-size: 12px;
+    line-height: 16px;
+    color: $menu-color;
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    color: $menu-color;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: $menu-color;
+      position: absolute;
+      bottom: -8px;
+      display: block;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
 }
