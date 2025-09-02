@@ -10,7 +10,6 @@ A **responsive landing page** for the company **MyBike**, featuring a modern des
 
 - **HTML5**
 - **CSS3** (Flexbox, Grid)
-- **JavaScript (ES6)**
 - **Parcel**
 
 ---
