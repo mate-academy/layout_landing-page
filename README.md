@@ -56,6 +56,3 @@ http://localhost:1234
 
 🖱️ Interactive elements
 
-```
-
-```
