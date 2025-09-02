@@ -16,7 +16,7 @@ A **responsive landing page** for the company **MyBike**, featuring a modern des
 
 ## 🌐 Preview
 
-- [Live Demo](https://<your_account>.github.io/layout_landing-page/)
+- [Live Demo](https://DmytroLymar.github.io/layout_landing-page/)
 - [Figma Design](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&p=f&t=WOkViglomz3RJ1I3-0)
 
 ---
