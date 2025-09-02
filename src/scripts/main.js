@@ -1,17 +1,22 @@
-function getById(id) {
-  return document.getElementById(id);
+function getElements(selector) {
+  const res = document.querySelectorAll(selector);
+
+  return res.length === 1 ? res[0] : res;
 }
 
-const toggleMenu = () => {
-  getById('menu').classList.toggle('menu--opened');
-  getById('header').classList.toggle('header--moved');
-  document.body.classList.toggle('scroll-blocked');
-
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+const toggleMenu = (open) => {
+  if (open) {
+    getElements('#menu').classList.add('menu--opened');
+    getElements('#home').classList.add('header--moved');
+  } else {
+    getElements('#menu').classList.remove('menu--opened');
+    getElements('#home').classList.remove('header--moved');
+  }
 };
 
-getById('open-menu').addEventListener('click', toggleMenu);
-getById('close-menu').addEventListener('click', toggleMenu);
+getElements('#open-menu').addEventListener('click', () => toggleMenu(true));
+getElements('#close-menu').addEventListener('click', () => toggleMenu(false));
+
+getElements('.options-list__element').forEach((item) => {
+  item.addEventListener('click', () => toggleMenu(false));
+});
