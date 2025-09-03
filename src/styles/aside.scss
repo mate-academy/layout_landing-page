@@ -1,0 +1,157 @@
+@import 'variables';
+
+.page__aside {
+  opacity: 0;
+  pointer-events: none;
+  height: $block-height;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
+
+    &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+    z-index: 10;
+  }
+}
+
+.aside {
+  background-color: $accent-color;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  text-transform: uppercase;
+  padding: 25px 20px 0;
+
+  @media (min-width: 768px) and (max-width: 1259px) {
+    padding: 32px 72px 0;
+
+  }
+
+  @media (min-width: 1260px) {
+    padding: 32px 120px 0;
+  }
+
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  .icon {
+    display: block;
+
+    @include icons;
+
+    &--close {
+      background-image: url(../icons/Vector.png);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &__main {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+
+    height: 238px;
+    gap: 32px;
+
+  }
+
+  &__link {
+  font-weight: bold;
+  position: relative;
+  width: fit-content;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: $text-color;
+  text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: currentColor;
+      transition: transform 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__footer {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__phone {
+    font-weight: bold;
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    color: $text-color;
+    margin: 0;
+  }
+
+  &__lowerlink {
+  font-weight: bold;
+  position: relative;
+  width: fit-content;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  color: $text-color;
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 1px;
+      width: 100%;
+      background-color: currentColor;
+      transition: transform 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+}
+
