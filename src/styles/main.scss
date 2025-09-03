@@ -23,21 +23,20 @@
   --side-pad: 120px;
   --col: 63px;
   --gut: 24px;
-  --grid-inner: 1020px;
   --grid-w: 1020px;
   --menu-bg-1: #b10f17;
   --menu-bg-2: #c2262d;
   --navpanel-h: 700px;
 }
 
-@mixin md {
-  @media (min-width: 320px) {
+@mixin bp-tablet {
+  @media (min-width: 744px) {
     @content;
   }
 }
 
-@mixin lg {
-  @media (min-width: 744px) {
+@mixin bp-desktop {
+  @media (min-width: 1200px) {
     @content;
   }
 }
@@ -47,11 +46,11 @@
   column-gap: $gut;
   grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
 
-  @media (min-width: 744px) {
+  @include bp-tablet {
     grid-template-columns: repeat(var(--grid-cols-tablet), minmax(0, 1fr));
   }
 
-  @media (min-width: 1200px) {
+  @include bp-desktop {
     grid-template-columns: repeat(var(--grid-cols-desktop), $desktop-col-width);
   }
 }
@@ -86,7 +85,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Cinzel, sans-serif, serif;
+  font-family: Cinzel, serif;
   font-weight: 700;
   font-size: var(--text);
   line-height: 1.5;
@@ -111,22 +110,18 @@ img:hover {
   margin-inline: auto;
   padding-inline: clamp(16px, 4vw, 24px);
 
-  @media (min-width: 1200px) {
-    max-width: var(--page-w);
+  @include bp-desktop {
     padding-inline: var(--side-pad);
   }
 }
 
-.grid-12 {
-  @media (min-width: 1200px) {
-    display: grid;
-    grid-template-columns: repeat(12, var(--col));
-    column-gap: var(--gut);
-    justify-content: center;
-  }
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 16px;
 }
 
-@media (min-width: 744px) {
+@include bp-tablet {
   .grid-6 {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -134,11 +129,12 @@ img:hover {
   }
 }
 
-@media (max-width: 743.98px) {
-  .grid-2 {
+@include bp-desktop {
+  .grid-12 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 16px;
+    grid-template-columns: repeat(12, var(--col));
+    column-gap: var(--gut);
+    justify-content: center;
   }
 }
 
@@ -165,7 +161,17 @@ img:hover {
   position: relative;
   width: 100%;
   height: 359px;
-  margin: 134px auto 0;
+  margin: 84px auto 0; // mobile base
+
+  @media (min-width: 744px) {
+    // tablet
+    margin: 156px auto 0;
+  }
+
+  @media (min-width: 1200px) {
+    // desktop
+    margin: 134px auto 0;
+  }
 }
 
 .bottom__img {
@@ -195,16 +201,4 @@ section + section {
 .page:has(.navpanel.is-open),
 body:has(.navpanel.is-open) {
   overflow: hidden;
-}
-
-@media (min-width: 744px) {
-  .bottom {
-    margin: 156px auto 0;
-  }
-}
-
-@media (max-width: 743.98px) {
-  .bottom {
-    margin: 84px auto 0;
-  }
 }

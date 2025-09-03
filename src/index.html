@@ -590,9 +590,46 @@
 
     <script>
       (function () {
-        // existing navpanel code here ...
+        document.addEventListener('DOMContentLoaded', function () {
+          const panel = document.getElementById('navpanel');
+          const openBtn = document.querySelector('.header__icon--menu');
+          const closeBtn = document.querySelector('.navpanel__close');
+          const body = document.body;
 
-        // ---- feedback form trim & guard ----
+          if (!panel || !openBtn || !closeBtn) return;
+
+          const open = () => {
+            panel.classList.add('is-open');
+            panel.setAttribute('aria-hidden', 'false');
+            openBtn.setAttribute('aria-expanded', 'true');
+            body.classList.add('no-scroll');
+            const firstLink = panel.querySelector(
+              'a,button,[tabindex]:not([tabindex="-1"])',
+            );
+            if (firstLink) firstLink.focus({ preventScroll: true });
+          };
+
+          const close = () => {
+            panel.classList.remove('is-open');
+            panel.setAttribute('aria-hidden', 'true');
+            openBtn.setAttribute('aria-expanded', 'false');
+            body.classList.remove('no-scroll');
+            openBtn.focus({ preventScroll: true });
+          };
+
+          openBtn.addEventListener('click', open);
+          closeBtn.addEventListener('click', close);
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && panel.classList.contains('is-open'))
+              close();
+          });
+
+          panel.addEventListener('click', (e) => {
+            const content = panel.querySelector('.navpanel__content');
+            if (content && !content.contains(e.target)) close();
+          });
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
           const form = document.querySelector('.feedback__form');
           if (!form) return;
@@ -602,12 +639,10 @@
           const msgEl = form.querySelector('#fb-msg');
 
           form.addEventListener('submit', function (e) {
-            // Trim values in-place
             if (nameEl) nameEl.value = nameEl.value.trim();
             if (emailEl) emailEl.value = emailEl.value.trim();
             if (msgEl) msgEl.value = msgEl.value.trim();
 
-            // Block send if message is empty after trimming
             if (!msgEl || msgEl.value.length === 0) {
               e.preventDefault();
               if (msgEl) {
@@ -617,7 +652,6 @@
               return;
             }
 
-            // Valid -> prevent real submit, reset fields (no reload)
             e.preventDefault();
             if (msgEl) msgEl.removeAttribute('aria-invalid');
             form.reset();
