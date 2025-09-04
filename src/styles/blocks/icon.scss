@@ -1,29 +1,19 @@
-.icon {
-  display: block;
-  height: 24px;
-  width: 24px;
-  background-image: url(/src/images/icons/icon-burger-menu.svg);
-  background-size: cover;
-  background-position: center;
-
+.phone {
   position: relative;
+  display: inline-block;
 
-  @include hover(transform, scale(1.2));
-
-  @include onTablet {
-    height: 32px;
-    width: 32px;
-  }
-
-  &__number {
+  .icon__number {
+    display: none;
     position: absolute;
-    right: calc(100% + 20px);
+    padding-right: 20px;
+    right: 100%;
     top: 50%;
     transform: translateY(-50%) scaleX(0);
     transform-origin: right;
     white-space: nowrap;
 
     color: $main-page-color;
+    text-decoration: none;
 
     font-weight: 700;
     font-size: 12px;
@@ -38,18 +28,41 @@
       opacity 0.3s;
   }
 
+  @include on-dekstop {
+    .icon__number {
+      display: inline;
+    }
+
+    .icon--phone {
+      pointer-events: none;
+    }
+
+    &:hover .icon__number {
+      transform: translateY(-50%) scaleX(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-image: url(/src/images/icons/icon-burger-menu.svg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
   &--phone {
     background-image: url(/src/images/icons/icon-phone.svg);
-
-    @include onDekstop {
-      &:hover {
-        .icon__number {
-          transform: translateY(-50%) scaleX(1);
-          opacity: 1;
-          pointer-events: auto;
-        }
-      }
-    }
   }
 
   &--menu {
