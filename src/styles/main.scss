@@ -1,17 +1,29 @@
 $tablet-min-width: 576px;
 $menu-color: #1d1d1d;
+$desktop-min-width: 1024px;
+$background-color: #1d1d1d;
 
 @mixin on-tablet {
-  @media (min-width: $tablet-min-width) {
+  @media (min-width: $tablet-min-width) and (max-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin constent-padding-inline() {
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
   padding-inline: 20px;
 
   @include on-tablet {
     padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
   }
 }
 
@@ -22,16 +34,37 @@ $menu-color: #1d1d1d;
   }
 }
 
+// @mixin pageGrid {
+//   --columns: 2;
+//   display: grid;
+//   grid-template-columns: repeat(var(--columns), 1fr);
+
+//   @include on-tablet {
+//     --columns: 6;
+//   }
+
+//   @include on-desktop {
+//     --columns: 12;
+//   }
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
-  box-sizing: border-box;
-  height: 100vh;
-  background-image: url('../assets/images/header-background.svg');
+  background-image: url('../assets/images/header-photo.png');
   background-size: cover;
   background-position: top;
+  background-repeat: no-repeat;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   &__title {
     font-size: 36px;
@@ -44,17 +77,28 @@ $menu-color: #1d1d1d;
     @include on-tablet {
       font-size: 64px;
     }
+
+    @include on-desktop {
+      font-size: 80px;
+    }
   }
 
   &__bottom {
     margin-bottom: 88px;
-    margin-left: 20px;
-    margin-right: 20px;
+    // margin-left: 20px;
+    // margin-right: 20px;
 
     @include on-tablet {
+      width: 600px;
       margin-bottom: 130px;
-      margin-left: 72px;
-      margin-right: 72px;
+      align-self: center;
+    }
+
+    @include on-desktop {
+      margin-bottom: 203px;
+      // margin-inline: 294px;
+      align-self: center;
+      width: 672px;
     }
   }
 }
@@ -124,13 +168,16 @@ $menu-color: #1d1d1d;
 .top-bar {
   padding: 24px;
 
-  @include constent-padding-inline;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @include on-tablet {
     padding-block: 36px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
   }
 
   &__icons {
@@ -173,7 +220,7 @@ $menu-color: #1d1d1d;
   }
 
   &__content {
-    @include constent-padding-inline;
+    @include content-padding-inline;
   }
 
   &__phone-number {
@@ -234,4 +281,206 @@ $menu-color: #1d1d1d;
       transform: scale(1);
     }
   }
+}
+
+.main {
+  background-color: $background-color;
+  display: grid;
+  justify-content: center;
+
+  // @include content-padding-inline;
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+
+  @include on-tablet;
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 32px;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -1.5px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+
+  &--align-left {
+    text-align: left;
+
+    // @include on-tablet {
+    //   width: 288px;
+    // }
+
+    // @include on-desktop {
+    //   width: 411px;
+    // }
+  }
+
+  @include on-desktop {
+    font-size: 64px;
+  }
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.info {
+  padding-top: 60px;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__text {
+    width: 280px;
+    font-weight: 500;
+    line-height: 140%;
+    font-size: 23px;
+    color: white;
+    margin: 0;
+
+    @include on-desktop {
+      width: 498px;
+      margin-right: 87px;
+    }
+
+    @include on-tablet {
+      width: 288px;
+    }
+  }
+
+  &__title {
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+    }
+  }
+
+  @include on-desktop {
+    padding-top: 120px;
+  }
+
+  @include on-tablet {
+    padding-top: 120px;
+  }
+}
+
+.bikes {
+  padding-top: 92px;
+
+  &__cards {
+    display: grid;
+    row-gap: 40px;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 24px;
+      justify-items: stretch;
+    }
+
+    @include on-tablet {
+      row-gap: 48px;
+      justify-content: center;
+    }
+  }
+}
+
+.card {
+  &__photo {
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: white;
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: white;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: white;
+  }
+}
+
+.details {
+  padding-top: 92px;
+}
+
+.detail {
+  &__photos {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    object-fit: cover;
+  }
+
+  &__link {
+    &--wide {
+      flex: 1;
+
+      @include on-desktop {
+        flex: 168;
+      }
+
+      @include on-tablet {
+        flex: 98;
+      }
+    }
+
+    &--square {
+      flex: 1;
+
+      @include on-desktop {
+        flex: 81;
+      }
+
+      @include on-tablet {
+        flex: 46;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    line-height: 140%;
+    font-size: 24px;
+    color: 24px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
 }
