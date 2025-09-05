@@ -1,0 +1,69 @@
+.header {
+  background-image: url(../images/header-bg.png);
+  background-size: cover;
+  background-position: top right 15%;
+  background-repeat: no-repeat;
+
+  @include on-tablet {
+    background-position: 50%;
+  }
+
+  &__content {
+    height: 480px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      height: 628px;
+    }
+
+    @include on-desktop {
+      height: 711px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(10px);
+    animation: appear-title $effectDuration ease-out forwards;
+    animation-delay: $effectDuration;
+
+    @keyframes appear-title {
+      to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 203px;
+    }
+  }
+}
