@@ -11,7 +11,7 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition: $property $effectDuration;
+  transition: $property $effectDuration ease;
   &:hover {
     #{$property}: $toValue;
   }
@@ -32,5 +32,17 @@
   }
   @include on-desktop {
     --columns: 12;
+  }
+}
+
+@mixin animation-scroll($transform_first, $transofrm_second, $delay: 0s) {
+  opacity: 0;
+  transform: $transform_first;
+  transition: all $effectDuration ease-out $delay;
+  @content;
+
+  &.visible {
+    opacity: 1;
+    transform: $transofrm_second;
   }
 }
