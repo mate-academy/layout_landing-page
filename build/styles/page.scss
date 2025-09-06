@@ -1,0 +1,97 @@
+body {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  background-color: $bg-color;
+  color: $primary-bg;
+  scroll-behavior: smooth;
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: $input-focus-border-color;
+    color: $primary-bg;
+    font-size: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0.8;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust(
+        $input-focus-border-color,
+        $lightness: -10%
+      );
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 48px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+
+  @include tablet {
+    font-size: 48px;
+  }
+
+  @include descktop {
+    font-size: 64px;
+    margin-bottom: 56px;
+  }
+
+  &--about-us {
+    margin-bottom: 0;
+  }
+
+  &--centered {
+    text-align: center;
+  }
+}
+
+.page-content {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
