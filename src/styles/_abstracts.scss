@@ -29,10 +29,10 @@ $image-hover-scale: 1.05;
 }
 
 @mixin font($size, $height, $weight, $color: $main-text) {
-  color: $color;
   font-size: $size;
   font-weight: $weight;
   line-height: $height;
+  color: $color;
 }
 
 @mixin hover($prop) {
@@ -46,14 +46,19 @@ $image-hover-scale: 1.05;
 /* --- Placeholders --- */
 %link-underline {
   content: '';
-  width: 100%;
-  height: 1px;
-  display: block;
-  background-color: $nav-text;
+
   position: absolute;
   bottom: -8px;
-  transform: scale(0);
   transform-origin: left;
+  transform: scale(0);
+
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  background-color: $nav-text;
+
   transition: transform $default-transition;
 }
 
@@ -67,8 +72,8 @@ $image-hover-scale: 1.05;
   --columns: 2;
 
   display: grid;
-  column-gap: 20px;
   grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
 
   @include on-tablet {
     --columns: 6;
@@ -82,12 +87,14 @@ $image-hover-scale: 1.05;
 }
 
 %button-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 56px;
   border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   background-color: $button-bg;
 
   @include font(16px, 27px, 700, $button-text);
@@ -102,17 +109,19 @@ $image-hover-scale: 1.05;
 }
 
 %input-style {
-  width: 100%;
   display: block;
+
+  width: 100%;
   padding: 14px 16px;
-  background: $form-bg;
   border: 1px solid transparent;
+
+  background: $form-bg;
 
   @include font(14px, 20px, 400, $form-text);
 
   &::placeholder {
-    color: $placeholder-text;
     border-color: $form-hover-color;
+    color: $placeholder-text;
   }
 
   &:focus {
