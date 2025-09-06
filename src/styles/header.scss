@@ -1,0 +1,80 @@
+.header {
+  position: relative;
+  background-image: url(../images/Cover_photo.png);
+  background-position: 85%;
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+
+  &__nav {
+    display: flex;
+    padding: 24px 20px;
+    justify-content: space-between;
+
+    // media
+    @include on-tablet {
+      padding: 36px 72px;
+    }
+
+    @include on-desktop {
+      padding: 36px 120px;
+    }
+  }
+
+  &__nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__phone {
+    display: none;
+    color: $white;
+    transition-duration: 300ms;
+
+    @include font-setting(12px, 700, 16px, 2px);
+
+    pointer-events: none;
+
+    @include on-tablet {
+      &:hover {
+        display: block;
+        pointer-events: all;
+      }
+    }
+
+    &:hover {
+      @include text-hover;
+    }
+  }
+
+
+  &__title {
+    @include font-setting(36px, 700, 100%, -1.5px);
+
+    display: flex;
+    justify-content: center;
+    margin-top: 270px;
+    padding-bottom: 88px;
+
+    // media
+    @include on-tablet {
+      @include font-setting(64px, 700, 100%, -1.5px);
+
+      margin-top: 270px;
+      padding-bottom: 130px;
+    }
+
+    @include on-desktop {
+      @include font-setting(80px, 700, 100%, -1.5px);
+
+      padding-bottom: 200px;
+    }
+  }
+}
+
+
+.header__nav-menu:has(.header__phone-logo:hover) .header__phone {
+  display: block;
+  pointer-events: all;
+}
