@@ -1,23 +1,55 @@
 .section {
   width: 100%;
-  max-width: 1260px;
+  max-width: $mobile-width;
   margin: 120px auto 0;
 
+  @include on-tablet {
+    max-width: $tablet-width;
+  }
+
+  @include on-desktop {
+    max-width: $desktop-width;
+  }
+
   &__title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 48px;
-    margin-bottom: 56px;
     max-width: 585px;
+    margin-bottom: 56px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px;
+  }
+
+  &__action {
+    display: block;
+
+    width: 100%;
+    max-width: 324;
+    padding: 15px;
+    border-radius: 8px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+
+    background-color: #292929;
+
+    &:hover {
+      background-color: #f8f8fa;
+    }
   }
 
   &--info {
     --columns: 1;
 
     display: grid;
-    gap: 24px;
     grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 24px;
 
     @include on-tablet {
       --columns: 2;
@@ -25,8 +57,90 @@
 
     p {
       font-family: 'Space Mono', sans-serif;
-      font-weight: 400;
       font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  &__note {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 56px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__grid {
+    --columns: 1;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 24px;
+
+    // margin-top: 56px;
+
+    @include on-tablet {
+      --columns: 6;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    div:first-child {
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    div:last-child {
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--reverse {
+      div:first-child {
+        grid-column: 1 / -1;
+
+        @include on-tablet {
+          grid-column: span 2;
+        }
+
+        @include on-desktop {
+          grid-column: span 4;
+        }
+      }
+
+      div:last-child {
+        grid-column: 1 / -1;
+
+        @include on-tablet {
+          grid-column: span 4;
+        }
+
+        @include on-desktop {
+          grid-column: span 8;
+        }
+      }
     }
   }
 
@@ -34,8 +148,8 @@
     --columns: 1;
 
     display: grid;
-    gap: 24px;
     grid-template-columns: repeat(var(--columns), 1fr);
+    gap: 24px;
 
     @include on-tablet {
       --columns: 2;
@@ -43,14 +157,26 @@
 
     input,
     textarea {
-      background-color: #f8f8fa;
-      border-radius: 8px;
-      border: none;
-      font-family: 'Space Mono', sans-serif;
-      font-weight: 400;
-      font-size: 14px;
+      width: 100%;
+      max-width: 411px;
       margin-bottom: 16px;
       padding: 14px 16px;
+      border: none;
+      border-radius: 8px;
+
+      font-family: 'Space Mono', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+
+      background-color: #f8f8fa;
+    }
+
+    textarea {
+      height: 148px;
+    }
+
+    .section__action {
+      max-width: 411px;
     }
   }
 }
