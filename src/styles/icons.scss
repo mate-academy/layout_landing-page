@@ -1,20 +1,71 @@
+.icons {
+  display: flex;
+  gap: 24px;
+  @include on-tablet {
+    gap: 32px;
+
+  @include on-desktop {
+    .icon--phone:hover + .icon--number {
+      opacity: 1;
+      @include transition300ms;
+    }
+  }
+  }
+
+}
+
+
 .icon {
-  display: block;
-  height: $iconMobileSize;
-  width: $iconMobileSize;
-  background-size: cover;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
-  @include icons-big;
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
 
-  &--phone {
-    background-image: url(../images/icon-phone.svg);
-  }
+    &--number {
+      position: absolute;
+      right:250px;
+      top: 52px;
+      width: fit-content;
+      opacity: 0;
+      text-decoration: none;
+      @include transition300ms;
 
-  &--menu {
-    background-image: url(../images/icon-menu.svg);
-  }
+    }
 
-  &--close {
-    background-image: url(../images/icon-menu-close.svg);
+    &--phone {
+      background-image: url(../images/icons/icon-phone.svg);
+      @include transform-scale-normal;
+
+      &:hover {
+        @include transform-scale-hover;
+      }
+
+    }
+
+    &--menu {
+      background-image: url(../images/icons/icon-menu.svg);
+
+      @include transform-scale-normal;
+
+      &:hover {
+        @include transform-scale-hover;
+        background-image: url(../images/icons/icon-menu-hover.svg);
+      }
+    }
+
+    &--close {
+      background-image: url(../images/icons/icon-menu-close.svg);
+      @include transform-scale-normal;
+
+        &:hover {
+          @include transform-scale-hover;
+      }
   }
 }

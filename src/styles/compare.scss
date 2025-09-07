@@ -1,106 +1,81 @@
-.compare__bikes-container {
-  @include padding-mobile-left-right;
-
-  display: grid;
-  grid-template-areas:
-    'title'
-    'card1'
-    'card2'
-    'card3';
+.compare {
+  @include padding-inline;
+  @include padding-block;
+  display: flex;
+  flex-direction:column;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 120px;
 
-  @include on-desktop {
-    padding-left: 120px;
-    padding-right: 120px;
-    grid-template-areas:
-      'title title title'
-      'card1 card2 card3';
-    gap: 24px;
-  }
-}
-
-.compare__title {
-  @include section-titles-font-mobile;
-
-  text-align: center;
-  margin-top: 92px;
-  grid-area: title;
-
-  @include on-tablet {
-    margin-top: 132px;
-    font-size: 48px;
+  &__section-title {
     font-weight: 500;
+    font-size: 32px;
     letter-spacing: -1.5px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 64px;
+      margin-bottom: 56px;
+    }
+
   }
 
-  @include on-desktop {
-    margin-top: 164px;
-    font-size: 64px;
-    font-weight: 500;
-    letter-spacing: -1.5px;
-  }
-}
+  &__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    gap: 40px;
 
-.compare__bikes-card {
-  margin-top: 40px;
-  width: 280px;
-  height: 418px;
+    @include on-tablet {
+      max-width: 392px;
+    }
 
-  &--1 {
-    grid-area: card1;
-  }
-  &--2 {
-    grid-area: card2;
-  }
-  &--3 {
-    grid-area: card3;
+    @include on-desktop {
+      flex-direction: row;
+      max-width: 1020px;
+    }
+
   }
 
-  @include on-tablet {
-    margin-top: 48px;
-    width: 392px;
-    height: 484px;
+  &__photo {
+    width: 280px;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+
+    @include transform-scale-normal;
+
+    &:hover {
+      @include transform-scale-hover;
+    }
+
   }
 
-  @include on-desktop {
-    margin-top: 56px;
-    width: 324px;
-    height: 424px;
-  }
-}
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 8px;
 
-.bike-img {
-  width: 280px;
-  height: 228px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 
-  @include on-tablet {
-    width: 392px;
-    height: 316px;
   }
 
-  @include on-desktop {
-    width: 324px;
-    height: 256px;
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 16px;
   }
-}
 
-@for $i from 1 through 3 {
-  .bike-img--#{$i} {
-    background-image: url(../images/bike#{$i}.png);
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
   }
-}
 
-.bike-name {
-  @include bikes-name;
-}
-
-.bike-description {
-  @include bikes-description;
-}
-
-.bike-price {
-  @include bikes-price;
 }
