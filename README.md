@@ -25,7 +25,7 @@ Installation
 
 Clone the repository
 ```console
-git clone [your-repo-url]
+git clone https://github.com/Volodymyr-Bauzi/layout_landing-page/tree/develop
 cd nothing-bose-landing
 ```
 
@@ -39,8 +39,7 @@ Start development server
 npm start
 ```
 
-Open your browser
-Navigate to http://localhost:1234 to view the project
+Project opens automaticaly in your browser
 
 📦 Deployment
 Build the project for production:
