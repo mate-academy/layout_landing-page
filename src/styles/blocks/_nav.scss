@@ -24,17 +24,21 @@
     line-height: 1;
     letter-spacing: 2px;
     color: $font-color-menu;
+
+    &::after {
+      @include underline-block($font-color-menu);
+      @include transition-custom(width, color);
+
+      width: 0;
+    }
+
+    &:active {
+      color: $font-color-menu-hover;
+    }
   }
 
   @include on-desktop {
     &__link {
-      &::after {
-        @include underline-block($font-color-menu);
-        @include transition-custom(width);
-
-        width: 0;
-      }
-
       &:hover {
         &::after {
           width: 100%;
