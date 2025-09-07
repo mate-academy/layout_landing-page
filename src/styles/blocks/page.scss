@@ -1,0 +1,32 @@
+.page {
+  font-family: $font-family-main;
+  color: $main-text-color;
+  font-size: 18px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(-100%);
+    transition: all $effectDuration;
+    &:target {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+  }
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
