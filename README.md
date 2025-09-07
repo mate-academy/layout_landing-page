@@ -24,21 +24,29 @@ npm or yarn package manager
 Installation
 
 Clone the repository
-bashgit clone [your-repo-url]
+```console
+git clone [your-repo-url]
 cd nothing-bose-landing
+```
 
 Install dependencies
-bashnpm install
+```console
+npm install
+```
 
 Start development server
-bashnpm start
+```console
+npm start
+```
 
 Open your browser
 Navigate to http://localhost:1234 to view the project
 
 📦 Deployment
 Build the project for production:
-bashnpm run build
+```console
+npm run build
+```
 Upload the contents of the dist folder to your preferred hosting provider (Netlify, Vercel, GitHub Pages, etc.).
 🌐 Live Demo
 [View Live Demo →](https://volodymyr-bauzi.github.io/layout_landing-page/)
