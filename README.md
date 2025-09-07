@@ -25,7 +25,7 @@ Installation
 
 Clone the repository
 ```console
-git clone https://github.com/Volodymyr-Bauzi/layout_landing-page/tree/develop
+git clone https://github.com/Volodymyr-Bauzi/layout_landing-page.git
 cd nothing-bose-landing
 ```
 
