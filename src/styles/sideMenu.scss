@@ -11,12 +11,18 @@
   background-color: $sideMenuBGColor;
   transition: all 0.3s;
   transform: translateX(100%);
-
-  &:target{
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: all;
+  &:has(.nav:target) {
+    overflow: hidden; /* not to scroll the page */
+    .menu {
+      overflow: auto; /* to scroll the menu if needed */
+    }
   }
+  &:target{
+      overflow: hidden;
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
 
   &__list{
     display: flex;
@@ -39,6 +45,7 @@
     text-transform: uppercase;
     color: $sideMenuFontColor;
     position: relative;
+
     @include hover(color, $sideMenuLinkHover);
 
     &::after{
@@ -55,8 +62,7 @@
     &:hover::after {
       transform: scaleX(1);
     }
-}
-
+  }
 
   &__bottom{
     margin-top: 40px;
