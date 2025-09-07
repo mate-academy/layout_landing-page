@@ -24,7 +24,7 @@ A responsive landing page for a museum, created as a practice project. The page 
    ```
 2. Navigate to the project folder:
    ```bash
-   cd museum-landing
+   cd layout_landing-page
    ```
 3. Install dependencies:
    ```bash
