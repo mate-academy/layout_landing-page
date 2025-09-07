@@ -1,0 +1,50 @@
+@use './vars' as *;
+
+@mixin bg($url, $size: contain) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: $size;
+}
+
+@mixin display-flex($jc: center) {
+  display: flex;
+  justify-content: $jc;
+  align-items: center;
+}
+
+@mixin on-mobile {
+  @media (min-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
