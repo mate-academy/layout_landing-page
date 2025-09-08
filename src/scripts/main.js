@@ -2,6 +2,7 @@
 
 const menuTrigger = document.querySelector('.icon--menu');
 const menuClose = document.querySelector('.menu__close');
+const menuLinks = document.querySelectorAll('.menu__link');
 const bodyEl = document.body;
 
 menuTrigger.addEventListener('click', () => {
@@ -10,4 +11,10 @@ menuTrigger.addEventListener('click', () => {
 
 menuClose.addEventListener('click', () => {
   bodyEl.classList.remove('menu-open');
+});
+
+menuLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    bodyEl.classList.remove('menu-open');
+  });
 });
