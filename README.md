@@ -13,7 +13,7 @@ Design:
 https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-212&t=cK3DZcJwCRoKWEFL-0
 
 Preview:
-
+https://anastasia-kravchuk.github.io/layout_landing-page/
 
 How to run locally:
 
