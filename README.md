@@ -11,11 +11,11 @@ The interface is fully responsive across various screen resolutions, making the 
 ## Technologies
 
 - HTML5
-- SCSS (using Flexbox and Grid)
+- SCSS (using Flexbox, Grid)
 
 ## Preview
 
-You can view a demo of the project at this preview link: 
+You can view a demo of the project at this preview link: [Demo-page](https://julia-hertseva.github.io/layout_landing-page/)
 
 ## Design
 
