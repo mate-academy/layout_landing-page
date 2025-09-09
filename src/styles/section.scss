@@ -80,7 +80,7 @@
   }
 
   &__grid {
-    --columns: 1;
+    --columns: 2;
 
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
@@ -100,13 +100,18 @@
 
     img {
       display: block;
+
       width: 100%;
+      min-height: 130px;
+      border-radius: 4px;
+
+      object-fit: cover;
 
       @include hover(transform, scale(1.1));
     }
 
     div:first-child {
-      grid-column: 1 / -1;
+      grid-column: span 1;
 
       @include on-tablet {
         grid-column: span 4;
@@ -118,7 +123,7 @@
     }
 
     div:last-child {
-      grid-column: 1 / -1;
+      grid-column: span 1;
 
       @include on-tablet {
         grid-column: span 2;
@@ -131,7 +136,7 @@
 
     &--reverse {
       div:first-child {
-        grid-column: 1 / -1;
+        grid-column: span 1;
 
         @include on-tablet {
           grid-column: span 2;
@@ -143,7 +148,7 @@
       }
 
       div:last-child {
-        grid-column: 1 / -1;
+        grid-column: span 1;
 
         @include on-tablet {
           grid-column: span 4;
@@ -162,6 +167,7 @@
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     gap: $gap-main;
+    margin-bottom: 30px;
 
     @include on-tablet {
       --columns: 2;
