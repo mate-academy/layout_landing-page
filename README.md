@@ -1,24 +1,39 @@
-# Landing Page
+# Bang & Olufsen Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A responsive **landing page** project inspired by the Bang & Olufsen brand.
+The goal of this project was to practice **modern front-end development techniques** and responsive design.
 
-Choose a design for your landing page:
+The page includes:
+- Hero section with a fullscreen background image and tagline.
+- Responsive navigation with a burger menu for mobile devices.
+- Product recommendation grid with detailed descriptions.
+- Smooth hover and focus states for interactive elements.
+- Adaptive layout that looks great on **mobile, tablet, and desktop**.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+---
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## 🔧 Technologies Used
+- **HTML5**
+- **SCSS**
+- **JavaScript (ES6)**
+- **Git & GitHub**
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+---
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## 🔗 Links
+- [🌍 Live Preview](https://vtmnkmarta.github.io/layout_landing-page/)
+- [🎨 Design in Figma](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-212&t=5xf3ajpE5rH2JPCo-0)
+---
+
+## 🚀 How to Run Locally
+
+1. Clone the repository: https://github.com/vtmnkmarta/layout_landing-page
+   git clone
+   cd layout_landing-page
+
+2. Install dependencies:
+   npm install
+
+3. Start development server:
+   npm start
+
