@@ -11,11 +11,11 @@ The interface is fully responsive across various screen resolutions, making the 
 ## Technologies
 
 - HTML5
-- SCSS (using Flexbox and Grid)
+- SCSS (using Flexbox, Grid)
 
 ## Preview
 
-You can view a demo of the project at this preview link (replace with a real link if available).
+You can view a demo of the project at this preview link: [Demo-page](https://julia-hertseva.github.io/layout_landing-page/)
 
 ## Design
 
@@ -24,13 +24,13 @@ The project design is available in Figma: [BIKE New Version](https://www.figma.c
 ## Installation Instructions
 
 1. Clone the repository:
-   git clone https://github.com/your-username/your-project-name.git
+   <img width="740" height="60" alt="image" src="https://github.com/user-attachments/assets/78058914-be9c-4fd1-b97c-2231c2ce18d8" />
 
 2. Navigate to the project directory:
-   cd your-project-name
+   <img width="740" height="60" alt="image" src="https://github.com/user-attachments/assets/93a556dc-8e31-47f4-9316-789e4ab777b5" />
 
 3. Install dependencies:
-   npm install
+   <img width="740" height="60" alt="image" src="https://github.com/user-attachments/assets/f0657557-7321-409a-865d-ef3573f9124a" />
 
 4. Start the local development server:
-   npm start
+   <img width="740" height="60" alt="image" src="https://github.com/user-attachments/assets/ec8e5925-b029-498b-a094-42273adaa757" />
