@@ -1,0 +1,48 @@
+.page {
+  font-family: Poppins, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    background-color: $secondary-color;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all 0.5s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  & .container {
+    @include content-padding-inline;
+  }
+
+  & img {
+    @include hover(transform, scale(1.2));
+
+    &:hover {
+      z-index: 1;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
