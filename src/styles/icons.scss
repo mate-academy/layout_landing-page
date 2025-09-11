@@ -1,0 +1,65 @@
+
+@import 'mixin';
+@import 'normalize';
+
+/* #region icon */
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.icon--menu {
+  background-image: url(../images/icons/icon-burger-menu.svg);
+
+  &:hover {
+    background-image: url(../images/icons/icon-burger-menu-hover.svg);
+  }
+}
+
+.icon--phone {
+  position: relative;
+  background-image: url(../images/icons/icon-phone.svg);
+
+  &::before {
+    font-family: var(--space-grotesk-font);
+    content: '+1 234 555-55-55';
+    white-space: nowrap;
+    letter-spacing: 2px;
+    color: #292929;
+    opacity: 0;
+    font-size: 12px;
+    font-weight: 700;
+    transition: opacity 0.3s;
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    right: 110%;
+    transform: translateY(-50%);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.icon--close {
+  background-image: url(../images/icons/icon-close.svg);
+}
+
+/* #endregion */
