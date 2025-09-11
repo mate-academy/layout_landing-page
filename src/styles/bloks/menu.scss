@@ -35,19 +35,43 @@
     pointer-events: all;
   }
 
-  &__phone-number {
-    display: flex;
+  &__contacts{
+    display: inline-flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  &__phone-number {
+    position: relative;
 
     color: $primary-white;
     font-weight: 700;
     font-style: Bold;
     text-transform: uppercase;
+
+     &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $primary-white;
+
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform $transition-time;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__call {
-    margin-top: 16px;
+    position: relative;
+    
+    margin-top: 8px;
     padding-bottom: 7px;
 
     color: $primary-white;
@@ -58,8 +82,22 @@
     letter-spacing: 2px;
     text-transform: uppercase;
 
-    &:hover {
-      border-bottom: 1px solid $primary-white;
+     &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $primary-white;
+
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform $transition-time;
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
 }
