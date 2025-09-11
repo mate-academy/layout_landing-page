@@ -1,0 +1,239 @@
+@import 'variables';
+@import 'nullstyle';
+
+.header {
+  --header-size: 96px;
+
+  height: var(--header-size);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: rgba($color: #9b7e59, $alpha: 0);
+  display: flex;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    @media (min-width: 744px) {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @media (min-width: 744px) {
+      gap: 60px;
+    }
+  }
+  &__phone {
+    display: flex;
+    align-items: center;
+  }
+  &__number {
+    display: none;
+    color: $main-white-color;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $main-white-color;
+      text-decoration: none;
+    }
+  }
+
+  &__contactsImg {
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+
+    @media (any-hover: hover) {
+      &:hover {
+        .header__number {
+          display: block;
+        }
+      }
+    }
+
+    &.--hidden {
+      display: none;
+    }
+  }
+
+  &__burger {
+    z-index: 1;
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 16px;
+    cursor: pointer;
+  }
+  &__burger span,
+  &__burger::before,
+  &__burger::after {
+    left: 0;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    transition: all 0.3s ease 0s;
+    background-color: $main-white-color;
+    border-radius: 10px;
+  }
+  &__burger::before,
+  &__burger::after {
+    content: '';
+  }
+  &__burger::before {
+    top: 0;
+  }
+  &__burger::after {
+    bottom: 0;
+  }
+  &__burger span {
+    top: 50%;
+    transform: scale(1) translate(0, -50%);
+  }
+
+  &__burger.--active span {
+    transform: scale(0);
+  }
+  &__burger.--active::before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0, -50%);
+  }
+  &__burger.--active::after {
+    bottom: 50%;
+    transform: rotate(45deg) translate(0, 50%);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background-color: $main-red-color;
+    width: 100%;
+    height: 0;
+
+    transition: all 0.3s ease 0s;
+  }
+
+  &.--active::before {
+    top: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  &.--scrolled {
+    background-color: rgba($color: #9b7e59, $alpha: 1);
+  }
+}
+
+.top-menu {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  transition: top 0.3s ease 0s;
+  overflow: hidden;
+
+  &__body {
+    height: 0;
+    padding-left: 20px;
+
+    @media (min-width: 744px) {
+      padding: 0;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 30px;
+  }
+
+  &__option {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $main-white-color;
+
+    background-image: linear-gradient(#fff, #fff);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.3s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-size: 100% 1px;
+      }
+    }
+  }
+
+  &__contacts {
+    margin-top: 48px;
+  }
+
+  &__contact {
+    color: $main-white-color;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 27px;
+    margin-bottom: 10px;
+
+    a {
+      text-decoration: none;
+      color: $main-white-color;
+    }
+
+    &:last-child {
+      display: inline-block;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 100% 1px;
+      transition: background-size 0.3s;
+      margin-bottom: 0;
+    }
+  }
+
+  &.--active {
+    display: block;
+    top: 96px;
+    left: 0;
+    height: 80vh;
+    overflow: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #ac262c;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e7333c;
+  }
+}
