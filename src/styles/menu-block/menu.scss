@@ -1,0 +1,119 @@
+.menu {
+  position: fixed;
+  overflow: auto;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #c2c2c2;
+  pointer-events: none;
+  text-transform: uppercase;
+  color: $main-bg-color;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+  z-index: 2;
+
+  &__header {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header-logo {
+    margin: 24px 0;
+    display: flex;
+    height: 38px;
+    width: 138px;
+  }
+
+  &:target {
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &__content-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 40px;
+
+    list-style: none;
+    padding: 0;
+  }
+
+  &__content-link {
+    position: relative;
+    text-decoration: none;
+    line-height: 22px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: $main-bg-color;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      background-color: $main-bg-color;
+      transform-origin: left;
+      transition: width 400ms ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__content-phone {
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 27px;
+    color: $main-bg-color;
+    margin-bottom: 16px;
+  }
+
+  &__content-call-to-action {
+    display: block;
+    text-decoration: none;
+    width: fit-content;
+    color: $main-bg-color;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    transition: 300ms;
+  }
+
+  &__content-call-to-action::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $main-bg-color;
+  }
+
+  @media (min-width: $tablet-min) {
+    height: 100%;
+
+    &__header {
+      height: 110px;
+      margin-bottom: 8px;
+    }
+  }
+
+  @media (min-width: $desktop-min) {
+    height: 100%;
+
+    &__header {
+      height: 128px;
+      margin-bottom: 24px;
+    }
+  }
+}
