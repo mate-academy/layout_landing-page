@@ -1,3 +1,204 @@
+@import 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap';
+
+:root {
+  --grid-cols-desktop: 12;
+  --grid-cols-tablet: 6;
+  --grid-cols-mobile: 2;
+  --bg: #fff;
+  --ink: #111;
+  --ink-soft: #6b6b6b;
+  --muted: #f2f2f2;
+  --divider: #e6e6e6;
+  --accent: #b10f17;
+  --accent-dark: #8f0c12;
+  --h1: clamp(34px, 5vw, 64px);
+  --h2: clamp(22px, 3vw, 28px);
+  --h3: clamp(14px, 2vw, 16px);
+  --lead: 18px;
+  --text: 15px;
+  --small: 13px;
+  --ease: 200ms ease;
+  --page-w: 1260px;
+  --side-pad: 120px;
+  --col: 63px;
+  --gut: 24px;
+  --grid-w: 1020px;
+  --menu-bg-1: #b10f17;
+  --menu-bg-2: #c2262d;
+  --navpanel-h: 700px;
+}
+
+@mixin bp-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin bp-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin responsive-grid($desktop-col-width: var(--col), $gut: var(--gut)) {
+  display: grid;
+  column-gap: $gut;
+  grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
+
+  @include bp-tablet {
+    grid-template-columns: repeat(var(--grid-cols-tablet), minmax(0, 1fr));
+  }
+
+  @include bp-desktop {
+    grid-template-columns: repeat(var(--grid-cols-desktop), $desktop-col-width);
+  }
+}
+
+@mixin grid {
+  width: 100%;
+  max-width: var(--grid-w);
+  margin-inline: auto;
+  row-gap: var(--gut);
+
+  @include responsive-grid;
+}
+
+.grid {
+  @include grid;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  font-family: Cinzel, serif;
+  font-weight: 700;
+  font-size: var(--text);
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+img:hover {
+  transform: scale(1.03);
+  transition: transform var(--ease);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--page-w);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 24px);
+
+  @include bp-desktop {
+    padding-inline: var(--side-pad);
+  }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 16px;
+}
+
+@include bp-tablet {
+  .grid-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 20px;
+  }
+}
+
+@include bp-desktop {
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, var(--col));
+    column-gap: var(--gut);
+    justify-content: center;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  overflow: hidden;
+}
+
+@import 'navpanel';
+@import 'header';
+@import 'hours';
+@import 'view';
+@import 'moreExplore';
+@import 'contacts';
+
+.bottom {
+  position: relative;
+  width: 100%;
+  height: 359px;
+  margin: 84px auto 0; // mobile base
+
+  @media (min-width: 744px) {
+    // tablet
+    margin: 156px auto 0;
+  }
+
+  @media (min-width: 1200px) {
+    // desktop
+    margin: 134px auto 0;
+  }
+}
+
+.bottom__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-top: 1px solid var(--divider);
+}
+
+.footer {
+  padding: 18px 0 28px;
+  color: var(--ink-soft);
+  text-align: center;
+  font-size: var(--small);
+  border-top: 1px solid var(--divider);
+}
+
+section + section {
+  border-top: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.page:has(.navpanel.is-open),
+body:has(.navpanel.is-open) {
+  overflow: hidden;
 }

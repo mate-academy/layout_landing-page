@@ -1,0 +1,200 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: clamp(520px, 80vh, 840px);
+  margin: 0 auto;
+  color: #fff;
+  background: url('../images/gallery-main.png') center/cover no-repeat;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.35) 40%,
+    rgba(0, 0, 0, 0.55)
+  );
+  pointer-events: none;
+}
+
+.header__inner.container {
+  grid-column: 1 / -1;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  top: 24px;
+  height: 56px;
+  z-index: 3;
+  width: 100%;
+}
+
+.header__logo {
+  margin: 0;
+}
+
+.header__logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.header__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+/* --- іконки: мобільний за замовчуванням 24×24 --- */
+.header__icon {
+  display: grid;
+  place-items: center;
+  inline-size: 24px;
+  block-size: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform var(--ease);
+}
+
+.header__icon > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header__icon:hover,
+.header__icon:focus-visible {
+  transform: translateY(-1px);
+}
+
+.header__title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: var(--hdr-title-pt, 200px); 
+  text-align: center;
+  z-index: 2;
+}
+
+.header__title h1 {
+  margin: 0;
+  font-size: var(--h1);
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  font-weight: 700;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+}
+
+.header__phone {
+  position: relative;
+}
+
+.header__contacts {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 12px);
+  transform: translateY(-50%) translateX(8px);
+  width: 260px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--ease),
+    transform var(--ease),
+    visibility var(--ease);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+  text-align: right;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(2px);
+  padding: 10px 12px;
+  border-radius: 6px;
+  z-index: 5;
+  display: grid;
+  gap: 8px;
+}
+
+.header__contact-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__phone:hover .header__contacts,
+.header__phone:focus-within .header__contacts {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(-50%) translateX(0);
+}
+
+.header__contact-title {
+  margin: 0;
+}
+
+.header__contact-phone {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity var(--ease);
+}
+
+.header__contact-phone:hover,
+.header__contact-phone:focus-visible {
+  opacity: 0.8;
+}
+
+/* --- планшет і вище: іконки стають 32×32 --- */
+@media (min-width: 744px) {
+  .header__inner {
+    top: 40px;
+    height: 60px;
+  }
+
+  .header__logo-img {
+    height: 60px;
+  }
+
+  .header__actions {
+    gap: 55px;
+  }
+
+  .header__title {
+    --hdr-title-pt: 256px;
+  }
+
+  .header__icon {
+    inline-size: 32px;
+    block-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__inner {
+    top: 50px;
+    height: 65px;
+  }
+
+  .header__logo-img {
+    height: 65px;
+  }
+
+  .header__title {
+    --hdr-title-pt: 198px;
+  }
+}
