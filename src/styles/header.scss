@@ -1,0 +1,113 @@
+@import './variables';
+@import './mixins.scss';
+
+.header {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  background-image: url('../images/hero-photo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__top {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+    grid-column: span 2;
+
+    @include onTablet {
+      padding-top: 50px;
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      padding-top: 50px;
+      grid-column: span 12;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 129px;
+    color: $white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    grid-column: span 2;
+
+    @include onTablet {
+      font-size: 64px;
+      line-height: 64px;
+      padding-top: 141px;
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      padding-top: 7rem;
+      grid-column: span 12;
+      text-shadow: 2px 1px 2px $black;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 55px;
+    }
+
+    &--phone-menu {
+      position: absolute;
+      top: 50%;
+      opacity: 0;
+      right: 120%;
+      transform: translateY(-50%);
+      background: transparent;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      white-space: nowrap;
+      z-index: 10;
+      pointer-events: none;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+  }
+
+  &__wrap {
+    @include contentPaddingInline;
+    @include PageGrid;
+
+  }
+}
+
+.phone-menu {
+  text-align: right;
+  font-size: 16px;
+  line-height: 27px;
+  text-transform: uppercase;
+
+  &__text {
+    color: $white;
+    text-align: right;
+    font-weight: 700;
+  }
+
+  &__phone {
+    display: block;
+    color: $white;
+    text-decoration: none;
+    padding-bottom: 8px;
+    text-align: right;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,138 @@
+@import './variables.scss';
+
+.exhibition {
+
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__photos {
+    @include PageGrid;
+
+    &--line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 8px;
+
+      @include onTablet {
+        display: grid;
+        gap: 24px;
+        a:last-child {
+          display: none;
+        }
+
+        a:nth-child(1),
+        a:nth-child(2) {
+          grid-column: span 3;
+        }
+      }
+
+      @include onDesktop {
+        display: grid;
+        gap: 24px;
+        a:last-child {
+          display: inline;
+        }
+
+        a:nth-child(1),
+        a:nth-child(2) {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+
+  &__link {
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    box-sizing: border-box;
+
+    &--left {
+      object-position: 20%;
+    }
+  }
+
+  &__title {
+    @include PageGrid;
+  }
+
+  &__name {
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    color: $red;
+    margin-top: 24px;
+  }
+
+  &__duratation {
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 400;
+    color: $black;
+  }
+
+  &__button {
+    transition: background-color 200ms ease-in-out;
+
+    &--wrap {
+      margin-top: 40px;
+
+      @include PageGrid;
+
+    }
+
+    justify-content: center;
+    grid-column: span 2;
+    line-height: 56px;
+
+    @include onTablet {
+        grid-column: 2 / 6;
+    }
+
+    @include onDesktop {
+        grid-column: 5 / 9;
+    }
+
+    background-color: $red;
+    color: $white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+
+    &:hover {
+      background-color: $hover-red;
+    }
+
+    &:focus {
+      background-color: $pressed-red;
+    }
+  }
+}
