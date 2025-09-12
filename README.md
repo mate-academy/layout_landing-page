@@ -1,24 +1,63 @@
-# Landing Page
+Nothing (BOSE) Landing Page
+A modern, responsive landing page inspired by the "[Nothing (BOSE)](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)" design from Figma. This project demonstrates contemporary web development practices with clean architecture and accessible design principles.
+✨ Features
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+📱 Fully Responsive - Optimized for mobile, tablet, and desktop viewing
+🎯 Semantic HTML - Clean, accessible markup structure
+🎨 SCSS Styling - Maintainable and organized stylesheets
+♿ Accessibility First - WCAG compliant navigation and forms
+🚀 Modern Tooling - Built with Parcel bundler for optimal performance
 
-Choose a design for your landing page:
+🛍️ What's Inside
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Product Showcase - Curated selection of recommended items
+Category Navigation - Intuitive product browsing experience
+Company Information - Brand story and company details
+Contact Form - Accessible customer inquiry system
 
-Follow the instructions in this and next lessons to implement the page block by block:
+🚀 Getting Started
+Prerequisites
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+Node.js (version 14 or higher)
+npm or yarn package manager
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Installation
+
+Clone the repository
+```console
+git clone https://github.com/Volodymyr-Bauzi/layout_landing-page.git
+cd nothing-bose-landing
+```
+
+Install dependencies
+```console
+npm install
+```
+
+Start development server
+```console
+npm start
+```
+
+Project opens automaticaly in your browser
+
+📦 Deployment
+Build the project for production:
+```console
+npm run build
+```
+Upload the contents of the dist folder to your preferred hosting provider (Netlify, Vercel, GitHub Pages, etc.).
+🌐 Live Demo
+[View Live Demo →](https://volodymyr-bauzi.github.io/layout_landing-page/)
+
+🛠️ Built With
+
+HTML5 & Semantic Markup
+SCSS/Sass
+Parcel Bundler
+Modern JavaScript (ES6+)
+
+📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Built with ❤️ by Volodymyr Shavel

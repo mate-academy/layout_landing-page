@@ -1,0 +1,97 @@
+.contact-us {
+  &__container {
+    @include page-grid;
+
+    gap: 48px;
+  }
+
+  &__form {
+    grid-column: span 6;
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    grid-column: span 6;
+
+    align-items: start;
+
+    @include on-desktop {
+      grid-column: 7 / -1;
+    }
+  }
+
+  &__panel {
+    display: grid;
+    row-gap: 8px;
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #9393a3;
+  }
+
+  &__data {
+    font-family: 'Space Mono', monospace;
+    color: #191919;
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+      transition: transform $effect-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.contact__address {
+  position: relative;
+  gap: 0;
+
+  &--label {
+    margin-bottom: 8px;
+  }
+
+  &--info {
+    font-family: 'Space Mono', monospace;
+    color: #191919;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+      transition: transform $effect-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+  }
+
+  &:hover .contact__address--info::after {
+    transform: scale(1);
+  }
+}
