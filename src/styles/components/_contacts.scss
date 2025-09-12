@@ -1,0 +1,123 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.contacts {
+  &__container {
+    @include page-grid;
+
+    row-gap: 61px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+  }
+  &__list-wrap {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      display: flex;
+      justify-content: space-between;
+      grid-column: 1 / 7;
+    }
+  }
+  &__item {
+    @include on-tablet {
+      max-width: 237px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 61px;
+
+      @include on-tablet {
+        margin-bottom: 48px;
+      }
+    }
+  }
+  &__subtitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  &__phone {
+    margin-bottom: 8px;
+  }
+  &__phone-name {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.93;
+    margin-bottom: 4px;
+  }
+  &__phone-number {
+    color: $contact-grey;
+  }
+  &__address-name {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.93;
+    margin-bottom: 4px;
+  }
+  &__address-text {
+    line-height: 1.4;
+    color: $contact-grey;
+  }
+}
+
+.form {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 4 / span 3;
+  }
+
+  @include on-desktop {
+    grid-column: 8 / -1;
+  }
+  &__label {
+    display: flex;
+    margin-bottom: 16px;
+    &--textarea {
+      margin-bottom: 32px;
+    }
+  }
+  &__input {
+    width: 100%;
+    height: 48px;
+    padding: 14px 11px;
+    font-family: $font-family;
+    font-size: 14px;
+    color: $main-dark;
+    background-color: $input-color;
+    border: 1px solid transparent;
+    outline: none;
+
+    transition: border $animation;
+
+    &:hover {
+      border: 1px solid $input-hover;
+    }
+    &:focus,
+    &:active {
+      border: 1px solid $main-dark;
+    }
+
+    &::placeholder {
+      color: $placeholder;
+    }
+    &--textarea {
+      height: 144px;
+      resize: none;
+    }
+  }
+  &__btn {
+    grid-column: 1 / -1;
+  }
+}

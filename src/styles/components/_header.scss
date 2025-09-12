@@ -1,0 +1,261 @@
+@use '../utils/vars' as *;
+@use '../utils/mixins' as *;
+
+.header {
+  padding-top: 25px;
+  height: 100vh;
+
+  @include bg('../images/mobile/header-bg-mob.png', cover);
+
+  @include on-tablet {
+    background-image: url('../images/tablet/header-bg-tab.png');
+    padding-top: 50px;
+  }
+
+  @include on-desktop {
+    background-image: url('../images/desktop/header-bg-desk.png');
+  }
+
+  &__top {
+    @include display-flex(space-between);
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__title {
+    margin-top: 129px;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: $white;
+
+    @include on-tablet {
+      margin-top: 141px;
+      font-size: 64px;
+      letter-spacing: -0.02em;
+    }
+
+    @include on-desktop {
+      margin-top: 83px;
+    }
+  }
+}
+
+.logo {
+  max-width: 65px;
+  font-size: 30px;
+  letter-spacing: -0.04em;
+  color: $white;
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 0.8;
+
+  @include on-tablet {
+    font-size: 40px;
+    max-width: 87px;
+  }
+}
+
+.icon-list {
+  position: absolute;
+  right: -35px;
+  top: 30px;
+  width: 201px;
+  height: 116px;
+  opacity: 0;
+  pointer-events: none;
+  color: $white;
+  transition: opacity $animation;
+
+  @include on-tablet {
+    right: 120px;
+    top: -38px;
+  }
+
+  @include on-desktop {
+    right: 135px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    @include bg('../images/icon-phone.svg');
+    &:hover,
+    &:focus {
+      & + .icon-list {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.icon-item {
+  text-align: right;
+}
+
+.burger-icon {
+  z-index: 3;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  &__line {
+    width: 18px;
+    height: 2px;
+    border-radius: 1px;
+    display: block;
+    position: relative;
+    background-color: $white;
+    transition: background-color $animation;
+
+    @include on-tablet {
+      width: 24px;
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      position: absolute;
+      left: 0;
+      background-color: $white;
+      transition: transform $animation;
+
+      @include on-tablet {
+        width: 24px;
+      }
+    }
+    &::before {
+      transform: translateY(-5px);
+
+      @include on-tablet {
+        transform: translateY(-6px);
+      }
+    }
+    &::after {
+      transform: translateY(5px);
+
+      @include on-tablet {
+        transform: translateY(6px);
+      }
+    }
+  }
+
+  &.is-open {
+    & .burger-icon__line {
+      background-color: transparent;
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: $accent-main;
+  padding-block: 25px;
+  overflow: auto;
+  transform: translateX(102%);
+  transition: transform $animation;
+
+  @include on-tablet {
+    padding-block: 50px;
+  }
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  &__logo {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    margin-bottom: 16px;
+  }
+
+  &__location,
+  &__phone {
+    text-transform: uppercase;
+    color: $white;
+  }
+
+  &__call {
+    display: block;
+    width: fit-content;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: $white;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom $animation;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: 1px solid $white;
+    }
+  }
+}
+
+.nav {
+  margin-bottom: 32px;
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+
+      @include on-tablet {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__link {
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: $white;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom $animation;
+
+    &:hover {
+      border-bottom: 1px solid $white;
+    }
+  }
+}
