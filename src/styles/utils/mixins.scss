@@ -1,0 +1,67 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  };
+
+  @include onDesktop() {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1020px;
+  };
+}
+
+.container {
+  @include contentPaddingInline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesktop {
+    --columns: 12;
+  }
+}
+
+@mixin contactsOptions {
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    background-color: #F8F8FA;
+
+    padding-inline: 16px;
+    padding-block: 14px;
+    border-radius: 8px;
+    height: 48px;
+    width: 100%;
+
+    margin-bottom: 16px ;
+}
