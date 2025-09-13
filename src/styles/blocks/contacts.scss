@@ -1,0 +1,140 @@
+.form {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #292929;
+}
+
+textarea {
+  &::placeholder {
+    @include placeholder;
+  }
+}
+
+input {
+  box-sizing: border-box;
+
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #a9a4a4 inset;
+  }
+
+  &::placeholder {
+    @include placeholder;
+  }
+}
+
+.contacts {
+  @include page-grid;
+
+  gap: 48px;
+
+  &__title {
+    justify-self: center;
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: span 5 / -5;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+
+    &--name {
+      @include button-forms;
+
+      margin-bottom: 16px;
+      padding-inline: 16px;
+    }
+
+    &--email {
+      @include button-forms;
+
+      margin-bottom: 16px;
+      padding-inline: 16px;
+    }
+
+    &--message {
+      box-sizing: border-box;
+
+      @include button-forms;
+
+      grid-column: 1 / 6;
+      line-height: 20px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      resize: none;
+      white-space: pre-wrap;
+      min-height: 120px;
+      overflow: hidden;
+      padding-left: 16px;
+    }
+
+    &--submit {
+      width: 100%;
+
+      @include button;
+      @include cursor;
+      @include hover(transform, scale(1.05));
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 5;
+      }
+    }
+  }
+
+  &__blocks {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: -6 / -3;
+    }
+  }
+
+  &__block {
+    margin-bottom: 24px;
+
+    &--text {
+      margin: 0;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    &--text1 {
+      color: $second-text-color;
+      text-decoration: none;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+
+      &:hover {
+        @include hover(transform, scale(1.05));
+
+        text-shadow: 0 0 15px white;
+      }
+    }
+  }
+}

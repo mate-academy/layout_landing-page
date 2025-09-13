@@ -1,0 +1,112 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin title-product {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+@mixin button {
+  font-family: Poppins, serif;
+  display: inline-block;
+  height: 56px;
+  background-color: white;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+  border: none;
+  border-radius: 40px;
+  grid-column: 1 / -1;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 1 4 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    transform: scale(1.01);
+    box-shadow: 1 4 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+@mixin button-forms {
+  font-family: Poppins, serif;
+  display: inline-block;
+  background-color: white;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  padding-block: 14px;
+  border: none;
+  border-radius: 40px;
+  grid-column: 1 / -1;
+  color: #292929;
+  outline: none;
+  width: 100%;
+}
+
+@mixin cursor {
+  cursor: url('../images/cursor-mouse.png'), pointer;
+}
+
+@mixin cursor-black {
+  cursor: url('../images/details/Cursor-Mouse-Mice-black.png'), pointer;
+}
+
+@mixin placeholder {
+  color: #7e7e83;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
