@@ -1,0 +1,72 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+
+    &:not(:target) {
+      display: none;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+.phone-number {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  color: $main-text-color;
+  margin: 0;
+}
+
+.phone-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  &:hover .phone-number {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
