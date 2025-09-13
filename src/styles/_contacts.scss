@@ -1,13 +1,15 @@
 .contact {
-  padding: 40px 20px;
-  max-width: 1240px;
-  margin: 0 auto;
+  @include content-padding-inline;
 
   &__heading {
     text-align: center;
     font-size: 24px;
     margin-bottom: 40px;
     color: #161616;
+
+    @include on-desktop {
+      font-size: 48px;
+    }
   }
 
   &__grid {
@@ -24,30 +26,40 @@
       grid-template-columns: repeat(12, 1fr);
       gap: 24px;
     }
-
-    grid-auto-rows: auto;
-    align-items: start;
-  }
-
-  &__info {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    @include on-tablet {
-      grid-column: 1 / 4;
-    }
-
-    @include on-desktop {
-      grid-column: 1 / 7;
-    }
   }
 
   &__block {
     font-size: 14px;
     line-height: 1.5;
     align-self: start;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__info {
+    font-size: 14px;
+    line-height: 1.5;
+    align-self: start;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: 4 / 7;
+    }
   }
 
   &__text {
@@ -110,10 +122,12 @@
     border-style: none;
     align-self: flex-start;
   }
+
   &__button:hover {
     background-color: #ae1c23;
   }
-  &_button:active {
+
+  &__button:active {
     background-color: #eb343d;
   }
 }
