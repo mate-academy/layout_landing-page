@@ -1,0 +1,98 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin big-screen {
+  @media (min-width: $big-screen-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include big-screen {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(2, 130px);
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include big-screen {
+    grid-template-columns: repeat(12, 63px);
+  }
+}
+
+@mixin space-mono-style {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+}
+
+@mixin style-forms {
+  background-color: #f8f8fa;
+  border-radius: 8px;
+
+  &:focus {
+    border: 1px solid #292929;
+  }
+
+  &::placeholder {
+    @include space-mono-style;
+
+    font-size: 14px;
+  }
+
+  &:hover {
+    border: 1px solid #d5d7de;
+    &::placeholder {
+      color: #292929;
+    }
+  }
+}
+
+@mixin button-style {
+  box-sizing: border-box;
+  height: 56px;
+  width: 100%;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 8px;
+  background-color: #292929;
+
+  &:hover {
+    color: #292929;
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+  }
+
+  &:focus {
+    background-color: #111;
+  }
+}
