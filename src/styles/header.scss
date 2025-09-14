@@ -38,10 +38,41 @@
       gap: 60px;
     }
   }
-  &__phone {
+
+  &__contacts {
     display: flex;
     align-items: center;
+    width: auto;
+
+    @media (any-hover: hover) {
+      &:has(.header__contactsImage:hover),
+      &:has(.header__contact:hover) {
+        .header__contact {
+          display: block;
+          height: 40px;
+        }
+      }
+    }
   }
+
+  &__contact {
+    color: $main-white-color;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: right;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease 0s;
+    padding-right: 20px;
+
+    a {
+      display: block;
+      color: $main-white-color;
+      text-decoration: none;
+    }
+  }
+
   &__number {
     display: none;
     color: $main-white-color;
@@ -81,8 +112,8 @@
     z-index: 1;
     display: block;
     position: relative;
-    width: 24px;
-    height: 16px;
+    width: 32px;
+    height: 22px;
     cursor: pointer;
   }
   &__burger span,
@@ -119,7 +150,7 @@
     transform: rotate(-45deg) translate(0, -50%);
   }
   &__burger.--active::after {
-    bottom: 50%;
+    bottom: 49%;
     transform: rotate(45deg) translate(0, 50%);
   }
 
@@ -206,6 +237,18 @@
     a {
       text-decoration: none;
       color: $main-white-color;
+
+      background-image: linear-gradient(#fff, #fff);
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: 0% 1px;
+      transition: background-size 0.3s;
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-size: 100% 1px;
+        }
+      }
     }
 
     &:last-child {
