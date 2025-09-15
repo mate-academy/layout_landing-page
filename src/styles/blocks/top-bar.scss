@@ -1,0 +1,75 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+    transition: transform 0.3s;
+
+    @include on-tablet {
+      height: 24px;
+    }
+
+    @include action(hover, transform, scale(1.2));
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__phone {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+
+    position: relative;
+
+    &--number {
+      display: none;
+      position: absolute;
+      white-space: nowrap;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $main-color;
+
+      transition: all 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-200%);
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    @include on-desktop {
+      &:hover .top-bar__phone--number {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateX(-105%);
+      }
+    }
+  }
+}
