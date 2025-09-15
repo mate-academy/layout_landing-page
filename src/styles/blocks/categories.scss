@@ -1,0 +1,106 @@
+.categories {
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    margin: 0;
+    padding: 0;
+
+    &--view {
+      background-color: $main-text-color;
+      width: 100%;
+      height: 56px;
+      margin-top: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      text-align: center;
+      color: #fff;
+      display: grid;
+      place-items: center;
+
+      @include onTablet {
+        margin-top: 56px;
+      }
+
+      @include onDesktop {
+        width: 324px;
+      }
+
+      &:hover {
+        background-color: rgba(248, 248, 250, 1);
+        border: 2px solid rgba(240, 241, 244, 1);
+        color: $main-text-color;
+        transition:
+          background-color 0.5s,
+          border 0.5s,
+          color 0.5s;
+      }
+    }
+  }
+}
+
+.category {
+
+  &__photos {
+
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+
+  &__photo {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    @include hover(transform, scale(1.06));
+
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
