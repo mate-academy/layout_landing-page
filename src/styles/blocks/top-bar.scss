@@ -1,0 +1,73 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__phone-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+
+    @include on-desktop {
+      padding-left: 170px;
+    }
+  }
+
+  &__phone-number {
+    position: absolute;
+    left: 0;
+
+    display: none;
+
+    font-size: inherit;
+    line-height: inherit;
+    color: $text-color;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @include on-desktop {
+      transform: translateX(10px);
+      display: block;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+  }
+
+  @include on-desktop {
+    &__phone-wrapper:hover &__phone-number {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
