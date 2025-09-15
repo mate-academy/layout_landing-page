@@ -1,0 +1,61 @@
+.icon {
+  display: block;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  background-size: cover;
+
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &--phone {
+    background-image: url(../images/icon/icon-phone.png);
+
+    &:hover::before {
+      pointer-events: none;
+      content: '+1 234 555 55 55';
+
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+
+      display: block;
+
+      width: max-content;
+      padding-right: 12px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      color: $main-text-color;
+      letter-spacing: 2px;
+
+      opacity: 0;
+
+      @include on-desktop {
+        pointer-events: all;
+        opacity: 1;
+      }
+
+      @include hover(opacity, 1);
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon/icon-menu.png);
+
+    @include hover(background-image, url(../images/icon/icon-menu-hover.png));
+  }
+
+  &--close {
+    background-image: url(../images/icon/icon-menu-close.png);
+  }
+}
