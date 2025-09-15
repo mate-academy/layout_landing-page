@@ -1,0 +1,197 @@
+.contacts {
+  &__form-container {
+    @include page-grid;
+
+    --columns: 1;
+
+    gap: $space-0;
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__input {
+    font-family: inherit;
+    width: 100%;
+    border: 1px solid transparent;
+    height: 48px;
+    background-color: $color-surface;
+    margin-bottom: $space-16;
+    border-radius: $radius-8;
+    box-sizing: border-box;
+    padding-left: $space-16;
+    transition:
+      border-color $effect-duration,
+      box-shadow $effect-duration;
+
+    &::placeholder {
+      transition: color $effect-duration;
+    }
+
+    &:hover {
+      border: 1px solid $color-border;
+      &::placeholder {
+        color: $color-text;
+      }
+    }
+
+    &:focus {
+      border: 1px solid $color-accent;
+      box-shadow: 0 0 0 $focus-ring-width $color-accent;
+      outline: none;
+      &::placeholder {
+        color: $color-text;
+      }
+    }
+
+    @include on-desktop {
+      --columns: 2;
+
+      grid-template-columns: repeat(var(--columns), 1fr);
+    }
+  }
+
+  &__input-message {
+    font-family: inherit;
+    width: 100%;
+    border: 1px solid transparent;
+    height: 148px;
+    background-color: $color-surface;
+    margin-bottom: $space-32;
+    border-radius: $radius-8;
+    box-sizing: border-box;
+    padding: $space-14 $space-16;
+    resize: none;
+
+    transition:
+      border-color $effect-duration,
+      box-shadow $effect-duration;
+
+    &::placeholder {
+      transition: color $effect-duration;
+    }
+
+    &:hover {
+      border: 1px solid $color-border;
+
+      &::placeholder {
+        color: $color-text;
+      }
+    }
+
+    &:focus {
+      border-color: $color-accent;
+      box-shadow: 0 0 0 $focus-ring-width $color-accent;
+      outline: none;
+
+      &::placeholder {
+        color: $color-text;
+      }
+    }
+  }
+
+  &__send-button {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+    }
+
+    display: flex;
+    justify-content: center;
+    margin: $space-0 auto;
+    align-items: center;
+    width: 100%;
+    height: 56;
+    border-radius: $radius-8;
+    text-decoration: none;
+    color: $color-white;
+    font-weight: 700;
+    font-size: $font-size-16;
+    line-height: $space-27;
+    margin-bottom: $space-48;
+    border: 0;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-bottom: $space-80;
+    }
+
+    transition: background-color $effect-duration;
+
+    background-color: $color-accent;
+
+    &:hover {
+      background-color: $color-text;
+    }
+
+    &:active {
+      background-color: $color-black;
+    }
+  }
+}
+
+.contacts__info {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 8 / 13;
+    grid-row: 1;
+  }
+
+  &-text {
+    color: $color-muted;
+    padding-bottom: $space-8;
+    font-weight: 400;
+    font-size: $font-size-14;
+    line-height: $line-height-140;
+    letter-spacing: 0.15px;
+
+    &:not(:last-child) {
+      padding-bottom: $space-8;
+    }
+  }
+
+  &-details {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: $font-size-16;
+  line-height: $line-height-140;
+  letter-spacing: 0.15px;
+
+  transition: transform $effect-duration;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-radius: 1px;
+    background-color: $main-text-color;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform $effect-duration;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $space-24;
+  }
+}
+}
