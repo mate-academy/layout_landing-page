@@ -1,0 +1,36 @@
+@mixin is-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin is-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $transition-speed;
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include is-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include is-desktop {
+    --columns: 12;
+  }
+}
