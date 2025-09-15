@@ -28,18 +28,46 @@
   }
 }
 
-@mixin bg-responsive($mobile, $tablet: null, $desktop: null) {
-  background: url('../images/#{$mobile}') center/cover no-repeat;
+// Допоміжна функція для заміни розширення на @2x
+@function retina-file($file) {
+  @return str-replace($file, '.', '@2x.');
+}
 
+// Міксин з fallback + webp + retina
+@mixin bg-responsive($mobile, $tablet: null, $desktop: null) {
+  // ===== MOBILE =====
+  background: url('../images/#{$mobile}.webp') center/cover no-repeat; // fallback
+
+  background-image: image-set(
+    url('../images/#{$mobile}.webp') type('image/webp') 1x,
+    url('../images/#{$mobile}@2x.webp') type('image/webp') 2x,
+    url('../images/#{$mobile}.jpg') type('image/jpeg') 1x,
+    url('../images/#{$mobile}@2x.jpg') type('image/jpeg') 2x
+  );
+
+  // ===== TABLET =====
   @if $tablet {
     @include on-tablet {
-      background-image: url('../images/#{$tablet}');
+      background-image: url('../images/#{$tablet}.webp'); // fallback
+      background-image: image-set(
+        url('../images/#{$tablet}.webp') type('image/webp') 1x,
+        url('../images/#{$tablet}@2x.webp') type('image/webp') 2x,
+        url('../images/#{$tablet}.jpg') type('image/jpeg') 1x,
+        url('../images/#{$tablet}@2x.jpg') type('image/jpeg') 2x
+      );
     }
   }
 
+  // ===== DESKTOP =====
   @if $desktop {
     @include on-desktop {
-      background-image: url('../images/#{$desktop}');
+      background-image: url('../images/#{$desktop}.webp'); // fallback
+      background-image: image-set(
+        url('../images/#{$desktop}.webp') type('image/webp') 1x,
+        url('../images/#{$desktop}@2x.webp') type('image/webp') 2x,
+        url('../images/#{$desktop}.jpg') type('image/jpeg') 1x,
+        url('../images/#{$desktop}@2x.jpg') type('image/jpeg') 2x
+      );
     }
   }
 }
