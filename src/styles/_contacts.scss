@@ -16,17 +16,26 @@
 
   &__grid {
     display: grid;
-    column-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    grid-template-columns: 1fr;
 
     @include on-tablet {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: 2fr 1fr;
       column-gap: 24px;
     }
 
     @include on-desktop {
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 24px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-desktop {
+      display: contents;
     }
   }
 
@@ -34,32 +43,12 @@
     font-size: 14px;
     line-height: 1.5;
     align-self: start;
-    grid-column: 1 / -1;
-    flex-direction: column;
-
-    @include on-tablet {
-      grid-column: 1 / 4;
-    }
-
-    @include on-desktop {
-      grid-column: 1 / 4;
-    }
   }
 
   &__info {
     font-size: 14px;
     line-height: 1.5;
     align-self: start;
-    grid-column: 1 / -1;
-    flex-direction: column;
-
-    @include on-tablet {
-      grid-column: 1 / 4;
-    }
-
-    @include on-desktop {
-      grid-column: 4 / 7;
-    }
   }
 
   &__text {
@@ -83,18 +72,6 @@
     flex-direction: column;
     gap: 16px;
     padding: 20px;
-
-    grid-column: 1 / -1;
-
-    @include on-tablet {
-      grid-column: 4 / 7;
-      align-self: start;
-    }
-
-    @include on-desktop {
-      grid-column: 8 / 13;
-      align-self: start;
-    }
   }
 
   input,
@@ -106,6 +83,7 @@
     font-size: 14px;
     width: 100%;
     border: none;
+    resize: none;
   }
 
   &__button {
