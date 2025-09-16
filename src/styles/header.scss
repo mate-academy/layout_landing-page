@@ -1,7 +1,9 @@
 @import './variables';
 @import './mixins';
 
+
 .header {
+  position: relative;
   box-sizing: border-box;
   min-height: 100vh;
   background-image: url('../images/hero-photo.png');
@@ -57,56 +59,65 @@
   }
 
   &__icons {
-    position: relative;
     display: flex;
     align-items: center;
     gap: 24px;
+    position: relative;
 
     @include on-tablet {
       gap: 55px;
     }
 
-    &--phone-menu {
-      position: absolute;
-      top: 50%;
-      opacity: 0;
-      right: 120%;
-      transform: translateY(-50%);
-      background: transparent;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      white-space: nowrap;
-      z-index: 10;
-      pointer-events: none;
-      transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+    &--wrap {
+      display: inline-block;
+
+      .header__phone-menu {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-45%);
+        text-align: right;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        padding-right: 10px;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+
+
+        min-width: 250px;
+        max-width: 350px;
+        box-sizing: border-box;
+        white-space: normal;
+
+        &--text {
+          color: $white;
+          text-align: right;
+          font-weight: 700;
+        }
+
+        &--phone {
+          display: block;
+          color: $white;
+          text-decoration: none;
+          padding-bottom: 8px;
+          text-align: right;
+          font-weight: 700;
+        }
+      }
+
+      &:hover .header__phone-menu, .header__phone-menu:hover  {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
     }
   }
 
   &__wrap {
     @include content-padding-inline;
     @include page-grid;
-  }
-}
-
-.phone-menu {
-  text-align: right;
-  font-size: 16px;
-  line-height: 27px;
-  text-transform: uppercase;
-
-  &__text {
-    color: $white;
-    text-align: right;
-    font-weight: 700;
-  }
-
-  &__phone {
-    display: block;
-    color: $white;
-    text-decoration: none;
-    padding-bottom: 8px;
-    text-align: right;
-    font-weight: 700;
   }
 }
