@@ -1,0 +1,64 @@
+.icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/image/phone.svg);
+  }
+
+  &__number {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateX(8px);
+    transform: translateY(-50%) translateX(10px);
+
+    margin-left: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $text-color;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &:hover .icon__number {
+    transform: translateY(-50%) translateX(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &--menu {
+    background-image: url(/src/image/menu.svg);
+
+    &:hover {
+      background-image: url(/src/image/menu-hover.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &--close {
+    background-image: url(/src/image/close.svg);
+  }
+}
