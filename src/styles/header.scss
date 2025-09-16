@@ -1,0 +1,123 @@
+@import './variables';
+@import './mixins';
+
+
+.header {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-image: url('../images/hero-photo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__top {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      padding-top: 50px;
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      padding-top: 50px;
+      grid-column: span 12;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 129px;
+    color: $white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+    grid-column: span 2;
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+      padding-top: 141px;
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      line-height: 80px;
+      padding-top: 7rem;
+      grid-column: span 12;
+      text-shadow: 2px 1px 2px $black;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+
+    &--wrap {
+      display: inline-block;
+
+      .header__phone-menu {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-45%);
+        text-align: right;
+        font-size: 16px;
+        line-height: 27px;
+        text-transform: uppercase;
+        padding-right: 10px;
+        transition: opacity 0.3s ease;
+        z-index: 10;
+
+
+        min-width: 250px;
+        max-width: 350px;
+        box-sizing: border-box;
+        white-space: normal;
+
+        &--text {
+          color: $white;
+          text-align: right;
+          font-weight: 700;
+        }
+
+        &--phone {
+          display: block;
+          color: $white;
+          text-decoration: none;
+          padding-bottom: 8px;
+          text-align: right;
+          font-weight: 700;
+        }
+      }
+
+      &:hover .header__phone-menu, .header__phone-menu:hover  {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+    }
+  }
+
+  &__wrap {
+    @include content-padding-inline;
+    @include page-grid;
+  }
+}

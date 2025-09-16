@@ -1,0 +1,165 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  height: 100dvh;
+  background-color: $red;
+  transition: opacity 0.3s ease;
+
+  &__top {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 25px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      padding-top: 32px;
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__wrap {
+    @include content-padding-inline;
+    @include page-grid;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__logo {
+    @include hover-scale;
+
+    width: 64px;
+    height: 46px;
+    background-image: url('../images/logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include on-desktop {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__call {
+    @include content-padding-inline;
+    @include page-grid;
+
+    text-transform: uppercase;
+
+    &--name {
+      font-size: 16px;
+      line-height: 27px;
+      font-weight: 700;
+      color: $white;
+      grid-column: span 6;
+
+      @include on-desktop {
+        grid-column: span 12;
+      }
+    }
+
+    &--phone {
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 27px;
+      font-weight: 700;
+      color: $white;
+      margin-bottom: 8px;
+      grid-column: span 6;
+
+      @include on-desktop {
+        grid-column: span 12;
+      }
+    }
+
+    &--btn {
+      width: fit-content;
+      border-bottom: 1px solid $white;
+
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 27px;
+      font-weight: 700;
+      color: $white;
+      grid-column: span 2;
+      margin-top: 8px;
+    }
+  }
+}
+
+.nav {
+  @include content-padding-inline;
+  @include page-grid;
+
+  margin-top: 40px;
+
+  @include on-desktop {
+    margin-top: 55px;
+  }
+
+  &__list {
+    grid-column: span 3;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    @include hover-scale(1.02);
+
+    width: fit-content;
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    color: $white;
+    font-size: 22px;
+    line-height: 22px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2;
+    text-transform: uppercase;
+  }
+
+  &__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: $white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+
+  &__link:hover::after {
+    transform: scaleX(1);
+  }
+}
