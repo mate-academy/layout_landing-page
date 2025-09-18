@@ -1,0 +1,127 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: $block-height;
+  box-sizing: border-box;
+  background-image: url(../img/museum.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  @include kebab-case;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 1260px) {
+      width: 1020;
+      margin: 0 auto;
+    }
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__hiden {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    top: -20px;
+    right: 100%;
+    margin-right: 10px;
+    white-space: nowrap;
+    width: 100px;
+    height: 100px;
+
+    @media (min-width: 744px) {
+      width: 200px;
+      height: 116px;
+      top: -30px;
+    }
+
+    &__link {
+      color: $text-color;
+      text-decoration: none;
+
+      font-style: Bold;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 0;
+      vertical-align: middle;
+      text-transform: uppercase;
+
+      @media (min-width: 744px) {
+        font-size: 16px;
+        line-height: 27px;
+
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: $litle-gap;
+  }
+
+  .icon {
+    display: block;
+
+    @include icons;
+
+    background-size: cover;
+    background-position: center;
+
+    @include transform-scale(1.2, 0.3s, ease);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--phone {
+      background-image: url(../icons/Icon-Phone-call.png);
+
+      @media (max-width:1259px) {
+        &:active .header__hiden {
+        display: flex;
+      }
+      }
+
+      @media (min-width:1260px) {
+        &:hover .header__hiden {
+        display: flex;
+      }
+      }
+    }
+
+    &--menu {
+      background-image: url(../icons/Icon-Burger-menu.png);
+      &:hover {
+        background-image: url(../icons/Icon-Burger-menu-hover.png);
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+
+    @include title;
+  }
+
+  &__title {
+    color: $text-color;
+    margin: 0;
+    font-weight: bold;
+
+    letter-spacing: -1.5px;
+    text-align: center;
+    vertical-align: middle;
+
+  }
+}
