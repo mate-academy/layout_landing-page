@@ -1,0 +1,45 @@
+.conection {
+  &__list {
+    @include reset-list-style;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: $color-font-menu;
+
+    &--small {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+    }
+
+    &--underline {
+      position: relative;
+      &::after {
+        @include underline-block($color-font-menu);
+
+        width: 100%;
+      }
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &__link {
+      @include transition-custom(color);
+
+      &:hover {
+        color: $color-font-menu-hover;
+      }
+    }
+  }
+}

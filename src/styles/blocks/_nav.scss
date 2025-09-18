@@ -1,0 +1,49 @@
+.nav {
+  &__list {
+    @include reset-list-style;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $font-family;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: $color-font-menu;
+
+    &::after {
+      @include underline-block($color-font-menu);
+      @include transition-custom(width, color);
+
+      width: 0;
+    }
+
+    &:active {
+      color: $color-font-menu-hover;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &__link {
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
