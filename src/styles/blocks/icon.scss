@@ -1,0 +1,44 @@
+.icon {
+  display: block;
+  width: $icon-size-mobile;
+  height: $icon-size-mobile;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform $transition-duration;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: $icon-size-big;
+    height: $icon-size-big;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+    cursor: pointer;
+
+    &:hover {
+      transform: none;
+    }
+
+    @media (hover: hover) and (min-width: $desktop-min-width) {
+      &:hover + .top-bar__phone-link {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
