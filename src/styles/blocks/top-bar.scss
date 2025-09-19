@@ -1,0 +1,63 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__logo {
+    display: flex;
+    width: 130px;
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: $icon-size-mobile;
+    position: relative;
+
+    @include on-tablet {
+      gap: $icon-size-big;
+    }
+  }
+
+  &__phone-link {
+    position: absolute;
+    margin: 8px 20px 8px 0;
+    right: 100%;
+    top: 25%;
+    transform: translateY(-50%) translateX(-10px);
+    opacity: 0;
+    pointer-events: none;
+
+    text-decoration: none;
+    color: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    @media (hover: hover) and (min-width: $desktop-min-width) {
+      position: absolute;
+      right: 100%;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition:
+        opacity $transition-duration ease,
+        transform $transition-duration ease;
+      white-space: nowrap;
+    }
+  }
+}
