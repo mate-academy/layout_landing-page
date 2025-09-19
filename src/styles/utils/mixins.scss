@@ -1,0 +1,122 @@
+/* #region viewport-mixins */
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+/* #endregion */
+
+/* #region centralization */
+@mixin content-padding-inline {
+  display: grid;
+  row-gap: 40px;
+  padding-inline: 24px;
+
+  @include on-tablet {
+    row-gap: 56px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+/* #endregion */
+
+.container {
+  @include content-padding-inline;
+}
+
+/* #region transition-hover */
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+/* #endregion */
+
+/* #region descriptionsOFProduct */
+@mixin title-product {
+  font-weight: bold;
+  line-height: 140%;
+  margin: 0;
+}
+
+@mixin description-product {
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 140%;
+  margin: 0;
+  grid-column: 1 / -1;
+}
+
+/* #endregion */
+
+/* #region SetgridLayout */
+@mixin grid-layout {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin main-layout {
+  display: grid;
+
+  @include on-tablet {
+    row-gap: 120px;
+  }
+}
+
+/* #endregion */
+
+/* #region pageText */
+@mixin title {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 0;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin info-text {
+  font-size: 14px;
+  letter-spacing: 0.15px;
+  line-height: 140%;
+}
+
+/* #endregion */
