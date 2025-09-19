@@ -1,10 +1,9 @@
 .icon {
+  position: relative;
   display: block;
   height: 24px;
   width: 24px;
-  background-image: url(../images/icons/icon-burger-menu.png);
   background-size: cover;
-  position: relative;
 
   @include hover(transform, scale(1.2));
 
@@ -16,7 +15,19 @@
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
 
+    .icon__link {
+      position: absolute;
+      inset: 0;
+      font-size: 0;
+      line-height: 0;
+      color: transparent;
+      background: transparent;
+      z-index: 10;
+      cursor: default;
+    }
+
     .icon__phone-number {
+      display: none;
       position: absolute;
       text-decoration: none;
       top: 50%;
@@ -32,13 +43,18 @@
       white-space: nowrap;
       opacity: 0;
       transition: all 0.3s;
-      z-index: 10;
-      pointer-events: auto;
+      z-index: 20;
     }
 
-    &:hover .icon__phone-number {
-      opacity: 1;
-      left: -135px;
+    @include on-desktop {
+      .icon__phone-number {
+        display: inline-block;
+      }
+
+      &:hover .icon__phone-number {
+        opacity: 1;
+        left: -135px;
+      }
     }
   }
 
