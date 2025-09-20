@@ -13,7 +13,7 @@
 
     border: 2px solid transparent;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: $menu-background-color;
     color: $main-text-color;
     outline: none;
 
@@ -33,8 +33,8 @@
       color: #7e7e83;
     }
 
-    @include hover(border-color, #dbdbdb);
-    @include active(border-color, #f98921);
+    @include hover(border-color, $form-hover-color);
+    @include active(border-color, $button-style-color);
   }
 
   &__textarea {
@@ -48,6 +48,22 @@
   &__input {
     height: 48px;
     margin-bottom: 16px;
+
+    &:is(:-webkit-autofill, :autofill) {
+      background-color: $menu-background-color !important;
+      border: 2px solid $main-background-color !important;
+      box-shadow: 0 0 0 1000px $menu-background-color inset !important;
+      -webkit-text-fill-color: $main-text-color !important;
+
+      &:hover {
+        border-color: $form-hover-color !important;
+      }
+
+      &:active,
+      &:focus {
+        border-color: $button-style-color !important;
+      }
+    }
   }
 
   &__button {
