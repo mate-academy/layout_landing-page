@@ -13,7 +13,7 @@
 ---
 
 ## Посилання
-- **Прев’ю сайту:** [Live Demo]()
+- **Прев’ю сайту:** [Live Demo](https://anattim.github.io/layout_landing-page/)
 - **Макет у Figma:** [Figma Design](https://www.figma.com/design/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=8590-29&p=f)
 
 ---
