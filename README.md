@@ -11,7 +11,7 @@ It focuses on delivering a smooth and stylish user experience, fully reproducing
 - **Optimized performance** — lightweight and fast.
 - All interface elements are functional.
 
---- 
+---
 
   ![](demo.gif)
 
@@ -25,7 +25,7 @@ It focuses on delivering a smooth and stylish user experience, fully reproducing
 - **Vite**
 
 ## 🔗 Links
-- [🚀 Demo Link](https://yahohulia.github.io/B.O_landing-page/)
+- [🚀 Demo Link](https://yahohulia.github.io/layout_landing-page/)
 - [🎨 Design Link](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6817-211&p=f&t=joHzIdwmunqNjDHZ-0)
 
 ---
