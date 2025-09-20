@@ -18,18 +18,24 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
+    pointer-events: none;
 
     transform: translateY(50%) translateX(-100%);
     opacity: 0;
     transition:
       transform 1s,
-      opacity 1s;
+      opacity 1s,
+      pointer-events 1s;
   }
 
-  .icon--phone:hover + .top-bar__phone-number {
-    transform: translateY(50%) translateX(-120%);
-    opacity: 1;
+  @include onDesktop {
+    .icon--phone:hover + .top-bar__phone-number {
+      pointer-events: auto;
+      transform: translateY(50%) translateX(-120%);
+      opacity: 1;
+    }
   }
+
 
   &__icons {
     display: flex;
