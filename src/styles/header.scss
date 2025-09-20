@@ -9,6 +9,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  position: relative;
 
   @include kebab-case;
 
@@ -16,14 +17,40 @@
     @include logo;
   }
 
+  &__el {
+    height: 51px;
+
+    @media (min-width: 744px) {
+      height: 71px;
+    }
+  }
+
   &__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: clamp(280px, 81.5%, 600px);
+  background-color: transparent;
+  animation: changeColor 2s forwards;
 
-  @media (min-width: 1260px) {
-    width: 1020;
+  @keyframes changeColor {
+    0% {
+      background-color: transparent;
+    }
+    100% {
+      background-color: $accent-color;
+    }
+  }
+
+  @media (min-width: 744px) {
+    width: clamp(280px, 81.5%, 1020px);
     margin: 0 auto;
+  }
+
+  @media (min-width: 1261px) {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -110,6 +137,7 @@
   &__bottom {
     display: flex;
     flex-direction: column;
+    @include margin-top;
 
     @include title;
   }
