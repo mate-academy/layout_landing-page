@@ -1,0 +1,133 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: $block-height;
+  box-sizing: border-box;
+  background-image: url(../img/museum.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+
+  @include kebab-case;
+
+  &__logo {
+    @include logo;
+  }
+
+  &__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  @media (min-width: 1260px) {
+    width: 1020px;
+    margin: 0 auto;
+  }
+}
+
+  &__icons {
+    display: flex;
+    gap: $litle-gap;
+  }
+
+  .icon {
+    display: block;
+
+    @include icons;
+
+    background-size: cover;
+    background-position: center;
+
+    @include transform-scale(1.2, 0.3s, ease);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--phone {
+      background-image: url(../icons/Icon-Phone-call.png);
+    }
+
+    &--menu {
+      background-image: url(../icons/Icon-Burger-menu.png);
+      &:hover {
+        background-image: url(../icons/Icon-Burger-menu-hover.png);
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+
+    @include margin-top;
+    @include title;
+  }
+
+  &__title {
+    color: $text-color;
+    margin: 0;
+    font-weight: bold;
+
+    letter-spacing: -1.5px;
+    text-align: center;
+    vertical-align: middle;
+
+  }
+}
+
+.icon-wrapper {
+  position: relative;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  @media (min-width:120px) {
+    &:focus-within .header__hiden {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.header__hiden {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  top: -20px;
+  right: 100%;
+  margin-right: 10px;
+  white-space: nowrap;
+  width: 100px;
+  height: 100px;
+
+  @media (min-width: 744px) {
+    width: 200px;
+    height: 116px;
+    top: -30px;
+  }
+}
+
+.header__hiden__link {
+    color: $text-color;
+    text-decoration: none;
+
+    font-style: Bold;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+    @media (min-width: 744px) {
+      font-size: 16px;
+      line-height: 27px;
+
+    }
+  }
