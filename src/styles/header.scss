@@ -17,79 +17,17 @@
     @include logo;
   }
 
-  &__el {
-    height: 51px;
-
-    @media (min-width: 744px) {
-      height: 71px;
-    }
-  }
-
   &__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  width: clamp(280px, 81.5%, 600px);
-  background-color: transparent;
-  animation: kebab-case 2s forwards;
 
-  @keyframes kebab-case {
-    0% {
-      background-color: transparent;
-    }
-    100% {
-      background-color: $accent-color;
-    }
-  }
 
-  @media (min-width: 744px) {
-    width: clamp(280px, 81.5%, 1020px);
+  @media (min-width: 1260px) {
+    width: 1020px;
     margin: 0 auto;
   }
-
-  @media (min-width: 1261px) {
-    left: 50%;
-    transform: translateX(-50%);
-  }
 }
-
-  &__hiden {
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    overflow-wrap: break-word;
-    top: -20px;
-    right: 100%;
-    margin-right: 10px;
-    white-space: nowrap;
-    width: 100px;
-    height: 100px;
-
-    @media (min-width: 744px) {
-      width: 200px;
-      height: 116px;
-      top: -30px;
-    }
-
-    &__link {
-      color: $text-color;
-      text-decoration: none;
-
-      font-style: Bold;
-      font-size: 10px;
-      line-height: 12px;
-      letter-spacing: 0;
-      vertical-align: middle;
-      text-transform: uppercase;
-
-      @media (min-width: 744px) {
-        font-size: 16px;
-        line-height: 27px;
-
-      }
-    }
-  }
 
   &__icons {
     display: flex;
@@ -112,18 +50,6 @@
 
     &--phone {
       background-image: url(../icons/Icon-Phone-call.png);
-
-      @media (max-width:1259px) {
-        &:active .header__hiden {
-        display: flex;
-      }
-      }
-
-      @media (min-width:1260px) {
-        &:hover .header__hiden {
-        display: flex;
-      }
-      }
     }
 
     &--menu {
@@ -153,3 +79,55 @@
 
   }
 }
+
+.icon-wrapper {
+  position: relative;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  @media (min-width:120px) {
+    &:focus-within .header__hiden {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.header__hiden {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  top: -20px;
+  right: 100%;
+  margin-right: 10px;
+  white-space: nowrap;
+  width: 100px;
+  height: 100px;
+
+  @media (min-width: 744px) {
+    width: 200px;
+    height: 116px;
+    top: -30px;
+  }
+}
+
+.header__hiden__link {
+    color: $text-color;
+    text-decoration: none;
+
+    font-style: Bold;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+    @media (min-width: 744px) {
+      font-size: 16px;
+      line-height: 27px;
+
+    }
+  }
