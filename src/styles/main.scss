@@ -1,3 +1,777 @@
+html,
 body {
+  scroll-behavior: smooth;
+
+  height: 100%;
+
+  font-family: Cinzel, serif;
+  font-size: 22px;
+  font-weight: 700;
+  font-style: Bold;
+  line-height: 22px;
+  vertical-align: middle;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+
+  color: #fff;
+
+  background-image: url(../images/header-bg.png);
+  background-position: 50%;
+  background-size: cover;
+}
+
+.header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50px 120px 0;
+}
+
+.image-hover {
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.header__logo {
+  cursor: pointer;
+
+  font-family: Cinzel, serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 80%;
+  text-align: center;
+  letter-spacing: -1.5px;
+  vertical-align: middle;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.header__icons {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+}
+
+.call {
+  position: relative;
+
+  .for-hover {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 320px;
+    background: #fff;
+    color: #000;
+    border-radius: 24px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15);
+    padding: 32px 40px;
+    z-index: 10;
+  }
+
+  &:hover .for-hover {
+    display: block;
+  }
+
+  &:hover .for-hover,
+  .icon--phone:focus + .for-hover {
+    display: block;
+  }
+}
+
+.menu__phone-number {
+  display: block;
+
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+  text-decoration: none;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.icon--phone {
+  background-image: url(../images/Icon-Phone-call.png);
+  background-position: 50%;
+  &:hover {
+    transform: scale(1.2);
+    @media (min-width: 744px) {
+      &::before {
+        content: "The Met Fifth Avenue\A+1 212-535-7710\AThe Met Cloisters\A+1 212-923-3700";
+        display: block;
+        height: 40px;
+        width: 200px;
+        margin-left: -220px;
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 32px;
+        letter-spacing: 2px;
+        text-align: right;
+        white-space: pre;
+      }
+    }
+  }
+}
+
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.text {
+  display: block;
+  color: #fff;
+}
+
+.phone-number {
+  display: none;
+  margin-bottom: 8px;
+  color: #222;
+  text-decoration: none;
+}
+
+.icon--menu {
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  background-image: url(../images/menu.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.header__center {
+  margin-top: 80px;
+
+  font-family: Cinzel, serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 80px;
+  text-align: center;
+  letter-spacing: -1.5px;
+}
+
+@media (min-width: 744px) {
+  .menu {
+    padding: 50px 72px 456px;
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  transform: translate(-100%);
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  padding: 24px 20px 288px;
+
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-inline: 100px;
+
+  background-color: #d12d34;
+
+  transition: transform 0.3s;
+
+  &.menu--active {
+    transform: translateX(0);
+  }
+}
+
+.menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  transition:
+    transform 0.3s,
+    color 0.3s;
+}
+
+img {
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+}
+
+.menu__icon--close {
+  cursor: pointer;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+
+    background: #fff;
+    transition: transform 0.3s ease;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.menu__icon--close::before,
+.menu__icon--close::after {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform-origin: 50%;
+
+  width: 100%;
+  height: 2px;
+
+  background-color: #fff;
+}
+
+.menu__nav {
+  margin-bottom: 32px;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  margin-top: 40px;
+  padding: 0;
+
+  list-style: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.nav__link {
+  position: relative;
+
+  font-size: 22px;
+  line-height: 22px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.nav__link::after {
+  content: '';
+
+  position: absolute;
+  bottom: -8px;
+  transform-origin: 0;
+  transform: scale(0);
+
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  background-color: #fff;
+
+  transition: transform 0.3s;
+}
+
+.menu__address {
+  display: block;
+  font-size: 16px;
+  line-height: 27px;
+  color: #fff;
+}
+
+.menu__call-to-order {
+  display: block;
+
+  width: fit-content;
+  margin-top: 16px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #fff;
+
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.container {
+  margin: 120px;
+
+  @media (max-width: 768px) {
+    margin: 40px 16px;
+  }
+}
+
+.hours {
+  display: flex;
+  justify-content: center;
+
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.hours__plan {
+  display: flex;
+  flex-direction: column;
+  width: 411px;
+}
+
+.hours__plan-text {
+  font-size: 12px;
+  line-height: 140%;
+  color: hsl(357deg, 65%, 50%);
+}
+
+.hours__title {
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: -1.5px;
+}
+
+.hours__location-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.hours__times,
+.hours__days {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.hours__closed-title {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.hours__closed-text {
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.hours__location {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hours__location-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hours__schedule {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.hours .hours__closed-title,
+.hours .hours__times,
+.hours .hours__location-title,
+.hours .hours__title,
+.hours .hours__plan-text {
+  font-weight: 700;
+}
+
+.hours .hours__closed-text,
+.hours .hours__days,
+.hours .hours__closed-title,
+.hours .hours__times,
+.hours .hours__location-title,
+.hours .hours__title,
+.hours .hours__plan-text {
+  font-family: Cinzel, serif;
+  letter-spacing: 0;
+}
+
+.hours .hours__closed-text,
+.hours .hours__days {
+  font-weight: 400;
+}
+
+.now-on-view {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.now-on-view__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.now-on-view__title {
+  font-family: Cinzel, serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -1.5px;
+}
+
+.now-on-view__description {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0;
+}
+
+.now-on-view__content {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.now-on-view__images {
+  display: contents;
+}
+
+.now-on-view__image-long {
+  grid-column: span 2;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.now-on-view__image-square {
+  grid-column: span 1;
+  width: 100%;
+  height: auto;
+}
+
+.now-on-view__info {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.now-on-view__headline {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #d12d35;
+  letter-spacing: 0;
+}
+
+.now-on-view__dates {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0;
+}
+
+.now-on-view__button {
+  cursor: pointer;
+
+  width: 324px;
+  height: 56px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 28px;
+
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+
+  background-color: #d12d34;
+
+  transition: background 0.3s;
+}
+
+.now-on-view__button:hover {
+  background: #b8232d;
+}
+
+.more-to-explore__title {
+  margin-bottom: 48px;
+
+  font-family: Cinzel, serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: center;
+  letter-spacing: -1.5px;
+}
+
+.more-to-explore__sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.more-to-explore__item {
+  display: flex;
+  flex: calc(33.33% - 16px);
+  flex-direction: column;
+  gap: 24px;
+
+  box-sizing: border-box;
+}
+
+.more-to-explore__image {
+  width: 100%;
+  height: auto;
+
+  .image-hover {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.more-to-explore__description {
+  display: flex;
+  flex-direction: column;
+}
+
+.more-to-explore__subtitle {
+  font-family: Cinzel, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 140%;
+  color: #d12d35;
+  text-align: center;
+}
+
+.more-to-explore__text {
+  font-family: Roboto, serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: center;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.contact__title {
+  font-family: Cinzel, serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: center;
+  letter-spacing: -1.5px;
+}
+
+.contact__content {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contact__location {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact__location-title {
+  margin-bottom: 8px;
+
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+.contact-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &:hover .contact-info {
+    display: block;
+  }
+}
+
+.contact__label {
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.contact__value {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 34px;
+  color: #000;
+}
+
+.contact__form-wrapper {
+  width: 100%;
+  max-width: 411px;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact__input {
+  height: 48px;
+}
+
+.contact__input,
+.contact__textarea {
+  width: 100%;
+  padding: 14px 0 14px 16px;
+  border: none;
+  background-color: #f8f8fa;
+}
+
+.contact__textarea {
+  resize: none;
+  height: 144px;
+}
+
+.contact__button {
+  width: 100%;
+  height: 56px;
+  border: 0;
+
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 27px;
+  color: #fff;
+  text-align: center;
+
+  background-color: #d12d34;
+
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+.contact__button,
+.now-on-view__button {
+  cursor: pointer;
+
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  color: #fff;
+
+  background: #d12d35;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.contact__textarea::placeholder {
+  color: #6c6c6c;
+  opacity: 1;
+}
+
+.footer {
+  height: 350px;
+  background-image: url(../images/footer-fashion-tablet.png);
+  background-position: 50%;
+  background-size: cover;
 }
