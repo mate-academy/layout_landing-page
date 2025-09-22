@@ -6,6 +6,7 @@ body {
   font-family: Poppins, sans-serif;
   color: #fff;
   background: #1d1d1d;
+  scroll-behavior: smooth;
   &.scroll-hidden {
     overflow: hidden;
   }
@@ -54,6 +55,7 @@ img {
     sans-serif;
   color: #292929;
   border-radius: 40px;
+  outline: none;
   box-sizing: border-box;
   &::placeholder {
     color: #7e7e83;
@@ -76,6 +78,7 @@ img {
   max-width: 1260px;
   padding: 0 20px;
   margin: 0 auto;
+  box-sizing: border-box;
 
   @include on-tablet {
     padding: 0 72px;
@@ -85,20 +88,20 @@ img {
 main.container,
 main .container {
   > * {
-    margin-top: 92px;
+    padding-top: 92px;
 
     @include on-tablet {
-      margin-top: 132px;
+      padding-top: 132px;
     }
 
     @include on-desctop {
-      margin-top: 164px;
+      padding-top: 164px;
     }
     &:first-child {
-      margin-top: 60px;
+      padding-top: 60px;
 
       @include on-tablet {
-        margin-top: 120px;
+        padding-top: 120px;
       }
     }
   }
@@ -286,8 +289,12 @@ main .container {
         text-transform: uppercase;
         text-decoration: none;
         letter-spacing: 1px;
-        border-bottom: 1px solid #1d1d1d;
+        border-bottom: 1px solid transparent;
+        transition: border-bottom-color 0.2s linear;
         padding-bottom: 8px;
+        &:hover {
+          border-bottom-color: #1d1d1d;
+        }
       }
     }
   }
@@ -389,6 +396,10 @@ main .container {
       display: block;
       img {
         width: 100%;
+        transition: transform 0.2s linear;
+      }
+      &:hover img {
+        transform: scale(1.2);
       }
     }
     &-title,
@@ -441,11 +452,17 @@ main .container {
           grid-template-columns: 320px 1fr;
         }
       }
+      /* stylelint-disable no-descending-specificity */
       img {
         width: 100%;
-        height: 100%;
+        height: 320px;
         object-fit: cover;
+        transition: transform 0.2s linear;
+        &:hover {
+          transform: scale(1.2);
+        }
       }
+      /* stylelint-enable no-descending-specificity */
     }
     &-title {
       font-size: 24px;
