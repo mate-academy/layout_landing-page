@@ -1,0 +1,48 @@
+@use 'mixin' as *;
+@use 'variables' as *;
+
+.recommended {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto 1fr;
+  padding: $padding-small-display;
+  gap: 0 24px;
+
+  @media (min-width: $display-medium) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto 1fr;
+    padding: $padding-medium-display;
+  }
+
+  @media (min-width: $display-large) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto 1fr;
+    padding: $padding-large-display;
+  }
+
+  &__product {
+    display: grid;
+
+    @include recommended-image-size;
+    &:not(:last-child) {
+      margin: 0 0 40px;
+
+      @media (min-width: $display-large) {
+        margin: 0;
+      }
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 1 /2;
+  }
+}
+
+.product {
+  &__photo {
+    width: 100%;
+
+    @include hover(transform, scale(1.05));
+  }
+}

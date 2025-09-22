@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+.page {
+  display: grid;
+  font-family: Manrope, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: $font-size-default;
+  line-height: $line-height-default;
+  font-style: normal;
+
+  min-width: 440px;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+
+  &:has(.menu--page:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+.menu--page {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.3s;
+  transform: translateX(-100%);
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+.main__turntable {
+  width: 100%;
+  object-fit: cover;
+
+  @media (min-width: $display-medium) {
+    height: 400px;
+  }
+
+  @media (min-width: $display-large) {
+    height: 460px;
+  }
+}

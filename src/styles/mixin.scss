@@ -1,0 +1,65 @@
+@use 'variables' as *;
+
+@mixin grid-page {
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0 20px;
+
+  @media (min-width: $display-medium) {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0 24px;
+  }
+
+  @media (min-width: $display-large) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0 24px;
+  }
+}
+
+@mixin recommended-image-size {
+  grid-column: 1 / -1;
+
+  @media (min-width: $display-medium) {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: $display-large) {
+    grid-column: span 4;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover-contacts {
+  &hover {
+    color: skyblue;
+  }
+}
+
+@mixin categories-photo {
+  display: grid;
+  grid-column: 1 / -1;
+
+  @media (min-width: $display-medium) {
+    grid-column: span 3;
+  }
+
+  @media (min-width: $display-large) {
+    grid-column: span 6;
+  }
+}
+
+@mixin control-states {
+  &:hover {
+    background-color: #1b2129;
+  }
+
+  &:focus {
+    background-color: #010810;
+  }
+}
