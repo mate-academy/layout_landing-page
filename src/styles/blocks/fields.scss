@@ -88,9 +88,10 @@ input::placeholder {
 
 .button {
   &--cursor {
+    position: relative;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 16px;
-    font-style: 700;
+    font-weight: 700;
     background-color: #f8f8fa;
     border: 2px solid #f0f1f4;
     color: #292929;
@@ -99,21 +100,28 @@ input::placeholder {
     height: 48px;
     border-radius: 8px;
 
-    &:hover {
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 32px;
+      height: 32px;
       border: 1px solid #d5d7de;
+      background-image: url('../icons/mice.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      bottom: -17px;
+      right: 69px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover::after {
+      opacity: 1;
     }
 
     &:active {
       border: 1px solid #292929;
     }
   }
-}
-
-.cursor-icon {
-  position: absolute;
-  top: 33px;
-  right: 69px;
-  width: 32px;
-  height: 32px;
-  pointer-events: none;
 }
