@@ -3,85 +3,91 @@
 @import 'contacts';
 @import 'modal';
 
-body {
-  margin: 0;
+html {
+  width: 1260px;
   font-family: poppins, sans-serif;
-
 }
 
-.header{
-  position: relative;
+.header {
+  display: grid;
+  grid-template-columns: repeat(12, 63px);
+  gap: 24px;
 
-  display: flex;
-  justify-content: space-between;
-
-  height: 100vh;
+  height: 711px;
   margin: 0;
-  padding-top: 20px;
-  padding-right: 120px; ;
+  padding-top: 40px;
+  padding-right: 120px;
   padding-left: 120px;
 
-  background-image:url('../images/Cover_photo.png') ;
+  background-image: url('../images/Cover_photo.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
-  .logo{
-  display: block;
+  .logo {
+    display: block;
+    grid-column: 1;
 
-  width: 187px;
-  height: 56px;
-  margin: 10px;
+    width: 187px;
+    height: 56px;
 
-  background-image: url('../images/logo.png');
+    background-image: url('../images/logo.png');
   }
 
   .navbar {
-    position: absolute;
-    top: 5%;
-    right: 10%;
     display: flex;
-    gap: 20px;
+    grid-column: 11;
+    gap: 10px;
     justify-content: space-between;
-    margin-top: 10px;
 
-    .navbar__contact{
-      display: none;
-
-      padding-top: 5px;
-
-      font-size: 12px;
-      font-weight: 700px;
-      font-style: bold;
-      color: #fff;
-    }
-
-    .navbar__contact:target{
+    .icon-phone {
       display: block;
-      padding-top: 5px;
+      width: 24px;
+      height: 24px;
+      background-image: url('../images/Icon-phone-call.png');
     }
 
+    .icon-burger {
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-image: url('../images/Icon-Burger-menu.png');
+    }
   }
 
-  .header-text h1{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      height: 80px;
-      transform: translateX(-50%);
+  .contact {
+    display: none;
+    grid-column: 9/11;
 
-      margin: 0;
-      padding-bottom: 20px;
-      width: 672px;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: bold;
+    color: #fff;
+  }
 
-      font-size: 80px;
-      font-weight: 700px;
-      color: #fff;
-      text-align: center;
+  .contact:target {
+    display: block;
+    padding-top: 5px;
+  }
+
+  .header-text {
+    grid-column: 3/12;
+
+    height: 80px;
+    margin: 0;
+
+    font-size: 80px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
   }
 
   @media screen and (max-width: 744px) {
-    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+
+    width: 744px;
+    height: 628px;
     padding-right: 72px;
     padding-left: 72px;
 
@@ -89,31 +95,61 @@ body {
     background-position: center;
     background-size: cover;
 
-    .header-text {
-      top:50%;
-      left: 50%;
-      transform: translateX(-50% );
+    .logo {
+      display: block;
+      grid-column: 1;
+      height: 56px;
+    }
 
+    .navbar {
+      grid-column: 6;
+    }
+
+    .header-text {
+      grid-column: 1;
       font-size: 64px;
-      font-weight: 700px;
+      font-weight: 700;
+      font-style: bold;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    gap: 20px;
+
+    width: 320px;
+    height: 480px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+
+    .logo {
+      grid-column: 1;
+    }
+
+    .navbar {
+      display: flex;
+      grid-column: 2;
+      justify-content: flex-end;
+    }
+
+    .header-text {
+      grid-column: span 2;
+
+      width: 279px;
+
+      font-size: 33px;
+      font-weight: 700;
       font-style: bold;
     }
   }
 }
 
-.icon-phone{
-    width: 24px;
-    height: 24px;
-    background-image: url('../images/Icon-phone-call.png');
-  }
-
-  .icon-burger{
-    width: 24px;
-    height: 24px;
-    background-image: url('../images/Icon-Burger-menu.png');
-  }
-
-.footer{
+.footer {
   height: 100vh;
   padding-top: 30px;
 
@@ -123,10 +159,20 @@ body {
   background-size: cover;
 
   @media screen and (max-width: 744px) {
-    height: 100vh;
+    width: 888px;
+    height: 480px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 360px;
+    height: 200px;
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
 }
-
