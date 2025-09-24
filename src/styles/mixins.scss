@@ -1,23 +1,23 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin contentPaddingInLine() {
+@mixin content-padding-in-line() {
   padding-inline: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 72px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     max-width: 1020px;
     margin-inline: auto;
     padding-inline: 120px;
@@ -25,10 +25,10 @@
 }
 
 .container {
-  @include contentPaddingInLine;
+  @include content-padding-in-line;
 }
 
-@mixin hover($property, $toValue) {
+@mixin hover-effect($property, $toValue) {
   transition: #{$property} $effectDuration;
 
   &:hover {
@@ -36,19 +36,43 @@
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 2;
-  margin: 0;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet {
-   --columns: 6;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 20px;
+  margin: 0;
+
+  @include on-tablet {
+    --columns: 6;
+
     column-gap: 24px;
   }
 
-  @include onDesktop {
-  --columns: 12;
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@keyframes title {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes headers {
+  0% {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
