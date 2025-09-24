@@ -1,10 +1,5 @@
-@mixin contentPaddingInline {
-  padding-inline: 20px;
-}
-
 @mixin onTablet {
   @media (min-width: 576px) {
-    padding-inline: 72px;
     @content;
   }
 
@@ -12,10 +7,22 @@
 
 @mixin onDesktop {
   @media (min-width: 1024px) {
-    padding-inline: 120px;
     @content;
   }
 }
+
+@mixin contentPaddingInline {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    padding-inline: 120px;
+  }
+}
+
 
 @mixin pageGrid {
   display: grid;
@@ -35,6 +42,3 @@
   }
 }
 
-.container {
-  @include contentPaddingInline;
-}
