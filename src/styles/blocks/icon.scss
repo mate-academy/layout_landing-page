@@ -1,27 +1,67 @@
 .icon {
   display: block;
-  height: 24px;
+
   width: 24px;
-  background-image: url(../images/icons/icon-burger-menu.png);
-  background-size: cover;
+  height: 24px;
+
   background-position: center;
-  transition: transform 0.3s;
+  background-size: cover;
+
+  transition:
+    transform 0.3s,
+    background-image 0.3s;
 
   &:hover {
     transform: scale(1.2);
   }
 
-  @include onTablet {
-    height: 32px;
+  @include on-tablet {
     width: 32px;
+    height: 32px;
   }
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+    background-repeat: no-repeat;
+
+    &::after {
+      content: '+1 234 555-55-55';
+
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translate(0, -50%);
+
+      margin-right: 8px;
+
+      font-family: Manrope, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      color: $main-text-color;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition: opacity $effectDuration;
+    }
+
+    &:hover::after {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.png);
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url(../images/icons/vector.png);
+    }
   }
 
   &--close {
