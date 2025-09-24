@@ -25,7 +25,7 @@ To get this project up and running on your local machine, follow these simple st
 After running these commands, the project should automatically open in your browser at localhost:8080.
 
 # Preview
-[https://viktoriiapitsan.github.io/layout_landing-page/#recommended]
+[https://viktoriiapitsan.github.io/layout_landing-page/#Home]
 
 # Design
 [Figma Layout]
