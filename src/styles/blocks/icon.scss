@@ -2,6 +2,11 @@
   display: block;
   height: 24px;
   width: 24px;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 
   @include onTablet {
     height: 32px;
@@ -18,11 +23,42 @@
     background-image: url(../images/icons/icon-burger-menu.png);
     background-position: center;
     background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.png);
+    }
   }
 
   &--close {
     background-image: url(../images/icons/icon-close.png);
     background-position: center;
     background-repeat: no-repeat;
+  }
+}
+
+.phone {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+
+  @include onTablet {
+    height: 32px;
+  }
+
+  &__number {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: all 0.3s;
+  }
+}
+
+@include onDesktop {
+  .icon--phone:hover + .phone__number {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
   }
 }

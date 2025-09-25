@@ -1,15 +1,42 @@
 .contacts {
-  margin-bottom: 64px;
+  margin: 88px 0 64px;
   @include contentPaddingInline;
 
+  @include pageGrid;
+
+  @include onTablet {
+    margin: 104 0 120;
+  }
+
   &__title {
-    margin: 104px 0 48px;
+    margin: 0 0 48px;
+    grid-column: 1 / -1;
+
+    @include onTablet {
+      font-size: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      grid-column: span 6;
+      margin: 0 0 56px;
+    }
   }
 
   &__form {
+    grid-column: 1 / -1;
     margin-bottom: 48px;
     display: grid;
     row-gap: 16px;
+    transition: all 0.3s;
+
+    @include onTablet {
+      margin-bottom: 80px;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 6;
+    }
   }
 
   &__input {
@@ -21,12 +48,22 @@
     border: transparent;
     font-family: 'Space Mono', sans-serif;
     font-size: 14px;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid #D5D7DE;
+    }
+
+    &:active {
+      color: #292929;
+      border: 1px solid #292929;
+    }
   }
 
   &__textarea {
     box-sizing: border-box;
     padding: 14px 16px;
-    height: 120px;
+    height: 148px;
     border-radius: 8px;
     border: transparent;
     background-color: #F8F8FA;
@@ -35,20 +72,37 @@
   }
 
   &__button {
-    margin: 32px 0 0 0;
-    background-color: #F8F8FA;
-    border: 2px solid #F0F1F4;
+    margin: 16px 0 0 0;
+    background-color: $main-text-color;
     border-radius: 8px;
     height: 56px;
-    color: $main-text-color;
+    color: #fff;
     font-size: 16px;
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
+    transition: 0.3s;
+
+    &:hover {
+      border: 2px solid #F0F1F4;
+      background-color: #F8F8FA;
+      color: $main-text-color;
+    }
+
+    &:active {
+      background-color: #111111;
+      color: #fff;
+    }
   }
 
   &__info {
     display: grid;
     row-gap: 24px;
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 7 / -1;
+      height: 244px;
+    }
   }
 
   &__item {
