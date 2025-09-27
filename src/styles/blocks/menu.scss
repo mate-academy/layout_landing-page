@@ -1,13 +1,23 @@
 .menu {
-  box-sizing: border-box;
-
   height: 100vh;
+  width: 100%;
+  overflow: auto;
 
   background-color: #c2c2c2;
 
   transition: all 0.3s;
   transform: translateX(-100%);
   opacity: 0;
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
 
   &__top {
     margin-bottom: 24px;
@@ -47,13 +57,7 @@
     text-decoration: none;
     letter-spacing: 2px;
 
-    border-bottom: 1px solid #1d1d1d;
-  }
-
-  &:target {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: all;
+    border-bottom: 1px solid $main-dark-color;
   }
 }
 
@@ -63,8 +67,6 @@
   align-items: center;
 
   padding-block: 24px;
-  @include content-padding-inline;
-
 
   @include on-tablet {
     padding-block: 36px;
@@ -78,7 +80,7 @@
     width: 130px;
     height: 38px;
 
-    @include hover (transform, scale(1.2));
+    @include hover(transform, scale(1.2));
 
     @include on-tablet {
       width: 187;
@@ -93,6 +95,6 @@
   }
 }
 
-.menu-content {
+.menu-bottom {
   @include content-padding-inline;
 }

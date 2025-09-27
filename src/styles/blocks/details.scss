@@ -1,0 +1,96 @@
+.details {
+  &__details-wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+  }
+
+  &__link {
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    @include hover(transform, scale(1.05));
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: $main-light-color;
+  }
+
+  &__description {
+    color: $main-light-color;
+  }
+
+  &__button-box {
+    display: grid;
+    @include page-grid;
+
+    height: 56px;
+
+    &--button {
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: 2 / -2;
+      }
+
+      @include on-desktop {
+        grid-column: 5 / -5;
+      }
+
+      height: 56px;
+
+      font-size: 16px;
+      font-weight: 700;
+
+      border: none;
+      border-radius: 40px;
+
+      @include hover(box-shadow, rgba(232, 232, 240, 0.4));
+
+      &:hover {
+        box-shadow: 0 4px 16px rgba(232, 232, 240, 0.4);
+      }
+      &:active {
+        box-shadow: 0 4px 16px rgba(232, 232, 240, 0.64);
+      }
+    }
+  }
+}

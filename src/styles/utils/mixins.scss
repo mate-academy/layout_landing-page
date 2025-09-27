@@ -4,6 +4,14 @@
   }
 }
 
+@mixin on-desktop {
+  min-width: 100%;
+  max-width: 1794;
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin content-padding-inline {
   padding-inline: 20px;
 
@@ -18,4 +26,28 @@
   &:hover {
     #{$property}: $toValue;
   }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
 }
