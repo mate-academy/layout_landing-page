@@ -1,0 +1,94 @@
+.menu {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $accent-color;
+
+  font-weight: 700;
+  text-transform: uppercase;
+
+  color: $light-color;
+  opacity: 0;
+  pointer-events: none;
+
+  overflow: auto;
+
+  transition: all, $transition-duration, ease;
+  transform: translateX(-100%);
+
+
+  &__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: #e5e5e5;
+  }
+
+  &__content {
+    padding-block: 55px;
+    @include contentPaddingInline;
+    @include maxWidth;
+
+  }
+
+  &:target {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__phone-info {
+    font-size: 16px;
+
+    &p {
+      margin: 8px 0;
+      line-height: 27px;
+      letter-spacing: 0;
+    }
+
+    p:last-child {
+      display: inline-block;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin-top: 8px;
+        background-color: $light-color;
+      }
+    }
+  }
+
+  &__phone-fifth-avenue {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__phone-cloisters {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.page__menu:target {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
