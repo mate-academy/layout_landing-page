@@ -1,0 +1,125 @@
+@import './utils/mixin';
+@import './utils/mass';
+
+.galleries {
+  &__wrapper {
+
+    @include inline-padding;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__title--large {
+    margin: 0;
+
+    @include title;
+  }
+
+  &__title--small {
+    @include small-text(rgba(22, 22, 22, 1), 400);
+  }
+}
+
+.gallery {
+  margin-top: 48px;
+
+  @include on-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__photos {
+    margin-top: 24px;
+    @include page-grid;
+
+    @include on-mobile {
+      display: flex;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+    @include on-mobile {
+      position: static;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      grid-column: span 8;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-mobile {
+        position: static;
+      }
+    }
+
+    &--square {
+      grid-column: span 4;
+      padding-bottom: 100%;
+      height: 0;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-mobile {
+          padding: 0;
+          height: 100%;
+
+      }
+    }
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__undertext {
+    margin: 0;
+
+    @include small-text(black, 400);
+  }
+  &__undertext.red {
+    @include small-text(red, 700);
+    margin-top: 24px;
+  }
+}
+
+.galleries__footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.galleries__button {
+  @include small-text(white, 700);
+
+  background-color: rgba(209, 45, 53, 1);
+  width: 324px;
+  height: 56px;
+  border: none;
+  text-align: center;
+  padding: 0;
+  transition: 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(174, 28, 35, 1);
+  }
+
+  &:active {
+    background-color: rgba(235, 52, 61, 1);
+  }
+}
