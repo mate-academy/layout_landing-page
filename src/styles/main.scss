@@ -1,3 +1,665 @@
-body {
+@import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
+@import 'variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Poppins, sans-serif;
+  color: white;
+  background-color: $main_background-color;
+}
+
+body,
+html {
   margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+}
+
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 128px;
+  padding: 0 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+}
+
+.logo {
+  background: url('../assets/images/logo.png') center/cover no-repeat;
+  width: 187px;
+  height: 56px;
+  z-index: 10;
+}
+
+.extra_nav {
+  display: flex;
+  align-items: center;
+
+  &__nav {
+    background-color: $main_background-color;
+    width: 100vw;
+    height: 0;
+    position: absolute;
+    inset: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  &__list {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+
+    &::after {
+      display: block;
+      transition: width 0.3s ease;
+      content: '';
+      width: 0;
+      height: 1px;
+      background-color: #fff;
+    }
+
+    &:hover::after {
+      @include link-after;
+    }
+  }
+
+  &__item:nth-of-type(-n + 4) {
+    margin-bottom: 32px;
+  }
+
+  &__item:nth-of-type(-n + 5) &__link {
+    font-size: 22px;
+  }
+
+  &__item:nth-of-type(-n + 5) &__link:hover::after {
+    top: 40px;
+  }
+
+  &__item:nth-of-type(5) {
+    margin-bottom: 40px;
+  }
+
+  &__item:nth-of-type(6) {
+    margin-bottom: 16px;
+  }
+
+  &__item:nth-of-type(6) &__link {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__item:nth-of-type(6) &__link:hover::after {
+    top: 32px;
+  }
+
+  &__item:last-of-type &__link {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__call {
+    background: url('../assets/images/Icon-Phone-call.png') center/cover
+      no-repeat;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 32px;
+  }
+
+  &__call_number {
+    transition: all 0.3s ease;
+    text-wrap: nowrap;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    width: 0;
+    overflow: hidden;
+  }
+
+  &__call_number--active {
+    width: 120px;
+  }
+
+  &__burger_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    flex-direction: column;
+    row-gap: 3.5px;
+    cursor: pointer;
+    z-index: 10;
+
+    span {
+      background-color: white;
+      border-radius: 2px;
+      width: 100%;
+      height: 3px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &__burger_menu--active {
+    span:nth-of-type(2) {
+      display: none;
+    }
+
+    span:first-of-type {
+      transform-origin: center center;
+      transform: rotate(-45deg) translateY(4.5px);
+    }
+
+    span:last-of-type {
+      transform-origin: center center;
+      transform: rotate(45deg) translateY(-4.5px);
+    }
+  }
+}
+
+.link--active::after {
+  @include link-after;
+
+  top: 24px;
+}
+
+.nav_open {
+  height: 100vh;
+  padding: 120px 0 0 120px;
+  transition: all 0.3s ease;
+}
+
+main {
+  background-color: $main_background-color;
+}
+
+.take_the_streets {
+  background: url('../assets/images/main_photo.jpg') center/cover no-repeat;
+  width: 100vw;
+  height: auto;
+  padding: 0 120px;
+  aspect-ratio: 1260 / 711;
+
+  &__title {
+    color: white;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 100px;
+    padding-top: 35%;
+    text-align: center;
+  }
+}
+
+.move_free {
+  padding: 120px 207px 164px 120px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 100px;
+
+  &__title {
+    font-weight: 500;
+    font-size: 64px;
+    text-wrap: nowrap;
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+  }
+}
+
+.compare_bikes {
+  padding: 0 120px 144px;
+
+  &__title {
+    font-size: 64px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  &__grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 324px);
+    grid-template-rows: repeat(1, 446px);
+    column-gap: 24px;
+  }
+
+  &__sporty_4,
+  &__st,
+  &__agile_ride_3 {
+    img {
+      width: 100%;
+      height: auto;
+      margin: 0 0 32px;
+      display: block;
+    }
+
+    h3,
+    p,
+    .bike_price {
+      line-height: 140%;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      height: calc(16px * 1.4 * 3);
+    }
+
+    .bike_price {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+}
+
+.bike-name {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  text-align: left;
+}
+
+.the_details {
+  font-size: 64px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 180px 120px;
+  max-width: 1240px;
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  &__auto_unlock,
+  &__range_and_lights,
+  &__hydraulic_disc_brakes {
+    margin-bottom: 48px;
+
+    .image-wrapper {
+      flex: 1 0 0;
+      display: block;
+      overflow: hidden;
+      padding-bottom: 16px;
+    }
+
+    img {
+      height: auto;
+      width: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    h4,
+    p {
+      line-height: 140%;
+      text-align: left;
+    }
+
+    h4 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  &__image_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  &__auto_unlock,
+  &__range_and_lights {
+    .image-wrapper:first-of-type {
+      max-width: calc(66.6% - 12px);
+    }
+
+    .image-wrapper:last-of-type {
+      max-width: calc(33.3% - 12px);
+    }
+  }
+
+  &__hydraulic_disc_brakes {
+    .image-wrapper:last-of-type {
+      max-width: calc(66.6% - 12px);
+    }
+
+    .image-wrapper:first-of-type {
+      max-width: calc(33.3% - 12px);
+    }
+  }
+
+  &__explore {
+    display: inline-block;
+    border-radius: 40px;
+    background-color: #fff;
+    color: $main_background-color;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    padding: 14.5px 131.5px;
+    margin: 0 auto;
+  }
+}
+
+.contact_us {
+  padding: 0 120px 164px;
+
+  &__title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 48px;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 198px;
+  }
+
+  &__form {
+    background-color: $main_background-color;
+    width: 411px;
+
+    input,
+    textarea,
+    button {
+      background-color: white;
+      width: 100%;
+    }
+
+    input {
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border-radius: 40px;
+    }
+
+    textarea {
+      height: 148px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+    }
+
+    button {
+      border-radius: 40px;
+      padding: 14.5px 0;
+      color: $main_background-color;
+    }
+  }
+
+  &__info {
+    .contacts_title,
+    .contacts_text {
+      line-height: 140%;
+    }
+
+    .contacts_text {
+      font-size: 16px;
+      font-weight: 500;
+      padding-bottom: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .contacts_text:hover {
+      color: #7e7e83;
+      cursor: pointer;
+    }
+
+    .contacts_title {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      padding-bottom: 8px;
+    }
+  }
+}
+
+.footer {
+  width: 100vw;
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.zoom-image {
+  transition: transform 0.3s ease;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
+}
+
+// ************************************************************************
+// ************************************************************************
+//                              MEDIA QUERIES
+// ************************************************************************
+// ************************************************************************
+
+@media screen and (min-width: 320px) and (max-width: 743px) {
+  header {
+    height: 86px;
+    padding: 0 20px;
+
+    .logo {
+      width: 130px;
+      height: 38px;
+    }
+
+    .extra_nav .nav_open {
+      padding: 120px 0 0 20px;
+    }
+
+    .extra_nav {
+      gap: 24px;
+
+      &__call {
+        width: 24px;
+        height: 24px;
+      }
+
+      &__burger_menu {
+        width: 18px;
+        row-gap: 3px;
+
+        span {
+          height: 2px;
+        }
+      }
+
+      &__burger_menu--active {
+        span:first-of-type {
+          transform: rotate(-45deg) translateY(3.5px);
+        }
+
+        span:last-of-type {
+          transform: rotate(45deg) translateY(-3.5px);
+        }
+      }
+    }
+  }
+
+  .take_the_streets {
+    padding: 0 20px;
+    height: 480px;
+    background-position: 85% center;
+
+    &__title {
+      font-size: 36px;
+      padding-top: 300px;
+    }
+  }
+
+  .move_free {
+    display: block;
+    padding: 60px 20px 92px;
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .compare_bikes {
+    padding: 0 20px 92px;
+
+    & > h2 {
+      font-size: 32px;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 40px;
+      justify-content: center;
+      padding: 0;
+    }
+  }
+
+  .the_details {
+    padding: 0 20px 80px;
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__auto_unlock,
+    &__range_and_lights,
+    &__hydraulic_disc_brakes {
+      margin-bottom: 40px;
+    }
+
+    &__image__container {
+      gap: 20px;
+    }
+
+    &__explore {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+
+  .contact_us {
+    padding: 0 20px 80px;
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__inner {
+      display: block;
+    }
+
+    &__form {
+      width: 100%;
+      padding-bottom: 48px;
+    }
+  }
+}
+
+@media screen and (min-width: 744px) and (max-width: 1259px) {
+  header {
+    padding: 0 72px;
+    .extra_nav .nav_open {
+      padding: 120px 0 0 72px;
+    }
+  }
+
+  .take_the_streets {
+    padding: 0 72px;
+
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  .move_free {
+    padding: 120px 72px 132px;
+
+    &__title {
+      font-size: 48px;
+    }
+  }
+
+  .compare_bikes {
+    & > h2 {
+      font-size: 48px;
+      margin-bottom: 48px;
+    }
+
+    &__grid {
+      grid-template-columns: 392px;
+      grid-template-rows: auto;
+      row-gap: 48px;
+      justify-content: center;
+      padding: 0 176px;
+    }
+  }
+
+  .the_details {
+    padding: 0 72px 120px;
+
+    &__title {
+      font-size: 48px;
+    }
+  }
+
+  .contact_us {
+    padding: 0 72px 102px;
+
+    &__inner {
+      gap: 24px;
+    }
+  }
+}
+
+@media screen and (min-width: 1450px) {
+  .move_free {
+    align-items: center;
+  }
 }
