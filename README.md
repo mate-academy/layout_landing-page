@@ -11,7 +11,7 @@ MyBike — це адаптивний лендинг для магазину ве
 - Mobile-first
 - Плавні transition-анімації для кнопок та інтерактивних елементів
 
-[DEMO LINK](https://Chips666.github.io/layout_landing-page/).
+[DEMO LINK](https://Chips666.github.io/layout_landing-page/)
 [TEST REPORT LINK](https://Chips666.github.io/layout_landing-page/report/html_report/)
 
 Choose a design for your landing page:
