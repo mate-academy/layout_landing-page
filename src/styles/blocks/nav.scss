@@ -1,16 +1,39 @@
-.nav__link {
-  color: inherit;
-  text-decoration: none;
-  font-size: 22px;
-  line-height: 22px;
-  letter-spacing: 2px;
+.nav{
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    position: relative;
+
+    &::after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      bottom: -8px;
+      height: 1px;
+      display: block;
+      background-color: $main-text-color;
+
+      transition: transform $effectDuartion;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
 }
 
-.nav__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
