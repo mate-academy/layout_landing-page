@@ -5,11 +5,22 @@
   align-items: center;
   justify-content: space-between;
 
+  .logo-container {
+    flex-shrink: 0;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
   .container-btn-menu-phone {
     display: flex;
     align-items: center;
     gap: 32px;
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   .container-phone {
@@ -34,6 +45,54 @@
       }
     }
   }
+
+  .container-humb-menu {
+    position: relative;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .humb-icon-default {
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .humb-icon-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    &:hover {
+      .humb-icon-default {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .humb-icon-hover {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .container-header {
@@ -44,9 +103,27 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
+  .main-header {
+    .logo-container {
+      img {
+        max-width: 100px;
+      }
+    }
+
+    .container-btn-menu-phone {
+      gap: 20px;
+    }
+
+    .container-phone {
+      gap: 20px;
+    }
+  }
+
   .container-header {
     background-size: cover;
     background-position: center center;
@@ -55,9 +132,43 @@
 }
 
 @media (max-width: 485px) {
+  .main-header {
+    height: auto;
+    min-height: 80px;
+    padding: 16px 0;
+
+    .logo-container {
+      img {
+        max-width: 80px;
+      }
+    }
+
+    .container-btn-menu-phone {
+      gap: 16px;
+    }
+
+    .container-phone {
+      gap: 16px;
+    }
+  }
+
   .container-header {
     background-size: cover;
     background-position: 80% center;
     background-image: url('../../src/images/rename.jpg');
+  }
+}
+
+@media (max-width: 320px) {
+  .main-header {
+    .logo-container {
+      img {
+        max-width: 60px;
+      }
+    }
+
+    .container-btn-menu-phone {
+      gap: 8px;
+    }
   }
 }

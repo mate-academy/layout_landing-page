@@ -9,26 +9,43 @@
   width: 100%;
   padding: 0 var(--main-horisontal-pad);
   visibility: hidden;
+
   &.is-active {
     animation: 0.3s fade-in ease-in-out forwards;
   }
+
   &.is-closed {
-    animation: 0.3s fade-out ease-in-out forwards;
+    left: -100vw;
+    visibility: hidden;
   }
+
   .top-line-container {
     display: flex;
     justify-content: space-between;
     padding: 36px 0;
     align-items: center;
+
     .close-btn-container {
       cursor: pointer;
+      transition: transform var(--anim-speed) ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+      svg {
+        path {
+          transition: transform var(--anim-speed) ease-in-out;
+          transform-origin: center;
+        }
+      }
     }
   }
+
   .container-info {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 40px 0;
+
     .number-container {
       a {
         font-weight: 700;
@@ -39,12 +56,13 @@
         text-transform: uppercase;
         text-decoration: none;
         color: var(--main-color);
-        transition: 0.3s ease all;
+        transition: color var(--anim-speed) ease;
         &:hover {
-          color: rgba(blue, 0.5);
+          color: rgba(var(--main-color), 0.7);
         }
       }
     }
+
     .call-to-action {
       position: relative;
       font-weight: 700;
@@ -60,17 +78,11 @@
         position: absolute;
         bottom: -5px;
         left: 0;
-        width: 0;
+        width: 100%;
         height: 2px;
         background: var(--main-color);
-        opacity: 0;
-        transition: 0.3s ease all;
-      }
-      &:hover {
-        &::before {
-          width: 100%;
-          opacity: 1;
-        }
+        opacity: 1;
+        transition: none;
       }
     }
   }
@@ -87,17 +99,6 @@
   }
 
   li {
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--main-color);
-      opacity: 0;
-      transition: 0.3s ease all;
-    }
     .link-nav {
       font-weight: 700;
       font-size: 22px;
@@ -105,11 +106,25 @@
       letter-spacing: 2px;
       vertical-align: middle;
       text-transform: uppercase;
-      color: var(--main-color-color);
+      color: var(--main-color);
       text-decoration: none;
       position: relative;
+      transition: color var(--anim-speed) ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--main-color);
+        opacity: 0;
+        transition: var(--anim-speed) width ease, var(--anim-speed) opacity ease;
+      }
 
       &:hover {
+        color: rgba(var(--main-color), 0.7);
         &::before {
           width: 100%;
           opacity: 1;
@@ -118,6 +133,7 @@
     }
   }
 }
+
 @keyframes fade-out {
   0% {
     visibility: visible;
