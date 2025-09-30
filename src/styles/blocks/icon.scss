@@ -1,0 +1,61 @@
+.icon {
+  display: flex;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  position: relative;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--menu {
+    background-image: url($menu-icon);
+
+    &:hover {
+      transition: $effects-duration ease-in-out;
+      background-image: url($hover-menu-icon);
+    }
+  }
+
+  &--phone {
+    background-image: url($phone-icon);
+    position: relative;
+
+    @include on-desktop {
+      &::after {
+        content: $phone-number;
+        position: absolute;
+        font-family: $font-family;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: right;
+        vertical-align: middle;
+        text-transform: uppercase;
+
+        right: 100%;
+        margin-right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $main-text-color;
+        opacity: 0;
+        white-space: nowrap;
+        pointer-events: none;
+        transition: opacity $effects-duration;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url($close-icon);
+  }
+}
