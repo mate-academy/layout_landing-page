@@ -1,0 +1,109 @@
+@import '../mixins';
+
+.contacts {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 120px;
+
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 48px;
+
+  @include respond(tablet) {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+    margin-bottom: 102px;
+  }
+
+  @include respond(desktop) {
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 164px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 288px;
+
+    @include respond(tablet) {
+      padding: 0;
+      width: 288px;
+      grid-column: 2/4;
+    }
+
+    @include respond(desktop) {
+      width: 411px;
+      justify-self: start;
+      grid-column: 2 / 6;
+    }
+
+    &-item {
+      padding: 10px 15px;
+      border-radius: 40px;
+      margin-bottom: 16px;
+      border: none;
+    }
+
+    &-submit {
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      width: 100%;
+      height: 56px;
+      border-radius: 30px;
+
+      @include font-style(16px, 700, normal, $text-button-color);
+      &:hover {
+        box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+      }
+      &:active {
+        box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+      }
+    }
+
+    &-message {
+      border-radius: 16px;
+      resize: none;
+    }
+  }
+
+  &__info {
+    height: 244px;
+    width: 237px;
+    justify-self: center;
+
+    @include respond(tablet) {
+      margin: 0;
+      grid-column: 4/5;
+    }
+
+    @include respond(desktop) {
+      margin: 0;
+      grid-column: 7 / 8;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    @include font-style(16px, 500, normal, $contacts-text-color);
+
+    & > a {
+      color: $contacts-text-color;
+      text-decoration: none;
+    }
+  }
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,0 +1,157 @@
+@import '../variables';
+@import '../mixins';
+
+h1 {
+  margin: 0;
+}
+
+.header {
+  background-image: url(../images/images_phone/header/mi-bike-phone.png);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include respond(tablet) {
+    background-image: url(../images/images_tablet/header/mi-bike-tablet.png);
+  }
+
+  @include respond(desktop) {
+    background-image: url(../images/images_desktop/mi-bike-desktop.png);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 86px;
+
+    @include top(86px, 20px, 20px);
+
+    @include respond(tablet) {
+      @include top(128px, 72px, 72px);
+
+      min-height: 128px;
+    }
+
+    @include respond(desktop) {
+      @include top(128px, 120px, 120px);
+
+      min-height: 128px;
+    }
+
+    &-logo {
+      width: 130px;
+      height: 38px;
+      background: url(../images/images_phone/header/Logo-phone.png) no-repeat
+        center / contain;
+
+      @include respond(tablet) {
+        @include size-img(187px, 56px);
+
+        background: url(../images/images_tablet/header/MyBiKE-logo.png)
+          no-repeat center / contain;
+      }
+    }
+  }
+
+  .header__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .phone-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &__number {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+
+      @include font-style(12px, 700, 16px, rgba(255, 255, 255, 1));
+    }
+
+    &:hover .phone-wrapper__number {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &__icon {
+      height: 24px;
+      width: 24px;
+      transition: transform 0.3s;
+      background: url(../images/images_phone/buttons-phone/Icon-call-phone.png)
+        no-repeat center / contain;
+
+      @include respond(tablet) {
+        background: url(../images/images_tablet/header/Icon-Phone-call.svg)
+          no-repeat center / contain;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .menu-wrapper {
+    display: flex;
+    align-items: center;
+    &__icon {
+      transition: transform 0.3s;
+      height: 24px;
+      width: 24px;
+
+      background: url(../images/images_phone/buttons-phone/Icon-burger-phone.png)
+        no-repeat center / contain;
+
+      @include respond(tablet) {
+        background: url(../images/images_tablet/header/Icon-Burger-menu.svg)
+          no-repeat center / contain;
+      }
+      &:hover {
+        background: url(../images/images_phone/buttons-phone/menu-hover.png)
+          no-repeat center / contain;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 88px;
+
+    align-self: center;
+    white-space: nowrap;
+
+    @include respond(tablet) {
+      margin-bottom: 130px;
+    }
+
+    @include respond(desktop) {
+      margin-bottom: 203px;
+    }
+
+    &-name {
+      @include font-style(36px, 700, 1, rgba(255, 255, 255, 1));
+
+      @include respond(tablet) {
+        @include font-style(64px, 700, 1, rgba(255, 255, 255, 1));
+      }
+
+      @include respond(desktop) {
+        @include font-style(80px, 700, 1, rgba(255, 255, 255, 1));
+      }
+    }
+  }
+}

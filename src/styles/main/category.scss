@@ -1,0 +1,121 @@
+@import '../mixins';
+
+.categories {
+  &__wrapper {
+    display: grid;
+    &-title {
+      margin-bottom: 48px;
+
+      @include respond(tablet) {
+        margin-bottom: 64px;
+      }
+    }
+  }
+
+  &__button {
+    width: 278px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-decoration: none;
+    border-radius: 40px;
+
+    @include font-style(16px, 700, 1.4, $text-button-color);
+
+    background-color: $bg-button-color;
+
+    @include respond(tablet) {
+      width: 392px;
+    }
+
+    @include respond(desktop) {
+      width: 324px;
+    }
+  }
+}
+
+.category {
+  margin: 0 20px 40px;
+
+  @include respond(tablet) {
+    margin: 0 72px 48px;
+  }
+
+  @include respond(desktop) {
+    margin: 0 120px 48px;
+  }
+
+  &__photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    @include respond(tablet) {
+      column-gap: 24px;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include respond(desktop) {
+      column-gap: 24px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include respond(tablet) {
+        grid-column: span 4;
+      }
+
+      @include respond(desktop) {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+
+      @include respond(tablet) {
+        grid-column: span 2;
+      }
+
+      @include respond(desktop) {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+
+  &__title {
+    @include font-style(24px, 700, 1.4, $text-title-color);
+
+    margin: 8px 0 16px;
+  }
+
+  &__text {
+    display: inline-block;
+    max-width: 280px;
+    max-height: 154px;
+
+    @include font-style(16px, 400, 1, $text-title-color);
+
+    @include respond(tablet) {
+      max-width: 600px;
+      max-height: 88px;
+    }
+
+    @include respond(desktop) {
+      max-width: 672px;
+      max-height: 66px;
+    }
+  }
+}

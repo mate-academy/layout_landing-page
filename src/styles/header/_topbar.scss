@@ -1,0 +1,113 @@
+@import '../variables';
+@import '../mixins';
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  box-sizing: border-box;
+
+  pointer-events: none;
+  opacity: 0;
+
+  background-color: rgba(194, 194, 194, 1);
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include top(86px, 20px, 20px);
+
+    &-logo {
+      width: 130px;
+      height: 38px;
+      background-image: url(../images/images_phone/header/Logo-phone-aside.png);
+    }
+    &-icon {
+      width: 24px;
+      height: 24px;
+      background-image: url(../images/images_phone/buttons-phone/Button-close.png);
+    }
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+
+  }
+
+
+  &__phone {
+    margin-top: 40px;
+    margin-left: 20px;
+    &-number {
+      @include font-style(16px, 600, 27px, $aside-text-color);
+
+      text-decoration: none;
+    }
+
+    &-text {
+      position: relative;
+      margin-top: 16px;
+      width: fit-content;
+
+      @include font-style(12px, 600, 16px, $aside-text-color);
+
+      text-transform: uppercase;
+      &::after {
+        content: '';
+        position: absolute;
+        background-color: black;
+        width: 100%;
+        height: 1px;
+        bottom: -8px;
+        left: 0;
+      }
+    }
+  }
+}
+
+.nav {
+  &__list {
+    padding: 0;
+    margin: 0;
+
+    text-decoration: none;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin-top: 24px;
+    margin-left: 20px;
+    &-item {
+      &-link {
+        position: relative;
+        text-decoration: none;
+
+        @include font-style(22px, 600, 1, $aside-text-color);
+
+        text-transform: uppercase;
+
+        &:hover::after {
+          position: absolute;
+          content: '';
+          background-color: $aside-text-color;
+          width: 100%;
+          height: 1px;
+          left: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+html:has(.menu:target),
+body:has(.menu:target) {
+  overflow: hidden;
+}
