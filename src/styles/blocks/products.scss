@@ -1,14 +1,21 @@
 .products {
-  display: grid;
+  @include page-grid;
   row-gap: 40px;
 
-  @include on-tablet {
-    justify-items: center;
-  }
+  &__product {
+    grid-column: 1 / -1;
 
-  @include on-desktop {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px;
-    justify-items: stretch;
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
+    &__photo {
+      @include hover(transform, scale(1.2));
+      width: 100%;
+    }
   }
 }

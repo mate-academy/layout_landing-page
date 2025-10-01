@@ -5,12 +5,19 @@
   color: #fff;
   scroll-behavior: smooth;
 
+  &:has(.page__menu:target) {
+      overflow: hidden; /* not to scroll the page */
+    }
+
   &__body {
     margin: 0;
     min-width: 320px;
   }
 
   &__menu {
+    overflow: auto; /* to scroll the menu if needed */
+
+
     position: fixed;
     top: 0;
     right: 0;
@@ -21,6 +28,13 @@
 
     transform: translateX(-100%);
     transition: all $effectDuartion;
+
+    &__top {
+      position: sticky; /* to keep cross always visible */
+      top: 0;
+      z-index: 1;
+      background-color: $menu-bg-color;
+    }
 
     &:target {
       opacity: 1;
