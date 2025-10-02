@@ -36,14 +36,36 @@
   }
 }
 
+@mixin link-underline($color){
+    &::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: -8px;
+    height: 1px;
+    display: block;
+    background-color: $color;
+
+    transition: transform $effectDuartion;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
 @mixin page-grid {
   --columns: 2;
+
   display: grid;
   column-gap: 20px;
   grid-template-columns: repeat((var(--columns), 1fr));
 
   @include on-tablet {
     --columns: 6;
+
     column-gap: 24px;
   }
 
