@@ -1,0 +1,257 @@
+.page {
+  &__slogan {
+    padding-top: clamp(60px, 39.56px + 6.38vw, 120px);
+    padding-bottom: clamp(41px, 27.04px + 4.36vw, 82px);
+  }
+
+  &__compare {
+    padding-top: clamp(41px, 27.04px + 4.36vw, 82px);
+    padding-bottom: clamp(36px, 23.74px + 3.83vw, 72px);
+  }
+
+  &__detail {
+    padding-top: clamp(36px, 23.74px + 3.83vw, 72px);
+    padding-bottom: clamp(45px, 29.68px + 4.79vw, 90px);
+  }
+
+  &__contact {
+    padding-top: clamp(45px, 29.68px + 4.79vw, 90px);
+    padding-bottom: clamp(82px, 54.08px + 8.72vw, 164px);
+  }
+}
+
+.slogan {
+  &__body {
+    max-width: 933px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @media (max-width: 744px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    flex: 0 1 47%;
+  }
+
+  &__text {
+    flex: 0 1 53%;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 139%; /* 32/23 */
+  }
+}
+
+.compare {
+  &__title {
+    text-align: center;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: minmax(auto, 324px);
+    justify-content: center;
+    gap: 24px 48px;
+
+    @media (min-width: 744px) {
+      grid-template-columns: repeat(3, minmax(auto, 324px));
+    }
+  }
+}
+
+.item-compare {
+  display: flex;
+  flex-direction: column;
+  &__image {
+    transition: transform $transition-duration $transition-ease;
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__label {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__text {
+    flex: 1 1 auto;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 141%; /* 34/24 */
+  }
+}
+
+.detail {
+  &__title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__body {
+    margin-bottom: clamp(2.5rem, 2.33rem + 0.85vw, 3rem);
+  }
+
+  &__block {
+    display: grid;
+    gap: 16px 24px;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 744px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: clamp(2.5rem, 2.33rem + 0.85vw, 3rem);
+    }
+  }
+
+  &__item {
+    position: relative;
+    &--wide {
+      grid-column: span 2;
+      transition: transform $transition-duration $transition-ease;
+
+      &:hover {
+        transform: scale(1.1);
+        z-index: 2;
+      }
+
+      @media (max-width: 744px) {
+        grid-column: auto;
+      }
+    }
+
+    &--cube {
+      height: 0;
+      padding-bottom: 100%;
+      transition: transform $transition-duration $transition-ease;
+
+      &:hover {
+        transform: scale(1.1);
+        z-index: 2;
+      }
+    }
+
+    &--content {
+      grid-column: span 2;
+    }
+
+    &--image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__label {
+    margin-bottom: 8px;
+  }
+
+  &__action {
+    text-align: center;
+  }
+}
+
+.contact {
+  &__title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__items {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(48px, -3.05px + 15.96vw, 198px);
+
+    @media (max-width: 744px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.item-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__label {
+    font-size: 14px;
+    line-height: 142%; /* 20/14 */
+  }
+
+  &__link {
+    font-weight: 500;
+    line-height: 137%; /* 22/16 */
+    transition: color $transition-duration $transition-ease;
+
+    &:hover {
+      color: $color-text-secondary;
+    }
+  }
+}
+
+.form-contact {
+  display: flex;
+  flex-direction: column;
+  &__input {
+    background: $color-bg-form;
+    border-radius: 40px;
+    padding-block: 14px;
+    padding-left: 16px;
+    margin-bottom: 16px;
+    color: $color-text-focus;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 142%; /* 20/14 */
+      color: $color-text-secondary;
+    }
+
+    &:focus {
+      color: $color-text-focus;
+      font-size: 14px;
+      line-height: 142%; /* 20/14 */
+    }
+  }
+
+  &__message {
+    background: $color-bg-form;
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 32px;
+    height: 148px;
+    color: $color-text-focus;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 142%; /* 20/14 */
+      color: $color-text-secondary;
+    }
+
+    &:focus {
+      color: $color-text-focus;
+      font-size: 14px;
+      line-height: 142%; /* 20/14 */
+    }
+  }
+}
