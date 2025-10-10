@@ -1,3 +1,63 @@
-body {
-  margin: 0;
+@import './utils/variables';
+@import './utils/mixin';
+@import './header';
+@import './container';
+@import './icon';
+@import './section-title';
+@import './nav';
+@import './categories';
+@import './form';
+@import './menu';
+@import './recommended';
+@import './product';
+@import './information';
+@import './about-us';
+@import './contact-us';
+
+.main {
+  &__content {
+    display: grid;
+    row-gap: 64px;
+    padding-block: 96px;
+
+    @include on-tablet {
+      row-gap: 120px;
+      padding-block: 120px;
+    }
+  }
+}
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  color: $main-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all $effect-duration;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+
+    &:has(.page__menu:target) {
+      overflow: hidden;
+    }
+  }
 }
