@@ -1,0 +1,118 @@
+
+# React шпаргалка для початківців
+
+## 1. Основи React
+
+### Компоненти
+
+- **Функціональний компонент** (сучасний підхід):
+
+function MyComponent(props) {
+  return <div>Hello, {props.name}!</div>;
+}
+// або
+const MyComponent = (props) => <div>Hello, {props.name}!</div>;
+
+- **JSX** — синтаксис, що схожий на HTML, але це JavaScript:
+
+const element = <h1>Привіт, світ!</h1>;
+
+- У JSX можна вставляти JS-вирази у { }:
+
+const name = 'Діма';
+const element = <h1>Привіт, {name}!</h1>;
+
+## 2. useState — Хук стану
+
+Імпорт:
+
+import React, { useState } from 'react';
+
+Використання:
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Лічильник: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Збільшити</button>
+    </div>
+  );
+}
+
+## 3. Події: onClick, onChange
+
+onClick:
+
+<button onClick={() => alert('Кнопка натиснута!')}>Натисни</button>
+
+onChange:
+
+function TextInput() {
+  const [text, setText] = useState('');
+  function handleChange(event) {
+    setText(event.target.value);
+  }
+  return (
+    <input type="text" value={text} onChange={handleChange} />
+  );
+}
+
+## 4. className
+
+- У React замість class використовується className:
+
+<div className="my-class">Контент</div>
+
+- Динамічно:
+
+const isActive = true;
+<div className={isActive ? 'active' : 'inactive'}>Контент</div>
+
+## 5. Функції
+
+function MyComponent() {
+  function sayHello() {
+    alert('Привіт!');
+  }
+  return <button onClick={sayHello}>Скажи привіт</button>;
+}
+
+## 6. Інше
+
+### Передача пропсів:
+
+function Greeting(props) {
+  return <h1>Привіт, {props.name}!</h1>;
+}
+<Greeting name="Діма" />
+
+### Умовний рендеринг:
+
+{isLoggedIn ? <p>Вітаємо!</p> : <p>Будь ласка, увійдіть.</p>}
+
+### Рендер списків:
+
+{items.map((item, index) => (
+  <li key={index}>{item}</li>
+))}
+
+### Контролювані компоненти:
+
+function ControlledInput() {
+  const [value, setValue] = useState('');
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+}
+
+### React.Fragment:
+
+<>
+  <h1>Заголовок</h1>
+  <p>Параграф</p>
+</>
