@@ -1,0 +1,98 @@
+@import 'variables';
+
+.menu {
+  position: fixed; // ← fica fora do fluxo do layout
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $main-color;
+  transition:
+    opacity $transition,
+    visibility $transition;
+  overflow: auto;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: $padding-sizes-small;
+
+    @media (min-width: $screen-medium) {
+      padding: $padding-sizes-medium;
+    }
+
+    @media (min-width: $screen-large) {
+      padding: $padding-sizes-large;
+    }
+  }
+
+  &__logo {
+    width: $logo-width-small;
+    height: $logo-height-small;
+
+    @media (min-width: $screen-medium) {
+      width: $logo-width-medium;
+      height: $logo-height-medium;
+    }
+  }
+
+  &__closeIcon {
+    background: url(../images/Icon-Close.png) center center / cover no-repeat;
+    height: $icon-small-size;
+    width: $icon-small-size;
+
+    @media (min-width: $screen-medium) {
+      height: $icon-medium-size;
+      width: $icon-medium-size;
+    }
+  }
+
+  &__nav {
+    padding: $padding-sizes-small;
+    padding-top: 15px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $screen-medium) {
+      padding: $padding-sizes-medium;
+      padding-top: 0;
+    }
+
+    @media (min-width: $screen-large) {
+      padding: $padding-sizes-large;
+      padding-top: 0;
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 32px;
+  }
+
+  &__phoneInfo {
+    color: white;
+
+    h5 {
+      font-size: 16px;
+      margin-bottom: 8px;
+
+      a:hover {
+        color: $hover-color;
+      }
+    }
+  }
+}
