@@ -1,0 +1,68 @@
+@use '../utils/mixins';
+@use '../utils/variables.scss';
+
+.section-title {
+  margin: 0;
+  padding: 0;
+}
+
+.move-free {
+  --colums: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  font-family: 'Poppins Arial', Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 140%;
+  letter-spacing: 1px;
+
+  @include mixins.on-tablet {
+    --colums: 6;
+
+    column-gap: 24px;
+
+    // grid-column: 1 / 3;
+    // font-size: 48px;
+  }
+
+  @include mixins.on-desktop {
+    --colums: 12;
+
+    // grid-column: 1 / 4;
+    // font-size: 64px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      grid-column: 1 / 3;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__speech {
+    margin: 0;
+
+    // margin-bottom: 64px;
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      grid-column: 4 / -1;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 6 / 11;
+    }
+
+    &--align--left {
+      text-align: left;
+    }
+  }
+}
