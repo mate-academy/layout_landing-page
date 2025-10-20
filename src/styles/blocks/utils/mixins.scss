@@ -1,0 +1,170 @@
+// #region breakpoints
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+// #endregion
+
+
+// #region mixin-header
+@mixin content-background-image {
+  background-image: url(/src/img/bg/header-bg-mobile.png);
+  background-position: right;
+
+  @include on-tablet {
+    background-image: url(/src/img/bg/header-bg-tablet.png);
+    background-position: center;
+  }
+
+  @include on-desktop {
+    background-image: url(/src/img/bg/header-bg-desktop.png);
+    background-position: center;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin content-padding-block {
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+}
+
+@mixin content-padding-bottom-header {
+  padding-bottom: 88px;
+
+  @include on-tablet {
+    padding-bottom: 130px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 203px;
+  }
+}
+
+@mixin content-font-size-header {
+  font-size: 36px;
+
+  @include on-tablet {
+    font-size: 64px;
+  }
+
+  @include on-desktop {
+    font-size: 80px;
+  }
+}
+
+// #endregion
+
+
+// #region mixin-menu
+@mixin content-margin-bottom-menu {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 8px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 24px;
+  }
+}
+
+// #endregion
+
+
+// #region mixin-move
+@mixin content-padding-menu {
+  padding-block: 60px 92px;
+
+  @include on-tablet {
+    padding-block: 120px 132px;
+  }
+
+  @include on-desktop {
+    padding-block: 120px  164px;
+  }
+}
+
+@mixin content-display-menu {
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 77px;
+  }
+
+  @include on-desktop {
+    justify-content: space-around;
+  }
+}
+
+// #endregion
+
+
+@mixin page-grid {
+    --coloms: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--coloms), 1fr);
+
+  @include on-tablet {
+    --coloms: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --coloms: 12;
+  }
+}
+
+.button {
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 40px;
+    grid-column: 1 / 3;
+    justify-self: center;
+    font-size: 16px;
+    line-height: 27px;
+    padding: 16px 0;
+    width: 100%;
+    border: none;
+
+}
+
+.button:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, .4);
+}
+
+
