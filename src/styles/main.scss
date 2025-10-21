@@ -1,5 +1,6 @@
 @use './utils/mixins' as *;
 @use './variable' as *;
+
 // обнулення
 @use './null.scss' as *;
 
@@ -22,7 +23,6 @@ body {
 .wrapper {
   position: relative;
   min-height: 100%;
-  /* або 100vh*/
   overflow: clip;
 
   display: flex;
@@ -85,7 +85,7 @@ body {
   }
 
   &:active {
-    background-color: #111111;
+    background-color: #111;
     color: white;
   }
 }
@@ -104,6 +104,7 @@ body {
 
   &__body {
     padding: 24px 0;
+
     @include tablet {
       padding: 32px 0;
     }
@@ -138,13 +139,13 @@ body {
     font-weight: $font-weight-bold;
     font-size: 36px;
     line-height: 1;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 }
 
 .header--scrolled {
-  background-color: hsla(0, 0%, 100%, 0.921); // з’являється фон
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // легка тінь
+  background-color: hsla(0deg, 0%, 100%, 0.92);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hidden {
@@ -224,9 +225,8 @@ body {
 // =========================================== aside ==================================================
 
 .header-menu {
-  position: relative;
-  z-index: 101;
   position: fixed;
+  z-index: 101;
   top: 0;
   left: 0;
   width: 100%;
@@ -235,6 +235,7 @@ body {
   pointer-events: none;
   transform: translate(-100%, 0);
   transition: all 0.5s ease 0s;
+
   // Коли меню активне (через :target)
   &:target {
     opacity: 1;
@@ -305,9 +306,8 @@ body {
 
   // .menu-bottom (всередині меню)
   .menu-bottom {
-    font-family: Space Grotesk;
-    font-weight: 700;
-    font-size: 16px;
+    font-family: $font-space-grotesk;
+    font-weight: $font-weight-bold;
     line-height: 1.4;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -347,9 +347,11 @@ body {
     justify-content: flex-end; // прибиває контент донизу
     height: 100vh;
     padding-bottom: 40px; // відступ від низу
+
     @include tablet {
       padding-bottom: 65px;
     }
+
     @include desktop {
       padding-bottom: 92px;
     }
@@ -362,12 +364,14 @@ body {
     font-weight: $font-weight-bold;
     font-size: 36px;
     line-height: 1;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     max-width: 280px;
+
     @include tablet {
       max-width: 392px;
       font-size: 48px;
     }
+
     @include desktop {
       max-width: 498px;
       font-size: 56px;
@@ -409,9 +413,8 @@ body {
     row-gap: 40px;
 
     @include tablet {
-      row-gap: 56px;
+      gap: 56px 24px;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 24px;
     }
 
     @include desktop {
@@ -429,28 +432,7 @@ body {
     box-shadow $transition-duration ease,
     transform $transition-duration ease;
 
-  &:hover {
-    box-shadow: 0px 8px 14px rgba(203, 203, 203, 0.858);
-
-    transform: translateY(-4px); // легкий підйом для “жвавішого” ефекту
-
-    .card__img {
-      transform: scale(1.05);
-    }
-  }
-
-  // card__link
-
-  &__link {
-    display: block;
-    width: 100%;
-    margin-bottom: 24px;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-
-  // card__img
-
+  // .card__img — перенесено вище, щоб уникнути помилки no-descending-specificity
   &__img {
     display: block;
     width: 100%;
@@ -459,8 +441,25 @@ body {
     transition: transform $transition-duration ease;
   }
 
-  // .card__content
+  &:hover {
+    box-shadow: 0 8px 14px rgba(203, 203, 203, 0.86);
+    transform: translateY(-4px); // легкий підйом для “жвавішого” ефекту
 
+    .card__img {
+      transform: scale(1.05);
+    }
+  }
+
+  // .card__link
+  &__link {
+    display: block;
+    width: 100%;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  // .card__content
   &__content {
     display: flex;
     flex-direction: column;
@@ -469,13 +468,11 @@ body {
   }
 
   // .card__top
-
   &__top {
     flex-grow: 1;
   }
 
   // .card__title
-
   &__title {
     font-size: 18px;
     line-height: 1.4;
@@ -494,15 +491,13 @@ body {
       background-color: $main-color-text;
       transition: width $transition-duration ease 0s;
     }
-    &:hover {
-      &::after {
-        width: 100%;
-      }
+
+    &:hover::after {
+      width: 100%;
     }
   }
 
   // .card__description
-
   &__description {
     font-weight: $font-weight-regular;
     line-height: 1.4;
@@ -510,7 +505,6 @@ body {
   }
 
   // .card__price
-
   &__price {
     font-family: $font-space-grotesk;
     font-weight: $font-weight-bold;
@@ -520,10 +514,6 @@ body {
 // =========================================== categories ==================================================
 
 .categories {
-  // .categories__container
-
-  // .categories__body
-
   &__body {
     padding-bottom: 96px;
 
@@ -534,15 +524,17 @@ body {
 
   &__title {
     margin-bottom: 48px;
+
     @include tablet {
       margin-bottom: 56px;
-      max-width: 496px; //585
+      max-width: 496px;
     }
 
     @include desktop {
       max-width: 585px;
     }
   }
+
   // .categories__content
 
   &__content {
@@ -560,7 +552,8 @@ body {
 .category {
   // .category__photos
   &__photos {
-    @include pageGrid;
+    @include page-grid;
+
     display: grid;
     margin-bottom: 16px;
   }
@@ -593,6 +586,7 @@ body {
       @include tablet {
         order: 2;
       }
+
       @include desktop {
         order: 2;
       }
@@ -602,6 +596,7 @@ body {
       @include tablet {
         order: 1;
       }
+
       @include desktop {
         order: 1;
       }
@@ -620,7 +615,7 @@ body {
       transform $transition-duration ease;
 
     &:hover {
-      box-shadow: 0px 8px 14px rgba(203, 203, 203, 0.858);
+      box-shadow: 0 8px 14px rgba(203, 203, 203, 0.86);
       transform: scale(1.01) translateY(-4px);
     }
   }
@@ -669,13 +664,15 @@ body {
 
 .about {
   margin-bottom: 104px;
+
   @include tablet {
     margin-bottom: 120px;
   }
+
   // .about__body
 
   &__body {
-    @include pageGrid;
+    @include page-grid;
   }
 
   // .about__title
@@ -687,6 +684,7 @@ body {
     @include tablet {
       grid-column: span 3;
     }
+
     @include desktop {
       grid-column: span 6;
     }
@@ -741,7 +739,7 @@ body {
   // .footer__content
 
   &__content {
-    @include pageGrid;
+    @include page-grid;
   }
 
   // .footer__contact
@@ -759,11 +757,6 @@ body {
     @include desktop {
       grid-column: 7 / 13;
     }
-  }
-
-  // .footer__line
-
-  &__line {
   }
 
   // .footer__label
@@ -801,6 +794,7 @@ body {
   @include desktop {
     grid-column: span 5;
   }
+
   // form__content
 
   &__content {
