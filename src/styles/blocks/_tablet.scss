@@ -14,45 +14,67 @@
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
   }
 
-// ===== MIXINS BEM =====
-@mixin icon-hover {
-  transition: transform 0.2s ease;
-  cursor: pointer;
-  display: block;
+  // ===== MIXINS BEM =====
+  @mixin icon-hover {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    display: block;
 
-  &:hover {
-    transform: scale(1.2);
+    &:hover {
+      transform: scale(1.2);
+    }
   }
-}
 
-@mixin phone-tooltip-desktop {
-  position: absolute;
-  right: 110%;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease;
-  z-index: 1000;
-}
+  @mixin phone-tooltip-desktop {
+    position: absolute;
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+    z-index: 1000;
+  }
 
-@mixin phone-number-base {
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  color: white;
-  padding: 15px;
-  font-family: 16px;
-  font-weight: 700;
-  height: 50px;
-  width: 220px;
-  text-align: right;
-}
+  @mixin phone-number-base {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 15px;
+    font-family: 16px;
+    font-weight: 700;
+    height: 50px;
+    width: 220px;
+    text-align: right;
+  }
+
+  dialog {
+    display: none;
+    position: fixed;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 744px;
+    height: 840px;
+    background: #d12d35;
+    border: none;
+    z-index: 1000;
+
+    &::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .menu__checkbox:checked + .menu__icon + dialog {
+    display: block;
+  }
+
   .main {
     width: 100%;
     max-width: 320px;
@@ -82,27 +104,6 @@
     background-color: #d12d35 !important;
   }
 
-  .menu__checkbox:checked + .menu__icon + dialog {
-    display: block;
-  }
-
-  dialog {
-    display: none;
-    position: fixed;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 744px;
-    height: 840px;
-    background: #d12d35;
-    border: none;
-    z-index: 1000;
-
-    &::backdrop {
-      background: rgba(0, 0, 0, 0.5);
-    }
-  }
-
   .modal__content {
     width: 100%;
     height: 100%;
@@ -116,7 +117,7 @@
     height: 65px;
     left: 60px;
     top: 55px;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-style: normal;
     font-size: clamp(40px, 7vw, 28px);
     line-height: 90%;
@@ -154,7 +155,7 @@
   }
 
   .modal__link {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 22px;
     line-height: 22px;
@@ -185,11 +186,11 @@
   }
 
   .modal__phone-number {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     vertical-align: middle;
     text-transform: uppercase;
     display: flex;
@@ -205,7 +206,7 @@
   .modal__cta-text {
     width: 150px;
     height: 16px;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
@@ -219,7 +220,7 @@
 
   .modal__cta-line {
     width: 126px;
-    height: 0px;
+    height: 0;
     top: 24px;
     border: 1px solid #fff;
   }
@@ -236,19 +237,20 @@
     box-sizing: border-box;
   }
 
-  .header__title:hover {
-    transform: scale(1.1);
-  }
-
   .header__title {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 40px;
     line-height: 90%;
     letter-spacing: -1.5px;
     vertical-align: middle;
     color: #fff;
+
     @include icon-hover;
+  }
+
+  .header__title:hover {
+    transform: scale(1.1);
   }
 
   .header__icons {
@@ -260,7 +262,7 @@
   }
 
   .main__title {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 64px;
     line-height: 64px;
@@ -274,7 +276,9 @@
   .phone__icon {
     width: 24px;
     height: 24px;
+
     @include icon-hover;
+
     background-image: url('../img/img_tablet/icon_phone_tablet.png');
   }
 
@@ -296,7 +300,7 @@
   }
 
   .phone__number {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 13px;
     height: 20px;
@@ -327,16 +331,16 @@
   }
 
   .museum__plan-label {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 140%;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #d12d35;
   }
 
   .museum__hours-title {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 48px;
     line-height: 48px;
@@ -368,11 +372,11 @@
     flex-direction: column;
     text-align: start;
     align-items: start;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 30px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #161616;
   }
 
@@ -411,9 +415,9 @@
   .museum__status-days-fifth,
   .museum__status-days-cloisters,
   .museum__closed-dates {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: 0.88rem;
     color: #666;
     line-height: 1.4;
   }
@@ -427,11 +431,11 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 260px auto 0;
+    margin-top: 260px;
   }
 
   .now-on-view__heading {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 48px;
     line-height: 48px;
@@ -442,11 +446,11 @@
   }
 
   .now-on-view__subtitle {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     text-align: center;
     width: 392px;
     margin-bottom: 50px;
@@ -541,12 +545,12 @@
   }
 
   .exhibition__subtitle {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 16px;
     color: #161616;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .exhibition__info-1 {
@@ -562,21 +566,21 @@
   .exhibition__title-1,
   .exhibition__title-2,
   .exhibition__title-3 {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     color: #d12d35;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .exhibition__subtitle-1 {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 16px;
     color: #161616;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .button-view-all {
@@ -587,11 +591,11 @@
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     text-align: center;
     color: #fff;
     text-transform: uppercase;
@@ -619,7 +623,7 @@
   }
 
   .gallery__title {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 48px;
     line-height: 48px;
@@ -633,9 +637,6 @@
     width: 392px;
     height: 511px;
     margin-top: 60px;
-    margin: 0px;
-    justify-content: space-between;
-    text-align: center;
   }
 
   .person_1 {
@@ -666,11 +667,11 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #d12d35;
     padding-top: 25px;
   }
@@ -708,8 +709,9 @@
     background-position: center;
   }
 
-  .gallery__person-description {
-    font-family: 'Roboto', sans-serif;
+  .gallery__person-description,
+  .gallery__person-description-2 {
+    font-family: Roboto, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6;
@@ -718,41 +720,16 @@
     width: 380px;
     height: auto;
 
-    br {
+    &.br {
       display: none !important;
     }
 
-    strong {
+    &.strong {
       display: inline-block;
     }
 
-    &:has(+ strong):before,
-    strong:before {
-      content: '\200B';
-      display: inline;
-    }
-  }
-
-  #gallery__person-description-2 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #161616;
-    text-align: center;
-    width: 353px;
-    height: auto;
-
-    br {
-      display: none !important;
-    }
-
-    strong {
-      display: inline-block;
-    }
-
-    &:has(+ strong):before,
-    strong:before {
+    &:has(+ .strong)::before,
+    &.strong::before {
       content: '\200B';
       display: inline;
     }
@@ -763,7 +740,7 @@
     height: 48px;
     margin-top: 1300px;
     text-transform: uppercase;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 48px;
     line-height: 48px;
@@ -805,43 +782,43 @@
   }
 
   .avenue {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .phone {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .phone_number {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .adress {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .adress_main {
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 140%;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
   .contact {
@@ -880,11 +857,11 @@
     color: #7e7e83;
     pointer-events: none;
     transition: 0.2s all;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     border: 1px transparent solid;
   }
 
@@ -896,11 +873,11 @@
     color: #7e7e83;
     pointer-events: none;
     transition: 0.2s all;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     border: 1px transparent solid;
   }
 
@@ -919,11 +896,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cinzel', serif;
+    font-family: Cinzel, serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     text-align: center;
     color: #fff;
     text-transform: uppercase;
