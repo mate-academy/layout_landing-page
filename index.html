@@ -55,12 +55,13 @@
                 />
               </a>
               <div class="header__action">
-                <p
+                <a
+                  href="tel:+1 234 555-55-55"
                   id="phone-num"
                   class="header__phone hidden"
                 >
                   +1 234 555-55-55
-                </p>
+                </a>
                 <a
                   id="phone"
                   href="tel:+1 234 555-55-55"
@@ -512,16 +513,40 @@
         const phone = document.getElementById('phone');
 
         if (phone && phoneNum) {
-          phone.addEventListener('mouseenter', () => {
+          const showPhone = () => {
             if (window.innerWidth > 500) {
               phoneNum.classList.remove('hidden');
+              phone.classList.add('paused'); // додаємо клас для паузи анімації
             }
-          });
+          };
 
-          phone.addEventListener('mouseleave', () => {
+          const hidePhone = () => {
             if (window.innerWidth > 500) {
               phoneNum.classList.add('hidden');
+              phone.classList.remove('paused'); // повертаємо анімацію
             }
+          };
+
+          // показуємо номер при наведенні на іконку
+          phone.addEventListener('mouseenter', showPhone);
+          // і не ховаємо, якщо курсор пішов на номер
+          phoneNum.addEventListener('mouseenter', showPhone);
+
+          // ховаємо лише коли курсор вийшов і з номера, і з іконки
+          phone.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+              if (!phone.matches(':hover') && !phoneNum.matches(':hover')) {
+                hidePhone();
+              }
+            }, 100);
+          });
+
+          phoneNum.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+              if (!phone.matches(':hover') && !phoneNum.matches(':hover')) {
+                hidePhone();
+              }
+            }, 100);
           });
         }
       })();
