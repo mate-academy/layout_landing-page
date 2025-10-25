@@ -1,0 +1,79 @@
+@mixin icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  @include on-table {
+    width: 32px;
+    height: 32px;
+  }
+
+  @include on-desktop {
+    width: 32px;
+    height: 32px;
+  }
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+@mixin font-bold {
+  font-family: $fontFamily;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin font-light {
+  font-family: $fontFamily;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin section-text-default {
+  font-family: $fontFamily;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 27px;
+  color: $colorTextMain;
+}
+
+@mixin on-table {
+  @media (min-width: $bp-small) and (max-width: #{$bp-medium - 1}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $bp-medium) {
+    @content;
+  }
+}
+
+@mixin on-large-desktop {
+  @media (min-width: $bp-very-large) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 24px;
+
+  @include on-table {
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin image-transform {
+  transform: scale($scaleSize);
+}

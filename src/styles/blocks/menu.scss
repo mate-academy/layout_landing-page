@@ -1,0 +1,131 @@
+.menu {
+  z-index: 100;
+
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  background-color: $backgroundColorMenu;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @include on-table {
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 54px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    position: relative;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+    width: max-content;
+    padding-bottom: 8px;
+
+    font-family: $fontFamily;
+    font-size: 16px;
+    font-weight: 700;
+    color: $colorMenuLink;
+    text-decoration: none;
+
+    transition: color $duration;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0;
+      height: 1px;
+
+      background-color: $colorBorderHover;
+
+      transition: width $duration;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &--bottom {
+      padding-bottom: 4px;
+    }
+
+    &--anchor {
+      font-family: $fontFamily;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 100%;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 8px;
+
+    &--margin-bottom {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__tel-title {
+    margin: 0;
+    padding: 0;
+
+    font-family: $fontFamily;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: $colorTitle;
+    text-transform: uppercase;
+  }
+
+  &__call-to-order {
+    width: max-content;
+    border: none;
+
+    font-family: $fontFamily;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+    color: $colorText;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    &:hover::after {
+      position: absolute;
+      bottom: -8px;
+
+      display: block;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: $colorBorderHover;
+    }
+  }
+}

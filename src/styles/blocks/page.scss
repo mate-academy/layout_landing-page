@@ -1,0 +1,51 @@
+.page {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    position: relative;
+    margin: 0;
+  }
+
+  &__menu {
+    pointer-events: none;
+
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 25px 20px 40px;
+
+    opacity: 0;
+
+    transition: opacity $duration ease;
+
+    @include on-table {
+      padding: 50px 72px;
+    }
+
+    @include on-desktop {
+      padding: 50px 72px;
+    }
+
+    &:target {
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &__phone {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    transition: opacity $duration ease visible $duration ease;
+  }
+}

@@ -1,0 +1,138 @@
+.now-on-view {
+  &__description {
+    @include section-text-default;
+
+    margin-bottom: 42px;
+    text-align: center;
+  }
+
+  &__collections {
+    @include page-grid;
+  }
+
+  &__link-collection {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition: transform $duration;
+
+    &--square {
+      grid-column: span 1;
+
+      @include on-table {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      grid-column: span 1;
+
+      @include on-table {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &:hover {
+      @include image-transform;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  &__canva {
+    @include page-grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+
+    @include on-table {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__link-canva {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition: transform $duration;
+
+    &--tablet--hide {
+      display: block;
+
+      @include on-table {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &:hover {
+      @include image-transform;
+    }
+  }
+
+  &__canva-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+    margin-bottom: 48px;
+
+    &--margin--bottom {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__name {
+    margin: 0;
+
+    font-family: $fontFamily;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: $colorSubtitle;
+  }
+
+  &__event-date {
+    @include section-text-default;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    margin-inline: auto;
+
+    text-decoration: none;
+
+    @include on-table {
+      max-width: 392px;
+    }
+
+    @include on-desktop {
+      max-width: 324px;
+    }
+  }
+}

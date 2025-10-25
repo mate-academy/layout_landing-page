@@ -1,0 +1,98 @@
+.phone {
+  position: absolute;
+  top: -25px;
+  right: 82px;
+
+  display: none;
+
+  width: max-content;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition:
+    visibility $duration,
+    opacity $duration;
+
+  &:hover {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .icon--phone:hover ~ & {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @include on-table {
+    right: 134px;
+    display: block;
+  }
+
+  @include on-desktop {
+    right: 134px;
+    display: block;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: end;
+
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__location {
+    margin: 0;
+    padding: 0;
+
+    font-family: $fontFamily;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: $colorMenuLink;
+    text-align: right;
+  }
+
+  &__tel {
+    position: relative;
+
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: $fontFamily;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: $colorMenuLink;
+    text-align: right;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0;
+      height: 1px;
+
+      background-color: $colorBorderHover;
+
+      transition: width $duration;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
