@@ -1,68 +1,77 @@
 @use '../utils/mixins';
-@use '../utils/variables.scss';
+@use '../utils/variables' as v;
 
 .section-title {
-  margin: 0;
-  padding: 0;
-}
-
-.move-free {
-  --colums: 2;
-
   display: grid;
-  column-gap: 20px;
-  grid-template-columns: repeat(var(--colums), 1fr);
+  padding-bottom: 48px;
+  padding-top: 120px;
 
-  font-family: 'Poppins Arial', Helvetica, sans-serif;
-  font-weight: 500;
-  font-size: 23px;
-  line-height: 140%;
-  letter-spacing: 1px;
+  font-size: 32px;
+  text-align: center;
+  row-gap: 32px;
+  margin: 0;
 
   @include mixins.on-tablet {
-    --colums: 6;
-
-    column-gap: 24px;
-
-    // grid-column: 1 / 3;
-    // font-size: 48px;
+    padding-top: 0;
+    padding-bottom: 64px;
   }
 
   @include mixins.on-desktop {
-    --colums: 12;
+    padding-top: 0;
 
-    // grid-column: 1 / 4;
-    // font-size: 64px;
+    // padding-top: 144px;
   }
+}
+
+.move-free {
+  @include mixins.page-grid;
+
+  font-family: v.$font-family;
+  font-weight: 500;
+  row-gap: 35px;
 
   &__title {
+    justify-self: start;
+    font-size: 32px;
     grid-column: 1 / -1;
+    line-height: 100%;
 
     @include mixins.on-tablet {
-      grid-column: 1 / 3;
+      grid-column: 1 / 4;
+      font-size: 48px;
+      padding-bottom: 32px;
     }
 
     @include mixins.on-desktop {
-      grid-column: 1 / 4;
+      font-size: 64px;
+      grid-column: 1 / 6;
     }
   }
 
   &__speech {
+    max-width: 500px;
     margin: 0;
+
+    font-size: 23px;
+    line-height: 140%;
+    letter-spacing: 1px;
 
     // margin-bottom: 64px;
     grid-column: 1 / -1;
 
     @include mixins.on-tablet {
       grid-column: 4 / -1;
+      font-size: 23px;
     }
 
     @include mixins.on-desktop {
-      grid-column: 6 / 11;
+      grid-column: 6 / -1;
+      font-size: 23px;
     }
 
     &--align--left {
       text-align: left;
+      justify-self: start;
     }
   }
 }

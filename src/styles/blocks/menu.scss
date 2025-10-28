@@ -1,15 +1,23 @@
 @use '../utils/mixins';
+@use '../utils/variables' as v;
 
 .menu {
   box-sizing: border-box;
   height: 100vh;
 
+  position: fixed;
+  z-index: 1000;
+
   font-weight: 700;
   text-transform: uppercase;
 
   background-color: #c2c2c2;
+  overflow: auto; /* to scroll the menu if needed */
 
   &__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
     margin-bottom: 24px;
   }
 
@@ -28,8 +36,13 @@
 
     font-size: 16px;
     line-height: 16px;
-    color: inherit;
+    color: v.$menu-text-color;
     text-decoration: none;
+    padding-bottom: 16px;
+    transition: color 0.3s ease;
+  }
+  &-phone-number:hover {
+    color: azure;
   }
 }
 
@@ -37,11 +50,14 @@
   display: block;
 
   width: fit-content;
-  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-bottom: 8px;
 
   font-size: 12px;
   line-height: 16px;
-  color: inherit;
+  color: v.$menu-text-color;
   text-decoration: none;
   letter-spacing: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }

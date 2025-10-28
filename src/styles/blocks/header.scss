@@ -1,9 +1,18 @@
 @use '../utils/mixins';
+@use '../utils/variables' as v;
 
 .header {
   background-image: url(../images/cover_photo.png);
-  background-position: right;
+  background-position: 85%;
   background-size: cover;
+
+  @include mixins.on-tablet {
+    background-position: center;
+  }
+
+  @include mixins.on-desktop {
+    background-position: center;
+  }
 
   &__content {
     @include mixins.constent-padding-inline;
@@ -12,21 +21,53 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include mixins.on-tablet {
+      height: 628px;
+
+      @include mixins.on-desktop {
+        height: 100vh;
+      }
+    }
   }
 
   &__title {
+    display: block;
     margin: 0;
+    font-family: v.$font-family;
 
     font-size: 36px;
-    font-weight: 800;
-    font-style: italic;
+    font-weight: 700;
+
     line-height: 100%;
     letter-spacing: -1.5px;
+    text-align: center;
+
+    @include mixins.on-tablet {
+      width: 600px;
+      padding-bottom: 20px;
+      font-size: 64px;
+    }
+
+    @include mixins.on-desktop {
+      font-size: 80px;
+      width: 672px;
+    }
   }
 
   &__bottom {
-    // padding-bottom: 203px;
+    display: block;
+    padding-bottom: 114px;
     text-align: center;
-    padding-bottom: 88px;
+
+    @include mixins.on-tablet {
+      padding-left: 72px;
+      padding-bottom: 100px;
+    }
+
+    @include mixins.on-desktop {
+      padding-bottom: 230px;
+      padding-left: 180px;
+    }
   }
 }
