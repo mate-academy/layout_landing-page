@@ -1,0 +1,50 @@
+.page {
+  scroll-behavior: smooth;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-main;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-text-main;
+
+  &__body {
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__menu {
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+
+    opacity: 0;
+
+    transition: all $transition;
+
+    &:target {
+      pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 40px;
+
+  @include on-tablet {
+    font-size: 64px;
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
