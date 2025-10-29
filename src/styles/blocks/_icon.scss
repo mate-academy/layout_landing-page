@@ -1,0 +1,69 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icon-phone.svg);
+
+    & .phone-number {
+      position: absolute;
+      left: auto;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity $effect-duration ease,
+        visibility 0s $effect-duration;
+
+      white-space: nowrap;
+
+      color: #1b2129;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    &:hover .phone-number {
+      opacity: 1;
+      visibility: visible;
+
+      transition:
+        opacity $effect-duration ease,
+        visibility 0s;
+    }
+
+    @media (max-width: 576px) {
+      .icon--phone .phone-number {
+        display: none;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.svg);
+  }
+}
