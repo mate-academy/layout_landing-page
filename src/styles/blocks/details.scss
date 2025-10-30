@@ -1,0 +1,116 @@
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: $spacing-lg;
+    margin-bottom: $spacing-lg;
+
+    @include on-tablet {
+      row-gap: $spacing-xl;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__button {
+    display: block;
+
+    box-sizing: border-box;
+    width: $width-small-device;
+    height: $height-input;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    border-radius: $radius-lg;
+
+    font-family: $font-family-base;
+    font-weight: $font-weight-bold;
+    line-height: $lh-px-27;
+    color: $color-primary;
+
+    background-color: $color-text-light;
+
+    transition: box-shadow $effectDuration ease-out;
+
+    @include on-tablet {
+      width: $width-large-device;
+    }
+
+    @include on-desktop {
+      width: $width-mobile-content;
+    }
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #e8e8f066;
+    }
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: $spacing-sm;
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: $height-full;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+
+    overflow: hidden;
+
+    width: $width-full;
+    height: $height-full;
+
+    object-fit: cover;
+
+    transition: transform $effectDuration ease-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: $spacing-xs;
+
+    font-size: $fs-24;
+    font-weight: $font-weight-bold;
+    line-height: $lh-unit-relaxed;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: $fs-16;
+    font-weight: $font-weight-regular;
+    line-height: $lh-unit-relaxed;
+  }
+}

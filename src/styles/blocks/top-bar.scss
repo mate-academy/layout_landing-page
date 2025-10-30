@@ -1,0 +1,63 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: $spacing-md;
+
+  @include on-tablet {
+    padding-block: $spacing-lg-custom;
+  }
+
+  &__icons {
+    display: flex;
+    gap: $spacing-md;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: $height-custom-sm;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: $height-input;
+    }
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    gap: $spacing-phone-gap;
+    align-items: center;
+  }
+
+  &__phone-number {
+    overflow: hidden;
+
+    max-width: 0;
+
+    font-size: $fs-12;
+    font-weight: $font-weight-bold;
+    line-height: $lh-px-16;
+    color: $color-text-light;
+    text-decoration: none;
+    white-space: nowrap;
+
+    opacity: 0;
+
+    @include on-desktop {
+      transition:
+        max-width $effectDuration ease,
+        opacity $effectDuration ease;
+    }
+  }
+
+  @include on-desktop {
+    &__phone-wrapper:hover &__phone-number {
+      max-width: $width-max;
+      opacity: 1;
+    }
+  }
+}
