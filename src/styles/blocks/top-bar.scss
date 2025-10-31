@@ -1,0 +1,68 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 25px;
+
+  @include onTablet {
+    padding-block: 50px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 55px;
+    }
+  }
+
+  &__phone-trigger {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__phones {
+    pointer-events: none;
+
+    position: absolute;
+    top: -105%;
+    right: 100%;
+
+    padding-right: 16px;
+
+    text-align: right;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      opacity $effectDuration,
+      visibility $effectDuration;
+
+    @include onMobile {
+      padding-right: 10px;
+    }
+  }
+
+  &__phone-trigger:hover &__phones,
+  &__phone-trigger:focus-within &__phones {
+    pointer-events: all;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include onTablet {
+      height: 65px;
+    }
+  }
+}
