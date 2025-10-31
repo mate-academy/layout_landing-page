@@ -1,0 +1,89 @@
+// @import './utils/mixins';
+
+.header {
+  &__phone-number {
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  color: #292929;
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+  pointer-events: none;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .header__icons:hover .header__phone-number,
+  .icon--phone:hover + .header__phone-number {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  box-sizing: border-box;
+
+  height: 100vh;
+  background-image: url(/header.png);
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+  &__logo {
+    @include header-logo;
+    @include header-icon-hover (transform, scale($--transform-scale));
+  }
+
+  &__bottom {
+    @include header-bottom;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+
+    @include header-icons-gap;
+  }
+
+  &__title {
+    font-family: "Space Grotesk", sans-serif;
+    margin: 0;
+
+    @include header-title;
+
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: 0;
+
+    background: linear-gradient(270deg, #3498db, #9b59b6, #e74c3c, #f1c40f, aqua, #000);
+    background-size: 800% 800%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradient 4s linear infinite;
+  }
+}
+
+  @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
