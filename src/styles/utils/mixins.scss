@@ -1,0 +1,68 @@
+@use './variables.scss' as v;
+
+@mixin page-grid {
+  --colums: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 6;
+
+    column-gap: 24px;
+
+    grid-column: 1 / 3;
+    font-size: 23px;
+  }
+
+  @include on-desktop {
+    --colums: 12;
+
+    grid-column: 1 / 4;
+    font-size: 64px;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: v.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: v.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constent-padding-inline() {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 20px;
+  }
+
+  @include on-desktop {
+    padding-inline: 20px;
+    max-width: 1020px;
+    margin-inline: auto;
+
+    // padding-inline: 120px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  @include constent-padding-inline;
+}
+
+@mixin input-field {
+  font-family: v.$font-family;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+}

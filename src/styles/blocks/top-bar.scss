@@ -1,0 +1,63 @@
+@use '../utils/mixins';
+@use '../utils/variables' as v;
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+
+  @include mixins.on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .number-appearance {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__additional-phone {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    color: transparent;
+  }
+
+  .number-appearance:hover {
+    .icon--phone {
+      transform: rotate(90deg);
+    }
+
+    @include mixins.on-desktop {
+      .top-bar__additional-phone {
+        opacity: 1;
+        color: v.$main-text-color;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // .icon--phone {
+  //   // padding-right: 9px;
+
+  //   // transition: transform 0.3s ease-in-out;
+  // }
+
+  &__logo {
+    display: flex;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  &__logo:hover {
+    display: flex;
+    transform: translateY(-5px);
+  }
+}
