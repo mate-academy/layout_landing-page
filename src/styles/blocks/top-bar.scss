@@ -1,0 +1,63 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+
+  @include constent-padding-inline;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__phone {
+    pointer-events: none;
+
+    position: absolute;
+    right: 50px; // отступ от иконки телефона
+    transform: translateX(10px);
+
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition: all 0.3s ease;
+
+    @include on-tablet {
+      font-size: 16px;
+    }
+
+    &-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      @include on-desktop {
+        &:hover .top-bar__phone {
+          transform: translateX(-10px); // вылетает влево
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
