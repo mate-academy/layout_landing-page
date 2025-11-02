@@ -1,0 +1,49 @@
+@use '../utils/mixins' as mixins;
+@use '../utils/variables' as vars;
+
+.explore-online {
+  &__items {
+    @include mixins.page-grid;
+
+    gap: 48px;
+    margin-top: 48px;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    line-height: 0;
+
+    @include mixins.on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 4;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+
+    @include mixins.hover(scale, (1.05));
+  }
+
+  &__name {
+    margin-top: 32px;
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+    text-align: center;
+    color: vars.$page-secondary-text-color;
+  }
+
+  &__description {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 4px;
+
+    text-align: center;
+    line-height: 27px;
+  }
+}

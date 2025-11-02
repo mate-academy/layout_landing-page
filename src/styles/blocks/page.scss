@@ -1,0 +1,43 @@
+@use '../utils/mixins' as mixins;
+@use '../utils/variables' as vars;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  color: vars.$main-page-text-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all vars.$effectDuriation;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0%);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}

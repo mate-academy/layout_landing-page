@@ -1,0 +1,146 @@
+@use '../utils/mixins' as mixins;
+@use '../utils/variables' as vars;
+
+.contacts {
+  &__wrapper {
+    display: grid;
+
+    margin-top: 48px;
+    margin-bottom: 100px;
+    gap: 48px;
+    grid-template-columns: 237px 1fr;
+
+    @include mixins.on-tablet {
+      column-gap: 75px;
+      grid-template-rows: 185px 1fr;
+      margin-bottom: 160px;
+    }
+
+    @include mixins.on-desktop {
+      @include mixins.page-grid;
+
+      margin-bottom: 150px;
+    }
+  }
+
+  &__item {
+    &--address {
+      grid-column: 1 / -2;
+
+      @include mixins.on-desktop {
+        grid-column: span 3;
+      }
+    }
+
+    &--form {
+      grid-column: span 2;
+
+      @include mixins.on-tablet {
+        grid-column: -2 / -1;
+        grid-row: 1 / -1;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: 8 / -1;
+      }
+    }
+  }
+
+  &__name {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+
+  &__phone {
+    display: inline-block;
+    margin-top: 4px;
+    margin-bottom: 8px;
+
+    text-decoration: none;
+    color: vars.$main-page-text-color;
+    font-weight: bold;
+
+    @include mixins.hover(color, vars.$button-hover-color);
+  }
+
+  &__address {
+    margin-top: 4px;
+    font-weight: bold;
+    color: vars.$main-page-text-color;
+    text-decoration: none;
+
+    @include mixins.hover(color, vars.$button-hover-color);
+  }
+
+  &__form {
+    & > :first-child {
+      margin-top: 0;
+    }
+
+    &-input {
+      box-sizing: border-box;
+      width: 100%;
+
+      margin-top: 16px;
+      padding: 15px 0 15px 11px;
+
+      border: none;
+      background: #f8f8fa;
+
+      &--textarea {
+        height: 144px;
+        margin-bottom: 32px;
+      }
+
+      &::placeholder {
+        font-family: 'Cinzel', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+
+        color: #7e7e83;
+      }
+    }
+  }
+
+  // menu styles
+
+  &-info-menu {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+      color: vars.$main-menu-text-color;
+      text-decoration: none;
+    }
+
+    &__phone {
+      display: block;
+      color: vars.$main-menu-text-color;
+      text-decoration: none;
+
+      @include mixins.hover(color, #000);
+    }
+
+    &__call {
+      display: block;
+      width: fit-content;
+      color: vars.$main-menu-text-color;
+      text-decoration: none;
+
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      margin-top: 16px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid vars.$main-menu-text-color;
+    }
+
+    &__divider {
+      height: 8px;
+    }
+  }
+}
