@@ -38,28 +38,24 @@
   }
 
   &__contacts-tip {
-    visibility: hidden;
-    height: 0;
-    width: 0;
+    display: none;
 
     @include mixins.on-desktop {
-      height: auto;
-      width: auto;
-      padding: 10px;
+      display: block;
+      padding: 10px 20px;
 
       position: absolute;
       opacity: 0;
       pointer-events: none;
       visibility: hidden;
       transform: translateY(-55%);
-      left: -290px;
+      left: -240px;
       transition: all vars.$effectDuriation;
 
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 700;
-      line-height: 30px;
+      line-height: 27px;
       text-align: right;
-      letter-spacing: 1px;
       text-transform: uppercase;
       color: #fff;
     }
@@ -81,11 +77,13 @@
   &__phone {
     position: relative;
 
-    &:hover .top-bar__contacts-tip,
-    .top-bar__contacts-tip:hover {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+    @include mixins.on-desktop {
+      &:hover .top-bar__contacts-tip,
+      .top-bar__contacts-tip:hover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
     }
   }
 }
