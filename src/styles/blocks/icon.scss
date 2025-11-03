@@ -1,0 +1,89 @@
+.icon {
+  display: flex;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--number {
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    font-weight: 700;
+    color: $main-text-color;
+    text-decoration: none;
+    letter-spacing: 2px;
+    line-height: 16px;
+
+    @media (max-width: 1199px) {
+    display: none;
+    }
+}
+
+  &--phone {
+    background-image: url(../icons/Icon-Phone-call.svg);
+
+    &:hover {
+      .icon--number {
+        visibility: visible;
+      }
+    }
+  }
+  &--menu {
+    background-image: url(../icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+  &--close {
+    background-image: url(../icons/Icon-Close.svg);
+    margin-right: 15px;
+  }
+}
+
+.phone {
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  &__number {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(20px);
+    font-size: 12px;
+    font-weight: 700;
+    color: $main-text-color;
+    letter-spacing: 2px;
+    line-height: 16px;
+    opacity: 0;
+    display: none;
+    white-space: nowrap;
+    transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  }
+
+  @include on-desktop {
+    & .phone__number {
+      display: block;
+    }
+  }
+
+  @include on-desktop {
+    &:hover .phone__number {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-55px);
+    }
+  }
+}
