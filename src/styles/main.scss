@@ -1,3 +1,682 @@
-body {
+// -----------------------------
+// Variables
+// -----------------------------
+$color-bg: #1d1d1d;
+$color-white: #fff;
+$color-off: #c2c2c2;
+$color-dark: #1d1d1d;
+$font-family: 'Poppins', sans-serif;
+$break-sm: 576px;
+$break-md: 744px;
+$break-lg: 1260px;
+$break-xl: 1680px;
+$container-max: 1260px;
+
+// -----------------------------
+// Mixins
+// -----------------------------
+@mixin respond-max($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin respond-min($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+// -----------------------------
+// Reset & Base
+// -----------------------------
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+li,
+p {
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $color-white;
+  background-color: $color-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: $font-family;
+  line-height: 140%;
+  overflow-x: hidden;
+}
+
+a {
+  color: $color-off;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+// -----------------------------
+// Utility Classes
+// -----------------------------
+.title {
+  letter-spacing: -1px;
+  color: $color-white;
+  white-space: nowrap;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+
+  @include respond-min($break-md) {
+    font-size: 3rem;
+  }
+
+  @include respond-min($break-lg) {
+    font-size: 4rem;
+  }
+}
+
+.description {
+  color: $color-white;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.text-bold {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.btn {
+  color: $color-dark;
+  cursor: pointer;
+  background-color: $color-white;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  padding: 14.5px 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+}
+
+// -----------------------------
+// Burger & Close Icons
+// -----------------------------
+.burger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  transition: all 0.2s ease-in-out;
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: $color-white;
+    transition: all 0.2s ease-in-out;
+
+    &:nth-child(2) {
+      width: 66%;
+    }
+
+    &:nth-child(3) {
+      width: 33%;
+    }
+  }
+}
+
+.close-icon {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease-in-out;
+  display: block;
+  position: relative;
+  transform: rotate(90deg);
+
+  &__line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform-origin: 50%;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: $color-dark;
+
+    &:first-child {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    &:nth-child(2) {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+}
+
+// -----------------------------
+// Global Image & Card Rules (moved up to fix descending specificity)
+// -----------------------------
+picture > img,
+a picture > img {
+  transition: all 0.2s ease-in-out;
+}
+
+a picture > img {
+  transform: scale(1.1);
+}
+
+.bike-card,
+.details__img-wrapper > a {
+  display: block;
+  overflow: hidden;
+}
+
+// -----------------------------
+// Header
+// -----------------------------
+.header {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../images/bike-bg-big.84d2f7c0.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+
+  @include respond-max($break-md) {
+    background-image: url('../images/bike-bg-744.e8aed2ec.jpg');
+  }
+
+  @include respond-max(480px) {
+    background-image: url('../images/bike-bg-320.jpg');
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 20px;
+    width: 100%;
+    max-width: $container-max;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+
+    @include respond-min($break-lg) {
+      padding: 36px 120px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: transparent;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: auto;
+      height: 32px;
+
+      @include respond-max($break-md) {
+        height: 28px;
+      }
+    }
+  }
+
+  &__nav--icons-container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include respond-max($break-sm) {
+      gap: 20px;
+    }
+  }
+
+  .call-icon {
+    position: relative;
+
+    &::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      left: -140px;
+      top: 6px;
+      color: $color-white;
+      font-size: 12px;
+      font-weight: 700;
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    @include respond-max($break-md) {
+      &:hover::before {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__title {
+    color: $color-white;
+    letter-spacing: -1.5px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: 700;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+
+    @include respond-max($break-md) {
+      font-size: 64px;
+      top: 65%;
+    }
+
+    @include respond-max(560px) {
+      font-size: 36px;
+      top: 70%;
+    }
+  }
+}
+
+// -----------------------------
+// Page Menu
+// -----------------------------
+.page__menu {
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .menu {
+    color: $color-dark;
+    text-transform: uppercase;
+    background-color: $color-off;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 24px 20px;
+
+    &__links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: #e5e5e5;
+    }
+
+    &__list {
+      margin: 48px 0 40px;
+    }
+
+    &__item {
+      margin-bottom: 32px;
+
+      a {
+        color: $color-dark;
+        font-size: 22px;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+
+        &::before {
+          content: '';
+          opacity: 0;
+          background-color: $color-dark;
+          width: 0;
+          height: 1px;
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          width: 100%;
+        }
+      }
+    }
+
+    &__footer {
+      a {
+        font-size: 16px;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        p {
+          border-bottom: 1px solid $color-dark;
+          margin-top: 16px;
+          padding-bottom: 5px;
+          font-size: 12px;
+          font-weight: 600;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------
+// About Us
+// -----------------------------
+.about-us {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 80px 0 0;
+  padding: 0 20px;
+  max-width: $container-max;
+  justify-content: flex-start;
+
+  @include respond-min($break-md) {
+    flex-direction: row;
+    margin-top: 120px;
+  }
+
+  &__title {
+    flex: 0 0 10%;
+    margin-left: 10%;
+  }
+
+  &__description {
+    flex: 0 0 90%;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 140%;
+    max-width: 480px;
+    margin-left: 100px;
+  }
+}
+
+// -----------------------------
+// Compare
+// -----------------------------
+.compare {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  gap: 40px;
+  margin: 120px auto 0;
+  padding: 0 20px;
+  max-width: $container-max;
+
+  @include respond-min($break-lg) {
+    margin-top: 160px;
+  }
+
+  &__cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+
+    @include respond-min($break-lg) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 24px;
+    }
+  }
+
+  .bike-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 392px;
+    margin: 0 auto;
+
+    &__img {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &__title {
+      margin-bottom: 0.5rem;
+    }
+
+    &__desc {
+      margin-bottom: 1rem;
+    }
+
+    &__price {
+      font-weight: 700;
+      text-align: left;
+    }
+  }
+}
+
+// -----------------------------
+// Details
+// -----------------------------
+.details {
+  margin: 120px auto 0;
+  padding: 0 20px;
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__card-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .details__img-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      width: 100%;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+
+    .details__img {
+      flex: 0 0 auto;
+      height: 320px;
+      width: auto;
+      min-width: 140px;
+      max-width: calc(100% - 24px);
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__card .details__img {
+      height: 220px;
+      min-width: 120px;
+      max-width: none;
+    }
+  }
+
+  &__button {
+    width: 278px;
+    margin: 64px auto 0;
+    display: block;
+
+    @include respond-min($break-md) {
+      width: 392px;
+    }
+
+    @include respond-min($break-lg) {
+      width: 324px;
+    }
+  }
+}
+
+// -----------------------------
+// Contacts
+// -----------------------------
+.contacts {
+  margin: 160px auto 80px;
+  padding: 0 20px;
+  max-width: $container-max;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    @include respond-min($break-md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 80px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 320px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: none;
+      height: 148px;
+    }
+
+    .contacts__button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-style: normal;
+
+    .contacts__detail {
+      .contacts__label {
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 140%;
+        display: block;
+      }
+
+      .contacts__value {
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: $color-off;
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------
+// Footer
+// -----------------------------
+.footer {
+  background-image: url('../images/f-l.5733f50f.jpg');
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 50vh;
+  position: relative;
+  bottom: 0;
+  left: 0;
 }
