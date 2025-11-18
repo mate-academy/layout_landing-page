@@ -1,0 +1,83 @@
+.header {
+  @include header-padding;
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 480px;
+
+  background-color: var(--bg-header);
+  background-image: url(../images/backgrounds/header_bike-fhd-1.webp),
+    url(../images/backgrounds/header_bk.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+
+  @include on-tablet {
+    background-position: center;
+    background-size: contain, cover;
+    height: 628px;
+  }
+
+  @include on-desktop {
+    height: 100vh;
+  }
+
+  &__top {
+    display: grid;
+    grid-template:
+      'logo list icons' 1fr
+      'center center center' 1fr
+      / 1fr 1fr 1fr;
+
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      top: 36px;
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+  }
+
+  &__icons {
+    grid-column: 3 / -1;
+    justify-content: end;
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__title {
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    line-height: 100%;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--font-primary);
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: end;
+    height: 100%;
+    width: 100%;
+  }
+}

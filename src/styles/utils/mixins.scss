@@ -1,0 +1,121 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin header-padding {
+  @include content-padding-inline;
+
+  padding-top: 24px;
+  padding-bottom: 88px;
+
+  @include on-tablet {
+    padding-top: 36px;
+    padding-bottom: 130px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 203px;
+  }
+}
+
+@mixin main-padding {
+  @include content-padding-inline;
+
+  max-width: 1260px;
+  margin-inline: auto;
+
+  padding-top: 60px;
+  padding-bottom: 120px;
+
+  @include on-tablet {
+    padding-top: 120px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 182px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.2s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+
+  @include no-hover-on-touch;
+}
+
+@mixin page-grid {
+  --grid-columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+
+  @include on-tablet {
+    --grid-columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --grid-columns: 12;
+  }
+}
+
+@mixin content-title-fonts {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  margin-bottom: 8px;
+}
+
+@mixin content-description-fonts {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+@mixin no-hover-on-touch {
+  @media (hover: none), (pointer: coarse) {
+    &:hover:not(:active) {
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      transform: none !important;
+      color: var(--font-secondary) !important;
+    }
+  }
+}
+
+@mixin no-hover-on-touch-icons {
+  @media (hover: none), (pointer: coarse) {
+    &:hover:not(:active) {
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      transform: none !important;
+      background-color: transparent !important;
+      color: inherit !important;
+      border-color: inherit !important;
+    }
+  }
+}

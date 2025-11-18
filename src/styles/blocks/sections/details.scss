@@ -1,0 +1,116 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-bottom: 120px;
+    gap: 120px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 180px;
+    gap: 180px;
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__button {
+    height: 56px;
+
+    @include page-grid;
+
+    &-link {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: 2 / -2;
+      }
+
+      @include on-desktop {
+        grid-column: 5 / -5;
+      }
+    }
+  }
+}
+
+.detail {
+  &__container {
+    position: relative;
+    display: flex;
+    gap: 20px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    width: 100%;
+    transition:
+      width 0.2s ease,
+      aspect-ratio 0.3s ease;
+    aspect-ratio: 1 / 1;
+
+    &--wide {
+      @include on-tablet {
+        width: 166%;
+        aspect-ratio: 3 / 1;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include hover(transform, scale(1.05));
+
+    @include on-desktop {
+      min-height: $details-min-height;
+    }
+
+    &--reverse {
+      transform: scaleX(-1);
+      &:hover {
+        transform: scaleX(-1) scale(1.05);
+      }
+
+      @include no-hover-on-touch;
+    }
+  }
+
+  &__title {
+    @include content-title-fonts;
+  }
+
+  &__description-container {
+    @include page-grid;
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+
+    @include content-description-fonts;
+
+    @include on-desktop {
+      grid-column: 1 / 9;
+    }
+  }
+}
