@@ -1,0 +1,162 @@
+@use '../mixins';
+
+// ===== Details Section =====
+.details {
+  padding-top: 80px;
+
+  @include mixins.for-tablet-up {
+    padding-top: 120px;
+  }
+
+  @include mixins.for-laptop-up {
+    padding-top: 180px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include mixins.for-tablet-up {
+      gap: 60px;
+    }
+
+    @include mixins.for-laptop-up {
+      justify-content: center;
+      gap: 48px;
+    }
+  }
+}
+
+// ===== Feature Card =====
+.feature-card {
+  text-align: left;
+
+  &__images {
+    @include mixins.responsive-grid(2, 20px, 6, 24px, 12, 24px);
+
+    margin-bottom: 16px;
+    align-items: stretch;
+    overflow: hidden;
+
+    &__link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      line-height: 0;
+      width: 100%;
+      height: auto;
+
+      /* Mobile: 1 column each */
+      grid-column: span 1;
+
+      /* Tablet: first image 4 cols, second 2 cols */
+      @include mixins.for-tablet-up {
+        &:first-child {
+          grid-column: span 4;
+        }
+
+        &:last-child {
+          grid-column: span 2;
+        }
+      }
+
+      /* Laptop: first image 8 cols, second 4 cols */
+      @include mixins.for-laptop-up {
+        &:first-child {
+          grid-column: span 8;
+        }
+
+        &:last-child {
+          grid-column: span 4;
+        }
+      }
+
+      img {
+        display: block;
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+
+        @include mixins.for-tablet-up {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    &--reversed {
+      .feature-card__images__link {
+        /* Tablet: reversed - first 2 cols, second 4 cols */
+        @include mixins.for-tablet-up {
+          &:first-child {
+            grid-column: span 2;
+          }
+
+          &:last-child {
+            grid-column: span 4;
+          }
+        }
+
+        /* Laptop: reversed - first 4 cols, second 8 cols */
+        @include mixins.for-laptop-up {
+          &:first-child {
+            grid-column: span 4;
+          }
+
+          &:last-child {
+            grid-column: span 8;
+          }
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0 0 8px;
+
+    @include mixins.for-tablet-up {
+      font-size: 28px;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: 32px;
+    }
+  }
+
+  &__description {
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0;
+
+    @include mixins.for-tablet-up {
+      font-size: 16px;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: 16px;
+    }
+  }
+}

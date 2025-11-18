@@ -1,0 +1,50 @@
+@use '../mixins';
+
+.nav {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    font-weight: 600;
+
+    @include mixins.for-laptop-up {
+      font-weight: 700;
+    }
+
+    width: fit-content;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background-color: #1d1d1d;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      color: #000;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}

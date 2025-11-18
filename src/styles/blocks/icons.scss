@@ -1,0 +1,92 @@
+@use '../mixins';
+
+.header__icons {
+  display: flex;
+  gap: 24px;
+
+  @include mixins.for-tablet-up {
+    gap: 32px;
+  }
+
+  @include mixins.for-laptop-up {
+    gap: 32px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @include mixins.for-tablet-up {
+    width: 32px;
+    height: 32px;
+  }
+
+  @include mixins.for-laptop-up {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(./../icons/Icon-Phone-call.svg);
+    &--number {
+      display: none;
+    }
+
+    @include mixins.for-laptop-up {
+      &--wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+      }
+
+      &--number {
+        display: block;
+        align-self: center;
+        color: #fff;
+        font-family: inherit;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: right;
+        text-transform: uppercase;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateX(4px);
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+    }
+  }
+
+  &--phone:hover ~ .icon--phone--number {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  &--menu {
+    background-image: url(./../icons/Icon-Burger-menu.svg);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  &--menu:hover {
+    background-image: url(./../icons/Icon-Burger-menu-hover.svg);
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  &--close {
+    background-image: url(./../icons/Icon-Close.svg);
+  }
+}

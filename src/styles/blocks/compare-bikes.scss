@@ -1,0 +1,113 @@
+@use '../mixins';
+
+// ===== Compare Bikes Section =====
+.compare-bikes {
+  padding-top: 92px;
+  margin: 0;
+
+  @include mixins.for-tablet-up {
+    padding-top: 120px;
+  }
+
+  @include mixins.for-laptop-up {
+    padding-top: 144px;
+  }
+
+  &__cards {
+    @include mixins.responsive-grid(1, 20px, 6, 24px, 12, 24px);
+
+    justify-items: stretch;
+  }
+}
+
+// ===== Bike Card =====
+.bike-card {
+  text-align: left;
+  grid-column: #{mixins.$compare-bikes-card-mobile-columns};
+
+  @include mixins.for-tablet-up {
+    grid-column: #{mixins.$compare-bikes-card-tablet-columns};
+  }
+
+  @include mixins.for-laptop-up {
+    grid-column: #{mixins.$compare-bikes-card-desktop-columns};
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 32px;
+
+    @include mixins.for-laptop-up {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__link {
+    display: block;
+    overflow: hidden;
+    line-height: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0 0 8px;
+
+    @include mixins.for-tablet-up {
+      font-size: 28px;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: 32px;
+    }
+  }
+
+  &__description {
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0 0 16px;
+
+    @include mixins.for-tablet-up {
+      font-size: 16px;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: 16px;
+    }
+  }
+
+  &__price {
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0;
+
+    @include mixins.for-tablet-up {
+      font-size: 28px;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: 32px;
+    }
+  }
+}

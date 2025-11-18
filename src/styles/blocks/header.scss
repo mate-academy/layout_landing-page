@@ -1,0 +1,99 @@
+@use '../mixins';
+
+.header {
+  background-image: url(./../images/Cover_photo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 86% center;
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include mixins.for-tablet-up {
+    background-position: center;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+
+    @include mixins.for-tablet-up {
+      padding: 36px 0;
+    }
+
+    @include mixins.for-laptop-up {
+      padding: 36px 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 88px;
+
+    @include mixins.for-tablet-up {
+      padding-bottom: 130px;
+    }
+
+    @include mixins.for-laptop-up {
+      padding-bottom: 203px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    width: 100%;
+    align-self: center;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    color: #fff;
+
+    @include mixins.for-tablet-up {
+      font-size: 64px;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: 80px;
+    }
+  }
+
+  &__logo {
+    line-height: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    // BEM element for logo image
+    &-img {
+      display: block;
+      height: auto;
+      width: auto;
+      max-width: 100%;
+
+      // Tablet and up: fixed height
+      @include mixins.for-tablet-up {
+        height: 56px;
+        width: 187px;
+      }
+
+      // Laptop: keep same or override if needed
+      @include mixins.for-laptop-up {
+        height: 56px;
+        width: 187px;
+      }
+    }
+  }
+}

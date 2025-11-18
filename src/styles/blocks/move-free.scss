@@ -1,0 +1,67 @@
+@use '../mixins';
+
+// ===== Move Free Section =====
+.move-free {
+  padding: 40px 0 0;
+
+  @include mixins.responsive-grid(2, 20px, 6, 24px, 12, 24px);
+
+  @include mixins.for-tablet-up {
+    padding: 120px 0 0;
+    align-items: start;
+  }
+
+  @include mixins.for-laptop-up {
+    padding: 120px 0 0;
+  }
+
+  &__title {
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    margin: 0 0 32px;
+
+    /* On mobile the title should span both columns */
+    grid-column: 1 / -1;
+
+    @include mixins.for-tablet-up {
+      font-size: 48px;
+      margin: 0;
+
+      /* On tablet title occupies first 3 of 6 columns */
+      grid-column: 1 / 4;
+    }
+
+    @include mixins.for-laptop-up {
+      font-size: mixins.$desktop-title-font-size;
+      grid-column: 1 / 5;
+    }
+  }
+
+  &__description {
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0;
+    max-width: 100%;
+
+    /* On mobile the description spans both columns under the title */
+    grid-column: 1 / -1;
+
+    @include mixins.for-tablet-up {
+      max-width: 100%;
+
+      /* On tablet description occupies columns 4-6 */
+      grid-column: 4 / -1;
+    }
+
+    @include mixins.for-laptop-up {
+      max-width: 100%;
+      grid-column: 6 / 12;
+    }
+  }
+}

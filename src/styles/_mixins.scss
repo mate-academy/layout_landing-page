@@ -1,0 +1,93 @@
+// ============================================
+// DESIGN TOKENS & RESPONSIVE MIXINS
+// ============================================
+
+// Breakpoints
+$mobile: 320px;
+$tablet: 744px;
+$laptop: 1260px;
+
+// Grid helpers
+$container-max-width-desktop: 1260px;
+$grid-gap-mobile: 20px;
+$grid-gap-tablet: 24px;
+$grid-gap-desktop: 24px;
+$compare-bikes-card-mobile-columns: '1 / -1';
+$compare-bikes-card-tablet-columns: '2 / -2';
+$compare-bikes-card-desktop-columns: 'span 4';
+$desktop-title-font-size: 64px;
+$section-title-mobile-columns: '1 / -1';
+$section-title-tablet-columns: '2 / -2';
+$section-title-desktop-columns: '4 / -4';
+
+// ============================================
+// MIXIN: Media Queries
+// ============================================
+
+// Mobile first approach - tablet and up
+@mixin for-tablet-up {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+// Laptop and up
+@mixin for-laptop-up {
+  @media (min-width: $laptop) {
+    @content;
+  }
+}
+
+// Tablet only (between tablet and laptop)
+@mixin for-tablet-only {
+  @media (min-width: $tablet) and (max-width: calc($laptop - 1px)) {
+    @content;
+  }
+}
+
+// Mobile only (less than tablet)
+@mixin for-mobile-only {
+  @media (max-width: calc($tablet - 1px)) {
+    @content;
+  }
+}
+
+// Mixins
+@mixin responsive-grid(
+  $mobile-columns: 1,
+  $mobile-gap: $grid-gap-mobile,
+  $tablet-columns: 6,
+  $tablet-gap: $grid-gap-tablet,
+  $desktop-columns: 12,
+  $desktop-gap: $grid-gap-desktop
+) {
+  display: grid;
+  grid-template-columns: repeat($mobile-columns, minmax(0, 1fr));
+  gap: $mobile-gap;
+
+  @include for-tablet-up {
+    grid-template-columns: repeat($tablet-columns, minmax(0, 1fr));
+    gap: $tablet-gap;
+  }
+
+  @include for-laptop-up {
+    grid-template-columns: repeat($desktop-columns, minmax(0, 1fr));
+    gap: $desktop-gap;
+  }
+}
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $container-max-width-desktop;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include for-tablet-up {
+    padding: 0 72px;
+  }
+
+  @include for-laptop-up {
+    padding: 0 120px;
+  }
+}
