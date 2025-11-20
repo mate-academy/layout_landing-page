@@ -1,0 +1,119 @@
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__description {
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    @include on-desktop {
+      max-width: 66.67%;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 278px;
+    height: 56px;
+
+    background-color: #fff;
+    border-radius: 40px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: #000;
+    text-decoration: none;
+
+    padding: 0 48px;
+    margin: 32px auto 0;
+    transition:
+      box-shadow 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      color: #000;
+      box-shadow: 1px 4px 16px 0 #e8e8f066;
+    }
+
+    &:focus,
+    &:active {
+      color: #000;
+      box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+      outline: none;
+    }
+
+    @include on-tablet {
+      width: 392px;
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      margin-top: 40px;
+    }
+  }
+}
