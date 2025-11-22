@@ -1,0 +1,48 @@
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    @include on-desktop {
+      &--header {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    z-index: 2;
+    display: block;
+    position: relative;
+    align-content: center;
+    text-transform: uppercase;
+
+    &::after {
+      opacity: 0;
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: var(--font-secondary);
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      left: 0;
+      transform: scale(1);
+    }
+  }
+}
