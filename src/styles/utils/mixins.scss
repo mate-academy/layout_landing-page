@@ -1,0 +1,80 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  padding-inline: $padding-inline-mobile;
+
+  @include on-tablet {
+    padding-inline: $padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: $padding-inline-desktop;
+  }
+}
+
+@mixin content-padding-block {
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+}
+
+@mixin content-padding-bottom {
+  padding-bottom: 40px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+}
+
+.container {
+  @include content-padding-in-line;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  $column: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat($column, 1fr);
+
+  @include on-tablet {
+    $column: 6;
+
+    column-gap: 24px;
+    grid-template-columns: repeat($column, 1fr);
+  }
+
+  @include on-desktop {
+    $column: 12;
+
+    grid-template-columns: repeat($column, 1fr);
+  }
+}
+
+@mixin font-size($weight, $size, $line-height, $letter-spacing) {
+  font-weight: #{$weight};
+  font-size: #{$size};
+  line-height: #{$line-height};
+  letter-spacing: #{$letter-spacing};
+}
