@@ -1,0 +1,75 @@
+@use './variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $content-max-width) {
+    @content;
+  }
+}
+
+@mixin on-large-screen {
+  @media (min-width: $large-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: $content-max-width;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+
+  @include on-large-screen {
+    padding-inline: 0;
+  }
+}
+
+@mixin page-grid() {
+  display: grid;
+
+  --columns: 2;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin section-spacing($row-gap: 48px) {
+  display: flex;
+  flex-direction: column;
+  row-gap: $row-gap;
+}
+
+@mixin font-values-main($weight, $size) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: 27px;
+  letter-spacing: 0;
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

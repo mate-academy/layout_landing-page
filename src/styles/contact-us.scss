@@ -1,0 +1,112 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.contact-us {
+  box-sizing: border-box;
+
+  @include section-spacing;
+
+  &__wrapper {
+    @include page-grid;
+
+    width: 100%;
+  }
+
+  &__container {
+    @include section-spacing(48px);
+
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 24px;
+      grid-column: span 7;
+    }
+
+    @include on-large-screen {
+      gap: $inner-gap;
+    }
+  }
+}
+
+.contacts-block {
+  box-sizing: border-box;
+
+  @include font-values-main(400, 16px);
+
+  &__info {
+    text-decoration: none;
+    margin-bottom: 8px;
+
+    &--name {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    &--details {
+      display: block;
+      margin-bottom: 8;
+      color: $text-dark-color;
+      font-weight: 700;
+      line-height: 140%;
+      transition: color $animation-speed;
+
+      &:hover {
+        color: $main-accent-color;
+      }
+    }
+  }
+}
+
+.inputs-block {
+  grid-column: span 2;
+  box-sizing: border-box;
+
+  @include section-spacing(16px);
+
+  @include on-tablet {
+    grid-column: 4 / 7;
+  }
+
+  @include on-desktop {
+    grid-column: 8 / -1;
+  }
+
+  &__input {
+    font-family: $main-font;
+    box-sizing: border-box;
+    background-color: $input-color;
+    border: none;
+    height: 48px;
+    padding: 10px 14px;
+
+    &--message {
+      height: 144px;
+      resize: none;
+    }
+
+    &::placeholder {
+      font-family: $main-font;
+      color: $placeholder-color;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+    }
+
+    &:hover {
+      border: 1px solid $border-hover-color;
+    }
+    &:hover::placeholder {
+      color: $text-dark-color;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $text-dark-color;
+    }
+  }
+}

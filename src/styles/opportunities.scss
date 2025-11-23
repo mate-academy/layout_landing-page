@@ -1,0 +1,88 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.opportunities {
+  box-sizing: border-box;
+
+  &__item {
+    @include page-grid;
+
+    margin-top: $inner-gap;
+    row-gap: $inner-gap;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-rows: min-content;
+  row-gap: 24px;
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: 2 / span 4;
+    row-gap: 32px;
+  }
+
+  @include on-desktop {
+    grid-row: 1;
+
+    &--a {
+      grid-column: 1 / 5;
+    }
+
+    &--b {
+      grid-column: 5 / 9;
+    }
+
+    &--c {
+      grid-column: 9 / -1;
+    }
+  }
+
+  &__images {
+    width: auto;
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+  }
+
+  &__image {
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform $animation-speed;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  &__info {
+    @include section-spacing(4px);
+
+    align-content: start;
+    text-align: center;
+
+    &--name {
+      margin: 0;
+      color: $main-accent-color;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+      letter-spacing: 0;
+    }
+
+    &--description {
+      margin: 0;
+      font-family: $secondary-font;
+
+      @include font-values-main(400, 16px);
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.button {
+  width: auto;
+  padding: 0;
+  height: 56px;
+  font-family: $main-font;
+
+  @include font-values-main(600, 16px);
+
+  border: none;
+  text-align: center;
+  background-color: $main-accent-color;
+  color: $text-main-color;
+  transition:
+    background-color $animation-speed,
+    transform $animation-speed;
+
+  &--view {
+    @include on-tablet {
+      margin: 0 auto;
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+
+  &:hover {
+    background-color: $button-hover-color;
+    transform: scale(1.04);
+  }
+
+  &:active {
+    background-color: $button-pressed-color;
+  }
+}

@@ -1,0 +1,74 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.icon {
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  cursor: pointer;
+  transition: background-image $animation-speed;
+
+  &--menu {
+    background-image: url(../icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.svg);
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: 0;
+    right: 150px;
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+
+    transition: opacity $animation-speed;
+  }
+
+  &__tooltip-line {
+    @include font-values-main(700, 12px);
+
+    color: $text-main-color;
+    white-space: nowrap;
+    text-align: right;
+    text-decoration: none;
+
+    &--link {
+      cursor: pointer;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &--phone {
+    background-image: url(../icons/icon-phone-call.svg);
+    background-repeat: no-repeat;
+
+    @include on-desktop {
+      &:hover .icon__tooltip {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}

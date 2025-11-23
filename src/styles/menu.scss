@@ -1,0 +1,103 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $main-accent-color;
+  color: $text-main-color;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: opacity $animation-speed;
+  overflow: auto; /* to scroll the menu if needed */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__top {
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    margin: 0 auto;
+    max-width: $content-max-width;
+    display: grid;
+    grid-template-rows: min-content;
+    row-gap: 32px;
+    padding-top: 25px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      padding-top: 50px;
+    }
+
+    @include on-desktop {
+      row-gap: $inner-gap;
+    }
+  }
+
+  &__contacts {
+    @include font-values-main(600, 16px);
+
+    padding: 0;
+    margin: 0;
+
+    @include section-spacing(8px);
+  }
+
+  &__title {
+    margin: 0;
+    display: block;
+  }
+
+  &__link {
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color $animation-speed;
+
+    &:hover {
+      color: $text-dark-color;
+    }
+  }
+
+  &__call-to-order {
+    margin-top: 8px;
+    width: fit-content;
+    text-decoration: none;
+    color: $text-main-color;
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $text-main-color;
+
+      transition: transform $animation-speed;
+      transform: scale(0);
+      transform-origin: left;
+    }
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
