@@ -1,0 +1,59 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: $mobile-margin;
+
+  @include on-tablet {
+    max-width: $tablet-max-width;
+    margin-inline: auto;
+    padding-inline: $tablet-margin;
+  }
+
+  @include on-desktop {
+    max-width: $desktop-max-width;
+    margin-inline: auto;
+    padding-inline: $desktop-margin;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: $property $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid() {
+  --columns: #{$mobile-columns};
+
+  display: grid;
+  column-gap: $mobile-gutter;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: #{$tablet-columns};
+
+    column-gap: $tablet-gutter;
+  }
+
+  @include on-desktop {
+    --columns: #{$desktop-columns};
+
+    column-gap: $desktop-gutter;
+  }
+}
