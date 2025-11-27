@@ -1,0 +1,46 @@
+@use '../utils/variables' as vars;
+
+/* #region page */
+.page {
+  font-family: vars.$font-primary; // 'Space Grotesk', sans-serif
+  color: vars.$main-text-color;
+  font-size: vars.$font-size-base; // 16px
+  line-height: vars.$line-height-plus; // 140%
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+
+    // stylelint-disable-next-line selector-max-id
+    // &:has(#menu:target) {
+    //   overflow: hidden;
+    // }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+
+    transition: all vars.$effect-duration; // 0.3s
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+/* #endregion page */

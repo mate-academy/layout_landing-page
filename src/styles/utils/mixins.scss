@@ -1,0 +1,111 @@
+@use '../utils/variables' as vars;
+
+@mixin on-tablet {
+  @media (min-width: vars.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vars.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} vars.$effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: vars.$space-lg; // 24px
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin button-states {
+  font-size: vars.$font-size-base; // 16px
+  line-height: 27px;
+  letter-spacing: 0;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  border-radius: vars.$radius-md; // 8px
+  cursor: pointer;
+  transition:
+    background-color vars.$effect-duration,
+    // 0.3s
+    border-color vars.$effect-duration; // 0.3s
+
+  // DEFAULT STATE
+  background-color: vars.$main-text-color;
+  color: #fff;
+  border: 2px solid transparent;
+
+  // HOVER
+  &:hover {
+    background-color: vars.$color-bg-light; // #f8f8fa
+    color: vars.$main-text-color;
+    border-color: vars.$color-border-light; // #f0f1f4
+  }
+
+  // PRESSED
+  &:active {
+    background-color: vars.$color-dark; // #111
+    color: vars.$color-white; // #fff
+    border-color: transparent;
+  }
+}
+
+@mixin form-reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+}
+
+@mixin form-field {
+  border-radius: vars.$radius-md; // 8px
+  background-color: vars.$color-bg-light; // #f8f8fa
+  font-family: vars.$font-secondary; // 'Space Mono', monospace
+  font-size: 14px;
+  line-height: vars.$line-height-plus; // 140%
+  color: vars.$main-text-color;
+  border: 1px solid transparent;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+
+  &:hover {
+    border-color: #d5d7de;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #141414;
+    background-color: vars.$color-white; // #fff
+  }
+}

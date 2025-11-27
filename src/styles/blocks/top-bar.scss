@@ -1,0 +1,74 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mixins;
+
+/* #region top-bar */
+.top-bar {
+  padding-block: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixins.on-tablet {
+    padding-block: 36px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: vars.$space-lg; // 24px
+  }
+
+  .icon--phone {
+    position: relative;
+
+    &::after {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 100%;
+      margin-right: 12px;
+      top: 50%;
+      transform: translateY(-50%) translateX(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity vars.$effect-duration,
+        transform vars.$effect-duration,
+        visibility vars.$effect-duration;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: vars.$main-text-color;
+      white-space: nowrap;
+
+      @include mixins.on-tablet {
+        display: none;
+      }
+
+      @include mixins.on-desktop {
+        display: inline-block;
+      }
+    }
+
+    &:hover::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 125px;
+    height: vars.$space-md; // 16px
+
+    @include mixins.hover(transform, scale(1.2));
+
+    @include mixins.on-tablet {
+      width: 172px;
+      height: vars.$space-lg; // 24px
+    }
+  }
+}
+
+/* #endregion top-bar */

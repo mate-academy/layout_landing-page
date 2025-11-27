@@ -1,0 +1,43 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mixins;
+
+.about-us {
+  @include mixins.page-grid;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__description {
+    margin: 0;
+    font-family: 'Space Mono', sans-serif;
+    font-weight: 400;
+    font-size: vars.$font-size-base; // 16px
+    line-height: vars.$line-height-plus; // 140%
+    letter-spacing: 0;
+  }
+
+  &__description + &__description {
+    margin-top: 1em;
+  }
+}
