@@ -1,24 +1,44 @@
 # Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+Project Description
 
-Choose a design for your landing page:
+This project is a responsive landing page created based on the selected Figma design. The goal of the task is to reproduce the layout and styling using modern front-end technologies. The page consists of several sections and is implemented block by block according to the tutorial videos.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+Technologies Used
+ • HTML5
+ • SCSS / SASS
+ • JavaScript (ES6+)
+ • Flexbox / Grid
+ • Responsive layout
+ • GitHub Pages (deployment)
+
+Links
+ • Demo: https://AngelaStrechen.github.io/layout_landing-page/
+ • Design (Figma)
 - [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
-Follow the instructions in this and next lessons to implement the page block by block:
+How to Run the Project Locally
+1. Clone the repository:
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+git clone https://github.com/AngelaStrechen/layout_landing-page.git
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+2. Navigate to the project folder:
+
+cd layout_landing-page
+
+ 3. Install dependencies (if using npm / parcel / vite):
+
+npm install
+
+4. Start the local server:
+
+npm start
+
+5. Open in your browser:
+
+http://localhost:3000/
+
+Additional Notes
+ • In SCSS, make sure your image paths are relative to main.scss, meaning they should start with:
+../images/...
+ • If some checklist items do not apply to the chosen design, you can simply skip them.

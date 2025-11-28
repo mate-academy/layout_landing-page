@@ -1,0 +1,89 @@
+.page {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $white;
+  font-weight: 400;
+  letter-spacing: 1px;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    background-color: #1d1d1d;
+  }
+
+  &__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #c2c2c2;
+
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.text {
+  margin: 0;
+}
+
+.main {
+  &__content {
+    display: grid;
+    row-gap: 60px;
+    padding-block: 80px;
+
+    @include onTablet {
+      padding-block: 120px;
+      row-gap: 120px;
+    }
+
+    @include onDesktop {
+      padding-block: 120px;
+      row-gap: 180px;
+    }
+  }
+}
+
+.button {
+  width: 100%;        // ← дозволяє розтягуватися в гріді
+  height: 56px;
+  border: 0;
+  border-radius: 40px;
+
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  transition: all $effectDuration ease;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #E8E8F066;
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: 1px 4px 16px 0 #E8E8F0A3;
+    }
+  }
+
+.footer__image {
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+  z-index: -1;
+}
