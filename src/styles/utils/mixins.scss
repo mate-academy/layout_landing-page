@@ -1,0 +1,27 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: $grid-column-gap--mobile;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: $grid-column-gap--tablet;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    margin-top: 56px;
+  }
+}
