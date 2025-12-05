@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  background-color: $color-page-background;
+  scroll-behavior: smooth;
+  font-family: $font-primary;
+  color: $color-white;
+}
+
+.page {
+  font-size: 16px;
+  line-height: 140%;
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $effect-duration ease;
+    box-sizing: border-box;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.header {
+  height: 100vh;
+  background-size: cover;
+  background-position: right center;
+  background-image: url(../images/bike-background.png);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 64px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+    }
+  }
+
+  &__bottom {
+    padding: 0 20px 88px;
+
+    @include onTablet {
+      padding: 0 20px 130px;
+    }
+
+    @include onDesktop {
+      padding: 0 20px 203px;
+    }
+  }
+}
+
+.top-bar {
+  padding: 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include onTablet {
+    padding: 36px 72px;
+  }
+
+  @include onDesktop {
+    padding: 36px 120px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    position: relative;
+  }
+
+  .icon.icon--phone {
+    position: relative;
+    display: inline-block;
+  }
+
+  .icon--phone--hover {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 20px);
+    transform: translateY(-50%) translateX(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity $effect-duration ease,
+      transform $effect-duration ease,
+      visibility $effect-duration;
+
+    color: $color-white;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: $font-primary;
+    letter-spacing: 2px;
+    line-height: 16px;
+    white-space: nowrap;
+
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .icon.icon--phone:hover .icon--phone--hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  &__logo {
+    display: flex;
+
+    img {
+      display: block;
+      height: 38px;
+      width: 130px;
+      object-fit: contain;
+
+      @include onTablet {
+        height: 56px;
+        width: 187px;
+      }
+
+      @include onDesktop {
+        height: 56px;
+        width: 187px;
+      }
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &--phone {
+    background-image: url(../images/icon-phone-call.png);
+  }
+
+  &--menu {
+    background-image: url(../images/icon-burger-menu.png);
+  }
+
+  &--close {
+    background-image: url(../images/button.png);
+  }
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  @include onDesktop {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+  padding: 0;
+  height: 100vh;
+  background-color: $color-menu-bg;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    padding-inline: 20px;
+
+    @include onTablet {
+      padding-inline: 72px;
+    }
+
+    @include onDesktop {
+      padding-inline: 121px;
+    }
+  }
+
+  &__phone-number {
+    margin-bottom: 16px;
+    display: block;
+    color: $color-dark-grey;
+    text-decoration: none;
+  }
+
+  &__book-a-test-ride {
+    display: block;
+    color: $color-dark-grey;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $color-dark-grey;
+    width: fit-content;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    color: $color-dark-grey;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    display: inline-block;
+      position: relative;
+  }
+
+  &__link::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: -8px;
+    height: 1px;
+    width: 100%;
+    background-color: #000000;
+    transition: transform $effect-duration;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &__link:hover::after {
+    transform: scale(1);
+  }
+}
