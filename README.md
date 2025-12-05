@@ -1,24 +1,58 @@
-# Landing Page
+[ENG]
+1. Project Overview:
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+Name: BIKE New Version
 
-Choose a design for your landing page:
+Purpose: A responsive website, a bicycle shop, that displays correctly on phones, tablets, and desktops.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Main Features:
 
-Follow the instructions in this and next lessons to implement the page block by block:
+1) Information about bicycles and services.
+2) Easy browsing and navigation on any device.
+3) Responsive design based on the Figma layout, ensuring comfortable usage on different screen sizes.
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+2. Technologies Used:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+The project was implemented using:
+1) HTML5 — semantic page markup.
+2) CSS3 (Grid) — layout, responsiveness, and styling.
+3) Sass (SCSS) — variables, mixins, and style organization.
+4) Figma — design layout and asset export.
+
+3. Preview Link:
+https://pupsao.github.io/layout_landing-page/
+
+4. Figma Design Link:
+https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=6103-67&t=rFSzj8RZC5YevzfL-0
+
+
+[UA]
+1. Короткий опис проєкту:
+
+Назва: BIKE New Version
+
+Призначення: Адаптивний вебсайт, магазин велосипедів, який коректно відображається на телефонах, планшетах та десктопах.
+
+Основні функції:
+
+1) Інформація про велосипеди та послуги.
+2) Зручний перегляд та навігація на будь-якому пристрої.
+3) Адаптивний дизайн згідно з макетом Figma, який забезпечує комфортне користування сайтом на різних екранах.
+
+
+2. Технології, які було використано:
+
+Проєкт реалізовано з використанням:
+
+HTML5 — семантична розмітка сторінки.
+CSS3 (Grid) — верстка, адаптивність, стилі.
+Sass (SCSS) — змінні, міксини, організація стилів.
+Figma — макет дизайну та експорт активів.
+
+3. Посилання на прев'ю:
+
+https://pupsao.github.io/layout_landing-page/
+
+4. Посилання на макет:
+
+https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=6103-67&t=rFSzj8RZC5YevzfL-0
