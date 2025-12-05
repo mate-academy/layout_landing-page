@@ -1,7 +1,7 @@
+@use './utils/mixins' as *;
 /* #region header */
 .header {
   box-sizing: border-box;
-  padding: 24px 20px 40px;
   height: 100vh;
   background-image: url(/images/header-bg-mobile.png);
   background-size: cover;
@@ -10,32 +10,110 @@
   flex-direction: column;
   justify-content: space-between;
 
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__icons {
-    display: flex;
-    gap: 24px;
-  }
-
   &__title {
+    margin: 0;
     font-weight: 700;
     font-size: 36px;
     line-height: 100%;
     color: #fff;
   }
+
+  &__bottom {
+    padding-bottom: 40px;
+    @include contentPaddingInline;
+  }
 }
+
 /* #endregion */
 
 /* #region menu */
+.top-bar {
+  padding-block: 24px;
+  @include contentPaddingInline;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+    @include onTablet {
+    padding-block: 32px;
+  }
+
+    &__logo {
+      display: flex;
+    }
+
+    &__logo-img {
+      max-width: 152px;
+
+      @media (min-width: 576px) {
+      max-width: 228px;
+      }
+    }
+
+    &__icons {
+    display: flex;
+    gap: 24px;
+  }
+}
+
 .menu {
   box-sizing: border-box;
-  padding: 24px 20px 40px;
   height: 100vh;
   background-color: #F9F9F9;
+  font-weight: 700;
+
+  &__top {
+    margin-bottom: 32px;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    @include contentPaddingInline;
+  }
+
+  &__phone-number {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
+  &__call-to-order {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    margin: 16px 0;
+    width: fit-content;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #1B2129;
+    text-transform: uppercase;
+  }
+}
+
+/* #endregion */
+
+/* #region nav */
+.nav__link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+}
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 /* #endregion */
 
@@ -44,6 +122,13 @@
   display: block;
   height: 24px;
   width: 24px;
+  background-image: url(/images/icons/icon-burger-menu.png);
+  background-size: cover ;
+
+  @include onTablet {
+    height: 32px;
+    width: 32px;
+  }
 
   &--phone {
   background-image: url(/images/icons/icon-phone.png);
