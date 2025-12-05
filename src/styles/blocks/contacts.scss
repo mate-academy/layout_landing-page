@@ -1,0 +1,92 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.contacts {
+  &__form {
+    &-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: $contacts-form-inputs-gap;
+      margin-bottom: $contacts-form-inputs-margin-bottom;
+    }
+
+    &--input {
+      box-sizing: border-box;
+      height: $contacts-form-input-height;
+      padding-left: $contacts-form-input-padding-left;
+      color: $contacts-form-input-color;
+      background-color: $contacts-form-input-background-color;
+      border-style: none;
+      border-radius: $contacts-form-input-border-radius;
+      transition: all $transition-duration;
+
+      &:hover {
+        border: 1px solid #dbdbdb;
+        color: $contacts-form-input-hover-color;
+      }
+
+      &:hover::placeholder {
+        color: $contacts-form-input-hover-color;
+      }
+
+      &:active {
+        border: 2px solid $contacts-form-input-active-border-color;
+      }
+
+      &:focus {
+        border: 2px solid $contacts-form-input-active-border-color;
+      }
+    }
+
+    &--textarea {
+      box-sizing: border-box;
+      font-family: Manrope, sans-serif;
+      height: $contacts-form-textarea-height;
+      padding-left: $contacts-form-input-padding-left;
+      padding-top: $contacts-form-padding;
+      color: $contacts-form-input-color;
+      background-color: $contacts-form-input-background-color;
+      border-style: none;
+      border-radius: $contacts-form-input-border-radius;
+      transition: all $transition-duration;
+      resize: none;
+
+      &:hover {
+        border: 1px solid #dbdbdb;
+        color: $contacts-form-input-hover-color;
+      }
+
+      &:hover::placeholder {
+        color: $contacts-form-input-hover-color;
+      }
+
+      &:active {
+        border: 2px solid $contacts-form-input-active-border-color;
+      }
+
+      &:focus {
+        border: 2px solid $contacts-form-input-active-border-color;
+      }
+    }
+  }
+
+  &__button {
+    @include desktop-view {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  @include desktop-view {
+    grid-column: span 6;
+  }
+}
+
+.contacts-footer-container {
+  display: grid;
+
+  @include desktop-view {
+    grid-template-columns: repeat(12, 1fr);
+    gap: $contacts-footer-container-gap-desktop;
+  }
+}

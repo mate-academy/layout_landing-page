@@ -1,0 +1,53 @@
+@use './variables' as *;
+
+@mixin tablet-view {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin desktop-view {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: $content-padding-inline-mobile;
+
+  @include tablet-view {
+    padding-inline: $content-padding-inline-tablet;
+  }
+
+  @include desktop-view {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: $content-padding-inline-desktop;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: $page-grid-column-gap-mobile;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include tablet-view {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: $page-grid-column-gap-tablet;
+  }
+
+  @include desktop-view {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}

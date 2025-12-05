@@ -1,0 +1,77 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.about {
+  background-color: #fcfaef;
+  padding-bottom: $about-padding-bottom;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $about-container-column-gap-mobile;
+    margin-bottom: $about-container-margin-bottom;
+
+    @include tablet-view {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: $about-container-column-gap-tablet;
+    }
+
+    @include desktop-view {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__image {
+    height: $about-image-height-mobile;
+    margin-bottom: $about-image-margin-bottom-mobile;
+
+    &--background {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @include tablet-view {
+      height: $about-image-height-tablet;
+      margin-bottom: $about-image-margin-bottom-tablet;
+    }
+
+    @include desktop-view {
+      height: $about-image-height-desktop;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    line-height: 48px;
+
+    @include tablet-view {
+      grid-column: 1 / 4;
+      font-size: $about-title-font-size-tablet;
+    }
+
+    @include desktop-view {
+      grid-column: 1 / 7;
+      font-size: $about-title-font-size-desktop;
+    }
+  }
+
+
+  &__description {
+    margin: 0;
+    grid-column: 1 / -1;
+    letter-spacing: $about-description-letter-spacing;
+    font-size: $about-description-font-size;
+    font-weight: 400;
+    line-height: 140%;
+
+    @include tablet-view {
+      grid-column: 4 / 7;
+    }
+
+    @include desktop-view {
+      grid-column: 8 / -1;
+    }
+  }
+}
