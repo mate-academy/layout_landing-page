@@ -1,0 +1,40 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: $nav-list-gap;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font-size: $nav-link-font-size;
+    line-height: $nav-link-line-height;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -$nav-underline-offset;
+      display: block;
+      height: $nav-underline-height;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transform: scale(0);
+      transition: transform $transition-duration;
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

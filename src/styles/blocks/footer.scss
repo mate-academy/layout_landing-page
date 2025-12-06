@@ -1,0 +1,48 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.footer {
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: $footer-items-gap;
+    margin-bottom: $footer-items-margin-bottom-mobile;
+
+    @include tablet-view {
+      margin-bottom: $footer-items-margin-bottom-tablet;
+    }
+
+    @include desktop-view {
+      margin-bottom: $footer-items-margin-bottom-desktop;
+    }
+  }
+
+  &__label {
+    color: $footer-label-color;
+    font-weight: 400;
+    font-size: $footer-label-font-size;
+    letter-spacing: $letter-spacing;
+    margin-bottom: $footer-label-margin-bottom;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: $main-text-color;
+    font-weight: 400;
+    font-size: $footer-link-font-size;
+    letter-spacing: $letter-spacing;
+    transition: all $transition-duration;
+
+    &:hover {
+      color: $footer-link-hover-color;
+      text-decoration: underline;
+      transform: scale($footer-link-hover-scale);
+    }
+  }
+
+  @include desktop-view {
+    grid-column: 8 / span 5;
+    padding-top: $footer-padding-top-desktop;
+  }
+}
