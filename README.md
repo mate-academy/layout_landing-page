@@ -1,24 +1,32 @@
-# Landing Page
+WARNING!!!
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+I don't know why, but my photos aren't showing up in the category section. I don't have these problems on localhost.
 
-Choose a design for your landing page:
+Landing Page — Nothing
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+This is a landing page tutorial project based on the Nothing design mockup from Figma. The project demonstrates responsive layout, modern design, and the use of the SCSS preprocessor.
 
-Follow the instructions in this and next lessons to implement the page block by block:
+Technologies used:
+HTML5
+SCSS (Sass)
+CSS3
+Flexbox and Grid
+JavaScript
+Git & GitHub
+GitHub Pages
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+GitHub Pages: https://br0no.github.io/layout_landing-page/
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Figma: https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6802-139&p=f&t=XWS3i4tyu9bP1d7S-0
+
+Instructions for launching a project locally:
+
+Clone the repository: git clone https://github.com/your-username/your-repo-name.git
+
+Go to the project folder: cd your-repo-name
+
+Set dependencies: npm install
+
+Launch the project: npm start
+
+Open in browser: http://localhost:3000
