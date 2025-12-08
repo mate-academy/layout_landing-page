@@ -1,0 +1,391 @@
+@use '../utils/mixins' as mixins;
+@use 'vars' as *;
+
+.main {
+  --padding-top: 60px;
+
+  margin: 0 auto;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: $primary-color;
+
+  padding-top: var(--padding-top);
+  margin-bottom: 120px;
+
+  @include mixins.on-tablet {
+    --padding-top: 120px;
+
+    margin-bottom: 102px;
+  }
+
+  @include mixins.on-pc {
+    margin-bottom: 164px;
+  }
+
+  @include mixins.padding-inline;
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__btn {
+    color: $primary-color;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 56px;
+    background-color: $secondary-color;
+    border-radius: 40px;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #e8e8f066;
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+    }
+  }
+}
+
+.section {
+  margin-bottom: 92px;
+  padding-bottom: 18px;
+
+  @include mixins.on-tablet {
+    margin-bottom: 120px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 48px;
+    text-align: center;
+    font-size: 32px;
+    text-transform: capitalize;
+    letter-spacing: -1.5px;
+    line-height: 100%;
+
+    @include mixins.on-tablet {
+      font-size: 48px;
+    }
+
+    @include mixins.on-pc {
+      font-size: 64px;
+    }
+  }
+}
+
+.move-free {
+  @include mixins.page-grid;
+
+  @include mixins.on-tablet {
+    margin-bottom: 132px;
+  }
+
+  @include mixins.on-pc {
+    margin-bottom: 164px;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+
+    @include mixins.on-tablet {
+      grid-column: span 3;
+    }
+
+    @include mixins.on-pc {
+      grid-column: span 5;
+    }
+
+    text-align: start;
+    margin-bottom: 32px;
+  }
+
+  &__descr {
+    grid-column: 1/-1;
+
+    @include mixins.on-tablet {
+      grid-column: span 3;
+    }
+
+    @include mixins.on-pc {
+      grid-column: span 6;
+    }
+
+    font-weight: 500;
+    font-size: 23px;
+  }
+}
+
+.compare-bikes {
+  @include mixins.on-pc {
+    margin-bottom: 144px;
+  }
+
+  &__title {
+    @include mixins.on-pc {
+      margin-bottom: 56px;
+    }
+  }
+
+  .bikes {
+    @include mixins.page-grid;
+
+    row-gap: 40px;
+
+    @include mixins.on-tablet {
+      row-gap: 48px;
+    }
+
+    .bike {
+      grid-column: 1/-1;
+
+      @include mixins.on-tablet {
+        grid-column: 2 / -2;
+      }
+
+      @include mixins.on-pc {
+        grid-column: span 4;
+      }
+
+      &__image {
+        width: 100%;
+        margin-bottom: 32px;
+      }
+
+      &__price {
+        margin: 0;
+
+        font-weight: 700;
+        font-size: 24px;
+      }
+
+      &__descr {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+.details {
+  margin-bottom: 80px;
+
+  @include mixins.on-tablet {
+    margin-bottom: 120px;
+  }
+
+  @include mixins.on-pc {
+    margin-bottom: 180px;
+  }
+
+  @include mixins.page-grid;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include mixins.on-pc {
+      margin-bottom: 48px;
+    }
+  }
+
+  .features {
+    grid-column: 1 / -1;
+
+    .feat {
+      margin-bottom: 40px;
+
+      @include mixins.on-tablet {
+        margin-bottom: 48px;
+      }
+
+      &__images {
+        margin-bottom: 16px;
+
+        @include mixins.page-grid;
+      }
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        grid-column: span 1;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease-in-out,
+          opacity 0.3s ease-in-out;
+
+        &--short {
+          @include mixins.on-tablet {
+            grid-column: span 2;
+          }
+
+          @include mixins.on-pc {
+            grid-column: span 4;
+          }
+        }
+
+        &--wide {
+          @include mixins.on-tablet {
+            grid-column: span 4;
+          }
+
+          @include mixins.on-pc {
+            grid-column: span 8;
+          }
+        }
+
+        &:hover {
+          transform: scale(0.98);
+          opacity: 0.66;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      grid-column: 2 /-2;
+    }
+
+    @include mixins.on-pc {
+      grid-column: span 4 / -5;
+    }
+  }
+}
+
+.contacts {
+  &__content {
+    @include mixins.page-grid;
+  }
+
+  &__form {
+    grid-column: 1/-1;
+    margin-bottom: 40px;
+
+    @include mixins.on-tablet {
+      grid-column: span 3;
+    }
+
+    @include mixins.on-pc {
+      grid-column: span 5;
+    }
+  }
+
+  &__info {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include mixins.on-tablet {
+      grid-column: span 2;
+    }
+
+    @include mixins.on-pc {
+      grid-column: 8 / span 3;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  &__link {
+    font-weight: 500;
+    color: $secondary-color;
+    text-decoration: none;
+
+    background-image: linear-gradient($secondary-color, $secondary-color);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+
+    transition:
+      background-size 400ms ease-in-out,
+      color 500ms ease-in-out;
+
+    &--address {
+      background-position: center;
+    }
+
+    &:hover {
+      background-size: 100% 100%;
+      color: $primary-color;
+    }
+  }
+}
+
+.form {
+  %abstract-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 0.25em solid transparent;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+
+    &:hover {
+      border-color: #d5d7de;
+    }
+
+    &:focus {
+      border-color: #292929;
+    }
+  }
+
+  &__input {
+    height: 48px;
+    margin-bottom: 16px;
+    border-radius: 40px;
+
+    @extend %abstract-input;
+  }
+
+  &__txtarea {
+    margin-bottom: 32px;
+    border-radius: 16px;
+    max-width: 100%;
+
+    @extend %abstract-input;
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}
+
+.image-link {
+  display: flex;
+
+  @include mixins.hover-transition(transform, scale(1.1));
+}

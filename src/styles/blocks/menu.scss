@@ -1,0 +1,123 @@
+@use 'vars' as *;
+@use '../utils/mixins';
+
+$offset: 8px;
+
+.page__menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  transform: translateY(-100%);
+  transition: transform 0.4s ease-out;
+
+  &:target {
+    transform: translateX(0);
+  }
+}
+
+.menu {
+  height: 100vh;
+  overflow: auto;
+  z-index: 2;
+
+  background-color: $side-menu-bg-color;
+  color: $primary-color;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &__content {
+    margin-top: 24px;
+
+    @include mixins.padding-inline;
+
+    @include mixins.on-tablet {
+      margin-top: 8px;
+    }
+
+    @include mixins.on-pc {
+      font-weight: 700;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__phone-num {
+    display: block;
+    color: inherit;
+    line-height: 27px;
+  }
+
+  &__book-ride {
+    display: block;
+    position: relative;
+    width: fit-content;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    @include mixins.bottom-underline {
+      transform: scaleY(1);
+      transform-origin: bottom right;
+      transition: transform 400ms ease-out;
+    }
+  }
+
+  &__phone {
+    color: inherit;
+    text-decoration: none;
+
+    display: flex;
+    width: fit-content;
+    padding-bottom: $offset;
+
+    flex-direction: column;
+    gap: 16px;
+
+    &:hover {
+      .menu__book-ride::after {
+        transform: scaleY(3);
+        transform-origin: bottom left;
+      }
+    }
+  }
+}
+
+.nav {
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: 2px;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+    width: fit-content;
+    text-decoration: none;
+    color: inherit;
+
+    @include mixins.bottom-underline($size: 2px) {
+      transition: transform 0.3s ease-out;
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}

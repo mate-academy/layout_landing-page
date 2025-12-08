@@ -1,0 +1,76 @@
+@use 'vars' as *;
+@use '../utils/mixins';
+
+.icon {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  height: $icon-size-s;
+  width: $icon-size-s;
+
+  @include mixins.hover-transition(transform, scale(1.4) rotateZ(360deg));
+
+  @include mixins.on-tablet {
+    height: $icon-size-m;
+    width: $icon-size-m;
+  }
+
+  &--burger {
+    @include mixins.hover-transition(transform, scale(1.4) rotateY(-360deg));
+
+    background-image: url('/src/assets/icons/burger_icon.svg');
+
+    &:hover {
+      background-image: url('/src/assets/icons/burger-icon-hover.svg');
+    }
+  }
+
+  &--close {
+    background-image: url('/src/assets/icons/close_icon.svg');
+  }
+}
+
+.phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    background-image: url('/src/assets/icons/phone_icon.svg');
+  }
+
+  &__txt {
+    display: none;
+
+    @include mixins.on-pc {
+      display: inline-block;
+      position: absolute;
+      text-wrap: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      right: 100%;
+      z-index: -1;
+
+      transform-origin: right center;
+      transform: translateX(0) rotateY(-90deg) scale(0.86);
+      opacity: 0.1;
+      transition:
+        transform 340ms ease-in,
+        opacity 340ms ease-in;
+      transition-delay: 800ms;
+    }
+  }
+
+  &:hover {
+    .phone__txt {
+      opacity: 1;
+      transform: translateX(-20%) rotateY(0) scaleX(1);
+      transition-delay: 140ms;
+    }
+  }
+}
