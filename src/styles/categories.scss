@@ -1,0 +1,97 @@
+.categories {
+  &__wraper {
+    display: grid;
+    row-gap: $row-gap;
+
+    @include on-tablet {
+      row-gap: $row-gap-large;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: $margin-bottom-small;
+  }
+
+  &__link {
+    position: relative;
+    transition: transform $effectDuration;
+    cursor: pointer;
+
+    &:hover {
+      transform: $scale;
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $border-radius-small;
+  }
+  &__ title {
+    margin: 0;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-medium;
+    line-height: 140%;
+  }
+
+  &__cover {
+    padding-top: 96px;
+    position: relative;
+    width: calc(100% + 40px);
+    left: -20px;
+
+    @include on-tablet {
+      width: calc(100% + 144px);
+      left: -72px;
+    }
+
+    @include on-desktop {
+      width: calc(100% + 240px);
+      left: -120px;
+    }
+
+    &-img {
+      height: 200px;
+      background: center/cover no-repeat url('../images/cover-mobile.png');
+
+      @include on-tablet {
+        height: 400px;
+        background-image: url('../images/cover-tablet.png');
+      }
+
+      @include on-desktop {
+        height: 460px;
+        background-image: url('../images/cover-desctop.png');
+      }
+    }
+  }
+}
