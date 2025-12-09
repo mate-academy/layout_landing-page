@@ -1,24 +1,46 @@
-# Landing Page
+-----
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+PROJECT - Landing-page — THE MET
 
-Choose a design for your landing page:
+-----
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+DESCRIPTION
 
-Follow the instructions in this and next lessons to implement the page block by block:
+A simple responsive landing page based on the MET design. The main blocks implemented are: header, hero-section, content sections, contacts, and footer. The layout is implemented with basic responsiveness and accessibility in mind.
+This is a single-page promotional website aimed at presenting a cultural or artistic institution/event (e.g., a museum, exhibition, or cultural initiative), attracting visitors' attention, and encouraging action: buying a ticket, subscribing to a newsletter, or learning more about the program. The MET design emphasizes elegance, large visual content, and clear typography—all adapted into a simple, fast, and accessible layout.
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+-----
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+TECHNOLOGIES
+
+- Semantic HTML structure (header, main, footer, section).
+- Responsive layout using flexbox/grid and media queries.
+- Styles in SCSS with logical partials.
+- Contact form with basic HTML5 validation.
+
+-----
+
+DEMO
+
+[https://nastia7408.github.io/layout\_landing-page/](https://nastia7408.github.io/layout_landing-page/)
+
+-----
+
+DESIGN
+
+[https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
+
+-----
+
+INSTRUCTIONS
+
+1.  Clone the repository:
+    git clone [https://github.com/nastia7408/layout\_landing-page.git](https://github.com/nastia7408/layout_landing-page.git)
+2.  Navigate to the project folder:
+    cd \<repo\>
+3.  Install dependencies (if any):
+    npm install
+4.  Start the local development server:
+    npm start
+5.  Build the production bundle:
+    npm run build
