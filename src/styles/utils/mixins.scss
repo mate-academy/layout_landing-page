@@ -1,0 +1,90 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-time;
+
+  &:hover {
+    #{$property}: $toValue
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-input {
+  box-sizing: border-box;
+  padding: 16px;
+  background-color: #F8F8FA;
+  border-radius: 8px;
+  border: 1px solid transparent;
+
+  transition: transform
+    $effect-time,
+    border-color $effect-time,
+    background-color
+    $effect-time;
+
+
+  &:hover {
+    transform: scale(0.97);
+    border-color: #D5D7DE;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #292929;
+  }
+
+  &:active {
+    border-color: #292929;
+    transform: scale(0.95);
+  }
+
+  &::placeholder {
+    font-family: "Space Mono", monospace;
+    color: #7E7E83;
+  }
+
+  &:hover::placeholder {
+    transform: scale(0.99);
+    border-color: #D5D7DE;
+    color: $main-text-color;
+  }
+}
