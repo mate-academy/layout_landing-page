@@ -1,0 +1,112 @@
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: $headerTopPadding 0;
+
+  background-size: cover;
+  background-position: center;
+  background-image: url(../img/header.png);
+
+  @include on-tablet {
+    padding: 50px 0;
+  }
+
+  &__top {
+    @include top-actions;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    color: #fff;
+    letter-spacing: -1.5px;
+    text-align: center;
+    margin: 20vh 0 0;
+    transition: all 1s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      line-height: 80px;
+      margin-top: 10vh;
+    }
+  }
+
+  &__phones {
+    position: relative;
+  }
+
+  &__phone-menu {
+    position: absolute;
+    top: -250%;
+    right: 100%;
+
+    padding-right: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(20%);
+    transition:
+      all,
+      opacity 0.3s,
+      transform 0.5s;
+
+    @include on-desktop {
+      &:hover {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__call {
+    text-decoration: none;
+    cursor: pointer;
+
+    @include on-desktop {
+      &:hover + .header__phone-menu {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: all;
+      }
+    }
+  }
+
+  &__phone-list {
+    width: max-content;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__phone-property {
+    @extend %button-fonts;
+
+    text-transform: uppercase;
+    text-align: right;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__phone-link {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $colorAccent;
+    }
+  }
+}
