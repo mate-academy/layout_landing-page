@@ -1,0 +1,90 @@
+@use '../utils/mixin' as *;
+@use 'variables' as vars;
+
+.categories {
+  margin-bottom: 96px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  @include onTablet {
+    margin-bottom: 120px;
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 56px;
+    }
+  }
+
+
+
+  &__button {
+    margin-top: 40px;
+    grid-column: 1 / -1;
+    padding: 14px 0;
+    background-color: vars.$main-button-color;
+    color: vars.$white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+
+    @include onTablet {
+      margin-top: 56px;
+    }
+
+
+    @include onDesctop {
+      grid-column: 1 / 5;
+    }
+
+    &:hover {
+      background-color: vars.$button-send-color;
+      color: vars.$white;
+    }
+
+    &:active {
+      background-color: vars.$button-send-color;
+      color: vars.$white;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    @include onTablet {
+      grid-column: span 3;
+    }
+
+    @include onDesctop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    @include hover(transform, scale(1.1));
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-family: 'Menrope', sans-serif;
+    margin: 0;
+    font-size: 18px;
+    line-height: 140%;
+    font-weight: 700;
+    color: vars.$color-text;
+  }
+}

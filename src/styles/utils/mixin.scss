@@ -1,0 +1,62 @@
+@use '../blocks/variables' as vars;
+
+@mixin onTablet {
+  @media (min-width: vars.$table-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesctop {
+  @media (min-width: vars.$desctop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesctop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin pageGrid {
+  --colums: 2;
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include onTablet {
+    --colums: 6;
+    column-gap: 24px;
+  }
+
+  @include onDesctop {
+    --colums: 12;
+  }
+}
+
+@mixin cont-padding-inline {
+  padding-inline: 20px;
+
+  @include onDesctop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.container {
+  @include contentPaddingInline;
+}
