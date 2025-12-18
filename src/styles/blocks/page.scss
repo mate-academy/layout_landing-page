@@ -1,0 +1,38 @@
+.page {
+  font-family: $font;
+  font-size: 16px;
+  font-weight: $text-style-regular;
+  color: $main-color-light;
+  line-height: 140%;
+
+  background-color: $main-color-dark;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.3s;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}

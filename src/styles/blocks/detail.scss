@@ -1,0 +1,92 @@
+.details {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+
+  &__footer {
+    @include page-grid;
+  }
+
+  &__button {
+    width: 100%;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / span 4;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / span 4;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+    @include hover(transform, scale($transform-photo-scale));
+    &:hover {
+      z-index: 10;
+    }
+  }
+
+  &__description {
+    grid-column: -1 / 1;
+
+    @include on-desktop {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: $text-style-bold;
+    font-size: 24px;
+    line-height: 140%;
+
+    grid-column: -1 / 1;
+  }
+}
