@@ -1,0 +1,76 @@
+@use '../utils/mixins' as mixins;
+@use '../utils/variables' as vars;
+
+.top-bar{
+  padding-top: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixins.on-tablet{
+    padding-top: 50px;
+
+  }
+
+  &__logo-link{
+    display: flex;
+  }
+
+  &__logo{
+    height: 46px;
+    width: 64px;
+    display: block;
+    max-width: 100%;
+
+    @include mixins.hover(transform, scale(1.2));
+  }
+
+  &__icons{
+    display: flex;
+    gap: 24px;
+  }
+
+  &__contacts-tip{
+    display: none;
+    padding: 10px 15px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: right;
+    text-transform: uppercase;
+    color: vars.$color-white;
+    position: absolute;
+    transform: translateY(-55%);
+    left: -240px;
+    transition: all vars.$effectDuriation;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+
+    @include mixins.on-desktop{
+      display: block;
+    }
+  }
+
+  &__contacts-phone{
+    text-decoration: none;
+    color: vars.$color-white;
+  }
+
+  &__contacts-phone:first-of-type{
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  &__phone{
+    position: relative;
+
+    &:hover .top-bar__contacts-tip{
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
