@@ -15,6 +15,7 @@
     }
     ```
 12. Make it possible to scroll the menu if it is higher than the viewport;
+
     ```css
     .menu {
       overflow: auto; /* to scroll the menu if needed */
@@ -26,10 +27,11 @@
       background-color: #e5e5e5;
     }
     ```
+
 13. All form fields should be required and have correct types (`email`, `tel`, etc.)
 14. Placeholders should give examples of what should be added, to make the expected format clear
 15. The page shouldn't be reloaded on form submit, but the fields should be cleared. Use:
     ```html
-    <form onsubmit="this.reset(); return false;">
+    <form onsubmit="this.reset(); return false;"></form>
     ```
 16. Make the `footer` sticky at the bottom with `z-index: -1` to get a `fixed` background effect.
