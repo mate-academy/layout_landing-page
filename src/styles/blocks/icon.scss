@@ -3,6 +3,9 @@
   height: 24px;
   width: 24px;
   background-size: cover;
+  background-repeat: no-repeat;
+
+  transition: all 0.3s ease;
 
   @include hover(transform, scale(1.2));
 
@@ -13,6 +16,39 @@
 
   &--phone {
   background-image: url(../img/icons/Icon-Phone-call.svg);
+
+    @include on-desktop {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: auto;
+      background-position: right center;
+      padding-right: 52px;
+      background-size: 32px auto;
+
+      .icon__text {
+        display: block;
+        position: absolute;
+        color: $main-text-color;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        line-height: 16px;
+        text-align: right;
+        letter-spacing: 2px;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-width 0.4s ease-in-out, opacity 0.4s ease-in-out;
+      }
+
+      &:hover {
+        .icon__text {
+          max-width: 200px;
+          opacity: 1;
+        }
+      }
+    }
   }
 
   &--menu {
@@ -27,5 +63,3 @@
     background-image: url(../img/icons/Icon-Close.svg);
   }
 }
-
-
