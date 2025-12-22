@@ -1,14 +1,16 @@
 .phone-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
 
-  @include onDesktop {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    cursor: pointer;
+  &__text {
+    display: none;
 
-    &__text {
-      max-width: 0;
-      opacity: 0;
+    @include onDesktop {
+      display: block;
+      max-width: 0;        /* Але його ширина 0 */
+      opacity: 0;          /* Він прозорий */
       overflow: hidden;
       white-space: nowrap;
 
@@ -17,10 +19,11 @@
       font-size: 12px;
       line-height: 16px;
       letter-spacing: 2px;
-
       transition: max-width 0.4s ease, opacity 0.3s ease, margin-right 0.3s ease;
     }
+  }
 
+  @include onDesktop {
     &:hover {
       .phone-wrapper__text {
         max-width: 138px;
