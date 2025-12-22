@@ -1,0 +1,108 @@
+.section {
+  @include grid-layout;
+
+  &__title {
+    margin-bottom: $marg-sections-title;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 64px;
+
+      &--last {
+        font-size: 48px;
+        font-weight: 600;
+      }
+    }
+
+    &--align-left {
+      justify-self: start;
+
+      @include on-tablet {
+        font-size: 48px;
+      }
+    }
+  }
+
+  &.move-free {
+    .text-move-free {
+      @extend %text-info-product;
+
+      font-weight: 500;
+      font-size: 23px;
+
+      @include on-tablet {
+        grid-column: 4 / -1;
+        grid-row: 1;
+      }
+
+      @include on-desktop {
+        grid-column: span 6 / 12;
+      }
+    }
+  }
+
+  &.compare {
+    .products-grid-rows {
+      grid-column: 1 / -1;
+      display: grid;
+      row-gap: 40px;
+
+      @include on-desktop {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: $gap-large;
+      }
+    }
+  }
+
+  &.contact-us {
+    .contact-form {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 5;
+      }
+    }
+    .contact-block {
+      grid-column: 1 / -1;
+      margin-top: 48px;
+
+      &__item:nth-child(2) {
+        margin-block: 24px;
+      }
+
+      &__label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 140%;
+      }
+
+      &__value {
+        font-weight: 500;
+
+        @include contacts-link-hover;
+      }
+
+      @include on-tablet {
+        grid-column: span 3;
+        margin: 0;
+      }
+
+      @include on-desktop {
+        grid-column: 8 / -1;
+      }
+    }
+  }
+}
