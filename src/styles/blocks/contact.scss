@@ -51,16 +51,22 @@
     }
 
     @include on-desktop {
-      grid-template-columns: 1fr 360px;
+      grid-template-columns: repeat(12, 1fr);
       gap: 40px;
     }
   }
 
-  &__wrapper-form {
+  &-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
     max-width: 480px;
+
+    @include on-desktop{
+        grid-column: 1 / 7;
+        max-width: none;
+
+    }
   }
 
   &__input {
@@ -139,7 +145,11 @@
 
   &__info {
     cursor: pointer;
-    
+    @include on-desktop {
+        grid-column: 8 / 13;
+        gap: 40px;
+      }
+
     &-title {
       display: flex;
       margin-bottom: 8px;
@@ -151,10 +161,10 @@
       line-height: 140%;
       letter-spacing: 0.15px;
 
-      @include on-desktop {
-        grid-column: 8 / 12;
-        gap: 40px;
-      }
+      // @include on-desktop {
+      //   grid-column: 8 / 13;
+      //   gap: 40px;
+      // }
     }
     &-item {
       margin-bottom: 24px;
