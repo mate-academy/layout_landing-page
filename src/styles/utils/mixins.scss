@@ -1,0 +1,82 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include content-padding-in-line;
+
+  max-width: 100%;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  height: 56px;
+  background-color: $main-text-color;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: #f8f8fa;
+    border: 2px solid #f0f1f4;
+    color: #292929;
+    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
+  }
+
+  @include hover(transform, scale(1.03));
+}
