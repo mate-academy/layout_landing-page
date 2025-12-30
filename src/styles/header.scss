@@ -1,0 +1,235 @@
+@use 'globals' as *;
+
+.header {
+  height: 100vh;
+  background-image: url(../images/header_bg.png);
+  background-position: center center;
+  background-size: auto 100%;
+
+  &__bar-wrapper {
+    position: relative;
+  }
+
+  &__bar {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include from($w-md) {
+      top: 50px;
+    }
+  }
+
+  &__logo {
+    height: 46px;
+  }
+
+  &__buttons-block {
+    display: flex;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+
+    @include from($w-md) {
+      gap: 59px;
+    }
+  }
+
+  &__action {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  // #region call-action contacts
+  &__contacts summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &__contacts summary::-webkit-details-marker {
+    display: none;
+  }
+
+  &__contacts-popup {
+    position: absolute;
+    right: 127px;
+    top: -1px;
+    z-index: 10;
+
+    width: 201px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: end;
+    gap: 8px;
+
+    @include from($w-md) {
+      top: -37px;
+    }
+  }
+
+  .header__action--phone:hover + .header__contacts-popup {
+    display: flex;
+  }
+
+  &__contacts-item {
+    text-align: end;
+  }
+
+  &__contacts-title,
+  &__contacts-phone {
+    color: #fff;
+    font-family: $font-main;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+
+  &__contacts-phone {
+    text-decoration: none;
+  }
+
+  // #endregion
+
+  &__title {
+    position: relative;
+    top: 200px;
+
+    color: #fff;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include from($w-md) {
+      top: 256px;
+
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include from($w-lg) {
+      top: 198px;
+
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+
+  .header__menu-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: $c-main;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .header__menu-wrapper:target {
+    display: block;
+    transform: translateY(0);
+  }
+
+  &__menu-inner {
+    position: relative;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    @include from($w-md) {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+  }
+
+  .header__menu {
+    position: relative;
+    height: 100%;
+    padding-top: 32px;
+  }
+
+  .header__action--close-menu {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    color: #fff;
+    font-size: 32px;
+    text-decoration: none;
+  }
+
+  .header__menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+  }
+
+  &__menu-link {
+    color: #fff;
+    font-family: $font-main;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__menu-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 48px;
+  }
+
+  &__menu-contact {
+    color: #fff;
+    font-family: $font-main;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+
+  &__menu-place,
+  &__menu-phone {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__menu-call {
+    color: #fff;
+    font-family: $font-main;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}
