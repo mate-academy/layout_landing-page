@@ -3,5 +3,6 @@ module.exports = {
   plugins: [
     "stylelint-scss"
   ],
+  ignoreFiles: ["src/dist/**/*"],
   rules: {}
 };
