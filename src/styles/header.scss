@@ -1,0 +1,42 @@
+@use './vars' as *;
+@use './mixins' as *;
+
+.header {
+  height: 100vh;
+  position: relative;
+  z-index: 3;
+  background-image: url(../image/header-mobile.jpg);
+  background-size: cover;
+  background-position: center center;
+  padding: 0 0 40px;
+
+  @include on-tablet {
+    padding: 0 0 64px;
+    background-image: url(../image/header-dekstop.jpg);
+  }
+
+  &__nav {
+    position: fixed;
+    width: 100%;
+    z-index: 4;
+    transition:
+    background-color $transition-duration ease,
+    padding $transition-duration ease;
+  }
+
+  &__nav.header__nav--fixed {
+    background-color: $bg-color-main;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  &__title {
+    font-size: var(--font-size-h1);
+    color: $font-color-white;
+  }
+}

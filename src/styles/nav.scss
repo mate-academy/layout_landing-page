@@ -1,0 +1,105 @@
+@use './vars' as *;
+@use './mixins' as *;
+
+.nav {
+  padding: 24px 0;
+
+  @include on-tablet {
+    padding: 32px 0;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__item-logo {
+    flex-grow: 1;
+  }
+
+  &__link {
+    display: block;
+    padding: 0;
+  }
+
+  &__link-image {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &--phone {
+      position: relative;
+      background-image: url(../image/icons/phone.svg);
+
+      @include on-desktop {
+        &::after {
+          content: '+1 234 555-55-55';
+          position: absolute;
+          left: -167px;
+          padding-right: 10px;
+          letter-spacing: 2px;
+          line-height: 32px;
+          color: $font-color-primary;
+          font-weight: var(--font-weight-title);
+          white-space: nowrap;
+          pointer-events: none;
+
+          opacity: 0;
+          transform: translateX(10px);
+          transition: opacity $transition-duration ease,
+            transform $transition-duration ease;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          transform: translateX(0);
+          pointer-events: visible;
+        }
+      }
+    }
+    &--burger {
+      position: relative;
+      background-image: url(../image/icons/Icon-Burger-menu-hover.svg);
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url(../image/icons/Icon-Burger-menu.svg);
+        background-size: contain;
+        transform: scaleX(1);
+        transform-origin: 5px;
+        transition: $transition-duration transform ease;
+      }
+      &:hover::after {
+        transform: scaleX(0);
+      }
+    }
+    &--burgerClose {
+      background-image: url(../image/icons/Icon-Close.svg);
+    }
+  }
+
+  &__link-logo {
+    height: 16px;
+    width: min-content;
+    transition: transform $transition-duration ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link-image-logo {
+    height: 100%;
+  }
+}

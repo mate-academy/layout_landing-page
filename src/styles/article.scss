@@ -1,0 +1,59 @@
+
+@use './vars' as *;
+@use './mixins' as *;
+
+.article {
+  flex: 100px 1 1;
+
+  @include on-tablet {
+    max-width: 600px;
+  }
+
+  &__link {
+    display: block;
+    color: $font-color-primary;
+    text-decoration: none;
+    transition: transform $transition-duration ease;
+    &:hover {
+      transform: scale(1.06);
+    }
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: 2px solid $color-accent;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-weight: var(--font-weight-title);
+    font-size: 18px;
+  }
+
+  &__description {
+    margin-bottom: 12px;
+    letter-spacing: var(--font-letter-spacing);
+    line-height: var(--font-line-haight-regular);
+
+    @include on-tablet {
+      margin-bottom: 34px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__price {
+    font-weight: var(--font-weight-title);
+  }
+}

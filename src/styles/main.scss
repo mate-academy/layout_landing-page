@@ -1,3 +1,99 @@
-body {
-  margin: 0;
+@use './vars' as *;
+@use './mixins' as *;
+
+
+html {
+  font-family: $font-family;
+  color: $font-color-primary;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-text);
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
+
+body:has(.aside--active){
+  overflow: hidden;
+}
+
+body.nav--fixed .nav {
+  padding: 14px 0;
+  background-color: $bg-color-main;
+}
+
+.main {
+  position: relative;
+  z-index: 2;
+  background-color: $COLOR-white;
+}
+
+.scroll-tracker {
+  display: block;
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  pointer-events: none;
+}
+
+.container {
+  max-width: $container-max-width;
+  padding: 0 $container-inline-padding;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding: 0 72px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+}
+
+.title {
+  font-weight: var(--font-weight-title);
+  font-size: var(--font-size-h2);
+}
+
+.decorate-image {
+  background-image: url(../image/footer.jpg);
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 320 / 200;
+
+  @include on-tablet {
+    aspect-ratio: 744 / 400;
+  }
+
+  @include on-desktop {
+    aspect-ratio: 1260 / 460;
+  }
+}
+
+.button {
+  display: block;
+  padding: 20px;
+  color: $font-color-white;
+  font-weight: 700;
+  font-size: inherit;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  background-color: $color-accent;
+  border-radius: $radius-UI-component;
+  transition: background-color $transition-duration ease;
+
+  @include on-desktop {
+    width: 324px;
+  }
+  &:hover {
+    background-color: $button-color-hover;
+  }
+  &:focus {
+    background-color: $button-color-pressed;
+    outline: none;
+  }
+}
+
+
+
