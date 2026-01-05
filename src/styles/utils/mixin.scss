@@ -1,0 +1,111 @@
+@use '../blocks/variables.scss' as vrs;
+
+@mixin on-tablet {
+  @media (min-width: vrs.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vrs.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin content-title {
+  margin: 0;
+
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 100%;
+  text-align: center;
+  letter-spacing: -1.5px;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+
+  @include on-desktop {
+    font-size: 64px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin placeholder {
+  &::placeholder {
+    font-size: 14px;
+    font-family: vrs.$font-family;
+  }
+}
+
+@mixin button-hover {
+  &:hover {
+    box-shadow: 4px 1px 16px 0 vrs.$color-shadow;
+  }
+}
+
+@mixin button-active {
+  &:active {
+    box-shadow: 4px 1px 16px 0 vrs.$color-shadow;
+  }
+}
+
+@mixin input-hover {
+  &:hover {
+    border: 1px solid vrs.$color-hover-input;
+  }
+}
+
+@mixin input-active {
+  &:active {
+    border: 1px solid vrs.$color-active-input;
+  }
+}
+
+@mixin text-hover {
+  &:hover {
+    color: vrs.$color-hover-text;
+  }
+}
