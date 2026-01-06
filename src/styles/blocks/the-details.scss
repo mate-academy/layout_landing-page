@@ -1,0 +1,108 @@
+.the-detail {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 40px;
+
+  @include page-grid;
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+  &__link {
+    margin-bottom: 16px;
+    display: block;
+    &--wide {
+      grid-column: span 1;
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    &--square {
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__photo {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    transition: transform 0.3s ease-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__button {
+    font-weight: 700;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    line-height: 27px;
+    text-decoration: none;
+    color: black;
+
+    display: flex;
+    width: 278px;
+    height: 56px;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    margin: 40px auto 0;
+    grid-column: 1 / -1;
+    &:hover {
+      box-shadow: 0 4px 16px 0 rgba(232, 232, 240, 0.4);
+    }
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+    margin: 0;
+    line-height: 40px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
+  }
+}
