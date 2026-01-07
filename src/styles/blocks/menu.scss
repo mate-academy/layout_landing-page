@@ -1,0 +1,123 @@
+@use '../utils/variables' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: $color-bg-input;
+  transform: translateX(100%);
+  transition: transform $menu-transition-duration $menu-transition-easing;
+  overflow-y: auto;
+  z-index: $menu-z-index;
+  height: $menu-height;
+  box-sizing: border-box;
+  padding: $menu-padding-top-mobile $menu-padding-horizontal-mobile
+    $menu-padding-bottom-mobile;
+
+  &:target {
+    transform: translateX(0);
+  }
+}
+
+.menu__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: $menu-top-offset;
+  z-index: $menu-top-z-index;
+  background-color: $menu-bg-color;
+  margin-bottom: $menu-top-margin-bottom-mobile;
+}
+
+.menu__nav {
+  width: $menu-column-width-mobile;
+  color: $color-black;
+}
+
+.menu__link {
+  display: block;
+  font-weight: $menu-link-font-weight;
+  font-size: $menu-link-font-size;
+  line-height: $menu-link-line-height;
+  color: $menu-text-color;
+  text-decoration: none;
+
+  &:not(:last-child) {
+    margin-bottom: $menu-link-gap;
+  }
+}
+
+.menu__link--last {
+  margin-bottom: $menu-link-last-gap;
+}
+
+.menu__contact {
+  width: $menu-column-width-mobile;
+}
+
+.menu__phone,
+.menu__call {
+  font-weight: $menu-link-font-weight;
+  font-size: $menu-text-font-size;
+  line-height: $menu-text-line-height;
+  letter-spacing: $menu-text-letter-spacing;
+  text-transform: $menu-text-transform;
+  color: $menu-text-color;
+}
+
+.menu__phone {
+  margin-bottom: $menu-phone-margin-bottom;
+}
+
+.menu__call {
+  margin-bottom: $menu-call-margin-bottom-mobile;
+}
+
+@media (min-width: $bp-tablet) {
+  .menu {
+    padding: $menu-padding-top-tablet $menu-padding-horizontal-tablet
+      $menu-padding-bottom-mobile;
+  }
+
+  .menu__top {
+    height: $menu-top-height;
+    margin-bottom: $menu-top-margin-bottom-tablet;
+  }
+
+  .menu__nav {
+    width: $menu-column-width-tablet;
+  }
+
+  .menu__contact {
+    width: $menu-column-width-tablet;
+    margin-top: $menu-top-margin-bottom-desktop;
+  }
+
+  .menu__call {
+    margin-bottom: $menu-call-margin-bottom-tablet;
+  }
+}
+
+@media (min-width: $bp-desktop) {
+  .menu {
+    padding: $menu-padding-top-tablet $menu-padding-horizontal-desktop
+      $menu-padding-bottom-mobile;
+  }
+
+  .menu__top {
+    height: $menu-top-height;
+    margin-bottom: $menu-top-margin-bottom-desktop;
+  }
+
+  .menu__nav {
+    width: $menu-column-width-desktop;
+  }
+
+  .menu__contact {
+    width: $menu-column-width-desktop;
+  }
+
+  .menu__call {
+    margin-bottom: $menu-call-margin-bottom-desktop;
+  }
+}
