@@ -1,95 +1,91 @@
 @import 'mixins';
 
+.nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 24px 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: background-color 0.3s ease;
 
-.navbar {
-    align-items: center;
+  &.scrolled {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+  }
+
+  &__logo-link {
+    display: inline-block;
+  }
+
+  &__logo {
+    width: 152px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__icons {
     display: flex;
-    justify-content: space-between;
-    left: 0;
-    padding: 24px 20px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    transition: background-color 0.3s ease;
+    gap: $space-3;
+  }
 
-    &.scrolled {
-        background-color: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(10px);
+  &__icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+
+    &--phone {
+      @include image('../images/Icon-Phone-call.svg');
     }
-    
+
+    &--menu {
+      @include image('../images/Icon-Burger-menu.svg');
+
+      &:hover {
+        @include image('../images/Icon-Burger-menu-hover.svg');
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 36px 72px;
+
     &__logo {
-        width: 152px;
-        height: 16px;
-        cursor: pointer;
+      width: 228px;
+      height: 24px;
     }
 
     &__icons {
-        display: flex;
-        gap: $space-3;
-
-        &__phone {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-
-            @include image('../images/Icon-Phone-call.svg');
-        }
-
-        &__menu {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-
-            @include image('../images/Icon-Burger-menu.svg');
-
-            &:hover {
-                @include image('../images/Icon-Burger-menu-hover.svg');
-            }
-        }
+      gap: $space-4;
     }
 
-    @media (min-width: $breakpoint-tablet) {
-        padding: 36px 72px;
-
-        &__logo {
-            width: 228px;
-            height: 24px;
-        }
-
-        &__icons {
-            gap: $space-4;
-
-            &__phone {
-                height: 32px;
-                width: 32px;
-            }
-
-            &__menu {
-                height: 32px;
-                width: 32px;
-            }
-        }
+    &__icon {
+      height: 32px;
+      width: 32px;
     }
+  }
 
-    @media (min-width: $breakpoint-desktop) {
-        padding: 36px 120px;
-    }
+  @media (min-width: $breakpoint-desktop) {
+    padding: 36px 120px;
+  }
 }
-
 
 .hero {
-    align-items: flex-end;
-    background-image: url('../images/hero_image.png');
-    background-position-x: 45%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-    padding: 0 0 40px;
-    z-index: 1;
-    
+  align-items: flex-end;
+  background-image: url('../images/hero_image.png');
+  background-position-x: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0 0 40px;
+  z-index: 1;
 }
-
