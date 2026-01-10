@@ -1,126 +1,223 @@
 @import 'variables';
 @import 'mixins';
 
-
-    .main__recommended {
-    margin: 0 20px;
-    display: grid;
+.recommended {
+  margin: 0 20px;
+  display: grid;
 
   // ---------------------------------------------------------
   // 1. MOBILE VIEW (Default / < 744px)
   // ---------------------------------------------------------
   // 2 Columns, 20px Gutter
-    grid-template-columns: repeat(2, 1fr);
-    gap: $gutter-mobile;
-
-    // Optional: Side padding for mobile container
-    
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gutter-mobile;
 
   // ---------------------------------------------------------
   // 2. TABLET VIEW (>= 744px)
   // ---------------------------------------------------------
-    @media (min-width: $breakpoint-tablet) {
-        margin-left: 72px;
-        margin-right: 72px;
-        .main__recommended__title {
-        font-size: 40px;
-        }
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 72px;
+    margin-right: 72px;
 
-        // 6 Columns, 24px Gutter
-        grid-template-columns: repeat(6, 1fr);
-        gap: $gutter-tablet;
-    }
+    // 6 Columns, 24px Gutter
+    grid-template-columns: repeat(6, 1fr);
+    gap: $gutter-tablet;
+  }
 
   // ---------------------------------------------------------
   // 3. DESKTOP VIEW (>= 1260px)
   // ---------------------------------------------------------
-    @media (min-width: $breakpoint-desktop) {
-        margin-left: 120px;
-        margin-right: 120px;
-        .main__recommended__title {
-        font-size: 48px;
-        }
+  @media (min-width: $breakpoint-desktop) {
+    margin-left: 120px;
+    margin-right: 120px;
 
-        // 12 Columns, 24px Gutter
-        grid-template-columns: repeat(12, 1fr);
-        }
-    }
+    // 12 Columns, 24px Gutter
+    grid-template-columns: repeat(12, 1fr);
+  }
 
-    .main__recommended__title {
+  &__title {
     font-size: $font-size-3xl;
     font-weight: $font-weight-bold;
     margin-top: $space-8;
     margin-bottom: $space-6;
     grid-column: 1 / -1;
-    }
 
-// ---------------------------------------------------------
-// CARD COMPONENTS
-// ---------------------------------------------------------
-    .card__body {
-    display: flex;
-    flex-direction: column;
-
-    &__title {
-        font-size: $font-size-2xl;
-        font-weight: $font-weight-bold;
-        margin-bottom: $space-1;
-    }
-
-    &__description {
-        font-size: $font-size-base;
-        letter-spacing: 0.15px;
-        margin-bottom: $space-2;
-    }
-
-    &__price {
-        font-size: $font-size-base;
-        font-weight: $font-weight-bold;
-    }
-    }
-
-    .card {
-    display: flex;
-    flex-direction: column;
-    grid-column: span 2;
-    gap: $space-3;
-    margin-bottom: $space-5;
-
-    .card__image {
-        width: 100%;
-        min-height: 280px;
-    }
-
-    .card__image--A5 {
-        @include card-image('../images/Image-6.png');
-    }
-
-    .card__image--HX {
-        @include card-image('../images/Image-7.png');
-    }
-
-    .card__image--theatre {
-        @include card-image('../images/Image-8.png');
-    }
-
-    // ---------------------------------------------------------
-    // TABLET VIEW - Card adjustments
-    // ---------------------------------------------------------
     @media (min-width: $breakpoint-tablet) {
-        grid-column: 1 / -1;
-
-        .card__image {
-        min-height: 600px;
-        }
+      font-size: 40px;
     }
 
-    // ---------------------------------------------------------
-    // DESKTOP VIEW - Card adjustments
-    // ---------------------------------------------------------
     @media (min-width: $breakpoint-desktop) {
-        grid-column: span 4;
-        .card__image {
-        min-height: 324px;
+      font-size: 48px;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// PRODUCT CARD COMPONENTS
+// ---------------------------------------------------------
+.product-card {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  gap: $space-3;
+  margin-bottom: $space-5;
+  
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+  }
+
+  &__image--a5 {
+    @include card-image('../images/Image-6.png');
+  }
+
+  &__image--hx {
+    @include card-image('../images/Image-7.png');
+  }
+
+  &__image--theatre {
+    @include card-image('../images/Image-8.png');
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-1;
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    letter-spacing: 0.15px;
+    margin-bottom: $space-2;
+  }
+
+  &__price {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+  }
+
+  // ---------------------------------------------------------
+  // TABLET VIEW - Card adjustments
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-tablet) {
+    grid-column: 1 / -1;
+  }
+
+  // ---------------------------------------------------------
+  // DESKTOP VIEW - Card adjustments
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-desktop) {
+    grid-column: span 4;
+  }
+}
+
+// ---------------------------------------------------------
+// CATEGORIES COMPONENTS
+// ---------------------------------------------------------
+.categories {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-top: $space-12;
+    margin-bottom: $space-6;
+  }
+&__button {
+    padding: $space-1;
+    border-radius: 16px;
+    height: 56px;
+    width: 100%;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    background-color: $color-orange-vivid;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-bottom: $space-8;
+
+    &:hover,
+    &:active {
+    background-color: $color-black-off;
+      color: $color-white;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      width: 324px;
+    }
+}
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 72px;
+    margin-right: 72px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+    margin-bottom: $space-5;
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-6;
+  }
+  &__images-container {
+    width: 100%;
+    display: flex;
+    gap: $space-3;
+  
+    .category-card__image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 16px;
+    
+            &--9 {
+                @include card-image('../images/Image-9.png');
+            }
+
+            &--1 {
+                @include card-image('../images/Image-1.png');
+            }
+            &--2 {
+                @include card-image('../images/Image-2.png');        
+            }           
+            &--3 {
+                @include card-image('../images/Image-3.png');
+            }
+            &--4 {
+                @include card-image('../images/Image-4.png');
+            }
+            &--5 {
+                @include card-image('../images/Image-5.png');
+            }
         }
-    }
-    }
+
+        @media (min-width: $breakpoint-tablet) {
+                .category-card__image {
+                    aspect-ratio: 16 / 9;
+                }
+            }
+
+            @media (min-width: $breakpoint-desktop) {
+                .category-card__image {
+                    aspect-ratio: 16 / 9;
+                }
+            }
+    }  
+}
