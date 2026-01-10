@@ -11,12 +11,22 @@ const navbar = document.querySelector('.navbar');
 const menuLinks = document.querySelectorAll('.menu__links__link');
 const contactLinks = document.querySelectorAll('.contacts a');
 
+function preventScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+function allowScroll() {
+  document.body.style.overflow = '';
+}
+
 function openMenu() {
   menu.classList.remove(MENU_CLOSE_CLASS);
+  preventScroll();
 }
 
 function closeMenu() {
   menu.classList.add(MENU_CLOSE_CLASS);
+  allowScroll();
 }
 
 menuOpen.addEventListener('click', openMenu);
