@@ -1,0 +1,113 @@
+@import 'mixins';
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 24px 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+
+  &.scrolled {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+  }
+
+  &__logo {
+    width: 152px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__icons {
+    display: flex;
+    gap: $space-3;
+
+    &__phone {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+
+      @include image('../images/Icon-Phone-call.svg');
+    }
+
+    &__menu {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+
+      @include image('../images/Icon-Burger-menu.svg');
+
+      &:hover {
+        @include image('../images/Icon-Burger-menu-hover.svg');
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 36px 90px;
+
+    &__logo {
+      width: 228px;
+      height: 24px;
+    }
+
+    &__icons {
+      gap: $space-4;
+
+      &__phone {
+        height: 32px;
+        width: 32px;
+      }
+
+      &__menu {
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 36px 120px;
+  }
+}
+
+.hero {
+  align-items: flex-end;
+  background-image: url('../images/hero_image.png');
+  background-position-x: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0 20px 40px;
+  z-index: 1;
+}
+
+.hero__content {
+  &__title {
+    font-size: $font-size-4xl;
+    color: $color-white;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 72px;
+    margin-right: 72px;
+  }
+
+  // ---------------------------------------------------------
+  // 3. DESKTOP VIEW (>= 1260px)
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-desktop) {
+    margin-left: 120px;
+    margin-right: 120px;
+    max-width: 1260px;
+  }
+}
