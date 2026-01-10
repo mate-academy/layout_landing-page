@@ -6,8 +6,8 @@ const SCROLLED_CLASS = 'scrolled';
 
 const menu = document.querySelector('.menu');
 const menuClose = document.querySelector('.menu__header__icon--close');
-const menuOpen = document.querySelector('.navbar__icons__menu');
-const navbar = document.querySelector('.navbar');
+const menuOpen = document.querySelector('.nav__icon--menu');
+const navbar = document.querySelector('.nav');
 const menuLinks = document.querySelectorAll('.menu__links__link');
 const contactLinks = document.querySelectorAll('.contacts a');
 
