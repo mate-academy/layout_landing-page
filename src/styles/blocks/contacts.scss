@@ -1,0 +1,126 @@
+@use '../utils/mixins';
+@use '../utils/variables.scss';
+
+.contacts {
+  @include mixins.page-grid;
+
+  grid-column: 1 / -1;
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__info {
+    grid-column: span 2;
+    margin-top: 48px;
+
+    @include mixins.on-tablet {
+      grid-column: span 4;
+      margin-top: 80px;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 7 / -1;
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    margin-bottom: 24px;
+  }
+
+  &__item-title {
+    color: #9393a3;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    margin: 0 0 8px;
+  }
+
+  &__link {
+    color: #191919;
+    font-weight: 400;
+    line-height: 140%;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__form {
+    @include mixins.page-grid;
+
+    row-gap: 16px;
+
+    grid-column: 1 / -1;
+
+    @include mixins.on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__input {
+    font-family: 'Space Grotesk', sans-serif;
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    grid-column: 1 / -1;
+    padding: 14px 16px;
+
+    background-color: #f8f8fa;
+
+    &::placeholder {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #7e7e83;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+  }
+
+  &__message {
+    font-family: 'Space Grotesk', sans-serif;
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+    width: 100%;
+    height: 148px;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: none;
+    resize: none;
+
+    background-color: #f8f8fa;
+
+    &::placeholder {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #7e7e83;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+    height: 56px;
+    cursor: pointer;
+
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: variables.$main-button-bgc;
+
+    transition: variables.$effect-duration;
+
+    @include mixins.button-effects;
+  }
+}

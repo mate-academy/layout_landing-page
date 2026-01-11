@@ -1,0 +1,107 @@
+@use '../utils/mixins';
+@use '../utils/variables';
+
+.categories {
+  &__wrapper {
+    @include mixins.page-grid;
+
+    row-gap: 40px;
+  }
+
+  @include mixins.on-tablet {
+    row-gap: 64px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+    height: 56px;
+
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: variables.$main-button-bgc;
+
+    transition: variables.$effect-duration;
+
+    @include mixins.on-desktop {
+      grid-column: span 4;
+    }
+
+    @include mixins.button-effects;
+  }
+}
+
+.category {
+  @include mixins.page-grid;
+
+  grid-column: 1 / -1;
+
+  @include mixins.on-tablet {
+    grid-column: span 6;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: span 12;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include mixins.on-tablet {
+        grid-column: span 4;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      @include mixins.on-tablet {
+        grid-column: span 2;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include mixins.hover(transform, scale(1.05));
+  }
+
+  &__title {
+    position: relative;
+
+    margin: 16px 0 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    grid-column: span 2;
+
+    @include mixins.on-tablet {
+      font-size: 24px;
+    }
+
+    @include mixins.on-desktop {
+      font-size: 24px;
+    }
+  }
+}

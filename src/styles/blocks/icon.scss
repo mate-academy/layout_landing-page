@@ -1,0 +1,61 @@
+@use '../utils/mixins.scss';
+@use '../utils/variables.scss';
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include mixins.hover(transform, scale(1.2));
+
+  @include mixins.on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../../src/img/icons/phone-number.svg);
+    text-decoration: none;
+    transition: variables.$effect-duration;
+
+    @include mixins.on-desktop {
+      &::before {
+        content: '+1 234 5555-55-55';
+        position: absolute;
+        height: 100%;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 5px;
+
+        line-height: 225%;
+        font-weight: 600;
+        font-size: 14px;
+        white-space: nowrap;
+        background-color: #fff;
+        color: variables.$main-text-color;
+        border-radius: 8px;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transition: variables.$effect-duration;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../../src/img/icons/icon-menu.svg);
+
+    &:hover {
+      background-image: url(../../src/img/icons/icon-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../../src/img/icons/icon-close.svg);
+  }
+}
