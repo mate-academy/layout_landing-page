@@ -1,24 +1,78 @@
-# Landing Page
+# BOSE Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A modern, responsive landing page showcasing BOSE products. The project focuses on clean layout, accessibility, performance‑friendly animations, and maintainable styles architecture.
 
-Choose a design for your landing page:
+## Live Demo
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Preview: https://teti-web.github.io/layout_landing-page/
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## Design
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+Figma design: https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6802-140&t=MwfIPMvQ2T8BJK11-0
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## Tech Stack
+
+- HTML5, semantic markup
+- SCSS (Sass) with BEM, variables, mixins, and modular structure
+- Vanilla JavaScript (ES6+)
+- IntersectionObserver for reveal-on-scroll (with prefers-reduced-motion fallback)
+- Custom form validation (ARIA-friendly, browser-native validation disabled)
+- Tooling: Vite, Stylelint, Prettier
+
+## Features
+
+- Responsive layout for mobile, tablet, and desktop
+- Smooth section reveal on scroll with accessibility fallback
+- Form validation with clear error messages and ARIA attributes
+- Consistent styles via SCSS utilities (variables, mixins)
+
+## Getting Started
+
+Prerequisites:
+
+- Node.js >= 18
+- npm >= 9
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm start
+```
+
+Run linters and format styles:
+
+```bash
+npm run lint        # stylelint + prettier + project lint
+npm run style-format
+npm run format
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Deploy (GitHub Pages via mate-scripts):
+
+```bash
+npm run deploy
+```
+
+## Project Structure
+
+- `index.html` – markup
+- `src/styles/` – SCSS sources (blocks, utils, main)
+- `src/scripts/main.js` – interactions (form validation, reveal-on-scroll)
+- `src/images/` – assets
+
+## Notes
+
+- Reveal animations respect `prefers-reduced-motion`
+- Form uses `novalidate` and custom validation with user-friendly messages

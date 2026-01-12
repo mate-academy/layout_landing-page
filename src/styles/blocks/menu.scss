@@ -1,0 +1,147 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  background-color: $gray;
+  gap: 32px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20%);
+  transition: $transition-base;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  &--open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 20px;
+
+    @include container;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 120px;
+
+    cursor: pointer;
+    transition: $transition-base;
+
+    @include on-tablet {
+      max-width: 172px;
+    }
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  &__logo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-position: center;
+    object-fit: contain;
+  }
+
+  &__nav {
+    @include container;
+
+    @include on-tablet {
+      padding-top: 24px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    color: $main;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: $font-space-grotesk;
+    position: relative;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 1px;
+      background-color: $main;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      transition: $transition-base;
+      transform-origin: left;
+      opacity: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  &__bottom {
+    @include container;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__link-text {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: $main;
+    font-family: $font-space-grotesk;
+    text-transform: uppercase;
+    padding-top: 20px;
+    letter-spacing: 2px;
+
+    &--underline {
+      span {
+        padding-top: 20px;
+        display: block;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+}

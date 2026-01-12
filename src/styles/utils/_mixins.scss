@@ -1,0 +1,43 @@
+@use './variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 0;
+    max-width: $medium-container-width;
+  }
+
+  @include on-desktop {
+    max-width: $container-width;
+  }
+}
+
+@mixin grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}

@@ -1,0 +1,83 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.recommended {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  gap: $gap-section;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 24px;
+    }
+  }
+
+  &__item-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+
+    transition: $transition-base;
+  }
+
+  &__link {
+    @include on-desktop {
+      flex: 1;
+    }
+
+    &:hover {
+      .recommended__item-img {
+        scale: 1.2;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__item-img-wrapper {
+    overflow: hidden;
+    border-radius: 4px;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__item-title {
+    font-family: $font-space-grotesk;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
+    color: $main;
+  }
+
+  &__item-description {
+    font-family: $font-space-mono;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $main;
+
+    @include on-desktop {
+      max-width: 280px;
+    }
+  }
+
+  &__item-price {
+    font-family: $font-space-grotesk;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $main;
+  }
+}

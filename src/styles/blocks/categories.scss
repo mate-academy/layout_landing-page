@@ -1,0 +1,84 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.categories {
+  @include container;
+  @include grid-container;
+
+  row-gap: $gap-section;
+
+  &__content {
+    @include grid-container;
+
+    grid-column: 1/-1;
+    row-gap: 32px;
+  }
+
+  &__item-wrapper {
+    @include grid-container;
+
+    grid-template-rows: auto 1fr;
+    grid-column: 1/-1;
+    row-gap: 20px;
+  }
+
+  &__item {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &--rectangle {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: -100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__item-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    transition: $transition-base;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  &__item-title {
+    grid-column: 1/-1;
+    font-family: $font-space-grotesk;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: $main;
+  }
+
+  &__link {
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: 1/5;
+    }
+  }
+}

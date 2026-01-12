@@ -1,0 +1,144 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.footer {
+  @include container;
+  @include grid-container;
+
+  padding-bottom: $gap-section;
+
+  @include on-tablet {
+    padding-bottom: $gap-base-page;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+  }
+
+  &__form-wrapper {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-section;
+
+    @include on-desktop {
+      grid-column: 1/6;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__form-label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__form-textarea {
+    margin-bottom: 10px;
+  }
+
+  &__info-wrapper {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-column: 1/4;
+    }
+
+    @include on-desktop {
+      grid-column: 7/-1;
+    }
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-style: normal;
+  }
+
+  &__info-label {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: $font-space-grotesk;
+    color: $gray-text;
+  }
+
+  &__info-link {
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: $font-space-mono;
+    color: $main;
+    position: relative;
+    max-width: fit-content;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 1px;
+      background-color: $main;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      transition: $transition-base;
+      transform-origin: left;
+      opacity: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  &__success-message {
+    grid-column: 1/-1;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+
+    background-color: $white;
+    border: 1px solid $border;
+    z-index: 100;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+    @include on-tablet {
+      max-width: 600px;
+      padding: 40px;
+    }
+
+    &--visible {
+      display: flex;
+    }
+  }
+
+  &__success-message-text {
+    font-size: 16px;
+    font-family: $font-space-mono;
+    color: $main;
+    text-align: center;
+  }
+}

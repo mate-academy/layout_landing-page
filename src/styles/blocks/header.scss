@@ -1,0 +1,98 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  padding-bottom: 40px;
+
+  background-image: url('../images/header-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include on-tablet {
+    padding-bottom: 60px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 20px;
+
+    @include container;
+
+    @include on-tablet {
+      padding: 32px 0;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 120px;
+    transition: $transition-base;
+
+    @include on-tablet {
+      max-width: 172px;
+    }
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  &__logo-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-position: center;
+    object-fit: contain;
+  }
+
+  &__top-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-direction: row;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__bottom {
+    @include container;
+    @include grid-container;
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    font-family: $font-space-grotesk;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    color: $main;
+
+    @include on-tablet {
+      font-size: 48px;
+      grid-column: 1 / 5;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 7;
+      font-size: 56px;
+    }
+  }
+}
