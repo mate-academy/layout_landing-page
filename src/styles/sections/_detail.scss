@@ -1,0 +1,56 @@
+// ============================================
+// DETALHES (SEÇÃO)
+// Seção com imagens e descrição dos recursos
+// ============================================
+.detail {
+  margin-bottom: $space-xl;
+
+  // Container das imagens (2 imagens lado a lado)
+  &__images {
+    display: grid;
+    grid-template-columns: 2fr 1fr; // Imagem maior + menor
+    gap: $space-md;
+    margin-bottom: $space-md;
+
+    // Modificador para inverter a ordem das colunas
+    &--reverse {
+      grid-template-columns: 1fr 2fr; // Menor + maior
+    }
+  }
+
+  // Imagem principal
+  &__image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    overflow: hidden;
+    transition: transform $transition-base $ease-out-expo;
+
+    // Leve zoom no hover
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    // Imagem lateral (ocupa altura total)
+    &--side {
+      aspect-ratio: unset;
+      height: 100%;
+    }
+  }
+
+  // Título do detalhe
+  &__title {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: $space-xs;
+  }
+
+  // Texto descritivo
+  &__text {
+    font-size: clamp(0.88rem, 1.5vw, 1rem);
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 42rem; // Limita largura para legibilidade
+  }
+}

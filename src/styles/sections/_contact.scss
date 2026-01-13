@@ -1,0 +1,138 @@
+// ============================================
+// CONTATO (SEÇÃO)
+// Formulário de contato + informações
+// ============================================
+.contact {
+  display: grid;
+  gap: $space-xl;
+  max-width: 53rem;
+  margin-inline: auto;
+
+  // Em telas médias, lado a lado
+  @include respond-to($bp-md) {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 8vw, 6rem);
+  }
+
+  // Container do formulário
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  // Campo de input (texto, email)
+  &__input {
+    width: 100%;
+    padding: 0.88rem 1rem;
+    background-color: $color-input-bg;
+    border: none;
+    border-radius: 2.5rem; // Bordas arredondadas
+    font-family: $font-family;
+    font-size: 0.88rem;
+    color: $color-primary;
+
+    &::placeholder {
+      color: $color-input-text;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // Campo de textarea (mensagem)
+  &__textarea {
+    width: 100%;
+    padding: 0.88rem 1rem;
+    background-color: $color-input-bg;
+    border: none;
+    border-radius: 1rem; // Bordas menos arredondadas
+    font-family: $font-family;
+    font-size: 0.88rem;
+    color: $color-primary;
+    resize: vertical; // Permite redimensionar verticalmente
+    min-height: 7.5rem;
+
+    &::placeholder {
+      color: $color-input-text;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // Container das informações de contato
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    font-style: normal; // Remove itálico do <address>
+  }
+
+  // Item individual (telefone, email, endereço)
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  // Label/rótulo do item
+  &__label {
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0.8; // Levemente transparente
+  }
+
+  // Link clicável (telefone, email)
+  &__link {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+
+    // Underline animado no hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      height: 1px;
+      background-color: $color-white;
+      display: inline-block;
+      width: 0;
+      transition: width $transition-base $ease-out-expo;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  // Endereço (link para Google Maps)
+  &__address {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+
+    // Quando é um link
+    &.contact__link {
+      text-decoration: none;
+      transition: text-decoration-color $transition-base $ease-out-expo;
+
+      // Remove o pseudo-elemento (usa text-decoration para múltiplas linhas)
+      &::after {
+        display: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+}

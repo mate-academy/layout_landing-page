@@ -1,0 +1,56 @@
+// ============================================
+// CARD DE BICICLETA
+// Card individual para exibir informações da bike
+// ============================================
+.bike-card {
+  display: flex;
+  flex-direction: column;
+
+  @include hover-lift; // Efeito de elevação no hover
+
+  padding: $space-md;
+  border-radius: 1rem;
+
+  // Fundo sutil no hover
+  &:hover {
+    background-color: rgba($color-white, 0.05);
+  }
+
+  // Imagem da bike
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    margin-bottom: $space-lg;
+    transition: transform $transition-base $ease-out-expo;
+  }
+
+  // Zoom na imagem no hover do card
+  &:hover &__image {
+    transform: scale(1.05);
+  }
+
+  // Nome da bike
+  &__name {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: $space-xs;
+  }
+
+  // Descrição curta
+  &__description {
+    font-size: clamp(0.88rem, 1.5vw, 1rem);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: $space-sm;
+  }
+
+  // Preço (sempre no final do card)
+  &__price {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-top: auto; // Empurra para o final
+  }
+}

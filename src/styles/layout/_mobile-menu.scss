@@ -1,0 +1,243 @@
+// ============================================
+// MENU MOBILE
+// Menu lateral que desliza da esquerda
+// Ativado pela classe .is-active
+// ============================================
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-menu-bg;
+  z-index: 1000; // Acima de todo conteúdo
+  padding: 36px 120px; // Padding conforme Figma
+  display: flex;
+  flex-direction: column;
+
+  // Padding menor em mobile
+  @media (max-width: $bp-md) {
+    padding: 24px 20px;
+  }
+
+  // Estado inicial: fora da tela
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform $transition-slow $ease-out-expo,
+    opacity $transition-base ease,
+    visibility 0s $transition-slow;
+
+  // Estado ativo: visível
+  &.is-active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      transform $transition-slow $ease-out-expo,
+      opacity $transition-base ease,
+      visibility 0s;
+  }
+
+  // Cabeçalho do menu (logo + botão fechar)
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  // Logo escuro para o menu
+  &__logo {
+    display: block;
+    width: 187px;
+    height: 56px;
+    background: url('../images/mybike-dark.svg') no-repeat center / contain;
+    background-image: url('../images/mybike.svg');
+    filter: invert(1); // Inverte para versão escura
+
+    @media (max-width: $bp-md) {
+      width: 130px;
+      height: 39px;
+    }
+  }
+
+  // Botão de fechar (X)
+  &__close {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: $color-primary;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform $transition-fast ease;
+
+    // Rotaciona 90° no hover
+    &:hover {
+      transform: rotate(90deg);
+    }
+
+    svg {
+      width: 21px;
+      height: 21px;
+    }
+  }
+
+  // Container dos links de navegação
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 32px; // Espaçamento entre links conforme Figma
+  }
+
+  // Links do menu
+  &__link {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 22px;
+    color: $color-primary;
+    position: relative;
+    display: inline-block;
+    width: fit-content; // Largura do conteúdo para underline correto
+
+    // Estado inicial para animação de entrada
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+      opacity $transition-base ease,
+      transform $transition-base $ease-out-expo;
+
+    @media (max-width: $bp-md) {
+      font-size: 16px;
+      letter-spacing: 1.5px;
+    }
+
+    // Animação de entrada quando menu está ativo
+    .is-active & {
+      opacity: 1;
+      transform: translateX(0);
+
+      // Delay escalonado para cada link
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{$i * 0.05}s;
+        }
+      }
+    }
+
+    // Underline animado no hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 2px;
+      background-color: $color-primary;
+      display: inline-block;
+      width: 0;
+      transition: width $transition-base $ease-out-expo;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  // Rodapé do menu (telefone + CTA)
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px; // Espaço após o último link
+
+    // Animação de entrada
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity $transition-base ease,
+      transform $transition-base $ease-out-expo;
+    transition-delay: 0.3s;
+
+    .is-active & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Número de telefone
+  &__phone {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: $color-primary;
+    transition: opacity $transition-fast ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  // Call-to-action (Book a test ride)
+  &__cta {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 16px;
+    color: $color-primary;
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+
+    // Underline sempre visível, desaparece no hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 2px;
+      background-color: $color-primary;
+      display: inline-block;
+      width: 100%;
+      transform: scaleX(1);
+      transform-origin: left;
+      transition: transform $transition-base $ease-out-expo;
+    }
+
+    &:hover::after {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+  }
+
+  // Overlay escuro atrás do menu
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: $color-overlay;
+    z-index: 999; // Abaixo do menu, acima do conteúdo
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity $transition-base ease,
+      visibility 0s $transition-base;
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity $transition-base ease,
+        visibility 0s;
+    }
+  }
+}

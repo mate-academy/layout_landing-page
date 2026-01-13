@@ -1,0 +1,112 @@
+// ============================================
+// NAVEGAÇÃO (NAV)
+// Contém telefone e botão do menu hamburger
+// ============================================
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+
+  // Link do telefone com ícone
+  &__phone {
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: transform $transition-fast ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  // Número do telefone (aparece no hover em desktop)
+  &__phone-number {
+    position: absolute;
+    right: 100%;
+    padding-right: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition:
+      opacity $transition-base ease,
+      transform $transition-base ease;
+
+    // Escondido em mobile
+    display: none;
+
+    @include respond-to($bp-md) {
+      display: block;
+    }
+  }
+
+  // Mostra número no hover/focus do telefone
+  &__phone:hover &__phone-number,
+  &__phone:focus &__phone-number {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  // Ícone do telefone
+  &__icon {
+    width: clamp(1.25rem, 3vw, 2rem);
+    height: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  // Botão do menu hamburger
+  &__menu-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform $transition-fast ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  // Ícone hamburger (3 barras)
+  &__menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 24px;
+    height: 24px;
+
+    // Cada barra do hamburger
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $color-white;
+      transition:
+        transform $transition-base $ease-out-expo,
+        opacity $transition-fast ease;
+
+      // Larguras diferentes para efeito visual
+      &:nth-child(1) {
+        width: 100%;
+      }
+
+      &:nth-child(2) {
+        width: 75%;
+      }
+
+      &:nth-child(3) {
+        width: 50%;
+      }
+    }
+  }
+
+  // No hover, todas as barras ficam com mesma largura
+  &__menu-btn:hover &__menu-icon span {
+    width: 100%;
+  }
+}

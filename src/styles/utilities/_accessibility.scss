@@ -1,0 +1,48 @@
+// ============================================
+// ACESSIBILIDADE
+// Estilos para melhorar a acessibilidade
+// ============================================
+
+// Indicação visual de foco para navegação por teclado
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid $color-focus;
+  outline-offset: 2px;
+}
+
+// Respeita preferência de movimento reduzido
+// Desativa todas as animações para usuários sensíveis
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero__image {
+    animation: none;
+  }
+
+  .scroll-reveal,
+  .stagger-item,
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Classe para esconder visualmente (mas acessível para leitores de tela)
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
