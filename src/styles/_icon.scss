@@ -10,6 +10,16 @@
   transition:
     filter 0.3s ease,
     background-image 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+   &:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95); // Ефект натискання (зменшення)
+    }
 
   @include tablet {
     width: 32px;
@@ -18,6 +28,7 @@
 
   &--phone {
     background-image: url(/src/images/Icon-Phone-call.png);
+    
   }
 
   &--menu {
@@ -33,6 +44,10 @@
   &:hover {
     filter: brightness(1.3);
   }
+}
+
+.phone-number {
+  display: none;
 }
 
 @include leptop {
@@ -62,10 +77,12 @@
 
     &:hover {
       .phone-number {
+        display: inline-block;
         // Стан при наведенні: текст з'являється
         opacity: 1;
         max-width: 200px; // Достатня ширина для номера
         transform: translateX(0);
+
       }
     }
   }
