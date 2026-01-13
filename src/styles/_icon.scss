@@ -1,0 +1,72 @@
+@use 'mixin';
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  transition:
+    filter 0.3s ease,
+    background-image 0.3s ease;
+
+  @include tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(/src/images/Icon-Phone-call.png);
+  }
+
+  &--menu {
+    background-image: url(/src/images/Icon-Burger-menu.png);
+  }
+  &--menu-click {
+    background-image: url(/src/images/burger-click.png);
+  }
+  &--close {
+    background-image: url(/src/images/Icon-Close.png);
+  }
+
+  &:hover {
+    filter: brightness(1.3);
+  }
+}
+
+@include leptop {
+  .phone-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-family: Poppins, sans-serif;
+
+    .icon--phone {
+      // Можна додати легку анімацію самій іконці
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+
+    .phone-number {
+      // Початковий стан: текст прихований і зміщений
+      opacity: 0;
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: all 0.4s ease-in-out; // Плавність появи
+      transform: translateX(10px);
+    }
+
+    &:hover {
+      .phone-number {
+        // Стан при наведенні: текст з'являється
+        opacity: 1;
+        max-width: 200px; // Достатня ширина для номера
+        transform: translateX(0);
+      }
+    }
+  }
+}
