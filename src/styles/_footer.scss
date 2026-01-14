@@ -1,0 +1,190 @@
+@use 'mixin';
+
+.footer {
+  background-color: #1d1d1d;
+  color: #fff;
+
+  &__inner {
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    gap: 20px;
+
+    @include tablet {
+      padding: 0 72px;
+      grid-template-columns: repeat(6, minmax(80px, 1fr));
+    }
+
+    @include leptop {
+      padding: 0 129px;
+      grid-template-columns: repeat(12, minmax(63px, 1fr));
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    margin-top: 80px;
+
+    @include tablet {
+      margin-top: 120px;
+      font-size: 48px;
+    }
+
+    @include leptop {
+      margin-top: 180px;
+      font-size: 48px;
+    }
+  }
+
+  &__contact {
+    grid-column: 1 / -1;
+
+    @include mixin.tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include mixin.leptop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__form {
+    display: grid;
+    gap: 20px;
+
+    &-group {
+      width: 100%;
+    }
+
+    &-input,
+    &-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px 24px;
+
+      background-color: #f8f0f2;
+      border-radius: 40px;
+      border: 1px solid transparent;
+
+      font-size: 16px;
+      color: #1c1c1c;
+
+      outline: none;
+
+      transition:
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+
+      &::placeholder {
+        color: #7e7e83;
+      }
+    }
+
+    &-textarea {
+      height: 160px;
+      resize: none;
+      border-radius: 32px;
+    }
+
+    @include mixin.leptop {
+      &-input:hover,
+      &-textarea:hover {
+        box-shadow: 0 4px 10px rgba(232, 232, 240, 0.4);
+      }
+    }
+
+    &-input:focus-visible,
+    &-textarea:focus-visible {
+      background-color: #fff;
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 1px #7c3aed;
+    }
+
+    &-button {
+      padding: 16px 24px;
+      background-color: #f8f0f2;
+      border-radius: 40px;
+      border: none;
+
+      font-size: 18px;
+      font-weight: 600;
+      color: #1c1c1c;
+
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+
+      @include mixin.leptop {
+        &:hover {
+          box-shadow: 0 4px 15px rgba(232, 232, 240, 0.4);
+        }
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 28px;
+    grid-column: 1 / -1;
+
+    @include tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include leptop {
+      grid-column: 8 / -1;
+    }
+
+    display: grid;
+    gap: 20px;
+  }
+
+  &__info-item {
+    grid-column: 1 / -1;
+  }
+
+  &__info-title {
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__info-desc {
+    margin: 6px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    color: #fff;
+    &-link {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  &__img {
+    margin-top: 120px;
+    width: 100%;
+    height: 200px;
+    background-image: url(/src/images/footer.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 30;
+
+    @include tablet {
+      height: 480px;
+      margin-top: 102px;
+    }
+
+    @include leptop {
+      height: 555px;
+      margin-top: 164px;
+    }
+  }
+}
