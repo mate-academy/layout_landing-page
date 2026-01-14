@@ -1,5 +1,9 @@
+@use 'sass:color';
+@import 'mixins';
+@import 'variables';
+
 .menu {
-  background-color: #e5e5e5;
+  background-color: $color-white;
   flex-direction: column;
   height: 100vh;
   position: fixed;
@@ -7,11 +11,10 @@
   width: 100%;
   z-index: 1000;
   padding: 0 20px;
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: $transition-base;
+  opacity: 100%;
+  transform: translateX(0);
+  transition: all 0.3s ease;
   overflow: auto;
-  pointer-events: none;
 
   @media (min-width: $breakpoint-tablet) {
     padding: 0 72px;
@@ -21,17 +24,11 @@
     padding: 0 120px;
   }
 
-  &:target {
-    opacity: 100%;
-    transform: translateX(0);
-    pointer-events: auto;
-  }
-
   &__top {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #e5e5e5;
+    background-color: $color-white;
   }
 }
 
@@ -51,21 +48,12 @@
     height: 24px;
     cursor: pointer;
 
-    @include background-cover('../images/Icon-Close.svg');
+    @include image('../images/Icon-Close.svg');
 
-    transition: $transition-base;
+    transition: transform 0.15s ease-in-out;
 
     &:active {
       transform: scale(0.8);
-    }
-  }
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: 36px 0;
-
-    &__logo {
-      width: 228px;
-      height: 24px;
     }
   }
 }
@@ -86,7 +74,7 @@
 
     &:hover,
     &:active {
-      color: $color-slate-medium;
+      color: color.adjust($color-black-off, $lightness: 40%);
     }
   }
 }
@@ -111,7 +99,12 @@
     text-decoration: underline;
     &:hover,
     &:active {
-      color: $color-slate-medium;
+      color: color.adjust($color-black-off, $lightness: 40%);
     }
   }
+}
+
+.menu--close {
+  opacity: 10%;
+  transform: translateX(-100%);
 }
