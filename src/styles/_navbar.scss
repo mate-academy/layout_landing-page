@@ -1,0 +1,84 @@
+@import 'mixins';
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 24px 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  transition: $transition-base;
+
+  &__logo {
+    width: 156px;
+    height: 16px;
+  }
+
+  &__icons {
+    width: 72px;
+    display: flex;
+    justify-content: space-between;
+
+    .navbar__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .navbar__icon--phone {
+      @include background-contain('../images/Icon-Phone-call.svg');
+    }
+
+    .navbar__icon--menu {
+      @include background-contain('../images/Icon-Burger-menu.svg');
+
+      transition: $transition-base;
+      &:hover {
+        cursor: pointer;
+
+        @include background-contain('../images/Icon-Burger-menu-hover.svg');
+      }
+    }
+  }
+
+  // Breaking point for tablets and desktops
+  @media (min-width: $breakpoint-tablet) {
+    padding: 36px 72px;
+
+    &__logo {
+      width: 228px;
+      height: 24px;
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 36px 120px;
+
+    .navbar__icon--phone {
+      position: relative;
+
+      &::before {
+        transition: $transition-base;
+        content: '+1 234 555-55-55';
+        font-size: 16px;
+        font-weight: $font-weight-bold;
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 16px;
+        white-space: nowrap;
+        letter-spacing: 2px;
+        color: $color-charcoal;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+}
