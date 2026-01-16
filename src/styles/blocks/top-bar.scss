@@ -1,0 +1,60 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables.scss' as *;
+
+.top-bar {
+  padding-block: 28px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+
+    @include on-tablet {
+      height: 24px;
+    }
+
+    @include hover(transform, scale(1.2));
+  }
+}
+
+.icon {
+  &--phone {
+    &::after {
+      content: '+1 234 555-55-55';
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $main-text-color;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      margin-right: 8px;
+
+      transform: translateY(-50%);
+      display: block;
+
+      width: max-content;
+      white-space: nowrap;
+
+      transition: transform $effectDuration;
+      transform-origin: left;
+    }
+  }
+}

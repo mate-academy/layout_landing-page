@@ -1,0 +1,132 @@
+@use './variables.scss' as *;
+
+// onTables
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+// OnDesctop
+
+@mixin on-desctop {
+  @media (min-width: $desctop-min-width) {
+    @content;
+  }
+}
+
+// contentPaddingInline
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desctop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin pressed($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+// pageGrid
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desctop {
+    --columns: 12;
+  }
+}
+
+// @mixin button {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   height: 56px;
+//   padding: 0 48px;
+
+//   border: 0;
+//   border-radius: 8px;
+
+//   font-size: 16px;
+//   font-weight: 700;
+//   line-height: 1;
+
+//   color: $white-text-color;
+//   background-color: $button-background-color;
+
+
+//   @include hover(background-color, $main-text-color);
+//   @include pressed(background-color, $button-pressed-color);
+//   @include pressed(transform, scale(1.05));
+// }
+
+
+@mixin button(
+  $bg-color,
+  $hover-bg-color,
+  $pressed-bg-color,
+  $pressed-transform: null
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 56px;
+  padding: 0 48px;
+
+  border: 0;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+
+  color: $white-text-color;
+  background-color: $bg-color;
+
+  @include hover(background-color, $hover-bg-color);
+  @include pressed(background-color, $pressed-bg-color);
+
+  @if $pressed-transform != null {
+    @include pressed(transform, $pressed-transform);
+  }
+}
+
+

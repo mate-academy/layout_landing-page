@@ -1,0 +1,82 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/variables.scss' as *;
+
+.categories {
+  // margin-inline: 0;
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__article {
+    @include page-grid;
+
+    &-button {
+      @include button(
+        $button-background-color,
+        $main-text-color,
+        $button-pressed-color,
+      );
+
+      grid-column: 1 / -1;
+
+      cursor: pointer;
+
+
+      @include on-desctop{
+        grid-column: span 4;
+      }
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+
+
+  }
+
+  &__link {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desctop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 18px;
+    line-height: 140%;
+
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+}
