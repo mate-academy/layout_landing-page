@@ -1,0 +1,80 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables.scss' as *;
+
+/* #region icon */
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+  &--phone {
+    background-image: url(../images/icons/Icon-Phone-call.png);
+
+    &-number {
+      text-decoration: none;
+      color: $main-text-color;
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-align: right;
+      vertical-align: middle;
+      text-transform: uppercase;
+
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+      margin-right: 8px;
+
+      position: absolute;
+      right: 100%;
+      opacity: 0;
+      transform: translateX(5%);
+      transition: all 0.3s ease;
+    }
+
+    &__content {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+
+      &:hover {
+        .icon--phone-number {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+  &--menu {
+    background-image: url(../images/icons/Icon-Burger-menu.png);
+
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.png);
+    }
+  }
+  &--close {
+    background-image: url(../images/icons/Icon-Close.png);
+  }
+}
+
+.logo {
+  height: 16px;
+  width: 125px;
+  background-image: url(../images/Logo.png);
+  background-size: cover;
+  cursor: pointer;
+
+  @include hover(transform, scale(1.2));
+}
+
+/* #endregion */

@@ -1,0 +1,127 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.contacts {
+  &__title {
+    grid-column: 1 / -1;
+  }
+  &__content {
+    @include grid;
+
+    row-gap: 48px;
+  }
+}
+
+.form-contacts {
+  color: $secondary-text-color;
+  font-family: 'Space Mono', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__button {
+    margin-top: 32px;
+  }
+
+  &__input {
+    color: $main-text-color;
+    font-family: 'Space Mono', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0;
+
+    background-color: $input-background-color;
+    border: none;
+    border-radius: 8px;
+    height: 48px;
+
+    box-sizing: border-box;
+    padding-left: 16px;
+
+    vertical-align: center;
+
+    @include hover(transform, scale(1.05));
+
+    &:hover {
+      border: 1px solid $input__border-color;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $input__focus_border-color;
+    }
+  }
+
+  &__textarea {
+    content: '';
+    height: 148px;
+    resize: none;
+    box-sizing: border-box;
+    padding-top: 14px;
+  }
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: span 5;
+  }
+}
+
+.info {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: -7 / 13;
+  }
+
+  &__subtitle {
+    display: inline-block;
+    font-family: 'Space Mono', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    color: $subtitle-text-color;
+    transition: all 0.3s;
+    &:hover {
+      color: $main-text-color;
+      transform: scale(1.05);
+    }
+
+    text-decoration: none;
+  }
+
+  &__title {
+    color: $title-text-color;
+    font-family: 'Space Mono', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px $input-background-color inset;
+  -webkit-text-fill-color: $main-text-color;
+  transition: background-color 5000s ease-in-out 0s;
+}
