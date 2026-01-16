@@ -35,16 +35,35 @@
 }
 
 .menu__link {
+  position: relative;
   display: block;
+  width: max-content;
+  color: $menu-text-color;
+  cursor: pointer;
+  text-decoration: none;
   font-weight: $menu-link-font-weight;
   font-size: $menu-link-font-size;
   line-height: $menu-link-line-height;
-  color: $menu-text-color;
-  text-decoration: none;
 
-  &:not(:last-child) {
-    margin-bottom: $menu-link-gap;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background-color: $color-black;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.menu__link:not(:last-child) {
+  margin-bottom: $menu-link-gap;
 }
 
 .menu__link--last {
@@ -52,31 +71,58 @@
 }
 
 .menu__contact {
+  display: flex;
+  flex-direction: column;
   width: $menu-column-width-mobile;
-}
-
-.menu__phone,
-.menu__call {
-  font-weight: $menu-link-font-weight;
-  font-size: $menu-text-font-size;
-  line-height: $menu-text-line-height;
-  letter-spacing: $menu-text-letter-spacing;
-  text-transform: $menu-text-transform;
-  color: $menu-text-color;
 }
 
 .menu__phone {
   margin-bottom: $menu-phone-margin-bottom;
 }
 
+.menu__phone,
 .menu__call {
-  margin-bottom: $menu-call-margin-bottom-mobile;
+  position: relative;
+  display: block;
+  width: max-content;
+  color: $menu-text-color;
+  font-weight: $menu-link-font-weight;
+  font-size: $menu-text-font-size;
+  line-height: $menu-text-line-height;
+  letter-spacing: $menu-text-letter-spacing;
+  text-transform: $menu-text-transform;
+  cursor: pointer;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background-color: $color-black;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.menu__phone::after {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu__phone:hover::after {
+  opacity: 1;
+}
+
+.menu__call::after {
+ opacity: 1;
 }
 
 @media (min-width: $bp-tablet) {
   .menu {
-    padding: $menu-padding-top-tablet $menu-padding-horizontal-tablet
-      $menu-padding-bottom-mobile;
+    padding: $menu-padding-top-tablet $menu-padding-horizontal-tablet $menu-padding-bottom-mobile;
   }
 
   .menu__top {
@@ -100,8 +146,7 @@
 
 @media (min-width: $bp-desktop) {
   .menu {
-    padding: $menu-padding-top-tablet $menu-padding-horizontal-desktop
-      $menu-padding-bottom-mobile;
+    padding: $menu-padding-top-tablet $menu-padding-horizontal-desktop $menu-padding-bottom-mobile;
   }
 
   .menu__top {
