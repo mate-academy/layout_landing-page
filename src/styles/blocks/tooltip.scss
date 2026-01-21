@@ -1,0 +1,54 @@
+.tooltip {
+  position: relative;
+  text-align: right;
+  display: inline-block;
+  z-index: 1;
+
+  &__block {
+    z-index: 0;
+    position: absolute;
+    top: -80%;
+    opacity: 0; // За замовчуванням приховано!!!!
+    pointer-events: none;
+    left: 0;
+    transform: translateX(-100%);
+    transition: opacity .3s, transform .3s;
+
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 700;
+    text-wrap: nowrap;
+    color: $aside-menu-color;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  &__link {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    color: $aside-menu-color;
+    text-decoration: none;
+    letter-spacing: 0;
+    vertical-align: middle;
+    margin-bottom: 18px;
+    text-wrap: nowrap;
+  }
+}
+
+@include on-desktop {
+  .tooltip:hover .tooltip__block,
+  .tooltip.is-open .tooltip__block {
+    opacity: 5;
+    transform: translateX(-115%);
+    z-index: 999;
+    pointer-events: auto;
+  }
+}
