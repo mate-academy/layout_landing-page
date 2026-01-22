@@ -1,0 +1,71 @@
+@use 'variables';
+@use '../utils/mixins';
+
+.menu {
+  background-color: variables.$color-209-45-53;
+  box-sizing: border-box;
+
+  &_position {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  &_opacity {
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  &_target:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  &__content {
+    @include mixins.padding-inline;
+  }
+
+  &__contacts {
+    margin-top: 32px;
+
+    @include mixins.on-desktop {
+      margin-top: 48px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    text-transform: uppercase;
+
+    @include mixins.text-size-16-27(variables.$color-255, 700);
+
+    &_top8 {
+      margin-top: 8px;
+    }
+
+    &_top16 {
+      margin-top: 16px;
+    }
+  }
+
+  &__link {
+    color: variables.$color-255;
+    text-decoration: none;
+
+    &_font-border {
+      display: block;
+      padding-bottom: 7px;
+      width: fit-content;
+      border-bottom: 1px solid variables.$color-255;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+    }
+  }
+}

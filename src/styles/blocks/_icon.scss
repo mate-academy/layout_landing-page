@@ -1,0 +1,45 @@
+@use '../utils/mixins';
+
+.icon {
+  &_flex_gap {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__image {
+    display: block;
+    height: 24px;
+    width: 24px;
+    background-size: cover;
+
+    @include mixins.hover(transform, scale(1.2));
+
+    @include mixins.on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    &_phone-call {
+      background-image: url(../images/icon-phone-call.png);
+
+      &:hover ~ .pop-up_position {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transition-duration: 1.5s;
+      }
+    }
+
+    &_burger-menu {
+      background-image: url(../images/icon-burger-menu.png);
+
+      &:hover {
+        background-image: url(../images/icon-burger-menu-hover.png);
+      }
+    }
+
+    &_icon-close {
+      background-image: url(../images/icon-close.png);
+    }
+  }
+}
