@@ -1,0 +1,114 @@
+@use 'sass:color';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.menu {
+  background-color: $color-white;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+  overflow: auto;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0 72px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0 120px;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-white;
+  }
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.menu__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0;
+
+  &__logo {
+    width: 152px;
+    height: 16px;
+  }
+
+  &__icon--closed {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    @include image-cover('../images/Icon-Close.svg');
+
+    transition: transform $transition;
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: 24px 0;
+
+  &__link {
+    color: $color-black-off;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-2xl;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color $transition;
+
+    &:hover,
+    &:active {
+      color: color.adjust($color-black-off, $lightness: 40%);
+    }
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  margin-top: $space-5;
+
+  &__phone,
+  &__CTO {
+    color: $color-black-off;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-2xl;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  &__CTO {
+    text-transform: uppercase;
+    text-decoration: underline;
+    &:hover,
+    &:active {
+      color: color.adjust($color-black-off, $lightness: 40%);
+    }
+  }
+}

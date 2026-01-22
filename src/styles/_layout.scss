@@ -1,0 +1,301 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.recommended {
+  background-color: $color-white;
+  margin: 0 20px;
+  display: grid;
+
+  // ---------------------------------------------------------
+  // 1. MOBILE VIEW (Default / < 744px)
+  // ---------------------------------------------------------
+  // 2 Columns, 20px Gutter
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gutter-mobile;
+
+  // ---------------------------------------------------------
+  // 2. TABLET VIEW (>= 744px)
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 72px;
+    margin-right: 72px;
+
+    // 6 Columns, 24px Gutter
+    grid-template-columns: repeat(6, 1fr);
+    gap: $gutter-tablet;
+  }
+
+  // ---------------------------------------------------------
+  // 3. DESKTOP VIEW (>= 1260px)
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-desktop) {
+    margin-left: 120px;
+    margin-right: 120px;
+
+    // 12 Columns, 24px Gutter
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-top: $space-8;
+    margin-bottom: $space-6;
+    grid-column: 1 / -1;
+
+    @media (min-width: $breakpoint-tablet) {
+      font-size: 40px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 48px;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// PRODUCT CARD COMPONENTS
+// ---------------------------------------------------------
+.product-card {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  gap: $space-3;
+  margin-bottom: $space-5;
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image--a5 {
+    @include image-cover('../images/Image-6.png');
+  }
+
+  &__image--hx {
+    @include image-cover('../images/Image-7.png');
+  }
+
+  &__image--theatre {
+    @include image-cover('../images/Image-8.png');
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-1;
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    letter-spacing: 0.15px;
+    line-height: $line-height-base;
+    margin-bottom: $space-2;
+  }
+
+  &__price {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+  }
+
+  // ---------------------------------------------------------
+  // TABLET VIEW - Card adjustments
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-tablet) {
+    grid-column: 1 / -1;
+  }
+
+  // ---------------------------------------------------------
+  // DESKTOP VIEW - Card adjustments
+  // ---------------------------------------------------------
+  @media (min-width: $breakpoint-desktop) {
+    grid-column: span 4;
+  }
+}
+
+// ---------------------------------------------------------
+// CATEGORIES COMPONENTS
+// ---------------------------------------------------------
+.categories {
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-top: $space-12;
+    margin-bottom: $space-6;
+  }
+  &__button {
+    padding: $space-1;
+    border-radius: 8px;
+    height: 56px;
+    width: 100%;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    background-color: $color-orange-vivid;
+    border: none;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-bottom: $space-8;
+
+    &:hover,
+    &:active {
+      background-color: $color-black-off;
+      color: $color-white;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      width: 324px;
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-left: 72px;
+    margin-right: 72px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: $space-5;
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-6;
+  }
+  &__images-container {
+    width: 100%;
+    display: flex;
+    gap: $space-3;
+
+    .category-card__image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &--9 {
+        @include image-cover('../images/Image-9.png');
+      }
+
+      &--1 {
+        @include image-cover('../images/Image-1.png');
+      }
+      &--2 {
+        @include image-cover('../images/Image-2.png');
+      }
+      &--3 {
+        @include image-cover('../images/Image-3.png');
+      }
+      &--4 {
+        @include image-cover('../images/Image-4.png');
+      }
+      &--5 {
+        @include image-cover('../images/Image-5.png');
+      }
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      .category-card__image {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      .category-card__image {
+        aspect-ratio: 16 / 9;
+      }
+    }
+  }
+}
+
+.about-us {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-orange-light;
+
+  &__image {
+    width: 100%;
+    min-height: 256px;
+    background-image: url(../images/Image-logic.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+  }
+  &__description {
+    font-size: $font-size-base;
+    margin-top: $space-2;
+    line-height: $line-height-base;
+    margin-bottom: $space-6;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin: $space-6 20px;
+    gap: $space-3;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    &__image {
+      min-height: 400px;
+    }
+    &__container {
+      flex-direction: row;
+      margin: 120px 72px;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-size: $font-size-5xl;
+      flex: 1 1 25%;
+    }
+    &__description {
+      font-size: $font-size-base;
+      flex: 1 1 20%;
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    &__image {
+      min-height: 460px;
+    }
+    &__container {
+      margin: 120px;
+    }
+
+    &__title {
+      font-size: $font-size-6xl;
+    }
+  }
+}
