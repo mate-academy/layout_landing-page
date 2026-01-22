@@ -1,15 +1,61 @@
 .top-bar {
   display: flex;
+  box-sizing: border-box;
+  max-height: 72px;
   justify-content: space-between;
   align-items: center;
   padding-block: 24px;
+  flex-shrink: 0;
 
   @include on-tablet {
     padding-block: 32px;
+    max-height: 96px;
+  }
+
+  &__call {
+    display: block;
+    flex: 1 1 auto;
+    padding-right: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: inherit;
+
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $effectDuration;
+
+    @include on-tablet {
+      padding-right: 32px;
+      font-size: 16px;
+    }
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+
+    &:has(.icon--phone:hover) .top-bar__call,
+    &:has(.top-bar__call:hover) .top-bar__call {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
   &__icons {
     display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    min-width: 0;
+    align-items: center;
     gap: 24px;
 
     @include on-tablet {
@@ -19,10 +65,12 @@
 
   &__logo-link {
     display: flex;
+    padding-right: 24px;
   }
 
   &__logo {
     height: 16px;
+    flex-shrink: 0;
 
     @include on-tablet {
       height: 24px;
