@@ -1,0 +1,142 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contacts {
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-bottom: 120px;
+    padding-inline: 48px;
+  }
+
+  @include on-desktop {
+    padding-inline: 110px;
+  }
+}
+
+.contacts__content-wrapper {
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px 111px;
+  }
+}
+
+.contacts__title {
+  margin-bottom: 32px;
+  text-align: left;
+
+  @include on-desktop {
+    margin-bottom: 0;
+  }
+}
+
+.contacts__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.contacts__input {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+
+  font-size: 16px;
+  color: $main-text-color;
+
+  background-color: #fafafa;
+  outline: none;
+
+  &::placeholder {
+    color: #9393a3;
+    transition: color $transition-speed $transition-func;
+  }
+
+  &:hover {
+    border-color: #1b2129;
+
+    &::placeholder {
+      color: $main-text-color;
+    }
+  }
+
+  &:focus {
+    border-color: #f98921;
+    background-color: #fff;
+
+    &::placeholder {
+      color: $main-text-color;
+    }
+  }
+}
+
+.contacts__textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+.contacts__button {
+  cursor: pointer;
+
+  height: 56px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+
+  background-color: #f98921;
+
+  transition: background-color $transition-speed $transition-func;
+
+  &:hover {
+    background-color: #1b2129;
+  }
+
+  &:active {
+    background-color: #000;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: #9393a3;
+    background-color: #e0e0e0;
+  }
+
+  @include on-tablet {
+    width: 100%;
+  }
+}
+
+.contacts__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contacts__item {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #191919;
+  transition: transform $transition-speed $transition-func;
+
+  span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: #9393a3;
+  }
+}
+
+.contacts__item a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: #f98921;
+  }
+}
