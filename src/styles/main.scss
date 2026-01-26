@@ -5,17 +5,18 @@
 @import './timeless';
 @import './contact-us';
 
+/* GLOBAL RESET */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* TOP BAR */
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
   padding: 16px;
 
@@ -26,7 +27,6 @@
   &__logo-img {
     display: block;
     height: 35px;
-  text-decoration: none;
     outline: none;
   }
 
@@ -38,76 +38,57 @@
 
   &__icon {
     position: relative;
-
     display: block;
-
     width: 32px;
     height: 32px;
-
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-
-    transition: transform 0.2s ease;
+    transition: transform $effect-duration ease;
 
     &:hover {
       transform: scale(1.1);
     }
 
     &--phone {
-      position: relative;
-      gap: 12px;
-      padding-left: 0;
       background-image: url('../images/Phone-number.png');
 
-       .phone-number {
+      .phone-number {
         pointer-events: none;
-
         position: absolute;
-         top: 50%;
+        top: 50%;
         right: 35px;
         transform: translateY(-50%);
-
         display: none;
-
-        border-radius: 6px;
-
-        font-family:$main-font ;
+        font-family: $main-font;
         font-size: 12px;
         font-weight: 700;
         line-height: 16px;
         color: $black;
         letter-spacing: 2px;
         white-space: nowrap;
-
-        transition: 0.25s ease;
+        transition: opacity $effect-duration ease;
       }
 
-     @include on-desktop {
-    &:hover .phone-number {
-      display: block;
-    }
-  }
+      @include on-desktop {
+        &:hover .phone-number {
+          display: block;
+        }
+      }
     }
 
     &--burger {
       background-image: url('../images/Icon-Burger-menu.png');
     }
-
-
   }
-
-
 }
 
+/* PAGE */
 .page {
   scroll-behavior: smooth;
-
   display: grid;
   row-gap: 40px;
-
   margin-bottom: 300px;
-
   font-family: $main-font;
   color: $primary-dark;
 
@@ -116,24 +97,18 @@
     line-height: 1.5;
   }
 
-
   &__menu {
     pointer-events: none;
-
     position: fixed;
     z-index: 1000;
     inset: 0;
-
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-
     padding: 16px;
-
     opacity: 0;
     background-color: $white;
-
-    transition: opacity 0.3s ease;
+    transition: opacity $effect-duration ease;
 
     @include on-desktop {
       padding: 32px 72px;
@@ -143,12 +118,18 @@
       pointer-events: all;
       opacity: 1;
     }
-
   }
 }
 
-
+/* MENU */
 .menu {
+  &__top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: $white;
+  }
+
   &__nav {
     flex-grow: 1;
     margin-top: 64px;
@@ -158,10 +139,8 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-
     margin: 0;
     padding: 0;
-
     list-style: none;
   }
 
@@ -172,8 +151,7 @@
     color: $primary-dark;
     text-decoration: none;
     text-transform: capitalize;
-
-    transition: color 0.3s ease;
+    transition: color $effect-duration ease;
 
     &:hover {
       color: $orange;
@@ -187,11 +165,17 @@
     padding-bottom: 40px;
   }
 
-  &__phone, &__call-to-order {
+  &__phone,
+  &__call-to-order {
     font-size: 20px;
     font-weight: 700;
     color: $primary-dark;
     text-decoration: none;
+    transition: color $effect-duration ease;
+  }
+
+  &__phone:hover {
+    color: $orange;
   }
 
   &__call-to-order {
@@ -199,7 +183,7 @@
   }
 }
 
-
+/* CLOSE ICON */
 .close {
   display: block;
   width: 32px;
@@ -207,24 +191,22 @@
   background: url('../images/icon-close.png') center / contain no-repeat;
 }
 
-
+/* LOCK SCROLL WHEN MENU OPEN */
 .page:has(.page__menu:target) {
   overflow: hidden;
 }
 
-
-
-
-
+/* HEADER */
 .header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   height: 100vh;
-
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-              url('../images/header-bg.png') center bottom / cover no-repeat;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url('../images/header-bg.png') center bottom / cover no-repeat;
 
   &__bottom {
     padding: 0 16px 40px;
@@ -236,7 +218,6 @@
 
   &__title {
     margin: 0;
-
     font-size: 32px;
     font-weight: 700;
     line-height: 1.1;
@@ -248,6 +229,9 @@
   }
 }
 
+/* FOOTER */
 .footer {
+  position: sticky;
+  bottom: 0;
   z-index: -1;
 }
