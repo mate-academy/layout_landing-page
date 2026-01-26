@@ -1,0 +1,58 @@
+.top-bar {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 24px;
+
+    @include on-tablet {
+      padding-block: 36px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 20px;
+    position: relative;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__phone {
+    opacity: 0;
+    pointer-events: none;
+
+    text-decoration: none;
+    color: $font-color-light;
+    font-weight: $font-weight-bold;
+    font-size: var(--fs-xs);
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    position: absolute;
+    top: 50%;
+    right: 75%;
+    transform: translateY(-50%);
+    width: max-content;
+    padding-right: 20px;
+    padding-block: 20px;
+
+    transition-duration: $trans-duration-base;
+  }
+
+  @include on-laptop {
+    &__icon--phone:hover &__phone {
+      opacity: 1;
+      pointer-events: all;
+
+      right: 100%;
+    }
+
+    &__icon--burger-menu:hover {
+      background-image: url('../images/icons/icon-burger-menu-hover.png');
+      transition-duration: $trans-duration-base;
+    }
+  }
+}

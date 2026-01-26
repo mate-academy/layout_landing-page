@@ -1,0 +1,88 @@
+.menu {
+  background-color: $bg-color-light;
+  font-weight: $font-weight-semibold;
+  color: $font-color-dark;
+  height: 100vh;
+  overflow: auto;
+
+  @include on-laptop {
+    font-weight: $font-weight-bold;
+  }
+
+  &__top-bar {
+    margin-bottom: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $bg-color-light;
+
+    @include on-tablet {
+      margin-bottom: 8px;
+    }
+
+    @include on-laptop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone {
+    width: fit-content;
+    text-decoration: none;
+    line-height: 27px;
+    letter-spacing: $letter-spacing-none;
+    font-size: var(--fs-md);
+    color: inherit;
+    font-weight: inherit;
+    text-transform: uppercase;
+    transition-duration: $trans-duration-base;
+
+    @include on-laptop {
+      &:hover {
+        color: $font-color-black;
+        text-shadow: 0 0 2px #00000059;
+      }
+    }
+  }
+
+  &__cta {
+    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
+    font-size: var(--fs-xs);
+    line-height: 16px;
+    letter-spacing: $letter-spacing-loose;
+    width: fit-content;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 8px;
+      background-color: $font-color-dark;
+      border-radius: 1px;
+      width: 100%;
+      height: 1px;
+      transition: $trans-duration-base;
+
+      @include on-tablet {
+        height: 2px;
+      }
+    }
+
+    @include on-laptop {
+      &:hover::after {
+        width: 75%;
+      }
+    }
+  }
+}

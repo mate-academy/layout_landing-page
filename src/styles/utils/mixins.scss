@@ -1,0 +1,37 @@
+@mixin on-tablet {
+  @media (min-width: $on-tablet) {
+    @content;
+  }
+}
+
+@mixin on-laptop {
+  @media (min-width: $on-laptop) {
+    @content;
+  }
+}
+
+@mixin grid {
+  --column-count: 2;
+  --column-gap: 20px;
+
+  display: grid;
+  column-gap: var(--column-gap);
+  grid-template-columns: repeat(var(--column-count), 1fr);
+
+  @include on-tablet {
+    --column-count: 6;
+    --column-gap: 24px;
+  }
+
+  @include on-laptop {
+    --column-count: 12;
+    --column-gap: 24px;
+  }
+}
+
+@mixin p-text {
+  font-weight: $font-weight-regular;
+  font-size: var(--fs-md);
+  line-height: $line-height-loose;
+  letter-spacing: $letter-spacing-none;
+}
