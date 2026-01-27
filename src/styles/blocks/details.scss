@@ -1,0 +1,127 @@
+@use '../utils/mixin' as *;
+@use './variables.scss' as vrs;
+
+.details {
+  &__title {
+    @include content-title;
+
+    margin-bottom: 48px;
+    color: vrs.$color-primary;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 48px;
+    }
+  }
+
+  &__button-container {
+    @include page-grid;
+
+    display: grid;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: vrs.$color-primary;
+    height: 56px;
+    text-align: center;
+    border-radius: 40px;
+    text-decoration: none;
+    color: vrs.$color-secondary;
+    font-weight: 700;
+
+    @include hover(transform, scale(1.2));
+    @include button-hover;
+    @include button-active;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.2));
+
+    &:hover {
+      z-index: 1;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    color: vrs.$color-primary;
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: vrs.$color-primary;
+  }
+
+
+}
