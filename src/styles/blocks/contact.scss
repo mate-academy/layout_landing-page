@@ -1,0 +1,81 @@
+@use '../utils/variables' as *;
+@use '../utils/mixin' as *;
+
+.contact {
+  margin-top: 64px;
+  gap: 16px;
+  pointer-events: all;
+
+  @include page-grid;
+  @include content-padd;
+
+  
+
+  &-title {
+    grid-column: span 2;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      grid-column: 1/-1;
+    }
+  }
+
+  &__form {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+
+  &-input {
+    height: 48px;
+    border-radius: $radiusb;
+    padding-left: 16px;
+    border: none;
+    outline: none; // Remove a borda azul padrão do navegador
+    background-color: #F9F9F9;
+    transition:border-color 0.3 ease;
+
+    &:hover {
+      border: 1px solid $border-hover;
+    }
+
+    &:focus {
+      border: 1px solid $but-orang;
+    }
+  }
+
+  &-textarea {
+    padding: 16px;
+    border-radius: $radiusb;
+    height: 148px;
+    background-color: #F9F9F9;
+    grid-column: span 2;
+    font-family: inherit;
+    border: none;
+    outline: none; // Remove a borda azul padrão do navegador
+    transition:all 0.3 ease;
+
+    &:hover {
+      border: 1px solid $border-hover;
+    }
+
+    &:focus {
+      border: 1px solid $but-orang;
+    }
+  }
+
+  &-button {
+    width: 100%;
+    grid-column: span 2;
+    margin-block: 16px 48px;
+
+    @include button-page;
+
+  }
+
+}

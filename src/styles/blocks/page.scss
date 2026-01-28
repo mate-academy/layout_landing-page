@@ -1,0 +1,58 @@
+@use '../utils/variables' as *;
+@use '../utils/mixin' as *;
+
+body {
+  margin: 0;
+  padding: 0;
+
+  @include normal-text;
+
+  background-color: transparent;
+
+}
+
+.page {
+  scroll-behavior: smooth;
+  background-color: transparent;
+  pointer-events: none;
+
+  &:has([id="menu"]:target) {
+    overflow: hidden;
+  }
+}
+
+.header,
+.main,
+.about,
+.about-img,
+.menu {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;   // Devolve o clique para o conteúdo principal
+}
+
+.main {
+  padding-inline: 20px;
+
+  @include content-padd;
+
+  background-color: #fff;
+}
+
+.hidden{
+  display: none;
+}
+
+.imagem-size {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+
+  }
+}
+
+.link {
+  text-decoration: none;
+}
