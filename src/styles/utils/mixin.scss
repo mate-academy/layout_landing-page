@@ -1,0 +1,55 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padd() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+// padrao do botao
+
+@mixin button-page {
+  width: 100%;
+  color: $branc;
+  height: 56px;
+  border-radius: $radiusb;
+  border: none;
+  background-color: #F98921;
+
+  &:hover {
+    background-color: $escuro;
+  }
+}
