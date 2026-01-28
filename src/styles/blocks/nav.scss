@@ -1,0 +1,41 @@
+@use '../utils/mixin' as *;
+@use '../utils/variables' as *;
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  list-style: none;
+  padding: 0;
+  color: inherit;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav__item {
+  margin-top: 32px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  display: inline-block;
+  padding: 4px 0; // Dá um pequeno espaço para o mouse capturar melhor
+
+  &::after {
+    content: ""; // Obrigatório
+    position: absolute;
+    left: 0;
+    bottom: 0;   // Começa exatamente na base do texto
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease-in-out;
+    z-index: 1;  // Garante que a borda fique visível
+  }
+
+  &:hover::after {
+    width: 100% !important; // Força a largura para teste
+  }
+}

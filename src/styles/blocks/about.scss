@@ -1,0 +1,64 @@
+@use '../utils/variables' as *;
+@use '../utils/mixin' as *;
+
+.about-img {
+  width: 100%;
+  height: 200px;
+  display: block;
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 400px;
+  }
+
+  @include on-desktop {
+    height: 460px;
+  }
+}
+
+.about {
+  padding-top: 48px;
+
+  @include page-grid;
+  @include content-padd;
+
+  background-color: $bg-claro;
+
+  @include on-desktop {
+    height: 350px;
+  }
+
+  &-title {
+    grid-column: span $column;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      padding-block: 120px;
+      margin: 0;
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 48px;
+      grid-column: span 6;
+    }
+  }
+
+  &-desc {
+    grid-column: span $column;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin: 0;
+      padding-block: 120px;
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: 8/-1;
+    }
+  }
+}
