@@ -1,3 +1,336 @@
-body {
-  margin: 0;
+.main {
+  &__section {
+    margin-block-end: 96px;
+  }
+
+  &__products {
+    @include on-tablet {
+      margin-block-end: 120px;
+    }
+
+    @include on-desktop {
+      margin-block-end: 128px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-block: 64px 48px;
+
+    &-products {
+      @include on-tablet {
+        margin-block: 120px 56px;
+        font-size: 40px;
+        line-height: 40px;
+      }
+
+      @include on-desktop {
+        font-size: 48px;
+        line-height: 48px;
+      }
+    }
+
+    &-store {
+      margin-block: 0 48px;
+
+      @include on-tablet {
+        font-size: 40px;
+        line-height: 40px;
+        margin-block: 0 56px;
+      }
+
+      @include on-desktop {
+        grid-column: span 7;
+        font-size: 48px;
+        line-height: 48px;
+        margin-block: 0 56px;
+      }
+    }
+
+    &-about-us {
+      margin-block: 0 24px;
+
+      @include on-tablet {
+        grid-column: span 3;
+        font-size: 40px;
+        line-height: 100%;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+        font-size: 48px;
+        line-height: 100%;
+      }
+    }
+
+    &-contact-us {
+      grid-column: span 2;
+
+      @include on-tablet {
+        font-size: 40px;
+        grid-column: span 6;
+        margin-block: 0 56px;
+      }
+
+      @include on-desktop {
+        font-size: 48px;
+        grid-column: span 5;
+      }
+    }
+  }
+
+  &__store-link {
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__store {
+    @include on-tablet {
+      margin-block: 0 120px;
+    }
+
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+  &__about-us {
+    margin-block-end: 104px;
+
+    @include on-tablet {
+      @include page-grid;
+
+      margin-block-end: 120px;
+    }
+  }
+
+  &__paragraphs {
+    grid-column: span 3;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__paragraph {
+    font-family: 'Space Mono', monospace;
+  }
+
+  &__contact-us {
+    @include page-grid;
+  }
+}
+
+.recommended__grid {
+  @include page-grid;
+  @include on-desktop;
+}
+
+.product-card {
+  margin-block-end: 40px;
+
+  @include on-desktop {
+    margin-block-end: 0;
+  }
+
+  &--products {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+
+  &--products:last-child {
+    margin-block-end: 0;
+  }
+
+  &__image {
+    width: 100%;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &-wrapper--store {
+      @include page-grid;
+    }
+
+    &--store {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin-block: 24px 8px;
+    font-size: 18px;
+    line-height: 140%;
+
+    &--store {
+      margin-block: 16px 0;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 140%;
+
+      &-link {
+        text-decoration: none;
+        color: $color-text-main;
+        transition: 0.3s ease;
+
+        &:hover {
+          display: inline-block;
+          box-shadow: 0 1px 0 0 #292929;
+          width: fit-content;
+        }
+      }
+    }
+  }
+
+  &__description {
+    margin: 0;
+    margin-block-end: 12px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+  }
+
+  &--store {
+    margin-block-end: 40px;
+
+    @include on-tablet {
+      margin-block-end: 56px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: $color-text-main;
+  color: $color-text-main-oposite;
+  height: 56px;
+  margin-block: 0;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  border: 2px solid $color-text-main;
+  transition: 0.3s ease;
+
+  @include on-tablet {
+    margin-block: 56px 120px;
+  }
+
+  &__store {
+    @include on-tablet {
+      margin-block: 0;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+      margin-block: 0;
+    }
+  }
+  &:hover {
+    color: $color-text-main;
+    background-color: $color-btn--hov;
+    border-color: $color-btn--hov-border;
+  }
+}
+
+.promo-image {
+  width: 100%;
+  height: 200px; // Висота з макета
+  overflow: hidden;
+  margin-block-end: 48px;
+
+  @include on-tablet {
+    height: 400px;
+    margin-block-end: 56px;
+  }
+
+  @include on-desktop {
+    height: 460px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Це важливо: картинка заповнить блок, не втрачаючи пропорцій
+    display: block;
+    transition: 0.3s ease;
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.contacts {
+  grid-column: span 2;
+  font-style: normal;
+
+  @include on-desktop {
+    grid-column: 7 / -1;
+  }
+
+  &__item {
+    margin-block: 0 24px;
+  }
+
+  &__label {
+    font-weight: 400;
+    margin-block: 0 8px;
+    font-size: 14px;
+    line-height: 140%;
+    color: $color-contacts-label;
+  }
+
+  &__link {
+    font-family: 'Space Mono', monospace;
+    text-decoration: none;
+    color: $color-contacts-link;
+
+    &:hover {
+      color: lawngreen;
+    }
+  }
+
+  &__text:hover {
+    color: lawngreen;
+  }
 }

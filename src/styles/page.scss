@@ -1,0 +1,65 @@
+.page {
+  color: #292929;
+
+  font-family: 'Space Grotesk', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 140%;
+  font-size: 16px;
+  scroll-behavior: smooth;
+
+  scrollbar-gutter: stable;
+  background-color: #fff; // Колір фону сторінки за замовчуванням
+
+  &:has(.menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    scrollbar-gutter: stable;
+    scrollbar-gutter: auto;
+    position: absolute;
+    top: 0; // Замість inset: 0, щоб не розтягувати на весь екран
+    left: 0;
+    width: 100%; // ЗАМІСТЬ 100vw. Тепер ширина меню = ширині хедера.
+    // height: 100vh;
+    z-index: 100;
+    background-color: $color-menu;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+
+    @include on-desktop {
+      max-height: 720px;
+    }
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      position: absolute; // Або fixed, якщо хедер теж фіксований
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; // Тепер воно не буде займати весь екран
+    }
+  }
+}
+
+.page__body {
+  margin: 0;
+}
+
+.container {
+  padding-inline: 20px;
+  margin-inline: auto;
+  max-width: 1440px; // ОБОВ'ЯЗКОВО ТУТ, щоб обмежити розтягування
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}

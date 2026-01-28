@@ -1,0 +1,137 @@
+.header {
+  box-sizing: border-box;
+  background-image: url(/src/img/bgs/header-bg-mobile.png);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+  @include on-desktop {
+    max-height: 720px;
+  }
+
+  &__bottom {
+    padding-block-end: 40px;
+
+    @include on-tablet {
+      padding-block-end: 65px;
+    }
+
+    @include on-desktop {
+      padding-block-end: 92px;
+
+      @include page-grid;
+    }
+
+    &-title {
+      font-size: 36px;
+      line-height: 100%;
+      margin: 0;
+
+      @include on-tablet {
+        font-size: 48px;
+      }
+
+      @include on-desktop {
+        font-size: 56px;
+        grid-column: span 6;
+      }
+    }
+  }
+}
+
+.header__top-bar {
+  display: flex; // Замість @include pageGrid
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block-start: 32px;
+  }
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%; // Контейнер займе всю висоту батьківського .header
+}
+
+.logo {
+  // display: flex;
+  grid-column: span 1;
+}
+
+.logo img {
+  display: block;
+  max-width: 100%; // Логотип не буде ширшим за свою колонку
+  height: auto;
+}
+
+.top-bar__wrapper {
+  display: flex;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--phone {
+    background-image: url(/src/img/icons/Icon-Phone-call.svg);
+  }
+
+  &--burger {
+    transition: 0.3s ease;
+    background-image: url(/src/img/icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(/src/img/icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+}
+
+.phone-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+
+  &__number {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    margin-right: 0;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &:hover &__number {
+    @include on-desktop {
+      opacity: 1;
+      max-width: 200px; // Достатньо для номера
+      margin-right: 12px; // Відступ між номером та іконкою
+    }
+  }
+
+  &:hover .icon--phone {
+    filter: brightness(0.5); // Або інший ефект з макета
+  }
+}

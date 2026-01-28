@@ -1,0 +1,41 @@
+$tablet-min-width: 744px;
+$desktop-min-width: 1260px;
+$color-menu: #e5e6e8;
+$color-text-main: #292929;
+$color-text-main-oposite: #fff;
+$color-btn--hov: #f8f8fa;
+$color-btn--hov-border: #f0f1f4;
+$color-form--hov-border: #d5d7de;
+$color-contacts-label: #9393a3;
+$color-contacts-link: #191919;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content; // ТУТ з'явиться ваш код
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content; // ТУТ з'явиться ваш код
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+
+  --columns-count: 2;
+
+  grid-template-columns: repeat(var(--columns-count), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns-count: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns-count: 12;
+  }
+}
