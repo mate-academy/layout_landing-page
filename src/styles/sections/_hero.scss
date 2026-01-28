@@ -1,0 +1,45 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw; // Largura total da viewport
+  height: 100vh; // Altura total da viewport
+  margin-left: calc(-50vw + 50%); // Força o hero a ir de borda a borda
+  overflow: hidden;
+  background-color: $color-primary; // Fundo escuro para preencher espaços
+
+  // Imagem de fundo com animação de zoom
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Preenche o espaço mantendo proporção
+    object-position: center center; // Centraliza a imagem
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+
+  // Título centralizado
+  &__title {
+    position: relative;
+    z-index: 10; // Acima da imagem
+    font-size: clamp(2.25rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); // Sombra para legibilidade
+    padding-inline: $space-md;
+  }
+}
+
+// Animação de zoom lento na imagem do hero
+@keyframes hero-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
