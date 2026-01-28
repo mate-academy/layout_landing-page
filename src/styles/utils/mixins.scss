@@ -1,0 +1,33 @@
+
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  padding-inline: 20;
+
+  @include on-tablet {
+    padding-inline: 72;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{property}  $effectDuration;
+  &:hover {
+    #{property}: $toValue;
+  }
+}
