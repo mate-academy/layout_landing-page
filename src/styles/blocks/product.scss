@@ -1,0 +1,81 @@
+@use '../utils/variables' as *;
+
+.product-card {
+  width: 100%;
+  max-width: none;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  gap: $space-s;
+  align-items: flex-start;
+  box-sizing: border-box;
+  background: $color-white;
+
+  &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: $radius-xs;
+    background: $color-white;
+    isolation: isolate;
+
+    picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: $radius-xs;
+    transition: transform 0.3s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  &__title,
+  &__text,
+  &__price {
+    margin: 0;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: $fs-medium;
+    line-height: $lh-main;
+
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: $fs-base;
+    line-height: $lh-main;
+    letter-spacing: $ls-default;
+    color: $color-text-main;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: $fs-base;
+    color: $color-text-main;
+  }
+
+  @media (min-width: $bp-tablet) {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  @media (min-width: $bp-desktop) {
+    padding: 0;
+    border-radius: 0;
+  }
+}

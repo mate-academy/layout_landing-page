@@ -1,0 +1,105 @@
+@use '../utils/variables' as *;
+
+.header {
+  height: $header-height;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: $header-margin-bottom-mobile;
+
+  background-image: url($header-bg-mobile);
+  background-size: cover;
+  background-position: center;
+
+  @media (min-width: $bp-tablet) {
+    background-image: url($header-bg-tablet);
+    margin-bottom: $header-margin-bottom-tablet;
+  }
+
+  @media (min-width: $bp-desktop) {
+    background-image: url($header-bg-desktop);
+    margin-bottom: $header-margin-bottom-desktop;
+  }
+}
+
+.header__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: $header-title-font-size-mobile;
+  line-height: $header-title-line-height;
+  color: $color-white;
+
+  max-width: $header-title-max-width-mobile;
+  padding-left: $header-title-padding-left-mobile;
+  padding-bottom: $header-title-padding-bottom-mobile;
+
+  @media (min-width: $bp-tablet) {
+    font-size: $header-title-font-size-tablet;
+    min-width: $header-title-min-width-tablet;
+    padding-left: $header-title-padding-left-tablet;
+    padding-bottom: $header-title-padding-bottom-tablet;
+  }
+
+  @media (min-width: $bp-desktop) {
+    font-size: $header-title-font-size-desktop;
+    max-width: $header-title-max-width-desktop;
+    padding-left: $header-title-padding-left-desktop;
+  }
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__icons {
+  display: flex;
+  gap: $header-icons-gap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $header-icons-gap;
+}
+
+.phone-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: $phone-wrapper-height;
+
+  .icon--phone {
+    display: block;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .phone-number {
+    display: none;
+
+    @media (min-width: $bp-desktop) {
+      display: block;
+    }
+
+    position: absolute;
+    right: calc(100% + #{$phone-number-right-gap});
+    white-space: nowrap;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: $phone-number-font-size;
+    line-height: $phone-number-line-height;
+    letter-spacing: $phone-number-letter-spacing;
+    text-transform: uppercase;
+    color: $color-text-main;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .phone-number {
+    opacity: $phone-number-opacity-hover;
+  }
+}
