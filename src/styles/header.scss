@@ -1,0 +1,132 @@
+@use 'variables' as var;
+
+.header {
+  box-sizing: border-box;
+  height: 480px;
+  background-image: url(/src/images/header-bg-mobile.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: var.$defaultPaddingMobile;
+  transition: var.$transitionDuration;
+
+  @media (min-width: 576px) {
+    background-image: url(/src/images/header-bg-tablet.png);
+    height: 628px;
+    padding-left: 72px;
+    padding-right: 39px;
+  }
+
+  @media (min-width: 1260px) {
+    background-image: url(/src/images/header-bg-desktop.png);
+    height: 841px;
+    padding-left: 120px;
+    padding-right: 121px;
+  }
+
+  &__logo {
+    height: 38px;
+    width: 130px;
+
+    @media (min-width: 576px) {
+      height: 56px;
+      width: 187px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__bottom {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__title {
+    color: var.$mainTextColor;
+    font-weight: var.$textWeightBold;
+    font-size: 36px;
+    letter-spacing: var.$textLetterSpacing;
+    line-height: var.$textLineHeight;
+    padding-bottom: 75px;
+
+    @media (min-width: 576px) {
+      font-size: 64px;
+      padding-bottom: 130px;
+    }
+
+    @media (min-width: 1260px) {
+      font-size: var.$textSizeVeryVeryBig;
+      padding-bottom: 203px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-phone-number-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    &-phone-number {
+      font-weight: var.$textWeightBold;
+      font-size: var.$textSizeSmall - 4px;
+      letter-spacing: 2px;
+      transition: var.$transitionDuration;
+      opacity: 0;
+
+      @media (max-width: 1259px) {
+        display: none;
+      }
+    }
+
+    &-phone-number-box:hover &-phone-number {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 24px;
+    width: 24px;
+
+    &--phone {
+      background-image: url(/src/icons/phone-icon.svg);
+
+      @media (min-width: 576px) {
+        background-size: cover;
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    &--menu {
+      background-image: url(/src/icons/menu-icon.svg);
+      transition: var.$transitionDuration;
+
+      @media (min-width: 576px) {
+        background-size: cover;
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    &--menu:active {
+      background-image: url(/src/icons/menu-icon-hover.svg);
+
+      @media (min-width: 576px) {
+        background-size: cover;
+      }
+    }
+  }
+}
