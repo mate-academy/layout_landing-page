@@ -1,0 +1,175 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin header-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 112px;
+  }
+}
+
+@mixin sections-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 0;
+  margin-bottom: $step-s;
+}
+
+@mixin section-container {
+  width: 100%;
+
+  @include on-tablet {
+    max-width: 792px;
+  }
+
+  @include on-desktop {
+    max-width: 1260px;
+  }
+}
+
+@mixin reset-picture {
+  overflow: hidden;
+  display: block;
+  line-height: 0;
+}
+
+@mixin text-body {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+@mixin text-h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+@mixin reset-form {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  appearance: none;
+  background: #fff;
+  color: #7e7e83;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-shadow-box: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@mixin button-typo {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: $main-bgc;
+}
+
+@mixin button {
+  display: block;
+
+  @include reset-form;
+  @include button-typo;
+
+  border-radius: 40px;
+  height: 56px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:focus {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin list-item-typo {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+@mixin list-value-typo {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+
+  margin: 0;
+}
+
+@mixin image-hover {
+  transition: all $transition-time ease-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin placeholder-style {
+  &::placeholder {
+    transition: all $transition-time ease-in-out;
+  }
+  &:hover {
+    &::placeholder {
+      color: $main-bgc;
+    }
+  }
+  &:focus {
+    &::placeholder {
+      color: $main-bgc;
+      opacity: 0;
+    }
+  }
+}
+
+

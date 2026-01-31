@@ -1,0 +1,145 @@
+.contacts {
+  display: grid;
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+
+  width: 100%;
+  max-width: 1020px;
+
+  &__title {
+    grid-row: 1;
+    grid-column: 1 / -1;
+
+    @include title;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 64px;
+    }
+  }
+
+  // #region form
+
+  &__form {
+    grid-row: 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+
+    display: grid;
+    grid-template-rows: auto 16px auto 16px auto 32px auto;
+  }
+
+  &__name {
+    height: 48px;
+
+    @include reset-form;
+
+    padding: 14px 16px;
+    color: $main-bgc;
+    border-radius: 40px;
+    grid-row: 1;
+
+    @include placeholder-style;
+  }
+
+  &__email {
+    height: 48px;
+
+    @include reset-form;
+
+    padding: 14px 16px;
+    color: $main-bgc;
+    border-radius: 40px;
+    grid-row: 3;
+
+    @include placeholder-style;
+  }
+
+  &__textarea {
+    height: 148px;
+
+    @include reset-form;
+
+    padding: 14px 16px;
+    color: $main-bgc;
+    resize: none;
+    border-radius: 16px;
+    grid-row: 5;
+
+    @include placeholder-style;
+  }
+
+  &__button {
+    width: 100%;
+    justify-self: center;
+
+    @include button;
+
+    grid-row: 7;
+  }
+
+  // #endregion
+
+  &__list {
+    grid-row: 3;
+    margin: 0;
+    margin-top: 48px;
+
+    @include on-tablet {
+      grid-row: 2;
+      grid-column: span 2;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    @include list-item-typo;
+
+    &:not(:first-child) {
+      margin-top: 8px;
+    }
+  }
+
+  &__value {
+    @include list-value-typo;
+
+    margin-top: 16px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &__address {
+    font-style: normal;
+  }
+
+  &__map-link {
+    text-decoration: none;
+    color: #fff;
+  }
+}
