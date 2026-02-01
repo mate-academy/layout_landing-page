@@ -1,0 +1,102 @@
+@use 'utils/mixin' as *;
+
+.icon{
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform,scale(1.2));
+
+
+
+
+
+  @include on-tablet{
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone{
+    background-image: url(images/Icon-Phone-call.png);
+  }
+
+  &--menu{
+    background-image: url(images/Icon-Burger-menu.png);
+
+    &:hover{
+      background-image: url(images/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &--close{
+    background-image: url(images/Icon-Close.png);
+  }
+
+
+}
+
+.hover-info{
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+  position: absolute;
+  top: -80%;
+  opacity: 0;
+  pointer-events: none;
+  left: 0;
+  transform: translateX(-100%);
+  transition: opacity .3s, transform .3s;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 25px;
+    height: 100%;
+    background: transparent;
+    pointer-events: auto;
+  }
+
+
+  &__block--text{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 16px;
+    line-height: 27px;
+
+    &-number{
+      margin-bottom: 10px;
+    }
+
+  }
+
+}
+
+.phone__wraper{
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-align: right;
+
+  &:hover {
+    .hover-info {
+      @include on-desktop {
+        opacity: 1;
+        transform: translateX(-110%);
+        z-index: 999;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+
+
+
+
