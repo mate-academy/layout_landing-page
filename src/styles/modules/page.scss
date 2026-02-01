@@ -1,0 +1,59 @@
+@use '../utility/variables' as *;
+@use '../utility/mixins' as *;
+
+.page {
+  height: 100%;
+  scroll-behavior: smooth;
+  font-family: $font-serif;
+  color: $color-main-dark;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+
+    overflow-x: hidden;
+    width: 100%;
+    background-color: $color-main-light;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: all $transition-speed $transition-func;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $color-main-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-accent;
+  border-radius: 0;
+
+  @include hover(background-color, $color-hovered);
+  @include active(background-color, $color-pressed);
+}

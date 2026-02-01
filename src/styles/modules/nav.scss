@@ -1,0 +1,40 @@
+@use '../utility/variables' as *;
+@use '../utility/mixins' as *;
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 2px;
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $color-main-light;
+
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform $transition-speed $transition-func;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

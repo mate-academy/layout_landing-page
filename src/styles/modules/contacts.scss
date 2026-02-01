@@ -1,0 +1,156 @@
+@use '../utility/variables' as *;
+@use '../utility/mixins' as *;
+
+.contacts {
+  &__container {
+    @include page-grid;
+  }
+
+  &__block {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 3;
+    }
+
+    &:nth-child(1) {
+      margin-bottom: 48px;
+
+      @include on-desktop {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    font-style: normal;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 27px;
+    font-style: normal;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+    font-style: normal;
+    color: inherit;
+    text-decoration: none;
+    transition: color $transition-speed $transition-func;
+
+    @include hover(color, $color-accent);
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+    margin-top: 48px;
+
+    @include on-tablet {
+      grid-column: 4 / -1;
+      grid-row: 1 / span 2;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+      grid-row: 1;
+    }
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    padding: 14px 16px;
+    color: $color-form-text;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 20px;
+    background-color: $color-form-placeholder;
+    border: 1px solid transparent;
+    transition: all $transition-speed $transition-func;
+
+    &::placeholder {
+      color: $color-form-text;
+      transition: color $transition-speed $transition-func;
+    }
+
+    &:hover {
+      border: 1px solid $color-form-border;
+
+      &::placeholder {
+        color: $color-main-dark;
+      }
+    }
+
+    &:focus {
+      color: $color-main-dark;
+      background-color: #fff;
+      border: 1px solid $color-main-dark;
+      outline: none;
+
+      &::placeholder {
+        color: $color-main-dark;
+      }
+    }
+
+    &:not(:placeholder-shown) {
+      color: $color-main-dark;
+      background-color: #fff;
+    }
+
+    &--textarea {
+      height: 144px;
+      resize: vertical;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 32px;
+    padding: 15px 30px;
+    color: $color-main-light;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 27px;
+    background-color: $color-accent;
+    border: none;
+    cursor: pointer;
+
+    @include hover(background-color, $color-hovered);
+    @include active(background-color, $color-pressed);
+  }
+}
