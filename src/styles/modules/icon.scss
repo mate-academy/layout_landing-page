@@ -1,0 +1,37 @@
+@use '../utility/variables' as *;
+@use '../utility/mixins' as *;
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform $transition-speed $transition-func;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone-call {
+    background-image: url(/src/images/icons/phone-call.svg);
+  }
+
+  &--hamburger {
+    background-image: url(/src/images/icons/hamburger.svg);
+    transition:
+      background-image $transition-speed $transition-func,
+      transform $transition-speed $transition-func;
+
+    &:hover {
+      background-image: url(/src/images/icons/hamburger-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/src/images/icons/close.svg);
+  }
+}

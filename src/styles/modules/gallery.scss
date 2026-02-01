@@ -1,0 +1,117 @@
+@use '../utility/variables' as *;
+@use '../utility/mixins' as *;
+
+.gallery {
+  @include page-grid;
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 48px;
+  }
+
+  &__images {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &--wide {
+      gap: 20px;
+
+      @include on-tablet {
+        height: 186px;
+      }
+
+      @include on-desktop {
+        height: 320px;
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    transition: transform $transition-speed $transition-func;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+
+    &--square {
+      @include on-tablet {
+        flex: none;
+        height: 100%;
+      }
+    }
+
+    &--fluid {
+      aspect-ratio: auto;
+    }
+
+    &:nth-child(3) {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &:hover .gallery__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    margin: 24px 0 0;
+    color: $color-accent;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__description {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__cta {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    padding: 15px 30px;
+    color: $color-main-light;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 27px;
+    background-color: $color-accent;
+    border: none;
+    cursor: pointer;
+
+    @include hover(background-color, $color-hovered);
+    @include active(background-color, $color-pressed);
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
