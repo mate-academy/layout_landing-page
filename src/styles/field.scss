@@ -1,0 +1,95 @@
+.field {
+  position: relative;
+  display: block;
+
+  :is(input, textarea) {
+    width: 100%;
+    padding: $field-padding;
+    border: $field-border;
+
+    font-family: inherit;
+    color: $input-color;
+
+    transition: border-color $transition-duration ease;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: $field-border;
+      outline-offset: 1px;
+    }
+  }
+
+  input {
+    height: $field-height;
+    border-radius: $field-height;
+
+    &::placeholder {
+      opacity: 0;
+      transition: opacity $transition-duration ease;
+    }
+
+    &:focus::placeholder {
+      opacity: 1;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: calc($field-height * 2);
+    border-radius: $field-textarea-radius;
+  }
+
+  &__label {
+    pointer-events: none;
+
+    position: absolute;
+    top: calc($field-height / 2);
+    left: 12px;
+    transform: translateY(-50%);
+
+    padding: 0 4px;
+    border-radius: 8px;
+
+    font-size: $text-font-size;
+    color: $input-placeholder;
+
+    background: $white;
+
+    transition:
+      top $transition-duration ease,
+      left $transition-duration ease,
+      font-size $transition-duration ease,
+      color $transition-duration ease;
+  }
+
+  :is(input, textarea):focus + .field__label,
+  :is(input, textarea):not(:placeholder-shown) + .field__label {
+    top: 0;
+    left: 20px;
+    font-size: 12px;
+  }
+}
+
+.field__error {
+  display: flex;
+  align-items: start;
+
+  margin: 0 0 12px 20px;
+
+  font-size: 12px;
+  line-height: 1;
+  color: #eb5757;
+
+  opacity: 0;
+}
+
+.field :is(input, textarea):user-invalid:not(:focus) {
+  border-color: #eb5757;
+}
+
+.field :is(input, textarea):user-invalid:not(:focus) ~ .field__error {
+  opacity: 1;
+}

@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: $card-width;
+
+  &__image {
+    align-self: center;
+    max-width: 100%;
+    height: 80%;
+    margin-bottom: $card-image-margin-bottom;
+  }
+
+  &__media {
+    @include grid;
+
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    margin-bottom: $card-images-block-margin-bottom;
+
+    @include md-and-up {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &-item {
+      overflow: hidden;
+      width: 100%;
+
+      @include sm-only {
+        aspect-ratio: 1 / 1;
+      }
+
+      & > * {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__title {
+    @include subtitle;
+
+    margin-bottom: $card-title-margin-bottom;
+  }
+
+  &__text {
+    @include text;
+
+    margin-bottom: $card-text-margin-bottom;
+  }
+
+  &__price {
+    @include subtitle;
+  }
+}
