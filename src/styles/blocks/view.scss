@@ -1,0 +1,106 @@
+.view {
+  &__name {
+    color: $accent-main;
+    margin: 0;
+  }
+
+  &__duration {
+    color: $main-dark;
+    margin: 0;
+  }
+
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+    grid-column: 1 / -1;
+
+    &--mobile {
+      @media (max-width: $tablet-min-width) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 8px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--hidden {
+      @media (min-width: $tablet-min-width) and (max-width: $desktop-min-width) {
+        display: none;
+      }
+    }
+
+    &--bodhisattvas {
+      height: 0;
+      padding-bottom: 100%;
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    object-position: 8% 50%;
+    transition: $animation-time;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__button-wrap {
+    @include page-grid;
+
+    margin-top: 40px;
+  }
+
+  &__button {
+    @include button-styling;
+
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}
