@@ -1,0 +1,41 @@
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $nav-li-gap;
+    padding: 0;
+
+    margin-bottom: 0;
+  }
+
+  &__link {
+    @include font-style('ui-caps');
+
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    cursor: url('../images/cursor/cursor-outline-black.png'), pointer;
+
+    // @include on-hover-smooth((width: 100%), #{&}::after);
+    // it doesn't work with the colons ;(
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      background-color: black;
+
+      transition-property: width;
+      transition-duration: $transition-duration;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

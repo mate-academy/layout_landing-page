@@ -1,0 +1,80 @@
+.product-card {
+  &__picture {
+    &--solo {
+      width: 100%;
+    }
+
+    &--grid-aligned-single {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--grid-aligned-double {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+
+      grid-column: span 1;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    @include on-hover-smooth(
+      (
+        transform: scale($product-card-image-animation-scale),
+      )
+    );
+  }
+
+  &__title {
+    @include font-style('body-xl');
+
+    margin-top: $product-card-title-regular-margin;
+
+    &--margin-sm {
+      margin-top: $product-card-title-small-margin;
+    }
+  }
+
+  // maybe this should be a <p> tag
+  &__description {
+    @include font-style('body-xs');
+
+    margin-top: $product-card-description-margin;
+
+    &--grid-aligned {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__price {
+    @include font-style('body-xl');
+
+    margin-top: $product-card-price-margin;
+  }
+}

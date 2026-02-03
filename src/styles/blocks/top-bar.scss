@@ -1,0 +1,42 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: $top-bar-height-mobile;
+
+  @include on-tablet {
+    height: $top-bar-height-tablet;
+  }
+
+  &__popup-region {
+    display: flex;
+    align-items: center;
+  }
+
+  &__popup {
+    @include font-style('popup-text');
+
+    margin-right: 20px;
+    min-width: fit-content;
+
+    display: none;
+
+    @include on-desktop {
+      display: block;
+      opacity: 0%;
+    }
+
+    transition-property: opacity;
+    transition-duration: $transition-duration;
+  }
+
+  @include on-desktop {
+    &:has( .console__button:hover),
+    &:has( .logo-link:hover) {
+      & .top-bar__popup {
+        opacity: 100%;
+      }
+    }
+  }
+}

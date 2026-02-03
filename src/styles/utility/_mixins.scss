@@ -1,0 +1,52 @@
+@use 'sass:map';
+
+@mixin font-style($font-name) {
+  $config: map.get($font-styles, $font-name);
+
+  // base = mobile+
+  $rules: map.get($config, 'base');
+
+  @include apply-rules($rules);
+
+  @each $breakpoint-name in ('tablet', 'desktop') {
+    @if map.has-key($config, $breakpoint-name) {
+      $rules: map.get($config, $breakpoint-name);
+
+      @include min-width($breakpoint-name) {
+        @include apply-rules($rules);
+      }
+    }
+  }
+}
+
+@mixin on-tablet() {
+  @include min-width('tablet') {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @include min-width('desktop') {
+    @content;
+  }
+}
+
+@mixin on-hover-smooth($props-map, $animation-target: null) {
+  $props: map.keys($props-map);
+  $transition-props: (
+    transition-duration: $transition-duration,
+    transition-property: $props,
+  );
+
+  @if $animation-target {
+    #{$animation-target} {
+      @include apply-rules($transition-props);
+    }
+  } @else {
+    @include apply-rules($transition-props);
+  }
+
+  &:hover #{$animation-target} {
+    @include apply-rules($props-map);
+  }
+}

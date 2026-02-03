@@ -1,0 +1,75 @@
+@use 'sass:map';
+
+// this is allowed to be a little messy because it's written in one place.
+
+[utility~='width-container'] {
+  $config: map.get($grid-params, 'base');
+
+  margin-inline: map.get($config, 'margin');
+
+  @include on-tablet {
+    $config: map.get($grid-params, 'tablet');
+
+    margin-inline: map.get($config, 'margin');
+  }
+
+  @include on-desktop {
+    $config: map.get($grid-params, 'desktop');
+
+    margin-inline: map.get($config, 'margin');
+  }
+}
+
+[utility~='grid-container'] {
+  display: grid;
+
+  // this didn't work with other commented stuff.
+  // grid-template-columns: repeat(var(--column-count), 1fr);
+
+  $config: map.get($grid-params, 'base');
+
+  // --column-count: map.get($config, 'count');
+  $column-count: map.get($config, 'count');
+
+  // @debug $column-count;
+  grid-template-columns: repeat(#{$column-count}, 1fr);
+  column-gap: map.get($config, 'gap');
+
+  @include on-tablet {
+    $config: map.get($grid-params, 'tablet');
+
+    // --column-count: map.get($config, 'count');
+    $column-count: map.get($config, 'count');
+
+    // @debug $column-count;
+    grid-template-columns: repeat(#{$column-count}, 1fr);
+    column-gap: map.get($config, 'gap');
+  }
+
+  @include on-desktop {
+    $config: map.get($grid-params, 'desktop');
+
+    // --column-count: map.get($config, 'count');
+    $column-count: map.get($config, 'count');
+
+    // @debug $column-count;
+    grid-template-columns: repeat(#{$column-count}, 1fr);
+    column-gap: map.get($config, 'gap');
+  }
+}
+
+[utility~='visually-hidden'] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+.heading {
+  margin: 0;
+}

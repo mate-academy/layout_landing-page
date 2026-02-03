@@ -1,0 +1,36 @@
+.page {
+  // is there a reason to not name this class "html"?
+  font-family: $font-family;
+  color: $color-light-1;
+
+  scroll-behavior: smooth;
+
+  // googled this out; it's to prevent the console shifting when the menu is opened.
+  scrollbar-gutter: stable;
+
+  // SimpleBar
+  // overflow: hidden;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+
+    transform: translateX(100%);
+
+    transition-duration: $transition-duration;
+    transition-property: transform;
+
+    &:target {
+      transform: translateX(0%);
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+    background-color: $color-light-3;
+  }
+}
