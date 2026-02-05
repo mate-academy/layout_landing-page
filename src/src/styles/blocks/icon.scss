@@ -1,0 +1,85 @@
+.icon {
+  display: block;
+  position: relative;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__tooltip {
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 12px);
+    transform: translateY(-50%) translateX(6px);
+
+    width: 220px;
+    padding: 8px 0;
+
+    text-align: right;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+
+    z-index: 20;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 12px;
+      height: calc(100% + 24px);
+    }
+  }
+
+  &__location {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #fff;
+  }
+
+  &__number {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #fff;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+
+  &--phone {
+    display: none;
+
+    @include on-desktop {
+      display: block;
+    }
+
+    background-image: url('/./src/images/icons/icon-phone.svg');
+  }
+
+  &--menu {
+    background-image: url('/./src/images/icons/icon-menu.svg');
+  }
+
+  &--close {
+    background-image: url('/./src/images/icons/icon-close.svg');
+  }
+
+  &--phone:hover &__tooltip,
+  &--phone:focus-within &__tooltip,
+  &--phone &__tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+  }
+}

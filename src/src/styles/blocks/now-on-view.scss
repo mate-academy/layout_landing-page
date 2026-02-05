@@ -1,0 +1,138 @@
+.now-on-view {
+  &__header {
+    margin: 0;
+
+    padding: 0;
+
+    text-align: center;
+  }
+
+  &__subtitle {
+    margin: 0;
+
+    padding: 0;
+
+    font-weight: 400;
+
+    font-size: 16px;
+
+    line-height: 27px;
+
+    color: $main-dark-color;
+  }
+
+  &__wrapper {
+    display: grid;
+
+    row-gap: 48px;
+  }
+}
+
+.exhibition-card {
+  &__media {
+    @include page-grid;
+
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-accent-color;
+  }
+
+  &__date {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-dark-color;
+  }
+
+  &__link {
+    position: relative;
+    overflow: hidden;
+
+    &:hover .exhibition-card__image {
+      transform: scale(1.05);
+    }
+
+    &--hide-tablet {
+      @include on-tablet {
+        display: none;
+      }
+
+      @include on-desktop {
+        display: block;
+      }
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &--two-images-tablet {
+    .exhibition-card__media {
+      --columns: 3;
+    }
+
+    .exhibition-card__link--square {
+      grid-column: span 1;
+    }
+
+    grid-template-columns: (3, 1fr);
+
+    @include on-tablet {
+      .exhibition-card__media {
+        --columns: 6;
+
+        .exhibition-card__link--square {
+          grid-column: span 3;
+        }
+      }
+    }
+
+    @include on-desktop {
+      .exhibition-card__media {
+        --columns: 12;
+
+        .exhibition-card__link--square {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+}
