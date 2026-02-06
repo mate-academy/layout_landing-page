@@ -1,0 +1,156 @@
+.contacts {
+  &__container {
+    @include page-grid;
+
+    margin-top: 104px;
+
+    @include on-tablet {
+      margin-top: 120px;
+    }
+    @include on-desktop {
+      margin-top: 120px;
+    }
+  }
+
+  &__title {
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: 1 / span 5;
+    }
+  }
+
+  &__forms {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1/-1;
+
+    @include on-desktop {
+      grid-column: 1 / span 5;
+    }
+
+    input {
+      padding: 12px 16px;
+      box-sizing: border-box;
+      border: 1px solid transparent;
+      font-family: 'Space Mono', monospace;
+      height: 48px;
+      background-color: $background-color-hover;
+      cursor: text;
+    }
+
+    textarea {
+      padding: 12px 16px;
+      box-sizing: border-box;
+      border: 1px solid transparent;
+      font-family: 'Space Mono', monospace;
+      height: 148px;
+      resize: none;
+      background-color: $background-color-hover;
+      cursor: text;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      font-family: 'Space Mono', monospace;
+    }
+
+    input:hover::placeholder,
+    textarea:hover::placeholder,
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+      color: $main-text-color;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus {
+      -webkit-text-fill-color: $main-text-color;
+      box-shadow: 0 0 0 1000px $background-color-hover inset;
+      transition: background-color 9999s ease-out;
+    }
+  }
+
+  &__button {
+    margin-top: 32px;
+    height: 56px;
+    padding-inline: 48px;
+    box-sizing: border-box;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid $main-text-color;
+
+    @include on-desktop {
+      grid-column: 1 / span 5;
+    }
+
+    background-color: $main-text-color;
+    color: $color-white;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+
+    @include transition(background-color, color);
+    &:hover,
+    &:focus-visible {
+      background-color: $background-color-hover;
+      color: $main-text-color;
+    }
+
+    &:active {
+      background-color: $background-color-active;
+      color: $color-white;
+    }
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    margin-top: 48px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      margin-top: 80px;
+    }
+
+    @include on-desktop {
+      margin-top: 0;
+      grid-column: 7 / span 4;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    display: block;
+    margin: 0;
+    font-size: 12px;
+    color: #9a9a9a;
+  }
+
+  &__value {
+    margin: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    line-height: 140%;
+    @include transition(color);
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

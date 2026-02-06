@@ -1,0 +1,68 @@
+@use 'sass:list';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    width: 100%;
+    padding-inline: 120px;
+    margin-inline: auto;
+  }
+}
+
+@mixin hover-from-parent($parent, $property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  #{$parent}:hover & {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat($columns-mobile, 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat($columns-on-tablet, 1fr);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat($columns-on-desktop, 1fr);
+    column-gap: 24px;
+  }
+}
+
+@mixin transition($properties...) {
+  $list: ();
+  @each $prop in $properties {
+    $list: list.append($list, $prop $effectDuration, comma);
+  }
+
+  transition: $list;
+}
