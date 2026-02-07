@@ -1,0 +1,109 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active($property, $toValue) {
+  &:active {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    // max-width: 1024px;
+    padding-inline: 120px;
+    margin-inline: 0;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  row-gap: 32px;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+// Styles for Contacts!
+@mixin form-style {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7e7e83;
+
+  background-color: #f8f8fa;
+  padding-inline: 16px;
+}
+
+@mixin label-style {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #fff;
+}
+
+@mixin value-style {
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 140%;
+  color: #fff;
+}
+
+@mixin hover-border($width, $color) {
+  box-sizing: border-box;
+  border: $width solid transparent;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $color;
+  }
+}
+
+@mixin focus() {
+  &:focus {
+    color: #292929;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+  }
+}
