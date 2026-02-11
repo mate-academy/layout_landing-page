@@ -1,0 +1,111 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $largura-min-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $largura-min-desktop) {
+    @content;
+  }
+}
+
+@mixin content-padd() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    margin-inline: auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+// padrao do botao
+
+@mixin button-page {
+  width: 100%;
+  color: $branco;
+  height: 56px;
+  border-radius: $raio-botao;
+  border: none;
+  background-color: #f98921;
+
+  &:hover {
+    background-color: $escuro;
+  }
+}
+
+@mixin manrope-400 {
+  font-family: Manrope, sans-serif;
+  font-weight: 400;
+}
+
+@mixin manrope-bold {
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+}
+
+@mixin normal-text {
+  @include manrope-400;
+
+  line-height: 140%;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  color: #1b2129;
+
+  @include on-tablet {
+    font-size: 18px;
+  }
+
+  @include on-desktop {
+    font-size: 22px;
+  }
+}
+
+@mixin subtitle-text {
+  letter-spacing: 0;
+  font-size: 18px;
+
+  @include manrope-bold;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+
+  @include on-desktop {
+    font-size: 24px;
+  }
+}
+
+@mixin title-text {
+  font-size: 32px;
+
+  @include manrope-bold;
+
+  @include on-tablet {
+    font-size: 40px;
+  }
+
+  @include on-desktop {
+    font-size: 44px;
+  }
+}
