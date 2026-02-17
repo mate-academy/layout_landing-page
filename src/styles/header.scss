@@ -1,0 +1,287 @@
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.header {
+  position: relative;
+  overflow: hidden; // для меню-бургера
+  min-height: 100vh;
+  background: url('../images/Cover_photo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 120px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 128px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: 187px;
+
+    &-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    height: 96px;
+    gap: 32px;
+  }
+
+  &__phone {
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap; // чтобы номер не прыгал по строкам
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: $color-text-global;
+    transition:
+      max-width 0.6s ease,
+      opacity 0.4s ease;
+    margin-right: 20px;
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      .header__phone {
+        opacity: 1;
+        max-width: 200px;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &__phone-btn,
+  &__menu-btn,
+  .nav__close {
+    background: none;
+    border: none;
+    padding: 4px;
+    position: relative;
+    cursor: $cursor-custom-nav;
+
+    img {
+      display: block;
+      width: 24px;
+      height: 24px;
+      transition: opacity 0.8s ease;
+    }
+
+    .menu-icon-hover {
+      position: absolute;
+      top: 12%;
+      left: 12%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover {
+      .menu-icon-default {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+      .menu-icon-hover {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    margin: 350px 0 0;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    vertical-align: middle;
+    color: $color-text-global;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    color: $color-global-nav;
+    padding: 0 120px;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.6s ease-in-out;
+
+    &--active {
+      transform: translateX(0); // выезд справа
+    }
+  }
+}
+
+.nav {
+  cursor: default;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 128px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 24px 0;
+    padding: 1px;
+  }
+
+  &__inner-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    &.list-top {
+      gap: 32px;
+    }
+
+    &.list-bottom {
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    width: max-content;
+    text-decoration: none;
+    color: $color-global-nav;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background-color: $color-global-nav;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.7;
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &--under {
+      font-size: 16px;
+      line-height: 1.5;
+
+      &.is-active {
+        &::after {
+          opacity: 1;
+          bottom: -2px;
+        }
+      }
+    }
+  }
+
+  &__logo,
+  .header__logo-img,
+  &__link {
+    &:hover {
+      cursor: $cursor-custom-nav;
+    }
+  }
+}
+
+@media (max-width: 744px) {
+  .header {
+    padding: 0 72px;
+
+    &__title {
+      font-size: 64px;
+    }
+
+    &__nav {
+      padding: 0 72px;
+    }
+  }
+
+  .nav {
+    &__link {
+      font-weight: 600;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 20px;
+    background-size: cover;
+    background-position: 82% center;
+
+    &__title {
+      font-size: 36px;
+    }
+
+    &__logo {
+      width: 130px;
+    }
+
+    &__actions {
+      gap: 24px;
+    }
+
+    &__phone-wrapper {
+      &:hover {
+        .header__phone {
+          max-width: 150px;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    &__nav {
+      padding: 0 20px;
+    }
+  }
+}

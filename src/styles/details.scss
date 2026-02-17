@@ -1,0 +1,255 @@
+.details {
+  padding: 0 120px;
+
+  &__title {
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    margin-bottom: 48px;
+    color: $color-text-global;
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &--large {
+      grid-column: span 3;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    overflow: hidden;
+
+    .details__hide-block {
+      position: relative;
+      grid-column: 1 / 3;
+      overflow: hidden;
+    }
+
+    &-img {
+      display: block;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      cursor: $cursor-custom-body;
+
+      &--left {
+        grid-column: 1 / 3;
+      }
+
+      &--right {
+        grid-column: 3 / 4;
+      }
+
+      &.reverse-img {
+        transform: scaleX(-1);
+        &:hover {
+          transform: scaleX(-1.05) scaleY(1.05);
+        }
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .details__img-hide-block {
+      position: absolute;
+      bottom: 4%;
+      right: 0%;
+      width: 90px;
+      height: 37px;
+      background: linear-gradient(
+        180deg,
+        #47453e 0%,
+        #45433c 23.13%,
+        #45433b 44.74%,
+        #45423c 65.48%,
+        #44423b 81.03%,
+        #423f3a 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+      transition: transform 0.5s ease;
+      transform-origin: bottom right;
+
+      @media (min-width: 1260px) {
+        bottom: 0;
+        right: 0;
+        width: 133px;
+        height: 48px;
+      }
+    }
+
+    &--reverse {
+      .details__image-wrapper-img--left {
+        grid-column: 1 / 2;
+      }
+
+      .details__image-wrapper-img--right {
+        grid-column: 2 / 4;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-content: center;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0;
+    color: $color-text-global;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    color: $color-text-global;
+  }
+
+  &__action {
+    margin: 48px 0 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    width: 324px;
+    padding: 16px 48px;
+    background-color: $color-text-global;
+    color: $color-global-nav;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-text-global;
+      cursor: $cursor-custom-body;
+      box-shadow: 1px 4px 16px 0 $shadow-color;
+    }
+
+    &:active {
+      box-shadow: 1px 4px 16px 0 $shadow-color-active;
+    }
+  }
+}
+
+@media (max-width: 744px) {
+  .details {
+    padding: 0 72px;
+
+    &__title {
+      font-size: 48px;
+      margin-bottom: 64px;
+    }
+
+    &__image-wrapper {
+      height: 187px;
+    }
+
+    .details__img-hide-block {
+      width: 140px;
+    }
+
+    &__action {
+      margin-bottom: 120px;
+    }
+
+    &__button {
+      width: 392px;
+    }
+  }
+}
+
+@media (max-width: 744px) {
+  .details {
+    padding: 0 20px;
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 48px;
+    }
+
+    &__grid {
+      gap: 40px;
+    }
+
+    &__image-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      height: auto;
+      gap: 20px;
+
+      .details__hide-block {
+        grid-column: auto;
+      }
+
+      &-img {
+        // чтобы элемент был квадратом всегда
+        aspect-ratio: 1 / 1;
+        justify-self: center;
+        height: 187px;
+
+        &--left,
+        &--right {
+          grid-column: auto;
+        }
+      }
+
+      .details__img-hide-block {
+        display: none;
+      }
+    }
+
+    &__action {
+      margin: 40px 0 80px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .details {
+    &__image-wrapper {
+      &-img {
+        height: 130px;
+      }
+    }
+    &__item {
+      &--large {
+        gap: 16px;
+      }
+    }
+  }
+}
