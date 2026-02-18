@@ -10,7 +10,7 @@ document.querySelector('.bike-top__action-menu--close').addEventListener('click'
     document.body.classList.remove('no-scroll'); 
 });
 
-document.querySelectorAll('.bike-top__nav-link').forEach(item => {
+document.querySelectorAll('.bike-top__nav-link, .bike-top__nav-line').forEach(item => {
     item.addEventListener('click', () => {
         aside.style.transform = 'translateX(150%)';
         document.body.classList.remove('no-scroll');
