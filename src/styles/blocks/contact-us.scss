@@ -1,0 +1,140 @@
+.contact-us {
+  @include page-grid;
+
+  row-gap: 48px;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      grid-column: 5 / 9;
+    }
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__input {
+    @include input-width;
+
+    box-sizing: border-box;
+    height: 48px;
+    padding-inline-start: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #292929;
+    background-color: $input-background-color;
+    border-radius: 40px;
+
+    &--message {
+      padding-top: 14px;
+      height: 148px;
+      border-radius: 16px;
+    }
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+
+    &:hover {
+      color: #292929;
+      border: 1px solid #d5d7de;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px $input-background-color inset;
+      -webkit-text-fill-color: #292929;
+    }
+  }
+
+  &__button {
+    @include input-width;
+
+    margin-top: 16px;
+    height: 56px;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    line-height: 56px;
+    border-radius: 40px;
+    color: $contrast-color;
+    background-color: #fff;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: $button-shadow-hover;
+    }
+
+    &:active {
+      box-shadow: $button-shadow-active;
+    }
+  }
+
+  &__contacts {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__contact-label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  &__contact-link {
+    position: relative;
+    margin-top: 8px;
+    display: block;
+    color: $main-text-color;
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      max-width: 200px;
+      width: 80%;
+      height: 1px;
+      background-color: #fff;
+      bottom: -4px;
+
+      transition: transform $effect-duration;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
+    }
+  }
+}
