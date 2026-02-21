@@ -1,0 +1,59 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__photo {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+
+    @include hover(transform, scale(1.3));
+
+    @include on-desktop {
+      @include hover(transform, scale(1.3));
+    }
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__describe {
+    margin-top: 0;
+    font-family: 'Space Mono', monospace;
+
+    @include on-desktop {
+      width: 288px;
+    }
+
+    &--desktop{
+      display: none;
+    }
+  }
+
+  @include on-desktop {
+    .product__describe--mobile {
+      display: none;
+    }
+
+    .product__describe--desktop {
+      display: block;
+    }
+  }
+
+  &__price {
+    margin-top: auto;
+  }
+}
+
+.product a:hover .product__photo {
+  @include on-desktop {
+    transform: scale(1.3);
+  }
+}
