@@ -1,0 +1,139 @@
+@use '../utils/mixins' as *;
+@use '../variables' as *;
+
+.contacts {
+  @include page-grid;
+
+  .section-title {
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  @include on-tablet {
+    &__form {
+      grid-column: 1 / 4;
+    }
+
+    &__info {
+      grid-column: 4 / 7;
+      margin-top: 0;
+    }
+  }
+
+  @include on-desktop {
+    &__form {
+      grid-column: 1 / 6;
+    }
+
+    &__info {
+      grid-column: 7 / 13;
+    }
+  }
+
+  &__label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 140%;
+    color: #c0c0c0;
+  }
+
+  &__value {
+    font-size: 16px;
+    line-height: 140%;
+    color: $main-text-color;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #5b5b5b;
+    }
+  }
+}
+
+.contacts__input,
+.contacts__textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 14px 16px;
+  font: inherit;
+  color: #1d1d1d;
+  background: #fff;
+  border: 1px solid transparent;
+  outline: none;
+
+  &::placeholder {
+    color: #7e7e83;
+  }
+}
+
+.contacts__input {
+  border-radius: 40px;
+  height: 48px;
+}
+
+.contacts__textarea {
+  border-radius: 16px;
+  min-height: 148px;
+  resize: none;
+}
+
+.contacts__input:focus,
+.contacts__textarea:focus {
+  border-color: #d5d7de;
+}
+
+.contacts__btn {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: 56px;
+  border: 0;
+  border-radius: 40px;
+  background: #fff;
+  color: #1d1d1d;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.contacts__input:-webkit-autofill,
+.contacts__textarea:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #1d1d1d;
+}
