@@ -1,0 +1,180 @@
+.browse {
+  width: 100%;
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+@include onTablet {
+  padding-inline: 72px;
+}
+
+@include onDesktop {
+  padding-inline: 120px;
+
+}
+
+
+&__title {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+  margin-bottom: 48px;
+
+@include onTablet {
+  font-size: 40px;
+ }
+
+@include onDesktop {
+  font-size: 48px;
+  grid-column: span 7;
+  margin-bottom: 48px;
+  }
+}
+
+&__section {
+  --columns: 2;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 40px 20px;
+  display: grid;
+
+@include onTablet {
+    --columns: 6;
+
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    column-gap: 24px;
+  }
+
+@include onDesktop {
+    --columns: 12;
+
+    column-gap: 24px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+  }
+}
+
+
+&__item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: contain;
+  width: 100%;
+
+  overflow: hidden;
+
+&--big {
+  @include onTablet {
+  grid-column: span 4;
+  aspect-ratio: 392 / 184;
+}
+
+  @include onDesktop {
+  grid-column: span 8;
+  aspect-ratio: 672 / 324;
+}
+}
+
+&--small {
+  @include onTablet {
+   grid-column: span 2;
+   aspect-ratio: 184 / 186;
+  }
+
+  @include onDesktop {
+   grid-column: span 4;
+   aspect-ratio: 1 / 1;
+  }
+  }
+}
+
+&__image {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.3s;
+
+&:hover {
+  transform: scale(1.05);
+ }
+
+
+ }
+
+&__subtitle {
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 140%;
+  letter-spacing: 0;
+  margin: 16px 0 40px;
+
+@include onDesktop {
+   font-size: 24px;
+   margin: 16px 0 56px;
+  }
+ }
+}
+
+.browse__button {
+  --columns: 2;
+
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  display: grid;
+  grid-column: 1 / -1;
+
+@include onDesktop {
+  --columns: 12;
+
+  }
+}
+
+
+.category__button {
+    color: $color-light;
+    cursor: pointer;
+    background-color: $color-dark;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    place-items: center center;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 56px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: 0.2s ease;
+
+
+    @include onDesktop {
+    grid-column: span 4;
+  }
+
+  &:hover {
+    background-color: $color-light;
+    color: $color-dark;
+    border-color: $color-dark;
+  }
+
+  &:focus {
+    background-color: $color-dark;
+    color: $color-light;
+
+  }
+
+  &:active {
+    background-color: $color-dark;
+    color: $color-light;
+
+    transform: scale(0.96);
+   }
+  }
