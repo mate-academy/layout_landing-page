@@ -20,15 +20,16 @@
   }
 
   @include on-desktop {
-    max-width: 1020px;
-    margin-inline: auto;
-    padding-inline: 120px;
+    padding-inline: auto;
   }
 }
 
 .container {
-  @include content-padding-in-line;
+  margin: 0 auto;
+  width: 100vw;
+  box-sizing: border-box;
 
+  @include content-padding-in-line;
 }
 
 @mixin hover($property, $toValue) {
@@ -57,30 +58,33 @@
 }
 
 @mixin buttons {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid $main-text-color;
+  border-radius: 40px;
+  background-color: $main-text-color;
+  color:  $button-hover;
+  text-decoration: none;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 27px;
+  height: 56px;
+  cursor: url(../images/cursor/Vector.png), pointer ;
+
+  &:visited {
     border: 3px solid $main-text-color;
-    border-radius: 40px;
-    background-color: $main-text-color;
-    color:  $button-hover;
-    text-decoration: none;
-    font-weight: 700;
-    font-style: bold;
-    font-size: 16px;
-    line-height: 27px;
-    width: 280px;
-    height: 56px;
-    cursor: url(../images/cursor/Vector.png), pointer ;
+    color: $button-active;
+  }
 
+  &:hover {
+    border: 3px solid $main-text-color;
+    background-color:  $button-hover;
+    color: $main-text-color;
+  }
 
-    &:hover {
-      border: 3px solid $main-text-color;
-      background-color:  $button-hover;
-      color: $main-text-color;
-    }
-
-    &:visited {
-      border: 3px solid $button-active;
-      background-color: $button-active;
-      color: $button-hover;
-    }
+  &:active {
+    border: 3px solid $button-active;
+    background-color: $button-active;
+    color: $button-hover;
+  }
  }
