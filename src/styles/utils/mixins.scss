@@ -1,0 +1,90 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: auto;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 100vw;
+  box-sizing: border-box;
+
+  @include content-padding-in-line;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{property} $effectDuration;
+  &:hover {
+    #{property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin buttons {
+  box-sizing: border-box;
+  border: 3px solid $main-text-color;
+  border-radius: 40px;
+  background-color: $main-text-color;
+  color: $button-hover;
+  text-decoration: none;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 27px;
+  height: 56px;
+  cursor: url(../images/cursor/Vector.png), pointer;
+
+  &:visited {
+    border: 3px solid $main-text-color;
+    color: $button-active;
+  }
+
+  &:hover {
+    border: 3px solid $main-text-color;
+    background-color: $button-hover;
+    color: $main-text-color;
+  }
+
+  &:active {
+    border: 3px solid $button-active;
+    background-color: $button-active;
+    color: $button-hover;
+  }
+}
