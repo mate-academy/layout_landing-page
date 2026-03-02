@@ -4,6 +4,16 @@
   box-sizing: border-box;
   height: 100vh;
   padding: $headerTopPadding 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  overflow-y: auto;
+
+  &:not(:target) {
+    display: none;
+  }
 
   @include on-tablet {
     padding: 32px 0;
@@ -17,6 +27,7 @@
     @include top-actions;
 
     margin-bottom: 40px;
+    padding: 5px;
 
     @include on-desktop {
       margin-bottom: 55px;
@@ -110,4 +121,13 @@
       border-color: #fff;
     }
   }
+}
+
+#menu:target ~ .main,
+#menu:target ~ .header {
+  display: none;
+}
+
+body:has(#menu:target) {
+  overflow: hidden;
 }
