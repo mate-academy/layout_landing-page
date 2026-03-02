@@ -1,0 +1,46 @@
+.button {
+  display: grid;
+
+  @include grid-mobile;
+
+  @include on-tablet {
+    @include grid-tablet;
+  }
+
+  @include on-desktop {
+    @include grid-desktop;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / 3;
+    height: 56px;
+
+    @extend %button-fonts;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition: background-color 0.3s;
+
+    background-color: $colorAccent;
+
+    &:hover {
+      background-color: #ae1c23;
+    }
+
+    &:active {
+      background-color: #eb343d;
+    }
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}

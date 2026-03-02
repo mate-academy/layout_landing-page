@@ -1,0 +1,133 @@
+.menu {
+  background-color: $colorAccent;
+  color: #fff;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: $headerTopPadding 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  overflow-y: auto;
+
+  &:not(:target) {
+    display: none;
+  }
+
+  @include on-tablet {
+    padding: 32px 0;
+  }
+
+  &__content {
+    overflow-y: auto;
+  }
+
+  &__top {
+    @include top-actions;
+
+    margin-bottom: 40px;
+    padding: 5px;
+
+    @include on-desktop {
+      margin-bottom: 55px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+
+    @include on-desktop {
+      margin: 0 0 48px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  &__call {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+  }
+
+  &__phone {
+    @extend %button-fonts;
+
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__phone-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    max-width: fit-content;
+
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  &__action {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: max-content;
+
+    color: #fff;
+    text-decoration: none;
+    display: block;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+}
+
+[id='menu']:target ~ .main,
+[id='menu']:target ~ .header {
+  display: none;
+}
+
+body:has([id='menu']:target) {
+  overflow: hidden;
+}
