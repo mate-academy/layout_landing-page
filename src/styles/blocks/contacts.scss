@@ -1,0 +1,74 @@
+.contacts {
+  &__wrapper {
+    @include page-grid;
+
+    row-gap: 48px;
+
+    @include on-tablet {
+      row-gap: 80px;
+    }
+
+    @include on-desktop {
+      row-gap: 0;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    height: 48px;
+    font-family: $page-font-family;
+    padding-block: 14px;
+    padding-inline: 16px;
+    font-weight: $main-regular-font-weight;
+    font-size: $form-font-size;
+    letter-spacing: $form-letter-spacing;
+    color: $main-text-color;
+    background-color: $form-background-color;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &--message {
+      height: 148px;
+      resize: none;
+    }
+
+    &::placeholder {
+      color: $form-placeholder-text-color;
+    }
+
+    @include hover('border', $form-hover-border);
+    @include hover('color', $form-hover-text-color);
+    &:focus {
+      border: 2px solid $form-focus-border-color;
+      outline: none;
+    }
+
+    &:-webkit-autofill {
+      font-family: $page-font-family;
+      -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset;
+      -webkit-text-fill-color: $form-hover-text-color;
+    }
+  }
+
+  &__button {
+    @include button-style;
+  }
+}

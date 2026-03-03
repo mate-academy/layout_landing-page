@@ -1,0 +1,34 @@
+.page {
+  font-family: $page-font-family;
+  color: $main-text-color;
+  line-height: $main-line-height;
+  scroll-behavior: smooth; // Плавний скрол при переході по якорних посиланнях
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed; // Фіксоване положення відносно вікна
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all 0.3s;
+    opacity: 0; // Меню повністю прозоре
+    transform: translateX(-100%); // Меню зміщене вліво за межі екрану
+    pointer-events: none; // Ігнорує усі кліки та наведення
+
+    &:target {
+      // Спрацьовує, коли URL містить #id цього елемента
+      opacity: 1; // Меню стає видимим
+      transform: translateX(0); // Меню повертається на своє місце
+      pointer-events: all; // Меню реагує на кліки та наведення
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}

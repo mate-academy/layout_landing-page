@@ -1,0 +1,36 @@
+.phone {
+  position: relative;
+  display: inline-block;
+
+  &__number {
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-weight: $main-bold-font-weight;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: $main-text-color;
+
+    position: absolute;
+    right: 110%;
+    bottom: 25%;
+    transform: translateX(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  @include on-desktop {
+    @media (hover: hover) and (pointer: fine) {
+      &:hover &__number {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+      }
+    }
+  }
+}
