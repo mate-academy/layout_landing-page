@@ -1,0 +1,82 @@
+@use 'variables';
+
+@mixin on-tablet() {
+  @media (min-width: variables.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: variables.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin space-mono-font {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} #{variables.$effectDuration};
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hover-underline {
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: -4px;
+    height: 1px;
+    background-color: variables.$main-color;
+    transition: transform #{variables.$effectDuration};
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}

@@ -1,24 +1,78 @@
-# Landing Page
+# Nothing Landing Page — Static HTML/CSS Project
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A **static landing page implementation** inspired by the *Nothing* tech brand design (from the provided Figma prototype) and deployed on GitHub Pages.
+This project focuses on practicint html/css knowledge, responsive UI, and clean UI/UX that matches the *Nothing* design vision.
 
-Choose a design for your landing page:
+💡 [Live demo](https://SkepskyiDanylo.github.io/layout_landing-page/)
+🎨 [Figma design](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6802-139&p=f&t=i13FcyNldWQhtgmU-0)
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+---
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## 📌 About the Project
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+This repository holds the source code for a landing page built with modern web standards:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+- The page showcases product highlights, main navigation, category sections, and a responsive layout suitable for both desktop and mobile viewports.
+
+- The visual design is based on a **Nothing-style product landing concept** -- a minimalist tech brand with clear focus on product details and clean interface.
+
+- Nothing is a British tech company known for its design-led consumer electronics and unique products such as smartphones and audio gear.
+
+---
+
+## 🧱 Technologies & Tools
+
+This project uses:
+
+- Modern **HTML & CSS**
+- **SCSS** for structured styles
+- **JavaScript** for interactive behaviors (e.g. menu toggles)
+- **Responsive design** principles (mobile-first layout)
+- (Optional) **Linting / formatting tools** like Prettier, ESLint, Stylelint
+
+---
+
+## 🚀 Demo
+
+### 👉 [DEMO](https://SkepskyiDanylo.github.io/layout_landing-page/)
+### 🎨 [FIGMA](https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6802-139&p=f&t=i13FcyNldWQhtgmU-0)
+
+---
+
+## 🛠️ Setup & Local Development
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+### 1️⃣ Fork the repository
+
+Click the **Fork** button at the top right of this page.
+
+### 2️⃣ Clone your fork
+
+``` bash
+git clone https://github.com/<your_account>/layout_landing-page.git
+cd layout_landing-page
+```
+
+### 3️⃣ Install dependencies
+
+``` bash
+npm install
+```
+
+### 4️⃣ Run the project
+
+``` bash
+npm start
+```
+
+------------------------------------------------------------------------
+
+## 📝 BTW
+
+> I've been a **Nothing Phone (1)** user almost since the company first
+> entered the market.\
+> This page is inspired by my personal experience and appreciation of
+> Nothing's product philosophy and design approach.

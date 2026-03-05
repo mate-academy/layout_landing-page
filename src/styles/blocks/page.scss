@@ -1,0 +1,39 @@
+@use '../utils/variables';
+
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  color: variables.$main-color;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 700;
+  letter-spacing: variables.$default-letter-spacing;
+  scroll-behavior: smooth;
+
+  &:has(&__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all #{variables.$effectDuration};
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(100%);
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+      overflow: hidden;
+    }
+  }
+}
