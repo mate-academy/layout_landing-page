@@ -22,3 +22,5 @@ Follow the instructions in this and next lessons to implement the page block by 
 # Tips & Hints
 - Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
 - If some points from the checklist are not relevant to your design, just skip it.
+
+[DEMO LINK](https://olyanderbilokur.github.io/layout_landing-page/)

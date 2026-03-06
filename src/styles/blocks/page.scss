@@ -1,0 +1,38 @@
+.page {
+  font-family: Manrope, sans-serif;
+  color: $main-text-color;
+
+  font-size: 16px;
+  line-height: 140%;
+
+  // scroll-behavior: smooth; /* скрол відбувається плавно */
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  // justify-items: center;
+  &__body {
+    margin: 0;
+
+    min-width: 320px; /* щоб на дуже малих екранах сторінка масшттабувалася */
+  }
+
+  &__menu {
+    position: fixed; /* щоб меню було зафіксовано зверху */
+    top: 0;
+    right: 0;
+    left: 0; /* щоб розтягнути меню зліва */
+
+    opacity: 0; /* повністю прозорий до натискання */
+    transform: translateX(-100%);
+    transition: all 0.3s;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1; /* не прозорий після відкриття */
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}

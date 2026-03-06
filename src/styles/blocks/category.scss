@@ -1,0 +1,46 @@
+.category {
+  &__photos {
+    margin-bottom: 16px;
+
+    @include page-grid;
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform $effectDuration;
+  }
+
+  &__link {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%; /* щоб гарантувати розміри картинок */
+    grid-column: span 1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+    &:hover .category__photo {
+      transform: scale($scale);
+      cursor: url('../images/vector.png'), pointer;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin-bottom: 56px;
+    margin-top: 16px;
+  }
+}
