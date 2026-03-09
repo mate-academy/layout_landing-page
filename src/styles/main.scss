@@ -1,3 +1,41 @@
-body {
+@forward 'header';
+@forward 'content';
+@forward 'settings';
+@use './header/mixin' as mix;
+@use './header/variables' as var;
+@use './settings' as set;
+
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+.page {
+  @include set.typography(
+    $size: 16px,
+    $weight: 400,
+    $line-height: 140%,
+    $spacing: 0,
+    $color: set.$std-txt-color
+  );
+
+  font-family: set.$font-family;
+  scroll-behavior: smooth;
+
+  &__body {
+    background-color: #1d1d1d;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 }

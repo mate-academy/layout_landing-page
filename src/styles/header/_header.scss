@@ -1,0 +1,223 @@
+@use '../settings' as set;
+@use '../settings/variables' as set-var;
+@use'../settings/mixins' as set-mix;
+@use 'variables' as var;
+@use 'mixin' as mix;
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  margin-bottom: 60px;
+  background-image: url('../pictures/img/mobile-cover.png');
+
+  @include set.on-tablet {
+    background-image: url('../pictures/img/tablet-cover.png');
+  }
+
+  @include set.on-desktop {
+    background-image: url('../pictures/img/desktop-cover.png');
+  }
+
+  background-size: cover;
+  background-position: center;
+
+  @include set-mix.display-flex(column, space-between, normal);
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__title {
+    @include mix.title-position($bottom_padd: var.$mobile-title-bottom-padd);
+    @include set-mix.typography(36px, 700, 100%, -1.5px);
+
+    @include set.on-tablet {
+      @include mix.title-position($bottom_padd: var.$tablet-title-bottom-padd);
+      @include set-mix.typography(64px, 700, 100%, -1.5px);
+    }
+
+    @include set.on-desktop {
+      @include mix.title-position($bottom_padd: var.$desktop-title-bottom-padd);
+      @include set-mix.typography(80px, 700, 100%, -1.5px);
+    }
+  }
+}
+
+.top-bar {
+@include set-mix.display-flex(row, space-between, center);
+
+margin: 24px 0;
+
+@include set.on-tablet {
+  margin: 36px 0;
+}
+
+@include set.on-desktop {
+  margin: 36px 0;
+}
+
+&--header {
+  padding-inline: 20px;
+
+  @include set.on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include set.on-desktop {
+    padding-inline: 120px;
+}
+}
+}
+
+.menu {
+  padding-inline: 20px;
+
+  @include set.on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include set.on-desktop {
+    padding-inline: 120px;
+  }
+
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #c2c2c2;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: opacity 0.7s ease,
+              transform 0.7s ease;
+
+  &:target {
+    opacity: 1;
+    transform:translateX(0);
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__bottom {
+    @include set-mix.display-flex($direction: column, $justify: none, $align: none);
+
+    gap: 16px;
+    text-decoration: none;
+
+    &-phone-number {
+      @include set-mix.typography(
+        $size: 16px,
+        $weight: 600,
+        $line-height: 27px,
+        $spacing: 2px,
+        $color: set-var.$menu-txt-color
+      );
+
+      text-decoration: none;
+    }
+
+    &-book-ride {
+      @include set-mix.typography(
+        $size: 12px,
+        $weight: 600,
+        $line-height: 16px,
+        $spacing: 2px,
+        $color: set-var.$menu-txt-color
+      );
+
+      text-decoration: none;
+
+      &-underline {
+        width: 136px;
+        border-bottom: 1px solid set-var.$menu-txt-color;
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+
+  &--phone {
+    background-image: url('../pictures/icons/phone.png');
+    position: relative;
+
+    @include set.on-desktop {
+      &:hover {
+      transform: scale(1.33);
+      cursor: pointer;
+
+        &::before {
+          content: '+1 234 555-55-55';
+
+          position: absolute;
+          right: calc(100% + 12px);
+          top: 50%;
+          transform: translateY(-50%);
+          white-space: nowrap;
+          padding: 6px 10px;
+          color: #fff;
+
+          @include set-mix.typography(12px, 700, 16px, 2px);
+        }
+      }
+    }
+  }
+
+
+  &--menu {
+    background-image: url('../pictures/icons/menu.png');
+
+    @include set.on-desktop {
+      &:hover {
+        transform: scale(1.33);
+      }
+    }
+  }
+
+  &--close {
+    background-image: url('../pictures/icons/close.png');
+  }
+}
+
+.nav {
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include set-mix.display-flex(column, none, none);
+
+    gap: 32px;
+  }
+
+  &__item {
+    &:hover{
+      border-bottom: 1px solid #1D1D1D;
+      margin-top: -1px;
+      width: fit-content;
+    }
+  }
+
+  &__link {
+    @include set-mix.typography(
+      $size: 22px,
+      $weight: 600,
+      $line-height: 22px,
+      $spacing: 2px,
+      $color: set-var.$menu-txt-color
+    );
+
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,486 @@
+@use '../settings' as set;
+
+.content {
+  @include set.display-grid;
+
+  @include set.on-tablet {
+    row-gap: 132px;
+    margin-inline: 72px;
+  }
+
+  @include set.on-desktop {
+    row-gap: 164px;
+    margin-inline: 120px;
+  };
+
+  &__title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 48px;
+
+    @include set.typography(32px, 500, 32px, -1.5px);
+
+    @include set.on-tablet {
+      @include set.typography(48px, 500, 100%, -1.5px);
+    }
+}
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+.about {
+  @include set.typography(23px, 500, 140%, 0);
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include set.typography(32px, 500, 100%, -1.5px);
+  }
+
+  @include set.on-tablet {
+    @include set.display-grid {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 24px;
+    };
+
+    &__title {
+      grid-column: 1 / 4;
+      margin-bottom: 0;
+    }
+
+    &__description {
+      grid-column: 4 / -1;
+    }
+  }
+
+  @include set.on-desktop {
+    @include set.display-grid {
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+      margin-inline: 0;
+    };
+
+    &__title {
+      grid-column: 1 / 7;
+
+      @include set.typography(64px, 500, 100%, -1.5px);
+    }
+
+    &__description {
+      grid-column: 7 / -1;
+    }
+  }
+}
+}
+
+.comparison {
+
+  &__title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__product {
+    &-cell {
+      @include set.typography(24px, 700, 140%, 0);
+
+      &--photo {
+        margin-bottom: 32px;
+      }
+
+      &--title {
+        margin-bottom: 8px;
+      }
+
+      &--description {
+        margin-bottom: 16px;
+
+        @include set.typography(16px, 400, 140%, 0);
+      }
+
+      &--price {
+        @include set.typography(16px, 500, 140%, 0);
+      }
+    }
+  }
+
+  @include set.on-tablet {
+    @include set.display-grid {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      row-gap: 48px;
+      margin-inline: 0;
+    };
+
+    &__title {
+      grid-column: 1 / -1;
+
+      @include set.typography(48px, 500, 100%, -1.5px);
+    }
+
+    &__product {
+        grid-column: 2/-2;
+
+        &-cell {
+          &--photo {
+            width: 100%;
+          }
+        }
+    }
+  }
+
+  @include set.on-desktop {
+    @include set.display-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      row-gap: 56px;
+      margin-inline: 0;
+    }
+
+    &__title {
+      grid-column: 1 / -1;
+      margin-bottom: 0;
+    }
+
+    &__product {
+      &--1 {
+        grid-column: 1 / 5;
+      }
+      &--2 {
+        grid-column: 5 / 9;
+      }
+      &--3 {
+        grid-column: 9 / -1;
+      }
+    }
+  }
+}
+
+.details {
+  @include set.display-grid {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 40px;
+    margin-inline: 0;
+  };
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__photo {
+    @include set.display-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      margin-inline: 0;
+    };
+
+    margin-bottom: 16px;
+  }
+
+  &__product-title {
+    margin-bottom: 8px;
+
+    @include set.typography(24px, 700, 140%, 0);
+  }
+
+  &__product-description {
+    @include set.typography(16px, 400, 140%, 0);
+  }
+
+  &__button {
+    @include set.display-flex(row, center, center);
+
+    padding-top: 40px;
+
+    &-design {
+      width: 278px;
+      height: 56px;
+
+      @include set.typography(16px, 700, 27px, 0);
+
+      border: none;
+      border-radius: 40px;
+      background-color: set.$std-txt-color;
+      color: set.$menu-txt-color;
+
+      &:hover {
+        box-shadow: 1px 4px 16px 0 #e8e8f066;
+        cursor: pointer;
+      }
+
+      &:active {
+        box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+      }
+    }
+  }
+
+  @include set.on-tablet {
+    @include set.display-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    row-gap: 48px;
+    margin-inline: 0;
+    }
+
+    &__title {
+      grid-column: 1 / -1;
+      margin-bottom: 16px;
+    }
+
+    &__product {
+      grid-column: 1 / -1;
+    }
+
+    &__photo {
+      grid-template-columns: repeat(6, 1fr);
+      margin-inline: 0;
+
+      &--first {
+        grid-column: 1 / 5;
+      }
+      &--second {
+        grid-column: 5 / -1;
+        width: 100%;
+      }
+      &--third {
+        grid-column: 1 / 3;
+      }
+      &--fourth {
+        grid-column: 3 / -1;
+        width: 100%;
+      }
+    }
+
+    &__button {
+      padding-top: 48px;
+
+      &-design {
+        width: 392px;
+      }
+    }
+  }
+
+  @include set.on-desktop {
+    @include set.display-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    row-gap: 48px;
+    margin-inline: 0;
+    }
+
+    &__title {
+      grid-column: 1 / -1;
+      margin-bottom: 0;
+    }
+
+    &__product {
+      grid-column: 1 / -1;
+    }
+
+    &__photo {
+      grid-template-columns: repeat(12, 1fr);
+      margin-inline: 0;
+
+      &--first {
+        grid-column: 1 / 9;
+        width: 100%;
+        height: 100%;
+      }
+      &--second {
+        grid-column: 9 / -1;
+        width: 100%;
+        height: 100%;
+      }
+      &--third {
+        grid-column: 1 / 5;
+        width: 100%;
+        height: 100%;
+      }
+      &--fourth {
+        grid-column: 5 / -1;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__button {
+      padding-top: 48px;
+
+      &-design {
+        width: 324px;
+      }
+    }
+  }
+}
+
+.contacts {
+  box-sizing: border-box;
+
+
+  &__form {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__input {
+    @include set.typography(16px, 400, 20px, 0, #7E7E83);
+
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 40px;
+    padding: 14px 16px;
+
+    &:hover {
+      color: #292929;
+      outline: none;
+    }
+
+    &:focus {
+      color: #292929;
+      outline: none;
+    }
+
+    &:valid {
+      color: #292929;
+      outline: none;
+    }
+  }
+
+  &__textarea {
+    @include set.typography(16px, 400, 20px, 0);
+
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 148px;
+    resize: none;
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 16px;
+    padding: 14px 16px;
+
+    &:hover {
+      color: #292929;
+      outline: none;
+    }
+
+    &:focus {
+      color: #292929;
+      outline: none;
+    }
+
+    &:valid {
+      color: #292929;
+      outline: none;
+    }
+  }
+
+  &__button {
+    @include set.typography(16px, 700, 27px, 0);
+
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 40px;
+    background-color: set.$std-txt-color;
+    color: set.$menu-txt-color;
+
+      &:hover {
+        box-shadow: 1px 4px 16px 0 #e8e8f066;
+        cursor: pointer;
+      }
+
+      &:active {
+        box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+      }
+  }
+
+  &__info {
+    @include set.typography(14px, 400, 140%, 0);
+
+    padding-top: 48px;
+
+    &-cell {
+      margin-bottom: 24px;
+    }
+
+    &--item {
+      @include set.typography(16px, 500, 140%, 0);
+
+      text-decoration: none;
+    }
+  }
+
+  @include set.on-tablet {
+    @include set.display-grid {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      row-gap: 48px;
+      margin-inline: 0;
+    };
+
+    &__title {
+      grid-column: 1 / -1;
+      margin-bottom: 0;
+    }
+
+    &__form {
+      grid-column: 1 / 4;
+    }
+
+    &__info {
+      padding-top: 0;
+      grid-column: 4 / -1;
+    }
+  }
+
+  @include set.on-desktop {
+    @include set.display-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      row-gap: 48px;
+      margin-inline: 0;
+    };
+
+    &__title {
+      grid-column: 1 / -1;
+      margin-bottom: 0;
+
+      @include set.typography(48px, 600, 100%, -1.5px);
+    }
+
+    &__form {
+      grid-column: 1 / 6;
+    }
+
+    &__info {
+      padding-top: 0;
+      grid-column: 8 / -1;
+    }
+  }
+}
+
+.footer {
+  position: sticky;
+  margin-top: 120px;
+  bottom: 0;
+  z-index: -1;
+
+  &__logo {
+  width: 100%;
+  height: auto;
+}
+}

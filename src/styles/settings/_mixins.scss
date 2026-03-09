@@ -1,0 +1,43 @@
+@use 'variables' as var;
+
+@mixin on-tablet {
+  @media (min-width: var.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: var.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin display-flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin display-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0;
+  row-gap: 92px;
+  margin-inline: 20px;
+  @content;
+}
+
+@mixin typography(
+  $size: 16px,
+  $weight: 400,
+  $line-height: 140%,
+  $spacing: 0,
+  $color: var.$std-txt-color
+) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $spacing;
+  color: $color;
+}
