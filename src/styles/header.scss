@@ -1,0 +1,122 @@
+.header {
+  box-sizing: border-box;
+  background-image: url(img/header-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right -90px center;
+  background-color: $background-color;
+
+  @include content-paddind-inline;
+
+  height: $phone-header-height;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include on-tablet {
+    height: $tablet-header-height;
+
+    background-position: center;
+  }
+
+  @include on-desktop {
+    height: $header-height;
+  }
+}
+
+.header__logo {
+  background-image: url(./img/main-page-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 38px;
+  width: 130px;
+
+  @include on-desktop {
+    height: 56px;
+    width: 188px;
+  }
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $phone-header-top-padding;
+
+  @include on-desktop {
+    padding-top: $header-top-padding;
+  }
+}
+
+.header__title {
+  justify-self: center;
+  margin: 0;
+  margin-bottom: 80px;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -1.5px;
+  font-size: 36px;
+  line-height: 36px;
+  transition: all 300ms;
+
+  @include on-tablet {
+    font-size: 64px;
+    line-height: 64px;
+    margin-bottom: 130px;
+  }
+
+  @include on-desktop {
+    font-size: 80px;
+    line-height: 80px;
+    margin-bottom: 200px;
+  }
+}
+
+.icon {
+  background-size: contain;
+  width: $phone-icon-size;
+  height: $phone-icon-size;
+
+  @include on-desktop {
+    width: $icon-size;
+    height: $icon-size;
+  }
+  &:hover {
+    transform: translateY(-3px);
+    transition: transform 300ms;
+  }
+}
+
+.header__icons {
+  display: flex;
+  gap: $phone-icon-size;
+
+  @include on-desktop {
+    gap: $icon-size;
+  }
+}
+
+.icon--header-phone {
+  background-image: url(./img/Icon-Phone-call.svg);
+  position: relative;
+
+  &:hover::after {
+    content: '+1 234 555-55-55';
+    position: absolute;
+    height: 100%;
+    line-height: $icon-size;
+    text-align: right;
+    width: 400px;
+    right: calc($icon-size / 2 + $icon-size);
+  }
+}
+
+.icon--header-burger {
+  background-image: url(img/Icon-Burger-menu.svg);
+}
+
+.icon--header-burger:hover {
+  background-image: url(img/icon-burger-menu-hover.svg);
+}
