@@ -1,0 +1,127 @@
+@use 'variables' as v;
+
+.details {
+  padding: 160px 0;
+  background-color: v.$bg-dark;
+  color: v.$text-primary;
+
+  .container {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .details-main-title {
+    font-family: v.$font-main;
+    font-weight: 500;
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 112px;
+
+    @media (max-width: v.$tablet) {
+      font-size: 40px; // Diminui o título no tablet/mobile
+      margin-bottom: 60px;
+    }
+  }
+
+  .details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+
+    @media (max-width: v.$tablet) {
+      gap: 80px; // Diminui o espaço entre os cards no mobile
+    }
+  }
+
+  .detail-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .detail-media {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+
+      // RESPONSIVIDADE AQUI:
+      @media (max-width: v.$tablet) {
+        flex-direction: column; // Empilha as imagens uma sobre a outra
+
+        img {
+          width: 100% !important; // Força a imagem a ocupar a largura do celular
+          height: auto !important; // Mantém a proporção da foto
+        }
+      }
+    }
+
+    // Configurações específicas de largura para Desktop
+    &:nth-child(1),
+    &:nth-child(2) {
+      .detail-media {
+        img:nth-child(1) {
+          width: 672px;
+          height: 320px;
+        }
+        img:nth-child(2) {
+          width: 324px;
+          height: 320px;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      .detail-media {
+        img:nth-child(1) {
+          width: 324px;
+          height: 320px;
+        }
+        img:nth-child(2) {
+          width: 672px;
+          height: 320px;
+        }
+      }
+    }
+  }
+
+  .btn-explore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 160px;
+    height: 48px;
+
+    background-color: v.$text-primary; // Branco
+    color: v.$bg-dark; // Dark
+
+    border-radius: 40px; // Formato pílula
+    text-decoration: none;
+    font-family: v.$font-main;
+    font-weight: 500;
+    font-size: 16px;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  /* Garanta que o container do rodapé da seção esteja assim: */
+  .details-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 114px;
+    width: 100%;
+
+    @media (max-width: v.$tablet) {
+      margin-top: 60px;
+    }
+  }
+}

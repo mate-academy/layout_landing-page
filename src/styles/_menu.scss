@@ -1,0 +1,83 @@
+@use 'variables' as v;
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: #c2c2c2;
+  z-index: 2000;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 120px v.$container-gutter 60px;
+
+  &.active {
+    right: 0;
+  }
+
+  &__close {
+    position: absolute;
+    top: 40px;
+    right: v.$container-gutter;
+    background: none;
+    border: none;
+    cursor: pointer;
+    img {
+      width: 24px;
+      filter: brightness(0);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px; // Itens mais próximos como na imagem do Figma
+    margin-bottom: 40px; // Espaço para o bloco de baixo começar logo após
+
+    a {
+      color: v.$bg-dark;
+      text-decoration: none;
+      font-size: 38px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 2px;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; // Deixa o telefone e o link bem grudadinhos
+
+    .phone {
+      font-size: 16px;
+      color: v.$bg-dark;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-explore {
+      background: none;
+      border: none;
+      padding: 0;
+      color: v.$bg-dark;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-decoration: underline;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+    }
+  }
+}

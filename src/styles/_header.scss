@@ -1,0 +1,88 @@
+@use 'variables' as v;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: clamp(40px, 5vw, 40px) 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: v.$container-max;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .logo img {
+    height: clamp(40px, 4vw, 40px);
+    width: auto;
+    align-self: flex-start; // Garante que o logo fique alinhado ao topo do header, mesmo em telas maiores
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 3vw, 24px);
+
+    .phone-link {
+      display: flex;
+      flex-direction: row-reverse; // O segredo: alinha os itens do fim para o começo
+      align-items: center;
+      text-decoration: none;
+      color: v.$text-primary;
+      background-color: transparent;
+      padding: 8px 12px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+
+      @media (max-width: v.$tablet) {
+        display: none !important;
+      }
+
+      .icon-phone {
+        height: 20px;
+        width: 20px;
+        filter: brightness(0) invert(1);
+        flex-shrink: 0; // Impede o ícone de amassar
+        margin-left: 0; // O número vai criar o espaço quando aparecer
+        transition: margin-left 0.4s ease;
+      }
+
+      .phone-number {
+        font-size: 14px;
+        font-weight: 700;
+        max-width: 0; // Escondido
+        opacity: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(10px);
+      }
+
+      // EFEITO HOVER
+      &:hover {
+        background-color: transparent;
+
+        .phone-number {
+          max-width: 150px; // Expande para a esquerda (devido ao row-reverse)
+          opacity: 1;
+          margin-right: 12px; // Cria o respiro entre o número e o ícone fixo
+          transform: translateX(0);
+        }
+      }
+    }
+    .btn-menu {
+      background: none;
+      border: none;
+      cursor: pointer;
+      img {
+        width: 24px;
+      }
+    }
+  }
+}
