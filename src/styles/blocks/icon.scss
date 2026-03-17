@@ -1,0 +1,80 @@
+.icon {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+
+  width: 24px;
+  height: 24px;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  background-repeat: no-repeat;
+  background-position: right center;
+  flex-shrink: 0;
+
+  transform-origin: right center;
+
+  transition:
+    width 0s,
+    transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &--phone {
+    background-image: url('../assets/icon-phone.svg');
+
+    &:hover {
+      width: 179px;
+      transition:
+        width $transition-duration $transition-timing,
+        transform $transition-duration $transition-timing;
+    }
+  }
+
+  &--menu {
+    background-image: url('../assets/icon-burger-menu.svg');
+    transition: background-image $transition-duration ease;
+
+    &:hover {
+      background-image: url('../assets/icon-burger-menu-hover.svg');
+    }
+  }
+
+  &--close {
+    background-image: url('../assets/icon-close.svg');
+  }
+
+  &__text {
+    position: absolute;
+    right: 32px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #000;
+
+    transform: translateX(20px);
+    opacity: 0;
+
+    transition:
+      transform 0s,
+      opacity 0s;
+  }
+
+  &--phone:hover &__text {
+    transform: translateX(0);
+    opacity: 1;
+    transition:
+      transform $transition-duration $transition-timing,
+      opacity $transition-duration $transition-timing;
+  }
+}
