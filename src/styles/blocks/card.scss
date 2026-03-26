@@ -1,0 +1,51 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins.scss' as m;
+
+.card {
+  &__photos {
+    @include m.page-grid;
+  }
+
+  &__link {
+    @include m.hover(transform, scale(1.05));
+
+    position: relative;
+    &--wide {
+      @include m.on-tabled {
+        grid-column: span 4;
+      }
+
+      @include m.on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include m.on-tabled {
+        grid-column: span 2;
+      }
+
+      @include m.on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin-block: v.$space-xs v.$space-xxs;
+  }
+
+  &__text {
+    max-width: 672px;
+  }
+}

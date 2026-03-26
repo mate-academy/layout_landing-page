@@ -1,0 +1,77 @@
+@use '../utils/mixins.scss' as m;
+@use '../utils/variables.scss' as v;
+
+.header {
+  background-image: url('../images/header-photo.png');
+
+  background-repeat: no-repeat;
+  background-position: right -60px center;
+  background-size: cover;
+
+  @include m.on-tabled {
+    background-position: center;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  &__title {
+    color: v.$color-secondary;
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -0.04em;
+    margin-bottom: 18.33vh;
+
+    @include m.on-tabled {
+      font-size: v.$fs-xxl;
+      letter-spacing: -0.02em;
+      margin-bottom: 20.7vh;
+    }
+
+    @include m.on-desktop {
+      font-size: v.$fs-xxxl;
+      letter-spacing: -0.02em;
+      margin-bottom: 28.55vh;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: v.$space-md;
+  }
+
+  &__phone {
+    position: relative;
+    &::before {
+      opacity: 0;
+      content: '+1 234 5555-55-55';
+      display: block;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-right: v.$space-sm;
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: v.$fs-xs;
+      line-height: 133%;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: v.$color-secondary;
+      transition: all v.$animation-duration;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
