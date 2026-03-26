@@ -1,0 +1,136 @@
+.about-us {
+  max-width: 280px;
+  margin-inline: auto;
+  text-align: left;
+
+  &__schedules {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .visit {
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 700;
+    color: $color-red;
+    max-width: 280px;
+    padding: 0;
+    margin: 0 0 2px;
+  }
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 16px 20px;
+  margin: 0;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  max-width: 280px;
+
+  .subtitle {
+    margin: 0;
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .row {
+    display: contents;
+
+    .left {
+      grid-column: 1 / 2;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+    }
+
+    .right {
+      grid-column: 2 / 3;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 27px;
+    }
+  }
+
+  .closed-on-title {
+    margin: 0;
+    grid-column: 1 / -1;
+    margin-top: 16px;
+    margin-bottom: 0;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  .closed-on-text {
+    margin: 0;
+    grid-column: 1 / -1;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
+
+.about-us > .schedule:first-of-type {
+  .closed-on-text {
+    margin-bottom: 24px;
+  }
+}
+
+@include on-tablet {
+  .about-us {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+    max-width: 100%;
+
+    .visit,
+    .section-title--align--left {
+      grid-column: 1 / span 3;
+      margin-left: 0;
+    }
+
+    &__schedules {
+      grid-column: 4 / -1;
+    }
+
+    .schedule {
+      grid-column: 4 / -1;
+      grid-template-columns: max-content 1fr;
+      gap: 8px 24px;
+      .subtitle,
+      .closed-on-title,
+      .closed-on-text {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .about-us > .schedule:first-of-type {
+      .closed-on-text {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@include on-desktop {
+  .about-us {
+    grid-template-columns: repeat(12, 1fr);
+
+    .visit,
+    .section-title--align--left {
+      grid-column: 1 / span 5;
+    }
+
+    &__schedules {
+      grid-column: 7 / -1;
+    }
+  }
+}

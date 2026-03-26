@@ -1,0 +1,134 @@
+.contacts {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: 600px;
+  }
+
+  @include on-desktop {
+    width: 1020px;
+  }
+
+  .section-title {
+    margin-bottom: 48px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-areas:
+      'info'
+      'form';
+    row-gap: 48px;
+  }
+
+  &__info {
+    gap: 48px;
+    grid-area: info;
+
+    & > :first-child {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__branch-title {
+    margin: 0;
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+
+  &__label {
+    margin: 0;
+    margin-bottom: 2px;
+    font-size: 14px;
+    line-height: 27px;
+    font-weight: 400;
+    color: $main-text-color;
+  }
+
+  &__value {
+    display: block;
+    margin-bottom: 24px;
+    color: $main-text-color;
+    transition: color $effectDuration ease-in-out;
+
+    &:hover {
+      color: $color-red;
+    }
+
+    &--phone {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 27px;
+    }
+
+    &--address {
+      font-size: 16px;
+      line-height: 140%;
+      font-weight: 700;
+      font-style: normal;
+      color: $main-text-color;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        transition: color $effectDuration;
+
+        &:hover {
+          color: $color-red;
+        }
+      }
+    }
+  }
+}
+
+@include on-tablet {
+  .contacts {
+    &__content {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas: 'info info info form form form';
+      gap: 0 24px;
+    }
+
+    &__info {
+      grid-area: info;
+      max-width: none;
+      margin-inline: 0;
+    }
+
+    &__form {
+      grid-area: form;
+    }
+  }
+}
+
+@include on-desktop {
+  .contacts {
+    &__content {
+      grid-template-columns: repeat(12, 1fr);
+      align-items: start;
+    }
+
+    &__info {
+      display: contents;
+    }
+
+    &__branch:first-child {
+      grid-column: 1 / span 3;
+    }
+
+    &__branch:last-child {
+      grid-column: 4 / span 3;
+    }
+
+    &__form {
+      grid-column: 7 / span 6;
+    }
+  }
+}
