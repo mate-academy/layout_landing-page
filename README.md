@@ -1,24 +1,38 @@
-# Landing Page
+# Nothing Products - Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A responsive and modern landing page created for "Nothing" brand products. This project was built to demonstrate the practical application of modern HTML and CSS layout techniques. It is fully adaptive and provides a seamless user experience across mobile, tablet, and desktop devices.
 
-Choose a design for your landing page:
+## Links
+- [Live Demo (GitHub Pages)](https://Evgeniy45.github.io/layout_landing-page/)
+- [Figma Design Mockup](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## 🛠️ Technologies Used
+- **HTML5** (Semantic markup, accessibility features)
+- **SCSS / Sass** (Variables, mixins, nesting)
+- **CSS Grid & Flexbox** (Advanced responsive layouts)
+- **BEM Methodology** (Component-driven architecture and class naming)
+- **Stylelint** (Code quality and formatting consistency)
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## How to run locally
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+To run this project on your local machine, follow these steps:
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Evgeniy45/layout_landing-page.git
+   ```
+
+2. Navigate to the project folder:
+   ```bash
+   cd layout_landing-page
+   ```
+
+3. Install dependencies (for SCSS compilation and Stylelint):
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm start
+   ```
