@@ -1,0 +1,47 @@
+@use '../../utils/mixins';
+@use '../../utils/vars.scss';
+
+.input {
+  padding-block: 14px;
+  padding-inline: 11px;
+  background: vars.$input-bcg;
+  border: 1px solid transparent;
+  outline: none;
+  transition: border-color vars.$transition-base-time ease-in;
+
+  &--text {
+    font-family: vars.$main-font-family;
+    font-style: normal;
+    font-weight: 400;
+    font-size: vars.$input-fz;
+    line-height: vars.$input-lh;
+
+    color: vars.$main-color;
+    transition: color vars.$transition-base-time ease-in;
+  }
+
+  &::placeholder {
+    color: vars.$input-placeholder;
+    transition: color vars.$transition-base-time ease-in;
+  }
+
+  &:hover {
+    color: vars.$main-color;
+  }
+
+  &:hover::placeholder {
+    color: vars.$main-color;
+  }
+
+  &:-webkit-autofill,
+  &:autofill {
+    @include mixins.autofill-reset;
+  }
+
+  &:focus,
+  &:-webkit-autofill:focus,
+  &:autofill:focus {
+    border-color: vars.$main-color !important;
+    color: vars.$main-color !important;
+  }
+}

@@ -1,0 +1,91 @@
+/* #region HEADER */
+@use '../../utils/vars.scss';
+@use '../../utils/mixins.scss';
+
+.header {
+  box-sizing: border-box;
+  background-image: url('../img/hero/hero.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &__item--phone {
+    position: relative;
+  }
+
+  &__contacts {
+    display: none;
+
+    @include mixins.on-desktop {
+      display: block;
+      width: 300px;
+      opacity: 0;
+      position: absolute;
+      left: -230px;
+      top: -30px;
+      transition: opacity 0.3s ease-in;
+    }
+  }
+
+  @include mixins.on-tablet {
+    background-image: url(../img/hero/hero-tablet.webp);
+    object-position: center;
+  }
+
+  @include mixins.on-desktop {
+    background-image: url(../img/hero/hero-desktop.webp);
+
+    &__item--phone:hover &__contacts {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}
+
+.header--pb {
+  padding-bottom: 290px;
+
+  @include mixins.on-tablet {
+    padding-bottom: 456px;
+  }
+
+  @include mixins.on-desktop {
+    padding-bottom: 482px;
+  }
+}
+
+.header__title {
+  box-sizing: border-box;
+  width: 280px;
+
+  margin: 0 auto;
+
+  font-family: vars.$main-font-family;
+  font-style: normal;
+  font-weight: 700;
+  font-size: vars.$header-title-size-sm;
+  line-height: vars.$header-title-size-sm;
+
+  display: flex;
+
+  align-items: center;
+  text-align: center;
+
+  letter-spacing: -1.5px;
+
+  color: #fff;
+
+  @include mixins.on-tablet {
+    width: 392px;
+    font-size: vars.$header-title-size-md;
+    line-height: vars.$header-title-size-md;
+  }
+
+  @include mixins.on-desktop {
+    width: 498px;
+    font-size: vars.$header-title-size-lg;
+    line-height: vars.$header-title-size-lg;
+  }
+}
+
+/* #endregion */

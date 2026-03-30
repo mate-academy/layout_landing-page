@@ -1,0 +1,114 @@
+// here smth
+@use '../../utils/vars.scss';
+@use '../../utils/mixins.scss';
+
+.now-on-view {
+  &__content {
+    @include mixins.layout-grid;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 48px;
+
+    @include mixins.on-tablet {
+      grid-column: 2/6;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 5/9;
+    }
+  }
+
+  &__list {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+
+    margin-bottom: 24px;
+
+    &--3-col {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      @include mixins.on-tablet {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      @include mixins.on-desktop {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  &__item {
+    &--md-none {
+      @include mixins.on-tablet {
+        display: none;
+      }
+
+      @include mixins.on-desktop {
+        display: block;
+      }
+    }
+
+    &--large {
+      @include mixins.on-tablet {
+        grid-column: span 4;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--small {
+      @include mixins.on-tablet {
+        grid-column: span 2;
+      }
+
+      @include mixins.on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__subtitle {
+    grid-column: 1 / -1;
+    color: vars.$accent-main;
+    font-weight: 700;
+  }
+  &__undercard-text {
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+    &--final {
+      margin-bottom: 40px;
+    }
+  }
+  &__button {
+    grid-column: 1 / -1;
+    text-align: center;
+
+    @include mixins.on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}

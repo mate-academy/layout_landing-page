@@ -1,0 +1,41 @@
+/* #region PAGE */
+@use '../../utils/vars.scss';
+
+.page {
+  font-family: vars.$main-font-family;
+  font-size: vars.$main-font-size;
+  line-height: vars.$main-line-height;
+  color: vars.$main-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 100vh;
+
+    transition: all vars.$transition-base-time linear;
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0%);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+/* #endregion */
