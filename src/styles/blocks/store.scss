@@ -1,0 +1,106 @@
+.stores {
+  &__wrapper {
+    // @include page-grid;
+    // display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+  &__button {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+
+    background-color: #1a1a1a;
+    color: #fff;
+
+    // grid-column: 1 / -1;
+
+    &:hover {
+      background-color: #f5f5f7;
+      color: #1a1a1a;
+    }
+
+    &:active {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      height: 56px;
+      grid-column: 5 / span 6;
+    }
+  }
+
+  .store {
+    margin-bottom: 56px;
+
+    @media (max-width: 575px) {
+      margin-bottom: 40px;
+    }
+
+    &__photos {
+      @include page-grid;
+
+      margin-bottom: 16px;
+    }
+    &__link {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      &--wide {
+        @include on-tablet {
+          grid-column: span 4;
+        }
+
+        @include on-desktop {
+          grid-column: span 8;
+        }
+      }
+      &--square {
+        height: 0;
+        padding-bottom: 100%;
+
+        @include on-tablet {
+          grid-column: span 2;
+        }
+
+        @include on-desktop {
+          grid-column: span 4;
+        }
+      }
+    }
+    &__photo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &__photo:hover {
+      transform: scale(1.05);
+    }
+
+    &__title {
+      margin: 0;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 140%;
+
+      grid-column: 1 / -1;
+    }
+  }
+}
