@@ -1,0 +1,62 @@
+@use '../utils/mixins' as *;
+@use '../blocks/variables.scss' as *;
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.icon--phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: $phone-number;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    margin: 8px 20px 8px 0;
+
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-120%, -10px);
+
+    opacity: 0;
+    transition: 0.3s ease;
+
+    white-space: nowrap;
+    font-size: 14px;
+    color: #fff;
+
+    pointer-events: none;
+  }
+
+  @include on-desktop {
+    &:hover::before {
+      transform: translate(-120%, -30px);
+      opacity: 1;
+    }
+  }
+}
+
+.icon--menu {
+  background-image: url(/src/icons/icon-burger-menu.png);
+
+  &:hover {
+    background-image: url(/src/icons/icon-burger-menu-hover.png);
+  }
+}
