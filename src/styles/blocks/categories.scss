@@ -1,0 +1,95 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.categories {
+  &__wrapper {
+    @include page-grid;
+
+    padding-inline: 0;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 56px;
+    background-color: #f98921;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.category {
+  grid-column: 1 / -1;
+  &__photos {
+    @include page-grid;
+
+    padding-inline: 0;
+  }
+
+  &__link {
+    display: block;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+    &--square {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    @include on-tablet {
+      height: 184px;
+      object-fit: cover;
+    }
+
+    @include on-desktop {
+      height: 384px;
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include on-tablet {
+      margin-bottom: 56px;
+      font-size: 24px;
+    }
+  }
+}

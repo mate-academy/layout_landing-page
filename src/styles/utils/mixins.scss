@@ -1,0 +1,64 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $ToValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $ToValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+
+    padding-inline: 120px;
+  }
+}
+
+@mixin text-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
