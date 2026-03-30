@@ -1,0 +1,120 @@
+.categories {
+  padding-top: 96px;
+
+  @include tablet {
+    padding-top: 120px;
+  }
+
+  &__title {
+    max-width: 280px;
+    margin-bottom: 48px;
+    font-size: $h2-size;
+    line-height: $text-l-h-medium;
+
+    @include tablet {
+      max-width: 420px;
+      margin-bottom: 56px;
+      font-size: $h2-size-tablet;
+      line-height: $text-l-h-medium-tablet;
+    }
+
+    @include desktop {
+      max-width: 400px;
+      font-size: $h2-size-tablet;
+      line-height: $h1-size-tablet;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 40px;
+    margin-bottom: 40px;
+
+    @include tablet {
+      gap: 56px;
+      margin-bottom: 56px;
+    }
+  }
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    font-size: $font-size-large;
+    line-height: $text-l-h;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    justify-content: space-between;
+    gap: 20px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: stretch;
+      gap: 24px;
+    }
+  }
+
+  &__img-wrapper {
+    overflow: hidden;
+    display: block;
+    width: 130px;
+    height: 130px;
+
+    @include tablet {
+      width: auto;
+      height: 184px;
+    }
+
+    @include desktop {
+      height: 324px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform $transition ease;
+  }
+
+  &__img-wrapper:hover img {
+    transform: scale($scale);
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-block: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: $font-size-medium;
+  font-weight: $fw-7;
+  line-height: 27px;
+  color: $text-color;
+  text-decoration: none;
+
+  @include desktop {
+    width: 324px;
+  }
+
+  &--primary {
+    background-color: $btn-color-primary;
+
+    &:hover {
+      background-color: $btn-color-hover;
+    }
+
+    &:active {
+      background-color: $btn-color-pressed;
+    }
+  }
+}
