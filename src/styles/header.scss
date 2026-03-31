@@ -1,0 +1,146 @@
+.header {
+  background: url('../images/header-bg.jpg') center/cover no-repeat;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  &__logo img {
+    display: block;
+    width: 64px;
+    height: 46px;
+
+    @include on-tablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 129px;
+
+    @include on-tablet {
+      padding-top: 141px;
+    }
+
+    @include on-desktop {
+      padding-top: 83px;
+    }
+  }
+
+  &__title {
+    font-family: $font-main;
+    font-weight: 700;
+    color: $color-secondary;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    line-height: 1;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: $transition-main;
+  }
+}
+
+.top-bar {
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include on-tablet {
+    box-sizing: content-box;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.icon--phone {
+  background: url('../images/icons/icon-phone.svg') center/cover no-repeat;
+}
+
+.icon--menu {
+  background: url('../images/icons/icon-burger.svg') center/cover no-repeat;
+}
+
+.header__phone-tooltip {
+  position: absolute;
+  right: calc(100%);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: $transition-main;
+}
+
+.phone-tooltip {
+  display: grid;
+  row-gap: 8px;
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 18px;
+
+  &__location {
+    display: grid;
+    row-gap: 4px;
+  }
+
+  &__title {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-secondary;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $color-secondary;
+    text-decoration: none;
+  }
+}
+
+.header__phone:hover .header__phone-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: pointer;
+}
