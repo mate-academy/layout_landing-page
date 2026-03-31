@@ -23,7 +23,7 @@
       position: sticky; /* to keep cross always visible */
       top: 0;
       z-index: 1;
-      background-color: #e5e5e5;
+      background-color: $background-color;
     }
     ```
 13. All form fields should be required and have correct types (`email`, `tel`, etc.)
