@@ -1,0 +1,56 @@
+@use '../utils/mixins' as *;
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/phone.svg);
+    position: relative;
+
+    span {
+      position: absolute;
+      right: calc(100% + var(--space-2));
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: max-content;
+      color: var(--c-black);
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      transition: opacity 0.3s;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/burger.svg);
+
+    &:hover {
+      background-image: url(../icons/burger-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/burger-close.svg);
+  }
+}
+
+@include on-desktop {
+  .icon--phone:hover span {
+    opacity: 1;
+  }
+}
