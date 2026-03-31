@@ -25,7 +25,7 @@ To run this project on your local machine, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Tysiachnyk/layout_landing-page.git](https://github.com/Tysiachnyk/layout_landing-page.git)
+    git clone https://github.com/Tysiachnyk/layout_landing-page.git
     ```
 
 2.  **Navigate to the project folder:**
