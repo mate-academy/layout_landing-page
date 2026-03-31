@@ -1,3 +1,77 @@
-body {
+@import 'variables';
+@import 'mixins';
+@import '/src/styles/blocks/header';
+@import '/src/styles/blocks/navigation';
+@import '/src/styles/blocks/recommended-section';
+@import '/src/styles/blocks/categories-section';
+@import '/src/styles/blocks/about-us-section';
+@import '/src/styles/blocks/footer-contacts-section';
+
+:root {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+.page__body {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: $main-text-color;
+  min-width: 320px;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+/* MAIN CLASSES */
+
+.main {
+  background-color: #fff;
+
+  &__content {
+    display: grid;
+    row-gap: 96px;
+    padding-block: 64px;
+
+    @include on-tablet {
+      padding-block: 120px;
+      row-gap: 120px;
+    }
+  }
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 48px;
+
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 100%;
+
+  @include on-tablet {
+    font-size: 40px;
+    margin-bottom: 56px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+  }
+}
+
+.product__photo,
+.category-img {
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
