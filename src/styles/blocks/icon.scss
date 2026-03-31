@@ -1,0 +1,57 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform $effectDuration;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__phone {
+    background-image: url(../image/Icon-Phone-call.png);
+    order: 2;
+
+    @include on-desktop {
+      &:hover + .icon__phone--number {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+
+    &--number {
+      margin-right: 130px;
+      position: absolute;
+      opacity: 0;
+      text-decoration: none;
+      color: $second-text-color;
+      font-size: $fs-12;
+      font-weight: $fw-700;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      transition: all $effectDuration ease;
+      transform: translateX(10px);
+    }
+  }
+
+  &__burger {
+    background-image: url(../image/Icon-Burger-menu.png);
+
+    &:hover {
+      background-image: url(../image/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &__close {
+    background-image: url(../image/Icon-Close.png);
+  }
+}

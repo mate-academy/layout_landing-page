@@ -1,0 +1,94 @@
+.details {
+  &wrapper {
+    display: grid;
+    row-gap: 20px;
+
+    @include on-tablet {
+      row-gap: 24px;
+    }
+  }
+
+  &__button {
+    @include button;
+
+    background-color: $second-text-color;
+    width: 278px;
+    margin: 48px auto;
+    text-decoration: none;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+  }
+}
+
+.detail {
+  margin-top: 40px;
+
+  @include on-tablet {
+    margin-top: 48px;
+  }
+  &__photos {
+    @include page-grid;
+  }
+
+  &__link {
+    position: relative;
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $effectDuration;
+
+    &:hover {
+      transform: scale(1.2);
+      z-index: 10;
+    }
+  }
+
+  &__title {
+    font-weight: $fw-700;
+    font-size: 24px;
+    line-height: 140%;
+    margin-block: 16px 8px;
+  }
+
+  &__category {
+    font-weight: $fw-400;
+    font-size: $fs-16;
+    line-height: 140%;
+
+    @include on-desktop {
+      max-width: 60%;
+    }
+  }
+}
