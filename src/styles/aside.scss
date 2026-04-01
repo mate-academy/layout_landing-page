@@ -1,0 +1,165 @@
+.menu {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow: auto;
+  background-color: $color-background-menu;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all $duration ease-out;
+
+  &:target {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: $spacing-6;
+    padding-bottom: 48px;
+
+    @include on-tablet {
+      padding-top: $spacing-8;
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      max-width: none;
+      margin-inline: 0;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: $spacing-6;
+    background-color: $color-background-menu;
+
+    @include on-tablet {
+      padding-bottom: $spacing-8;
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    transition: transform $duration ease;
+
+    &:hover {
+      transform: scale($scale);
+    }
+  }
+
+  &__image {
+    width: 152px;
+
+    @include on-tablet {
+      width: 228px;
+    }
+  }
+
+  &__close {
+    width: $spacing-6;
+    height: $spacing-6;
+    background-image: url('../images/Icon-Close.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include on-tablet {
+      width: $spacing-8;
+      height: $spacing-8;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: $spacing-8;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+
+  &__link {
+    position: relative;
+    width: fit-content;
+    font-size: $font-size-big;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: $color-text-main;
+    text-decoration: none;
+
+    &:hover {
+      cursor:
+        url('../images/Cursor-Mouse-Mice.png') 10 10,
+        pointer;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      transform-origin: center;
+      transform: scaleX(0);
+      background-color: $color-text-main;
+      transition: transform $duration ease;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__contacts {
+    display: grid;
+    gap: $spacing-4;
+    margin-top: $spacing-4;
+  }
+
+  &__phone,
+  &__call {
+    width: fit-content;
+    color: $color-text-main;
+    font-size: $font-size-normal-16;
+    font-weight: $font-weight-bold;
+    line-height: $height-text-l40;
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  &__call {
+    position: relative;
+    padding-bottom: $spacing-2;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background-color: currentColor;
+    }
+  }
+
+  &__phone:hover,
+  &__phone:focus,
+  &__call:hover,
+  &__call:focus {
+    color: $color-button-primary;
+  }
+}
