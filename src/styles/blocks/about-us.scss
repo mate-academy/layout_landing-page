@@ -1,0 +1,38 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.about-us {
+  @include mix.page-grid;
+
+  column-gap: 0;
+
+  &__title {
+    grid-column: 1 / 6;
+
+    @include mix.on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    font-size: vars.$font-size-m;
+    font-weight: vars.$font-regular;
+    line-height: vars.$line-height-md;
+    gap: 16px;
+
+    @include mix.on-tablet {
+      grid-column: 4 / -1;
+    }
+
+    @include mix.on-desktop {
+      grid-column: span 5;
+    }
+  }
+}

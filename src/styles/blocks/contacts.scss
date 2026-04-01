@@ -1,0 +1,135 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.contacts {
+  padding-bottom: 64px;
+
+  @include mix.on-tablet {
+    padding-bottom: 120px;
+  }
+
+  &__wrapper {
+    @include mix.on-desktop {
+      @include mix.page-grid;
+    }
+  }
+
+  &__form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 48px;
+    grid-column: span 5;
+
+    @include mix.on-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include mix.on-desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: vars.$border-radius-m;
+    border: none;
+    background-color: vars.$field-bg-color;
+    font-family: vars.$font-family;
+
+    &::placeholder {
+      color: vars.$secondary-text-color;
+      font-size: vars.$font-size-s;
+    }
+
+    &:hover {
+      border: 1px solid vars.$field-border-color;
+    }
+
+    &:active {
+      outline: none;
+      border: 1px solid vars.$main-dark-color;
+    }
+  }
+
+  &__message {
+    height: 148px;
+    padding: 14px 16px 0;
+    border-radius: vars.$border-radius-m;
+    border: none;
+    background-color: vars.$field-bg-color;
+    font-family: vars.$font-family;
+    resize: none;
+
+    &::placeholder {
+      color: vars.$secondary-text-color;
+      font-size: vars.$font-size-s;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    font-size: vars.$font-size-m;
+    font-weight: vars.$font-bold;
+    line-height: vars.$line-height-lg;
+    color: vars.$main-white-color;
+    background-color: vars.$main-dark-color;
+    border-radius: vars.$border-radius-m;
+    height: 56px;
+    cursor: pointer;
+    transition:
+      background-color vars.$transition-duration,
+      color vars.$transition-duration;
+
+    &:hover {
+      color: vars.$main-dark-color;
+      background-color: vars.$field-bg-color;
+      border: 2px solid vars.$button-border-hover;
+    }
+
+    &:active {
+      background-color: vars.$button-border-active;
+      border: 2px solid vars.$button-border-active;
+      color: vars.$main-white-color;
+    }
+
+    @include mix.on-desktop {
+      width: 135px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    grid-column: 7 / -1;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__description {
+    font-size: vars.$font-size-s;
+    font-weight: vars.$font-bold;
+    line-height: vars.$line-height-md;
+    color: vars.$desc-text-color;
+  }
+
+  &__info {
+    color: vars.$third-text-color;
+    font-size: vars.$font-size-m;
+    text-decoration: none;
+  }
+}

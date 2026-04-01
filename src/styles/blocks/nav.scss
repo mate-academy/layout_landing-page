@@ -1,0 +1,40 @@
+@use '../utils/variables' as vars;
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    font-size: vars.$font-size-xl;
+    line-height: vars.$line-height-md;
+    letter-spacing: vars.$letter-spacing;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: vars.$main-dark-color;
+
+      transition: transform vars.$transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

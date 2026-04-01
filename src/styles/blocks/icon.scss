@@ -1,0 +1,69 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mix;
+
+.icon {
+  display: block;
+  width: vars.$icon-size;
+  height: vars.$icon-size;
+  background-size: cover;
+  background-position: center;
+
+  @include mix.hover(transform, scale(1.2));
+
+  @include mix.on-tablet {
+    width: vars.$icon-size-tablet;
+    height: vars.$icon-size-tablet;
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+
+    @include mix.on-desktop {
+      &:hover {
+        .icon__phone-number {
+          opacity: 1;
+          max-width: 200px;
+        }
+      }
+    }
+  }
+
+  &__phone-number {
+    font-size: vars.$font-size-xs;
+    font-weight: vars.$font-bold;
+    color: vars.$main-dark-color;
+    line-height: vars.$line-height-sm;
+    letter-spacing: vars.$letter-spacing;
+    text-decoration: none;
+
+    opacity: 0;
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+      max-width vars.$transition-duration ease-in-out,
+      opacity vars.$transition-duration ease-in-out;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.svg);
+    transition: transform vars.$transition-duration;
+    cursor: pointer;
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
