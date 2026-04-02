@@ -36,7 +36,11 @@ body {
 
   &__welcome {
     background-image: url('./images/img__welcome.jpg');
-    height: $section__welcome-height;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    height: 100vh;
   }
 
   &__about {
@@ -65,7 +69,8 @@ body {
 
   &__aside {
     background-color: $aside-background-color;
-    height: $section__welcome-height;
+    background-size: cover;
+    background-position: center;
 
     @include position(fixed, 0, 0, 0, 1000);
 
@@ -170,6 +175,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
+  pointer-events: none;
 
   &__phone {
     text-decoration: none;
@@ -194,18 +200,29 @@ body {
 .icon {
   @include icon;
 
-  &__phone {
+  &__phone--link {
     background-image: url(./images/icon__phone.svg);
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: relative;
+
 
     &:hover {
       .hover {
         opacity: 1;
+        pointer-events: none;
       }
     }
   }
 
   &__burger--link {
     background-image: url(../styles/images/icon__burger.svg);
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    display: block;
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
@@ -214,6 +231,9 @@ body {
   }
 
   &__close--link {
+    width: 24px;
+    height: 24px;
+    display: block;
     background-image: url(./images/icon__close.svg);
   }
 }
@@ -610,3 +630,8 @@ body {
 }
 
 /* #endregion */
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
