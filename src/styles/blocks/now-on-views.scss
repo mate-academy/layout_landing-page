@@ -1,0 +1,174 @@
+.now-on-views {
+  &--info {
+    max-width: 280px;
+    margin: 0 auto 48px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-text-color;
+    text-align: center;
+
+    @include on-tablet {
+      max-width: 392px;
+    }
+
+    @include on-desktop {
+      max-width: 324px;
+    }
+  }
+
+  &__subtitle {
+    display: block;
+    max-width: 280px;
+    margin: 0 auto 48px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+
+    @include on-tablet {
+      max-width: 392px;
+    }
+
+    @include on-desktop {
+      max-width: 325px;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 56px;
+    margin: 0 auto;
+    background-color: $red-text-color;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $button-hover-color;
+    }
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
+
+    &--title {
+      display: block;
+      padding: 0;
+      margin: 0;
+      font-family: Cinzel, Times, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: normal;
+      text-align: center;
+      text-transform: uppercase;
+      color: $menu-text-color;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.now-on-view {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+
+    &--triple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+
+      @include on-tablet {
+        grid-template-columns: repeat(2, 1fr);
+
+        & :nth-child(3) {
+          display: none;
+        }
+      }
+
+      @include on-desktop {
+        grid-template-columns: repeat(3, 1fr);
+
+        & :nth-child(3) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    // лінтер вимагав, щоб цей складний селектор йшов після базового &--square
+    .now-on-view__photos--triple &--square {
+      grid-column: span 1;
+      padding-bottom: 0;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: $main-text-color;
+
+    &--red--text--h4 {
+      font-weight: 700;
+      color: $red-text-color;
+    }
+  }
+}

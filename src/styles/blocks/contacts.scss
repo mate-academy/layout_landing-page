@@ -1,0 +1,179 @@
+.contacts {
+  &__container {
+    @include page-grid;
+
+    row-gap: 48px;
+  }
+
+  // 1. Спочатку чистий елемент __block (без вкладеності в нього інших елементів)
+  &__block {
+    display: flex;
+    flex-direction: column;
+
+    // Специфічні стани (first-child, nth-child) йдуть всередині або після основного блоку
+    &:first-child {
+      grid-column: span 2;
+
+      @include on-tablet;
+
+      @include on-desktop {
+        grid-column: 1 / span 3;
+        grid-row: 1;
+      }
+    }
+
+    &:nth-of-type(2) {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: 1 / span 3;
+        grid-row: 2;
+      }
+
+      @include on-desktop {
+        grid-column: 4 / span 3;
+        grid-row: 1;
+      }
+    }
+  }
+
+  // 2. Всі інші елементи блоку (виносяться їх з-під &__block)
+  &__block-contact-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-text-color;
+  }
+
+  &__block-ph-a {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 27px;
+    color: $main-text-color;
+  }
+
+  &__block-link {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    color: $contacts-link-text-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 280px;
+    margin: 0 auto;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: 4 / span 3;
+      grid-row: 1 / span 2;
+      width: 288px;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / span 5;
+      grid-row: 1;
+      width: 411px;
+    }
+
+    &--input,
+    &--message {
+      box-sizing: border-box;
+      width: 100%;
+      background: $text-area-color;
+      border: none;
+    }
+
+    &--input {
+      height: 48px;
+    }
+
+    &--message {
+      height: 144px;
+      resize: none;
+    }
+
+    &--text,
+    &--text-1 {
+      display: block;
+      box-sizing: border-box;
+      padding-left: 12px;
+      font-weight: 400;
+      font-size: 14px;
+      font-style: normal;
+      line-height: 20px;
+      font-family: Cinzel, serif !important;
+      color: $main-text-color;
+
+      &::placeholder {
+        color: $input-text-color-placeholder;
+        opacity: 1;
+        transition: color 0.3s ease;
+      }
+
+      &:focus::placeholder {
+        color: $main-text-color;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    height: 56px;
+    margin: 32px auto 0;
+    background-color: $red-text-color;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $button-hover-color;
+    }
+
+    &:active {
+      transform: scale(0.96);
+      background-color: $button-active-color;
+    }
+
+    @include on-tablet {
+      max-width: 288px;
+    }
+
+    @include on-desktop {
+      max-width: 411px;
+    }
+
+    &--title {
+      display: block;
+      padding: 0;
+      margin: 0;
+      font-family: Cinzel, Times, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: normal;
+      text-align: center;
+      text-transform: uppercase;
+      color: $menu-text-color;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
