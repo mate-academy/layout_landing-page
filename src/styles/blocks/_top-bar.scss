@@ -1,0 +1,66 @@
+@use '../utils/mixins' as *;
+@use '../utils/var' as *;
+
+.top-bar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  padding: $p-6 0;
+  margin: 0 auto;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    padding: $p-9 72px;
+  }
+
+  @include on-desktop {
+    padding: $p-9 120px;
+  }
+
+  justify-content: space-between;
+  align-items: center;
+
+  &__img {
+    height: 24px;
+    width: 24px;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+  }
+}
+
+@include on-tablet {
+  .icon--contacts {
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      left: -110px;
+      bottom: 23px;
+      height: 16px;
+
+      font-family: Poppins, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

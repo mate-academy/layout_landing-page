@@ -1,0 +1,110 @@
+@use '../utils/mixins' as *;
+@use '../utils/var' as *;
+
+.header-aside--external {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
+  transform: translateY(-100%);
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+}
+
+.header-aside {
+  height: 100vh;
+
+  background-color: #c2c2c2;
+  color: $dark-text-color;
+
+  &__pages {
+    margin-top: 110px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 41px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin-top: 120px;
+    }
+
+    @include on-desktop {
+      margin-top: 144px;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  &__link::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    border-radius: 1px;
+    background-color: #000;
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &__link:hover::after {
+    transform: scale(1);
+  }
+
+  &__bottom {
+    @include content-padding-inline;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 44px;
+  }
+
+  &__test-ride {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    position: relative;
+    align-self: flex-start;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      border-radius: 1px;
+      background-color: #000;
+    }
+  }
+
+  &__tel {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin-bottom: 4px;
+    display: inline;
+  }
+}
