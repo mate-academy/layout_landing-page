@@ -1,0 +1,38 @@
+@use "variables";
+
+@mixin on-tablet {
+  @media (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (width >= 1200px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} var(--duration-transition);
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
