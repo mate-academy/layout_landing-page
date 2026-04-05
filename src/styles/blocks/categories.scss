@@ -1,0 +1,118 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    cursor: $custom-cursor, pointer;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: 0;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__actions {
+    display: grid;
+
+    @include page-grid;
+
+    justify-content: flex-start;
+    text-decoration: none;
+    color: $color-white;
+    align-items: center;
+    margin-top: 40px;
+
+    &--button {
+      box-sizing: border-box;
+      display: flex;
+      grid-column: 1 / -1;
+      background-color: $main-text-color;
+      justify-content: center;
+      height: 56px;
+      align-items: center;
+      text-align: center;
+      line-height: 1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0;
+      border-radius: 8px;
+      border: none;
+      cursor: $custom-cursor, pointer;
+      transition: all $effectDuration ease;
+
+      @include on-tablet {
+        grid-column: 1 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+
+      &:hover {
+        background-color: $colorHover;
+        color: $main-text-color;
+        border: solid 2px $colorBorder;
+      }
+
+      &:active {
+        background-color: $colorPressed;
+        color: $color-white;
+        transform: scale(0.98);
+      }
+    }
+  }
+}
