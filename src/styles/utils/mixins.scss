@@ -1,0 +1,38 @@
+@mixin media-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin hover-icon($property, $value) {
+  transition: #{$property} 0.5s;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+@mixin page-grid {
+  --count-columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+
+  grid-template-columns: repeat(var(--count-columns), 1fr);
+
+  @include media-tablet {
+    --count-columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include media-desktop {
+    --count-columns: 12;
+  }
+}
