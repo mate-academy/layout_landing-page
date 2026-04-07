@@ -1,0 +1,59 @@
+$tablet-min-width: 576px;
+$desktop-min-width: 1024px;
+$desktop-max-width: 1260px;
+$effectDuration: var(--transition-duration-base);
+
+@mixin on-tablet {
+  @media (min-width: #{$tablet-min-width}) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: #{$desktop-min-width}) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: var(--spacing-5);
+
+  @include on-tablet {
+    padding-inline: var(--spacing-18);
+  }
+
+  @include on-desktop {
+    padding-inline: var(--spacing-30);
+    margin-inline: auto;
+    max-width: #{$desktop-max-width};
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} #{$effectDuration};
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: var(--spacing-5);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: var(--spacing-6);
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}

@@ -1,0 +1,69 @@
+@import './mixins';
+
+.icon {
+  --size-icon: var(--spacing-6);
+
+  display: block;
+  height: var(--size-icon);
+  width: var(--size-icon);
+
+  transition: transform 0.3s;
+
+  background-size: contain;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: var(--spacing-8);
+    width: var(--spacing-8);
+  }
+
+  &--phone-number {
+      opacity: 0;
+      visibility: hidden;
+
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: var(--main-color);
+
+      transition: all 0.3s ease;
+      pointer-events: none;
+  }
+
+
+  &--phone {
+    background-image: url('../../src/images/icons/icon-phone.png');
+    background-repeat: no-repeat;
+
+    &:hover ~ .icon--phone-number {
+      @include on-desktop{
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url('../../src/images/icons/burger-menu.png');
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('../../src/images/icons/Icon-menu-hover.png');
+    }
+  }
+
+  &--close {
+    background-image: url('../../src/images/icons/icon-close.png');
+    background-repeat: no-repeat;
+  }
+}
