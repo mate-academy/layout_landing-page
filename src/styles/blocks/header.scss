@@ -1,0 +1,275 @@
+.header {
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__logo {
+      @include logo-size-mobile;
+      @include hover-scale;
+
+      @include on-tablet {
+        @include logo-size-tablet-desktop;
+      }
+
+      @include on-desktop {
+        @include logo-size-tablet-desktop;
+      }
+    }
+
+    &__info {
+      justify-content: space-evenly;
+      width: 70dvw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      @include on-tablet {
+        width: 35dvw;
+      }
+
+      @include on-desktop {
+        width: 20dvw;
+      }
+
+      &__phone {
+        background-color: transparent;
+        border: none;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        fill: $white;
+
+        @include icon-size-mobile;
+        @include hover-scale;
+
+        @include on-tablet {
+          @include icon-size-tablet-desktop;
+        }
+
+        @include on-desktop {
+          @include icon-size-tablet-desktop;
+        }
+      }
+
+      &__tooltip {
+        text-align: right;
+        width: auto;
+        font-size: 12px;
+        font-weight: bold;
+        color: $white;
+        line-height: 16px;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+
+        @include on-tablet {
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        @include on-desktop {
+          font-size: 16px;
+          line-height: 27px;
+        }
+      }
+
+      &__menu {
+        background-color: transparent;
+        border: none;
+        background-image: url('../../assets/images/icons/Icon-Burger-menu.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background-image 0.3s ease;
+
+        @include icon-size-mobile;
+        @include hover-scale;
+
+        @include on-tablet {
+          @include icon-size-tablet-desktop;
+        }
+
+        @include on-desktop {
+          @include icon-size-tablet-desktop;
+        }
+      }
+
+      &__menu:hover {
+        cursor: pointer;
+        background-image: url('../../assets/images/icons/Icon-Burger-menu-hover.svg');
+      }
+    }
+  }
+
+  &.scrolled {
+    background-color: $white;
+    box-shadow:
+      rgba(60, 64, 67, 0.3) 0 1px 2px 0,
+      rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+
+    .header__content__info__phone,
+    .header__content__info__menu,
+    .header__content__logo {
+      filter: invert(1) brightness(0.8);
+    }
+
+    .header__content__info__tooltip {
+      color: $main-dark;
+    }
+  }
+
+  &__menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: $accent-main;
+    z-index: 20;
+    scrollbar-width: none;
+    overflow: hidden;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include slide-left-animation;
+
+    &.closing {
+      @include slide-right-animation;
+    }
+
+    @include on-tablet {
+      padding: 0 72px;
+    }
+
+    @include on-desktop {
+      padding: 0 120px;
+    }
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 19px;
+
+      &__logo {
+        @include logo-size-mobile;
+        @include hover-scale;
+
+        @include on-tablet {
+          @include logo-size-tablet-desktop;
+        }
+
+        @include on-desktop {
+          @include logo-size-tablet-desktop;
+        }
+      }
+
+      &__close {
+        margin-top: 15px;
+        margin-right: 22px;
+        background-color: transparent;
+
+        border: none;
+        transition: 0.3s ease;
+        cursor: pointer;
+
+        @include icon-size-mobile;
+        @include hover-scale;
+
+        @include on-tablet {
+          @include icon-size-tablet-desktop;
+        }
+
+        @include on-desktop {
+          margin-right: 30px;
+
+          @include icon-size-tablet-desktop;
+        }
+      }
+    }
+
+    &__nav {
+      display: block;
+      margin: 40px 0 32px;
+      box-sizing: border-box;
+
+      &__list {
+        list-style: none;
+        box-sizing: border-box;
+        padding: 0;
+        flex-direction: column;
+        gap: 32px;
+        display: flex;
+
+        &__item {
+          font-size: 22px;
+          line-height: 22px;
+          letter-spacing: 2px;
+          color: $white;
+          font-weight: 700;
+          text-align: left;
+          gap: 32px;
+          text-transform: lowercase;
+          cursor: pointer;
+
+          @include hover-scale;
+          @include link-underline;
+        }
+      }
+    }
+
+    &__address {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+
+      &__text {
+        color: $white;
+        margin: 0;
+        font-size: 16px;
+        line-height: 27px;
+        font-weight: 700;
+
+        &--tel {
+          text-decoration: none;
+          color: $white;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__order {
+      padding: 0;
+      box-sizing: border-box;
+      background-color: transparent;
+
+      border: none;
+      color: $white;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+
+      @include hover-scale;
+      @include link-underline-active;
+    }
+  }
+}

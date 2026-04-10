@@ -1,0 +1,192 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin logo-size-mobile {
+  width: 64px;
+  height: 46px;
+}
+
+@mixin logo-size-tablet-desktop {
+  width: 87px;
+  height: 65px;
+}
+
+@mixin icon-size-mobile {
+  width: 24px;
+  height: 24px;
+}
+
+@mixin icon-size-tablet-desktop {
+  width: 32px;
+  height: 32px;
+}
+
+@mixin hover-scale {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin link-underline {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+@mixin link-underline-active {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  width: fit-content;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+  }
+}
+
+@mixin slide-left-animation {
+  animation: slide-left 0.5s ease-out;
+  scrollbar-width: none;
+  overflow: hidden !important;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes slide-left {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin slide-right-animation {
+  animation: slide-right 0.5s ease-out forwards;
+
+  @keyframes slide-right {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+}
+
+@mixin display-grid-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
+  box-sizing: border-box;
+  width: 320px;
+  padding: 0 20px;
+}
+
+@mixin display-grid-tablet {
+  display: grid;
+  grid-template-columns: repeat(6, 80px);
+  column-gap: 24px;
+  box-sizing: border-box;
+  width: 744px;
+  padding: 0 72px;
+}
+
+@mixin display-grid-desktop {
+  display: grid;
+  grid-template-columns: repeat(12, 63px);
+  column-gap: 24px;
+  box-sizing: border-box;
+  width: 1260px;
+  padding: 0 120px;
+}
+
+@mixin title-text-mobile-tablet-desktop {
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+  color: $main-dark;
+  text-align: center;
+  margin: 0 0 15px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin mobile-image-size {
+  width: 130px;
+  height: 130px;
+}
+
+@mixin button-style {
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+  box-sizing: border-box;
+  height: 56px;
+  background-color: $accent-main;
+  color: $white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    @include hover-scale;
+
+    background-color: $accent-dark;
+  }
+
+  &:active {
+    background-color: $accent-light;
+  }
+}

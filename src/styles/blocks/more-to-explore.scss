@@ -1,0 +1,111 @@
+.more-to-explore {
+  overflow-x: hidden;
+
+  @include display-grid-mobile;
+
+  @include on-tablet {
+    @include display-grid-tablet;
+  }
+
+  @include on-desktop {
+    @include display-grid-desktop;
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 4 / 10;
+    }
+  }
+
+  &__title {
+    @include title-text-mobile-tablet-desktop;
+  }
+
+  &__gallery {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      grid-column: span 4;
+    }
+  }
+
+  &__gallery-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  &__image {
+    width: 280px;
+    height: 277px;
+    transition: ease 0.2s;
+
+    @include on-tablet {
+      width: 392px;
+      height: 387px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+      height: 320px;
+    }
+  }
+
+  &__about {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  &__about-title {
+    font-size: 24px;
+    line-height: 140%;
+    font-weight: 700;
+    color: $accent-main;
+    transition: ease 0.5s;
+
+    @include hover-scale;
+    @include link-underline;
+  }
+
+  &__about-description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-dark;
+    font-weight: 400;
+    text-align: center;
+    transition: ease 0.2s;
+  }
+
+  &__gallery-container:has(.more-to-explore__about-title:hover)
+    .more-to-explore__image {
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
+  }
+
+  &__gallery-container:has(.more-to-explore__about-title:hover)
+    .more-to-explore__about-description {
+    transform: translateY(-10px);
+    transition: transform 0.5s ease;
+  }
+}
