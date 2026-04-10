@@ -1,0 +1,52 @@
+@use '../utils/mixins';
+
+.icon {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include mixins.hover(transform, scale(1.2));
+
+  @include mixins.on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__hover {
+    display: none;
+    position: absolute;
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  &--phone {
+    background-image: url(/images/icon/icon-phone.svg);
+
+    @include mixins.on-desktop {
+      &:hover {
+        .icon__hover {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(/images/icon/icon-menu.svg);
+
+    &:hover {
+      background-image: url(/images/icon/icon-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(/images/icon/icon-close.svg);
+  }
+}

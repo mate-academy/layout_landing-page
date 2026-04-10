@@ -1,0 +1,39 @@
+@use '../utils/varibles';
+@use '../utils/mixins';
+
+.button {
+  width: 100%;
+
+  @include mixins.page-grid;
+
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fff;
+    color: varibles.$color-primary;
+    border-radius: 40px;
+    min-height: 56px;
+    grid-column: span 2;
+    transition: box-shadow 0.3s;
+
+    @include mixins.on-tablet {
+      grid-column: 2/ -2;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 5 / -5;
+    }
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 #e8e8f066;
+    }
+  }
+}

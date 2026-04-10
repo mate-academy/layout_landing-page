@@ -1,0 +1,37 @@
+@use '../utils/varibles';
+
+.page {
+  font-family: Poppins, sans-serif;
+  line-height: 140%;
+  font-size: 16px;
+  color: varibles.$color-white;
+  scroll-behavior: smooth;
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    margin: 0;
+    background-color: varibles.$color-primary;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+
+    transition:
+      transform 0.3s,
+      opacity 0.3s ease-in;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    pointer-events: all;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
