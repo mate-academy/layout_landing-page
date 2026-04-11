@@ -1,0 +1,107 @@
+@use 'variables' as *;
+@use './utils/mixins' as *;
+
+.menu {
+  color: $color-white;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $color-accent-bright;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow: auto;
+
+  position: fixed;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: min(100%);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+
+  &:target,
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-accent-bright;
+  }
+
+  &__nav {
+    margin-bottom: $font-size-h2-mobile;
+  }
+
+  &__content {
+    padding-top: $spacing-m;
+
+    @include content-padding-inline;
+  }
+
+  &__phone-fifth-avenue {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    font-size: $font-size-base;
+    line-height: $lh-base;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+
+  &__phone-cloisters {
+    display: block;
+    margin-bottom: $spacing-xs;
+    color: inherit;
+    text-decoration: none;
+    font-size: $font-size-base;
+    line-height: $lh-base;
+    letter-spacing: 0;
+
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+
+  &__call-to-order {
+    display: block;
+    width: fit-content;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $color-white;
+    color: inherit;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: $spacing-xs;
+    letter-spacing: 2px;
+  }
+}
+
+@media (min-width: 744px) {
+  .menu {
+    &__content {
+      padding-top: 15px;
+    }
+
+    &__nav {
+      margin-bottom: $spacing-l;
+    }
+  }
+}
+
+@media (min-width: 1260px) {
+  .menu {
+    &__content {
+      padding-top: 5px;
+    }
+  }
+}
