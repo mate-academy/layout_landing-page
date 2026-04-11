@@ -15,17 +15,71 @@
     background-image: url(../images/icons/icon-phone.png);
     background-repeat: no-repeat;
     background-position: center;
+    transition: opacity $transition-base;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.png);
     background-repeat: no-repeat;
     background-position: center;
+
+    transition: opacity $transition-base;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   &--close {
     background-image: url(../images/icons/icon-close.png);
     background-repeat: no-repeat;
     background-position: center;
+  }
+}
+
+.phone-open {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 12px);
+    margin-top: 0;
+    min-width: 220px;
+    padding: 12px 16px;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-50%) translateY(-6px);
+    transition:
+      opacity $transition-base,
+      transform $transition-base,
+      visibility $transition-base;
+    z-index: 20;
+  }
+
+  &__link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 1.4;
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &:hover &__content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateY(0);
   }
 }
