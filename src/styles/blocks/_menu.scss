@@ -1,0 +1,99 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background-color: $color-background;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition:
+    transform $transition-duration ease,
+    opacity $transition-duration ease;
+
+  overflow: auto;
+
+  &:target {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  &__container {
+    min-height: 100vh;
+    padding-top: 24px;
+    padding-bottom: 40px;
+
+    @include on-tablet {
+      padding-top: 32px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 64px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-background;
+
+    @include on-tablet {
+      margin-bottom: 96px;
+    }
+  }
+
+  &__logo {
+    display: block;
+
+    img {
+      width: 127px;
+      height: auto;
+
+      @include on-tablet {
+        width: 152px;
+      }
+    }
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 48px;
+    }
+  }
+
+  &__phone {
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 700;
+  }
+
+  &__order-link {
+    width: fit-content;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $color-black;
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+}
