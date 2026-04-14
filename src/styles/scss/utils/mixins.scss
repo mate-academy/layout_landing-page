@@ -1,0 +1,45 @@
+@use 'sass:map'; // 1. Добавили подключение модуля
+
+@mixin screen($size) {
+  $width: map.get($breakpoints, $size);
+
+  @if $width {
+    @media (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $content-max-width;
+  margin-inline: auto;
+  padding-inline: $phone-margin;
+
+  @include screen(md) {
+    padding-inline: $tablet-margin;
+  }
+}
+
+// 🎯 Flex центр
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 🧩 Иконки
+@mixin icon($size) {
+  flex-shrink: 0;
+  width: $size;
+  height: $size;
+}
+
+// ✨ Hover
+@mixin hover($property, $value) {
+  transition: #{$property} $effect-duration ease;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
