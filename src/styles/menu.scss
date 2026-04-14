@@ -1,0 +1,65 @@
+.menu {
+  height: $header-height;
+  overflow: auto;
+
+  &__top {
+    @include top-block-style;
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+  }
+
+  &__close {
+    @include header-icon-style(url('../images/icons/icon-close.svg'));
+  }
+
+  &__nav {
+    margin-top: 32px;
+
+    @include respond-to('tablet') {
+      margin-top: 56px;
+    }
+  }
+
+  &__contact {
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone,
+  &__call {
+    width: fit-content;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $text-color;
+    text-decoration: none;
+    position: relative;
+    transition: color $transition-duration $animation-timing-function;
+
+    @include respond-to('desktop') {
+      &:hover {
+        color: $accent-color;
+      }
+
+      &:hover.menu__call::after {
+        background-color: $accent-color;
+      }
+    }
+  }
+
+  &__call::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: $text-color;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    transition: color $transition-duration $animation-timing-function;
+  }
+}
