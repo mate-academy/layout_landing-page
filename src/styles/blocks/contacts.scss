@@ -1,0 +1,53 @@
+@use '../utils/mixins.scss' as mix;
+@use '../utils/variables.scss' as vars;
+
+.contacts {
+  &__content {
+    @include mix.page-grid;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1 / -1;
+
+    @include mix.on-desktop {
+      grid-column: span 5;
+    }
+  }
+  &__information {
+    grid-column: 1 / -1;
+
+    @include mix.on-desktop {
+      grid-column: 7 / -1;
+    }
+  }
+  &__textarea {
+    all: unset;
+    border-radius: 8px;
+    background-color: vars.$interactive-bg;
+  }
+  &__button {
+    margin-top: 16px;
+    margin-bottom: 64px;
+
+    @include mix.on-tablet {
+      margin-bottom: 120px;
+    }
+  }
+  &__label {
+    color: vars.$contact-information-color;
+  }
+
+  &__value {
+    transition: color vars.$transition-duration;
+    text-decoration: none;
+    color: vars.$main-color;
+
+    &:hover {
+      cursor: pointer;
+      color: #cfd518;
+    }
+  }
+}

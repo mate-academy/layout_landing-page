@@ -1,0 +1,50 @@
+@use '../utils/mixins.scss' as mix;
+@use '../utils/variables.scss' as vars;
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include mix.hover(transform, scale(1.2));
+
+  @include mix.on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--call {
+    background-image: url(../images/Icon-Phone-call.svg);
+    position: relative;
+    &::before{
+      content: '+1 234 555-55-55';
+      position: absolute;
+      display: none;
+      width: max-content;
+      top: 10%;
+      right: 110%;
+      color:vars.$main-color;
+    }
+    &:hover{
+      cursor: pointer;
+      &::before{
+        display: inline;
+      }
+    }
+  }
+
+  &--burger {
+    background-image: url(../images/Icon-Burger-menu.svg);
+
+    &:hover {
+      cursor: pointer;
+      background-image: url(../images/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/Icon-Close.svg);
+  }
+}

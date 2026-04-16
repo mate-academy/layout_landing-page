@@ -1,0 +1,61 @@
+@use './variables.scss' as vars;
+
+@mixin on-tablet {
+  @media (min-width: vars.$tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vars.$desktop-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition:
+    #{$property},
+    vars.$transition-duration;
+  &:hover {
+    cursor: pointer;
+    #{$property}: $toValue;
+  }
+}
+
+@mixin inline-paddings {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    max-width: 600px;
+    padding-inline: 72px;
+    margin-inline: auto;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    margin-inline: auto;
+    max-width: 1260px;
+  }
+}
+
+.container {
+  @include inline-paddings;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
