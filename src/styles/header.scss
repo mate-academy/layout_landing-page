@@ -1,0 +1,97 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  &__container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+  }
+
+  &__logo {
+    width: 152px;
+
+    @include on-tablet {
+      width: 228px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 36px;
+    }
+  }
+
+  &__burger {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url("data:image/svg+xml,%3Csvg width='24' height='16' viewBox='0 0 24 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 14.6667C0 15.403 0.596954 16 1.33333 16H22.6667C23.403 16 24 15.403 24 14.6667C24 13.9303 23.403 13.3333 22.6667 13.3333H1.33333C0.596954 13.3333 0 13.9303 0 14.6667ZM0 8C0 8.73638 0.596954 9.33333 1.33333 9.33333H22.6667C23.403 9.33333 24 8.73638 24 8C24 7.26362 23.403 6.66667 22.6667 6.66667H1.33333C0.596954 6.66667 0 7.26362 0 8ZM1.33333 0C0.596954 0 0 0.596954 0 1.33333C0 2.06971 0.596954 2.66667 1.33333 2.66667H22.6667C23.403 2.66667 24 2.06971 24 1.33333C24 0.596954 23.403 0 22.6667 0H1.33333Z' fill='%231B2129'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+    transition: background-image $transition-speed ease;
+
+    @include on-tablet {
+      width: 32px;
+      height: 21px;
+    }
+
+    &:hover {
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='16' viewBox='0 0 24 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 14.6667C0 15.403 0.596954 16 1.33333 16H10.6667C11.403 16 12 15.403 12 14.6667C12 13.9303 11.403 13.3333 10.6667 13.3333H1.33333C0.596954 13.3333 0 13.9303 0 14.6667ZM0 8C0 8.73638 0.596954 9.33333 1.33333 9.33333H22.6667C23.403 9.33333 24 8.73638 24 8C24 7.26362 23.403 6.66667 22.6667 6.66667H1.33333C0.596954 6.66667 0 7.26362 0 8ZM1.33334 0C0.596956 0 0 0.596954 0 1.33333C0 2.06971 0.596954 2.66667 1.33333 2.66667H16C16.7364 2.66667 17.3333 2.06971 17.3333 1.33333C17.3333 0.596954 16.7364 0 16 0H1.33334Z' fill='%231B2129'/%3E%3C/svg%3E");
+    }
+  }
+
+  &__phone {
+    margin-left: auto;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    background: url("data:image/svg+xml,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z' fill='%231B2129'/%3e%3c/svg%3e")
+      center / contain no-repeat;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__phone-number {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) translate(-100%);
+    opacity: 0;
+    font-weight: $font-weight-bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: $color-text;
+    white-space: nowrap;
+    transition: all $transition-speed ease;
+    pointer-events: none;
+  }
+
+  &__phone:hover &__phone-number {
+    opacity: 1;
+    transform: translateY(-50%) translate(-110%);
+    color: $color-accent;
+  }
+}
