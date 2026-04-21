@@ -1,0 +1,62 @@
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  @include hover(transform, scale(1.05));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/icon-phone.svg);
+  }
+
+  &__label {
+    display: none;
+
+    @include on-desktop {
+      display: block;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 8px;
+      white-space: nowrap;
+
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: $main-text-color;
+      text-decoration: none;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $effectDuration;
+    }
+  }
+
+  @include on-desktop {
+    &:hover .icon__label {
+      opacity: 1;
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/icon-menu.svg);
+
+    &:hover {
+      transform: scale(1.05);
+      background-image: url(../icons/icon-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/icon-close.svg);
+  }
+}
