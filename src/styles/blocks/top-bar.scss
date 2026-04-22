@@ -1,0 +1,63 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 36px;
+  }
+
+  &__icons {
+    display: flex;
+    background-size: cover;
+    gap: 3 * $icons-proportion;
+
+    @include on-tablet {
+      gap: 4 * $icons-proportion;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    height: 38px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: $big-logo-size;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    &__number {
+      z-index: 10;
+      position: absolute;
+      right: 100%;
+      margin-right: 10px;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(30px);
+      transition: all 0.3s;
+
+      background: $background-main-color;
+      color: $main-text-color;
+      padding: 5px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    &:hover &__number {
+      opacity: 1;
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+}
