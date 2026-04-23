@@ -10,6 +10,45 @@ $fs-h2: 32px;
 $fs-h3: 24px;
 $fs-main: 16px;
 $fs-small: 14px;
+$fs-tablet-hero: 64px;
+$fs-tablet-h2: 48px;
+
+
+@mixin flex($justify: space-between, $align: center, $dir: row){
+  display: flex;
+  justify-content: $justify;
+  flex-direction: $dir;
+  align-items: $align;
+}
+
+@mixin font($weight, $size, $ls: -1.5px){
+  font-weight: $weight;
+  font-size: $size;
+  letter-spacing: $ls;
+}
+
+@mixin icon($size: 24px){
+  width: $size;
+  height: $size;
+
+  & img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@mixin onTablet{
+  @media(min-width: 744px){
+    @content;
+  }
+}
+
+@mixin onDesktop{
+  @media(min-width: 1260px){
+    @content;
+  }
+}
 
 .page {
   scroll-behavior: smooth;
@@ -19,7 +58,6 @@ $fs-small: 14px;
   margin: 0;
   padding: 0;
   font-family: Poppins, sans-serif;
-  letter-spacing: -1.5px;
   color: $color-white;
   background-color: $color-dark;
 }
@@ -36,51 +74,109 @@ $fs-small: 14px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right -50px center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   margin: 0;
 
+  // ФІКС 1: Міняємо space-between на flex-end, щоб тайтл завжди був знизу
+  @include flex(flex-end, stretch, column);
+
+  // ФІКС 2: Тримаємо місце під літаюче меню
+  padding-top: 86px;
+  box-sizing: border-box;
+
+  @include onTablet{
+    height: 60vh;
+    padding-top: 128px;
+  }
+
   &__top {
-    display: flex;
-    justify-content: space-between;
+    @include flex();
     padding: 0 20px;
     min-height: 86px;
-    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+
+    background: transparent;
+
+    @include onTablet(){
+      padding: 0 72px;
+      min-height: 128px;
+    }
+
+    //start
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: rgba($color-dark, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
+      //end
   }
 
   &__actions {
-    display: flex;
-    justify-content: space-between;
+    @include flex(space-between, stretch, row);
     min-width: 72px;
     min-height: 24px;
+
+    @include onTablet{
+      min-width: 96px;
+      min-height: 32px;
+    }
   }
 
   &__icon {
-    height: 24px;
-    width: 24px;
+    @include icon();
 
-    & img {
-      object-fit: contain;
-      height: 100%;
-      width: 100%;
-    }
+    @include onTablet{
+      @include icon(32px);
+    };
   }
 
   &__logo {
     width: 130px;
     height: 38px;
+
+     & img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+      }
+
+    @include onTablet{
+      width: 187px;
+      height: 56px;
+    };
   }
 
   &__title {
+    @include font(700, $fs-hero);
     color: $color-white;
-    font-weight: 700;
-    font-size: $fs-hero;
     width: 279px;
     align-self: center;
+    text-align: center;
     padding-bottom: 88px;
+
+    @include onTablet{
+      @include font(700, $fs-tablet-hero);
+      width: 600px;
+      padding-bottom:130px;
+    }
   }
 }
+
+
 
 /* #endregion */
 
@@ -89,38 +185,65 @@ $fs-small: 14px;
   background-color: $color-dark;
   margin: 0;
   padding: 20px;
+
+  @include onTablet{
+    padding: 72px;
+  }
 }
 
 .intro {
+
+  @include onTablet{
+    @include flex;
+    align-items: flex-start;
+    margin: 48px 0 132px;
+  }
+
   &__title {
+    @include font(500, $fs-h2);
     margin: 40px 0 32px;
     color: $color-white;
     height: 32px;
     width: 152px;
-    font-weight: 500;
-    font-size: $fs-h2;
+
+    @include onTablet{
+      margin: 0;
+      height: 48px;
+      width: 288px;
+      @include font(500, $fs-tablet-h2);
+    }
   }
 
   &__description {
+    @include font(500, 23px, 0);
     margin: 0;
     color: $color-white;
     height: 192px;
-    font-weight: 500;
-    font-size: 23px;
-    letter-spacing: 0;
+
+    @include onTablet{
+      height: auto;
+      width: 288px;
+    }
   }
 }
 
 .compare {
   margin: 0;
   margin-top: 92px;
-}
 
-.compare__title {
+  @include onTablet{
+    margin: 0 104px;
+  }
+
+  &__title {
+  @include font(500, $fs-h2);
   text-align: center;
-  font-weight: 500;
-  font-size: $fs-h2;
   margin: 0;
+
+  @include onTablet{
+    @include font(500, $fs-tablet-h2);
+  }
+}
 }
 
 .bike-card {
@@ -130,36 +253,42 @@ $fs-small: 14px;
   }
 
   &__title {
-    font-weight: 700;
-    font-size: $fs-h3;
+    @include font(700, $fs-h3, 0);
     margin-top: 32px;
-    letter-spacing: 0;
   }
 
   &__description {
-    font-weight: 400;
-    font-size: $fs-main;
+    @include font(400, $fs-main, 0);
     margin: 8px 0 16px;
-    letter-spacing: 0;
   }
 
   &__price {
+    @include font(700, $fs-h3, 0);
     margin: 0;
     margin-bottom: 40px;
-    font-size: $fs-h3;
-    letter-spacing: 0;
-    font-weight: 700;
+
+    @include onTablet{
+      margin-bottom: 48px;
+    }
   }
 }
 
 .details {
   margin: 92px 0 80px;
 
+  @include onTablet{
+    margin: 120px 0;
+  }
+
   &__title {
+    @include font(500, $fs-h2);
     text-align: center;
-    font-weight: 500;
-    font-size: $fs-h2;
     padding-bottom: 8px;
+
+    @include onTablet{
+      @include font(500, $fs-tablet-h2);
+      padding-bottom: 16px;
+    }
   }
 
   &__button {
@@ -170,57 +299,74 @@ $fs-small: 14px;
     border-radius: $radius-large;
     margin: 0 auto;
 
+    @include font(700, $fs-main, 0);
     color: $color-dark;
-    font-weight: 700;
-    font-size: $fs-main;
-    letter-spacing: 0;
+
+    @include onTablet{
+      width: 392px;
+    }
   }
 }
 
 .feature {
   margin: 40px 0;
 
+  @include onTablet{
+    margin: 48px 0;
+  }
+
   &__title {
-    font-weight: 700;
-    font-size: $fs-h3;
-    letter-spacing: 0;
+    @include font(700, $fs-h3, 0);
     margin: 16px 0 8px;
   }
 
   &__images {
-    display: flex;
-    justify-content: center;
+    @include flex(center,stretch, row);
     gap: 20px;
+
+    @include onTablet{
+      gap: 24px;
+    }
   }
 
   &__description {
-    font-weight: 400;
-    font-size: $fs-main;
-    letter-spacing: 0;
+    @include font(400, $fs-main, 0);
     margin: 0;
   }
 }
 
 .contact {
+
+  &__wrap{
+    @include onTablet{
+      @include flex(center,center, row);
+      gap: 24px;
+    }
+  }
+
   &__title {
-    font-weight: 500;
-    font-size: $fs-h2;
+    @include font(500, $fs-h2);
     text-align: center;
+
+    @include onTablet{
+      @include font(500, $fs-tablet-h2);
+    }
   }
 
   &-form {
     margin: 48px 0;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    @include flex(flex-start, center, column);
+
+    @include onTablet{
+        width: 288px;
+      }
 
     &__input,
     &__textarea {
-      font-size: $fs-small;
+      @include font(400, $fs-small, 0);
       color: $color-gray;
-      font-weight: 400;
-      letter-spacing: 0;
       font-family: Poppins, sans-serif;
+
       background-color: $color-bg-input;
       border: none;
       width: 100%;
@@ -228,18 +374,20 @@ $fs-small: 14px;
       box-sizing: border-box;
       padding: 14px 16px;
       margin-bottom: 16px;
+      height: 48px;
     }
 
     &__input {
-      height: 48px;
       border-radius: $radius-large;
     }
 
     &__textarea {
       border-radius: $radius-small;
-      height: 48px;
       width: 278px;
       min-height: 148px;
+      @include onTablet{
+        width: 100%;
+      }
     }
 
     &__button {
@@ -248,12 +396,14 @@ $fs-small: 14px;
       height: 56px;
       width: 280px;
       display: block;
-      margin: 22 auto 0;
+      margin: 32 auto 0;
 
-      font-weight: 700;
-      font-size: $fs-main;
-      letter-spacing: 0;
+      @include font(700, $fs-main, 0);
       text-align: center;
+
+      @include onTablet{
+        width: 288px;
+      }
     }
   }
 
@@ -266,18 +416,14 @@ $fs-small: 14px;
 
     &__label {
       display: block;
-      font-weight: 400;
-      font-size: $fs-small;
-      letter-spacing: 0;
+      @include font(400, $fs-small, 0);
     }
 
     &__value {
+      @include font(500, $fs-main, 0);
       text-decoration: none;
       color: $color-white;
       font-style: normal;
-      letter-spacing: 0;
-      font-weight: 500;
-      font-size: $fs-main;
     }
   }
 }
@@ -296,6 +442,10 @@ $fs-small: 14px;
   z-index: -1;
   background-size: cover;
   background-position: center;
+
+  @include onTablet{
+    height: 480px;
+  }
 }
 
 /* #endregion */
@@ -306,26 +456,27 @@ $fs-small: 14px;
   background-color: $color-bg-menu;
 
   &__top {
-    display: flex;
-    justify-content: space-between;
+    @include flex();
     padding: 0;
     min-height: 86px;
-    align-items: center;
+
+    @include onTablet(){
+      min-height: 128px;
+    }
   }
 
   &__icon {
-    height: 24px;
-    width: 24px;
-
-    & img {
-      object-fit: contain;
-      height: 100%;
-      width: 100%;
-    }
+    @include icon();
+    @include onTablet{
+      @include icon(32px);
+    };
 
     &--close {
-      height: 24px;
-      width: 24px;
+      @include icon();
+
+      @include onTablet{
+      @include icon(32px);
+    };
     }
   }
 
@@ -339,24 +490,25 @@ $fs-small: 14px;
       height: 100%;
       object-fit: contain;
     }
+
+    @include onTablet{
+      width: 187px;
+      height: 56px;
+    };
   }
 
   &__phone-number {
     text-decoration: none;
     display: block;
     color: $color-dark;
-    font-weight: 600;
-    font-size: $fs-main;
-    letter-spacing: 0;
+    @include font(600, $fs-main, 0);
     text-transform: uppercase;
   }
 
   &__book {
+    @include font(600, 12px, 2px);
     text-decoration: none;
     color: $color-dark;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 2px;
     text-transform: uppercase;
     position: relative;
     display: inline-block;
@@ -375,32 +527,36 @@ $fs-small: 14px;
 
   &__content {
     padding: 0 20px;
+
+    @include onTablet{
+      padding: 0 72px;
+    }
   }
 
   &__additional {
     margin-top: 40px;
-    display: flex;
-    flex-direction: column;
+    @include flex(flex-start,stretch,column);
     gap: 16px;
   }
 }
 
 .nav {
   &__list {
-    display: flex;
-    flex-direction: column;
+    @include flex(flex-start,stretch,column);
     gap: 32px;
     list-style: none;
     margin-top: 24px;
+
+    @include onTablet{
+      margin-top: 8px;
+    }
   }
 
   &__link {
+    @include font(600, 22px, 2px);
     text-decoration: none;
     color: $color-dark;
     text-transform: uppercase;
-    font-weight: 600;
-    font-size: 22px;
-    letter-spacing: 2px;
   }
 }
 
