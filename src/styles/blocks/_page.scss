@@ -1,0 +1,36 @@
+.page {
+  &__body {
+    margin: 0;
+    padding: 0;
+
+    font-size: $font-size-body-base;
+    font-family: $font-family-main;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+      transform $time-03s,
+      opacity $time-03s;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}

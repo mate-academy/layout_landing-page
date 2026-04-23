@@ -1,0 +1,63 @@
+@import 'icon';
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: $top-bar-padding-block;
+
+  &__logo-link {
+    @include hover(transform, scale($scale-size-top-bar));
+
+    display: flex;
+    height: $top-bar-logo-height-on-mobile;
+    cursor: pointer;
+
+    @include on-tablet {
+      height: $top-bar-logo-height-on-tablet;
+    }
+  }
+
+  &__icon {
+    @include hover(transform, scale($scale-size-top-bar));
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+
+    &-label {
+      position: fixed;
+      display: block;
+      pointer-events: none;
+      white-space: nowrap;
+
+      font-size: $font-size-body-xs;
+      font-family: $font-family-second;
+      line-height: $line-height-none;
+      font-weight: $font-weight-bold;
+      letter-spacing: $letter-spacing-lg;
+      color: $color-text-main;
+
+      opacity: 0;
+      transform: translateX(0);
+      transition:
+        opacity $time-03s,
+        transform $time-03s;
+    }
+
+    @include on-desktop {
+      &:hover &-label {
+        transform: translateX(-100%);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    gap: $top-bar-icon-gap;
+  }
+}
