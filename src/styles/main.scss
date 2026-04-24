@@ -1,3 +1,300 @@
+@import './variables';
+@import './mixins';
+@import './product-card';
+@import './category-card';
+@import './timeless';
+@import './contact-us';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  margin: 0;
+  overflow-x: hidden;
+
+  width: 100%;
+  max-width: 100vw;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 16px;
+
+  @include on-desktop {
+    padding: 32px 72px;
+  }
+
+  &__logo-img {
+    display: block;
+
+    height: 32px;
+
+    text-decoration: none;
+    outline: none;
+
+    @media (max-width: ($tablet-min-width - 1px)) {
+      height: 26px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__icon {
+    position: relative;
+
+    display: block;
+
+    width: 32px;
+    height: 32px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--phone {
+      position: relative;
+      gap: 12px;
+      padding-left: 0;
+      background-image: url('../images/Phone-number.png');
+
+      .phone-number {
+        position: absolute;
+        top: 50%;
+        right: 35px;
+
+        display: none;
+
+        font-family: $main-font;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+
+        pointer-events: none;
+        color: $black;
+
+        transform: translateY(-50%);
+
+        letter-spacing: 2px;
+        white-space: nowrap;
+
+        transition: 0.25s ease;
+
+        border-radius: 6px;
+      }
+
+      @include on-desktop {
+        &:hover .phone-number {
+          display: block;
+        }
+      }
+    }
+
+    &--burger {
+      background-image: url('../images/Icon-Burger-menu.png');
+    }
+  }
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+
+  overflow-x: hidden;
+
+  width: 100%;
+  max-width: 100vw;
+  margin-bottom: 300px;
+
+  scroll-behavior: smooth;
+
+  font-family: $main-font;
+  color: $primary-dark;
+
+  &__body {
+    overflow-x: hidden;
+
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+
+    line-height: 1.5;
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+
+    padding: 16px;
+
+    pointer-events: none;
+    background-color: $white;
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+
+    @include on-desktop {
+      padding: 32px 72px;
+    }
+
+    &:target {
+      pointer-events: all;
+      opacity: 1;
+    }
+
+    .top-bar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  }
+}
+
+.menu {
+  &__nav {
+    flex-grow: 1;
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $primary-dark;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 40px;
+
+    @include on-desktop {
+      padding-left: 48px;
+    }
+  }
+
+  &__phone,
+  &__call-to-order {
+    font-size: 20px;
+    font-weight: 700;
+    color: $primary-dark;
+    text-decoration: none;
+  }
+
+  &__call-to-order {
+    text-transform: uppercase;
+  }
+}
+
+.close {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url('../images/icon-close.png') center / contain no-repeat;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow-x: hidden;
+
+  width: 100%;
+  max-width: 100vw;
+
+  height: auto;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('../images/header-bg.png') center / cover no-repeat;
+
+  &__bottom {
+    padding: 0 16px 40px;
+
+    @include on-desktop {
+      padding: 0 72px 80px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $white;
+
+    @include on-desktop {
+      font-size: 48px;
+    }
+  }
+}
+
+.footer {
+  z-index: -1;
+}
+
+.main {
+  overflow-x: hidden;
+
+  width: 100%;
+  max-width: 100vw;
 }
