@@ -1,0 +1,77 @@
+@use 'utils/mixin' as *;
+@use 'utils/variables.scss';
+
+.top-bar {
+  grid-column: 1/-1;
+  display: flex;
+  width: 100%;
+  padding: 24px variables.$padding-mob;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: variables.$gap-md;
+
+    &--phone-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      &-number {
+        color: variables.$color-light;
+        text-decoration: none;
+        white-space: wrap;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(15px);
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: 460px) {
+          display: none;
+        }
+      }
+
+      &:hover &-number {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+
+    &--menu {
+      grid-template-columns: repeat(1, 24px);
+      grid-column: 1/-1;
+    }
+
+    @include on-tablet {
+      gap: 32px;
+      grid-column: 5/-1;
+    }
+
+    @include on-desktop {
+      gap: 32px;
+      grid-column: 11/-1;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: variables.$logo-width-mob;
+    height: variables.$logo-height-mob;
+
+    @include on-tablet {
+      width: variables.$logo-width-tab;
+      height: variables.$logo-height-tab;
+    }
+
+    @include on-desktop {
+      width: variables.$logo-width-desk;
+      height: variables.$logo-height-desk;
+    }
+  }
+}

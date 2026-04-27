@@ -1,0 +1,139 @@
+@use 'utils/mixin.scss' as *;
+@use 'utils/variables.scss';
+
+.menu {
+  @include page-grid;
+
+  padding: 0 20px;
+  font-family: Poppins, sans-serif;
+  grid-template-rows: auto 1fr;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  background-color: variables.$color-gray;
+  padding-top: 48px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+
+  @include on-tablet {
+    padding: 0 72px;
+  }
+
+  @include on-desktop {
+    padding: 0 120px;
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__top-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-top: 24px;
+      margin-bottom: 44px;
+    }
+
+    @include on-desktop {
+      margin-top: 24px;
+      margin-bottom: 60px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: variables.$logo-width-mob;
+    height: variables.$logo-height-mob;
+
+    @include on-desktop {
+      width: variables.$logo-width-desk;
+      height: variables.$logo-height-desk;
+    }
+  }
+
+  &__actions {
+    grid-column: -2 / -1;
+    justify-self: end;
+  }
+
+  &__content {
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -3;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / -9;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    color: variables.$color-dark;
+    text-transform: uppercase;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: variables.$gap-md;
+  }
+
+  &__link:hover {
+    text-decoration: underline variables.$color-dark 1px;
+    text-underline-offset: 8px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$gap-sm;
+  }
+
+  &__phone {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 1px;
+    letter-spacing: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: variables.$color-dark;
+  }
+
+  &__book {
+    font-weight: 600;
+    line-height: 16px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-top: 8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid variables.$color-dark;
+    padding-bottom: 4px;
+  }
+}
