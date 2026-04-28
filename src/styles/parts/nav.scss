@@ -1,0 +1,39 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.nav {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  &__link {
+    position: relative;
+    color: $text-color;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      background-color: $text-color;
+      height: 1px;
+      display: block;
+      width: 100%;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}

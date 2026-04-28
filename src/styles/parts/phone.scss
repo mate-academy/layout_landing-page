@@ -1,0 +1,69 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.phone_container {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -230px;
+    top: -60px;
+    width: 260px;
+    height: 80px;
+  }
+}
+
+.phone_dropdown {
+  position: absolute;
+  top: -40px;
+  left: -216px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  min-width: 200px;
+  text-align: right;
+  color: $text-color;
+
+  transform: translateY(-6px);
+  transition: all $transition-duration ease;
+
+  display: none;
+
+  @include on-desktop {
+    display: block;
+  }
+
+  &__label {
+    margin: 8px 0 0;
+
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+
+  &__label:first-child {
+    margin: 0;
+  }
+
+  &__number {
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $text-color;
+  }
+}
+
+.phone_container:hover .phone_dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
