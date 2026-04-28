@@ -1,3 +1,39 @@
-body {
-  margin: 0;
+@use './reset';
+@use './variables';
+@use './mixins';
+@use './container';
+@use './header';
+@use './hero';
+@use './menu';
+@use './recommended';
+@use './categories';
+@use './story';
+@use './contact_us';
+@import 'https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap';
+
+/* Плавна прокрутка до секцій при кліку на навігацію */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Відступ зверху, щоб фіксований хедер не перекривав початок секції */
+section {
+  scroll-margin-top: 60px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Grid-контейнер для секцій з адаптивними відступами */
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 96px;
+  padding-bottom: 64px;
+
+  @media (min-width: 744px) {
+    gap: 120px;
+    padding-bottom: 120px;
+  }
 }

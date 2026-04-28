@@ -1,0 +1,107 @@
+@use 'variables';
+
+.recommended {
+  background-color: variables.$bg-main;
+
+  &__title {
+    /* ... стилі заголовка ... */
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0;
+    margin: 0 0 48px;
+    color: variables.$color-text-main;
+
+    @media (min-width: 744px) {
+      font-size: 40px;
+      line-height: 40px;
+      margin: 0 0 56px;
+    }
+
+    @media (min-width: 1260px) {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr; /* Мобайл: одна колонка */
+    gap: 40px;
+
+    @media (min-width: 744px) {
+      gap: 56px;
+    }
+
+    @media (min-width: 1260px) {
+      grid-template-columns: repeat(3, 1fr); /* Десктоп: три колонки */
+      gap: 24px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%; /* Картка розтягується на всю висоту комірки грида */
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1; /* Квадратне зображення */
+    background-color: variables.$bg-light;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05); /* Легкий зум при наведенні */
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Контент займає доступний простір */
+    gap: 12px;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: variables.$color-text-main;
+    margin: 0;
+
+    @media (min-width: 744px) {
+      font-size: 20px;
+    }
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    color: variables.$color-text-muted;
+    margin: 0;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    color: variables.$color-text-main;
+    margin: 0;
+
+    /* Магічний трюк: прижимає ціну до низу картки */
+    margin-top: auto;
+  }
+}

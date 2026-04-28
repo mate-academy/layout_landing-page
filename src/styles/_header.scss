@@ -1,0 +1,160 @@
+@use 'variables';
+@use 'mixins';
+
+.header {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+  }
+
+  &__logo {
+    z-index: 10;
+  }
+
+  &__img--logo {
+    @include mixins.logo-styles;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: all 0.3s ease;
+  }
+
+  &__phone {
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+
+    &-text {
+      max-width: 0;
+      overflow: hidden;
+      opacity: 0;
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 1260px) {
+      &:hover {
+        gap: 8px;
+      }
+
+      &:hover &-text {
+        max-width: 150px;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__menu-btn {
+    position: relative;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    z-index: 60;
+  }
+
+  &__menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: visibility 0.3s ease-in-out;
+
+    &--default {
+      opacity: 1;
+    }
+
+    &--hover {
+      opacity: 0;
+    }
+
+    &--close {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &.is-open {
+    /* Коли меню відкрите, ховаємо всі іконки крім хрестика */
+    .header__menu-icon--default,
+    .header__menu-icon--hover,
+    .header__phone {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none; /* Вимикаємо кліки на приховані елементи */
+    }
+
+    .header__menu-icon--close {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
+
+@media (min-width: 744px) {
+  .header {
+    &__content {
+      height: 96px;
+    }
+
+    &__menu-btn {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+@media (min-width: 1260px) {
+  .header {
+    &__phone-text {
+      display: block;
+    }
+
+    /* Ефект наведення на бургер: показуємо hover-іконку */
+    &__menu-btn:hover &__menu-icon--default {
+      transition: all 0.3s ease;
+      opacity: 0;
+    }
+
+    &__menu-btn:hover &__menu-icon--hover {
+      transform: scale(1.2);
+      transition: all 0.3s ease;
+      opacity: 1;
+    }
+
+    /* Ефект натискання: обидві іконки ховаються */
+    &__menu-btn:active &__menu-icon--default {
+      transform: scale(0.9);
+      transition: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &__menu-btn:active &__menu-icon--hover {
+      transform: scale(0.9);
+      transition: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}

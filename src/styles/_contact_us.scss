@@ -1,0 +1,165 @@
+@use 'variables';
+
+.contact {
+  background-color: variables.$bg-main;
+
+  &__title {
+    /* ... стилі заголовка ... */
+    font-weight: 700;
+    color: variables.$color-text-main;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0;
+    margin: 0;
+    padding-bottom: 48px;
+
+    @media (min-width: 744px) {
+      font-size: 40px;
+      line-height: 100%;
+      letter-spacing: 0;
+      padding-bottom: 56px;
+    }
+
+    @media (min-width: 1260px) {
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: 0;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr; /* Мобайл: одна колонка */
+    gap: 48px;
+
+    @media (min-width: 744px) {
+      gap: 80px;
+    }
+
+    @media (min-width: 1260px) {
+      /* Десктоп: форма зліва, контакти справа */
+      grid-template-columns: 1fr 1fr;
+      align-items: start; /* Щоб контакти не розтягувалися на висоту форми */
+      gap: 111px;
+    }
+  }
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid transparent; /* Щоб при фокусі не "стрибала" верстка */
+    border-radius: 8px;
+    background-color: variables.$bg-light;
+    color: variables.$color-text-main;
+    transition: all 0.3s ease;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.15px;
+    font-weight: 400;
+    font-family: inherit;
+
+    &::placeholder {
+      color: variables.$color-text-muted;
+      opacity: 1;
+    }
+  }
+
+  &__textarea {
+    min-height: 148px;
+    resize: vertical; /* Дозволяємо змінювати висоту тільки по вертикалі */
+  }
+
+  /* Стилі ховеру та фокусу для полів */
+  &__input:hover,
+  &__textarea:hover {
+    border-color: variables.$color-border-hover;
+
+    &::placeholder {
+      color: variables.$color-text-main;
+      opacity: 1;
+    }
+  }
+
+  &__input:focus,
+  &__textarea:focus {
+    border-color: variables.$color-accent;
+    box-shadow: 0 0 0 2px variables.$color-accent; /* Візуальний акцент фокусу */
+  }
+
+  &__button {
+    /* ... стилі кнопки ... */
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 16px;
+    border-radius: 8px;
+    padding: 14.5px 48px;
+    color: variables.$color-text-white;
+    background-color: variables.$color-accent; /* Default: оранжева */
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 27px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: variables.$color-dark; /* Hover: темна, як на макеті */
+    }
+
+    &:focus {
+      background-color: variables.$color-dark-pressed;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  &__label {
+    /* ... стилі ... */
+    margin: 0;
+    color: variables.$color-text-footer-light;
+    padding-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.15px;
+    font-weight: 400;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: variables.$color-text-footer-dark;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0.15px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+
+    &:hover {
+      /* Ховер-ефект для інтерактивності */
+      color: variables.$color-accent;
+    }
+  }
+
+  &__link--address {
+    text-decoration: none;
+    color: inherit;
+    display: block; // Щоб <br> працювали коректно
+
+    &:hover {
+      color: variables.$color-accent;
+    }
+  }
+}
