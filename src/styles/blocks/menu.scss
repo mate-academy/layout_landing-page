@@ -1,0 +1,67 @@
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $second-color;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow: auto;
+
+  &__top {
+    position: static;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 32px;
+  }
+
+  &__phone-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__phone-number {
+    display: block;
+    font-size: 16px;
+    line-height: 27px;
+    color: $header-text-color;
+    text-decoration: none;
+
+    @include hover(color , #D3D3D3);
+  }
+
+  &__call-to-order {
+    position: relative;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $header-text-color;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $header-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
