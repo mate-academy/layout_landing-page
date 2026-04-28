@@ -1,0 +1,126 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.contacts {
+  display: block;
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+  }
+
+  &__control {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid $form-color;
+    border-radius: 8px;
+    font-family: Manrope, sans-serif;
+    background: $form-color;
+    color: $text-color;
+
+    &:hover {
+      color: $price-color;
+      border-color: $border-form-hover;
+    }
+
+    &:active {
+      border: 2px solid $btn-color-def;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $btn-color-def;
+    }
+  }
+
+  &__message {
+    min-height: 148px;
+    resize: none;
+  }
+
+  &__btn {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid $btn-color-def;
+    border-radius: 8px;
+    background: $btn-color-def;
+    color: $btn-color;
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    margin-bottom: 48px;
+
+    &:hover {
+      background: $price-color;
+      border: 1px solid $price-color;
+    }
+
+    &:active {
+      background: $btn-color-active;
+      border: 1px solid $btn-color-active;
+    }
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+
+    &-title {
+      margin: 0;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: 0.15px;
+      color: $cont-color;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+
+    @include hover(opacity, 0.7);
+  }
+
+  &__address {
+    font-style: normal;
+  }
+}
+
+@include on-desktop {
+  .contacts {
+    @include page-grid;
+  }
+  .contacts > form {
+    grid-column: 1 / 6;
+  }
+  .contacts__list {
+    grid-column: 7/ 13;
+  }
+}
