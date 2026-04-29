@@ -12,6 +12,9 @@ $fs-main: 16px;
 $fs-small: 14px;
 $fs-tablet-hero: 64px;
 $fs-tablet-h2: 48px;
+$speed: 0.3s;
+$fs-desktop-hero: 80px;
+$fs-desktop-h2: 64px;
 
 
 @mixin flex($justify: space-between, $align: center, $dir: row){
@@ -50,6 +53,13 @@ $fs-tablet-h2: 48px;
   }
 }
 
+@mixin hover($property, $toValue){
+  transition: #{$property} $speed;
+  &:hover{
+    #{$property}: $toValue;
+  }
+}
+
 .page {
   scroll-behavior: smooth;
 }
@@ -76,15 +86,19 @@ $fs-tablet-h2: 48px;
   background-position: right -50px center;
   margin: 0;
 
-  // ФІКС 1: Міняємо space-between на flex-end, щоб тайтл завжди був знизу
   @include flex(flex-end, stretch, column);
 
-  // ФІКС 2: Тримаємо місце під літаюче меню
   padding-top: 86px;
   box-sizing: border-box;
 
   @include onTablet{
     height: 60vh;
+    padding-top: 128px;
+    background-position: center;
+  }
+
+  @include onDesktop{
+    height: 80vh;
     padding-top: 128px;
   }
 
@@ -105,6 +119,10 @@ $fs-tablet-h2: 48px;
     @include onTablet(){
       padding: 0 72px;
       min-height: 128px;
+    }
+
+    @include onDesktop{
+      padding: 0 120px;
     }
 
     //start
@@ -129,20 +147,76 @@ $fs-tablet-h2: 48px;
     @include flex(space-between, stretch, row);
     min-width: 72px;
     min-height: 24px;
+    gap: 24px;
 
     @include onTablet{
       min-width: 96px;
       min-height: 32px;
+      gap: 32px;
     }
   }
 
   &__icon {
     @include icon();
-
     @include onTablet{
       @include icon(32px);
     };
+
+    &--burger{
+      transition: content $speed;
+      @include hover(transform, scale(1.2));
+
+      &:hover{
+        content: url('../images/icons/Icon-Burger-menu-hover.svg');
+      }
+    }
+
+    &--phone {
+      width: auto;
+      text-decoration: none;
+      display: inline-flex;
+
+      img {
+        width: 24px;
+        height: 24px;
+        transition: transform $speed;
+        @include hover(transform, scale(1.2));
+
+        @include onTablet {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      &::before {
+        content: "+1 234 555-55-55";
+
+        color: $color-white;
+        font-family: Poppins, sans-serif;
+        font-size: 12px;
+        white-space: nowrap;
+        letter-spacing: 2px;
+        font-weight: 700;
+        line-height: 24px;
+        position: relative;
+
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      &:hover {
+        gap: 20px;
+
+        &::before {
+          max-width: 160px;
+          opacity: 1;
+        }
+      }
+    }
   }
+
 
   &__logo {
     width: 130px;
@@ -173,10 +247,14 @@ $fs-tablet-h2: 48px;
       width: 600px;
       padding-bottom:130px;
     }
+
+     @include onDesktop{
+      @include font(700, $fs-desktop-hero);
+      width: 672px;
+      padding-bottom:203px;
+    }
   }
 }
-
-
 
 /* #endregion */
 
@@ -189,6 +267,10 @@ $fs-tablet-h2: 48px;
   @include onTablet{
     padding: 72px;
   }
+
+  @include onDesktop{
+    padding: 120;
+  }
 }
 
 .intro {
@@ -197,6 +279,10 @@ $fs-tablet-h2: 48px;
     @include flex;
     align-items: flex-start;
     margin: 48px 0 132px;
+  }
+
+  @include onDesktop{
+    margin-bottom: 164px;
   }
 
   &__title {
@@ -212,6 +298,13 @@ $fs-tablet-h2: 48px;
       width: 288px;
       @include font(500, $fs-tablet-h2);
     }
+
+    @include onDesktop{
+      height: 64px;
+      width: 411px;
+      @include font(500, $fs-desktop-hero);
+      line-height: 1;
+    }
   }
 
   &__description {
@@ -219,26 +312,56 @@ $fs-tablet-h2: 48px;
     margin: 0;
     color: $color-white;
     height: 192px;
+    letter-spacing: 0;
 
     @include onTablet{
       height: auto;
       width: 288px;
     }
+
+    @include onDesktop{
+      width: 498px;
+    }
+  }
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  column-gap: 20px;
+  justify-content: center;
+
+  @include onTablet{
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include onDesktop(){
+    grid-template-columns: repeat(12, 63px);
+    column-gap: 24px;
   }
 }
 
 .compare {
   margin: 0;
   margin-top: 92px;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: inherit;
+  column-gap: inherit;
+
 
   @include onTablet{
-    margin: 0 104px;
+    margin: 0;
   }
 
   &__title {
+    grid-column: 1/-1;
   @include font(500, $fs-h2);
   text-align: center;
   margin: 0;
+  margin-bottom: 48px;
+
 
   @include onTablet{
     @include font(500, $fs-tablet-h2);
@@ -247,9 +370,17 @@ $fs-tablet-h2: 48px;
 }
 
 .bike-card {
+  grid-column: 1/-1;
+
+@include onDesktop{
+  grid-column: span 4;
+}
+
   &__img{
     display: block;
     margin: 0 auto;
+    max-width: 100%;
+    height: auto;
   }
 
   &__title {
@@ -265,15 +396,11 @@ $fs-tablet-h2: 48px;
   &__price {
     @include font(700, $fs-h3, 0);
     margin: 0;
-    margin-bottom: 40px;
-
-    @include onTablet{
-      margin-bottom: 48px;
-    }
   }
 }
 
 .details {
+  grid-column: 1/-1;
   margin: 92px 0 80px;
 
   @include onTablet{
@@ -321,11 +448,19 @@ $fs-tablet-h2: 48px;
   }
 
   &__images {
-    @include flex(center,stretch, row);
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    column-gap: 20px;
+    justify-content: center;
 
     @include onTablet{
-      gap: 24px;
+      grid-template-columns: repeat(2, 80px);
+      column-gap: 24px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 63px);
+      column-gap: 24px;
     }
   }
 
@@ -333,18 +468,75 @@ $fs-tablet-h2: 48px;
     @include font(400, $fs-main, 0);
     margin: 0;
   }
+
+  .details-picture1,
+.details-picture2{
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.details-picture1{
+
+  @include onTablet {
+      grid-column: 1 / 5;
+    }
+    @include onDesktop {
+      grid-column: 1 / 9;
+    }
+}
+
+.details-picture2{
+  @include onTablet {
+      grid-column: 5 / 7;
+    }
+    @include onDesktop {
+      grid-column: 9 / 13;
+    }
+}
+
+&:nth-of-type(3) {
+    .details-picture2 {
+      @include onTablet {
+        grid-column: 1 / 3;
+      }
+      @include onDesktop {
+        grid-column: 1 / 5;
+      }
+    }
+
+    .details-picture1 {
+      @include onTablet {
+        grid-column: 3 / 7;
+      }
+      @include onDesktop {
+        grid-column: 5 / 13;
+      }
+    }
+  }
 }
 
 .contact {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: inherit;
+  gap: inherit;
 
   &__wrap{
-    @include onTablet{
-      @include flex(center,center, row);
-      gap: 24px;
-    }
+    grid-column: 1/-1;
+    display: grid;
+  grid-template-columns: inherit;
+  gap: inherit;
+
   }
 
   &__title {
+    grid-column: 1/-1;
+
     @include font(500, $fs-h2);
     text-align: center;
 
@@ -354,12 +546,19 @@ $fs-tablet-h2: 48px;
   }
 
   &-form {
+    grid-column: 1/-1;
     margin: 48px 0;
     @include flex(flex-start, center, column);
 
     @include onTablet{
         width: 288px;
-      }
+        grid-column: 1/4;
+    }
+
+    @include onDesktop{
+      width: 411px;
+      grid-column: 1/6;
+    }
 
     &__input,
     &__textarea {
@@ -396,7 +595,7 @@ $fs-tablet-h2: 48px;
       height: 56px;
       width: 280px;
       display: block;
-      margin: 32 auto 0;
+      margin: 32px auto 0;
 
       @include font(700, $fs-main, 0);
       text-align: center;
@@ -405,10 +604,24 @@ $fs-tablet-h2: 48px;
         width: 288px;
       }
     }
+
+    @include onDesktop{
+      grid-column: 1/6;
+    }
   }
 
   &-info {
     margin-bottom: 100px;
+    grid-column: 1/-1;
+
+    @include onTablet{
+      grid-column: 4/7;
+      margin-top: 48px;
+    }
+
+    @include onDesktop{
+      grid-column: 8/11;
+    }
 
     &__item {
       margin-bottom: 24px;
@@ -445,6 +658,12 @@ $fs-tablet-h2: 48px;
 
   @include onTablet{
     height: 480px;
+    background-image: url(../images/img/footer-image-onTablet.png);
+  }
+
+  @include onDesktop{
+    height: 555px;
+    background-image: url(../images/img/footer-image-onDesktop.png);
   }
 }
 
@@ -466,13 +685,16 @@ $fs-tablet-h2: 48px;
   }
 
   &__icon {
+    display: inline-block;
     @include icon();
+    @include hover(transform, scale(1.2));
     @include onTablet{
       @include icon(32px);
     };
 
-    &--close {
+    &-close {
       @include icon();
+    @include hover(transform, scale(1.2));
 
       @include onTablet{
       @include icon(32px);
@@ -531,6 +753,10 @@ $fs-tablet-h2: 48px;
     @include onTablet{
       padding: 0 72px;
     }
+
+    @include onDesktop{
+      padding: 0 121px;
+    }
   }
 
   &__additional {
@@ -550,6 +776,10 @@ $fs-tablet-h2: 48px;
     @include onTablet{
       margin-top: 8px;
     }
+
+    @include onDesktop(){
+      margin-top: 24px;
+    }
   }
 
   &__link {
@@ -557,6 +787,25 @@ $fs-tablet-h2: 48px;
     text-decoration: none;
     color: $color-dark;
     text-transform: uppercase;
+    position: relative;
+
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-dark;
+
+      transition: transform $speed;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    &:hover::after{
+      transform: scaleX(1);
+    }
   }
 }
 
@@ -567,11 +816,21 @@ $fs-tablet-h2: 48px;
   right: 0;
   opacity: 0;
   pointer-events: none;
+  transform: translateX(-100%);
+  transition: all $speed;
 }
 
 .page__menu:target {
   opacity: 1;
+  transform: translateX(0);
   pointer-events: all;
+
 }
 
 /* #endregion */
+
+body:has(.page__menu:target) {
+  .header__top {
+    display: none;
+  }
+}
