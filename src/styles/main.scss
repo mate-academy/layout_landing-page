@@ -126,20 +126,30 @@ $fs-desktop-h2: 64px;
     }
 
     //start
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background-color: rgba($color-dark, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    }
+   &::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(29, 29, 29, 0.6);
+
+  -webkit-backdrop-filter: blur(20px); // Трохи збільшив блюр для м'якості
+  backdrop-filter: blur(20px);
+
+  // Трюк з багатоточковим градієнтом (Easing)
+  $mask: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 40%,      // Повний блюр до 40% висоти
+    rgba(0, 0, 0, 0.8) 55%,    // Початок м'якого згасання
+    rgba(0, 0, 0, 0.4) 75%,    // Напівпрозорий перехід
+    rgba(0, 0, 0, 0.1) 90%,    // Майже повне зникнення
+    rgba(0, 0, 0, 0) 100%      // Повна прозорість
+  );
+
+  -webkit-mask-image: $mask;
+  mask-image: $mask;
+}
       //end
   }
 
@@ -425,6 +435,14 @@ $fs-desktop-h2: 64px;
     border: none;
     border-radius: $radius-large;
     margin: 0 auto;
+    @include hover(transform, scale(1.009));
+    transition: all $speed ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
 
     @include font(700, $fs-main, 0);
     color: $color-dark;
@@ -596,12 +614,22 @@ $fs-desktop-h2: 64px;
       width: 280px;
       display: block;
       margin: 32px auto 0;
+      @include hover(transform, scale(1.009));
+      &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
 
       @include font(700, $fs-main, 0);
       text-align: center;
 
       @include onTablet{
         width: 288px;
+      }
+
+      @include onDesktop{
+        width: 411px;
       }
     }
 
