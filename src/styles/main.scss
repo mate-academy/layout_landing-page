@@ -101,7 +101,6 @@ $fs-desktop-h2: 64px;
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #e5e5e5;
 }
 
 .footer {
@@ -229,12 +228,25 @@ html, body {
       @include icon(32px);
     };
 
-    &--burger{
-      transition: content $speed;
+    &--burger {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      background: none;
+      padding: 0;
+      border: none;
       @include hover(transform, scale(1.2));
-
-      &:hover{
-        content: url('../images/icons/Icon-Burger-menu-hover.svg');
+      .header__icon-burger {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: url('../images/icons/Burger-menu.svg') center/contain no-repeat;
+        transition: background-image $speed;
+      }
+      &:hover .header__icon-burger,
+      &:focus .header__icon-burger {
+        background-image: url('../images/icons/Icon-Burger-menu-hover.svg');
       }
     }
 
@@ -247,7 +259,7 @@ html, body {
         width: 24px;
         height: 24px;
         transition: transform $speed;
-        @include hover(transform, scale(0.009));
+        @include hover(transform, scale(1.2));
 
         @include onTablet {
           width: 32px;
