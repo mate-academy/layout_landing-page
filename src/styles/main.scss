@@ -3,6 +3,7 @@ $color-white: #fff;
 $color-gray: #7e7e83;
 $color-bg-input: #f8f8fa;
 $color-bg-menu: #c2c2c2;
+$accent: #6ebeff;
 $radius-large: 40px;
 $radius-small: 16px;
 $fs-hero: 36px;
@@ -54,10 +55,70 @@ $fs-desktop-h2: 64px;
 }
 
 @mixin hover($property, $toValue){
-  transition: #{$property} $speed;
-  &:hover{
+  transition: #{$property} $speed ;
+  &:hover, &:focus{
     #{$property}: $toValue;
   }
+}
+.contact-info__value {
+  @include font(500, $fs-main, 0);
+  text-decoration: none;
+  color: $color-white;
+  font-style: normal;
+  transition: color $speed;
+}
+
+.contact-info__value--phone:hover,
+.contact-info__value--phone:focus,
+.contact-info__value--email:hover,
+.contact-info__value--email:focus,
+.contact-info__value--address:hover,
+.contact-info__value--address:focus {
+  color: #6ebeff;
+}
+
+.feature__img-link {
+  transition: transform $speed;
+  display: inline-block;
+}
+.feature__img-link:hover,
+.feature__img-link:focus {
+  transform: scale(1.006);
+  z-index: 2;
+}
+
+.nav__link {
+  scroll-behavior: smooth;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+.menu {
+  overflow: auto;
+}
+.menu__top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #e5e5e5;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  transition-duration: $speed;
 }
 
 .page {
@@ -77,7 +138,6 @@ $fs-desktop-h2: 64px;
   padding: 0;
 }
 
-/* #region header */
 .header {
   background-image: url(../images/img/Cover_photo.png);
   height: 80vh;
@@ -98,7 +158,7 @@ $fs-desktop-h2: 64px;
   }
 
   @include onDesktop{
-    height: 80vh;
+    height: 100vh;
     padding-top: 128px;
   }
 
@@ -125,7 +185,6 @@ $fs-desktop-h2: 64px;
       padding: 0 120px;
     }
 
-    //start
    &::before {
   content: '';
   position: absolute;
@@ -133,24 +192,22 @@ $fs-desktop-h2: 64px;
   z-index: -1;
   background-color: rgba(29, 29, 29, 0.6);
 
-  -webkit-backdrop-filter: blur(20px); // Трохи збільшив блюр для м'якості
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 
-  // Трюк з багатоточковим градієнтом (Easing)
   $mask: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 40%,      // Повний блюр до 40% висоти
-    rgba(0, 0, 0, 0.8) 55%,    // Початок м'якого згасання
-    rgba(0, 0, 0, 0.4) 75%,    // Напівпрозорий перехід
-    rgba(0, 0, 0, 0.1) 90%,    // Майже повне зникнення
-    rgba(0, 0, 0, 0) 100%      // Повна прозорість
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0.8) 55%,
+    rgba(0, 0, 0, 0.4) 75%,
+    rgba(0, 0, 0, 0.1) 90%,
+    rgba(0, 0, 0, 0) 100%
   );
 
   -webkit-mask-image: $mask;
   mask-image: $mask;
 }
-      //end
   }
 
   &__actions {
@@ -190,7 +247,7 @@ $fs-desktop-h2: 64px;
         width: 24px;
         height: 24px;
         transition: transform $speed;
-        @include hover(transform, scale(1.2));
+        @include hover(transform, scale(0.009));
 
         @include onTablet {
           width: 32px;
