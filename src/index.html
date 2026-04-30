@@ -9,10 +9,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Document</title>
+    <title>MyBiKE</title>
+    <link
+      rel="icon"
+      type="image/svg"
+      href="images/logo/MyBiKE.svg"
+    />
     <link
       rel="stylesheet"
-      href="./styles/main.css"
+      href="./styles/main.scss"
     />
     <link
       rel="preconnect"
@@ -32,7 +37,7 @@
     <header class="header">
       <div class="header__top">
         <a
-          href="#"
+          href="#top"
           class="header__logo"
         >
           <img
@@ -75,7 +80,7 @@
       <div class="menu__content">
         <div class="menu__top">
           <a
-            href="#"
+            href="#top"
             class="menu__logo"
           >
             <img
@@ -143,7 +148,7 @@
 
         <div class="menu__additional">
           <a
-            href="tel:+1 234 5555-55-55"
+            href="tel:+12345555555"
             class="menu__phone-number"
           >
             +1 234 5555-55-55
@@ -152,6 +157,7 @@
           <a
             href="#"
             class="menu__book"
+            tabindex="0"
           >
             book a test ride
           </a>
@@ -184,7 +190,9 @@
               <img
                 src="./images/img/Sporty4.png"
                 alt="Bike Sporty 4"
-                class="bike-card__img"
+                class="bike-card__img feature__img-link"
+                tabindex="0"
+                onclick="window.location='#';"
               />
             </picture>
             <h3 class="bike-card__title">Sporty 4</h3>
@@ -204,7 +212,9 @@
               <img
                 src="./images/img/Ride-in-town-ST.png"
                 alt="Bike Ride in town ST"
-                class="bike-card__img"
+                class="bike-card__img feature__img-link"
+                tabindex="0"
+                onclick="window.location='#';"
               />
             </picture>
             <h3 class="bike-card__title">Ride in town ST</h3>
@@ -224,7 +234,9 @@
               <img
                 src="./images/img/Agile-ride-3.png"
                 alt="Bike Agile Ride 3"
-                class="bike-card__img"
+                class="bike-card__img feature__img-link"
+                tabindex="0"
+                onclick="window.location='#';"
               />
             </picture>
             <h3 class="bike-card__title">Agile ride 3</h3>
@@ -256,6 +268,9 @@
                 <img
                   src="images/img/feature1.1.png"
                   alt="Auto unlock 1"
+                  class="feature__img-link"
+                  tabindex="0"
+                  onclick="window.location='#';"
                 />
               </picture>
               <picture class="details-picture2">
@@ -270,6 +285,9 @@
                 <img
                   src="images/img/feature1.2.png"
                   alt="Auto unlock 2"
+                  class="feature__img-link"
+                  tabindex="0"
+                  onclick="window.location='#';"
                 />
               </picture>
             </div>
@@ -294,6 +312,9 @@
                 <img
                   src="images/img/feature2.1.png"
                   alt="Range & Integrated lights 1"
+                  class="feature__img-link"
+                  tabindex="0"
+                  onclick="window.location='#';"
                 />
               </picture>
               <picture class="details-picture2">
@@ -308,6 +329,9 @@
                 <img
                   src="images/img/feature2.2.png"
                   alt="Range & Integrated lights 2"
+                  class="feature__img-link"
+                  tabindex="0"
+                  onclick="window.location='#';"
                 />
               </picture>
             </div>
@@ -333,6 +357,9 @@
                 <img
                   src="images/img/feature3.1.png"
                   alt="Hydraulic disc brakes & Lightweight 1"
+                  class="feature__img-link"
+                  tabindex="0"
+                  onclick="window.location='#';"
                 />
               </picture>
               <picture class="details-picture1">
@@ -347,6 +374,9 @@
                 <img
                   src="images/img/feature3.2.png"
                   alt="Hydraulic disc brakes & Lightweight 2"
+                  class="feature__img-link"
+                  tabindex="0"
+                  onclick="window.location='#';"
                 />
               </picture>
             </div>
@@ -376,22 +406,33 @@
               class="contact-form"
               method="POST"
               action="#"
+              onsubmit="this.reset(); return false;"
             >
               <input
                 type="text"
                 id="user-name"
                 name="form-name"
                 class="contact-form__input"
-                placeholder="Name"
+                placeholder="e.g. John Doe"
                 required
               />
 
               <input
-                type="text"
+                type="email"
                 id="user-email"
                 name="form-email"
                 class="contact-form__input"
-                placeholder="Email"
+                placeholder="e.g. john@email.com"
+                required
+              />
+
+              <input
+                type="tel"
+                id="user-phone"
+                name="form-phone"
+                class="contact-form__input"
+                placeholder="e.g. +1 234 5555-55-55"
+                pattern="\+?[0-9\-\s]{10,20}"
                 required
               />
 
@@ -399,7 +440,7 @@
                 id="user-message"
                 name="form-message"
                 class="contact-form__textarea"
-                placeholder="Message"
+                placeholder="e.g. I want to book a test ride."
                 required
               ></textarea>
 
@@ -418,8 +459,8 @@
               <div class="contact-info__item">
                 <span class="contact-info__label">Phone</span>
                 <a
-                  href="tel:+1 234 5555-55-55"
-                  class="contact-info__value"
+                  href="tel:+12345555555"
+                  class="contact-info__value contact-info__value--phone"
                 >
                   +1 234 5555-55-55
                 </a>
@@ -429,7 +470,7 @@
                 <span class="contact-info__label">Email</span>
                 <a
                   href="mailto:hello@miami.com"
-                  class="contact-info__value"
+                  class="contact-info__value contact-info__value--email"
                 >
                   hello@miami.com
                 </a>
@@ -438,11 +479,18 @@
               <div class="contact-info__item">
                 <span class="contact-info__label">Address</span>
                 <address class="contact-info__value">
-                  400 first ave.
-                  <br />
-                  suite 700
-                  <br />
-                  Minneapolis, MN 55401
+                  <a
+                    href="https://maps.google.com/?q=400+first+ave+suite+700+Minneapolis+MN+55401"
+                    class="contact-info__value contact-info__value--address"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    400 first ave.
+                    <br />
+                    suite 700
+                    <br />
+                    Minneapolis, MN 55401
+                  </a>
                 </address>
               </div>
             </div>
@@ -451,5 +499,6 @@
       </div>
     </main>
     <footer class="footer"></footer>
+    <a id="top"></a>
   </body>
 </html>
