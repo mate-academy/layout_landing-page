@@ -1,4 +1,4 @@
-@use '../utils/' as *;
+@use '../utils' as *;
 
 .details {
   &__wrapper {
@@ -9,12 +9,28 @@
       row-gap: 48px;
     }
   }
+
+  &__button-wrapper {
+    @include page-grid;
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / -5;
+    }
+  }
 }
 
 .detail {
   &__photos {
     @include page-grid;
-    
+
     margin-bottom: 16px;
   }
 
@@ -58,5 +74,17 @@
     margin: 0;
     font-weight: 700;
     font-size: 24px;
+  }
+
+  &__description-wrapper {
+    @include page-grid;
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
   }
 }
