@@ -1,0 +1,119 @@
+@use '../utils/variables.scss' as *;
+
+@mixin flex-vstack($align: center, $gap: 40px) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  align-items: $align;
+}
+
+@mixin flex-hstack($align: center, $gap: 40px) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  align-items: $align;
+}
+
+@mixin grid-layout($row-gap: 40px) {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  gap: $row-gap 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 63px);
+    column-gap: 24px;
+  }
+}
+
+@mixin scale-image {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin section-title {
+  grid-column: 1/-1;
+
+  margin-bottom: 8px;
+
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+  text-align: center;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+@mixin article-description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+@mixin article-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+@mixin input-text {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@mixin section-button {
+  display: block;
+  padding-block: 14.5px;
+  border-radius: $radius-btn;
+  border: none;
+
+  color: #1d1d1d;
+  background-color: white;
+
+  font-family: $font-primary;
+  text-decoration: none;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0;
+  text-align: center;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 rgba($color-deep-gray, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px 0 rgba($color-deep-gray, 0.64);
+  }
+}

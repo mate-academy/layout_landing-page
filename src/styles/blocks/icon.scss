@@ -1,0 +1,77 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins' as *;
+
+/* #region icon */
+.icon {
+  width: 18px;
+  height: 18px;
+
+  @include on-tablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--call {
+    position: relative;
+    background-image: url(../images/icon-call.svg);
+    transition: transform 0.1s ease-in;
+
+    @include on-desktop {
+      &::before {
+        position: absolute;
+        left: -158px;
+
+        content: '+1 234 555-55-55';
+        white-space: nowrap;
+        color: $color-white;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 2px;
+
+        transform: translateX(20px);
+        opacity: 0;
+
+        transition:
+          opacity 0,
+          3s ease-in,
+          transform 0.3s ease-in;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+
+        &::before {
+          transform: translateX(0) scale(0.91);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon-menu.svg);
+
+    transition: all 0.1s ease-in;
+
+    &:hover {
+      transform: scale(1.1);
+      background-image: url(../images/icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icon-close.svg);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* #endregion */

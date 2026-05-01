@@ -1,0 +1,55 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins' as *;
+
+/* #region feature-card */
+.feature-card {
+  grid-column: 1/-1;
+
+  &__images {
+    @include grid-layout;
+
+    margin-bottom: 16px;
+  }
+
+  &__image {
+    grid-column: span 1;
+
+    @include scale-image;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+
+    &--large {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+    & img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    @include article-title;
+
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    @include article-description;
+  }
+}
+
+/* #endregion */

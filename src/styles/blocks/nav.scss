@@ -1,0 +1,44 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins' as *;
+
+/* #region nav */
+.nav {
+  &__list {
+    list-style: none;
+
+    @include flex-vstack(stretch, 32px);
+  }
+
+  &__link {
+    position: relative;
+    height: 22px;
+
+    font-family: $font-primary;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color-black;
+
+    &::after {
+      position: absolute;
+
+      content: '';
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-black;
+
+      transition: all $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+/* #endregion */

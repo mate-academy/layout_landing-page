@@ -1,0 +1,39 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins' as *;
+
+/* #region page */
+.page {
+  font-family: $font-primary;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  background-color: $color-black;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all $transition-duration;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* #endregion */
