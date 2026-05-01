@@ -1,0 +1,117 @@
+.page {
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+  color: $color-text-main;
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: $transition-opacity;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.logotip {
+  display: inline-block;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    display: block;
+    width: 125px;
+    height: 16px;
+
+    @media (min-width: $bp-tablet) {
+      width: 172px;
+      height: 24px;
+    }
+  }
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: $transition-default;
+
+  @media (min-width: $bp-tablet) {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url('../icons/phone-icon.png');
+    position: relative;
+
+    &::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 16px;
+
+      font-family: $font-secondary;
+      font-weight: 700;
+      font-size: 14px;
+      color: $color-text-main;
+      white-space: nowrap;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: $transition-opacity;
+    }
+
+    @media (min-width: $bp-tablet) {
+      &:hover::before {
+        opacity: 1;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &--burger {
+    background-image: url('../icons/burger-menu.png');
+
+    @media (min-width: $bp-tablet) {
+      &:hover {
+        background-image: url('../images/Icon-Burger-menu-hover.png');
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url('../icons/close-icon.png');
+  }
+}
