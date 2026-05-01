@@ -1,0 +1,57 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins.scss' as *;
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+
+  @include transition-base(transform);
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &--phone {
+    background-image: url('/src/images/icons/icon-phone-call.svg');
+    position: relative;
+
+    &::after {
+      content: '+1 212-535-7710';
+      position: absolute;
+      top: 50%;
+      right: 125%;
+      transform: translateY(-50%);
+
+      color: $color-white;
+      white-space: nowrap;
+
+      @include transition-base(opacity);
+
+      opacity: 0;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &--burger-menu {
+    background-image: url('/src/images/icons/icon-burger-menu.svg');
+
+    &:hover {
+      background-image: url('/src/images/icons/icon-burger-menu-hover.svg');
+    }
+  }
+
+  &--close {
+    background-image: url('/src/images/icons/icon-close.svg');
+  }
+}

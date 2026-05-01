@@ -1,0 +1,157 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1260px;
+    margin: 0 auto;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin highlighted-red-font($size, $line-height) {
+  font-weight: 700;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color-accent;
+}
+
+@mixin field-base {
+  width: 100%;
+  background-color: $color-bkg-form;
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-text-form;
+  }
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 56px;
+  background-color: $color-accent;
+
+  font-family: $font;
+  font-weight: 700;
+  color: $color-white;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  @include transition-base(background-color, outline);
+
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &:active {
+    background-color: $color-active;
+  }
+
+  &:focus {
+    outline: 1px solid $color-hover;
+  }
+}
+
+@mixin centered-tablet {
+  margin: 0 auto;
+  max-width: $content-width-tablet;
+}
+
+@mixin centered-desktop {
+  max-width: 325px;
+}
+
+@mixin section-background(
+  $mobile,
+  $tablet,
+  $desktop,
+  $height-mobile,
+  $height-tablet
+) {
+  height: $height-mobile;
+  background-image: url($mobile);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include on-tablet {
+    height: $height-tablet;
+    background-image: url($tablet);
+  }
+
+  @include on-desktop {
+    background-size: cover;
+    background-image: url($desktop);
+  }
+}
+
+@mixin grid-size {
+  display: grid;
+  row-gap: $row-gap;
+}
+
+@mixin transition-base($properties...) {
+  transition: $properties 0.3s ease;
+}
+
+@mixin link-hover {
+  display: inline-block;
+
+  @include transition-base(transform);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

@@ -1,0 +1,62 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins.scss' as *;
+
+.header {
+  position: relative;
+  z-index: 0;
+
+  @include section-background(
+    '/src/images/header/header-bg-mobile.png',
+    '/src/images/header/header-bg-tablet.png',
+    '/src/images/header/header-bg-desktop.png',
+    100vh,
+    840px
+  );
+
+  &__content {
+    @include content-padding-inline;
+
+    padding-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 129px;
+
+    @include on-tablet {
+      padding-top: 50px;
+      gap: 141px;
+    }
+
+    @include on-desktop {
+      gap: 83px;
+    }
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include transition-base(transform);
+
+    @include on-desktop {
+      height: 65px;
+    }
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      line-height: 80px;
+    }
+  }
+}
