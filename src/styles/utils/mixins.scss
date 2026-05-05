@@ -1,0 +1,69 @@
+@mixin tablet() {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin title-style() {
+  font-size: 32px;
+  line-height: 32px;
+
+  @include tablet {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  @include desktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin style-info() {
+  font-family: 'Space Mono', sans-serif;
+  line-height: 140%;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@mixin hover-zoom() {
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+@mixin grid-container() {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+
+  @include padding-inl;
+
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin padding-inl() {
+  padding-inline: 20px;
+
+  @include tablet {
+    padding-inline: 72px;
+  }
+
+  @include desktop {
+    padding-inline: 120px;
+  }
+}
