@@ -1,5 +1,10 @@
 @use '../utils' as *;
 
+:root {
+  --dark-neon: #0081a7;
+  --glitch-pink: #bc00dd;
+}
+
 .contacts {
   &__wrapper {
     @include page-grid;
@@ -44,6 +49,29 @@
     @include form-standard-font;
   }
 
+  // &__input,
+  // &__textarea {
+  //   border: 2px solid transparent;
+  //   transition: all 0.3s ease;
+  // }
+
+  // &__input:hover,
+  // &__textarea:hover {
+  //   border-color: #eee;
+  //   box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  // }
+
+  &__input:focus,
+  &__textarea:focus {
+    cursor: text;
+    outline: none;
+
+    // border-color: rgba(0, 150, 255, 0.5);
+    // box-shadow: inset 0 0 10px rgba(0, 150, 255, 0.1),
+    //   0 0 15px rgba(0, 150, 255, 0.2);
+    // transition: all 0.4s ease;
+  }
+
   &__input::placeholder,
   &__textarea::placeholder {
     @include form-standard-font;
@@ -55,12 +83,6 @@
   &__input:hover::placeholder,
   &__textarea:hover::placeholder {
     color: $form-text-color;
-  }
-
-  &__input:focus,
-  &__textarea:focus {
-    cursor: text;
-    outline: none;
   }
 
   &__info {
@@ -88,5 +110,50 @@
     font-size: 16px;
     line-height: 140%;
     color: $main-text-color;
+
+    display: inline-block;
+    position: relative;
+
+    transform: scale(1);
+    transition: transform $effectDurration ease;
+
+    &:hover {
+      // box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      transform: scale(1.05);
+      animation:
+        cyber-breath 2s infinite ease-in-out;
+
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+
+        width: 100%;
+        height: 1px;
+
+        background: linear-gradient(90deg, transparent, rgba(0, 150, 255, 0.6), transparent);
+        box-shadow: 0 0 8px rgba(0, 150, 255, 0.8);
+      }
+    }
+  }
+
+  @keyframes cyber-breath {
+    0% {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 0 4px rgba(0, 150, 255, 0.3);
+    }
+
+    50% {
+      color: #fff;
+      text-shadow: 0 0 12px rgba(0, 150, 255, 0.8),
+        0 0 20px rgba(0, 80, 255, 0.4);
+    }
+
+    100% {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 0 4px rgba(0, 150, 255, 0.3);
+    }
   }
 }
