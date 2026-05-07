@@ -1,8 +1,18 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
 .icon {
   display: block;
   height: 24px;
   width: 24px;
-  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
 
   @include on-tablet {
     height: 32px;
@@ -15,13 +25,10 @@
 
   &--menu {
     background-image: url('../images/icons/icon-burger-menu.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 24px 24px;
-  }
 
-  &--menu:hover {
-    background-image: url('../images/icons/icon-burger-menu-hover.svg');
+    &:hover {
+      background-image: url('../images/icons/icon-burger-menu-hover.svg');
+    }
   }
 
   &--close {
@@ -33,27 +40,25 @@
   position: relative;
 
   .top-bar__phone-text {
-  position: absolute;
-  right: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-right: 8px;
-  white-space: nowrap;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 8px;
+    white-space: nowrap;
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease;
-  color: #1b2129;
-  font-weight: 700;
-}
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+    color: #1b2129;
+    font-weight: 700;
+  }
 
   &:hover .top-bar__phone-text {
     opacity: 1;
     visibility: visible;
   }
 }
-
-
