@@ -1,0 +1,36 @@
+@use '../utils' as *;
+
+.phone {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+
+  &__number {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 133%;
+    letter-spacing: 0.17em;
+
+    @media (max-width: 390px) {
+      display: none;
+    }
+
+    &--hover {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(30%);
+
+      transition: all $effectDurration;
+    }
+  }
+
+  &:hover {
+    .phone__number--hover {
+      @include on-tablet {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateX(0);
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@use '../utils' as *;
+
+.contacts {
+  &__wrapper {
+    @include page-grid;
+
+    row-gap: 48px;
+  }
+
+  &__form {
+    display: flex;
+    grid-column: span 2;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__input {
+    padding: 14px 16px;
+    border-radius: 40px;
+    background-color: $form-bg-color;
+    color: $form-text-color;
+
+    @include form-standard-font;
+  }
+
+  &__textarea {
+    box-sizing: border-box;
+    height: 148px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background-color: $form-bg-color;
+    resize: none;
+    margin-bottom: 32px;
+    color: $form-text-color;
+
+    @include form-standard-font;
+  }
+
+  &__input:hover,
+  &__textarea:hover {
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.4);
+  }
+
+  &__input:focus,
+  &__textarea:focus {
+    cursor: text;
+    outline: none;
+    box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 0.64);
+  }
+
+  &__input::placeholder,
+  &__textarea::placeholder {
+    @include form-standard-font;
+
+    color: $form-placeholder-color;
+    transition: color $effectDurration ease-in-out;
+  }
+
+  &__input:hover::placeholder,
+  &__textarea:hover::placeholder {
+    color: $form-text-color;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+    row-gap: 24px;
+
+
+    @include on-desktop {
+      grid-column: 8 / span 3;
+    }
+  }
+
+  &__info-title {
+    margin: 8px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    padding-inline: 5px;
+  }
+
+  &__info-text {
+    margin: 0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    color: $main-text-color;
+    padding-inline: 5px;
+
+    display: inline-block;
+    transition: transform $effectDurration ease;
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      transform: scale(1.15);
+    }
+  }
+}
