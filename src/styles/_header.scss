@@ -1,0 +1,101 @@
+@use 'variables' as *;
+@use './mixins' as *;
+
+.header {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-image: url(../images/header-bg-mobile.png);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: $tablet-min-width) {
+    background-image: url(../images/header-bg-tablet.png);
+  }
+
+  @media (min-width: $desktop-min-width) {
+    background-image: url(../images/header-bg-desktop.png);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 20px;
+
+    @media (min-width: $tablet-min-width) {
+      padding: 36px 72px;
+    }
+
+    @media (min-width: $desktop-min-width) {
+      padding: 36px 120px;
+    }
+  }
+
+  &__top img {
+    display: block;
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    text-align: center;
+    font-size: $font-size;
+    line-height: 100%;
+    letter-spacing: $section-title-letter-spacing;
+
+    @media (min-width: $tablet-min-width) {
+      font-size: $font-size-tablet;
+    }
+
+    @media (min-width: $desktop-min-width) {
+      font-size: $font-size-desktop;
+    }
+  }
+
+  &__bottom {
+    padding: 0 20px 88px;
+
+    @media (min-width: $tablet-min-width) {
+      padding: 0 72px 130px;
+    }
+  }
+
+  &__icons {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 24px;
+  }
+
+  &__phone {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    &-number {
+      transition: $transition-default;
+      display: none;
+      text-decoration: none;
+      font-weight: $font-weight-bold;
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0;
+      pointer-events: none;
+
+      @media (min-width: $tablet-min-width) {
+        display: block;
+      }
+
+      @media (min-width: $desktop-min-width) {
+        font-size: 16px;
+      }
+    }
+
+    &:hover &-number {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}

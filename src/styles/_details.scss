@@ -1,0 +1,133 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.details {
+  padding-top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include page-padding;
+
+  @media (min-width: $tablet-min-width) {
+    padding-top: 120px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    padding-top: 144px;
+  }
+
+  &__title {
+    font-weight: $font-weight-medium;
+    font-size: $section-title-size;
+    letter-spacing: $section-title-letter-spacing;
+    align-self: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+
+    @media (min-width: $tablet-min-width) {
+      gap: 48px;
+    }
+  }
+
+  &__button {
+    padding-top: 40px;
+    align-self: center;
+    width: 100%;
+
+    @media (min-width: $tablet-min-width) {
+      max-width: 392px;
+    }
+
+    @media (min-width: $desktop-min-width) {
+      max-width: 324px;
+    }
+  }
+}
+
+.details-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__top {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+
+    @media (min-width: $tablet-min-width) {
+      grid-template-columns: 2fr 1fr;
+
+      &--reverse {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    @media (min-width: $desktop-min-width) {
+      grid-template-columns: repeat(3fr, 1fr);
+      gap: 24px;
+    }
+  }
+
+    &__link {
+      display: block;
+      overflow: hidden;
+
+      & img {
+        display: block;
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        @media (min-width: $tablet-min-width) {
+          height: 187px;
+        }
+
+        @media (min-width: $desktop-min-width) {
+          height: 320px;
+        }
+      }
+    }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @media (min-width: $desktop-min-width) {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+
+      .details-item__title {
+        grid-column: 1 / 9;
+      }
+
+      .details-item__description {
+        grid-column: 1 / 9;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-medium;
+    line-height: 140%;
+  }
+
+  &__description {
+    font-weight: $font-weight-regular;
+    font-size: $font-size-small;
+    line-height: 140%;
+  }
+}

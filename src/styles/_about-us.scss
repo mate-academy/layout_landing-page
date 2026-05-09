@@ -1,0 +1,46 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.about-us {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding-top: 60px;
+
+  @include page-padding;
+
+  @media (min-width: $tablet-min-width) {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 120px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__title {
+    font-size: $section-title-size;
+    font-weight: $font-weight-medium;
+    letter-spacing: $section-title-letter-spacing;
+
+    @media (min-width: $tablet-min-width) {
+      font-size: $section-title-size-tablet;
+    }
+
+    @media (min-width: $desktop-min-width) {
+      grid-column: 1 / 6;
+      font-size: $font-size-tablet;
+    }
+  }
+
+  &__description {
+    font-weight: $font-weight-medium;
+    font-size: 23px;
+    line-height: 140%;
+
+    @media (min-width: $desktop-min-width) {
+      grid-column: 6 / 12;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.compare-bikes {
+  display: flex;
+  flex-direction: column;
+  padding-top: 92px;
+  gap: 48px;
+
+  @include page-padding;
+
+  @media (min-width: $tablet-min-width) {
+    padding-top: 132px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    padding-top: 164px;
+    gap: 56px;
+  }
+
+  &__title {
+    font-weight: $font-weight-medium;
+    font-size: $section-title-size;
+    letter-spacing: $section-title-letter-spacing;
+    align-self: center;
+  }
+}
+
+.bike-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: $tablet-min-width) {
+    gap: 48px;
+  }
+
+  @media (min-width: $desktop-min-width) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.bike-card {
+  line-height: 140%;
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    display: block;
+    overflow: hidden;
+    transition: $transition-default;
+
+    & img {
+      display: block;
+      width: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-medium;
+    margin-top: 32px;
+  }
+
+  &__description {
+    margin-top: 8px;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-small;
+  }
+
+  &__price {
+    margin-top: 16px;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-medium;
+
+    @media (min-width: $tablet-min-width) {
+      margin-top: 32px;
+    }
+  }
+}
