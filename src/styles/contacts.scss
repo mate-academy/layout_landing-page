@@ -1,0 +1,112 @@
+// ============================================================
+// CONTACTS
+// Formulário + informações de contato
+// position: relative + z-index: 1 faz o Contacts deslizar
+// por CIMA do footer (que tem z-index: -1)
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.contacts {
+  position: relative;
+  z-index: 1;
+  background-color: $color-dark;
+  padding: 64px 0 96px;
+
+  @include on-desktop {
+    padding: 96px 0 128px;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0 0 40px;
+
+    @include on-tablet {
+      font-size: 40px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__content {
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 80px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @include on-desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    background: $color-white;
+    border: 1px solid $color-white;
+    border-radius: 28px;
+    color: $color-dark;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    padding: 16px 24px;
+    transition: border-color $transition;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+
+    &:hover,
+    &:focus {
+      border-color: rgba(0, 0, 0, 0.4);
+    }
+
+    &--textarea {
+      border-radius: 20px;
+      min-height: 128px;
+      resize: vertical;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    gap: 24px;
+  }
+
+  &__info-block {
+    margin: 0;
+  }
+
+  &__link {
+    color: $color-white;
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+}

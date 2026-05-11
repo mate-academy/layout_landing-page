@@ -1,0 +1,142 @@
+// ============================================================
+// MENU (overlay de navegação mobile/desktop)
+// Aberto via CSS :target — sem JavaScript!
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ── Wrapper da página ────────────────────────────────────────
+// Controla o overflow e o estado do menu overlay
+
+.page {
+  overflow-x: hidden;
+
+  // Quando #menu está na URL, bloqueia o scroll da página
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow: auto; // scroll dentro do menu, se necessário
+    background-color: $color-menu-bg;
+
+    // CSS :target — ativado quando a URL termina com #menu
+    &:target {
+      display: block;
+    }
+  }
+}
+
+// ── Componente Menu ──────────────────────────────────────────
+
+.menu {
+  // .menu__top fica grudado no topo ao rolar o menu
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-menu-bg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px $padding-mobile;
+
+    @include on-tablet {
+      padding: 24px $padding-tablet;
+    }
+  }
+
+  &__logo {
+    color: #;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__close {
+    color: #000;
+    font-size: 22px;
+    line-height: 1;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 32px $padding-mobile;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include on-tablet {
+      padding: 40px $padding-tablet;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 10px 0;
+    color: #000;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: #555;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 $padding-mobile 48px;
+
+    @include on-tablet {
+      padding: 0 $padding-tablet 48px;
+    }
+  }
+
+  &__phone {
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: #555;
+    }
+  }
+
+  &__book {
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-transform: uppercase;
+    transition: color $transition;
+
+    &:hover {
+      color: #555;
+    }
+  }
+}

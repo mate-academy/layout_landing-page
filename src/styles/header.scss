@@ -1,0 +1,127 @@
+// ============================================================
+// HEADER / HERO
+// Header e hero combinados: ocupa 100vh com imagem da bike
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  background-color: #1f1f1f;
+  position: relative;
+  min-height: 420px;
+
+  &__bg {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 420px;
+    max-height: 1260px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px $padding-mobile;
+
+    @include on-tablet {
+      padding: 28px $padding-tablet;
+    }
+
+    @include on-desktop {
+      padding: 28px $padding-desktop;
+    }
+  }
+
+  &__logo {
+    color: $color-white;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @include on-desktop {
+      font-size: 40px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // Telefone aparece só a partir do tablet
+  &__phone {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    color: $color-white;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__phone-icon {
+    flex-shrink: 0;
+  }
+
+  &__burger {
+    display: flex;
+    color: $color-white;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+    color: $color-white;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.05;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 $padding-mobile;
+
+    @include on-tablet {
+      font-size: 72px;
+      padding: 0 $padding-tablet;
+    }
+
+    @include on-desktop {
+      font-size: 100px;
+      padding: 0 $padding-desktop;
+    }
+  }
+}
