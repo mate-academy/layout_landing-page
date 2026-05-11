@@ -1,0 +1,86 @@
+// ============================================================
+// THE DETAILS
+// 3 características técnicas da bike com foto + texto
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.details {
+  background-color: $color-dark;
+  padding: 64px 0;
+  text-align: center;
+
+  @include on-desktop {
+    padding: 96px 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0 0 48px;
+
+    @include on-tablet {
+      font-size: 40px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 48px;
+    text-align: left;
+    margin-bottom: 48px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform $transition;
+  }
+
+  &__image-link {
+    display: block;
+    overflow: hidden;
+
+    &:hover .details__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    color: $color-white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  &__text {
+    color: $color-secondary;
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+  }
+}

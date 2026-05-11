@@ -1,0 +1,95 @@
+// ============================================================
+// COMPARE BIKES
+// 3 modelos de bike — 1 coluna no mobile, 3 no desktop
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.compare {
+  background-color: $color-dark;
+  padding: 64px 0;
+
+  @include on-desktop {
+    padding: 96px 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0 0 48px;
+
+    @include on-tablet {
+      font-size: 40px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 48px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    transition: transform $transition;
+  }
+
+  &__image-link {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    &:hover .compare__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    color: $color-white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  &__desc {
+    color: $color-secondary;
+    font-size: 16px;
+    line-height: 1.6;
+    flex: 1;
+    margin: 0 0 16px;
+  }
+
+  &__price {
+    color: $color-white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+}

@@ -1,0 +1,36 @@
+// ============================================================
+// MIXINS
+// @mixin funciona como uma "função" reutilizável no SCSS.
+// Usamos @include para chamar cada mixin nas seções.
+// ============================================================
+
+@use 'variables' as *;
+
+// Aplica estilos somente em telas >= 744px (tablet)
+@mixin on-tablet {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+// Aplica estilos somente em telas >= 1260px (desktop)
+@mixin on-desktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+// Mixin de container: padding lateral responsivo + largura máxima
+@mixin container {
+  padding: 0 $padding-mobile;
+
+  @include on-tablet {
+    padding: 0 $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $padding-desktop;
+  }
+}
