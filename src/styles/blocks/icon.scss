@@ -1,0 +1,58 @@
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:hover {
+    @include hover(transform, scale(1.2));
+
+  }
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--menu {
+    background-image: url(../images/burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/close.svg);
+  }
+
+  &--phone {
+    background-image: url(../images/icon-phone.svg);
+    position: relative;
+
+    @include on-tablet {
+      &:hover .icon__number {
+      opacity: 1;
+      display: block;
+      }
+    }
+  }
+  &__number {
+    display: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $background-cl;
+
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 12px);
+    transform: translateY(-50%);
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+}
