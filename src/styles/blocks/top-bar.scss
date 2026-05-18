@@ -1,7 +1,7 @@
 .top-bar {
   padding-block: 24px; // вертикальний відступ
 
-  @include content-padding-inline;
+  @include header-padding-inline;
 
   display: flex;
   justify-content: space-between;
@@ -15,8 +15,45 @@
 
   &__icons {
     display: flex;
+    align-items: center; // new
     gap: 24px;
   }
+
+  // new down
+  &__phone-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__phone-number {
+    display: none;
+
+    @include on-desktop {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  &__phone-link:hover &__phone-number {
+    @include on-desktop {
+      opacity: 1;
+    }
+  }
+
+  // new up
 
   &__logo-link {
     display: flex;
