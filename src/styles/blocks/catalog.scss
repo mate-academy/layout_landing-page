@@ -1,0 +1,88 @@
+@import '../utils/mixins';
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include on-tablet {
+    gap: 56px;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    gap: 24px;
+    & > :nth-child(n) {
+      grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+  &__view-all {
+    display: block;
+    width: 100%;
+    margin: 40px auto 0;
+    background-color: #f98921;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 16px 48px;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  &__image-container {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    img {
+      max-width: 85%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 8px 0 4px;
+  }
+  &__description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #4d4d4d;
+  }
+  &__price {
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: auto;
+  }
+}
