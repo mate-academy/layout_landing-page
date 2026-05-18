@@ -1,0 +1,54 @@
+.move-free {
+  margin: 0 auto;
+  padding: 60px 20px 92px;
+
+  --columns: 1;
+
+  display: grid;
+  gap: 32px 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    gap: 32px 24px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+
+    --columns: 12;
+  }
+
+  &__title {
+    // move-free
+    grid-column: 1 / -1;
+    margin: 0;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__content {
+    // shift your ride
+    margin: 0;
+    padding: 0;
+    line-height: 140%;
+    font-size: 23px;
+    font-weight: 500;
+
+    @include on-tablet {
+      grid-column: 4 / 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+}
