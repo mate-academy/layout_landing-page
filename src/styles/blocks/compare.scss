@@ -1,0 +1,41 @@
+.compare-bikes {
+  margin: 0 auto;
+
+  @include content-padding-inline;
+
+  &__products {
+    display: grid;
+    row-gap: 40px;
+
+    @include on-tablet {
+      justify-items: center; /* зафіксували ширину картинки */
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(
+        3,
+        1fr
+      ); // тепер на ноутбуці маємо три картинки в ряд, а не одна картинка на весь екран. причому на мобільній версії продукти знаходяться один під одним
+
+      column-gap: 24px; // у фігмі такий відступ між колонками гріда
+      justify-items: stretch; // зафіксували ширину картинки
+    }
+  }
+}
+
+.product {
+  &__link {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  &__link:hover &__photo {
+    transform: scale(1.05);
+  }
+}

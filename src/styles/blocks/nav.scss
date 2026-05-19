@@ -1,0 +1,39 @@
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 22px;
+    color: $main-text-color;
+    text-decoration: none;
+
+    &::after {
+      // це нижнє підкреснювання у сайдбарі, при наведенні миші
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left; // нижнє підкреслювання починатиметься з лівого краю, а не по центру (дефолт)
+    }
+
+    &:hover::after {
+      // а це плавна поява нижнього підкреслювання при наведенні
+      transform: scale(1);
+    }
+  }
+}

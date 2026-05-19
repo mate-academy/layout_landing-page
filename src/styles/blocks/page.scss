@@ -1,0 +1,35 @@
+.page {
+  font-family: Poppins, sans-serif;
+  color: #fff;
+  background-color: #1d1d1d;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0; // sidebar невидимый
+    transition: all 0.3s; // Любые изменения CSS будут происходить плавно за 0.3 секунды
+    transform: translateX(-100%); // Сдвигает элемент по горизонтали (влево)
+    pointer-events: none; // Элемент становится “не кликабельным”
+
+    &:target {
+      // “когда на этот элемент ссылаются через якорь (URL #...)”
+      opacity: 1; // sidebar становится видимым
+      transform: translateX(0); // возвращается из translateX(-100%)
+      pointer-events: all; // можно нажимать
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; /* not to scroll the page */
+}
