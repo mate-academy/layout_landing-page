@@ -11,7 +11,7 @@
 11. Disable page scrolling under the menu using the next code:
     ```css
     .page:has(.page__menu:target) {
-      overflow: hidden; /* not to scroll the page */
+      overflow: hidden; /* not to scroll the   page */
     }
     ```
 12. Make it possible to scroll the menu if it is higher than the viewport;
