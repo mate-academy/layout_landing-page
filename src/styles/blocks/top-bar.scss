@@ -1,0 +1,69 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins.scss' as *;
+
+.top-bar {
+  padding-block: 36px;
+
+  @include content-padding-in-line;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-mobile {
+    padding-block: 24px;
+  }
+
+  &__logo-link {
+    @include hover(transform, scale(1.2));
+
+    display: flex;
+
+    @include on-mobile {
+      height: 38px;
+      width: 130px;
+    }
+  }
+
+  &__menu-logo {
+    @include hover(transform, scale(1.2));
+
+    display: flex;
+
+    @include on-mobile {
+      height: 38px;
+      width: 130px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 32px;
+  }
+
+  &__phone-number {
+    color: $main-text-color;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-width $effectDuration ease, opacity $effectDuration ease;
+  }
+
+  &__phone-icon {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+
+    &:hover {
+      .top-bar__phone-number {
+        max-width: 200px;
+        opacity: 1;
+      }
+    }
+  }
+}
