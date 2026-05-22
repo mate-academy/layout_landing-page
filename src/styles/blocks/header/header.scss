@@ -1,0 +1,92 @@
+@import './menu';
+
+// #region Header
+.header {
+  height: 100vh;
+  box-sizing: border-box;
+  background-image: url('../img/mybike-main-header-photo.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include on-tablet{
+    background-position: center;
+  }
+
+  &__title {
+    @include content-header-title-font-size;
+
+    color: $main-text-color;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    font-style: Bold;
+    margin: 0;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 130px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 203px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  &--phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/icon-phone.svg');
+
+    @include on-desktop{
+      &:hover::before {
+        content: '+1 234 555-55-55';
+        font-size: 12px;
+        line-height: 16px;
+        color: $main-text-color;
+        position: absolute;
+        width: 150px;
+        overflow: hidden;
+        right: 20px;
+      }
+    }
+    }
+
+  &--menu {
+    background-image: url('../img/icon-menu.svg');
+    transition-duration: 0.2s;
+
+    &:hover {
+      background-image: url('../img/icon-menu-hover.svg');
+    }
+  }
+
+  &--closing {
+    background-image: url('../img/menu-close-icon.svg');
+    transition-duration: 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+}

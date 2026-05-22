@@ -1,0 +1,131 @@
+.menu {
+  color: $header-menu-text-color;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $header-menu-background-color;
+  font-weight: 600;
+  text-transform: uppercase;
+  overflow: auto; /* to scroll the menu if needed */
+
+  &:target {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  &__top {
+    margin-bottom: 24px;
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: $header-menu-background-color;
+  }
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    @include content-padding-inline;
+  }
+
+  &__phone-number {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: 16px;
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: $header-menu-text-color-hover;
+    }
+  }
+
+  &__book-ride {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(29, 29, 29, 1);
+    width: fit-content;
+    padding-bottom: 8px;
+
+    &:hover {
+      color: $header-menu-text-color-hover;
+    }
+  }
+}
+
+.top-bar {
+  padding-block: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include content-padding-inline;
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    width: 130px;
+    height: 38px;
+
+    @include on-tablet {
+      height: 56px;
+      width: 187px;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: inherit;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-bottom: 1px solid rgba(29, 29, 29, 1);
+      width: fit-content;
+      padding-bottom: 8px;
+    }
+  }
+}
+
+.page {
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
