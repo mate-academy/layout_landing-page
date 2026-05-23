@@ -1,0 +1,74 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+/* #region icon */
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url('../images/icons/icon-phone.svg');
+    background-position: right center;
+    transition: transform $effect-duration;
+    position: relative;
+
+    @include hover(transform, scale(1.04));
+
+    &::before {
+      content: '+1 234 555-55-55';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+      margin-right: 8px;
+      opacity: 0;
+      pointer-events: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      color: $color-text-main;
+      white-space: nowrap;
+      transition:
+        opacity $effect-duration,
+        transform $effect-duration;
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+
+    &:hover::before {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  &--menu {
+    background-image: url('../images/icons/icon-menu.svg');
+
+    @include hover(transform, scale(1.04));
+
+    &:hover {
+      background-image: url('../images/icons/icon-menu-hover.svg');
+    }
+  }
+
+  &--close {
+    background-image: url('../images/icons/icon-close.svg');
+
+    @include hover(transform, rotate(45deg));
+  }
+}
+
+/* #endregion */

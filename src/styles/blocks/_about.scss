@@ -1,0 +1,55 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.about {
+  @include page-grid;
+
+  &__photo-link {
+    display: block;
+    overflow: hidden;
+
+    @include hover(transform, scale(1.04));
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    max-height: 200px;
+
+    @include on-tablet {
+      max-height: 400px;
+    }
+
+    @include on-desktop {
+      max-height: 460px;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    line-height: $line-height-main;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 4 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

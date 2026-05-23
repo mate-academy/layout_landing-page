@@ -1,0 +1,80 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    @include button-primary;
+
+    margin-top: 32px;
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+    align-items: stretch;
+  }
+
+  &__link {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    width: 100%;
+
+    &--wide {
+      grid-column: span 1;
+      aspect-ratio: 1;
+
+      @include on-tablet {
+        grid-column: span 4;
+        aspect-ratio: 2 / 1;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      grid-column: span 1;
+      aspect-ratio: 1;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    display: block;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.04));
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: $font-title-weight;
+    font-size: 24px;
+    line-height: $line-height-main;
+  }
+}
