@@ -1,0 +1,59 @@
+@use '../utils/mixins' as *;
+
+.contacts {
+  &__wrapper {
+    @include page-grid;
+    
+    row-gap: 48px;
+
+    @include on-tablet {
+      row-gap: 0;
+    }
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+    }
+  }
+
+  &__info {
+    grid-column: 1 / -1;
+    display: grid;
+    row-gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 3;
+      align-content: start;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    font-weight: 700;
+    
+    @include transition(opacity);
+
+    &--address {
+      font-style: normal;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

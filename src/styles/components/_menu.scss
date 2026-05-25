@@ -1,0 +1,99 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.menu {
+  background-color: #c2c2c2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 11;
+  transform: translateX(100%);
+  padding-top: 26px;
+  overflow: auto;
+
+  @include transition(transform);
+
+  @include on-tablet {
+    padding-top: 36px;
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__content {
+    display: grid;
+    row-gap: 48px;
+
+    @include on-desktop {
+      row-gap: 60px;
+    }
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #c2c2c2;
+  }
+
+  &__nav {
+    display: grid;
+    row-gap: 40px;
+    color: $second-color;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+
+  &__list {
+    display: grid;
+    row-gap: 32px;
+  }
+
+  &__link {
+    font-size: 22px;
+    text-transform: uppercase;
+    position: relative;
+
+    &::before {
+      @include underline-animation(0%);
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  &__contacts {
+    display: grid;
+    row-gap: 25px;
+  }
+
+  &__phone {
+    font-size: 16px;
+
+    @include transition(opacity);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__booking {
+    font-size: 12px;
+    position: relative;
+    width: fit-content;
+    padding-bottom: 10px;
+
+    &::before {
+      @include underline-animation(100%);
+    }
+
+    &:hover::before {
+      width: 0%;
+    }
+  }
+}

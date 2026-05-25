@@ -1,0 +1,48 @@
+@use 'variables';
+
+@mixin on-tablet {
+  @media (min-width: variables.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: variables.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin underline-animation($width: 100%) {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: $width;
+  height: 1px;
+  background-color: variables.$second-color;
+  transition: 0.3s;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+    
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin transition($properties...) {
+  transition-property: $properties;
+  transition-duration: variables.$transition-duration;
+  transition-timing-function: variables.$transition-easing;
+}

@@ -1,0 +1,99 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: contain;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__hover-phone {
+    display: none;
+
+    @include on-tablet {
+      position: absolute;
+      display: block;
+      pointer-events: none;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(100% + 20px);
+      white-space: nowrap;
+      opacity: 0;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      @include transition(opacity);
+    }
+  }
+
+
+  &--phone {
+    background-image: url(../images/icon-phone-call.svg);
+    position: relative;
+
+    @include transition(opacity);
+
+    &:hover {
+      .icon__hover-phone {
+        opacity: 1;
+      }
+    }
+  }
+
+
+  &--menu {
+    background-image: url(../images/icon-burger-menu.svg);
+
+    @include transition(opacity);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &--close {
+    position: relative;
+    width: 20px;
+    height: 20px;
+
+    @include transition(opacity);
+
+    @include on-tablet {
+      width: 26px;
+      height: 26px;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $second-color;
+      border-radius: 3px;
+
+      @include on-tablet {
+        height: 3px;
+      }
+
+      &:first-child {
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &:last-child {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+}
