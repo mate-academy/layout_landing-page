@@ -1,0 +1,76 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/variables.scss' as *;
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow: auto;
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    line-height: 100%;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 32px 0 48px;
+
+    @include on-tablet {
+      margin: 56px 0 48px;
+    }
+  }
+
+  &__item-link {
+    color: $main-text-color;
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      height: 1px;
+      display: block;
+      width: 100%;
+      background-color: $main-text-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  &__call {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: $main-text-color;
+  }
+
+  &__call--order {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $main-text-color;
+    flex-grow: 0;
+  }
+}
