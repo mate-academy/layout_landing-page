@@ -5,13 +5,13 @@ A responsive landing page for the Bang & Olufsen brand, built as a practice proj
 ## Technologies
 
 - HTML5
-- SCSS (variables, mixins, nesting, `@for`, `@each`)
+- SCSS (variables, mixins, nesting, etc.)
 - CSS Grid & Flexbox
 - BEM methodology
 
 ## Preview
 
-[Live Demo](https:)
+[Live Demo](https://azesmmisha.github.io/layout_landing-page/)
 
 ## Design
 
