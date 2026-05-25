@@ -1,0 +1,41 @@
+.page {
+  scrollbar-gutter: stable;
+  min-height: 100vh;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  overflow-x: hidden;
+  font-family: 'Space Grotesk', Inter, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: $main-text-color;
+  font-style: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all $effectDuration;
+    pointer-events: none;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
