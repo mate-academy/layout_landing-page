@@ -1,4 +1,5 @@
 @use '../utils/mixins.scss' as *;
+@use '../utils/variables' as *;
 
 .top-bar {
   padding-block: 24px;
@@ -14,6 +15,38 @@
   &__icons {
     display: flex;
     gap: 24px;
+  }
+
+  &__icon--phone {
+    position: relative;
+  }
+
+  &__number {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    transition:
+      opacity 0.3s,
+      width 0.3s;
+
+    color: $main-text-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    @include on-desktop {
+      .top-bar__icon--phone:hover & {
+        opacity: 1;
+        width: min-content;
+      }
+    }
   }
 
   &__logo-link {
