@@ -1,0 +1,84 @@
+@use './variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin field-base {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 8px;
+  background: #f9f9f9;
+  padding: 14px 16px;
+  border: none;
+  outline: none;
+
+  &:hover {
+    border: 1px solid #dbdbdb;
+  }
+
+  &:focus {
+    border: 2px solid $btn-default;
+  }
+
+  &::placeholder {
+    font-family: Manrope, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.01em;
+    color: #7e7e83;
+  }
+}
