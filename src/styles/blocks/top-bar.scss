@@ -1,0 +1,64 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      height: 24px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      &:hover .top-bar__phone--hover {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    &--hover {
+      position: absolute;
+      width: 400%;
+      right: 100%;
+      overflow: hidden;
+
+      transition: transform 0.3s;
+      opacity: 0;
+
+      transform: translateX(50%);
+      pointer-events: none;
+
+      &-number {
+        font-size: 12px;
+        font-weight: bold;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}

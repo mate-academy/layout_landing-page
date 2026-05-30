@@ -1,0 +1,68 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-in-line() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    max-width: 744px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1260px;
+    padding-inline: 112px;
+  }
+}
+
+.container {
+  justify-content: center;
+
+  @include content-padding-in-line;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  --columns: 2;
+
+  @include on-tablet {
+    column-gap: 24px;
+
+    --columns: 6;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin minus-margin {
+  margin-inline: -20px;
+
+  @include on-tablet {
+    margin-inline: -72px;
+  }
+
+  @include on-desktop {
+    margin-inline: -112px;
+  }
+}
