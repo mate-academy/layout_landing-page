@@ -1,0 +1,75 @@
+@use 'sass:color';
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: #bdbdbd;
+  z-index: 200;
+
+  overflow: auto;
+
+  display: none;
+
+  &:target {
+    @include flex-column;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #bdbdbd;
+
+    @include flex-between;
+
+    padding: 20px 24px;
+    border-bottom: 1px solid $gray;
+  }
+
+  &__logo {
+    height: 28px;
+    width: auto;
+  }
+
+  &__close {
+    font-size: 24px;
+    font-weight: 700;
+    color: $dark;
+    line-height: 1;
+
+    @include smooth;
+
+    &:hover {
+      transform: rotate(90deg);
+      color: #888;
+    }
+  }
+
+  &__nav {
+    @include flex-column;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    gap: 32px;
+    padding: 48px 24px;
+
+    .nav__link {
+      font-size: 18px;
+      font-weight: 600;
+      color: $dark;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+
+      &::after {
+        background: $dark;
+      }
+
+      &:hover {
+        color: color.adjust(#fbd784, $lightness: -20%);
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.nav {
+  display: flex;
+  gap: 32px;
+
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: $light;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+
+    @include smooth;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $accent;
+
+      @include smooth;
+    }
+
+    &:hover {
+      color: $accent;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
