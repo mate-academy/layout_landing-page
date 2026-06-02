@@ -1,0 +1,65 @@
+/* #region icon */
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  @include hover(transform, scale(1.2));
+
+  &--phone {
+    background-image: url(../icon/icon-phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../icon/icon-burger-menu.svg);
+    &:hover {
+      background-image: url(../icon/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icon/icon-menu-close.svg);
+  }
+
+  &__number {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(0%);
+    opacity: 0;
+    transition: all $effectDuration;
+    pointer-events: none;
+    white-space: nowrap;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $main-text-page;
+
+    display: none;
+
+    @include on-desktop {
+      display: block;
+      transition: all $effectDuration;
+    }
+  }
+
+  @include on-desktop {
+    &--show-number:hover &__number {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-20px);
+    }
+  }
+}
+
+/* #endregion */
