@@ -1,0 +1,112 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.category {
+  --colums: 2;
+
+  @include mixins.on-tablet {
+    --colums: 6;
+  }
+
+  @include mixins.on-desktop {
+    --colums: 12;
+  }
+
+  &__title {
+    margin: 0;
+    padding-block: 64px 48px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+
+    @include mixins.on-tablet {
+      font-size: 40px;
+      padding-block: 120px 56px;
+    }
+
+    @include mixins.on-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(var(--colums), 1fr);
+    column-gap: 20px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: variables.$item-radius;
+    grid-column: span 1;
+    aspect-ratio: 1 / 1;
+    background-color: #f9f9f9;
+
+    @include mixins.on-tablet {
+      grid-column: span 3;
+      aspect-ratio: 3 / 2;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 6;
+      aspect-ratio: 3 / 2;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__min-title {
+    grid-column: span var(--colums);
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    padding-block: 16px 40px;
+
+    @include mixins.on-tablet {
+      font-size: 24px;
+      padding-block: 16px 56px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    background-color: variables.$color-btn;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    border-radius: variables.$button-radius;
+    transition: background-color variables.$time-animation linear;
+    grid-column: 1 / -1;
+
+    @include mixins.on-desktop {
+      grid-column: 1 / 5;
+    }
+
+    &:hover {
+      background-color: variables.$color-btn-hover;
+    }
+
+    &:active {
+      background-color: variables.$color-btn-active;
+    }
+  }
+}

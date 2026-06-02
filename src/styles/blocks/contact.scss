@@ -1,0 +1,148 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.contact {
+  --colums: 2;
+
+  @include mixins.on-tablet {
+    grid-column: span 6;
+  }
+
+  @include mixins.on-desktop {
+    --colums: 12;
+  }
+
+  margin-bottom: 64px;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(var(--colums), 1fr);
+
+    @include mixins.on-desktop {
+      column-gap: 24px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-block: 64px 48px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+
+    @include mixins.on-tablet {
+      font-size: 40px;
+    }
+
+    @include mixins.on-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    grid-column: 1 / -1;
+
+    @include mixins.on-desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__input {
+    padding: 14px 0 14px 16px;
+    background-color: variables.$color-input-bg;
+    outline: none;
+    border: none;
+    border-radius: variables.$button-radius;
+    font-size: 14px;
+    line-height: 140%;
+    color: variables.$color-main;
+    box-sizing: border-box;
+
+    &--textarea {
+      min-height: 148px;
+      padding-right: 16px;
+    }
+
+    &::placeholder {
+      color: variables.$color-input-placeholder;
+    }
+
+    &:hover {
+      outline: 1px solid variables.$color-input-border-hover;
+    }
+
+    &:hover::placeholder {
+      color: variables.$color-input-placeholder-hover;
+    }
+
+    &:focus {
+      outline: 2px solid variables.$color-btn;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    background-color: variables.$color-btn;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    border-radius: variables.$button-radius;
+    border: none;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background-color variables.$time-animation linear;
+
+    &:hover {
+      background-color: variables.$color-btn-hover;
+    }
+
+    &:active {
+      background-color: variables.$color-btn-active;
+    }
+  }
+
+  &__info {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    grid-column: 1 / -1;
+
+    @include mixins.on-desktop {
+      grid-column: 8 / -1;
+      margin-top: 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    letter-spacing: 0.15px;
+  }
+
+  &__data {
+    padding: 0;
+    margin: 0;
+    color: variables.$color-second;
+    font-size: 14px;
+  }
+
+  &__link {
+    color: #191919;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+  }
+}
