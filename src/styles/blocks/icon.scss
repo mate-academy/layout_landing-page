@@ -1,0 +1,39 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: transform variables.$time-animation;
+  flex-shrink: 0;
+
+  @include mixins.on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &--phone {
+    background-image: url('../images/icons/icon-phone.svg');
+  }
+
+  &--menu {
+    background-image: url('../images/icons/icon-burger-menu.svg');
+    &:hover {
+      background-image: url('../images/icons/icon-burger-menu-active.svg');
+    }
+  }
+
+  &--closed {
+    background-image: url('../images/icons/icon-close.svg');
+    margin-left: 24px;
+  }
+}

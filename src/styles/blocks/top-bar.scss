@@ -1,0 +1,47 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.top-bar {
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixins.on-tablet {
+    height: 96px;
+  }
+
+  &__phone {
+    position: relative;
+    left: variables.$top-bar-icon-gap - 8;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    opacity: 0;
+    transition: opacity variables.$time-animation;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: variables.$top-bar-icon-gap;
+
+    &:has(.icon--phone:hover) {
+      .top-bar__phone {
+        @include mixins.on-desktop {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    max-width: 230px;
+  }
+
+  &__logo img {
+    object-fit: cover;
+    width: 100%;
+  }
+}

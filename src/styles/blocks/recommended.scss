@@ -1,0 +1,36 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.recommended {
+  --colums: 2;
+
+  @include mixins.on-tablet {
+    --colums: 6;
+  }
+
+  @include mixins.on-desktop {
+    --colums: 12;
+  }
+
+  &__title {
+    margin: 0;
+    padding-block: 64px 48px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+
+    @include mixins.on-desktop {
+      padding-block: 120px 56px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(var(--colums), 1fr);
+    row-gap: 40px;
+
+    @include mixins.on-desktop {
+      gap: 0 24px;
+    }
+  }
+}
