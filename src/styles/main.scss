@@ -1,3 +1,281 @@
-body {
+$font-main: Inter, sans-serif;
+$text-color: #000;
+$gray: #7a7a7a;
+$white: #fff;
+$container-max-width: 1200px;
+$breakpoint-md: 768px;
+$z-header: 10;
+$z-menu: 50;
+$transition: 0.3s ease;
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-main;
+  color: $text-color;
+  background-color: $white;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+button,
+label {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  padding: 20px 0;
+  position: relative;
+  z-index: $z-header;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 120px;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__menu-button {
+    width: 28px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: $white;
+  padding: 40px 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  transform: translateX(100%);
+  transition: transform $transition;
+
+  z-index: $z-menu;
+
+  &__close {
+    width: 28px;
+    margin-left: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__contacts {
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: #777;
+    font-size: 14px;
+  }
+}
+
+.header__toggle:checked ~ .menu {
+  transform: translateX(0);
+}
+
+.menu__list a,
+.menu__contacts a {
+  transition: opacity $transition;
+}
+
+.menu__list a:hover,
+.menu__contacts a:hover {
+  opacity: 0.6;
+}
+
+.hero {
+  margin-bottom: 40px;
+
+  &__image {
+    width: 100%;
+    max-height: 700px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 700px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__text {
+    margin-top: 32px;
+  }
+
+  &__title {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 700;
+
+    max-width: 600px;
+  }
+}
+
+.products {
+  margin-bottom: 80px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    transition:
+      transform $transition,
+      box-shadow $transition;
+  }
+
+  &__item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  &__image {
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    transition: transform $transition;
+  }
+
+  &__item:hover &__image {
+    transform: scale(1.03);
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__price {
+    font-size: 16px;
+    color: #777;
+  }
+}
+
+.footer {
+  padding: 40px 0;
+
+  text-align: center;
+
+  color: $gray;
+  font-size: 14px;
+}
+
+@media (min-width: $breakpoint-md) {
+  .header {
+    padding: 32px 0;
+
+    &__menu-button {
+      width: 32px;
+    }
+  }
+
+  .menu {
+    width: 400px;
+    padding: 60px 40px;
+  }
+
+  .menu__list {
+    gap: 30px;
+    font-size: 22px;
+  }
+
+  .hero {
+    margin-bottom: 60px;
+
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  .products {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+  }
 }
