@@ -1,0 +1,35 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin disable-selection {
+  &:active {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  justify-content: center;
+  gap: 32px;
+  column-gap: 20px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 80px);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+}
