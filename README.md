@@ -1,24 +1,49 @@
-# Landing Page
+# Nothing — Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+Адаптивний односторінковий лендинг для бренду техніки **Nothing**, зверстаний за макетом із Figma. Сторінка містить шапку з бургер-меню, секції рекомендованих товарів, каталог за категоріями, блок «About us» і форму зворотного зв'язку з контактною інформацією.
 
-Choose a design for your landing page:
+Реалізовано:
+- адаптив під мобільні, планшети та десктоп (responsive grid);
+- бургер-меню з блокуванням скролу сторінки під ним;
+- плавні анімації (hover на зображеннях, навігації, кнопках) з єдиною швидкістю;
+- робочі посилання `tel:`, `mailto:` та адреса на Google Maps;
+- форма з валідацією полів, яка не перезавантажує сторінку при відправці.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## 🛠 Технології
 
-Follow the instructions in this and next lessons to implement the page block by block:
+- **HTML5** — семантична розмітка
+- **SCSS (Sass)** — стилі, змінні, міксини, вкладеність
+- **БЕМ** — методологія іменування класів
+- **CSS Grid / Flexbox** — розкладка та адаптив
+- **Vite** — збірка та dev-сервер
+- **Stylelint** + **LintHTML** — лінтери коду
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+## 🔗 Посилання
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+- 🌐 **Прев'ю (DEMO):** https://reddev111.github.io/layout_landing-page/
+- 🎨 **Макет (Figma):** [Nothing design](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+
+## 🚀 Запуск проєкту локально
+
+1. Клонувати репозиторій:
+   ```bash
+   git clone https://github.com/reddev111/layout_landing-page.git
+   cd layout_landing-page
+   ```
+
+2. Встановити залежності:
+   ```bash
+   npm install
+   ```
+
+3. Запустити dev-сервер:
+   ```bash
+   npm start
+   ```
+   Проєкт відкриється в браузері за локальною адресою (зазвичай `http://localhost:3000`).
+
+### Додаткові команди
+
+- `npm run build` — зібрати проєкт у продакшн-версію
+- `npm run lint` — перевірити код лінтерами (SCSS + HTML)
+- `npm run deploy` — задеплоїти на GitHub Pages
