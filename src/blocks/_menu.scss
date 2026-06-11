@@ -1,0 +1,118 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(100%);
+
+  overflow: auto;
+
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 32px 60px 48px;
+
+  opacity: 0;
+  background-color: $color-menu-bg;
+
+  transition:
+    opacity var(--animation-duration),
+    transform var(--animation-duration);
+
+  &:target {
+    pointer-events: all;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &__content {
+    max-width: $content-width;
+    margin: 0 auto;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-menu-top-bg;
+
+    img {
+      display: block;
+      max-width: 187px;
+      height: auto;
+    }
+  }
+
+  &__logo {
+    margin-left: max(0px, calc((100% - #{$content-width}) / 2));
+  }
+
+  &__phone,
+  &__test-ride {
+    font-weight: 700;
+    color: $color-text-dark;
+    text-decoration: none;
+    letter-spacing: 0;
+  }
+
+  &__phone {
+    display: block;
+
+    width: fit-content;
+    margin-top: 48px;
+
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0;
+
+    &:hover {
+      color: var(--hover-color);
+    }
+  }
+
+  &__test-ride {
+    display: block;
+
+    width: fit-content;
+    margin-top: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-text-dark;
+
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  @include on-tablet {
+    padding: 32px 72px 64px;
+  }
+
+  @include on-mobile {
+    padding: 24px 20px 88px;
+
+    &__top img {
+      width: 130px;
+      height: auto;
+    }
+
+    &__phone {
+      margin-top: 40px;
+    }
+
+    &__test-ride {
+      margin-top: 12px;
+    }
+  }
+
+  @include on-phone {
+    padding: 24px 20px 88px;
+
+    &__phone {
+      margin-top: 36px;
+    }
+  }
+}

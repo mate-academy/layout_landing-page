@@ -1,0 +1,108 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.header {
+  position: relative;
+  z-index: 1;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 24px 20px 40px;
+
+  background-image: url('../images/coverphoto.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+
+    img {
+      display: block;
+      max-width: 187px;
+      height: auto;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: $font-main;
+    font-size: 80px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: 0;
+    vertical-align: middle;
+  }
+
+  @include on-tablet {
+    padding: 32px 72px 64px;
+
+    &__top {
+      padding: 0;
+    }
+
+    &__title {
+      font-size: 64px;
+    }
+  }
+
+  @include on-mobile {
+    min-height: 100vh;
+    padding: 24px 20px 88px;
+    background-position: 58% center;
+
+    &__top img {
+      width: 130px;
+      height: auto;
+    }
+
+    &__title {
+      max-width: 100%;
+      font-size: 36px;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+
+    &__icons {
+      gap: 20px;
+    }
+  }
+
+  @include on-phone {
+    width: 100%;
+    max-width: 100%;
+    height: 640px;
+    min-height: 640px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+
+    background-position: 85%, center;
+
+    &__top img {
+      width: 170px;
+    }
+
+    &__title {
+      font-size: 36px;
+      white-space: nowrap;
+    }
+  }
+}

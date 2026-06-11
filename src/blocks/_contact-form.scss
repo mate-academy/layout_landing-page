@@ -1,0 +1,66 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+
+  &__label {
+    @include visually-hidden;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    width: 100%;
+    height: 56px;
+    padding: 14px 20px;
+    border: 2px solid transparent;
+    border-radius: 40px;
+
+    font-family: $font-main;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: $color-text-dark;
+
+    background-color: $color-field-bg;
+    outline: none;
+
+    &::placeholder {
+      color: $color-placeholder;
+    }
+
+    &:focus {
+      border-color: $color-text-dark;
+    }
+  }
+
+  &__message {
+    resize: none;
+    height: 148px;
+    border-radius: 16px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 56px;
+    margin-top: 16px;
+    font-size: 16px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.45);
+    }
+  }
+
+  @include on-phone {
+    &__field,
+    &__button {
+      height: 52px;
+    }
+
+    &__message {
+      height: 148px;
+    }
+  }
+}

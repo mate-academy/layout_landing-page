@@ -1,0 +1,41 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.button {
+  cursor: pointer;
+
+  border: 0;
+  border-radius: 40px;
+
+  font-family: $font-main;
+  font-weight: 700;
+  color: $color-text-dark;
+
+  background-color: $color-white;
+}
+
+.main > .button {
+  display: block;
+
+  min-width: 280px;
+  height: 56px;
+  margin: 0 auto 80px;
+
+  transition:
+    box-shadow var(--animation-duration),
+    transform var(--animation-duration);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  @include on-mobile {
+    width: calc(100% - 40px);
+    min-width: 0;
+    margin-bottom: 60px;
+  }
+
+  @include on-phone {
+    height: 52px;
+  }
+}
