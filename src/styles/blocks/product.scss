@@ -1,0 +1,58 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.product {
+  position: relative;
+
+  // ::after was added so that the box-shadow on hover
+  // would look nice with some "padding". padding itself
+  // wasn't added because it would result in reflow
+  @include mixins.hover {
+    transform: scale(1.05);
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: -5px;
+
+    background-color: #fff;
+
+    @include mixins.box-shadow;
+
+    z-index: -1;
+    opacity: 0;
+
+    transition: all variables.$effect-duration;
+  }
+
+  &__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__photo {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    margin: 0;
+    margin-bottom: 12px;
+  }
+
+  &__price {
+    margin: 0;
+    margin-bottom: 0;
+  }
+}

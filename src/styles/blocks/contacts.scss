@@ -1,0 +1,47 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.contacts {
+  display: grid;
+  row-gap: 24px;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.15px;
+
+  &__label {
+    margin: 0;
+    margin-bottom: 8px;
+
+    color: variables.$secondary-text-color;
+  }
+
+  &__info {
+    display: block;
+    position: relative;
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+    width: fit-content;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: variables.$main-text-color;
+
+      position: absolute;
+      bottom: -3px;
+      transform-origin: top left;
+      transition: transform variables.$effect-duration;
+      transform: scale(0);
+    }
+
+    @include mixins.hover {
+      color: variables.$active-primary-button-color;
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
