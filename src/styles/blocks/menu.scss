@@ -1,0 +1,82 @@
+@use '../variables/variables.scss';
+
+.menu {
+  opacity: 0;
+  height: 100vh;
+  background-color: rgba(194, 194, 194, 1);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  @include add-transition((opacity, transform));
+
+  &:target {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &-nav__list {
+    margin: 0;
+    margin-top: 24px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-sizing: border-box;
+    gap: 32px;
+  }
+
+  &-nav__item a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: $main-accent;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    @include underline($main-accent);
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    gap: 16px;
+    font-weight: 600;
+
+    &--phone {
+      font-size: 16px;
+      line-height: 27px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    &--btn {
+      font-size: 12px;
+      text-transform: uppercase;
+      line-height: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-flex;
+      align-self: flex-start;
+    }
+
+    &--btn::after {
+      position: absolute;
+      content: '';
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      background-color: $main-accent;
+      height: 1px;
+    }
+  }
+}

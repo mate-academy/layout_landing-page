@@ -1,0 +1,64 @@
+.nav {
+  &__list {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: block;
+  }
+
+  &__link {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    &--call {
+      position: relative;
+      background-image: url('../images/call-icon.svg');
+
+      @include on-tablet {
+        &:hover::after {
+          opacity: 1;
+        }
+      }
+
+      &::after {
+        position: absolute;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        left: -20px;
+        transform: translate(-100%, 50%);
+        font-weight: 700;
+        font-family: Poppins, sans-serif;
+        color: #fff;
+        top: 0;
+        content: '+1 234 555-55-55';
+        width: max-content;
+        pointer-events: none;
+        opacity: 0;
+
+        @include add-transition(opacity);
+
+        white-space: nowrap;
+      }
+    }
+
+    &--menu {
+      background-image: url('../images/burger-icon.svg');
+      &:hover {
+        background-image: url('../images/burger-hover.svg');
+      }
+    }
+    &--close {
+      background-image: url('../images/close-icon.svg');
+    }
+  }
+}

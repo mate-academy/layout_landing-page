@@ -1,24 +1,44 @@
-# Landing Page
+# MyBIKE 🚲
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+**MyBIKE** is a modern, responsive single-page landing page designed for a bicycle shop. This project focuses on high performance, clean structure, and pixel-perfect implementation of the original design.
 
-Choose a design for your landing page:
+## 🔗 Project Links
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+* **Live Preview:** [View the deployed project here](https://skoulskiy.github.io/layout_landing-page/) *(← replace with your actual link)*
+* **Figma Design Layout:** [Check out the Figma file](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=41317-210&t=IQ6DSFyLLO2Qt6x4-0) *(← replace with your exact design link if needed)*
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## 🛠️ Technologies & Methodologies
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+* **HTML5 & Semantic Markup** – Built with SEO-friendly and accessible semantic tags (`<section>`, `<article>`, `<form>`).
+* **Sass (SCSS)** – Modular and clean stylesheets using variables, nesting, custom mixins, and media queries for flexible code maintenance.
+* **CSS Grid & Flexbox** – Powered by a custom smart 12-column Grid system (`@mixin page-grid`) ensuring fluid responsiveness from mobile to desktop screens.
+* **BEM Methodology** – Block-Element-Modifier structural architecture for highly independent and reusable styles.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## 🚀 Getting Started & Local Development
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+Make sure you have **Node.js** and **npm** installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
+    ```
+2. Navigate to the project folder:
+    ```bash
+    cd your-repository-name
+    ```
+3. Install the dependencies:
+    ```bash
+  npm i
+    ```
+4. Running the App
+To launch the local development server with live-reloading:
+    ```bash
+    npm start
+    ```
+5. Open http://localhost:5173 (or the port specified in your console) in your browser to see the results.

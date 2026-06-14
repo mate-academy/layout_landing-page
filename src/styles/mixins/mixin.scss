@@ -1,0 +1,60 @@
+@use '../variables/variables.scss';
+
+@mixin underline($color, $offset: -8px, $weight: 1px) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: $offset;
+    width: 100%;
+    height: $weight;
+    background-color: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-duration ease-in-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@mixin add-transition($properties) {
+  transition-property: $properties;
+  transition-duration: $transition-duration;
+  transition-timing-function: ease-in-out;
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on-laptop {
+  @media screen and (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-laptop {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
