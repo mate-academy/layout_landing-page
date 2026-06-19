@@ -1,0 +1,69 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: $color-background;
+  color: $color-text;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+.hero,
+.about,
+.compare,
+.details,
+.contacts {
+  position: relative;
+  background-color: $color-background;
+}
+
+// Lock page scroll while the mobile menu is open (body overflow propagates to the viewport)
+body:has(.menu:target) {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 280px;
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 600px;
+  }
+
+  @include desktop {
+    max-width: 1020px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+
+  @include tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.grid--2col {
+  @include mobile-only {
+    grid-template-columns: 1fr 1fr;
+  }
+}

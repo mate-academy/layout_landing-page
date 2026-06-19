@@ -1,0 +1,140 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: $color-menu-bg;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform $transition;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-menu-bg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 24px;
+
+    @include tablet {
+      padding-block: 36px;
+    }
+  }
+
+  &__logo-img {
+    display: block;
+    width: 130px;
+    height: 38px;
+    filter: brightness(0);
+
+    @include tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__close {
+    display: flex;
+    cursor: pointer;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__close-icon {
+    width: 24px;
+    height: 24px;
+
+    @include tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__nav {
+    list-style: none;
+    margin: 0;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__nav-link {
+    position: relative;
+    display: inline-block;
+    color: $color-button-text;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background-color: $color-button-text;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__bottom {
+    margin-top: auto;
+    padding-block: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__phone {
+    font-size: 16px;
+  }
+
+  &__book {
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid $color-button-text;
+    padding-bottom: 2px;
+  }
+
+  &__phone,
+  &__book {
+    color: $color-button-text;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.menu:target {
+  transform: translateX(0);
+}

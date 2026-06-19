@@ -1,0 +1,100 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  position: relative;
+  z-index: 1;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 24px;
+
+    @include tablet {
+      padding-block: 36px;
+    }
+  }
+
+  &__logo-img {
+    display: block;
+    width: 130px;
+    height: 38px;
+
+    @include tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include tablet {
+      gap: 32px;
+    }
+  }
+
+  &__phone,
+  &__burger {
+    display: flex;
+    cursor: pointer;
+
+    img,
+    svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+
+      @include tablet {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  &__phone {
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+  }
+
+  &__phone-number {
+    display: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: $color-text;
+
+    @include desktop {
+      display: block;
+      opacity: 0;
+      transition: opacity $transition;
+    }
+  }
+
+  &__phone:has(img:hover) &__phone-number {
+    opacity: 1;
+  }
+
+  &__burger {
+    color: $color-text;
+
+    &-icon--hover {
+      opacity: 0;
+    }
+
+    &:hover &-icon--default {
+      opacity: 0;
+    }
+
+    &:hover &-icon--hover {
+      opacity: 1;
+    }
+  }
+}
