@@ -1,0 +1,106 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 25px;
+
+  @include onTablet {
+    padding-block: 50px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include onTablet {
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 55px;
+    align-items: center;
+  }
+
+  &__contacts {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  &__phones-dropdown {
+    display: none;
+
+    @include onTablet {
+      will-change: transform, opacity;
+
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%) translateX(-10px);
+
+      display: block;
+
+      width: max-content;
+
+      text-align: right;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
+    }
+  }
+
+  &__phone-item {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__phone-branch {
+    display: block;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  &__phone-link {
+    display: block;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+
+    opacity: 0.8;
+
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @include onTablet {
+    &__contacts:hover &__phones-dropdown {
+      transform: translateY(-50%);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

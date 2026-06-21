@@ -1,0 +1,154 @@
+.exhibition-card {
+  &__gallery {
+    @include pageGrid;
+
+    gap: 20px;
+    margin-bottom: 24px;
+
+    &:not(:has(.exhibition-card__link--3--square)) {
+      @media (max-width: ($tablet-layout-width - 1px)) {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+
+        .exhibition-card__link--wide,
+        .exhibition-card__link--square {
+          width: 130px;
+          height: 130px;
+        }
+      }
+    }
+
+    &:has(.exhibition-card__link--3--square) {
+      @media (max-width: ($tablet-layout-width - 1px)) {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+
+        .exhibition-card__link--3--square {
+          grid-column: auto;
+          width: 87px;
+          height: 87px;
+        }
+      }
+
+      @include onTabletLayout {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        column-gap: 24px;
+        justify-content: center;
+
+        .exhibition-card__link--3--square {
+          grid-column: auto;
+          width: 288px;
+          height: 284px;
+
+          &:nth-child(3) {
+            display: none;
+          }
+        }
+      }
+
+      @include onDesktop {
+        grid-template-columns: repeat(12, 1fr);
+        justify-content: stretch;
+
+        .exhibition-card__link--3--square {
+          grid-column: span 4;
+          aspect-ratio: 1 / 1;
+          width: 100%;
+          height: auto;
+
+          &:nth-child(3) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__link {
+    overflow: hidden;
+    display: block;
+
+    @include hover(opacity, 0.8);
+
+    &--3--square {
+      grid-column: span 1;
+      aspect-ratio: 1 / 1;
+
+      @include onTablet {
+        grid-column: span 3;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      grid-column: span 2;
+
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      grid-column: span 1;
+      aspect-ratio: 1 / 1;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include hover(transform, scale(1.05));
+
+    &--left {
+      @media (max-width: 743px) {
+        transform: scale(1.2);
+        object-position: 25% 40%;
+
+        &:hover {
+          transform: scale(1.25);
+        }
+      }
+    }
+
+    &--right {
+      @media (max-width: 743px) {
+        object-position: right center;
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    color: #d12d35;
+  }
+
+  &__date {
+    margin: 0;
+    font-weight: 400;
+  }
+}
