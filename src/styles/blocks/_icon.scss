@@ -1,0 +1,61 @@
+.icon {
+  position: relative;
+
+  display: block;
+  width: $icon-size;
+  height: $icon-size;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &--phone {
+    background-image: url('../images/icon-phone.svg');
+  }
+
+  &--menu {
+    background-image: none;
+
+    &::before,
+    &::after {
+      content: '';
+
+      position: absolute;
+      inset: 0;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      transition: opacity $transition-duration;
+    }
+
+    &::before {
+      background-image: url('../images/icon-burger-menu.svg');
+      opacity: 1;
+    }
+
+    &::after {
+      background-image: url('../images/icon-burger-menu-hover.svg');
+      opacity: 0;
+    }
+
+    &:hover::before {
+      opacity: 0;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &--close {
+    background-image: url('../images/icon-close.svg');
+  }
+}
