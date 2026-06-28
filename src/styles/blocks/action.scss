@@ -1,0 +1,86 @@
+.action {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__button {
+    cursor: pointer;
+
+    display: flex;
+    grid-column: span 2;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 56px;
+    margin-top: 40px;
+    margin-bottom: 96px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+
+    color: #fff;
+
+    background-color: #f98921;
+
+    transition:
+      background-color 0.3s,
+      transform 0.1s;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+      margin-top: 56px;
+      margin-bottom: 120px;
+
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 5;
+      width: 324px;
+
+    }
+
+    &:hover {
+      background-color: #1b2129;
+    }
+
+    &:active {
+      transform: scale(0.98);
+      background-color: #010810;
+    }
+  }
+
+  &__photo {
+    position: relative;
+
+    grid-column: 1 / -1;
+
+    width: 100vw;
+    margin: 0;
+    margin-left: calc(50% - 50vw);
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+  }
+}
