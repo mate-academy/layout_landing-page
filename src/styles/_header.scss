@@ -1,0 +1,118 @@
+@import 'variables';
+@import 'mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 24px 40px;
+  background-color: transparent;
+
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+
+  @include on-tablet {
+    padding: 32px 72px;
+  }
+
+  @include on-desktop {
+    padding: 36px 120px;
+  }
+
+  &__logo-link {
+    color: $text-primary;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 40px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+
+    @include on-desktop {
+      font-size: 40px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__contact-link {
+    align-items: center;
+    gap: 0;
+    text-decoration: none;
+    color: $text-primary;
+    font-weight: 600;
+    transition: gap 0.3s ease;
+    cursor: default;
+    display: none;
+
+    @include on-tablet {
+      display: contents;
+    }
+
+    .header__phone-text {
+      opacity: 0;
+      width: 0;
+      height: 30px;
+      overflow: hidden;
+      transition:
+        max-width 0.3s ease,
+        opacity 0.3s ease;
+    }
+
+    &:hover {
+      gap: 12px;
+
+      .header__phone-text {
+        opacity: 1;
+        width: auto;
+      }
+    }
+  }
+
+  &__phone-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    // Ícone padrão
+    background-image: url('../images/Icon-Phone-call.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+  }
+
+  &__menu-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    cursor: default;
+
+    // Ícone padrão
+    background-image: url('../images/Icon-Burger-menu.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+  }
+
+  &__menu-btn:hover &__menu-icon {
+    background-image: url('../images/Icon-Burger-menu-hover.png');
+  }
+}
