@@ -1,0 +1,97 @@
+.page {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  color: $main-color-text;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__main {
+    background-color: $dark-color;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+
+    transition:
+      transform $effect-duration,
+      opacity $effect-duration;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+
+      transform: translateX(0);
+    }
+  }
+
+  &__footer {
+    height: 200px;
+
+    background-image: url(../images/footer-bg.png);
+    background-size: cover;
+    background-position: center;
+
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+
+    @include on-tablet {
+      height: 480px;
+    }
+
+    @include on-desktop {
+      height: 555px;
+    }
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.main__content {
+  display: grid;
+  padding-top: 60px;
+  padding-bottom: 120px;
+
+  @include on-desktop {
+    padding-top: 120px;
+    padding-bottom: 182px;
+  }
+}
+
+.section-gap {
+  display: grid;
+  row-gap: 92px;
+
+  @include on-tablet {
+    row-gap: 120px;
+  }
+
+  @include on-desktop {
+    row-gap: 144px;
+  }
+}
