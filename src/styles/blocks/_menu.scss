@@ -1,0 +1,131 @@
+@use '../utils/variables' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  height: 100dvh;
+  padding-top: 16px;
+  overflow: auto;
+  color: $white;
+  background: $accent;
+  overscroll-behavior: contain;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  @media (min-width: $tablet) {
+    padding-top: 42px;
+  }
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 8px 0;
+    background: $accent;
+
+    @media (min-width: $tablet) {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (min-width: $tablet) {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__close {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 24px;
+      height: 2px;
+      content: '';
+      background: $white;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__nav {
+    display: grid;
+    gap: 32px;
+    margin-bottom: 32px;
+
+    a {
+      width: fit-content;
+      font-family: Cinzel, Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: $white;
+      }
+    }
+  }
+
+  &__place {
+    margin-bottom: 8px;
+    font-weight: 700;
+    line-height: 1.69;
+    text-transform: uppercase;
+  }
+
+  &__phone,
+  &__call {
+    display: block;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  &__phone {
+    margin-bottom: 16px;
+  }
+
+  &__call {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $white;
+  }
+
+  &__phone:hover,
+  &__call:hover {
+    color: #f4c5c8;
+  }
+}
