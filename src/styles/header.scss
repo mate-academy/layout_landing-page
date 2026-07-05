@@ -79,8 +79,10 @@
 
 .icon {
   display: block;
-  height: 24px;
   width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
   transition: transform 0.3s;
 
   &:hover {
@@ -88,8 +90,8 @@
   }
 
   @include on-tablet {
-    height: 32px;
     width: 32px;
+    height: 32px;
     background-size: cover;
   }
 
@@ -100,6 +102,7 @@
 
   &--menu {
     background-image: url(../images/Icon-Burger-menu.png);
+
     &:hover {
       background-image: url(../images/Icon-Burger-menu-hover.png);
     }
@@ -111,32 +114,34 @@
 
   &__tooltip {
     position: absolute;
-    top: 50px;
-    right: 50px;
+    top: 24px;
+    right: calc(100% + 20px);
     transform: translateY(-50%);
+
     width: max-content;
+
     color: $color-white;
     text-align: right;
+    font-family: $font-family;
     font-weight: $font-weight-bigger;
     font-size: $font-size-medium;
-    font-family: $font-family;
+    line-height: 1.5;
+
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.3s;
-
-    @include on-tablet {
-      top: 50%;
-    }
   }
 }
 
-.icon--phone:hover .icon__tooltip {
-  opacity: 1;
-  visibility: visible;
+@include on-desktop {
+  .icon--phone:hover .icon__tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .menu {
-  box-sizing: border-box;
   height: 100vh;
   background-color: $color-main;
   font-weight: $font-weight-bigger;
@@ -144,6 +149,8 @@
 
   &__phone-number {
     display: block;
+    width: fit-content;
+    position: relative;
     margin-bottom: 8px;
     text-decoration: none;
     font-family: $font-family;
@@ -153,6 +160,24 @@
     line-height: 169%;
     text-transform: uppercase;
     color: $color-white;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      height: 1px;
+      bottom: -8px;
+      background-color: $color-white;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__call-to-order {
@@ -234,6 +259,7 @@
     }
 
     &:hover::after {
+      cursor: pointer;
       transform: scale(1);
     }
   }
