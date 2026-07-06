@@ -1,0 +1,188 @@
+@use 'variables' as *;
+@use './utils/mixins.scss' as *;
+
+.contacts {
+  @include content-padding-inline;
+
+  display: grid;
+  row-gap: 48px;
+  font-family: $font-family;
+
+  &__content {
+    @include page-grid;
+
+    row-gap: 48px;
+
+    @include on-tablet {
+      column-gap: 75px;
+    }
+
+    @include on-desktop {
+      column-gap: 111px;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  &__locations {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__location-title {
+    font-weight: $font-weight-bigger;
+    font-size: $font-size-medium;
+  }
+
+  &__link {
+    font-weight: $font-weight-bigger;
+    font-size: $font-size-medium;
+    text-decoration: none;
+    color: #3e3e3e;
+    transition: transform 0.3s;
+
+    &:hover {
+      display: block;
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
+  &__address {
+    font-family: $font-family;
+    font-weight: $font-weight-bigger;
+    font-size: $font-size-medium;
+    font-style: normal;
+  }
+
+  &__form {
+    display: grid;
+    grid-column: span 2;
+
+    row-gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__input {
+    font-family: $font-family;
+    font-weight: $font-weight-medium;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 1px solid $color-input;
+
+    background-color: $color-input;
+    width: 280px;
+    height: 48px;
+
+    padding-left: 16px;
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $color-input inset;
+      -webkit-text-fill-color: #161616;
+    }
+
+    :hover {
+      color: #161616;
+    }
+
+    @include on-tablet {
+      width: 288px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+      height: 48px;
+    }
+  }
+
+  &__textarea {
+    border: 1px solid $color-input;
+    font-family: $font-family;
+    font-weight: $font-weight-medium;
+    font-size: 14px;
+    background-color: $color-input;
+    box-sizing: border-box;
+    width: 280px;
+    height: 144px;
+    margin-bottom: 20px;
+    resize: none;
+    padding-left: 16px;
+    padding-top: 14px;
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+
+    :hover {
+      color: #161616;
+    }
+
+    @include on-tablet {
+      width: 288px;
+      height: 144px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+      height: 144px;
+    }
+  }
+  &__input:focus,
+  &__textarea:focus {
+    outline: none;
+    border-color: #161616;
+  }
+
+  &__button {
+    border: 1px solid $color-main;
+    width: 280px;
+    height: 56px;
+    background-color: $color-main;
+    font-family: $font-family;
+    font-weight: $font-weight-bigger;
+    font-size: $font-size-medium;
+    box-sizing: border-box;
+    color: $color-white;
+    transition: transform 0.3s;
+
+    @include on-tablet {
+      width: 288px;
+      height: 56px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+      height: 56px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ae1c23;
+      transition: background-color 0.3s;
+      transform: translate(0, -10px);
+    }
+  }
+}
