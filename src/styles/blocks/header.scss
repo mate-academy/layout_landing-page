@@ -1,0 +1,79 @@
+.header {
+  color: rgba(255, 255, 255, 1);
+  background-image: url(../images/header_bg_mobile.png);
+  background-position: center;
+  background-size: cover;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  @include on-tablet {
+    background-image: url(../images/header_bg_tablet.png);
+  }
+
+  @include on-desktop {
+    background-image: url(../images/header_bg_desktop.png);
+  }
+
+  &__bottom {
+    padding-bottom: 88px;
+  }
+
+  &__title {
+    margin-bottom: 44px;
+
+    font-family: Poppins, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    font-style: Bold;
+    line-height: 100%;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -1.5px;
+    vertical-align: middle;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+  }
+
+  &__phone-link {
+    @include on-desktop {
+      position: relative;
+
+      &::before {
+        content: '+1 234 555-55-55';
+
+        position: absolute;
+        top: 50%;
+        right: 100%;
+
+        font-size: 12px;
+        font-weight: 700;
+        color: $main-white-color;
+        letter-spacing: 2px;
+        white-space: nowrap;
+
+        visibility: hidden;
+        opacity: 0;
+
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          visibility 0.3s;
+      }
+
+      &:hover {
+        &::before {
+          transform: translateY(-45%) translateX(-10px);
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
