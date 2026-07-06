@@ -1,0 +1,128 @@
+@use './variables.scss';
+
+.header {
+  box-sizing: border-box;
+  padding: 20px 32px 40px;
+  background-image: url(/images/backgroundimage.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    color: variables.$color;
+    font-family: cinzel, serif;
+    font-size: 80px;
+    font-weight: variables.$font-weight;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 60px;
+    align-self: center;
+  }
+
+  &_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__phone-wrapper {
+    position: relative;
+  }
+
+  &__contacts {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 18px);
+    transform: translateY(-50%);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    white-space: nowrap;
+    text-align: right;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+
+  &__phone-wrapper:hover &__contacts,
+  &__phone-wrapper:focus-within &__contacts,
+  &__phone-wrapper.is-open &__contacts {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__contact {
+    text-decoration: none;
+    color: variables.$color;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__contact-title {
+    font-size: 12px;
+    font-weight: variables.$font-weight;
+    letter-spacing: 1px;
+    margin: 0 0 4px;
+  }
+
+  &__contact:hover &__contact-title {
+    text-decoration: underline;
+  }
+
+  &__contact-phone {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+  }
+
+  @media (max-width: 900px) {
+    padding: 20px 20px 32px;
+
+    &__title {
+      font-size: 56px;
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 16px;
+    position: relative;
+
+    &__title {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      width: calc(100% - 32px);
+      margin: 0;
+      transform: translate(-50%, -50%);
+      font-size: 44px;
+      line-height: 0.95;
+    }
+
+    &__icons {
+      gap: 12px;
+    }
+
+    &__contacts {
+      top: 36px;
+      right: calc(100% + 12px);
+      transform: none;
+      gap: 18px;
+      text-align: right;
+    }
+  }
+}
