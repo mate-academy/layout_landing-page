@@ -1,0 +1,92 @@
+.arts {
+  &__photos {
+    margin-bottom: 24px;
+
+    --columns: 6;
+
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    @include on-tablet {
+      column-gap: 24px;
+    }
+
+    @include on-desktop {
+      --columns: 12;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    transition: transform $transition-time;
+
+    &:hover {
+      transform: scale(1.05);
+      transform-origin: center;
+      z-index: 1;
+    }
+
+    &--wide {
+      grid-column: span 3;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      padding-bottom: 100%;
+      height: 0;
+
+      grid-column: span 3;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+
+      &--mid {
+        grid-column: span 2;
+
+        @include on-desktop {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+    &--first {
+      object-position: -20px;
+    }
+
+    &--last {
+      object-position: right;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: $accent-main-color;
+  }
+
+  &__date {
+    margin: 0;
+  }
+}
