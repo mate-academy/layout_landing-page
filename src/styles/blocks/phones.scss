@@ -1,26 +1,31 @@
 .phones {
-  height: 116px;
-  width: 200px;
   display: flex;
-  flex-direction: column;
-  font-weight: 700;
-  text-align: right;
-  position: absolute;
-  right: 50px;
-  transform: translateX(-20%);
-  opacity: 0;
-  pointer-events: none;
-  transition: all $transition-time;
-  z-index: 10;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
 
-  &-name {
-    margin: 0;
-    margin-top: 8px;
+  &__icon {
+    display: inline-block;
   }
 
-  &-number {
+  &__number {
     margin: 0;
     text-decoration: none;
     color: $title-text-color;
+    font-weight: 700;
+
+    // Плавное скрытие
+    opacity: 0;
+    visibility: hidden;
+    max-width: 0;
+    white-space: nowrap;
+    transition: all $transition-time;
+  }
+
+  &:hover &__number {
+    opacity: 1;
+    visibility: visible;
+    max-width: 150px;
   }
 }
