@@ -1,0 +1,91 @@
+
+.top-bar {
+  &__phone-dropdown {
+    position: absolute;
+    top: -110% ;
+    right: 100%;
+    padding-right: 16px;
+    width: max-content;
+    text-align: right;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  }
+
+  &__phone-section {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__phone-title {
+    display: block;
+    color: $main-text-color;
+    margin-bottom: 2px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+  }
+
+  &__phone-number {
+    display: block;
+    color: $main-text-color;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
+
+
+.top-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @include on-tablet{
+    gap: 55px;
+  }
+}
+
+.icon {
+  display: block;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet{
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone{
+    background-image: url(/images/Icon-Phone-call.svg);
+
+    &:hover {
+      .top-bar__phone-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &--menu{
+    background-image: url(/images/Icon-Burger-menu.svg);
+  }
+
+  &--close{
+    background-image: url(/images/Icon-Close.svg);
+  }
+}
