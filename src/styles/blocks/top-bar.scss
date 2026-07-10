@@ -1,12 +1,11 @@
+@use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
 .top-bar {
-  padding-block: 24px;
-
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
 
   @include on-tablet {
     padding-block: 64px;
@@ -30,4 +29,39 @@
       height: 24px;
     }
   }
+
+  &__phone {
+    position: relative;
+
+
+
+    @include on-desktop {
+      &:hover .top-bar__phone-text {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__phone-text {
+      pointer-events: none;
+
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+
+      margin-right: 8px;
+
+      font-weight: 700;
+      color: $main-text-color;
+      white-space: nowrap;
+
+      visibility: hidden;
+      opacity: 0;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
 }
