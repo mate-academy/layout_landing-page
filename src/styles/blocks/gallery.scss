@@ -1,0 +1,141 @@
+.gallery {
+  @include container;
+
+  &__title {
+    grid-column: 1 / 7;
+    font-size: 48px;
+    padding-bottom: 56px;
+    padding-top: 80px;
+    width: 585px;
+    line-height: 48px;
+  }
+
+  @media (max-width: 820px) {
+    &__title {
+      grid-column: 1 / -1;
+      font-size: 40px;
+      line-height: 100%;
+    }
+  }
+
+  @media (max-width: 460px) {
+    &__title {
+      width: 280px;
+      font-size: 32px;
+    }
+  }
+}
+
+.categories {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__button {
+    background-color: $color-dark;
+    color: $color-white;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    width: 324px;
+    padding: 16px 48px;
+    margin-bottom: 120px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition:
+      background-color $transition-duration,
+      color $transition-duration;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-dark;
+      border: 1px solid $color-dark;
+    }
+
+    &:active {
+      background-color: $color-dark;
+      color: $color-white;
+    }
+  }
+
+  @media (max-width: 460px) {
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+.category {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+
+  &--reverse {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  &__title {
+    padding-top: 16px;
+    padding-bottom: 56px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__image-1,
+  &__image-2,
+  &__image-3,
+  &__image-4,
+  &__image-5,
+  &__image-6 {
+    display: block;
+    height: 324px;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: transform $transition-duration;
+    cursor: pointer;
+  }
+
+  &__image-1 {
+    background-image: url('../images/Image product-4.png');
+  }
+  &__image-2 {
+    background-image: url('../images/image product-9.png');
+  }
+  &__image-3 {
+    background-image: url('../images/Image product-6.png');
+  }
+  &__image-4 {
+    background-image: url('../images/image product-5.png');
+  }
+  &__image-5 {
+    background-image: url('../images/Image product-7.png');
+  }
+  &__image-6 {
+    background-image: url('../images/image product-8.png');
+  }
+
+  @for $i from 1 through 6 {
+    &__image-#{$i}:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (max-width: 460px) {
+    &__title {
+      font-size: 18px;
+    }
+
+    &__image-1,
+    &__image-2,
+    &__image-3,
+    &__image-4,
+    &__image-5,
+    &__image-6 {
+      width: 100%;
+      height: 130px;
+    }
+  }
+}
