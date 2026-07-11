@@ -1,3 +1,98 @@
-body {
-  margin: 0;
+@import './utils/variable';
+@import './utils/mixin';
+@import './blocks/header';
+@import './blocks/icon';
+@import './blocks/menu';
+@import './blocks/nav';
+@import './blocks/top-bar';
+@import './blocks/recommended';
+@import './blocks/card';
+@import './blocks/categories';
+@import './blocks/categories-product';
+@import './blocks/about-us';
+@import './blocks/contact-us';
+@import './blocks/form';
+@import './blocks/footer';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Manrope, sans-serif;
+}
+
+.page {
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 96px;
+  position: relative;
+  z-index: 1;
+  background-color: $color-white;
+
+  padding-block: 64px;
+
+  @include on-table {
+    padding-block: 120px;
+    row-gap: 120px;
+  }
+}
+
+.container {
+  padding-inline: 20px;
+
+  width: 100%;
+  max-width: 1260px;
+
+  @include on-table {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+.padding {
+  padding-inline: 20px;
+  padding-block: 24px;
+
+  @include on-table {
+    padding-inline: 72px;
+    padding-block: 32px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
 }

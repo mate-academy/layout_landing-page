@@ -1,0 +1,40 @@
+@mixin menu-link {
+  position: relative;
+  font-weight: 700;
+  color: $color-page;
+  text-decoration: none;
+}
+
+@mixin style-title-section {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 100%;
+  color: $color-page;
+  padding-bottom: 48px;
+  margin: 0;
+
+  @include on-table {
+    font-size: 40px;
+    padding-bottom: 56px;
+  }
+}
+
+@mixin on-table {
+  @media (min-width: $table-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
