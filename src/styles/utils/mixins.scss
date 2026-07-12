@@ -1,0 +1,158 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin about-us-content-styles {
+  margin: 0;
+
+  &-title {
+    margin: 0;
+  }
+
+  &-timetable {
+    margin: 0;
+    margin-top: 16px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    &--hours {
+      display: grid;
+      row-gap: 8px;
+
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-weight: 700;
+    }
+
+    &--days {
+      display: grid;
+      row-gap: 8px;
+
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+
+  &-closed {
+    margin: 0;
+    margin-top: 16px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  font-size: 16px;
+  line-height: 27px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
+
+@mixin button-styles {
+  height: 56px;
+  border: none;
+  color: $title-text-color;
+  background-color: $accent-main-color;
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: background-color $transition-time;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+
+  &:active {
+    background-color: $button-active-color;
+  }
+}
+
+@mixin input-styles {
+  width: 100%;
+  border: 1px solid transparent;
+  background-color: $input-background-color;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: none;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+    font-family: Cinzel, serif;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &:hover {
+    border-color: $input-border-color;
+
+    &::placeholder {
+      color: $main-text-color;
+    }
+  }
+
+  &:focus {
+    border-color: $main-text-color;
+
+    &::placeholder {
+      color: $main-text-color;
+    }
+  }
+}
