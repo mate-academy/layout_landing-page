@@ -1,9 +1,23 @@
+.phone {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  @include on-desktop {
+    &:hover .top-bar__phone-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+}
+
 .top-bar {
   &__phone-dropdown {
     position: absolute;
-    top: -110%;
-    right: 100%;
-    padding-right: 16px;
+    top: -160%;
+    right: calc(100% + 16px);
+    padding-right: 0;
     width: max-content;
     text-align: right;
 
@@ -14,6 +28,15 @@
       opacity 0.3s ease,
       visibility 0.3s ease,
       transform 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -16px;
+      width: 16px;
+      height: 100%;
+    }
   }
 
   &__phone-section {
@@ -37,9 +60,14 @@
   &__phone-number {
     display: block;
     color: $main-text-color;
+    text-decoration: none;
     font-weight: 700;
     font-size: 16px;
     line-height: 27px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -72,14 +100,6 @@
 
   &--phone {
     background-image: url(/images/Icon-Phone-call.svg);
-
-    &:hover {
-      .top-bar__phone-dropdown {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-    }
   }
 
   &--menu {
