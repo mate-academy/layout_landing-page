@@ -1,0 +1,89 @@
+@mixin hover($property, $tovValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $tovValue;
+  }
+}
+
+.icon {
+  background-repeat: no-repeat;
+  display: block;
+  height: 24px;
+  width: 24px;
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__logo-link {
+    display: flex;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &--phone {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/Icon-Phone-call.png);
+  }
+
+  &--menu {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/Icon-Burger-menu.png);
+
+    &:hover {
+      display: flex;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(../images/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    display: flex;
+  }
+}
+
+.phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__number {
+    position: absolute;
+    right: 40px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s;
+
+    text-decoration: none;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  &:hover .phone__number {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
