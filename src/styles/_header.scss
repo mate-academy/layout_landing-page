@@ -1,24 +1,39 @@
+@use 'variables' as *;
+
 .header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-
-  background-image: url(../images/main-bike.jpg);
+  background-image: url('../images/main-bike.jpg');
   background-position: right;
   background-size: cover;
   min-height: 480px;
+
+  &__title {
+    align-self: center;
+    font-weight: $font-bold;
+    color: $font-color-white;
+
+    @media (min-width: 744px) {
+      font-size: 64px;
+    }
+  }
 
   &__menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     width: 100%;
 
     &__logo {
+      display: block;
       height: 38px;
+
+      @media (min-width: 1260px) {
+       font-size: 80px;
+      }
     }
 
     &__icons {
@@ -26,22 +41,49 @@
       gap: 20px;
       cursor: pointer;
 
-      &__small {
-        width: 24px;
-        height: 24px;
+      @media (min-width: 744px) {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
       }
-    }
-  }
 
-  &__title {
-    align-self: center;
-    font-weight: $font-bold;
-    color: $font-color-white;
-  }
+      &__phone-number {
+        display: none;
 
-  @media (min-width: 744px) {
-    &__title {
-      font-size: 64px;
+        @media (min-width: 744px) {
+          display: inline-block;
+          order: 1;
+          font-size: 14px;
+          color: $font-color-white;
+          white-space: nowrap;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease;
+        }
+      }
+
+      &__phone-call {
+        @media (min-width: 744px) {
+          order: 2;
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+
+          &:hover + .header__menu__icons__phone-number {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      &__burger {
+        @media (min-width: 744px) {
+          order: 3;
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+        }
+      }
     }
   }
 
