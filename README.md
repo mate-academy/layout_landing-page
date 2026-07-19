@@ -1,24 +1,71 @@
-# Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+# Bike Landing Page
 
-Choose a design for your landing page:
+A responsive landing page for a bicycle store created according to the Figma design. The website includes a burger menu, contact form validation, responsive layouts for mobile, tablet and desktop devices, and interactive elements.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## Technologies Used
 
-Follow the instructions in this and next lessons to implement the page block by block:
+- HTML5
+- SCSS (Sass)
+- JavaScript (ES6)
+- BEM methodology
+- CSS Grid
+- Flexbox
+- Vite
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://ILLYA-M.github.io/layout_landing-page/).
+## Preview
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+- [DEMO LINK](https://github.com/ILLYA-M/layout_landing-page)
+
+## Design
+
+- [[Figma Design](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0-1&p=f&t=6RNhcyIkxoGNA4fb-0)]
+
+## Features
+
+- Responsive design (mobile, tablet, desktop)
+- Burger menu with disabled page scrolling when opened
+- Contact form with:
+  - required fields validation;
+  - email validation;
+  - automatic form reset after successful submission.
+- Clickable links for:
+  - phone number;
+  - email address;
+  - Google Maps location.
+- Hover effects and smooth transitions.
+
+## Getting Started
+
+1. Clone the repository:
+
+bash
+git clone https://github.com/your-username/your-repository-name.git
+
+2. Go to the project folder:
+
+bash
+cd your-repository-name
+
+3. Install dependencies:
+
+bash
+npm install
+
+4. Run the project locally:
+
+bash
+npm start
+
+or
+bash
+npm run dev
+
+5. Open your browser and visit:
+
+text
+http://localhost:5173
+
+## Author
+
+- ILLYA-M
