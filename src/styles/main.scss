@@ -1,3 +1,1178 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+
+  font-family: Cinzel, "Times New Roman", serif;
+
+  background-color: #111;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Main screen */
+
+.hero {
+  position: relative;
+
+  min-height: 100vh;
+
+  color: #fff;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)),
+    url("../../img.png");
+
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+}
+
+/* Header */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 100%;
+  padding: 34px 9.5%;
+}
+
+/* Logo */
+
+.logo {
+  display: flex;
+  flex-direction: column;
+
+  color: #fff;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -1px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* Header actions */
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+/* Phone */
+
+.header__phone-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.header__phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+
+  text-decoration: none;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.12);
+  }
+}
+
+.header__phone-image {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  object-fit: contain;
+
+  filter: brightness(0) invert(1);
+}
+
+.header__phone-info {
+  position: absolute;
+  top: 0;
+  right: 100%;
+
+  width: 280px;
+  padding-right: 28px;
+
+  color: #fff;
+  text-align: right;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateX(12px);
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
+}
+
+.header__phone:hover + .header__phone-info,
+.header__phone:focus-visible + .header__phone-info,
+.header__phone-info:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateX(0);
+}
+
+.header__phone-location:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+.header__phone-title {
+  margin: 0 0 6px;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.header__phone-number {
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Burger button */
+
+.menu-button {
+  position: relative;
+  z-index: 11;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.menu-button:hover {
+  opacity: 0.95;
+
+  transform: scale(1.15);
+
+}
+
+.menu-button:active {
+  transform: scale(0.94);
+}
+
+.menu-button:focus,
+.menu-button:focus-visible {
+  outline: none;
+}
+
+.menu-button__line {
+  display: block;
+
+  width: 24px;
+  height: 2px;
+
+  background-color: #fff;
+  border-radius: 2px;
+
+  transform-origin: center;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Burger превращается в крестик */
+
+.menu-button[aria-expanded="true"] .menu-button__line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-button[aria-expanded="true"] .menu-button__line:nth-child(2) {
+  opacity: 0;
+
+  transform: scaleX(0);
+}
+
+.menu-button[aria-expanded="true"] .menu-button__line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Open menu */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+
+  padding: 132px 9.5% 40px;
+
+  background-color: #d12d35;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateX(100%);
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.4s ease;
+}
+
+.menu--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateX(0);
+}
+
+/* Скрываем телефон, когда меню открыто */
+
+body.menu-open .header__phone-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Содержимое меню */
+
+.menu__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Ссылки */
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.menu__link {
+  position: relative;
+
+  display: block;
+
+  width: fit-content;
+
+  color: #fff;
+
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.menu__link::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  left: 0;
+
+  height: 1px;
+
+  background-color: #fff;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 0.25s ease;
+}
+
+.menu__link:hover,
+.menu__link:focus-visible {
+  opacity: 0.78;
+
+  transform: translateX(3px);
+}
+
+.menu__link:hover::after,
+.menu__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Контакты */
+
+.menu__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+
+  margin-top: 28px;
+}
+
+.menu__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.menu__contact-title {
+  margin: 0 0 2px;
+
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
+}
+
+.menu__contact-phone {
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+
+  text-decoration: none;
+}
+
+.menu__call-link {
+  position: relative;
+
+  margin-top: 1px;
+
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu__contact-phone:hover,
+.menu__contact-phone:focus-visible,
+.menu__call-link:hover,
+.menu__call-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Main title */
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  min-height: 117vh;
+  padding: 200px 20px 40px;
+}
+
+.hero__title {
+  margin: 0;
+
+  font-size: clamp(48px, 6.8vw, 82px);
+  font-weight: 700;
+  line-height: 0.92;
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Museum hours */
+
+.museum-hours {
+  padding: 72px 9.5% 90px;
+
+  color: #161616;
+  background-color: #f7f7f5;
+}
+
+.museum-hours__container {
+  display: grid;
+  grid-template-columns: max-content minmax(380px, 1fr);
+  column-gap: clamp(80px, 10vw, 160px);
+
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.museum-hours__heading {
+  padding-top: 4px;
+}
+
+.museum-hours__label {
+  margin: 0 0 7px;
+
+  color: #d12d35;
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.03em;
+
+  text-transform: uppercase;
+}
+
+.museum-hours__title {
+  margin: 0;
+
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.museum-hours__content {
+  max-width: 600px;
+}
+
+.museum-hours__location:not(:last-child) {
+  margin-bottom: 38px;
+}
+
+.museum-hours__location-title {
+  margin: 0 0 16px;
+
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+.museum-hours__schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.museum-hours__row {
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.museum-hours__time {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.museum-hours__days {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 13px;
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+.museum-hours__closed {
+  margin-top: 18px;
+}
+
+.museum-hours__closed-title {
+  margin: 0 0 5px;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+.museum-hours__closed-text {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+/* Exhibitions */
+
+.exhibitions {
+  padding: 80px 24px;
+
+  color: #161616;
+  background-color: #fff;
+}
+
+.exhibitions__container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.exhibitions__heading {
+  margin-bottom: 56px;
+
+  text-align: center;
+}
+
+.exhibitions__title {
+  margin: 0 0 12px;
+
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.exhibitions__description {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  text-transform: uppercase;
+}
+
+.exhibition {
+  width: 100%;
+  margin-bottom: 56px;
+}
+
+.exhibition__gallery {
+  display: grid;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.exhibition__gallery--first {
+  grid-template-columns: 2fr 1fr;
+}
+
+.exhibition__gallery--second {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.exhibition__gallery--third {
+  grid-template-columns: 1fr 2fr;
+
+}
+
+/* Обёртка нужна для hover */
+
+.exhibition__image-wrapper {
+  height: 350px;
+
+  overflow: hidden;
+}
+
+.exhibition__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.35s ease;
+}
+
+
+.exhibition__image-wrapper:hover .exhibition__image {
+  transform: scale(1.04);
+}
+
+.exhibition__name {
+  margin: 0 0 7px;
+
+  color: #d12d35;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+.exhibition__date {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+.exhibitions__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 360px;
+  min-height: 60px;
+  margin: 0 auto;
+
+  color: #fff;
+  background-color: #d12d35;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ae1c23;
+  }
+}
+
+/* More to explore */
+
+.explore-online {
+  padding: 80px 24px 90px;
+
+  color: #161616;
+  background-color: #fff;
+}
+
+.explore-online__container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.explore-online__title {
+  margin: 0 0 60px;
+
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 0.9;
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.explore-online__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.explore-card {
+  text-align: center;
+}
+
+.explore-card__image-wrapper {
+  height: 350px;
+
+  overflow: hidden;
+}
+
+.explore-card__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.35s ease;
+}
+
+.explore-card__image-wrapper:hover .explore-card__image {
+  transform: scale(1.04);
+}
+
+.explore-card__title {
+  margin: 28px 0 12px;
+
+  color: #d12d35;
+
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+.explore-card__description {
+  max-width: 330px;
+  margin: 0 auto;
+
+  color: #333;
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Contact us */
+
+.contact-us {
+  padding: 80px 24px 90px;
+
+  color: #161616;
+  background-color: #fff;
+}
+
+.contact-us__container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.contact-us__title {
+  margin: 0 0 60px;
+
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1;
+
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contact-us__content {
+  display: grid;
+  grid-template-columns: 1fr 410px;
+  gap: 90px;
+  align-items: start;
+}
+
+.contact-us__addresses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 56px;
+}
+
+.contact-us__address-link {
+  color: inherit;
+
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: #d12d35;
+  }
+}
+
+.contact-us__location-title {
+  margin: 0 0 28px;
+
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+.contact-us__info {
+  margin-bottom: 22px;
+}
+
+.contact-us__label {
+  margin: 0 0 8px;
+
+  color: #777;
+
+  font-size: 12px;
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+.contact-us__link {
+  color: #161616;
+
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  &:hover {
+    color: #d12d35;
+  }
+}
+
+.contact-us__address {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.45;
+
+  text-transform: uppercase;
+}
+
+/* Form */
+
+.contact-us__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-us__field {
+  display: block;
+}
+
+.contact-us__field-name {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.contact-us__input,
+.contact-us__textarea {
+  display: block;
+
+  width: 100%;
+  padding: 16px;
+
+  color: #161616;
+  background-color: #f7f7f8;
+
+  font-family: Cinzel, "Times New Roman", serif;
+  font-size: 13px;
+
+  border: 1px solid transparent;
+  outline: none;
+
+  transition: border-color 0.3s ease;
+}
+
+.contact-us__input {
+  height: 52px;
+}
+
+.contact-us__textarea {
+  height: 145px;
+
+  resize: none;
+}
+
+.contact-us__input::placeholder,
+.contact-us__textarea::placeholder {
+  color: #999;
+
+  text-transform: uppercase;
+}
+
+.contact-us__input:focus,
+.contact-us__textarea:focus {
+  border-color: #161616;
+}
+
+/* Autofill без другого цвета */
+
+.contact-us__input:autofill,
+.contact-us__textarea:autofill,
+.contact-us__input:-webkit-autofill,
+.contact-us__input:-webkit-autofill:hover,
+.contact-us__input:-webkit-autofill:focus,
+.contact-us__textarea:-webkit-autofill,
+.contact-us__textarea:-webkit-autofill:hover,
+.contact-us__textarea:-webkit-autofill:focus {
+  color: #161616;
+  background-color: #f7f7f8;
+
+  -webkit-text-fill-color: #161616;
+  -webkit-box-shadow: 0 0 0 1000px #f7f7f8 inset;
+
+  box-shadow: 0 0 0 1000px #f7f7f8 inset;
+  caret-color: #161616;
+
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.contact-us__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 56px;
+  margin-top: 12px;
+
+  color: #fff;
+  background-color: #c51f27;
+
+  font-family: Cinzel, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  border: none;
+  cursor: pointer;
+
+  text-transform: uppercase;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #a8171e;
+  }
+}
+
+/* Footer */
+
+.footer {
+  width: 100%;
+  aspect-ratio: 3.6 / 1;
+
+  background-color: #111;
+  background-image: url("../../footer.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .header {
+    padding: 28px 24px;
+  }
+
+  .header__actions {
+    gap: 36px;
+  }
+
+  .header__phone-info {
+    display: none;
+  }
+
+  .menu {
+    padding: 116px 24px 40px;
+  }
+
+  .hero__content {
+    padding-top: 160px;
+  }
+
+  .museum-hours {
+    padding: 60px 24px 70px;
+  }
+
+  .museum-hours__container {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .contact-us__content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .exhibition__image-wrapper,
+  .explore-card__image-wrapper {
+    height: 260px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .header {
+    padding: 24px 20px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .header__actions {
+    gap: 24px;
+  }
+
+  .menu {
+    padding: 104px 20px 32px;
+  }
+
+  .menu__links {
+    gap: 11px;
+  }
+
+  .menu__contacts {
+    margin-top: 24px;
+  }
+
+  .hero__content {
+    padding: 120px 20px 40px;
+  }
+
+  .hero__title {
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .museum-hours {
+    padding: 48px 20px 56px;
+  }
+
+  .museum-hours__title {
+    font-size: 34px;
+  }
+
+  .exhibitions,
+  .explore-online,
+  .contact-us {
+    padding: 56px 20px;
+  }
+
+  .exhibitions__title,
+  .explore-online__title,
+  .contact-us__title {
+    font-size: 34px;
+  }
+
+  .exhibition__gallery--first,
+  .exhibition__gallery--second,
+  .exhibition__gallery--third {
+    grid-template-columns: 1fr;
+  }
+
+  .exhibition__image-wrapper,
+  .explore-card__image-wrapper {
+    height: 320px;
+  }
+
+  .explore-online__cards,
+  .contact-us__addresses {
+    grid-template-columns: 1fr;
+  }
+
+  .explore-online__cards {
+    gap: 40px;
+  }
+
+  .contact-us__addresses {
+    gap: 36px;
+  }
+
+  .exhibitions__button {
+    width: 100%;
+  }
+
+  .footer {
+    min-height: 260px;
+
+    aspect-ratio: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }
