@@ -1,0 +1,64 @@
+@use '../utils/mixins';
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include mixins.on-tablets {
+    height: 32px;
+    width: 32px;
+  }
+
+  @include mixins.hover(transform, scale(1.2));
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone-call.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
+
+.phone-hover {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+
+  transition: all 0.3s ease-in;
+}
+
+.phone-wrap {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  &:hover .phone-hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}

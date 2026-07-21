@@ -1,0 +1,118 @@
+@use '../utils/mixins';
+@use '../styles/variables' as *;
+
+.details {
+  margin-bottom: 80px;
+
+  @include mixins.on-tablets {
+    margin-bottom: 120px;
+  }
+
+  @include mixins.on-desktops {
+    margin-bottom: 180px;
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include mixins.on-tablets {
+      row-gap: 48px;
+    }
+  }
+
+  &__button-wrapper {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+
+    @include mixins.on-tablets {
+      margin-top: 48px;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    width: 278px;
+    height: 56px;
+    background-color: #fff;
+    border-radius: 40px;
+
+    color: $main-text-color;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    line-height: 56px;
+
+    @include mixins.button-states;
+
+    @include mixins.on-tablets {
+      width: 392px;
+    }
+
+    @include mixins.on-desktops {
+      width: 324px;
+    }
+  }
+}
+
+.detail {
+  &__photos {
+    @include mixins.page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    @include mixins.hover(transform, scale(1.03));
+
+    &--wide {
+      @include mixins.on-tablets {
+        grid-column: span 4;
+      }
+
+      @include mixins.on-desktops {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+      @include mixins.on-tablets {
+        grid-column: span 2;
+      }
+
+      @include mixins.on-desktops {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--mirrored {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

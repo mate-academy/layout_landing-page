@@ -1,0 +1,148 @@
+@use '../styles/variables' as *;
+@use '../utils/mixins';
+
+.contacts {
+  margin: 0;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.on-tablets {
+      @include mixins.page-grid;
+    }
+  }
+
+  &__form {
+    margin: 0;
+    margin-bottom: 48px;
+    align-self: center;
+
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mixins.on-tablets {
+      grid-column: 1 / 4;
+    }
+
+    @include mixins.on-desktops {
+      grid-column: span 5;
+      max-width: 411px;
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+    padding: 0 16px;
+    height: 48px;
+    width: 100%;
+    border: none;
+    border-radius: 40px;
+    margin-bottom: 16px;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $active-text-color;
+
+    @include mixins.input-states;
+
+    @include mixins.on-desktops {
+      width: 411px;
+    }
+
+    &::placeholder {
+      font-family: Poppins, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: $placeholder-color;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &--textarea {
+      padding-block: 14px;
+      resize: none;
+      min-height: 148px;
+      border-radius: 16px;
+
+      margin-bottom: 32px;
+    }
+  }
+
+  &__button {
+    height: 56px;
+    width: 100%;
+    border: none;
+    border-radius: 40px;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: $main-text-color;
+    background-color: #fff;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    @include mixins.button-states;
+
+    @include mixins.on-desktops {
+      width: 411px;
+    }
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include mixins.on-tablets {
+      grid-column: 4 / -1;
+    }
+
+    @include mixins.on-desktops {
+      grid-column: 8 / -3;
+    }
+  }
+
+  &__link {
+    margin: 0;
+    margin-bottom: 24px;
+    white-space: nowrap;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $hover-text-color;
+    }
+
+    &-label {
+      margin: 0;
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      color: #fff;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
+}
