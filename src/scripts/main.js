@@ -9,6 +9,7 @@ const menu = document.querySelector('.menu');
 
 function openMenu() {
   menu.classList.add('menu--active');
+  document.querySelector('.page').classList.add('page--scroll-locked');
 
   gsap.to(menu, {
     opacity: 1,
@@ -36,6 +37,8 @@ function openMenu() {
 }
 
 function closeMenu() {
+  document.querySelector('.page').classList.remove('page--scroll-locked');
+
   gsap.to(menu, {
     opacity: 0,
     duration: 0.3,
@@ -55,27 +58,49 @@ function handleHash() {
 }
 
 window.addEventListener('hashchange', handleHash);
-window.addEventListener('load', handleHash);
+
+window.addEventListener('load', () => {
+  handleHash();
+  if (window.location.hash && window.location.hash !== '#menu') {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }
+});
 
 document.querySelectorAll('.menu .nav__link').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
     const targetId = link.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
 
     closeMenu();
-    window.location.hash = targetId;
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', targetId);
+    }
   });
 });
 
 document.querySelector('.menu__close-link').addEventListener('click', (e) => {
   e.preventDefault();
   closeMenu();
-  window.history.replaceState(null, '', window.location.pathname);
+  window.history.pushState(null, '', window.location.pathname);
 });
 
-document.querySelector('.menu__logo-link').addEventListener('click', () => {
+document.querySelector('.menu__logo-link').addEventListener('click', (e) => {
+  e.preventDefault();
   closeMenu();
+  const targetElement = document.querySelector('#top');
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+  window.history.pushState(null, '', '#top');
 });
 
 gsap.from('.hero__title', {
