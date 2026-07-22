@@ -14,7 +14,7 @@
     <link rel="icon" href="./src/images/icons/favicon.svg">
 
   </head>
-  <body>
+  <body class="document">
     <div class="page">
       <header class="header">
         <div class="container">
@@ -95,7 +95,13 @@
 
             <div class="book-a-ride">
               <a href="tel:+123455555555" class="book-a-ride__number">+1 234 5555-55-55</a>
-              <a href="#" class="book-a-ride__link">Book a test ride</a>
+              <a
+                href="#"
+                class="book-a-ride__link"
+                id="book-a-ride-button"
+              >
+                Book a test ride
+              </a>
             </div>
           </div>
         </div>
@@ -111,7 +117,7 @@
 
             <section class="compare-bikes">
 
-              <h2 class="move-free__title section-title">Compare Bikes</h2>
+              <h2 class="compare-bikes__title section-title">Compare Bikes</h2>
               <div class="compare-bikes__articles">
 
                 <article class="compare-bikes__article bike-card">
@@ -304,18 +310,24 @@
 
       </footer>
     </div>
-    
+
     <script defer>
       'use strict';
+
+      const page = document.querySelector('.document');
 
       const phoneButton = document.querySelector('.icon-button--phone');
       const phoneNumber = document.querySelector('.header__call-link');
 
-      phoneButton.addEventListener('click', () => {
+      phoneButton.addEventListener('mouseover', () => {
+        if (!phoneNumber.classList.contains('header__call-link--shown')) {
+          phoneNumber.classList.add('header__call-link--shown');
+        }
+      });
+
+      phoneButton.addEventListener('mouseout', () => {
         if (phoneNumber.classList.contains('header__call-link--shown')) {
           phoneNumber.classList.remove('header__call-link--shown');
-        } else {
-          phoneNumber.classList.add('header__call-link--shown');
         }
       });
 
@@ -326,8 +338,10 @@
       function menuVisibility() {
         if (menu.classList.contains('menu--visible')) {
           menu.classList.remove('menu--visible');
+          page.style.overflow = 'visible';
         } else {
           menu.classList.add('menu--visible');
+          page.style.overflow = 'hidden';
         }
       }
 
@@ -339,6 +353,7 @@
       const compareButton = document.querySelector('#compare-button');
       const detailsButton = document.querySelector('#details-button');
       const contactsButton = document.querySelector('#contacts-button');
+      const bookARideButton = document.querySelector('#book-a-ride-button');
 
       homeButton.addEventListener('click', menuVisibility);
 
@@ -371,7 +386,15 @@
 
         document
           .querySelector('.contact-us')
-          .scrollIntoView({ block: 'start', behavior: 'smooth' });
+          .scrollIntoView({ block: 'center', behavior: 'smooth' });
+      });
+
+      bookARideButton.addEventListener('click', () => {
+        menuVisibility();
+
+        document
+          .querySelector('.contact-us')
+          .scrollIntoView({ block: 'center', behavior: 'smooth' });
       });
 
     </script>
