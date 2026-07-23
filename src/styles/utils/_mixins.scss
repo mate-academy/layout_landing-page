@@ -1,0 +1,119 @@
+@use './variables' as *;
+
+@mixin uppercase {
+  text-transform: uppercase;
+}
+
+@mixin none-decoration {
+  text-decoration: none;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  width: 100%;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+// breakout grid: a "full" track spanning the viewport with a centered
+// "content" track matching .container's inner width (content-padding-inline)
+@mixin breakout-grid {
+  display: grid;
+  grid-template-columns:
+    [full-start] 20px
+    [content-start] 1fr
+    [content-end] 20px
+    [full-end];
+
+  @include on-tablet {
+    grid-template-columns:
+      [full-start] minmax(72px, 1fr)
+      [content-start] minmax(0, 744px)
+      [content-end] minmax(72px, 1fr)
+      [full-end];
+  }
+
+  @include on-desktop {
+    grid-template-columns:
+      [full-start] minmax(120px, 1fr)
+      [content-start] minmax(0, 1260px)
+      [content-end] minmax(120px, 1fr)
+      [full-end];
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+  margin-inline: auto;
+
+  @include on-tablet {
+    max-width: 744px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1260px;
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $to-value;
+  }
+}
+
+@mixin button-primary {
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-family: $font-title;
+  font-size: $font-size-main;
+  font-weight: $font-title-weight;
+  border: 2px solid $primary-button-color;
+  border-radius: 8px;
+  padding-block: 14px;
+  padding-inline: 48px;
+  background-color: $primary-button-color;
+  margin-top: 32px;
+  cursor: pointer;
+
+  @include none-decoration;
+  @include hover(background-color, #f8f8fa);
+
+  transition:
+    background-color $effect-duration,
+    color $effect-duration;
+
+  &:hover {
+    background-color: #f8f8fa;
+    border-color: #f0f1f4;
+    color: $primary-button-color;
+  }
+}
