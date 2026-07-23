@@ -39,6 +39,33 @@
   }
 }
 
+// breakout grid: a "full" track spanning the viewport with a centered
+// "content" track matching .container's inner width (content-padding-inline)
+@mixin breakout-grid {
+  display: grid;
+  grid-template-columns:
+    [full-start] 20px
+    [content-start] 1fr
+    [content-end] 20px
+    [full-end];
+
+  @include on-tablet {
+    grid-template-columns:
+      [full-start] minmax(72px, 1fr)
+      [content-start] minmax(0, 744px)
+      [content-end] minmax(72px, 1fr)
+      [full-end];
+  }
+
+  @include on-desktop {
+    grid-template-columns:
+      [full-start] minmax(120px, 1fr)
+      [content-start] minmax(0, 1260px)
+      [content-end] minmax(120px, 1fr)
+      [full-end];
+  }
+}
+
 @mixin content-padding-inline() {
   padding-inline: 20px;
   margin-inline: auto;
