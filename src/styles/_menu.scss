@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-.menu-lateral {
+.menu {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,31 +40,31 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
 
-    &__selection {
-      list-style: none;
-      text-decoration: none;
-      font-weight: $font-semiBold;
-      color: $font-color-black;
-      cursor: pointer;
-      position: relative;
+  &__selection {
+    list-style: none;
+    text-decoration: none;
+    font-weight: $font-semiBold;
+    color: $font-color-black;
+    cursor: pointer;
+    position: relative;
 
+    &::after {
+      content: "";
+      background-color: $background-black;
+      width: 0;
+      height: 1px;
+      position: absolute;
+      transition: 0.3s;
+      bottom: 0;
+      left: 0;
+     }
+
+    &:hover {
       &::after {
-        content: "";
-        background-color: $background-black;
-        width: 0;
-        height: 1px;
-        position: absolute;
-        transition: 0.3s;
-        bottom: 0;
-        left: 0;
-       }
-
-      &:hover {
-        &::after {
-        width: 100%;
-       }
-      }
+      width: 100%;
+     }
     }
   }
 
@@ -87,18 +87,19 @@
   }
 }
 
-.menu-lateral--open {
-  transform: translateX(0);
-}
-
-.menu-lateral:has(#mobile-menu:target) {
+.page:has(.menu:target) {
   overflow: hidden;
 }
 
-.menu-lateral {
+.menu--open {
+  transform: translateX(0);
+}
+
+.menu {
   overflow: auto;
 }
-.menu-lateral__icons {
+
+.menu__icons {
   position: sticky;
   top: 0;
   z-index: 1;
