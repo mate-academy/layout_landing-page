@@ -1,16 +1,57 @@
 .nav {
   display: flex;
+  align-items: center;
   gap: 28px;
 
-  &__link {
+  &__phone,
+  &__menu {
+    position: relative;
+    display: flex;
+    align-items: center;
     color: $main-color;
-    font-size: 24px;
-    font-weight: 700;
     text-decoration: none;
-    transition: transform $transition-duration;
+  }
 
-    &:hover {
-      transform: scale(1.15);
-    }
+  &__phone-icon,
+  &__menu-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/icons-logo.png');
+    background-size: 280px 256px;
+    background-repeat: no-repeat;
+    transition: transform $transition-duration;
+  }
+
+  &__phone-icon {
+    background-position: -56px -64px;
+  }
+
+  &__menu-icon {
+    background-position: -104px -64px;
+  }
+
+  &__phone:hover &__phone-icon,
+  &__menu:hover &__menu-icon {
+    transform: scale(1.15);
+  }
+
+  &__phone-number {
+    position: absolute;
+    top: 50%;
+    right: 36px;
+    width: max-content;
+    color: $main-color;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: opacity $transition-duration;
+  }
+
+  &__phone:hover &__phone-number {
+    opacity: 1;
   }
 }
