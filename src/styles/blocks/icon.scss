@@ -1,0 +1,64 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.icon {
+  @include square(24px);
+
+  display: block;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  transition: transform $transition-duration $transition-timing;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include on-tablet {
+    @include square(32px);
+  }
+
+  &--menu {
+    background-image: url('../images/icons/icon-menu.svg');
+
+    &:hover {
+      background-image: url('../images/icons/icon-burger-hover.svg');
+    }
+  }
+
+  &--close {
+    background-image: url('../images/icons/icon-close.svg');
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url('../images/icons/icon-phone.svg');
+
+    &::before {
+      pointer-events: none;
+      content: '+1 234 5555-55-55';
+
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 12px);
+      transform: translateY(-50%);
+
+      font-family: $font-secondary;
+      font-size: 12px;
+      font-weight: 700;
+      color: $color-black;
+      letter-spacing: 2px;
+      white-space: nowrap;
+
+      opacity: 0;
+
+      transition: opacity $transition-duration $transition-timing;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
