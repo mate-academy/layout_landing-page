@@ -1,0 +1,57 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+
+  &__field {
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 16px;
+    padding-inline: 16px;
+    border: 1px solid transparent;
+    border-radius: $border-radius-small;
+
+    font-family: $font-secondary;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-black;
+
+    background-color: $color-background;
+    outline: none;
+
+    transition:
+      border-color $transition-duration $transition-timing,
+      background-color $transition-duration $transition-timing;
+
+    &::placeholder {
+      color: $color-gray;
+    }
+
+    &:hover {
+      border-color: $color-light-gray;
+    }
+
+    &:focus {
+      border-color: $color-black;
+      background-color: $color-white;
+    }
+
+    &--textarea {
+      resize: none;
+      height: 148px;
+      padding-top: 14px;
+    }
+  }
+
+  &__button {
+    margin-top: 8px;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+}
