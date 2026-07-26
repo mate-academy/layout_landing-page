@@ -1,0 +1,53 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.header {
+  min-height: 100vh;
+  color: $color-white;
+  background-image: url('../images/hero.svg');
+  background-position: center;
+  background-size: cover;
+
+  &__overlay {
+    min-height: 100vh;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.76) 0%,
+      rgba(0, 0, 0, 0.34) 52%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+  }
+
+  &__content {
+    display: flex;
+    min-height: calc(100vh - 104px);
+    padding-bottom: 72px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    @include on-tablet {
+      min-height: calc(100vh - 128px);
+      padding-bottom: 96px;
+    }
+  }
+
+  &__eyebrow {
+    margin-bottom: 12px;
+    color: $color-accent;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    max-width: 780px;
+    margin-bottom: 32px;
+    font-size: clamp(48px, 10vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+}

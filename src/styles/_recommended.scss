@@ -1,0 +1,54 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.recommended {
+  display: grid;
+  gap: 48px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.bike-card {
+  max-width: 440px;
+  margin-inline: auto;
+
+  &__image-link {
+    display: block;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border-radius: 28px;
+    background-color: $color-muted;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform $transition-duration ease;
+  }
+
+  &__image-link:hover &__image {
+    transform: scale(1.07);
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  &__description {
+    min-height: 48px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
