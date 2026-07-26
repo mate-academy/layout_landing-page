@@ -1,0 +1,79 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.contact {
+  display: grid;
+  gap: 48px;
+
+  @include on-tablet {
+    grid-template-columns: minmax(0, 1.4fr) minmax(240px, 1fr);
+    gap: 72px;
+  }
+
+  &__info {
+    display: grid;
+    align-content: start;
+    gap: 28px;
+  }
+
+  &__label {
+    margin-bottom: 8px;
+    color: #777;
+    font-size: 14px;
+  }
+
+  &__link {
+    color: $color-text;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.45;
+    text-decoration: none;
+    transition: color $transition-duration ease;
+
+    &:hover {
+      color: #777;
+    }
+  }
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+
+  &__field {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 18px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    outline: none;
+    color: $color-text;
+    background-color: $color-input;
+    transition:
+      border-color $transition-duration ease,
+      background-color $transition-duration ease;
+
+    &::placeholder {
+      color: #777;
+    }
+
+    &:hover {
+      border-color: #b8b8b8;
+    }
+
+    &:focus {
+      border-color: $color-black;
+      background-color: $color-white;
+    }
+
+    &--message {
+      min-height: 148px;
+      resize: vertical;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 12px;
+  }
+}

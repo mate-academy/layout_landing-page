@@ -1,0 +1,89 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.menu {
+  position: fixed;
+  z-index: 5;
+  inset: 0;
+  overflow: auto;
+  background-color: $color-accent;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition:
+    opacity $transition-duration ease,
+    transform $transition-duration ease;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    background-color: $color-accent;
+  }
+
+  &__nav {
+    margin-top: 36px;
+  }
+
+  &__phone,
+  &__call {
+    display: block;
+    width: max-content;
+    color: $color-text;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color $transition-duration ease;
+  }
+
+  &__phone {
+    margin-top: 48px;
+    font-size: 16px;
+  }
+
+  &__call {
+    margin-top: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid currentColor;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__phone:hover,
+  &__call:hover {
+    color: rgba(29, 29, 29, 0.62);
+  }
+
+  @include on-tablet {
+    &__nav {
+      margin-top: 64px;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    display: grid;
+    gap: 28px;
+  }
+
+  &__link {
+    color: $color-text;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color $transition-duration ease;
+
+    &:hover {
+      color: rgba(29, 29, 29, 0.62);
+    }
+  }
+}
