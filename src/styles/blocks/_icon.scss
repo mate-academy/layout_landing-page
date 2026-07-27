@@ -1,0 +1,54 @@
+.icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+
+  @include cover-bg;
+
+  background-image: url('../images/phone.svg');
+  text-decoration: none;
+
+  @include on-tablet {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &:hover {
+      color: #a89d9d;
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    display: block;
+    width: max-content;
+    padding-right: 20px;
+    transform: translate(-100%, -40%);
+    color: #fff;
+    text-align: right;
+    font-weight: 700;
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity $transition;
+  }
+
+  @include on-desktop {
+    cursor: pointer;
+
+    &:hover .icon__tooltip {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
