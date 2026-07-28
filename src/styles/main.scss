@@ -90,7 +90,9 @@ address {
 }
 
 .menu-toggle-checkbox {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   opacity: 0;
   pointer-events: none;
 }
@@ -122,40 +124,61 @@ address {
     text-transform: uppercase;
   }
 
+  &__logo-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
   &__actions {
     display: flex;
     align-items: center;
     gap: 32px;
   }
 
-  &__phone {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+.header__phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
-  &__phone-number {
-    font-size: 14px;
-    line-height: 1.4;
-    letter-spacing: 1px;
-    color: $color-dark;
-    opacity: 0;
-    display: none;
-    transition:
-      opacity 0.2s ease,
-      visibility 0.2s ease;
-  }
+.header__phone-number {
+  position: absolute;
+  top: 50%;
+  right: 36px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
 
-  &__phone:hover &__phone-number {
-    opacity: 1;
-    visibility: visible;
-  }
+.header__phone:hover .header__phone-number {
+  opacity: 1;
+  visibility: visible;
+}
 
-  &__phone-icon {
-    display: flex;
-    width: 32px;
-    height: 32px;
-  }
+ &__phone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+&__phone-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 }
 
 .burger {
@@ -170,13 +193,15 @@ address {
   cursor: pointer;
 
   &__icon {
-    width: 32px;
-    height: 32px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 
-    &--hover {
-      display: none;
-    }
+  &--hover {
+    display: none;
   }
+}
 
   &:hover &__icon--default {
     display: none;
@@ -228,13 +253,18 @@ address {
   }
 
   &__logo {
-    font-size: 16px;
+    display: flex;
+    align-items: center;
     font-weight: 700;
     line-height: 24px;
-    letter-spacing: 2px;
     color: $color-dark;
-    text-transform: uppercase;
   }
+
+  &__logo-icon {
+  width: 228px;
+  height: 24px;
+  object-fit: contain;
+}
 
   &__close {
     display: flex;
@@ -247,6 +277,11 @@ address {
     color: $color-dark;
     cursor: pointer;
   }
+
+  &__close-icon {
+  width: 100%;
+  height: 100%;
+}
 
   &__nav {
     position: absolute;
@@ -264,11 +299,18 @@ address {
     font-weight: 700;
     line-height: 1;
     color: $color-dark;
+    position: relative;
 
-    &--active {
+    &:hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      top: 100%;
+      left: 0;
       padding-bottom: 4px;
       border-bottom: 1px solid $color-dark;
-    }
+      }
   }
 
   &__contacts {
@@ -823,41 +865,62 @@ address {
   }
 
   .header {
-    &__inner {
-      padding-top: 24px;
-      padding-bottom: 24px;
-    }
-
-    &__logo {
-      width: 152px;
-      height: 16px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    }
-
-    &__actions {
-      gap: 16px;
-    }
-
-    &__phone-icon {
-      width: 24px;
-      height: 24px;
-    }
+  &__inner {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 
-  .burger {
+  &__logo {
+    width: 152px;
+    height: 16px;
+  }
+
+  &__logo-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__actions {
+    gap: 16px;
+  }
+
+  &__phone-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 24px;
     height: 24px;
+  }
 
-    &__icon {
-      width: 24px;
-      height: 24px;
+  &__phone-svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.burger {
+  width: 24px;
+  height: 24px;
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+
+    &--hover {
+      display: none;
     }
   }
+
+  &:hover &__icon--default {
+    display: none;
+  }
+
+  &:hover &__icon--hover {
+    display: block;
+  }
+}
 
   .menu {
     &__top {
