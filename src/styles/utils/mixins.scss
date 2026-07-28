@@ -1,0 +1,80 @@
+@mixin on-tablet {
+  @media (min-width: $tabletWidth) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin inline-main-padding {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+@mixin page-grid($mobileGridColumns: 1) {
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat($mobileGridColumns, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin items-bold-style {
+  font-size: 24px;
+  line-height: 140%;
+  font-weight: 700;
+}
+
+@mixin description-style {
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 400;
+}
+
+@mixin button-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  border-radius: 40px;
+  background-color: #fff;
+  color: $linkTextColor;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+
+  &:hover {
+    box-shadow: 1px 4px 16px 0 #e8e8f066;
+  }
+
+  &:focus {
+    box-shadow: 1px 4px 16px 0 #e8e8f0a3;
+  }
+}
+
+@mixin transition {
+  transition: all $transitionTime;
+}
+
+@mixin image-transform {
+  transform: scale($scaleValue);
+}
