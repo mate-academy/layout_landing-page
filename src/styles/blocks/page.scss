@@ -1,0 +1,95 @@
+.page {
+  scroll-behavior: smooth;
+  font-family: Cinzel, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: $color-black;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform $transition;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+
+  &__section {
+    margin-bottom: 100px;
+
+    @include on-tablet {
+      margin-bottom: 140px;
+    }
+
+    &:first-child {
+      padding-top: 64px;
+
+      @include on-tablet {
+        padding-top: 100px;
+      }
+
+      @include on-desktop {
+        padding-top: 120px;
+      }
+    }
+  }
+
+  &__section--title {
+    margin: 0 0 8px;
+    padding: 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    &--contacts {
+      margin-bottom: 48px;
+    }
+
+    &--online {
+      margin: 0 auto 40px;
+
+      @include on-tablet {
+        max-width: 270px;
+      }
+
+      @include on-desktop {
+        max-width: 300px;
+      }
+    }
+  }
+}
+
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    scroll-behavior: auto;
+  }
+
+  .page__menu {
+    transition: none;
+  }
+}

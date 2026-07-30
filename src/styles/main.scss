@@ -1,223 +1,89 @@
-/* #region page */
-.page {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  font-family: Cinzel, serif;
-  color: #161616;
-  font-size: 12px;
-  scroll-behavior: smooth;
+@import './utils/variables';
+@import './utils/mixins';
+@import './blocks/page';
+@import './blocks/icon';
+@import './blocks/header';
+@import './blocks/menu';
+@import './blocks/about';
+@import './blocks/view';
+@import './blocks/online';
+@import './blocks/contacts';
+@import './blocks/form';
+@import './blocks/button';
+@import './blocks/footer';
+
+.main {
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
 }
 
-.page__body {
-  margin: 0;
-  margin-bottom: 300px;
-}
-
-.page__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.page__menu:target {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* #endregion page */
-
-/* #region header */
-.header {
+.container {
   box-sizing: border-box;
-  height: 100vh;
-  background-image: url(../images/header-bg-mobile.png);
-  background-size: cover;
-  background-position: center;
+  margin: 0 auto;
+  padding: 0 20px;
 
+  @include on-tablet {
+    padding: 0 40px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    padding: 0 40px;
+  }
+}
+
+.logo {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+  &__image {
+    height: 48px;
+
+    @include on-tablet {
+      height: 64px;
+    }
+  }
 }
 
-.header__mid {
-  margin-bottom: 288px;
-  font-family: Cinzel, serif;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 100%;
-  letter-spacing: -1.5px;
-  text-align: center;
-  padding: 0 20px 40px;
-}
-
-/* #endregion header */
-
-/* #region menu */
 .top-bar {
-  padding: 24px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.top-bar__icons {
-  display: flex;
-  gap: 24px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
 }
 
-.top-bar__logo {
-  display: flex;
+@media (min-width: 744px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+  }
 }
 
-.menu {
-  box-sizing: border-box;
-  height: 100vh;
-  background-color: #d12d35;
-  font-weight: 700;
-  text-transform: uppercase;
-  overflow: auto;
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
 }
 
-.menu__top {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #d12d35;
-  margin-bottom: 40px;
-}
-
-.menu__nav {
-  margin-bottom: 40px;
-}
-
-.menu__content {
-  padding-inline: 20px;
-}
-
-.menu__address {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 4px;
+.contacts__link,
+.header__phone--link,
+.nav__menu--phone {
   transition: color 0.3s ease;
+  &:hover {
+    color: #09e1e9;
+  }
 }
 
-.menu__address:hover {
-  color: #161616;
-}
-
-.menu__phone-number {
-  display: block;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 27px;
-  color: indianred;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.menu__phone-number:hover {
-  color: #161616;
-}
-
-.menu__call-to-order {
-  display: block;
-  width: fit-content;
-  padding-bottom: 7px;
-  border-bottom: 1px solid #fff;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 2px;
-  color: indianred;
-  text-decoration: none;
-  transition:
-    color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.menu__call-to-order:hover {
-  color: #161616;
-  border-color: #161616;
-}
-
-/* #endregion menu */
-
-/* #region nav */
-.nav__link {
-  color: indianred;
-  text-decoration: none;
-  font-size: 22px;
-  line-height: 22px;
-  letter-spacing: 2px;
-  transition: opacity 0.3s ease;
-}
-
-.nav__link:hover {
-  opacity: 0.7;
-}
-
-.nav__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* #endregion nav */
-
-/* #region icon */
-.icon {
-  display: block;
-  height: 24px;
-  width: 24px;
-}
-
-.icon--phone {
-  background-image: url(../images/icons/phone-call.png);
-}
-
-.icon--menu {
-  background-image: url(../images/icons/burger-menu.png);
-}
-
-.icon--close {
-  background-image: url(../images/icons/icon-close.png);
-}
-
-.image-link {
-  display: inline-block;
-  overflow: hidden;
-}
-
-.image-link img {
-  display: block;
+.place__photo,
+.online__image {
   transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
-
-.image-link:hover img {
-  transform: scale(1.05);
-}
-
-/* #endregion icon */
-
-/* #region footer */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 300px;
-  z-index: -1;
-  box-sizing: border-box;
-}
-
-/* #endregion footer */
