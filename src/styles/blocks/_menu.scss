@@ -1,0 +1,96 @@
+@use '../variables' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow: auto; // checklist #12
+  color: $color-bg;
+  background-color: $color-menu-bg;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition:
+    transform $transition,
+    visibility $transition;
+}
+
+.menu:target {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.menu__top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 86px;
+  background-color: $color-menu-bg;
+
+  @media (min-width: $tablet) {
+    height: 128px;
+  }
+}
+
+.menu__nav {
+  margin-top: 24px;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.menu__link {
+  display: inline-block;
+  font-weight: $fw-bold;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.menu__bottom {
+  margin-top: 40px;
+  padding-bottom: 24px;
+}
+
+.menu__phone {
+  display: inline-block;
+  font-weight: $fw-bold;
+  font-size: 16px;
+  line-height: 27px;
+  text-transform: uppercase;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.menu__cta {
+  display: inline-block;
+  margin-top: 16px;
+  padding-bottom: 4px;
+  font-weight: $fw-bold;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentcolor;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
