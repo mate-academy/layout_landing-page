@@ -1,0 +1,14 @@
+@use 'sass:math';
+
+// Px to rem:
+@function rem($value) {
+  @if math.is-unitless($value) {
+    @return math.div($value, 16) * 1rem;
+  }
+
+  @if math.compatible($value, 1px) {
+    @return math.div($value, 16px) * 1rem;
+  }
+
+  @return $value;
+}
