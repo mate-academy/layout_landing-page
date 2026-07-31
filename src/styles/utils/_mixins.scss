@@ -1,0 +1,91 @@
+@use '../../styles/abstract/variables' as *;
+@use 'sass:math';
+
+@mixin on-tablet {
+  @media (min-width: $middle-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 24px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+    margin-inline: auto;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: $max-width;
+    margin-inline: auto;
+  }
+}
+
+@mixin hover($property, $toValue, $duration) {
+  transition: #{$property} $duration ease-in-out;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 1;
+  --gutter: 0px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: var(--gutter);
+
+  @include on-tablet {
+    --columns: #{$grid-columns-tablet};
+    --gutter: #{$grid-gutter};
+  }
+
+  @include on-desktop {
+    --columns: #{$grid-columns-desktop};
+  }
+}
+
+@mixin mobile-grid {
+  --columns: #{$grid-columns-mobile};
+  --gutter: #{$grid-gutter-mobile};
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: var(--gutter);
+}
+
+@function fluidclamp($min-size, $max-size, $min-vw, $max-vw) {
+  $slope: math.div($max-size - $min-size, $max-vw - $min-vw);
+  $y-axis-intersection: $min-size - $slope * $min-vw;
+  $lower-bound: math.min($min-size, $max-size);
+  $upper-bound: math.max($min-size, $max-size);
+
+  @return clamp(
+    #{$lower-bound},
+    #{$y-axis-intersection} + #{$slope * 100}vw,
+    #{$upper-bound}
+  );
+}
+
+@mixin smooth-resize(
+  $properties: (
+    font-size,
+    padding,
+    width,
+    height,
+    gap,
+  )
+) {
+  transition-property: $properties;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
