@@ -1,0 +1,79 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/utils/mixins' as *;
+@use 'logo';
+@use 'icon';
+
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/src/images/mob-bike.png');
+    background-position: right;
+    opacity: 1;
+    transition: opacity 0.35s ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/src/images/tablet-bike.png');
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+  }
+
+  &__tittle {
+    padding-bottom: fluidclamp(88px, 130px, $min-width, $middle-width);
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: fluidclamp(36px, 64px, $min-width, $middle-width);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    text-align: center;
+    vertical-align: middle;
+
+    @include on-tablet {
+      padding-bottom: fluidclamp(130px, 202px, $middle-width, $max-width);
+      font-size: fluidclamp(64px, 80px, $middle-width, $max-width);
+    }
+  }
+
+  @include on-tablet {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  @include on-desktop {
+    &::before {
+      background-image: url('/src/images/pc-bike.png');
+      background-position: center;
+      opacity: 1;
+    }
+
+    &::after {
+      opacity: 0;
+    }
+  }
+}

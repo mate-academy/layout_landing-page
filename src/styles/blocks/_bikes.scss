@@ -1,0 +1,27 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/utils/mixins' as *;
+
+.bikes {
+  --columns: 1;
+
+  display: grid;
+  justify-content: center;
+  row-gap: fluidclamp(40px, 48px, $min-width, $middle-width);
+  margin-top: 48px;
+  grid-template-columns: repeat(var(--columns), $bike-card-width);
+
+  @include on-tablet {
+    --columns: 1;
+
+    margin-top: fluidclamp(48px, 56px, $middle-width, $max-width);
+    grid-template-columns: repeat(var(--columns), $bike-card-width-tablet);
+    justify-content: center;
+  }
+
+  @include on-desktop {
+    --columns: 3;
+
+    column-gap: 24px;
+    grid-template-columns: repeat(var(--columns), $bike-card-width-desktop);
+  }
+}

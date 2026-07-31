@@ -1,0 +1,37 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/utils/mixins' as *;
+
+.top-bar {
+  @include content-padding-inline;
+
+  @include on-tablet {
+    padding-block: fluidclamp(24px, 38px, $middle-width, $max-width);
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 24px;
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+  }
+
+  &__extra-phone {
+    display: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+
+  &__icons:has(.icon--phone:hover) &__extra-phone {
+    display: block;
+  }
+}

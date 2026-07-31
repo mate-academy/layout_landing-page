@@ -1,0 +1,75 @@
+@use '../../styles/abstract/variables' as *;
+@use '../../styles/utils/mixins' as *;
+
+.card {
+  margin-top: fluidclamp(48px, 64px, $min-width, $middle-width);
+
+  @include on-tablet {
+    margin-top: fluidclamp(64px, 48px, $middle-width, $max-width);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__images {
+    @include mobile-grid;
+
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      @include page-grid;
+    }
+
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__tittle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    padding-bottom: 8px;
+  }
+
+  &__info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    @include on-tablet {
+      padding-bottom: 8px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 8px;
+    }
+  }
+
+  &__link {
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+        aspect-ratio: 2 / 1;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+        aspect-ratio: 2 / 1;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+}
