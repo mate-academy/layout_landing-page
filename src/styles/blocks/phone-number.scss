@@ -1,0 +1,44 @@
+.phone-number {
+  display: none;
+
+  @include on-desktop {
+    display: block;
+
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-right: 16px;
+
+    transform: translateX(20px) translateY(-50%);
+    opacity: 0;
+
+    white-space: nowrap;
+    pointer-events: none;
+
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+
+    a {
+      color: #000;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}
+
+.phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include on-desktop {
+    &:hover {
+      .phone-number {
+        transform: translateX(0) translateY(-50%);
+        opacity: 1;
+      }
+    }
+  }
+}
