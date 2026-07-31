@@ -1,0 +1,156 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.categories {
+  margin-bottom: rem(96px);
+
+  @include tablet {
+    margin-bottom: rem(120px);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(40px);
+
+    margin-bottom: rem(40px);
+
+    @include tablet {
+      gap: rem(56px);
+      margin-bottom: rem(56px);
+    }
+  }
+
+  &__item {
+    row-gap: rem(16px);
+
+    @include tablet {
+      .categories__img {
+        height: auto;
+      }
+
+      .categories__img-link {
+        &:nth-child(1) {
+          grid-column: span 4;
+        }
+
+        &:nth-child(2) {
+          grid-column: span 2;
+          aspect-ratio: 1/1;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &:nth-child(even) {
+        .categories__img-link {
+          &:nth-child(1) {
+            grid-column: span 2;
+            aspect-ratio: 1/1;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          &:nth-child(2) {
+            grid-column: span 4;
+            aspect-ratio: auto;
+            height: auto;
+            object-fit: fill;
+          }
+        }
+      }
+    }
+
+    @include desktop {
+      .categories__img-link {
+        &:nth-child(1) {
+          grid-column: span 8;
+        }
+
+        &:nth-child(2) {
+          grid-column: span 4;
+          aspect-ratio: 1/1;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &:nth-child(even) {
+        .categories__img-link {
+          &:nth-child(1) {
+            grid-column: span 4;
+            aspect-ratio: 1/1;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          &:nth-child(2) {
+            grid-column: span 8;
+            aspect-ratio: auto;
+            height: auto;
+            object-fit: fill;
+          }
+        }
+      }
+    }
+  }
+
+  &__img-link {
+    display: block;
+    grid-column: span 1;
+
+    border-radius: $radius-sm;
+    overflow: hidden;
+  }
+
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform $duration-default;
+
+    @include desktop {
+      &:hover {
+        transform: scale($scale-default);
+      }
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    grid-column: span 2;
+
+    font-size: rem(18px);
+    font-weight: 700;
+    line-height: 140%;
+
+    &::after {
+      content: url('/src/assets/icons/arrow-right.svg');
+      display: inline-block;
+
+      width: rem(24px);
+      height: rem(24px);
+
+      transition: transform $duration-default;
+    }
+
+    @include tablet {
+      font-size: rem(24px);
+      grid-column: span 3;
+    }
+
+    @include desktop {
+      &:hover::after {
+        transform: translateX(8px);
+      }
+    }
+  }
+}

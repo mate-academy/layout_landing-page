@@ -1,0 +1,130 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow-y: auto;
+
+  background-color: $bg-color-secondary;
+
+  transform: translateX(-100%);
+  transition: all $duration-default;
+  pointer-events: none;
+  visibility: hidden;
+
+  &--visible {
+    transform: translateX(0);
+    pointer-events: all;
+    visibility: visible;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-block: rem(24px);
+    margin-bottom: rem(32px);
+
+    @include tablet {
+      padding-block: rem(32px);
+      margin-bottom: rem(56px);
+    }
+  }
+
+  &__nav {
+    margin-bottom: rem(48px);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(32px);
+  }
+
+  &__item {
+    position: relative;
+    width: fit-content;
+
+    display: inline-block;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: -4px;
+
+      display: block;
+      height: 1px;
+
+      background-color: $bg-color-black;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $duration-default;
+    }
+
+    @include desktop {
+      &:hover::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__link {
+    display: inline-block;
+
+    font-size: rem(22px);
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: rem(2px);
+  }
+
+  &__bottom {
+    font-size: rem(16px);
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: rem(2px);
+
+    text-transform: uppercase;
+  }
+
+  &__tel {
+    display: inline-block;
+
+    margin-bottom: rem(16px);
+    transition: color $duration-default;
+
+    @include desktop {
+      &:hover {
+        color: $text-color-muted;
+      }
+    }
+  }
+
+  &__call {
+    position: relative;
+
+    display: block;
+    width: fit-content;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: -4px;
+
+      display: block;
+      height: 1px;
+
+      background-color: $bg-color-black;
+    }
+  }
+}

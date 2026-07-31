@@ -1,0 +1,65 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+.card {
+  position: relative;
+  grid-column: span 2;
+
+  @include tablet {
+    grid-column: span 6;
+  }
+
+  @include desktop {
+    grid-column: span 4;
+  }
+
+  &__img-link {
+    display: block;
+
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+
+    border-radius: $radius-sm;
+    margin-bottom: rem(24px);
+
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+
+    transition: transform $duration-default;
+
+    @include desktop {
+      &:hover {
+        transform: scale($scale-default);
+      }
+    }
+  }
+
+  &__title {
+    font-size: rem(18px);
+    font-weight: 700;
+    line-height: 140%;
+
+    margin-bottom: rem(8px);
+  }
+
+  &__description {
+    font-family: $font-family-secondary, sans-serif;
+
+    line-height: 140%;
+    margin-bottom: rem(12px);
+  }
+
+  &__price {
+    font-weight: 700;
+    line-height: 140%;
+
+    &::before {
+      content: '$ ';
+    }
+  }
+}
