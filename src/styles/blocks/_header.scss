@@ -1,0 +1,80 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 20px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__phone-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone-tooltip {
+    display: none;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+  }
+
+  @include tablet {
+    &__container {
+      padding: 24px 72px;
+    }
+  }
+
+  @include desktop {
+    &__container {
+      padding: 32px 120px;
+    }
+
+    &__phone-tooltip {
+      display: block;
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+
+      color: $color-white;
+      font-family: $font-main;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      text-decoration: none;
+
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__phone-wrapper:hover &__phone-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
