@@ -29,6 +29,12 @@
     }
   }
 
+  &__call {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
   &__phone {
     display: none;
     font-weight: 500;
@@ -37,12 +43,25 @@
     letter-spacing: 2px;
     color: vars.$color-light;
     text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      color vars.$transition-duration,
+      opacity vars.$transition-duration,
+      visibility vars.$transition-duration;
 
-    @include mixins.hover(color, vars.$color-grey);
+    &:hover {
+      color: vars.$color-grey;
+    }
 
     @include mixins.on-desktop {
       display: block;
     }
+  }
+
+  &__call:hover &__phone {
+    opacity: 1;
+    visibility: visible;
   }
 
   &__action {
