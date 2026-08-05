@@ -1,0 +1,62 @@
+@use '../utils/vars';
+@use '../utils/mixins';
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  padding: 20px 0;
+
+  @include mixins.on-desktop {
+    padding: 36px 0;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include mixins.on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__phone {
+    display: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: vars.$color-light;
+    text-decoration: none;
+
+    @include mixins.hover(color, vars.$color-grey);
+
+    @include mixins.on-desktop {
+      display: block;
+    }
+  }
+
+  &__action {
+    display: block;
+  }
+
+  &__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    transition: transform vars.$transition-duration;
+  }
+
+  &__action:hover &__icon {
+    transform: scale(1.2);
+  }
+}
