@@ -1,0 +1,122 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.site-header {
+  min-height: 100svh;
+  background-image: url('../image/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header__top {
+  @include content-width;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: clamp(72px, 7vw, 112px);
+  padding-inline: $content-padding;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.site-header__logo-image {
+  display: block;
+  width: clamp(120px, 12vw, 192px);
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.site-header__logo:hover .site-header__logo-image,
+.site-header__logo:focus-within .site-header__logo-image {
+  transform: scale(1.08);
+}
+
+.site-header__action-icon {
+  display: block;
+  width: clamp(22px, 2vw, 32px);
+  height: clamp(22px, 2vw, 32px);
+}
+
+.site-header__phone-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  overflow: hidden;
+  max-width: 40px;
+  transition: max-width 0.3s ease;
+}
+
+.site-header__phone-link:hover {
+  max-width: 220px;
+}
+
+.site-header__phone-number {
+  font-family: $font-main;
+  font-weight: 400;
+  font-size: clamp(12px, 1.4vw, 14px);
+  color: #000;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.site-header__phone-link:hover .site-header__phone-number {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.site-header__menu-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.site-header__menu-link:hover {
+  transform: scale(1.15);
+}
+
+.site-header__menu-icon {
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.site-header__menu-link:hover .site-header__menu-icon {
+  transform: scale(1.15);
+  filter: brightness(1.1);
+}
+
+.site-header__content {
+  @include content-width;
+
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  padding: $content-padding;
+}
+
+.site-header__title {
+  @include heading(clamp(36px, 4.5vw, 72px));
+
+  color: $color-white;
+}
