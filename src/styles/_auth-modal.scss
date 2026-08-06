@@ -1,0 +1,133 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.auth-modal {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  justify-items: center;
+  padding: clamp(16px, 3vw, 48px);
+  background-color: rgb(17 17 17 / 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.auth-modal__panel {
+  position: relative;
+  width: min(100%, 480px);
+  height: fit-content;
+  max-height: calc(100svh - clamp(32px, 6vw, 96px));
+  overflow-y: auto;
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: $border-radius;
+  background-color: $color-surface;
+  box-shadow: 0 24px 64px rgb(17 17 17 / 24%);
+  transform: translateY(calc(-100% - 48px));
+  transition: transform 0.35s ease;
+}
+
+.auth-modal--open {
+  opacity: 1;
+  pointer-events: auto;
+
+  .auth-modal__panel {
+    transform: translateY(0);
+  }
+}
+
+.auth-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $color-text;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.auth-modal__eyebrow {
+  margin: 0;
+  color: $color-muted;
+  font-size: clamp(14px, 1vw, 16px);
+}
+
+.auth-modal__title {
+  @include heading(clamp(28px, 3vw, 40px));
+
+  margin-top: 8px;
+}
+
+.auth-modal__tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: clamp(24px, 4vw, 40px);
+  border-bottom: 1px solid $color-border;
+}
+
+.auth-modal__tab {
+  padding: 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: $color-muted;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+
+  &--active {
+    border-bottom-color: $color-accent;
+    color: $color-text;
+  }
+}
+
+.auth-modal__form {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+
+  .button {
+    max-width: none;
+    margin-top: 12px;
+  }
+}
+
+.auth-modal__label {
+  font-size: 14px;
+  color: $color-muted;
+}
+
+.auth-modal__input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  background-color: $color-field;
+  color: $color-text;
+  font: inherit;
+}
+
+body.auth-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: $catalog-breakpoint - 1px) {
+  .auth-modal {
+    padding: 0;
+  }
+
+  .auth-modal__panel {
+    width: 100%;
+    min-height: 100svh;
+    max-height: 100svh;
+    border-radius: 0;
+  }
+}
