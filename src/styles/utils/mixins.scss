@@ -1,0 +1,53 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constentPaddingInline() {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop() {
+    padding-inline: 120px;
+    max-width: 1020px;
+    margin-inline: auto;
+  }
+}
+
+@mixin iconGap(){
+  gap: 24px;
+  @include onTablet {
+    grid-gap: 55px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover{
+    #{$property}: $toValue
+  }
+}
+
+@mixin text-hover {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: $header-text-color;
+  bottom: -8px;
+  height: 1px;
+  display: block;
+
+  transition: transform $transition-time;
+  transform: scale(0);
+  transform-origin: left;
+}
