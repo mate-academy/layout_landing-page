@@ -1,0 +1,47 @@
+@use '../utils/variables' as *;
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+
+    color: $white-color;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+
+      width: 100%;
+      height: 1px;
+
+      background-color: $white-color;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-duration;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}

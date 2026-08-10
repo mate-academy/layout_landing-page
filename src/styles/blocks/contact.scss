@@ -1,0 +1,209 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.contact {
+  margin-top: 100px;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    margin-top: 140px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  &__title {
+    margin: 0;
+
+    color: $main-text-color;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 48px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 48px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      justify-content: space-between;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      width: 498px;
+      gap: 24px;
+    }
+  }
+
+  &__place {
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      width: 237px;
+    }
+  }
+
+  &__place-title {
+    margin: 0 0 16px;
+
+    color: $main-text-color;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+  }
+
+  &__phone,
+  &__address {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__phone {
+    margin-bottom: 8px;
+  }
+
+  &__label {
+    margin: 0;
+
+    color: $main-text-color;
+    font-family: $main-font;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  &__link {
+    color: $main-text-color;
+    font-family: $main-font;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-decoration: none;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      width: 411px;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 16px;
+
+    border: 1px solid transparent;
+    background-color: #f8f8fa;
+
+    color: $main-text-color;
+    font-family: $main-font;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+
+    outline: none;
+  }
+
+  &__input {
+    height: 48px;
+  }
+
+  &__textarea {
+    height: 144px;
+    resize: none;
+  }
+
+  &__button {
+    height: 56px;
+
+    border: 0;
+    background-color: $accent-color;
+
+    color: $white-color;
+    font-family: $main-font;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+  }
+
+  &__input::placeholder,
+  &__textarea::placeholder {
+    color: #7e7e83;
+  }
+}
+
+// Interactive states
+.contact__link,
+.contact__button,
+.contact__input,
+.contact__textarea {
+  transition:
+    color $transition-duration,
+    background-color $transition-duration,
+    border-color $transition-duration;
+}
+
+.contact__link:hover {
+  color: $accent-color;
+}
+
+.contact__input:hover,
+.contact__textarea:hover {
+  border-color: #d5d7de;
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  border-color: $main-text-color;
+}
+
+.contact__button:hover {
+  background-color: #ae1c23;
+}
+
+.contact__button:active {
+  background-color: #eb343d;
+}
