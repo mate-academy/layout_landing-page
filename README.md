@@ -2,7 +2,7 @@ Description: Landing page for Nothing products.
 
 Technologies: HTML5, SCSS, BEM, CSS Grid, Flexbox.
 
-Preview link: ().
+Preview link: (https://yorlex23.github.io/layout_landing-page/).
 
 Design link: (https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6807-248&t=rF9iHqUi6Wld1BdG-0).
 
