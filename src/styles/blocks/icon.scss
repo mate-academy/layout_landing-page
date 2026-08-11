@@ -1,0 +1,70 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: transform $transition-duration;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    position: relative;
+
+    background-image: url(../images/icon/icon-phone.svg);
+
+    @include on-desktop {
+      &::before {
+        content: 'The Met Fifth Avenue\A +1 212-535-7710\A The Met Cloisters\A +1 212-923-3700';
+
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 20px);
+
+        width: 201px;
+
+        transform: translateY(-50%);
+
+        color: $white-color;
+        font-family: $heading-font;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: right;
+        text-transform: uppercase;
+        white-space: pre;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity $transition-duration;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icon/icon-menu.svg);
+  }
+
+  &--close {
+    background-image: url(../images/icon/icon-close.svg);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

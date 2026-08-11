@@ -1,0 +1,42 @@
+@use '../utils/variables' as *;
+
+.page {
+  font-family: $heading-font;
+  color: $main-text-color;
+
+  font-size: 16px;
+  line-height: 27px;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(100%);
+    transition:
+      opacity $transition-duration,
+      transform $transition-duration;
+  }
+
+  &__menu:target {
+    opacity: 1;
+    pointer-events: all;
+
+    transform: translateX(0);
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
