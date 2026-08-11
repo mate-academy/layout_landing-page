@@ -1,0 +1,130 @@
+.header {
+  grid-column: 1 / -1;
+
+  background-image: url(../images/header/headerBack1x.png);
+  background-position: right;
+  height: 480px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 270px;
+  }
+
+  @include pre-tablet-width {
+    background-position: center;
+    background-size: cover;
+    height: 560px;
+    background-image: url(../images/header/headerBack2x.png);
+
+    &__wrap {
+      gap: 318px;
+    }
+  }
+
+  @include tablet-width {
+    background-image: url(../images/header/headerBack3x.png);
+    height: 628px;
+
+    &__wrap {
+      gap: 306px;
+    }
+  }
+
+  @include laptop-width {
+    background-image: url(../images/header/headerBack4x.png);
+    height: 711px;
+
+    &__wrap {
+      gap: 300px;
+    }
+  }
+
+  &__nav {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo-link {
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    width: 187px;
+    height: 56px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    gap: 24px;
+  }
+
+  &__phone-link {
+    padding: 3px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__phone-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 1s;
+  }
+
+  &__phone-link:hover &__phone-icon {
+    transform: rotate(-360deg);
+  }
+
+  &__phone-text {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-right: 8px;
+    transform: translate(20px, -50%);
+    white-space: nowrap;
+    color: white;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease;
+    pointer-events: none;
+
+    @include fonts($bold);
+  }
+
+  &__phone-link:hover &__phone-text {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+
+  &__title {
+    color: $white;
+
+    @include fonts($bold);
+
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    width: fit-content;
+    margin: 0 auto;
+
+    @include tablet-width {
+      font-size: 64px;
+    }
+
+    @include laptop-width {
+      font-size: 80px;
+    }
+  }
+}
+

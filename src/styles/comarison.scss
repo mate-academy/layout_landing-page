@@ -1,0 +1,53 @@
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  column-gap: 20px;
+  margin-top: 92px;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include titles;
+
+    display: block;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  &__list {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 0 auto;
+    max-width: 392px;
+  }
+
+  @include tablet-width {
+    margin-top: 132px;
+
+    grid-template-columns: repeat(6, minmax(80px, 1fr));
+    column-gap: 24px;
+
+    &__title {
+      @include titles(48px);
+
+      line-height: 100%;
+    }
+  }
+
+  @include laptop-width {
+    grid-template-columns: repeat(12, minmax(63px, 1fr));
+    column-gap: 24px;
+
+    &__list {
+      max-width: none;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 24px;
+      margin: 0;
+    }
+  }
+}
