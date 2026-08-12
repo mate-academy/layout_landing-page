@@ -1,3 +1,72 @@
-body {
+@use 'variables' as v;
+@use 'blocks/icon';
+@use 'blocks/nav';
+@use 'blocks/top-bar';
+@use 'blocks/header';
+@use 'blocks/menu';
+@use 'blocks/about';
+@use 'blocks/compare';
+@use 'blocks/card';
+@use 'blocks/details';
+@use 'blocks/contacts';
+@use 'blocks/footer';
+@use 'blocks/back-to-top';
+
+.page {
   margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+  background: v.$primary-color;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  scroll-behavior: smooth;
+
+  // місце під скроллбар = зменшуємо смикання при меню он/офф
+  scrollbar-gutter: stable;
+
+  // виключаємо скролл пейджа при меню он (#11)
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity v.$transition-duration v.$transition-ease;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.main {
+  color: v.$font-primary-color;
+  position: relative;
+  z-index: 1;
+  background: v.$primary-color;
+
+  & > section {
+    padding-inline: 20px;
+    padding-block: 92px;
+
+    @include v.media-tablet {
+      padding-inline: 72px;
+      padding-block: 132px;
+    }
+
+    @include v.media-desktop {
+      padding-inline: 120px;
+      padding-block: 156px;
+    }
+  }
+
+  &__title {
+    @include v.title-h2;
+  }
 }
