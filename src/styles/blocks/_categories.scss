@@ -1,0 +1,91 @@
+@use '../utils/mixins' as *;
+
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 64px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+
+    margin-top: 40px;
+
+    width: 280px;
+    height: 56px;
+
+    background-color: #fc8f1d;
+    border: none;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #fff;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #1b2129;
+    }
+
+    &:active {
+      background-color: #010810;
+    }
+
+    @include onTablet {
+      margin-top: 56px;
+      width: 100%;
+    }
+
+    @include onDesktop {
+      margin-top: 56px;
+      width: 324px;
+      height: 56px;
+      justify-self: left;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include pageGrid;
+  }
+
+  &__link {
+    @include onTablet {
+      grid-column: span 3;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    margin-bottom: 16px;
+
+    transition: transform 0.3s;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__title {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+  }
+}

@@ -1,0 +1,39 @@
+@use '../utils/mixins' as *;
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    min-width: 320px;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
+
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
