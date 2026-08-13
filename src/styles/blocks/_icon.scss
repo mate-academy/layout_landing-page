@@ -1,0 +1,71 @@
+@use '../utils/mixins' as *;
+
+.icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transition: transform 0.3s;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    position: relative;
+
+    background-image: url(../images/Icon-Phone-call.png);
+
+    &::before {
+      content: '+1 234 5555-55-55';
+
+      position: absolute;
+      top: 50%;
+      right: calc(100% + 12px);
+
+      width: max-content;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      color: #1b2129;
+
+      opacity: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+
+      transition: opacity 0.3s;
+    }
+
+    @include on-desktop {
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/Icon-Burger-menu.png);
+
+    &:hover {
+      background-image: url(../images/Icon-Burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/Icon-Close.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+
+    @include on-tablet {
+      background-size: 32px 32px;
+    }
+  }
+}
