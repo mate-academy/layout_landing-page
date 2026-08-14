@@ -1,0 +1,111 @@
+.contacts {
+  @include page-grid;
+
+  align-items: start;
+
+  &__content {
+    margin-top: 0;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-bottom: 48px;
+    margin-top: calc(104px - 96px);
+    color: $main-text-color;
+
+    @include on-table {
+      margin: 0;
+      margin-bottom: 56px;
+      font-size: 40px;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 148px;
+  }
+
+  &__input,
+  &__textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: $spacing-sm;
+    font-family: $font-mono;
+    font-size: 14px;
+    line-height: 140%;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    color: $main-text-color;
+    outline: none;
+    transition: border-color $effectDuration;
+
+    &::placeholder {
+      color: $color-muted;
+    }
+
+    &:focus {
+      border-color: $main-text-color;
+      color: $main-text-color;
+    }
+
+    &:invalid:not(:placeholder-shown),
+    &:user-invalid {
+      border-color: #d64545;
+    }
+
+    &:valid:not(:placeholder-shown) {
+      border-color: #4d8b6a;
+    }
+  }
+
+  &__button {
+    margin-top: $spacing-sm;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: $main-text-color;
+    color: $color-surface;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+      background-color $effectDuration,
+      color $effectDuration,
+      border-color $effectDuration;
+
+    &:hover {
+      background-color: transparent;
+      color: $main-text-color;
+      border-color: $main-text-color;
+    }
+
+    &:active {
+      background-color: $color-hover-dark;
+      color: $color-white;
+      border-color: $color-hover-dark;
+    }
+
+    @include on-table {
+      width: auto;
+    }
+  }
+}

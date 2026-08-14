@@ -1,0 +1,52 @@
+// Увесь контейнер
+.page {
+  font-family: $font-grotesk;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 140%;
+
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  // Контейнер головної сторінки
+  &__body {
+    margin: 0;
+    min-width: 320px; // Маштаб на маленькі єкрани
+  }
+
+  // Контейнер бічного меню
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+
+    transition: all $effectDuration;
+    transform: translateX(-100%); // плавно виїжджає зліва на право
+    pointer-events: none;
+
+    // Функція бічного меню
+    &:target {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
