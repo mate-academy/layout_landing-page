@@ -1,3 +1,4 @@
+// #region Design grid
 @mixin page-grid {
   --columns: 2;
   --column-gap: 20px;
@@ -20,7 +21,9 @@
     --column-size: 63px;
   }
 }
+// #endregion
 
+// #region Breakpoints
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
@@ -32,12 +35,9 @@
     @content;
   }
 }
+// #endregion
 
-
-
-
-
-
+// #region Fonts
 @mixin poppins-regular {
   color: $primary-light;
   padding: 0;
@@ -64,3 +64,21 @@
   font-weight: 700;
   font-style: normal;
 }
+// #endregion
+
+// #region Section titles adaptation
+@mixin section-titles-adaptation {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+      grid-column: 2 / 6;
+      font-size: 48px;
+    }
+
+  @include on-desktop {
+    grid-column: 4 / 10;
+    font-size: 64px;
+  }
+
+}
+// #endregion
