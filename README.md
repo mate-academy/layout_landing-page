@@ -1,24 +1,51 @@
-# Landing Page
+# MyBike Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A responsive landing page for MyBike, built from a Figma design. The page introduces the brand, compares several bikes, highlights their main features, and includes a contact form.
 
-Choose a design for your landing page:
+The layout works across mobile, tablet, and desktop screens. It also includes smooth anchor navigation, an off-canvas menu, hover effects, form validation, and a sticky footer.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## Live demo
 
-Follow the instructions in this and next lessons to implement the page block by block:
+[View the website](https://Panini9966.github.io/layout_landing-page/)
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+## Design
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+[MyBike design in Figma](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
+
+## Technologies
+
+- HTML5
+- SCSS
+- BEM methodology
+- Responsive CSS Grid and Flexbox
+- Vite
+
+## Running locally
+
+Make sure that Node.js and npm are installed.
+
+1. Clone the repository.
+2. Open the project directory:
+
+   ```bash
+   cd layout_landing-page
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+## Available commands
+
+- `npm start` - start the local development server.
+- `npm run build` - create a production build.
+- `npm run lint` - format the code and run the project linters.
+- `npm test` - run linting and project tests.
