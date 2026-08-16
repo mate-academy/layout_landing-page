@@ -1,30 +1,51 @@
 .nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding-block: 24px;
 
   &__link {
     display: block;
     width: fit-content;
     height: fit-content;
+
+    @include poppins-medium;
+
+    font-size: 22px;
+
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+    color: $primary-dark;
+
+    @include on-tablet {
+      @include poppins-bold;
+
+      color: $primary-dark;
+    }
+
+    &-menu {
+      @include link-decor;
+    }
   }
 
   &__logo {
     display: block;
     width: 130px;
     height: 38px;
+
+    transition: transform, $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &::after {
+      opacity: 0;
+    }
   }
 
   &__action {
-    width: 100%;
-
     display: flex;
     justify-content: end;
     gap: 24px;
@@ -34,9 +55,46 @@
     }
   }
 
-  &__action-btn {
+  &__action-icon {
+    display: block;
+
     width: 24px;
     height: 24px;
+
+    transition: transform, linear, $transition-duration;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &-menu {
+      background-image: url(../images/icon-burger-menu.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      transition: background-image, linear, $transition-duration;
+
+      &:hover {
+        background-image: url(../images/icon-burger-menu-hover.svg);
+      }
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    padding: 0;
+    margin: 0;
+    margin-bottom: 40px;
+
+    list-style-type: none;
+  }
 }
