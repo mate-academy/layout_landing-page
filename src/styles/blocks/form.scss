@@ -1,0 +1,57 @@
+@use '../utils/mixins';
+@use '../utils/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+  &__field {
+    box-sizing: border-box;
+    height: 48px;
+    background-color: variables.$form-field-color;
+    border: 0 variables.$form-field-color;
+    outline: none;
+    border-radius: 8px;
+
+    padding-inline: 16px;
+    padding-block: 14px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+    color: variables.$main-text-color;
+    transition:
+      color variables.$effectDuration,
+      border variables.$effectDuration;
+
+    &::placeholder {
+      color: variables.$form-default-text-color;
+    }
+
+    &:hover {
+      border: 1px solid variables.$form-border-color;
+
+      &::placeholder {
+        color: variables.$main-text-color;
+      }
+    }
+
+    &:focus {
+      border: 2px solid variables.$button-color;
+    }
+
+    &--textarea {
+      height: 148px;
+      resize: none;
+      overflow: auto;
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+    padding: 0;
+    border: none;
+  }
+}

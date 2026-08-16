@@ -1,0 +1,73 @@
+@use '../utils/mixins';
+@use '../utils/variables';
+
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixins.on-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    height: 16px;
+
+    @include mixins.hover(transform, scale(1.2));
+
+    @include mixins.on-tablet {
+      height: 24px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include mixins.on-tablet {
+      gap: 32px;
+    }
+  }
+}
+
+.phone {
+  display: flex;
+  row-gap: 8px;
+  align-items: center;
+
+  &__number {
+    display: none;
+
+    text-decoration: none;
+    color: variables.$main-text-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+
+  @include mixins.on-desktop {
+    &:hover {
+      .phone__number {
+        display: inline-block;
+
+        @keyframes opacity {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        animation: opacity variables.$effectDuration;
+      }
+    }
+  }
+}
