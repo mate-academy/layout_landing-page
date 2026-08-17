@@ -1,0 +1,90 @@
+@import './variables';
+
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 48px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+  }
+
+  &__button {
+    margin-top: 40px;
+    cursor: pointer;
+    background-color: $button-main-accent;
+    color: $white-accent;
+    height: 56px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    border: 2px solid $button-main-accent;
+    border-radius: 8px;
+    transition: 0.3s;
+    width: 100%;
+
+    &:hover {
+      background-color: $button-hover-accent;
+      border-color: $button-hover-border-accent;
+      color: $main-text-color;
+    }
+
+    &:active {
+      background-color: $button-pressed-accent;
+      color: $white-accent;
+    }
+
+    @include on-desktop {
+      width: 30%;
+    }
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
