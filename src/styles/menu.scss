@@ -1,0 +1,172 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  background: var(--color-menu);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 20px;
+  }
+
+  &__nav {
+    padding: 24px 0 0 20px;
+  }
+
+  &__close {
+    width: 24px;
+    height: 24px;
+    margin: auto 0;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-main-bg);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+
+      width: 0;
+      height: 1px;
+
+      background-color: var(--color-main-bg);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.test-ride {
+  padding-top: 40px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    display: inline-block;
+
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-main-bg);
+  }
+
+  &__item {
+    &--phone {
+      .test-ride__link {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 27px;
+      }
+    }
+  }
+}
+
+@media (min-width: 744px) {
+  .menu {
+    &__top {
+      padding: 36px 72px;
+    }
+
+    &__nav {
+      padding: 24px 0 0 72px;
+    }
+
+    &__close {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+@media (min-width: 1260px) {
+  .menu {
+    &__top {
+      padding: 36px 120px;
+    }
+
+    &__nav {
+      padding: 24px 0 0 121px;
+    }
+  }
+
+  .nav {
+    &__link {
+      font-weight: 700;
+
+      &::after {
+        height: 2px;
+      }
+    }
+  }
+
+  .test-ride {
+    &__item--phone {
+      .test-ride__link {
+        font-weight: 700;
+      }
+    }
+  }
+}
