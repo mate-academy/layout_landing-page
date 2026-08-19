@@ -1,0 +1,79 @@
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  @include on-desktop {
+    padding: 40px 0;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 36px;
+    }
+  }
+
+  &__phone-wrapper {
+    position: relative;
+  }
+
+  &__phone {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+
+    padding-right: 20px;
+    transform: translateY(-50%);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    color: $main-text-color;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+      opacity $animation-duration,
+      visibility $animation-duration;
+  }
+
+  @include on-desktop {
+    &__phone-wrapper:hover,
+    &__phone-wrapper:focus-within {
+      .top-bar__phone {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 38px;
+
+    @include hover(transform, scale($hover-scale));
+
+    @include on-tablet {
+      width: 187px;
+      height: 56px;
+    }
+  }
+}
