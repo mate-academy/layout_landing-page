@@ -12,6 +12,10 @@
 @use 'blocks/footer';
 @use 'blocks/back-to-top';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .page {
   margin: 0;
   padding: 0;
@@ -20,28 +24,13 @@
   background: v.$primary-color;
   box-sizing: border-box;
   font-family: Poppins, sans-serif;
-  scroll-behavior: smooth;
 
   // місце під скроллбар = зменшуємо смикання при меню он/офф
   scrollbar-gutter: stable;
 
-  // виключаємо скролл пейджа при меню он (#11)
-  &:has(.page__menu:target) {
+  // виключаємо скролл пейджа при меню-он (#11)
+  &:has(.page__menu--visible) {
     overflow: hidden;
-  }
-
-  &__menu {
-    position: fixed;
-    inset: 0;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity v.$transition-duration v.$transition-ease;
-
-    &:target {
-      opacity: 1;
-      pointer-events: all;
-    }
   }
 }
 
