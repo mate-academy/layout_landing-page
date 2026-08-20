@@ -1,0 +1,56 @@
+@use '../variables' as v;
+
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+
+  background-color: rgba(38, 38, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: v.$font-primary-color;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+
+  transition:
+    opacity v.$transition-duration v.$transition-ease,
+    transform v.$transition-duration v.$transition-ease,
+    background-color v.$transition-duration v.$transition-ease,
+    color v.$transition-duration v.$transition-ease,
+    box-shadow v.$transition-duration v.$transition-ease;
+
+  &--visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background-color: v.$font-primary-color;
+    color: v.$primary-color;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include v.media-tablet {
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+  }
+}
