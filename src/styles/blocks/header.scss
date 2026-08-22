@@ -1,0 +1,79 @@
+.header {
+  background-image: url('../images/header/header-bg-1260.png');
+  background-size: cover;
+  background-position: center;
+
+  @include on-mobile {
+    background-position: right 10% center;
+  }
+
+  &__title {
+    margin: 0;
+    color: #fff;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-mobile {
+      font-size: 36px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 200px;
+
+    @include on-tablet {
+      padding-bottom: 120px;
+    }
+
+    @include on-mobile {
+      padding-bottom: 88px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  &__phone-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+      content: attr(data-phone);
+      position: absolute;
+      right: calc(100% + 20px);
+      font-size: 12px;
+      line-height: 16px;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      transform-origin: left;
+      transition: all $animation-duration ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+}

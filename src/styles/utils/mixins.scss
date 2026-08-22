@@ -1,0 +1,64 @@
+@mixin on-tablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+/* #region  consten-padding-inline */
+@mixin consten-padding-inline {
+  padding-inline: 120px;
+  max-width: 1260px;
+  margin-inline: auto;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-mobile {
+    padding-inline: 24px;
+  }
+}
+
+/* #endregion */
+
+.container {
+  @include consten-padding-inline;
+}
+
+/* #region  page-grid */
+@mixin page-grid {
+  --columns: 12;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+  }
+
+  @include on-mobile {
+    --columns: 2;
+
+    column-gap: 20px;
+  }
+}
+
+/* #endregion */
+
+/* #region  hover */
+@mixin hover($property, $value) {
+  transition: #{$property} $animation-duration;
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+/* #endregion */
