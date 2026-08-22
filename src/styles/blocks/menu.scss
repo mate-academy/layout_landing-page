@@ -1,0 +1,80 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  background-color: $color-red;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+
+  transition:
+    transform $transition-duration,
+    opacity $transition-duration;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  a {
+    color: $color-white;
+    font-family: Cinzel, serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color $transition-duration;
+
+    &:hover {
+      color: $color-white;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__nav {
+    margin-top: 64px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    list-style: none;
+  }
+
+  &__contacts {
+    margin-top: 64px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    a:last-child {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+.menu a.icon.icon--close {
+  filter: brightness(0) invert(1);
+}
+
+.menu .logo {
+  display: inline-block;
+}
+
+.menu .logo__image {
+  display: block;
+  filter: none;
+  transition: border-color $transition-duration;
+  border-bottom: 2px solid transparent;
+}
+
+.menu .logo:hover .logo__image {
+  border-bottom-color: #0078d4;
+}

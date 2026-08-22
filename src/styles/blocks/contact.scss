@@ -1,0 +1,120 @@
+@use 'sass:color';
+
+.contact {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  &__title {
+    margin-bottom: 48px;
+
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 1fr 1fr 1.4fr;
+      column-gap: 48px;
+    }
+  }
+
+  &__info {
+    text-align: left;
+  }
+
+  &__subtitle {
+    margin-bottom: 24px;
+
+    font-family: Cinzel, serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  &__label {
+    margin-bottom: 8px;
+
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    margin-bottom: 24px;
+
+    font-family: Cinzel, serif;
+    font-size: 14px;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+
+    border: none;
+    background-color: #f8f8f8;
+
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    text-transform: uppercase;
+
+    &::placeholder {
+      color: $color-gray;
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 1px solid $color-gray;
+    }
+
+    &--message {
+      min-height: 108px;
+      padding-top: 16px;
+
+      resize: vertical;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 12px;
+
+    border: none;
+    background-color: $color-red;
+
+    color: $color-white;
+    font-family: Cinzel, serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: color.adjust($color-red, $lightness: -10%);
+    }
+  }
+}
