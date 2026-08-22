@@ -6,7 +6,6 @@ A modern, responsive web page built to practice and showcase advanced layout tec
 
 - **HTML5** (Semantic markup)
 - **SCSS / CSS3** (Modular BEM architecture, Flexbox, CSS Grid)
-- **CSS Scroll-driven Animations** (`animation-timeline: view()`)
 
 ## Live Demo & Design
 
@@ -39,4 +38,4 @@ npm start
 ```sh
 npm run build
 ```
-```
+
