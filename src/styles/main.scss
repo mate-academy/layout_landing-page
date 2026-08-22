@@ -1,3 +1,697 @@
-body {
+@use 'sass:math';
+
+// ── VARIABLES ──────────────────────────────────────────
+$bg: #0e0e0e;
+$bg-alt: #161616;
+$surface: #1c1c1c;
+$border: rgba(255, 255, 255, 0.08);
+$text: #f0ede8;
+$text-muted: rgba(240, 237, 232, 0.5);
+$accent: #c8b89a;
+$font-display: 'Bebas Neue', sans-serif;
+$font-cond: 'Barlow Condensed', sans-serif;
+$font-body: 'Barlow', sans-serif;
+$max-w: 1260px;
+$margin: 120px;
+$gutter: 24px;
+
+// ── RESET ──────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+// ── KEYFRAMES ──────────────────────────────────────────
+@keyframes hero-zoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── BASE ───────────────────────────────────────────────
+html { scroll-behavior: smooth; }
+
+body {
+  background: $bg;
+  color: $text;
+  font-family: $font-body;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+// ── CONTAINER ──────────────────────────────────────────
+.container {
+  max-width: $max-w;
+  margin: 0 auto;
+  padding: 0 $margin;
+
+  @media (max-width: 1024px) { padding: 0 60px; }
+  @media (max-width: 744px)  { padding: 0 40px; }
+  @media (max-width: 480px)  { padding: 0 20px; }
+}
+
+// ── HEADER ─────────────────────────────────────────────
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(14, 14, 14, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $border;
+
+  &__inner {
+    max-width: $max-w;
+    margin: 0 auto;
+    padding: 0 $margin;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 1024px) { padding: 0 60px; }
+    @media (max-width: 744px)  { padding: 0 40px; }
+    @media (max-width: 480px)  { padding: 0 20px; }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+// ── LOGO ───────────────────────────────────────────────
+.logo {
+  font-family: $font-display;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: $text;
+  text-decoration: none;
+  white-space: nowrap;
+
+  span { color: $accent; }
+}
+
+// ── ICON BUTTON ────────────────────────────────────────
+.icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: $text;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  text-decoration: none;
+
+  &:hover { opacity: 1; }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    white-space: nowrap;
+    background: rgba(14, 14, 14, 0.95);
+    border: 1px solid $border;
+    color: $text;
+    font-family: $font-cond;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  &--phone:hover &__tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── HAMBURGER ──────────────────────────────────────────
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: $text;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  &.open {
+    span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+}
+
+// ── MENU OVERLAY ───────────────────────────────────────
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+// ── MENU PANEL ─────────────────────────────────────────
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(400px, 100vw);
+  height: 100vh;
+  z-index: 95;
+  background: #e8e4dd;
+  color: #111;
+  padding: 32px 48px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+
+  &.open { transform: translateX(0); }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-size: 24px;
+    color: #111;
+    letter-spacing: 0.04em;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: #111;
+    padding: 4px;
+    line-height: 1;
+  }
+
+  &__footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__contact {
+    font-family: $font-cond;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover { color: #111; }
+  }
+
+  &__cta {
+    font-family: $font-cond;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 4px;
+  }
+}
+
+// ── MENU NAV ───────────────────────────────────────────
+.menu-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+
+  a {
+    font-family: $font-cond;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    transition: color 0.2s;
+
+    &:hover { color: #555; }
+  }
+}
+
+// ── HERO ───────────────────────────────────────────────
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #0a0a0a;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=1600&q=80&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.55;
+    transform: scale(1.04);
+    animation: hero-zoom 14s ease-out forwards;
+  }
+
+  &__gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 1) 0%,
+      rgba(10, 10, 10, 0.4) 60%,
+      transparent 100%
+    );
+  }
+
+  &__content {
+    position: relative;
+    padding-bottom: 80px;
+    animation: fade-up 1s 0.4s both;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(56px, 9vw, 130px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    color: $text;
+    margin-bottom: 20px;
+
+    em {
+      font-style: normal;
+      color: $accent;
+    }
+
+    @media (max-width: 600px) { font-size: 52px; }
+  }
+}
+
+// ── SECTION SHARED ─────────────────────────────────────
+.section {
+  padding: 100px 0;
+
+  &--dark { background: $bg-alt; }
+
+  @media (max-width: 600px) { padding: 64px 0; }
+}
+
+// bikes section needs more bottom padding so bg covers all cards
+#bikes {
+  padding-bottom: 140px;
+}
+
+.section-label {
+  font-family: $font-cond;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: $font-display;
+  font-size: clamp(36px, 5vw, 68px);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 48px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.6);
+}
+
+// ── ABOUT ──────────────────────────────────────────────
+.about {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+
+    @media (max-width: 900px) { grid-template-columns: 1fr; }
+  }
+
+  &__heading {
+    font-family: $font-display;
+    font-size: clamp(36px, 4vw, 60px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: $text-muted;
+    max-width: 420px;
+  }
+
+  &__image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+
+    &:hover img { transform: scale(1.04); }
+  }
+}
+
+// ── BIKES ──────────────────────────────────────────────
+.bikes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gutter;
+
+  @media (max-width: 900px) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+.bike-card {
+  background: $surface;
+  padding: 32px 24px 28px;
+  border: 1px solid $border;
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $accent;
+    transform: translateY(-4px);
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    margin-bottom: 24px;
+    transition: filter 0.3s;
+
+    .bike-card:hover & { filter: brightness(1.1); }
+  }
+
+  &__name {
+    font-family: $font-cond;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  &__desc {
+    font-size: 13px;
+    color: $text-muted;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    font-family: $font-cond;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    color: $accent;
+  }
+}
+
+// ── DETAILS ────────────────────────────────────────────
+.detail-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gutter;
+  margin-bottom: 64px;
+  align-items: start;
+
+  &--reverse {
+    direction: rtl;
+    > * { direction: ltr; }
+  }
+
+  &__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    font-family: $font-cond;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  &__desc {
+    font-size: 14px;
+    color: $text-muted;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    &--reverse { direction: ltr; }
+  }
+}
+
+.details__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.explore-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid $text;
+  font-family: $font-cond;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $text;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+
+  &:hover {
+    background: $text;
+    color: $bg;
+  }
+}
+
+// ── FORM ───────────────────────────────────────────────
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__textarea { min-height: 100px; }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: $text;
+    font-family: $font-body;
+    font-size: 14px;
+    padding: 12px 0;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+
+    &::placeholder { color: $text-muted; }
+    &:focus { border-color: $accent; }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px $bg inset;
+      -webkit-text-fill-color: $text;
+      caret-color: $text;
+      transition: background-color 9999s ease-in-out 0s;
+      border-bottom: 1px solid $accent;
+    }
+  }
+
+  &__button {
+    margin-top: 8px;
+    padding: 14px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid $text;
+    color: $text;
+    font-family: $font-cond;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+
+    &:hover {
+      background: $text;
+      color: $bg;
+    }
+  }
+}
+
+// ── CONTACT ────────────────────────────────────────────
+.contact {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+
+    @media (max-width: 900px) { grid-template-columns: 1fr; }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__info-label {
+    font-family: $font-cond;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 6px;
+  }
+
+  &__info-value {
+    font-size: 15px;
+    color: $text-muted;
+    line-height: 1.5;
+    text-decoration: none;
+    display: block;
+
+    &:hover { color: $text; }
+  }
+}
+
+// ── FOOTER PHOTO ───────────────────────────────────────
+.footer-photo {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+// ── FOOTER ─────────────────────────────────────────────
+.footer {
+  background: #080808;
+  padding: 32px 0;
+  border-top: 1px solid $border;
+
+  &__inner {
+    max-width: $max-w;
+    margin: 0 auto;
+    padding: 0 $margin;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 1024px) { padding: 0 60px; }
+    @media (max-width: 744px)  { padding: 0 40px; }
+    @media (max-width: 480px)  { padding: 0 20px; }
+  }
+
+  &__logo {
+    font-family: $font-display;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    color: $text-muted;
+  }
+
+  &__copy {
+    font-size: 12px;
+    color: rgba(240, 237, 232, 0.3);
+    letter-spacing: 0.06em;
+  }
 }
