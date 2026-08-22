@@ -1,0 +1,120 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #C2C2C2;
+  z-index: 2;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  transform: translateX(100%);
+  visibility: hidden;
+  transition:
+    transform 0.6s ease-in-out,
+    visibility 0s linear 0.6s;
+
+  &:target {
+    transform: translateX(0);
+    visibility: visible;
+    transition:
+      transform 0.6s ease-in-out,
+      visibility 0s linear 0s;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__nav-link {
+    position: relative;
+    line-height: 22px;
+    letter-spacing: 2px;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: $mainColor;
+    width: fit-content;
+
+    @include fonts($semiBold);
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      background-color: $mainColor;
+      width: 100%;
+      height: 1px;
+    }
+  }
+
+  &__book {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__book-description {
+    position: relative;
+    width: fit-content;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 16px;
+
+    @include fonts($semiBold);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: #1d1d1d;
+    }
+  }
+
+  &__book-link {
+    position: relative;
+    color: $mainColor;
+    line-height: 27px;
+    font-size: 16px;
+    width: fit-content;
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: #1d1d1d;
+    }
+
+    @include fonts($semiBold);
+  }
+
+  &__close {
+    display: flex;
+    text-align: center;
+  }
+
+  &__close-icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
+}

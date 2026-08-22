@@ -1,0 +1,119 @@
+.detail-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  column-gap: 20px;
+
+  &__picture {
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__photos {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    column-gap: 20px;
+  }
+
+  &__photo-wrap {
+    min-width: 130px;
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+
+    &--left {
+      grid-column: 1 / 2;
+    }
+
+    &--right {
+      grid-column: 2 / -1;
+    }
+  }
+
+  @include tablet-width {
+    grid-template-columns: repeat(6, minmax(80px, 1fr));
+    column-gap: 24px;
+
+    &__photos {
+      grid-template-columns: repeat(6, minmax(80px, 1fr));
+    }
+
+    &__photo-wrap {
+      &--left {
+        grid-column: 1 / 5;
+      }
+
+      &--right {
+        grid-column: 5 / -1;
+      }
+
+      &--left.detail-card__photo-wrap--compact {
+        grid-column: 1 / 3;
+      }
+
+      &--right.detail-card__photo-wrap--compact {
+        grid-column: 3 / -1;
+      }
+    }
+  }
+
+  @include laptop-width {
+    grid-template-columns: repeat(12, minmax(63px, 1fr));
+
+    &__photos {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__photo-wrap {
+      &--left {
+        grid-column: 1 / -2;
+        height: 321px;
+      }
+
+      &--right {
+        grid-column: -2 / -1;
+        height: 321px;
+      }
+
+      &--left.detail-card__photo-wrap--compact {
+        grid-column: 1 / 2;
+      }
+
+      &--right.detail-card__photo-wrap--compact {
+        grid-column: 2 / -1;
+      }
+    }
+  }
+
+  &__icon {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: all .3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    color: $white;
+    margin-top: 16px;
+    font-size: 24px;
+    line-height: 140%;
+
+    @include fonts($bold);
+
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    color: $white;
+
+    @include fonts($regular);
+  }
+}
