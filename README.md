@@ -1,4 +1,4 @@
-# Project Name
+# MYBIKE landing
 
 A modern, responsive web page built to practice and showcase advanced layout techniques. The project focuses on semantic HTML markup, scroll-driven CSS animations, and smooth Floating Labels for form fields.
 
@@ -6,35 +6,44 @@ A modern, responsive web page built to practice and showcase advanced layout tec
 
 - **HTML5** (Semantic markup)
 - **SCSS / CSS3** (Modular BEM architecture, Flexbox, CSS Grid)
+- **CSS Scroll-driven Animations** (`animation-timeline: view()`)
 
 ## Live Demo & Design
 
 - **Live Preview:** [View Demo](https://pupsikchmo.github.io/layout_landing-page/)
-- **Figma Layout:** [View Figma Design](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=41317-313&t=qiJsEPVElQ50J6Qj-0)
+- **Figma Layout:** [View Figma Design](https://www.figma.com/design/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=26-315&t=IkBDKuMz5CDBjgLK-0)
 
 ## Project Setup
 
 Clone the repository and navigate to the project folder:
 
-\`\`\`sh
+```sh
 git clone https://github.com/pupsikchmo/layout_landing-page.git
 cd layout_landing-page
-\`\`\`
+```
 
 Install dependencies:
 
-\`\`\`sh
+```sh
 npm install
-\`\`\`
+```
 
 ## Compile and Hot-Reload for Development
 
-\`\`\`sh
+```sh
 npm start
-\`\`\`
+```
 
 ## Compile and Minify for Production
 
-\`\`\`sh
+```sh
 npm run build
-\`\`\`
+```
+```
+
+Головне правило: кожен фрагмент коду має виглядати так у вихідному файлі —
+
+```
+```sh
+команда тут
+```
