@@ -1,4 +1,5 @@
 'use strict';
+
 import '../styles/main.scss';
 
 const menuButton = document.querySelector('.header__menu');
@@ -6,22 +7,28 @@ const menu = document.querySelector('.menu');
 const closeButton = document.querySelector('.menu__close');
 const menuLinks = document.querySelectorAll('.menu__link');
 
-menuButton.addEventListener('click', () => {
+const openMenu = () => {
   menu.classList.add('is-open');
-});
+  menu.setAttribute('aria-hidden', 'false');
+  menuButton.setAttribute('aria-expanded', 'true');
+};
 
-closeButton.addEventListener('click', () => {
+const closeMenu = () => {
   menu.classList.remove('is-open');
-});
+  menu.setAttribute('aria-hidden', 'true');
+  menuButton.setAttribute('aria-expanded', 'false');
+};
+
+menuButton.addEventListener('click', openMenu);
+
+closeButton.addEventListener('click', closeMenu);
 
 menuLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('is-open');
-  });
+  link.addEventListener('click', closeMenu);
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
-    menu.classList.remove('is-open');
+    closeMenu();
   }
 });
