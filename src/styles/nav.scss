@@ -1,0 +1,139 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__link {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+
+    @include poppins-medium;
+
+    font-size: 22px;
+
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+
+    color: $primary-dark;
+
+    @include on-tablet {
+      @include poppins-bold;
+
+      color: $primary-dark;
+    }
+
+    &-menu {
+      @include link-decor;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 130px;
+    height: 38px;
+
+    transition: transform, $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  &__action {
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__action-icon {
+    display: block;
+
+    width: 24px;
+    height: 24px;
+
+    transition: transform, linear, $transition-duration;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+
+    &-call {
+      position: relative;
+      background-image: url(../images/icon-phone.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      @include on-desktop {
+        &::before {
+          content: '+1 234 555-55-55';
+          position: absolute;
+          z-index: -1;
+          top: 8px;
+
+          opacity: 0;
+          pointer-events: none;
+          visibility: hidden;
+
+          @include poppins-bold;
+
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          text-wrap: nowrap;
+
+          transform-origin: right;
+          transition: transform, ease-in, $transition-duration;
+        }
+
+        &:hover::before {
+          opacity: 1;
+          pointer-events: all;
+          visibility: visible;
+          transform: translateX(-110%);
+        }
+      }
+    }
+
+    &-menu {
+      background-image: url(../images/icon-burger-menu.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      transition: background-image, linear, $transition-duration;
+
+      &:hover {
+        background-image: url(../images/icon-burger-menu-hover.svg);
+      }
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    padding: 0;
+    margin: 0;
+    margin-bottom: 40px;
+
+    list-style-type: none;
+  }
+}
