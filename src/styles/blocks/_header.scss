@@ -1,0 +1,179 @@
+@use '../variables' as *;
+@use '../mixin' as *;
+
+.header {
+  aspect-ratio: 1260 / 711;
+  height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px 0 203px;
+  background-image: url(/src/images/header-bc-main.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @include on-desktop {
+    background-image: url(/src/images/header-bc-1280.png);
+    padding-bottom: 203px;
+  }
+
+  @include on-tablet {
+    background-image: url(/src/images/header-bc-744.png);
+    padding-bottom: 130px;
+    aspect-ratio: 744 / 628;
+  }
+
+  @include on-mobile {
+    background-image: url(/src/images/header-bc-320.png);
+    padding-bottom: 88px;
+    aspect-ratio: 320 / 480;
+  }
+
+  &__top {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-inline: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include on-mobile {
+      padding-inline: 20px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    .logo__img {
+      display: block;
+      height: auto;
+      width: 187px;
+
+      @include on-mobile {
+        width: 130px;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include on-mobile {
+      gap: 24px;
+    }
+  }
+
+  &__phone {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__call {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $color-text;
+    gap: 20px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 32px;
+      background-image: url(/src/images/logo/Icon-Phone-call.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: transform 0.3s ease;
+
+      @include on-mobile {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:hover {
+      .header__phone {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+
+      &::after {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__icon-menu {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url(/src/images/logo/Icon-Burger-menu.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: background-image 0.3s ease;
+
+    &:hover {
+      background-image: url(/src/images/logo/Icon-Burger-menu-hover.svg);
+    }
+
+    @include on-mobile {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__footer {
+    max-width: 1260px;
+    margin: 0 auto;
+    text-align: center;
+
+    @include on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include on-mobile {
+      padding-inline: 20px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-mobile {
+      font-size: 36px;
+    }
+  }
+}
