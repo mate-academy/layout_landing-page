@@ -1,0 +1,58 @@
+@import './variables';
+
+@mixin onMobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onTabletOnly {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin contentPaddingInLine () {
+  padding-inline: 20px;
+
+  @include onTablet {
+    padding-inline: 72px;
+  }
+
+  @include onDesktop {
+    max-width: 1020px;
+    padding-inline: 72px;
+    margin-inline: auto;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin section-spacing {
+  margin-bottom: $section-margin-bottom;
+
+  @include onTabletOnly {
+    margin-bottom: $section-margin-bottom-tablet;
+  }
+
+  @include onMobile {
+    margin-bottom: $section-margin-bottom-mobile;
+  }
+}

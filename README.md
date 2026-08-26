@@ -1,24 +1,19 @@
 # Landing Page
+[DEMO LINK](https://kosigorek.github.io/layout_landing-page/).
+[Figma] (https://www.figma.com/design/lSR1m42L9YwzQwzzxKwHpw/THE-MET?node-id=8590-627&t=IbXg5QCQymy5bPC2-0).
+Цей проект це веб сторінка музею.
+HTML5: Семантична верстка (<header>, <main>, <footer>, <section>), використання форматування для форм з нативною валідацією (pattern, required, placeholder) та підключення фавіконки.
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+CSS3 / SCSS (SASS):
 
-Choose a design for your landing page:
+Методологія BEM (БЕМ): Структуризація класів (.block__element--modifier) для чистоти та незалежності компонентів.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Flexbox & CSS Grid: Побудова гнучких сіток для адаптивної верстки товарів, галерей та розкладу.
 
-Follow the instructions in this and next lessons to implement the page block by block:
+Адаптивний дизайн (Responsive Web Design): Використання SCSS-міксинів (@include onTablet, @include onMobile) та медіа-запитів (@media) під різні роздільності екранів.
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+Кадрування зображень: Робота з object-fit: cover, object-position та aspect-ratio для правильної точної підгонки та центрування арт-об'єктів.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+Плавна навігація: Використання CSS-властивостей scroll-behavior: smooth та scroll-margin-top.
+
+CSS-змінні та міксини: Централізована система керування відступами, кольорами та типографікою ($section-margin-bottom, @mixin section-spacing).

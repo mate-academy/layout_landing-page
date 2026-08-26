@@ -1,0 +1,102 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.explore {
+
+  &__title {
+    font-family: $font-title;
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $color-dark;
+    margin-bottom: 56px;
+
+    @include onMobile {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $gutter;
+
+    @include onTabletOnly {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      justify-items: center;
+    }
+
+    @include onMobile {
+      gap: 40px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include onTabletOnly {
+      max-width: 392px; // Фіксуємо ширину картки під розмір з Figma
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 24px;
+    overflow: hidden;
+    cursor: pointer;
+
+    @include onTabletOnly {
+      height: 387px; // Точна висота зображення для планшета
+      aspect-ratio: auto;
+    }
+
+    @include onMobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform $effectDuration ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__card-title {
+    font-family: $font-title;
+    font-size: 24px;
+    line-height: 140%;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-red;
+    margin-bottom: 12px;
+
+    @include onMobile {
+
+      margin-bottom: 8px;
+    }
+  }
+
+  &__card-text {
+    font-family: 'roboto';
+    font-size: 16px;
+    line-height: 27px;
+    color: $color-gray-text;
+    margin: 0;
+    max-width: 320px;
+  }
+}

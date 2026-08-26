@@ -1,0 +1,53 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+
+html, body, .main {
+  scroll-behavior: smooth !important;
+}
+
+body:has(#menu:target) {
+  overflow: hidden;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: $font-title;
+  color: $main-text-color;
+  font-size: 16px;
+  line-height: 27px;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform $effectDuration ease, opacity $effectDuration ease, visibility $effectDuration ease;
+
+    &:target {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
