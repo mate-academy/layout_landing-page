@@ -1,0 +1,70 @@
+.top-bar {
+  padding-block: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+
+  @include on-tablet {
+    padding-block: 50px;
+    gap: 55px;
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__contact {
+    &__phone-number {
+      color: $header-text-color;
+      font-size: 16px;
+
+      font-family: $font-family;
+      font-weight: 700;
+      font-style: Bold;
+      line-height: 27px;
+      letter-spacing: 0;
+      vertical-align: middle;
+      text-transform: uppercase;
+
+      text-align: end;
+      margin: 0;
+
+      display: none;
+
+      text-decoration: none;
+
+      @include hover(transform, $transition-time);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+
+    @include icon-gap;
+
+    &:has(.top-bar__phone-wrapper:hover) {
+      .top-bar__contact__phone-number {
+        @include on-desktop {
+          display: block;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+
+    width: 48px;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  position: sticky; /* to keep cross always visible */
+  top: 0;
+  z-index: 1;
+}
