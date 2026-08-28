@@ -1,0 +1,79 @@
+.page {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: medium;
+  color: #fff;
+  background-color: #1d1d1d;
+  scroll-behavior: smooth;
+  position: relative;
+  z-index: 1;
+
+  &_wrapper {
+    position: relative;
+    z-index: 3;
+    background-color: #1d1d1d;
+    margin-bottom: 320px;
+
+    @include on-tablet {
+      margin-bottom: 582px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 719px;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    transition: all 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+}
+
+input,
+textarea {
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #fff inset;
+  }
+  &::placeholder {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #7e7e83;
+  }
+
+  &:hover::placeholder {
+    color: #292929;
+  }
+}
+
+.button--shadow:hover {
+  box-shadow: 0 0 16px rgba(232, 232, 240, 0.4);
+}
+
+.button--shadow:active {
+  box-shadow: 0 0 16px rgba(232, 232, 240, 0.64);
+}
