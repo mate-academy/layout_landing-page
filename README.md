@@ -1,24 +1,59 @@
-# Landing Page
+## THE MET — Museum Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+A responsive landing page inspired by The Metropolitan Museum of Art (The Met).
+The project recreates the museum's website design with a focus on responsive layout, modern CSS techniques, animations, and clean BEM-based structure.
 
-Choose a design for your landing page:
+## Live Preview
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+Experience the live website: [THE MET Demo](https://github.com/kseniiavasylenko/layout_landing-page/pulls)
+Design Reference
 
-Follow the instructions in this and next lessons to implement the page block by block:
+The project was created based on the following Figma design:
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+[MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET) — Figma Design
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## Technologies Used
+HTML5
+CSS3
+Sass (SCSS)
+BEM methodology
+CSS Grid
+CSS Transforms
+CSS Animations
+Responsive Web Design
+
+## Getting Started
+1. Clone the repository
+git clone https://github.com/kseniiavasylenko/layout_landing-page.git
+cd layout_landing-page
+2. Install dependencies
+npm install
+
+Or, if you use Yarn:
+
+yarn install
+3. Run the project locally
+npm start
+
+Or:
+
+yarn start
+
+Follow the URL provided in the terminal to open the project in your browser.
+
+## Features
+Responsive museum landing page
+Layout based on the original Figma design
+BEM methodology for maintainable CSS classes
+Sass/SCSS for structured and reusable styles
+CSS Grid for complex page layouts
+Smooth CSS animations and transitions
+CSS transforms for interactive visual effects
+Responsive behavior for different screen sizes
+Clean and organized project structure
+Project Structure
+
+The project follows a component-oriented and BEM-based approach to keep the styles organized and easy to maintain.
+
+## Author
+Created by Ksenia Vasylenko.

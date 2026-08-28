@@ -1,0 +1,138 @@
+.now-on-view {
+  &__text {
+    font-weight: 400;
+    color: black;
+    display: flex;
+    text-align: center;
+
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  &__title {
+    margin: 0;
+    color: black;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+  }
+
+  &__button {
+    width: 280px;
+    height: 56px;
+    background-color: $color;
+    color: #fff;
+    font-family: $font-family;
+    font-size: 16px;
+    cursor: pointer;
+
+    // margin-bottom: 100px;
+    border: $color;
+    display: block;
+    margin: 0 auto 100px;
+  }
+}
+
+.categories {
+  &__wrapper {
+    display: grid;
+  }
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+}
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 24px;
+    &--block-3 {
+      --columns: 3;
+
+      @include on-tablet {
+        --columns: 2;
+      }
+
+      @include on-desktop {
+        --columns: 3;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--block-3 {
+      display: block;
+      height: 0;
+      padding-bottom: 100%;
+
+      @include on-tablet {
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+
+      @include on-desktop {
+        display: block;
+        &:nth-child(3) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    inset: 0;
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    color: $color;
+    margin-bottom: 0;
+  }
+
+  &__subtitle {
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 48px;
+  }
+}
