@@ -1,0 +1,95 @@
+.categories {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+
+    @include tablet {
+      row-gap: 64;
+    }
+  }
+
+  &__button {
+    display: flex;
+    border-radius: 8px;
+    background-color: $main-text-color;
+    height: 56px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #f8f8fa;
+      color: $main-text-color;
+    }
+
+    &:focus {
+      background-color: #111;
+      color: #fff;
+      transform: scale(0.95);
+    }
+
+    @include desktop {
+      width: 320px;
+    }
+  }
+}
+
+.category {
+
+  &__photos {
+    @include page-grid;
+    margin-bottom: 16px;
+    
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include hover(transform, scale(1.05));
+
+      @include tablet {
+        grid-column: span 4;
+      }
+
+      @include desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include hover(transform, scale(1.05));
+
+      @include tablet {
+        grid-column: span 2;
+      }
+
+      @include desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 140%;
+    margin: 0;
+    font-weight: 700;
+  }
+}
