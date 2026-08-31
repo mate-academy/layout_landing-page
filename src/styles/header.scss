@@ -1,4 +1,4 @@
-@use 'mixins';
+@use 'mixins' as *;
 
 .header {
   background-image: url(../images/header-bg-mobile.png);
@@ -38,6 +38,7 @@
   display: block;
   height: 24px;
   width: 24px;
+  cursor: pointer;
 
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
@@ -45,5 +46,37 @@
 
   &--menu {
     background-image: url(../images/icons/icon-burger-menu.png);
+  }
+}
+
+.phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__number {
+    position: absolute;
+    right: calc(100% + 12px);
+
+    width: max-content;
+
+    color: #1B2129;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    .phone__number {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 }
