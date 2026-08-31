@@ -6,13 +6,13 @@
 
   scroll-behavior: smooth;
 
-  &:has(.page__menu:target) {
-    overflow: hidden;
-  }
-
   &__body {
     margin: 0;
     min-width: 320px;
+
+    &:has(.page__menu:target) {
+      overflow-y: hidden;
+    }
   }
 
   &__menu {
@@ -20,15 +20,21 @@
     top: 0;
     right: 0;
     left: 0;
+    z-index: 100;
 
     opacity: 0;
-    transition: all 0.3s;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
     transform: translateX(-100%);
     pointer-events: none;
+
+    overflow-y: auto;
 
     &:target {
       transform: translateX(0);
       pointer-events: all;
+      visibility: visible;
       opacity: 1;
     }
   }
