@@ -1,36 +1,46 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
 }
 
-@mixin on-tablet {
-  @media (max-width: 744px) {
-    @content;
-  }
-}
-
-@mixin on-mobile {
-  @media (max-width: 320px) {
-    @content;
-  }
-}
-
-@mixin content-padding-inline() {
-  padding-inline: 120px;
-
-  @include on-mobile {
-    padding-inline: 25px 20px;
-  }
+// Horizontal page paddings: 20 / 72 / 120 (from Figma grid)
+@mixin content-padding-inline {
+  padding-inline: 20px;
 
   @include on-tablet {
-    padding-inline: 36px 20px;
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
   }
 }
 
-@mixin hover($property, $toValue) {
-  transition: #{property} 0.3s;
+// Centered container with page paddings
+@mixin container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $page-max-width;
+  margin-inline: auto;
+
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $to-value) {
+  transition: #{$property} $transition-duration;
+
   &:hover {
-    #{$property}: $toValue;
+    #{$property}: $to-value;
   }
+}
+
+@mixin scale-on-hover($scale: 1.1) {
+  @include hover(transform, scale($scale));
 }

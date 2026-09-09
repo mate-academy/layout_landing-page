@@ -1,38 +1,88 @@
-.gallery-text {
-  text-align: center;
-  font-weight: 400;
-  font-size: 16px;
-  margin-bottom: 48px;
-}
+.gallery {
+  @include container;
 
-.gallery-images {
   display: flex;
-  gap: 24px;
-}
+  flex-direction: column;
 
-.gallery-paragraphs {
-  margin-top: 24px;
-  margin-bottom: 48px;
-
-  & > p:first-child {
-    color: red; // Красный цвет для первого параграфа внутри .gallery-paragraphs
+  &__title {
+    margin-bottom: 8px;
   }
 
-  &:last-of-type {
-    margin-bottom: 40px; // Отступ внизу только для последнего блока .gallery-paragraphs
+  &__description {
+    margin: 0 auto 48px;
+    max-width: 325px;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
   }
-}
 
-.gallery-button {
-  display: grid;
-  place-items: center;
-  background: #d12d35;
-  width: 324px;
-  justify-self: center;
-  height: 56px;
-  color: #fff;
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
 
-  &:hover {
-    cursor: pointer;
+  &__link {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 324 / 320;
+
+    &--wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 672 / 320;
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+    }
+
+    &--mobile-hidden {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+  }
+
+  &__image {
+    @include scale-on-hover;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__caption {
+    margin: 24px 0 48px;
+    font-size: 16px;
+    line-height: 27px;
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: 700;
+    color: $color-accent;
+  }
+
+  &__date {
+    margin: 0;
+  }
+
+  &__button {
+    align-self: center;
+
+    @include on-tablet {
+      width: 392px;
+    }
+
+    @include on-desktop {
+      width: 324px;
+    }
   }
 }

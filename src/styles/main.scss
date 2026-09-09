@@ -1,57 +1,59 @@
-@import './utils/mixins';
 @import './variables';
+@import './utils/mixins';
+
+// Blocks
 @import './header';
+@import './top-bar';
 @import './icon';
 @import './menu';
 @import './nav';
-@import './top-bar';
-@import './about';
 @import './section-title';
+@import './button';
+@import './about';
 @import './gallery';
 @import './explore';
 @import './contacts';
+@import './form';
+@import './footer';
 
 .page {
   font-family: Cinzel, serif;
+  color: $color-main;
+  scroll-behavior: smooth;
+
+  &:has(&__menu:target) {
+    overflow: hidden; // not to scroll the page under the opened menu
+  }
 
   &__body {
     margin: 0;
     min-width: 320px;
+    background-color: $color-white;
     cursor: url('../images/img_cursor.png'), auto;
-
-    &:hover {
-      cursor: url('../images/img_cursor.png'), pointer;
-    }
   }
 
   &__menu {
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-
-    transition: all 0.3s;
-    opacity: 0;
+    inset: 0;
+    z-index: 10;
     transform: translateX(-100%);
-    pointer-events: none;
-  }
+    transition: transform $transition-duration;
 
-  &__menu:target {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: all;
+    &:target {
+      transform: translateX(0);
+    }
   }
 }
 
-main {
+.main {
+  position: relative; // to be painted above the sticky footer
+  background-color: $color-white;
+  padding-block: 100px;
   display: grid;
-  row-gap: 140px;
-  padding-block: 140px;
+  row-gap: 100px;
 
-  @include content-padding-inline;
-
-  @include on-mobile {
-    padding-block: 100px;
-    row-gap: 100px;
+  @include on-tablet {
+    padding-block: 140px;
+    row-gap: 140px;
   }
 }
