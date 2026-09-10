@@ -1,3 +1,59 @@
-body {
-  margin: 0;
+@import './variables';
+@import './utils/mixins';
+
+// Blocks
+@import './header';
+@import './top-bar';
+@import './icon';
+@import './menu';
+@import './nav';
+@import './section-title';
+@import './button';
+@import './about';
+@import './gallery';
+@import './explore';
+@import './contacts';
+@import './form';
+@import './footer';
+
+.page {
+  font-family: Cinzel, serif;
+  color: $color-main;
+  scroll-behavior: smooth;
+
+  &:has(&__menu:target) {
+    overflow: hidden; // not to scroll the page under the opened menu
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    background-color: $color-white;
+    cursor: url('../images/img_cursor.png'), auto;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform $transition-duration;
+
+    &:target {
+      transform: translateX(0);
+    }
+  }
+}
+
+.main {
+  position: relative; // to be painted above the sticky footer
+  background-color: $color-white;
+  padding-block: 100px;
+  display: grid;
+  row-gap: 100px;
+
+  @include on-tablet {
+    padding-block: 140px;
+    row-gap: 140px;
+  }
 }

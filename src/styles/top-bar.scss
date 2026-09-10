@@ -1,0 +1,86 @@
+.top-bar {
+  @include container;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 25px;
+
+  @include on-tablet {
+    padding-top: 50px;
+  }
+
+  @include on-desktop {
+    padding-top: 52px;
+  }
+
+  &__logo {
+    @include scale-on-hover;
+
+    display: block;
+  }
+
+  &__logo-image {
+    display: block;
+    height: 46px;
+
+    @include on-tablet {
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+  }
+
+  // Phone numbers popup shown to the left of the phone icon on hover
+  &__phones {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 16px);
+    transform: translateY(-50%);
+    text-align: right;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: $color-white;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity $transition-duration,
+      visibility $transition-duration;
+  }
+
+  &__phone:hover &__phones {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__phone-place {
+    margin: 0;
+    font-weight: 700;
+
+    &:not(:first-child) {
+      margin-top: 8px;
+    }
+  }
+
+  &__phone-link {
+    @include hover(color, $color-accent);
+
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+}
