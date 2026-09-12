@@ -92,6 +92,11 @@ if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const btn = form.querySelector('.contact__submit');
     const original = btn.textContent;
 
