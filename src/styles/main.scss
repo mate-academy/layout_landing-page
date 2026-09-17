@@ -1,3 +1,788 @@
+@use 'sass:color';
+@import 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap';
+
+// Variáveis de Design
+$font-serif: 'Cinzel', Georgia, 'Times New Roman', serif;
+$color-accent: #d12d35;
+$color-dark: #161616;
+$color-gray: #666;
+$color-border: #e0e0e0;
+$color-white: #fff;
+$speed: 0.3s;
+$timing: ease;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: $color-dark;
+}
+
 body {
   margin: 0;
+  background-color: $color-dark;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+// Bloqueio de scroll sob menu ativo
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.page__content {
+  position: relative;
+  z-index: 1;
+  background-color: $color-white;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+}
+
+// Requisito: Zoom suave nas imagens ao passar o mouse
+.zoom-img {
+  object-fit: cover;
+  transition: transform $speed $timing;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// HERO & HEADER
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('../images/hero-bg.jpg') center/cover no-repeat;
+  color: $color-white;
+}
+
+.header {
+  padding-top: 32px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  &__icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__phone-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 12px);
+    background-color: rgba(22, 22, 22, 0.95);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all $speed $timing;
+    border-left: 2px solid $color-accent;
+  }
+
+  &__phone-box {
+    position: relative;
+
+    &:hover .header__phone-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__phone-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__phone-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #aaa;
+  }
+
+  &__phone-num {
+    font-size: 14px;
+    font-weight: 600;
+    transition: color $speed $timing;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.hero__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.hero__title {
+  font-family: $font-serif;
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  text-align: center;
+  margin: 0;
+}
+
+// MENU FULLSCREEN (:target)
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: $color-accent;
+  z-index: 100;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+  transition: opacity $speed $timing;
+
+  &:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    margin: 40px 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__link {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: 2px;
+    transition: opacity $speed $timing;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__contacts {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__contacts-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__contacts-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+
+  &__contacts-val {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  &__call-order {
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid $color-white;
+    padding-bottom: 4px;
+  }
+}
+
+// SEÇÕES GENÉRICAS
+.section {
+  padding: 100px 0;
+
+  &__tag {
+    font-family: $font-serif;
+    color: $color-accent;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__heading {
+    font-family: $font-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin: 0;
+    font-weight: 700;
+    color: $color-dark;
+
+    &--center {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__subtext {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      sans-serif;
+    text-align: center;
+    color: $color-gray;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    margin: 0 0 60px;
+  }
+}
+
+// 1. HOURS
+.hours {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 411px 1fr;
+      column-gap: 80px;
+      align-items: start;
+    }
+  }
+
+  &__title-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 498px;
+  }
+
+  &__location {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__loc-name {
+    font-family: $font-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $color-dark;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+  }
+
+  &__schedule {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+
+    dt {
+      min-width: 110px;
+      white-space: nowrap;
+      font-family: $font-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+      color: $color-dark;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    dd {
+      margin: 0;
+      white-space: nowrap;
+      font-family: $font-serif;
+      font-weight: 400; // Regular, conforme o Figma
+      font-size: 16px;
+      line-height: 27px;
+      color: $color-dark;
+      text-transform: uppercase;
+    }
+  }
+
+  &__closed-note {
+    font-family: $font-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-dark;
+    margin: 24px 0 0;
+    text-transform: uppercase;
+
+    strong {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+// 2. NOW ON VIEW
+.view {
+  background-color: #fafafa;
+
+  &__block {
+    margin-bottom: 48px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 2fr 1fr;
+      height: 420px;
+    }
+  }
+
+  &__banner,
+  &__portrait {
+    overflow: hidden;
+    display: block;
+    height: 100%;
+  }
+
+  &__grid-three {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__duo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1.6fr;
+      height: 420px;
+    }
+  }
+
+  &__duo-item {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  &__meta {
+    margin-top: 16px;
+  }
+
+  &__meta-title {
+    font-family: $font-serif;
+    color: $color-accent;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &__meta-date {
+    font-family: $font-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: $color-dark;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+}
+
+.art-card {
+  display: block;
+  overflow: hidden;
+  height: 280px;
+}
+
+// Botão Primary (Secondary_button do Figma)
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 324px;
+  height: 56px;
+  background-color: $color-accent;
+  color: $color-white;
+  font-family: $font-serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color $speed $timing;
+
+  &:hover {
+    background-color: color.adjust($color-accent, $lightness: -8%);
+  }
+}
+
+// 3. MORE TO EXPLORE ONLINE
+.explore {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 60px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.explore-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 324px;
+  margin: 0 auto;
+
+  &__media {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 320px;
+    margin-bottom: 24px;
+  }
+
+  &__tag {
+    font-family: $font-serif;
+    color: $color-accent;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+    margin: 0 0 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__desc {
+    font-family:
+      Roboto,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0;
+    color: $color-dark;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+// 4. CONTACT US
+.contacts {
+  background-color: $color-white;
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 60px;
+
+    @media (min-width: 900px) {
+      grid-template-columns: 1.4fr 1fr;
+      column-gap: 64px;
+      align-items: start;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__loc-title {
+    font-family: $font-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $color-dark;
+    margin: 0 0 24px;
+    text-transform: uppercase;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    color: $color-gray;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  &__value {
+    font-family: $font-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: $color-dark;
+    text-transform: uppercase;
+    transition: color $speed $timing;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__field {
+    display: flex;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: #f7f7f7;
+    border: none;
+    outline: none;
+    font-family: $font-serif;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: $color-dark;
+    transition: background-color $speed $timing;
+
+    &::placeholder {
+      font-family: $font-serif; // Exatamente a mesma fonte Cinzel
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #7e7e83;
+      text-transform: uppercase;
+    }
+
+    &:focus {
+      background-color: #ededed;
+    }
+  }
+
+  &__textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  &__btn {
+    width: 100%; // Ocupa a largura total do form como no Figma
+    height: 56px;
+    background-color: $color-accent;
+    color: $color-white;
+    font-family: $font-serif;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color $speed $timing;
+
+    &:hover {
+      background-color: color.adjust($color-accent, $lightness: -8%);
+    }
+  }
+}
+
+// 5. FOOTER STICKY REVEAL (FOTO DO HERO)
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url('../images/hero-bg.jpg') center/cover no-repeat;
+  color: $color-white;
+  padding: 80px 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0 0 16px;
+    font-weight: 400;
+  }
+
+  &__link {
+    display: block;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    transition: color $speed $timing;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
 }
