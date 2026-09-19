@@ -1,0 +1,64 @@
+@use '../utils' as *;
+
+.main {
+  position: relative;
+  z-index: 10;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 32px;
+
+  background-color: #101010;
+  background-image: url('../images/hero-bike-mob.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include on-tablet {
+    background-image: url('../images/hero-bike.png');
+    background-position: right center;
+  }
+
+  @include on-desktop {
+    padding-bottom: 56px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+    z-index: 1;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.1;
+    text-align: center;
+    padding-bottom: 60px;
+    color: $color-white;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 56px;
+    }
+  }
+}

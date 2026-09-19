@@ -1,0 +1,180 @@
+@use 'utils' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-main;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $color-text;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  background-color: $color-bg;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid $color-white;
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(#{$container} + 2 * 40px);
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include on-tablet {
+    padding: 0 40px;
+  }
+
+  @include on-desktop {
+    padding: 0 60px;
+  }
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  color: $color-white;
+  text-align: center;
+
+  @include on-desktop {
+    font-size: 40px;
+  }
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: $color-white;
+
+  &--dark {
+    color: $color-menu-text;
+  }
+}
+
+.icon-link {
+  display: inline-block;
+  position: relative;
+  background: no-repeat center / contain;
+
+  z-index: 1;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.4, 1);
+  will-change: transform;
+  width: $icon-size;
+  height: $icon-size;
+
+  @include on-desktop {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url('../images/icon-phone-call.png');
+
+    &::before {
+      content: none;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      margin-right: 20px;
+      white-space: nowrap;
+
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    @include on-desktop {
+      &::before {
+        content: attr(data-phone);
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+  &--burger {
+    background-image: url('../images/icon-burger-menu.png');
+
+    &:hover {
+      width: 32px;
+      height: 32px;
+      background-image: url('../images/icon-burger-menu-hover.png');
+    }
+  }
+
+  &--close {
+    background-image: url('../images/icon-close.png');
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    color: inherit;
+  }
+}

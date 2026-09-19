@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin on-wide {
+  @media (min-width: $wide) {
+    @content;
+  }
+}
+
+@mixin aspect-ratio($ratio: 100%) {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: $ratio;
+  }
+
+  & > * {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+// Fixed height crops the (wider) footer image at the sides on mobile/tablet;
+// on desktop the box switches to the image's own ratio, so it shows in full.
+@mixin footer-frame {
+  height: 420px;
+
+  @include on-desktop {
+    height: auto;
+    aspect-ratio: $footer-img-ratio;
+  }
+}

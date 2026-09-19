@@ -1,0 +1,91 @@
+@use '../utils' as *;
+
+.details {
+  padding-bottom: 56px;
+
+  @include on-desktop {
+    padding-bottom: 90px;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+}
+
+.detail {
+  &:not(:last-of-type) {
+    margin-bottom: 48px;
+  }
+
+  &__images {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 20px;
+    width: 100%;
+
+    &--wide-left {
+      grid-template-columns: 1fr 1fr;
+    }
+    &--wide-right {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include on-tablet {
+      &--wide-left {
+        grid-template-columns: 2fr 1fr;
+      }
+      &--wide-right {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+
+      &:hover {
+        transform: scale(1.06);
+         cursor: pointer;
+      }
+
+      @include on-tablet {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.3;
+    color: $color-white;
+    margin-bottom: 12px;
+
+    @include on-desktop {
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: $color-text;
+    max-width: 640px;
+
+    @include on-desktop {
+      font-size: 15px;
+    }
+  }
+}
