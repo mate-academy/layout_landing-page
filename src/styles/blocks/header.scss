@@ -1,0 +1,128 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  @include background-image;
+
+  background-position: right;
+
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    background-position: center;
+  }
+
+  &__title {
+    margin-bottom: $space-10;
+    margin-top: auto;
+    text-align: center;
+    font-family: $font-main;
+    font-weight: $font-bold;
+    color: $font-color;
+    font-size: $space-4 + 4;
+    letter-spacing: -1.5px;
+
+    @include tablet {
+      font-size: $space-8;
+    }
+
+    @include desktop {
+      font-size: $space-10;
+      margin-bottom: $space-5 * 5;
+    }
+  }
+
+  &__inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $space-3 $space-3 - 4 $space-0;
+
+    @include tablet {
+      padding: $space-4 + 4 $space-9 0 $space-9;
+    }
+  }
+
+  &__hero {
+    display: flex;
+    justify-content: space-between;
+
+    &__menu-bar {
+      justify-content: space-between;
+      padding-top: $space-1;
+    }
+
+    &__menu {
+      cursor: pointer;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+        transform: scale(1.03);
+      }
+    }
+
+    &__phone-number {
+      display: none;
+
+      @include tablet {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-right: $space-3;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-family: $font-main;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        color: $font-color;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+    }
+
+    &__phone-link {
+      position: relative;
+      display: inline-block;
+
+      &:hover .header__hero__phone-number,
+      &:focus-visible .header__hero__phone-number {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &__logo {
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @include tablet {
+        width: 190px;
+      }
+    }
+
+    &__phone {
+      padding-right: $space-3;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+        transform: scale(1.03);
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  background-color: $menu-bg;
+  color: $color-dark;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    transform 0.3s,
+    opacity 0.3s,
+    visibility 0.3s;
+
+  &--open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    height: 100%;
+    padding: $space-3 $space-3 - 3 $space-5;
+
+    @include tablet {
+      padding: $space-4 + 4 $space-9 0 $space-9;
+    }
+  }
+
+  &__logo {
+    filter: brightness(0);
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 33px;
+    right: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    @include tablet {
+      top: 45px;
+      right: 72px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    margin: 50px 0 $space-6;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    font-family: $font-main;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-dark;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform-origin: left;
+      transform: scaleX(1);
+    }
+  }
+
+  &__phone {
+    font-family: $font-main;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 500;
+    padding-bottom: 16px;
+    text-decoration: none;
+    color: $color-dark;
+  }
+
+  &__btn {
+    padding: 0 0 8px;
+    border: none;
+    border-bottom: 2px solid currentColor;
+    background: none;
+    font-family: $font-main;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: inherit;
+    cursor: pointer;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}

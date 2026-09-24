@@ -1,0 +1,122 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contacts {
+  &__title {
+    @include section-title;
+
+    @include tablet {
+      padding-top: $space-5 * 3;
+    }
+  }
+
+  &__content {
+    padding-top: 60px;
+    margin-bottom: 120px;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-3;
+    }
+
+    @include desktop {
+      gap: 200px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    margin: 0 auto;
+    width: 100%;
+
+    @include desktop {
+      min-width: 410px;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    padding: $space-2;
+    border: none;
+    border-radius: $space-5;
+    background-color: #f5f5f5;
+    font-family: $font-main;
+    font-size: $space-2 - 2;
+    color: $color-dark;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $color-dark;
+    }
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px #f5f5f5 inset;
+      -webkit-text-fill-color: $color-dark;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    &__input,
+    &__textarea {
+      &::placeholder {
+        color: rgba($color-dark, 0.5);
+        transition: color 0.3s ease;
+      }
+
+      &:hover {
+        color: $hover-text-color;
+
+        &::placeholder {
+          color: $hover-text-color;
+        }
+      }
+    }
+  }
+
+  &__textarea--message {
+    resize: vertical;
+    min-height: 148px;
+    border-radius: $space-2;
+  }
+
+  &__btn {
+    @include button;
+
+    margin-top: $space-4;
+    max-width: none;
+
+    &--text {
+      @include button-text;
+    }
+  }
+
+  &__info {
+    padding-top: $space-6;
+    list-style: none;
+
+    @include tablet {
+      padding-top: 0;
+    }
+
+    &-label {
+      font-size: $space-2 - 2;
+      font-weight: $font-regular;
+      padding-bottom: $space-1;
+    }
+
+    &-value {
+      display: block;
+      text-decoration: none;
+      color: $font-color;
+      margin-bottom: $space-3;
+      font-size: $space-2;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
