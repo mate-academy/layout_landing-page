@@ -1,0 +1,44 @@
+@use './utils/mixins' as *;
+
+.page {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 140%;
+  color: #fff;
+
+  scroll-behavior: smooth;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0%);
+
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    background-color: #1d1d1d;
+
+    @include on-tablet {
+      margin: 0;
+      min-width: 576px;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
