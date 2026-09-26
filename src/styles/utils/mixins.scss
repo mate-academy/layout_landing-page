@@ -1,0 +1,90 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constent-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1020px;
+    margin-inline: auto;
+
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include constent-padding-inline;
+}
+
+.footer {
+  @include constent-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin form-field {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f8f8fa;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 16px;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: #7e7e83;
+    transition: color 0.2s ease;
+  }
+
+  &:hover {
+    background-color: #f8f8fa;
+    border: #d5d7de 1px solid;
+    color: #111;
+    &::placeholder {
+      color: #111;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #f8f8fa;
+    border: #111 1px solid;
+    &::placeholder {
+      color: #111;
+    }
+  }
+}

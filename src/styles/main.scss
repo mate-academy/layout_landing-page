@@ -1,3 +1,265 @@
-body {
+@import './utils/mixins';
+@import './header';
+@import './section-title';
+@import './utils/variables';
+@import './about-us';
+@import './categories';
+@import './product';
+@import './contacts';
+
+/* #region page */
+.page__body {
   margin: 0;
+  min-width: 320px;
+}
+
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #292929;
+  font-size: 16px;
+  line-height: 140%;
+
+  scroll-behavior: smooth;
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0;
+  transition: all 0.3s;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+/* #endregion page */
+
+/* #region menu */
+
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+  }
+}
+
+.menu {
+  box-sizing: border-box;
+overflow: auto;
+  height: 100vh;
+  background-color: #e5e6e8;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+.menu:target {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.menu__nav {
+  margin-bottom: 48px;
+}
+
+.menu__phone-number {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.menu__call-to-order {
+  display: block;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #292929;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.menu__top {
+  margin-bottom: 32px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+}
+
+/* #endregion menu */
+
+/* #region nav */
+.nav__link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #292929;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* #endregion nav */
+
+/* #region icon */
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  transition: transform 1s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/Icon-Phone-call.svg);
+
+    @include on-desktop{
+      &:hover {
+        background-image: url(../icons/Phone-number.svg);
+        width: 200px;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/Icon-Burger-menu.svg);
+
+    &:hover {
+      background-image: url(../icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/Icon-Close.svg);
+  }
+}
+
+/* #endregion icon */
+
+/* #region footer */
+
+/* #endregion footer */
+
+.main {
+  background-color: #fff;
+
+  &__content {
+    display: grid;
+    row-gap: 96px;
+    padding-block: 96px;
+
+    @include on-tablet {
+      padding-block: 120px;
+      row-gap: 120px;
+    }
+  }
+}
+
+.recommended {
+  &__products {
+    @include page-grid;
+
+    row-gap: 56px;
+  }
+
+  &__product {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
+
+.hero-banner {
+  height: 460px;
+  width: 100%;
+  overflow: hidden;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.footer {
+  z-index: -1 fixed;
+  margin-bottom: 120px;
+}
+
+img{
+  transition: transform 1s;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
