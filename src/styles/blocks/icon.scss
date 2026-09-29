@@ -1,0 +1,72 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(/images/icon/icon-phone.svg);
+
+    &::before {
+      content: attr(data-phone);
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      padding-right: 12px;
+      transform: translateY(-50%);
+      color: $main-text-color;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity $effectDuration,
+        visibility $effectDuration;
+    }
+
+    @include on-tablet {
+      &:hover::before,
+      &:focus-visible::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &--menu {
+    position: relative;
+    background-image: url(/images/icon/icon-menu.svg);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url(/images/icon/icon-menu-hover.svg);
+      background-size: cover;
+      opacity: 0;
+      transition: opacity $effectDuration;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-image: none;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(/images/icon/icon-close.svg);
+  }
+}
