@@ -6,18 +6,32 @@
 
 body {
   margin: 0;
+  background-color: $color-black;
 }
 
 .header {
+  position: relative;
+
   width: 100%;
-  height: $header-height;
-  background-color: $color-black;
+  max-width: $container-width;
+  height: 711px;
+
+  margin: 0 auto;
 
   &__inner {
+    position:absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2;
+
+    width: 100%;
     max-width: $container-width;
-    height: 100%;
-    margin: 0 auto;
+    height: $header-height;
+
+    margin: 0;
     padding: 36px 120px;
+
+    transform: translateX(-50%);
 
     display: flex;
     align-items: center;
@@ -93,6 +107,7 @@ body {
 
 .menu {
   position: fixed;
+  overflow: auto;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -112,6 +127,11 @@ body {
   }
 
   &__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-gray;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -259,4 +279,8 @@ body {
       background-color: $color-black;
     }
   }
+}
+
+body:has(.menu.is-open) {
+  overflow: hidden;
 }
