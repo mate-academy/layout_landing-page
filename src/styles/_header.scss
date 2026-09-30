@@ -1,0 +1,285 @@
+@use 'variables' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $color-black;
+}
+
+.header {
+  position: relative;
+
+  width: 100%;
+  margin: 0;
+  background-color: $color-black;
+
+
+  &__inner {
+    position:absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2;
+
+    width: 100%;
+    max-width: $container-width;
+    height: $header-height;
+
+    margin: 0;
+    padding: 36px 120px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 187px;
+      height: 56px;
+      display: block;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__phone,
+  &__menu-button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__phone img,
+  &__menu-button img {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &__menu-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__link {
+    color: $color-white;
+    text-decoration: none;
+
+    font-family: $font-primary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.menu {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  display: none;
+
+  width: 100%;
+  max-width: 1260px;
+  height: 700px;
+
+  padding: 36px 120px;
+
+  background-color: $color-gray;
+
+  &.is-open {
+    display: block;
+  }
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-gray;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 187px;
+      height: 56px;
+      display: block;
+    }
+  }
+
+  &__close {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+  }
+
+  &__nav {
+    margin-top: 60px;
+  }
+
+  &__list {
+    width: 201px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    display: inline-block;
+    white-space: nowrap;
+
+    color: $color-black;
+    text-decoration: none;
+
+    font-family: $font-primary;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__item--active {
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 30px;
+      left: 0;
+
+      width: 129px;
+      height: 0;
+
+      border-top: 1px solid $color-black;
+    }
+
+    .menu__cursor {
+      position: absolute;
+      top: 20px;
+      left: 95px;
+
+      width: 32px;
+      height: 32px;
+
+      display: block;
+    }
+  }
+
+  &__contact {
+    width: 155px;
+    margin-top: 28px;
+  }
+
+  &__phone {
+    display: block;
+
+    width: 155px;
+
+    color: $color-black;
+    text-decoration: none;
+
+    font-family: $font-primary;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+  }
+
+  &__cta {
+    position: relative;
+
+    display: block;
+
+    width: 137px;
+    margin-top: 16px;
+    padding-bottom: 8px;
+
+    color: $color-black;
+    text-decoration: none;
+
+    font-family: $font-primary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 137px;
+      height: 1px;
+
+      background-color: $color-black;
+    }
+  }
+}
+
+body:has(.menu.is-open) {
+  overflow: hidden;
+}
