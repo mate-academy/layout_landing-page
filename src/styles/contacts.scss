@@ -1,0 +1,171 @@
+.contacts {
+  display: grid;
+  grid-template-columns: $mobile-column-template;
+  grid-column: 1 / -1;
+  column-gap: $column-gap-mobile;
+  margin: 0;
+  margin-bottom: 64px;
+  padding-inline: $mobile-inline-padding;
+
+  @include at-tablet {
+    grid-template-columns: $tablet-column-template;
+    column-gap: $column-gap-tablet;
+    padding-inline: $tablet-inline-padding;
+    margin-bottom: 120px;
+  }
+
+  @include at-computer {
+    grid-template-columns: $computer-column-template;
+    column-gap: $column-gap-computer;
+    padding-inline: $computer-inline-padding;
+    margin-bottom: 120px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    margin: 0;
+    margin-bottom: 48px;
+  }
+
+  &__form {
+    display: grid;
+    grid-column: 1 / -1;
+    row-gap: 16px;
+    margin-bottom: 48px;
+
+    @include at-computer {
+      grid-column: span 5;
+      margin-bottom: 0;
+    }
+
+    input,
+    textarea {
+      box-sizing: border-box;
+      height: 48px;
+      grid-column: 1 / -1;
+      border: 0 solid transparent;
+      border-radius: 8px;
+      background-color: $form-field-bg-color;
+      padding: 14px 16px;
+      transition: all 0.3s ease;
+
+      @include content-text-font;
+
+      font-size: 14px;
+    }
+
+    textarea {
+      height: 148px;
+      margin-bottom: 32px;
+      resize: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      @include content-text-font;
+
+      font-size: 14px;
+    }
+
+    input:hover,
+    textarea:hover {
+      border: 1px solid #D5D7DE;
+    }
+
+    input:hover::placeholder,
+    textarea:hover::placeholder {
+      color: $main-text-color;
+    }
+
+    input:focus,
+    textarea:focus {
+      border: 1px solid #292929;
+    }
+
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+      visibility: hidden;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      &:autofill,
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        box-shadow: inset 0 0 0 1000px $form-field-bg-color;
+        -webkit-text-fill-color: inherit;
+      }
+    }
+
+    input[type='submit'] {
+      height: 56px;
+      background-color: $main-buttons-color;
+      color: $default-buttons-text-color;
+
+      @include content-title-font;
+
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input[type='submit']:hover {
+      background-color: $main-buttons-hover-color;
+      color: $main-text-color;
+      border: $main-buttons-hover-border;
+      cursor: pointer;
+    }
+
+    input[type='submit']:active {
+      background-color: $main-buttons-color;
+      color: $default-buttons-text-color;
+    }
+  }
+
+  &__info {
+    display: grid;
+    grid-column: 1 / -1;
+    row-gap: $row-gap-mobile;
+    margin: 0;
+
+    @include content-text-font;
+
+    @include at-computer {
+      grid-column: 7 / -1;
+    }
+
+    .contacts__detail {
+      display: grid;
+      grid-column: 1 / -1;
+      row-gap: 8px;
+
+      .contacts__label {
+        @include content-title-font;
+
+        font-size: 14px;
+        font-weight: 400;
+        color: $contact-label-color;
+      }
+
+      .contacts__value {
+        @include content-text-font;
+
+        font-size: 16px;
+        text-decoration: none;
+        color: $main-text-color;
+        margin: 0;
+      }
+
+      & a {
+        display: inline-block;
+        transform-origin: left;
+        transition: all .3s ease-in;
+      }
+
+      & a:hover {
+        transform: scale(1.2);
+        font-weight: 700;
+      }
+    }
+  }
+}

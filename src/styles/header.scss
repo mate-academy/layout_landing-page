@@ -1,0 +1,136 @@
+.header {
+  background-size: cover;
+  min-height: $header-height-mobile;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../images/header-bg-mobile.png');
+  padding: $mobile-default-padding;
+  padding-inline: $mobile-inline-padding;
+
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include at-tablet {
+    background-image: url('../images/header-bg-tablet.png');
+    padding: $tablet-default-padding;
+    padding-inline: $tablet-inline-padding;
+  }
+
+  @include at-computer {
+    background-image: url('../images/header-bg-computer.png');
+    padding: $computer-default-padding;
+    padding-inline: $computer-inline-padding;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include at-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+
+    @include at-tablet {
+      font-size: 48px;
+    }
+
+    @include at-computer {
+      font-size: 56px;
+    }
+  }
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    display: block;
+    height: 16px;
+    width: 125px;
+    background-image: url(../images/nothing-logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include at-tablet {
+      width: 172px;
+      height: 24px;
+      background-image: url(../images/nothing-logo-tablet.png);
+    }
+  }
+}
+
+.icon {
+  display: block;
+  height: $mobile-icon-height;
+  width: $mobile-icon-width;
+  transition: transform .3s ease;
+
+  @include on-tablet-icon-sizing;
+  @include on-computer-icon-sizing;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.icon--phone {
+  position: relative;
+  background-image: url(../images/icons/phone-icon.png);
+  background-size: cover;
+  background-position: center;
+
+  @include at-tablet {
+    background-image: url(../images/icons/phone-icon-tablet.png);
+  }
+
+  @include at-computer {
+    &::after {
+      opacity: 0;
+      content: '+1 234 555-55-55';
+      display: block;
+      position: absolute;
+      right: 40px;
+      top: 8px;
+      color: $main-text-color;
+      letter-spacing: 2px;
+      font-size: 16px;
+      line-height: 140%;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}
+
+.icon--menu {
+  background-image: url(../images/icons/burger-menu-icon.png);
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease-in-out;
+
+  @include at-tablet {
+    background-image: url(../images/icons/burger-menu-tablet.png);
+  }
+}
+
+.icon--menu:hover {
+  background-image: url(../images/icons/burger-menu-icon-hover.png);
+  background-size: cover;
+  background-position: center;
+}

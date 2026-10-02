@@ -1,0 +1,238 @@
+.store {
+  display: grid;
+  grid-template-columns: $mobile-column-template;
+  column-gap: $column-gap-mobile;
+  box-sizing: border-box;
+  padding-inline: $mobile-inline-padding;
+  margin: 0;
+  margin-bottom: 96px;
+
+  @include at-tablet {
+    grid-template-columns: $tablet-column-template;
+    column-gap: $column-gap-tablet;
+    padding-inline: $tablet-inline-padding;
+  }
+
+  @include at-computer {
+    grid-template-columns: $computer-column-template;
+    column-gap: $column-gap-computer;
+    padding-inline: $computer-inline-padding;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    margin: 0;
+    margin-bottom: $mobile-default-section-title-mb;
+
+    @include on-tablet-section-title-margin-bottom;
+    @include on-computer-section-title-margin-bottom;
+  }
+
+  &__categories {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-gap: $grid-gap-mobile;
+    margin-bottom: 40px;
+
+    .category__products,
+    .category__audio,
+    .category__accessories {
+      display: grid;
+      column-gap: $column-gap-mobile;
+      grid-template-columns: $mobile-column-template;
+
+      @include on-tablet-store-section-grid;
+      @include on-computer-store-section-grid;
+
+      .category__image {
+        width: 100%;
+        height: $mobile-store-image-height;
+        margin-bottom: 16px;
+
+        @include at-tablet {
+          height: $tablet-store-image-height;
+        }
+
+        @include at-computer {
+          height: $computer-store-image-height;
+        }
+      }
+
+      .category__title {
+        font-size: 18px;
+        line-height: 140%;
+        margin: 0;
+        grid-column: 1 / -1;
+      }
+
+      &:nth-child(2n) .category__image {
+        &:first-child {
+          @include at-tablet {
+            grid-column: span 2;
+          }
+
+          @include at-computer {
+            grid-column: span 4;
+          }
+        }
+
+        &:nth-child(2) {
+          @include at-tablet {
+            grid-column: span 4;
+          }
+
+          @include at-computer {
+            grid-column: span 8;
+          }
+        }
+      }
+
+      // stylelint-disable-next-line no-descending-specificity -- parallel odd/even branch, same specificity as the block above
+      &:nth-child(2n + 1) .category__image {
+        &:first-child {
+          @include on-tablet-product-image-1-grid;
+          @include on-computer-product-image-1-grid;
+        }
+
+        &:nth-child(2) {
+          @include on-tablet-product-image-2-grid;
+          @include on-computer-product-image-2-grid;
+        }
+      }
+    }
+  }
+
+  .product-1--img,
+  .product-2--img,
+  .audio-1--img,
+  .audio-2--img,
+  .accessory-1--img,
+  .accessory-2--img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    transition: transform .3s ease;
+  }
+
+  .product-1--img {
+    background-image: url(../images/product-1.png);
+
+    @include at-tablet {
+      background-image: url(../images/product-1-tablet.png);
+    }
+
+    @include at-computer {
+      background-image: url(../images/product-1-computer.png);
+    }
+  }
+
+  .product-2--img {
+    background-image: url(../images/product-2.png);
+
+    @include at-tablet {
+      background-image: url(../images/product-2-tablet.png);
+    }
+
+    @include at-computer {
+      background-image: url(../images/product-2-computer.png);
+    }
+  }
+
+  .audio-1--img {
+    background-image: url(../images/audio-1.png);
+
+    @include at-tablet {
+      background-image: url(../images/audio-1-tablet.png);
+    }
+
+    @include at-computer {
+      background-image: url(../images/audio-1-computer.png);
+    }
+  }
+
+  .audio-2--img {
+    background-image: url(../images/audio-2.png);
+
+    @include at-tablet {
+      background-image: url(../images/audio-2-tablet.png);
+    }
+
+    @include at-computer {
+      background-image: url(../images/audio-2-computer.png);
+    }
+  }
+
+  .accessory-1--img {
+    background-image: url(../images/accessory-1.png);
+
+    @include at-tablet {
+      background-image: url(../images/accessory-1-tablet.png);
+    }
+
+    @include at-computer {
+      background-image: url(../images/accessory-1-computer.png);
+    }
+  }
+
+  .accessory-2--img {
+    background-image: url(../images/accessory-2.png);
+
+    @include at-tablet {
+      background-image: url(../images/accessory-2-tablet.png);
+    }
+
+    @include at-computer {
+      background-image: url(../images/accessory-2-computer.png);
+    }
+  }
+
+  .product-1--img:hover,
+  .product-2--img:hover,
+  .audio-1--img:hover,
+  .audio-2--img:hover,
+  .accessory-1--img:hover,
+  .accessory-2--img:hover {
+    transform: scale(1.03);
+  }
+
+  .btn__view-all {
+    display: grid;
+    margin: 0;
+    grid-column: 1 / -1;
+    height: 56px;
+    width: 100%;
+    align-content: center;
+    border: 0;
+    border-radius: 8px;
+    background-color: $main-buttons-color;
+    transition: background-color 0.3s ease;
+
+    @include at-computer {
+      grid-column: span 4;
+    }
+
+    &:hover {
+      background-color: $main-buttons-hover-color;
+      border: $main-buttons-hover-border;
+    }
+
+    &:active {
+      background-color: #111;
+    }
+
+    & a {
+      text-decoration: none;
+      color: #fff;
+      line-height: 27px;
+    }
+
+    &:hover a {
+      color: $main-text-color;
+    }
+
+    &:active a {
+      color: #fff;
+    }
+  }
+}

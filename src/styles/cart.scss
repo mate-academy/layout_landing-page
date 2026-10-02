@@ -1,0 +1,92 @@
+.cart {
+  background-color: $overlay-background-color;
+  box-sizing: border-box;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  padding: $mobile-default-padding;
+  padding-inline: $mobile-inline-padding;
+
+  @include at-tablet {
+    padding: $tablet-default-padding;
+    padding-inline: $tablet-inline-padding;
+  }
+
+  @include at-computer {
+    padding: $computer-default-padding;
+    padding-inline: $computer-inline-padding;
+  }
+
+  &__icon--close {
+    height: $mobile-icon-height;
+    width: $mobile-icon-width;
+    background-image: url(../images/icons/close-icon.png);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+
+    @include at-tablet {
+      background-image: url(../images/icons/close-icon-tablet.png);
+    }
+
+    @include on-tablet-icon-sizing;
+    @include on-computer-icon-sizing;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__content {
+    display: grid;
+    flex: 1;
+    align-content: center;
+    justify-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title,
+  &__empty {
+    margin: 0;
+  }
+
+  &__empty {
+    @include content-text-font;
+  }
+
+  &__button {
+    display: grid;
+    box-sizing: border-box;
+    width: min(100%, 320px);
+    min-height: 56px;
+    padding: 12px 24px;
+    place-items: center;
+    border-radius: 8px;
+    background-color: $main-buttons-color;
+    color: $default-buttons-text-color;
+    text-decoration: none;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+
+    @include content-title-font;
+
+    font-size: 16px;
+
+    &:hover {
+      border: $main-buttons-hover-border;
+      background-color: $main-buttons-hover-color;
+      color: $main-text-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $main-text-color;
+      outline-offset: 3px;
+    }
+  }
+}
