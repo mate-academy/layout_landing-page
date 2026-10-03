@@ -9,11 +9,21 @@ $image-dimension: 324px;
 $grey-1: #9393A3;
 $grey-2: #7E7E83;
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px $almost-white inset !important;
+  box-shadow: 0 0 0 1000px $almost-white inset !important;
+  -webkit-text-fill-color: $grey-2 !important;
+  transition: background-color 9999s ease-in-out 0s;
+  }
+
 html {
   scroll-behavior: smooth;
 }
 
-.body:has(.menu__active) {
+.page:has(.menu:target) {
   overflow: hidden;
 }
 
@@ -35,6 +45,10 @@ body {
 
   transform: translateX(100%);
   opacity: 0;
+
+  &__close{
+    cursor:pointer;
+  }
 
   &__active {
     transform: translateX(0);
@@ -92,6 +106,7 @@ body {
     }
 
     &-item {
+      cursor: pointer;
       width: fit-content;
       position: relative;
       margin-top: 32px;
@@ -220,9 +235,8 @@ body {
     z-index: 3;
 
     &-number {
-      user-select: none;
       position: relative;
-      top: -135%;
+      top: -160%;
       white-space: nowrap;
       font-family: Manrope, sans-serif;
       font-weight: 700;
@@ -230,12 +244,17 @@ body {
       line-height: 16px;
       z-index: 1;
       opacity: 0;
+      width: 125%;
+      height:120%;
+      text-align: center;
+      align-content: center;
+
     }
 
     &-active {
       transition: all 0.15s ease;
       opacity: 100%;
-      transform: translateX(-110%);
+      transform: translateX(-100%);
     }
 
     &-inactive {
@@ -247,6 +266,7 @@ body {
   }
 
   &__burger {
+    cursor: pointer;
     user-select: none;
     position: relative;
     bottom: 50%;

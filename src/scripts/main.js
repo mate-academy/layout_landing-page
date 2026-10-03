@@ -30,7 +30,17 @@ phoneIcon.addEventListener('mouseenter', (event) => {
   phoneNumber.classList.remove('header__phone-inactive');
 });
 
+phoneNumber.addEventListener('mouseenter', (event) => {
+  phoneNumber.classList.add('header__phone-active');
+  phoneNumber.classList.remove('header__phone-inactive');
+});
+
 phoneIcon.addEventListener('mouseleave', (event) => {
+  phoneNumber.classList.remove('header__phone-active');
+  phoneNumber.classList.add('header__phone-inactive');
+});
+
+phoneNumber.addEventListener('mouseleave', (event) => {
   phoneNumber.classList.remove('header__phone-active');
   phoneNumber.classList.add('header__phone-inactive');
 });
