@@ -1,3 +1,761 @@
-body {
-  margin: 0;
+$bg: #1d1d1d;
+$text: #fff;
+$field: #f8f8fa;
+$duration: 0.3s;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.page {
+  background-color: $bg;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    margin: 0;
+    background-color: $bg;
+    color: $text;
+    font-family: Poppins, sans-serif;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.section-title {
+  margin: 0 0 56px;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  border: 0;
+  border-radius: 40px;
+  background-color: $field;
+  color: $bg;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow $duration;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+  }
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+
+  &__logo {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__phone {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: $text;
+    }
+  }
+
+  &__phone-text {
+    position: absolute;
+    right: 36px;
+    width: max-content;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transform: translateX(8px);
+    transition:
+      opacity $duration,
+      transform $duration;
+  }
+
+  &__phone:hover &__phone-text {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 24px;
+    height: 24px;
+
+    span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $text;
+      transition: width $duration;
+    }
+
+    span:nth-child(2) {
+      width: 12px;
+    }
+
+    &:hover span:nth-child(2) {
+      width: 18px;
+    }
+  }
+}
+
+.header {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('../images/hero.png');
+  background-position: center 48%;
+  background-size: cover;
+
+  &__top {
+    position: relative;
+    z-index: 2;
+    padding-top: 36px;
+  }
+
+  &__title {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 94px;
+    margin: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  padding: 0 max(30px, calc((100vw - 1020px) / 2));
+  overflow: auto;
+  background-color: $bg;
+  transform: translateX(100%);
+  transition: transform $duration;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    padding: 36px 0;
+    background-color: $bg;
+  }
+
+  &__close {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: 2px;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $text;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 44px;
+  }
+
+  &__link {
+    width: max-content;
+    border-bottom: 1px solid transparent;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: border-color $duration;
+
+    &:hover {
+      border-color: $text;
+    }
+  }
+
+  &__phone,
+  &__call {
+    display: block;
+    width: max-content;
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+
+  &__call {
+    margin-top: 16px;
+    border-bottom: 1px solid $text;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+  }
+}
+
+.about {
+  padding: 120px 0 132px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 120px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+.compare {
+  padding-bottom: 144px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.bike-card {
+  &__image-link {
+    display: block;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+
+  &__image {
+    height: 220px;
+    object-fit: contain;
+    transition: transform $duration;
+  }
+
+  &__image-link:hover &__image {
+    transform: scale(1.06);
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__text {
+    min-height: 66px;
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
+
+.details {
+  padding-bottom: 180px;
+
+  &__button {
+    width: 324px;
+    margin: 56px auto 0;
+  }
+}
+
+.detail-card {
+  margin-bottom: 48px;
+
+  &__gallery {
+    display: grid;
+    gap: 24px;
+    height: 320px;
+    margin-bottom: 16px;
+
+    &--wide-left {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    &--wide-right {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &__image-link {
+    display: block;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform $duration;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__text {
+    max-width: 800px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+.contacts {
+  padding-bottom: 160px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    width: 100%;
+    height: 48px;
+    border: 1px solid transparent;
+    border-radius: 40px;
+    outline: none;
+    padding: 14px 16px;
+    background-color: $field;
+    color: $bg;
+    font-size: 14px;
+    transition: border-color $duration;
+
+    &::placeholder {
+      color: #7e7e83;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #d5d7de;
+    }
+
+    &--message {
+      height: 148px;
+      border-radius: 16px;
+      resize: none;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 0;
+    font-style: normal;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: 14px;
+  }
+
+  &__link {
+    width: max-content;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color $duration;
+
+    &:hover {
+      color: #c2c2c2;
+    }
+  }
+}
+
+.footer {
+  position: relative;
+  z-index: 0;
+  bottom: 0;
+  height: 555px;
+  background-image: url('../images/footer.png');
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 1199px) {
+  .container,
+  .top-bar {
+    max-width: 600px;
+  }
+
+  .top-bar {
+    &__logo {
+      font-size: 32px;
+    }
+  }
+
+  .header {
+    height: 628px;
+    background-position: center 45%;
+
+    &__top {
+      padding-top: 34px;
+    }
+
+    &__title {
+      bottom: 82px;
+      font-size: 54px;
+    }
+  }
+
+  .menu {
+    padding-inline: max(72px, calc((100vw - 600px) / 2));
+
+    &__top {
+      padding: 34px 0;
+    }
+  }
+
+  .about {
+    padding: 120px 0;
+
+    &__content {
+      gap: 24px;
+    }
+
+    &__title {
+      font-size: 48px;
+    }
+
+    &__text {
+      font-size: 18px;
+    }
+  }
+
+  .compare {
+    padding-bottom: 120px;
+
+    &__grid {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+  }
+
+  .bike-card {
+    width: 392px;
+    margin: 0 auto;
+
+    &__image {
+      height: 255px;
+    }
+
+    &__text {
+      min-height: 0;
+    }
+  }
+
+  .detail-card {
+    &__gallery {
+      height: 187px;
+    }
+  }
+
+  .contacts {
+    &__content {
+      gap: 24px;
+    }
+  }
+
+  .footer {
+    height: 480px;
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 599px) {
+  .container,
+  .top-bar {
+    max-width: none;
+    padding-inline: 20px;
+  }
+
+  .section-title {
+    margin-bottom: 48px;
+    font-size: 32px;
+  }
+
+  .top-bar {
+    &__logo {
+      font-size: 24px;
+      letter-spacing: -1px;
+    }
+
+    &__actions {
+      gap: 20px;
+    }
+
+    &__phone {
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__phone-text {
+      display: none;
+    }
+
+    &__menu {
+      width: 18px;
+      height: 18px;
+
+      span {
+        width: 16px;
+      }
+
+      span:nth-child(2) {
+        width: 10px;
+      }
+    }
+  }
+
+  .header {
+    height: 480px;
+    background-position: 52% center;
+    background-size: auto 480px;
+
+    &__top {
+      padding-top: 24px;
+    }
+
+    &__title {
+      bottom: 38px;
+      width: 100%;
+      text-align: center;
+      font-size: 34px;
+    }
+  }
+
+  .menu {
+    padding-inline: 20px;
+
+    &__top {
+      padding: 24px 0;
+    }
+
+    &__nav {
+      margin-top: 32px;
+    }
+
+    &__link {
+      font-size: 18px;
+    }
+  }
+
+  .about {
+    padding: 60px 0 92px;
+
+    &__content {
+      display: block;
+    }
+
+    &__title {
+      margin-bottom: 32px;
+      font-size: 32px;
+    }
+
+    &__text {
+      font-size: 23px;
+      line-height: 1.35;
+    }
+  }
+
+  .compare {
+    padding-bottom: 92px;
+
+    &__grid {
+      gap: 64px;
+    }
+  }
+
+  .bike-card {
+    width: 100%;
+
+    &__image-link {
+      margin-bottom: 24px;
+    }
+
+    &__image {
+      height: 200px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+
+    &__price {
+      font-size: 20px;
+    }
+  }
+
+  .details {
+    padding-bottom: 92px;
+
+    &__button {
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .detail-card {
+    margin-bottom: 40px;
+
+    &__gallery {
+      gap: 20px;
+      height: 130px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+  }
+
+  .contacts {
+    padding-bottom: 120px;
+
+    &__content {
+      display: block;
+    }
+
+    &__form {
+      margin-bottom: 48px;
+    }
+
+    &__info {
+      gap: 24px;
+    }
+  }
+
+  .footer {
+    height: 260px;
+    background-position: center;
+  }
 }
