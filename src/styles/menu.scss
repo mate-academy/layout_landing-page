@@ -1,0 +1,152 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding: 32px 120px 106px;
+  background: $accent;
+  color: $white;
+  z-index: 30;
+  transform: translateX(-100%);
+  transition: transform $transition;
+  overflow: auto;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-top: 22px;
+    padding-bottom: 55px;
+
+    @include flex-center(space-between, center);
+
+    margin-bottom: 44px;
+    background: $accent;
+  }
+
+  &__close {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    background: url('../images/icons/icon-close.png') center/contain no-repeat;
+  }
+
+
+  &__list {
+    display: grid;
+    gap: 32px;
+  }
+
+  &__link {
+    display: block;
+    color: $white;
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    transition:
+      background-color $transition,
+      transform $transition;
+
+
+    &:hover {
+      background: $hover;
+      transform: translateX(4px);
+    }
+
+    &:focus-visible {
+      background: $pressed;
+      opacity: 0.8;
+    }
+
+    &:active {
+      background: $pressed;
+      transform: translateX(2px);
+    }
+  }
+
+  &__contacts {
+    margin-top: 56px;
+    display: grid;
+    gap: 18px;
+  }
+
+  &__phone {
+    display: inline-block;
+    color: $white;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: rgba(255, 255, 255, 0.8);
+      transform: translateX(4px);
+    }
+  }
+
+  &__call {
+    position: relative;
+    display: inline-block;
+    margin-top: 12px;
+    padding-bottom: 5px;
+    font-family: Cinzel, serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white;
+  }
+
+  &__call::after {
+    content: "";
+    position: absolute;
+    width: 142px;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    background: $white;
+  }
+
+
+  &__call:hover,
+  &__call:focus-visible {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.menu__link[data-section="about-us"] {
+  position: relative;
+}
+
+.menu__link[data-section="about-us"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -16px;
+  width: 142px;
+  height: 2px;
+  background: $white;
+}
+
+
+@include media-mobile {
+  .menu {
+    width: 100%;
+    padding-inline: 20px;
+
+    &__link {
+      font-size: 1.5rem;
+    }
+  }
+}
