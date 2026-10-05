@@ -1,0 +1,148 @@
+@use 'mixin' as *;
+
+.header {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url('../img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 25px 0 60px;
+
+  @include on-tablet {
+    padding: 40px 0 80px;
+  }
+
+  @include on-desktop {
+    padding-top: 40px;
+    padding-bottom: 280px;
+  }
+
+  &__top {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__phone-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .header__phone-dropdown {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%) translateX(10px);
+        margin-right: 16px;
+        white-space: nowrap;
+        text-align: right;
+
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          visibility 0.3s ease;
+      }
+    }
+
+    &:hover .header__phone-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  &__phone-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__phone-title {
+    font-family: Cinzel, serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__phone-number {
+    font-family: Cinzel, serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: $color-white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__title {
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: $color-white;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 220px 0 0;
+    width: 100%;
+
+    @include on-tablet {
+      font-size: 64px;
+      margin-top: 180px;
+      max-width: 600px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+      margin-top: 110px;
+      max-width: 800px;
+    }
+  }
+}
+
+.the-met-logo {
+  display: block;
+  object-fit: contain;
+  height: 46px;
+  width: 64px;
+
+  @include on-tablet {
+    width: 87px;
+    height: 65px;
+  }
+}
