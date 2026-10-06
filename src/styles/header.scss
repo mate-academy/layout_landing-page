@@ -1,0 +1,171 @@
+@use './mixins.scss';
+
+.page {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #292929;
+  font-size: 16px;
+  line-height: 140%;
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+.page__body {
+  margin: 0;
+}
+
+.page__menu {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.page__menu:target {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
+
+.header {
+  background-image: url(/src/images/Image.png);
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    padding: 0 20px 40px;
+
+    @include mixins.on-tablet {
+      padding-bottom: 64px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    @include mixins.on-tablet {
+      font-size: 48px;
+    }
+  }
+}
+
+.top-bar {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixins.on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include mixins.on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+
+    img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    &:hover {
+      transform: scale(1.08);
+    }
+
+    @include mixins.on-tablet {
+      height: 24px;
+    }
+  }
+}
+
+.phone-hover {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__number {
+    display: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #292929;
+    text-decoration: none;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+
+    @include mixins.on-desktop {
+      display: block;
+      margin-right: 12px;
+    }
+  }
+
+  &:hover &__number,
+  &:focus-within &__number {
+    @include mixins.on-desktop {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &__svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    stroke: #292929;
+  }
+}

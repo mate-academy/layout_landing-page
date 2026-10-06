@@ -1,0 +1,19 @@
+@use './mixins.scss';
+
+.recommended {
+  &__products {
+    @include mixins.page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__product {
+    // На телефоні та на планшеті — кожна картка на всю ширину (1 колонка)
+    grid-column: 1 / -1;
+
+    // Лише на комп'ютері діляться на 3 колонки по 4 grid-колонки
+    @include mixins.on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
