@@ -1,0 +1,79 @@
+@use '../utils/mixins.scss' as m;
+@use '../variables' as v;
+
+.gallery {
+  &__wrapper {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include m.on-tablet {
+      row-gap: 56px;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__photos {
+    @include m.page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    @include m.on-tablet {
+      grid-column: span 3;
+    }
+
+    @include m.on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include m.smooth-hover;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+
+    @include m.on-tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__button {
+    display: block;
+    margin-top: auto;
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 8px;
+    background-color: v.$button;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 169%;
+    text-align: center;
+    color: v.$white;
+
+    @include m.on-desktop {
+      width: 324px;
+    }
+
+    &:hover {
+      background-color: v.$button-hover;
+    }
+
+    &:active {
+      background-color: v.$button-active;
+    }
+  }
+}
