@@ -1,0 +1,79 @@
+@use '../utilities/mixins.scss' as *;
+@use '../utilities/variables.scss' as *;
+
+.products {
+  &__container {
+    @include page-grid;
+
+    row-gap: 48px;
+
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      row-gap: 56px;
+    }
+  }
+
+  &__product {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: 2/ 6;
+
+      &:hover {
+        transform: scale(1.15);
+        transform-origin: center;
+        transition: transform 500ms ease-in-out;
+      }
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+
+      &:hover {
+        transform: scale(1.1);
+        transform-origin: center;
+        transition: transform 500ms ease-in-out;
+      }
+    }
+  }
+
+  .product__image {
+    width: 100%;
+  }
+
+  .product__title {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  .product__description {
+    margin: 0;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  .product__price {
+    margin-top: 16px;
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    height: 34px;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 140%;
+  }
+}
