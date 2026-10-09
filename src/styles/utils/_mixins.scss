@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+// Centers content and limits width
+@mixin container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// Section vertical spacing (used by compare-bikes, details, contact-us)
+@mixin section-spacing {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+// Responsive grid: 1 column on mobile, N columns from a breakpoint
+@mixin responsive-grid($columns: 3, $gap: 24px, $breakpoint: 768px) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $gap;
+
+  @media (min-width: $breakpoint) {
+    grid-template-columns: repeat($columns, 1fr);
+  }
+}
+
+// Image that keeps the real Figma aspect ratio (e.g. 324x446), with hover zoom
+@mixin image-cover($w: 1, $h: 1) {
+  width: 100%;
+  aspect-ratio: #{$w} / #{$h};
+  object-fit: cover;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Shared desktop-only breakpoint (used by header nav/phone)
+@mixin desktop-only {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}

@@ -1,0 +1,72 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.details {
+  @include container;
+  @include section-spacing;
+
+  &__title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--narrow {
+      aspect-ratio: 324 / 320;
+
+      @media (min-width: 768px) {
+        flex: 0 0 32%;
+      }
+    }
+
+    &--wide {
+      aspect-ratio: 672 / 320;
+
+      @media (min-width: 768px) {
+        flex: 1;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    color: $color-gray;
+    font-size: 14px;
+    max-width: 700px;
+  }
+}

@@ -1,0 +1,78 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px $container-padding;
+  background-color: $color-dark;
+  color: $color-white;
+
+  &__logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__nav {
+    @include desktop-only;
+  }
+
+  &__list {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__link {
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__phone {
+    @include desktop-only;
+
+    font-size: 14px;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__burger {
+    width: 24px;
+    height: 18px;
+    position: relative;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-white;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+}
