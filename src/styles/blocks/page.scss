@@ -1,0 +1,69 @@
+@use '../utils/mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; // padding і border входять у width/height
+}
+
+.page {
+  font-family: Cinzel, sans-serif;
+  font-weight: 400;
+  scroll-behavior: smooth; // плавний скрол до якорів, опціонально
+
+  &__body {
+    min-height: 100vh;
+    margin: 0;
+    min-width: 320px;
+    background-color: rgba(255, 255, 255, 1);
+    padding-bottom: 180px;
+
+    @include on-tablet {
+      padding-bottom: 359px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    pointer-events: none;
+    opacity: 0;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0; // прибирає дефолтні зовнішні відступи
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0; // прибирає лівий відступ списків
+  list-style: none; // прибирає маркери, якщо вони не потрібні дизайном
+}
+
+a {
+  color: inherit; // лінк бере колір батька
+  text-decoration: none; // прибирає стандартне підкреслення
+}

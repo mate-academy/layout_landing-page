@@ -1,0 +1,136 @@
+@use '../utils/mixins' as *;
+
+.header {
+  position: relative;
+  z-index: 1;
+
+  background-image: linear-gradient(
+      180deg,
+      rgb(15 18 24 / 0.18) 0%,
+      rgb(15 18 24 / 0.32) 45%,
+      rgb(15 18 24 / 0.48) 100%
+    ),
+    url('../images/header/headerBg.avif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  height: 568px;
+  width: 100%;
+  padding-top: 25px;
+
+  @include on-tablet {
+    height: 768px;
+  }
+
+  @include on-desktop {
+    padding-top: 50px;
+    height: 840px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+  }
+
+  &__list {
+    position: absolute;
+    right: calc(100% + 16px);
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: max-content;
+    text-align: end;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -16px;
+      width: 16px;
+      height: 100%;
+    }
+  }
+
+  &__call {
+    position: relative;
+  }
+
+  &__call:hover &__list,
+  &__call:focus-within &__list {
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+
+  &__colt {
+    font-weight: 700;
+    font-style: bold;
+    font-size: 16px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    @include on-tablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+    margin-top: 19vh;
+
+    @include on-tablet {
+      font-size: 64px;
+      line-height: 64px;
+      margin-top: 21vh;
+    }
+
+    @include on-desktop {
+      margin-top: 11vh;
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
+  }
+}

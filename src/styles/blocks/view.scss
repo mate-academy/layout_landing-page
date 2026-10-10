@@ -1,0 +1,149 @@
+@use '../utils/mixins' as *;
+
+.view {
+  &__wrapper {
+    @include page-grid;
+
+    row-gap: 48px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    justify-content: center;
+    text-align: center;
+
+    &-top {
+      margin-bottom: 8px;
+
+      font-weight: 700;
+      font-style: bold;
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    &__subtitle-bottom {
+      font-size: 16px;
+      line-height: 27px;
+    }
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+  }
+
+  &__photos {
+    margin-bottom: 24px;
+
+    @include page-grid;
+
+    @include on-desktop {
+      column-gap: 40px;
+    }
+
+    &-link {
+      display: block;
+    }
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    &-link:hover &-img,
+    &-link:focus-visible &-img {
+      transform: scale(1.05);
+    }
+
+    &--widefirst {
+      object-position: 30% center;
+    }
+
+    &--widelast {
+      object-position: 100% center;
+    }
+
+    &--small {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+
+  &__descr {
+
+    &-title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 27px;
+
+      color: rgba(209, 45, 53, 1);
+
+      br {
+        @include on-tablet {
+          display: none;
+        }
+      }
+    }
+
+    &-text {
+      line-height: 27px;
+      font-size: 16px;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 9;
+    }
+  }
+
+  &__btn {
+    display: block;
+    padding: 15px 65px;
+    width: 100%;
+    white-space: nowrap;
+    border: none;
+
+    background-color: rgba(209, 45, 53, 1);
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    line-height: 27px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(174, 28, 35, 1);
+    }
+
+    &:active {
+      background-color: rgba(235, 52, 61, 1);
+    }
+  }
+}
