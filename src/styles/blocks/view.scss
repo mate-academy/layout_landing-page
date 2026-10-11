@@ -1,0 +1,150 @@
+.view {
+  --columns: 2;
+
+  display: grid;
+  gap: 40px $column-gap;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include tablet {
+    --columns: 6;
+  }
+
+  @include desktop {
+    --columns: 12;
+  }
+
+  &__title {
+    text-align: center;
+    grid-column: span 2;
+    margin-bottom: 8px;
+
+    @include tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include desktop {
+      grid-column: 4 / 10;
+    }
+  }
+
+  &__title-text {
+    margin: 0;
+  }
+
+  &__exhibition {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include tablet {
+      grid-column: span 6;
+    }
+
+    @include desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__images {
+    display: grid;
+    column-gap: $column-gap;
+    grid-template-columns: repeat(var(--columns), 1fr);
+
+    &--2 {
+      @media (max-width: 744.98px) {
+        --columns: 3;
+
+        column-gap: 8px;
+      }
+    }
+  }
+
+  &__image-link {
+    position: relative;
+
+    @include hover(transform, scale(1.2));
+
+    &--wide {
+      @include tablet {
+        grid-column: span 4;
+      }
+
+      @include desktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include tablet {
+        grid-column: span 2;
+      }
+
+      @include desktop {
+        grid-column: span 4;
+      }
+    }
+
+    &--2 {
+      @include tablet {
+        grid-column: span 3;
+
+        &-3 {
+          width: 0;
+          height: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+    @media (max-width: 744.98px) {
+      object-position: 25%;
+    }
+
+    &--3 {
+      @media (max-width: 744.98px) {
+        object-position: right;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: -24px;
+  }
+
+  &__description * {
+    margin: 0;
+  }
+
+  &__description-title {
+    font-weight: 700;
+    color: #d12d35;
+  }
+
+  &__button {
+    grid-column: span 2;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 48px;
+    height: 56px;
+
+    @include tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include desktop {
+      grid-column: 5 / 9;
+    }
+  }
+}

@@ -1,0 +1,162 @@
+.contact {
+  --columns: 2;
+
+  display: grid;
+  gap: $row-gap $column-gap;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include tablet {
+    --columns: 6;
+  }
+
+  @include desktop {
+    --columns: 12;
+  }
+
+  &__title {
+    grid-column: span 2;
+
+    @include tablet {
+      grid-column: 2 / 6;
+    }
+
+    @include desktop {
+      grid-column: 5 / 9;
+    }
+  }
+
+  &__articles {
+    grid-column: span 2;
+    display: grid;
+    gap: $row-gap $column-gap;
+
+    @include tablet {
+      grid-column: 1 / span 4;
+      grid-row: 2 / span 1;
+    }
+
+    @include desktop {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__article {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &--1 {
+      @include tablet {
+        grid-column: span 3;
+      }
+
+      @include desktop {
+        grid-column: 1 / 4;
+      }
+    }
+
+    &--2 {
+      @include tablet {
+        grid-column: 1 / 4;
+      }
+
+      @include desktop {
+        grid-column: 4 / 7;
+      }
+    }
+  }
+
+  &__article * {
+    margin: 0;
+  }
+
+  &__article-title {
+    font-weight: 700;
+  }
+
+  &__phone-block {
+    margin-bottom: -8px;
+  }
+
+  &__block-title {
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  &__block-info {
+    font-weight: 700;
+    line-height: 140%;
+    color: #3e3e3e;
+
+    &:hover {
+      color: #072ef3;
+      cursor: pointer;
+    }
+  }
+
+  &__form {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include tablet {
+      grid-column: 4 / -1;
+      grid-row: 2 / span 1;
+    }
+
+    @include desktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: #f8f8fa;
+    border: 1px solid transparent;
+    outline: none;
+    font-family: Cinzel, serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #161616;
+    box-sizing: border-box;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+
+    &::placeholder {
+      color: #d5d7de;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      border-color: #e2e2e8;
+
+      &::placeholder {
+        color: #161616;
+      }
+    }
+
+    &:focus {
+      border-color: #161616;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 48px;
+    height: 56px;
+  }
+}
