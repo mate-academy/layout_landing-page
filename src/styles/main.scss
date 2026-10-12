@@ -16,7 +16,7 @@ input:-webkit-autofill:focus,
   -webkit-box-shadow: 0 0 0 1000px $almost-white inset !important;
   box-shadow: 0 0 0 1000px $almost-white inset !important;
   -webkit-text-fill-color: $grey-2 !important;
-  transition: background-color 9999s ease-in-out 0s;
+  transition: background-color 9999s linear 0s;
   }
 
 html {
@@ -41,13 +41,14 @@ body {
   background-color: $white;
   z-index: 8;
 
-  transition: all 0.15s ease;
+  transition: all 0.15s linear;
 
   transform: translateX(100%);
   opacity: 0;
 
   &__close{
     cursor:pointer;
+    padding-right: 5px;
   }
 
   &__active {
@@ -63,7 +64,6 @@ body {
     /* to keep cross always visible */
     top: 0;
     z-index: 1;
-    background-color: #e5e5e5;
     display: flex;
     justify-content: space-between;
     padding: 32px $padding-mobile;
@@ -123,7 +123,7 @@ body {
       border: 1px solid $dark;
       background-color: $dark;
       content: "";
-      transition: all 0.15s ease;
+      transition: all 0.15s linear;
       transform: scaleX(0);
       transform-origin: center;
     }
@@ -252,17 +252,22 @@ body {
     }
 
     &-active {
-      transition: all 0.15s ease;
+      transition: all 0.15s linear;
       opacity: 100%;
       transform: translateX(-100%);
     }
 
     &-inactive {
-      transition: all 0.15s ease;
+      transition: all 0.15s linear;
 
       // opacity: 0;
       // transform: translateX(340%);
     }
+  }
+
+  &__phone:hover{
+    transition: all 0.15s linear;
+    scale: 1.2;
   }
 
   &__burger {
@@ -274,7 +279,6 @@ body {
     height: 24px;
     color: $dark;
     padding-left: 18px;
-    padding-top: 4px;
     z-index: 2;
   }
 
@@ -378,7 +382,7 @@ body {
   }
   &__img:hover {
     transform: scale(1.2);
-    transition: transform 0.15s ease;
+    transition: transform 0.15s linear;
   }
 
   &__title {
@@ -418,13 +422,16 @@ body {
 .audio {
   font-family: Manrope, sans-serif;
   padding-left: $padding-mobile;
+  padding-right: $padding-mobile;
 
   @media screen and (min-width: 744px) {
-    padding-left: $padding-tablet;
+    padding-left: 2 * $padding-tablet;
+    padding-right:  2 * $padding-tablet;
   }
 
   @media screen and (min-width: 1260px) {
-    padding-left: $padding-desktop;
+    padding-left: 2 * $padding-desktop;
+    padding-right:  2 * $padding-desktop;
   }
 
   &__title {
@@ -466,14 +473,10 @@ body {
   }
 
   &__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-
-    @media screen and (min-width: 744px) {
+    width: 100%;
       gap: 24px;
-    }
+      display: flex;
+      justify-content: space-between;
   }
 
   &__speakers {
@@ -508,7 +511,7 @@ body {
   }
   &__img:hover {
     transform: scale(1.2);
-    transition: transform 0.15s ease;
+    transition: transform 0.15s linear;
   }
 }
 
@@ -528,17 +531,17 @@ body {
   margin-bottom: 96px;
   height: 56px;
   width: 280px;
-  margin-left: $padding-mobile;
+  margin-left: 2 * $padding-mobile;
 
   @media screen and (min-width: 744px) {
     width: 600px;
-    margin-left: $padding-tablet;
+    margin-left: 2 * $padding-tablet;
     margin-bottom: $padding-desktop;
   }
 
   @media screen and (min-width: 1260px) {
     width: 324px;
-    margin-left: $padding-desktop;
+    margin-left: 2 * $padding-desktop;
   }
 }
 
@@ -807,7 +810,7 @@ body {
 
   &__send {
     border: none;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s linear;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -819,21 +822,21 @@ body {
     color: $white;
     background-color: $orange;
     border-radius: 8px;
-    margin-left: $padding-mobile;
+    margin-left: $padding-mobile + 16px;
     margin-bottom: 48px;
     height: 56px;
     width: 280px;
 
     @media screen and (min-width: 744px) {
       width: 600px;
-      margin-left: $padding-tablet;
+      margin-left: $padding-tablet + 16px;
       margin-bottom: 80px;
       ;
     }
 
     @media screen and (min-width: 1260px) {
       width: 498px;
-      margin-left: $padding-desktop;
+      margin-left: $padding-desktop + 16px;
       margin-bottom: $padding-desktop;
     }
   }
