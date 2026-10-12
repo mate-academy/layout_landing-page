@@ -13,6 +13,7 @@
 }
 
 @mixin content-padding-inline() {
+  box-sizing: border-box;
   padding-inline: 20px;
 
   @include on-tablet {
@@ -20,7 +21,7 @@
   }
 
   @include on-desktop {
-    max-width: 1020px;
+    max-width: 1260px;
     margin-inline: auto;
     padding-inline: 120px;
   }
@@ -28,11 +29,15 @@
 
 .container {
   @include content-padding-inline;
+
+  @include on-desktop {
+    width: 100%;
+  }
 }
 
 @mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
-  &:hover{
+  &:hover {
     #{$property}: $toValue;
   }
 }

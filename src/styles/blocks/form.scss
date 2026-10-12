@@ -1,0 +1,58 @@
+@use '../utils/mixins.scss' as *;
+@use '../utils/variables.scss' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: span 5;
+  }
+
+  &__field {
+    font-family: inherit;
+
+    box-sizing: border-box;
+    padding: 14px 16px;
+    height: 48px;
+    width: 100%;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: $form-background-color;
+
+    @include hover(border, 1px solid $form-border-color-hovered);
+
+    &::placeholder {
+      box-sizing: border-box;
+      font-family: inherit;
+      font-weight: $description-weight;
+      color: $text-form-placeholder;
+    }
+
+    &:hover {
+      box-sizing: border-box;
+    }
+
+    &:focus {
+      box-sizing: border-box;
+      border: 1px solid $form-border-color-focus;
+    }
+
+
+
+    &--high {
+      margin: 0;
+      height: 148px;
+      resize: none;
+    }
+  }
+
+  &__button {
+    margin-top: 16px;
+  }
+}
