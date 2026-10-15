@@ -1,10 +1,28 @@
-const button = document.querySelector('.header__links__phone-btn');
-const number = document.querySelector('.header__links__phone');
+const phoneBtn = document.querySelector('.header__links__phone-btn');
+const phone = document.querySelector('.header__links__phone');
 
-button.addEventListener('click', () => {
-  number.classList.toggle('is-visible');
+let hideTimeout;
+
+phoneBtn.addEventListener('mouseenter', () => {
+  clearTimeout(hideTimeout);
+  phone.classList.add('is-visible');
 });
 
+phoneBtn.addEventListener('mouseleave', () => {
+  hideTimeout = setTimeout(() => {
+    phone.classList.remove('is-visible');
+  }, 2000);
+});
+
+phone.addEventListener('mouseenter', () => {
+  clearTimeout(hideTimeout);
+});
+
+phone.addEventListener('mouseleave', () => {
+  hideTimeout = setTimeout(() => {
+    phone.classList.remove('is-visible');
+  });
+});
 const buttonMenu = document.querySelector('.header__links__menu-btn');
 const menu = document.querySelector('.menu');
 
