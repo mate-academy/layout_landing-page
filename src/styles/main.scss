@@ -1,3 +1,520 @@
+:root {
+  --main-font: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  background: #1d1d1d;
+
+  font-family: var(--main-font);
+}
+
+body:has(.header__burger-checkbox:checked) {
+  overflow: hidden;
+}
+
+.favicon {
+  border-radius: 50%;
+}
+
+.top-section {
+  background: url('../images/fon_header.svg') no-repeat center / cover;
+
+  // width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 120px;
+  height: 128px;
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    border: none;
+  }
+}
+
+.menu {
+  overflow-y: auto;
+  position: fixed;
+  text-decoration: none;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 100vh;
+  padding-top: 36px;
+  padding-left: 120px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+
+  // Стан, коли меню відкрите
+  &.is-open {
+    transform: translateX(0);
+  }
+}
+
+.header__burger-checkbox:checked ~ .menu {
+  transform: translateX(0);
+}
+
+.header:has(.header__burger-checkbox:checked) .menu {
+  transform: translateX(0);
+}
+
+.header__burger-checkbox {
+  display: none;
+}
+
+.menu__header {
+  position: sticky;
+  top: 0;
+  background-color: #c4c4c4;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 120px;
+  padding-bottom: 24px;
+}
+
+.header__burger-btn {
+  background: none;
+  border: none;
+}
+
+.menu__close-btn {
+  display: flex;
+  justify-content: center;
+  max-width: 32px;
+  max-height: 32px;
+  border: none;
+  background: none;
+}
+
+.menu__close-img {
+  min-height: 21px;
+  max-width: 21px;
+}
+
+.nav__menu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 80px;
+  list-style: none;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1d1d1d;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: #1d1d1d;
+  letter-spacing: 2px;
+}
+
+.menu__item {
+  color: #1d1d1d;
+  list-style: none;
+}
+
+.menu__footer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 120px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1d1d1d;
+}
+
+.menu__phone {
+  text-decoration: none;
+  color: #1d1d1d;
+}
+
+.menu__test-ride {
+  color: #1d1d1d;
+  text-decoration: none;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+  &__title {
+    padding-block: 428px 203px;
+    font-family: var(--main-font);
+    font-size: 80px;
+    font-weight: bold;
+    color: #fff;
+  }
+}
+
+.main__home {
+  z-index: 1;
+  background-color: #1d1d1d;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 120px 207px 164px 120px;
+  z-index: 1;
+  background-color: #1d1d1d;
+
+  &__title {
+    font-weight: 500;
+    font-size: 64px;
+    height: 100%;
+    color: white;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 23px;
+    color: white;
+  }
+}
+
+.compare-bikes__title {
+  font-weight: 500;
+  font-size: 64px;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.bikes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  padding-inline: 120px;
+}
+
+.bike-card {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__text {
+    max-width: 324px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  &__img {
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.details__title {
+  display: flex;
+  justify-content: center;
+  font-size: 64px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -1.5px;
+}
+
+.details__list {
+  justify-self: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+}
+
+.details-card__images {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.details-card__img {
+  // Зберігає пропорції
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.details-card__img:hover {
+  transform: scale(1.05);
+}
+
+.details-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__text {
+    max-width: 672px;
+    font-weight: 400;
+    color: #fff;
+  }
+}
+
+.button__items {
+  display: flex;
+  justify-content: center;
+  padding-block: 62px 180px;
+}
+
+.button__explore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  font-weight: bold;
+  background-color: #fff;
+  min-height: 56px;
+  min-width: 324px;
+}
+
+.contacts__title {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: -1.5px;
+}
+
+.contacts__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: row;
+  justify-self: center;
+  gap: 198px;
+  padding-bottom: 182px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 411px;
+
+  &__name {
+    min-height: 48px;
+    border-radius: 40px;
+    padding-left: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__email {
+    min-height: 48px;
+    border-radius: 40px;
+    padding-left: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__massege {
+    min-height: 148px;
+    border-radius: 16px;
+    padding-left: 16px;
+    padding-top: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__send {
+    min-height: 56px;
+    border-radius: 40px;
+    font-weight: 700;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.contacts__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts__label {
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+}
+
+.contacts__link {
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  max-width: 237px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: rgb(93, 93, 216);
+  }
+}
+
+// background-color:url('/src/images/footer.svg');
+
+.contacts-footer {
+  background: url('/src/images/footer.svg') no-repeat center / cover;
+  min-height: 100vh;
+  position: sticky;
+  z-index: -1;
+  bottom: 0;
+}
+
+@media (max-width: 744px) {
+  .header {
+    padding: 0 32px;
+    height: 90px;
+  }
+
+  .hero__title {
+    font-size: 56px;
+    padding-block: 250px 120px;
+  }
+
+  .main {
+    flex-direction: column;
+    padding: 60px 32px;
+    gap: 24px;
+
+    &__title {
+      font-size: 48px;
+    }
+  }
+
+  .compare-bikes__title {
+    font-size: 48px;
+  }
+
+  .bikes {
+    grid-template-columns: 1fr; // Змінюємо на 1 колонку або 2 за бажанням, але 1 на планшеті теж гарно виглядає
+    padding-inline: 32px;
+    gap: 40px;
+  }
+
+  .bike-card__text {
+    max-width: 100%;
+  }
+
+  .details__list {
+    padding-inline: 32px;
+  }
+
+  .details__title {
+    font-size: 48px;
+  }
+
+  .contacts__container {
+    grid-template-columns: 1fr; // Переносимо контакти та форму у вертикальний стовпчик
+    gap: 60px;
+    padding-inline: 32px;
+  }
+
+  .button__items {
+    padding-block: 40px 100px;
+  }
+}
+
+// ==========================================
+// АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (<= 320px)
+// ==========================================
+
+@media (max-width: 320px) {
+  .header {
+    padding: 0 16px;
+    height: 70px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+    padding-block: 180px 80px;
+    padding-inline: 16px;
+  }
+
+  .main {
+    padding: 40px 16px;
+
+    &__title {
+      font-size: 36px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+  }
+
+  .compare-bikes__title {
+    font-size: 36px;
+  }
+
+  .bikes {
+    padding-inline: 16px;
+  }
+
+  .details__title {
+    font-size: 36px;
+  }
+
+  .details__list {
+    padding-inline: 16px;
+  }
+
+  // На маленьких екранах картинки деталей робимо вертикальними, щоб вони не зтискалися
+  .details-card__images {
+    flex-direction: column;
+  }
+
+  .contacts__title {
+    font-size: 32px;
+  }
+
+  .contacts__container {
+    padding-inline: 16px;
+  }
+
+  .contacts {
+    min-width: 100%; // Прибираємо фіксовані обмеження, щоб не виходити за межі 320px
+  }
+
+  .button__explore {
+    min-width: 100%;
+    width: 90%;
+    margin-inline: auto;
+  }
 }
