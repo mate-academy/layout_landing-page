@@ -1,0 +1,101 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: auto;
+  background-color: $color-menu;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition:
+    transform $transition,
+    opacity $transition;
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: $color-menu;
+  }
+
+  &__header {
+    @include content-padding;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+
+    @include on-tablet {
+      height: 96px;
+    }
+  }
+
+  &__close {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('../images/icon-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform $transition;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__content {
+    @include content-padding;
+
+    padding-top: 32px;
+    padding-bottom: 48px;
+
+    @include on-tablet {
+      padding-top: 56px;
+    }
+  }
+
+  &__call {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  &__phone,
+  &__call-link {
+    font-family: $font-heading;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    color: $color-main;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__phone {
+    @include hover(color, $color-grey);
+  }
+
+  &__call-link {
+    padding-bottom: 3px;
+    border-bottom: 1px solid $color-main;
+
+    @include hover(color, $color-grey);
+  }
+}
