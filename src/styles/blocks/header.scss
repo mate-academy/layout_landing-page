@@ -1,0 +1,73 @@
+.header {
+  background-image: url(../images/background-photo.png);
+  background-position: center;
+  background-size: cover;
+  color: $main-text-color;
+
+  &__title {
+    width: 100%;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    text-align: center;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+  }
+
+  &__content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    padding-bottom: 88px;
+
+    @include on-tablet {
+      padding-bottom: 104px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 128px;
+    }
+  }
+
+  &__phone-link {
+    @include on-desktop {
+      position: relative;
+
+      &::before {
+        content: '+1 234 555-55-55';
+        transition:
+          opacity 0.3s ease-in-out,
+          transform 0.3s ease-in-out;
+
+        position: absolute;
+        top: 50%;
+        right: 100%;
+
+        color: $main-text-color;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        line-height: 16px;
+        letter-spacing: 2px;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-30%);
+        }
+      }
+    }
+  }
+}
