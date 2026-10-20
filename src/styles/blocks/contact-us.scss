@@ -26,8 +26,8 @@
   &__field {
     outline: none;
     border-radius: 16px;
-    background-color: #f8f8fa;
-    color: #292929;
+    background-color: $field-background-color;
+    color: $field-text-color;
     padding: 14px 0 14px 16px;
     height: 48px;
     box-sizing: border-box;
@@ -38,6 +38,15 @@
     line-height: 20px;
 
     grid-column: 1 / -1;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px $field-background-color inset;
+      -webkit-text-fill-color: $field-text-color;
+
+    }
 
     @include on-tablet {
       grid-column: 1 / 4;
@@ -57,7 +66,7 @@
     }
 
     @include hover(border, #d5d7de 1px solid);
-    @include active(border, #292929 1px solid);
+    @include active(border, $field-text-color 1px solid);
   }
 
   &__button {
