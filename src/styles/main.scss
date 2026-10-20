@@ -24,7 +24,7 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
 
 .header {
   display: flex;
-
+align-items: center;
   justify-content: space-between;
   padding-top: 36px;
   padding-inline: 120px;
@@ -100,7 +100,7 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
   box-sizing: border-box;
-  // Стан, коли меню відкрите
+
   &.is-open {
     transform: translateX(0);
   }
@@ -116,6 +116,10 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
 
 .header__burger-checkbox {
   display: none;
+}
+
+.menu__logo-img{
+  padding-bottom: 60px;
 }
 
 .menu__header {
@@ -138,7 +142,7 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
   justify-content: center;
   align-items: center;
 transition: opacity 0.3s ease, transform 0.3s ease;
-// padding-right: 120px;
+
   cursor: pointer;
 box-sizing: border-box;
   &:hover {
@@ -154,7 +158,7 @@ box-sizing: border-box;
   height: 32px;
   border: none;
   background: none;
-  // padding-right: 120px;
+
   box-sizing: border-box;
 
 }
@@ -171,6 +175,7 @@ box-sizing: border-box;
 .nav__menu {
   display: flex;
   flex-direction: column;
+
   padding-left: 80px;
   left: 0;
   margin: 0;
@@ -187,12 +192,17 @@ box-sizing: border-box;
   text-decoration: none;
   color: #1d1d1d;
   letter-spacing: 2px;
+  display: flex;
+
 }
 
 .menu__item {
+  display: flex;
+  row-gap: 32px;
   box-sizing: border-box;
   color: #1d1d1d;
   list-style: none;
+  padding-bottom: 32px;
 }
 
 .menu__footer {
@@ -528,7 +538,7 @@ box-sizing: border-box;
   bottom: 0;
 }
 
-@media (max-width: 744px) {
+@media (min-width: 744px) {
   .header {
     padding: 0 32px;
     height: 90px;
@@ -600,7 +610,7 @@ box-sizing: border-box;
 // АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (<= 320px)
 // ==========================================
 
-@media (max-width: 320px) {
+@media (max-width: 744px) {
   .header {
     padding: 0 16px;
     height: 70px;
@@ -651,14 +661,24 @@ box-sizing: border-box;
   }
 
   .details__list {
+
     padding-inline: 16px;
   }
 
   // На маленьких екранах картинки деталей робимо вертикальними, щоб вони не зтискалися
   .details-card__images {
-    flex-direction: column;
+  display: flex;
+  gap: 16px; // Зменшуємо відстань між картинками для мобільних (у десктопа було 24px)
+  width: 100%;
+  box-sizing: border-box;
+
   }
 
+  .details-card__img {
+   width: 50%;        // Кожна картинка займає рівно половину ширини контейнера
+  height: auto;      // Зберігає пропорції
+  object-fit: cover
+  }
   .contacts__title {
     font-size: 32px;
   }
