@@ -9,16 +9,12 @@ html {
 body {
   margin: 0;
   background: #1d1d1d;
-
+  max-width: 100%;
   font-family: var(--main-font);
 }
 
 body:has(.header__burger-checkbox:checked) {
   overflow: hidden;
-}
-
-.favicon {
-  border-radius: 50%;
 }
 
 .top-section{
@@ -34,6 +30,7 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
   padding-inline: 120px;
   height: 128px;
   box-sizing: border-box;
+  width: 100%;
 
   &__right {
     display: flex;
@@ -45,14 +42,44 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
   }
 }
 
+.header__contacts-link{
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  max-width: 0;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out 0.3s ease-in-out max-width 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+
+  white-space: nowrap;
+}
+
+
+
+
 .header__phone{
   display: flex;
   justify-content: center;
   align-items: center;
  transition: opacity 0.3s ease, transform 0.3s ease;
+ gap: 24px;
+ list-style: none;
+ text-decoration: none;
+ white-space: nowrap;
+
   cursor: pointer;
-  &:hover {
-    opacity: 0.7; // або колірний акцент/легке збільшення transform: scale(1.1)
+&:hover {
+    opacity: 0.7;
+  }
+
+  // При наведенні на посилання робимо текст видимим
+  &:hover .header__contacts-link {
+    opacity: 1;
+    visibility: visible;
+    max-width: 200px; // Плавне розширення простору для тексту
   }
 }
 
@@ -72,7 +99,7 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
-
+  box-sizing: border-box;
   // Стан, коли меню відкрите
   &.is-open {
     transform: translateX(0);
@@ -111,9 +138,9 @@ background: url('../images/fon_header.svg') no-repeat center / cover;
   justify-content: center;
   align-items: center;
 transition: opacity 0.3s ease, transform 0.3s ease;
-padding-right: 120px;
+// padding-right: 120px;
   cursor: pointer;
-
+box-sizing: border-box;
   &:hover {
     opacity: 0.7; // або колірний акцент/легке збільшення transform: scale(1.1)
   }
@@ -123,17 +150,22 @@ padding-right: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 32px;
-  max-height: 32px;
+  width: 32px;
+  height: 32px;
   border: none;
   background: none;
-  padding-right: 140px;
+  // padding-right: 120px;
+  box-sizing: border-box;
 
 }
 
 .menu__close-img {
-  min-height: 21px;
-  max-width: 21px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 21px;
+  width: 21px;
+
 }
 
 .nav__menu {
@@ -170,6 +202,7 @@ padding-right: 120px;
   text-decoration: none;
   font-weight: bold;
   color: #1d1d1d;
+  box-sizing: border-box;
 }
 
 .menu__phone {
@@ -185,8 +218,7 @@ padding-right: 120px;
 .hero {
   display: flex;
   justify-content: center;
-
-
+  box-sizing: border-box;
   height: 100vh;
   &__title {
     padding-top: 300px;
@@ -196,6 +228,7 @@ padding-right: 120px;
     font-size: 80px;
     font-weight: bold;
     color: #fff;
+    text-align: center;
 
   }
 }
@@ -203,6 +236,7 @@ padding-right: 120px;
 .main__home {
   z-index: 1;
   background-color: #1d1d1d;
+  box-sizing: border-box;
 }
 
 .main {
@@ -240,12 +274,13 @@ padding-right: 120px;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
   padding-inline: 120px;
+  box-sizing: border-box;
 }
 
 .bike-card {
   display: flex;
   flex-direction: column;
-
+  box-sizing: border-box;
   &__title {
     font-size: 24px;
     font-weight: 700;
@@ -289,6 +324,7 @@ padding-right: 120px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-auto-flow: row;
+  box-sizing: border-box;
 }
 
 .details-card__images {
@@ -301,6 +337,7 @@ padding-right: 120px;
   // Зберігає пропорції
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
+  max-width: 100%;
 }
 
 .details-card__img:hover {
@@ -311,6 +348,7 @@ padding-right: 120px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  box-sizing: border-box;
 
   &__title {
     font-size: 24px;
@@ -329,6 +367,7 @@ padding-right: 120px;
   display: flex;
   justify-content: center;
   padding-block: 62px 180px;
+  box-sizing: border-box;
 }
 
 .button__explore {
@@ -340,6 +379,9 @@ padding-right: 120px;
   background-color: #fff;
   min-height: 56px;
   min-width: 324px;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .button__explore:hover {
@@ -370,6 +412,9 @@ padding-right: 120px;
   gap: 198px;
   padding-bottom: 182px;
   outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .contacts {
@@ -377,7 +422,8 @@ padding-right: 120px;
   flex-direction: column;
   gap: 16px;
 
-  min-width: 411px;
+  width: 100%;
+  box-sizing: border-box;
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -431,6 +477,9 @@ padding-right: 120px;
     font-weight: 700;
     width: 100%;
     box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
   }
 
   .contacts__send:hover{
@@ -485,9 +534,23 @@ padding-right: 120px;
     height: 90px;
   }
 
+  .menu__header {
+    padding-inline: 32px;
+    height: 90px;
+  }
+
+  .menu {
+    padding-left: 32px;
+  }
+
+  .nav__menu,
+  .menu__footer {
+    padding-left: 32px;
+  }
+
   .hero__title {
     font-size: 56px;
-    padding-block: 250px 120px;
+    padding-top: 200px;
   }
 
   .main {
@@ -543,9 +606,23 @@ padding-right: 120px;
     height: 70px;
   }
 
+  .menu__header {
+    padding-inline: 16px;
+    height: 70px;
+  }
+
+  .menu {
+    padding-left: 16px;
+  }
+
+  .nav__menu,
+  .menu__footer {
+    padding-left: 16px;
+  }
+
   .hero__title {
     font-size: 36px;
-    padding-block: 180px 80px;
+    padding-top: 150px;
     padding-inline: 16px;
   }
 
