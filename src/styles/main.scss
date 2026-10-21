@@ -2,15 +2,18 @@
   --main-font: 'Poppins', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
+
+html,
 body {
   margin: 0;
-  background: #1d1d1d;
+  overflow-x: hidden;
+  width: 100%;
   max-width: 100%;
-  font-family: var(--main-font);
+  box-sizing: border-box;
+  background: #1d1d1d;
+   font-family: var(--main-font);
+  scroll-behavior: smooth;
 }
 
 body:has(.header__burger-checkbox:checked) {
@@ -136,6 +139,8 @@ align-items: center;
   padding-inline: 120px;
   padding-bottom: 24px;
   box-sizing: border-box;
+  height: 128px;
+  width: 100%;
 }
 
 .header__burger-btn{
@@ -541,6 +546,10 @@ box-sizing: border-box;
   bottom: 0;
 }
 
+
+// Запобігаємо появі горизонтального скролу на рівні сторінки
+
+
 @media (max-width: 744px) {
   .header {
     padding: 0 32px;
@@ -553,10 +562,14 @@ box-sizing: border-box;
   }
 
   .menu {
+    padding-top: 0;
     padding-left: 32px;
   }
 
-  .nav__menu,
+  .nav__menu {
+    padding-left: 22px;
+  }
+
   .menu__footer {
     padding-left: 32px;
   }
@@ -581,7 +594,7 @@ box-sizing: border-box;
   }
 
   .bikes {
-    grid-template-columns: 1fr; // Змінюємо на 1 колонку або 2 за бажанням, але 1 на планшеті теж гарно виглядає
+    grid-template-columns: 1fr;
     padding-inline: 32px;
     gap: 40px;
   }
@@ -599,9 +612,10 @@ box-sizing: border-box;
   }
 
   .contacts__container {
-    grid-template-columns: 1fr; // Переносимо контакти та форму у вертикальний стовпчик
+    grid-template-columns: 1fr;
     gap: 60px;
     padding-inline: 32px;
+    width: 100%;
   }
 
   .button__items {
@@ -612,25 +626,24 @@ box-sizing: border-box;
 // ==========================================
 // АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (<= 320px)
 // ==========================================
-
-@media (max-width: 744px) {
+@media (max-width: 320px) {
   .header {
     padding: 0 16px;
     height: 70px;
   }
 
   .menu__header {
+    padding-top: 0;
     padding-inline: 16px;
     height: 70px;
   }
 
-  .menu {
-    padding-left: 16px;
+  .menu__logo-img {
+    padding-left: 10px;
   }
 
-  .nav__menu,
   .menu__footer {
-    padding-left: 16px;
+    padding-left: 30px;
   }
 
   .hero__title {
@@ -664,33 +677,34 @@ box-sizing: border-box;
   }
 
   .details__list {
-   padding-inline: 16px;
+    padding-inline: 16px;
   }
 
-  // На маленьких екранах картинки деталей робимо вертикальними, щоб вони не зтискалися
   .details-card__images {
-  display: flex;
-  gap: 16px; // Зменшуємо відстань між картинками для мобільних (у десктопа було 24px)
-  width: 100%;
-  box-sizing: border-box;
-
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .details-card__img {
-   width: 50%;        // Кожна картинка займає рівно половину ширини контейнера
-  height: auto;      // Зберігає пропорції
-  object-fit: cover
+    width: 50%;
+    height: auto;
+    object-fit: cover;
   }
+
   .contacts__title {
     font-size: 32px;
   }
 
   .contacts__container {
     padding-inline: 16px;
+    width: 100%;
   }
 
   .contacts {
-    min-width: 100%; // Прибираємо фіксовані обмеження, щоб не виходити за межі 320px
+    min-width: 100%;
+    width: 100%;
   }
 
   .button__explore {
