@@ -2,6 +2,7 @@
   display: grid;
   row-gap: 100px;
   padding-block: 100px;
+  background-color: $background-color;
 
   @include content-padding-inline;
 
@@ -73,7 +74,11 @@
 
   &__note {
     grid-column: 1 / -1;
+
+
+    &-closed{
     margin: 0;
+    }
   }
 }
 
@@ -105,6 +110,9 @@
     height: 56px;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin-inline: auto;
 
     color: $main-text-color;
     font-weight: 700;
@@ -113,13 +121,11 @@
     text-decoration: none;
 
     @include on-table {
-      width: 400px;
-      margin-inline: auto;
+      max-width: 400px;
     }
 
     @include on-desktop {
-      width: 325px;
-      margin-inline: auto;
+      max-width: 325px;
     }
 
     @include hover(background-color, darken($accent-main-color, 10%));
@@ -131,11 +137,22 @@
     display: grid;
     margin-bottom: 24px;
 
-    img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      object-position: right center;
+    &-link {
+      display: block;
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        object-position: right center;
+        transition: transform $transition-time;
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
     }
 
     &--wide-first,
@@ -156,21 +173,24 @@
         column-gap: 15px;
       }
 
-      &--wide-first img:first-child,
-      &--wide-last img:last-child {
+      &--wide-first &-link:first-child,
+      &--wide-last &-link:last-child {
         grid-column: span 2;
-        aspect-ratio: auto;
-        height: 0;
-        min-height: 100%;
+
+        img {
+          aspect-ratio: auto;
+          height: 0;
+          min-height: 100%;
+        }
       }
 
       &--three {
         grid-template-columns: repeat(2, 1fr);
         column-gap: 15px;
+      }
 
-        img:nth-child(3) {
-          display: none;
-        }
+      &--three &-link:nth-child(3) {
+        display: none;
       }
     }
 
@@ -183,10 +203,10 @@
 
       &--three {
         grid-template-columns: repeat(3, 1fr);
+      }
 
-        img:nth-child(3) {
-          display: block;
-        }
+      &--three &-link:nth-child(3) {
+        display: block;
       }
     }
   }
@@ -256,6 +276,16 @@
     &-img {
       display: block;
       width: 100%;
+      transition: transform $transition-time;
+    }
+
+    &-link{
+      display: block;
+      overflow: hidden;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
     }
   }
 
@@ -336,12 +366,13 @@
     margin: 0;
     font-weight: 700;
     font-size: 16px;
-    color: $main-dark-color;
     font-style: normal;
 
-    &-link {
+    &--accent{
       text-decoration: none;
       color: $main-dark-color;
+
+      @include hover(color, $accent-main-color)
     }
   }
 
@@ -383,7 +414,7 @@
 
       &::placeholder {
         color: $form-color;
-        transition: color 0.3s;
+        transition: color $transition-time;
       }
 
       &:hover::placeholder {
@@ -415,6 +446,10 @@
 }
 
 .footer {
+  z-index: -1;
+  position: sticky;
+  bottom: 0;
+
   &__img {
     height: 180px;
     width: 100%;

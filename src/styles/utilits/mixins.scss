@@ -19,7 +19,7 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{$property} 0.3s;
+  transition: #{$property} $transition-time;
   &:hover {
     #{$property}: $toValue;
   }
@@ -48,4 +48,24 @@
   clip-path: inset(50%);
   border: 0;
   white-space: nowrap;
+}
+
+@mixin underline-hover($color: $main-text-color, $height: 1px, $bottom: -8px) {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: $bottom;
+    height: $height;
+    width: 100%;
+    background-color: $color;
+
+    transition: transform $transition-time;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
 }
