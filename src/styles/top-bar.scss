@@ -1,0 +1,79 @@
+.top-bar {
+  padding-block: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include content-padding-inline;
+
+  @include on-table {
+    padding-block: 50px 0;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-table {
+      gap: 55px;
+    }
+  }
+
+  &__call {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__phones {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    padding-right: 16px;
+    transition: $transition-time;
+
+    @include on-desktop {
+      display: grid;
+      justify-items: end;
+      gap: 8px;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    width: fit-content;
+    text-align: right;
+
+    text-decoration: none;
+    color: $main-text-color;
+    font-weight: 700;
+    font-size: 16px;
+
+    @include underline-hover;
+  }
+
+  @include on-desktop {
+    &__call:hover .top-bar__phones {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
