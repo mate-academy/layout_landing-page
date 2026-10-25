@@ -1,0 +1,112 @@
+/* contact.scss */
+@use 'sass:color';
+
+.contact {
+  padding: 64px $container-padding-mobile;
+
+  @media (min-width: 744px) {
+    padding: 80px 72px;
+  }
+
+  /* Десктопная версия 1260px+: отступы 120px и сетка в 2 колонки */
+  @media (min-width: 1260px) {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 96px 120px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Левая колонка для формы, правая для контактов */
+    column-gap: 80px; /* Отступ между формой и контактами */
+    align-items: start;
+  }
+}
+
+.contact > .title {
+  margin-bottom: 32px;
+
+  @media (min-width: 744px) {
+    margin-bottom: 48px;
+  }
+
+  /* На десктопе заголовок растягивается на обе колонки сверху */
+  @media (min-width: 1260px) {
+    grid-column: 1 / -1;
+    margin-bottom: 56px;
+  }
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+
+  @media (min-width: 1260px) {
+    margin-bottom: 0;
+  }
+}
+
+.contact__input {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: $border-radius-small;
+  font-family: $font-secondary;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: $color-gray-input-bg;
+  color: $color-gray-text;
+
+  &--textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+}
+
+.contact__button {
+  height: 48px;
+  background-color: $color-gray-input-bg;
+  color: $color-dark-secondary;
+  border: 2px solid $color-gray-input-border;
+  border-radius: $border-radius-small;
+  font-family: $font-primary;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: color.adjust($color-gray-input-bg, $lightness: -5%);
+  }
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 1260px) {
+    gap: 32px;
+    padding-top: 8px;
+  }
+}
+
+.contact__block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact__label {
+  font-size: 12px;
+  color: $color-gray-label;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact__value {
+  color: $color-dark-primary;
+  text-decoration: none;
+  font-family: $font-secondary;
+  font-size: 16px;
+  line-height: 24px;
+}
