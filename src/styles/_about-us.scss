@@ -1,0 +1,87 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.about-us {
+  background-color: #fcfaef;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__image-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 48px 20px;
+    row-gap: 24px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+
+    @include mixins.on-desktop {
+      max-width: 498px;
+      height: 96px;
+      line-height: 48px;
+
+      .about-us__br {
+        display: flex;
+        display: none;
+      }
+    }
+  }
+
+  &__description {
+    max-width: $recommended-size;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: $line-height;
+    letter-spacing: 0.15px;
+    margin: 0;
+
+    @include mixins.on-desktop {
+      max-width: 411px;
+      height: 110px;
+    }
+  }
+
+  @include mixins.on-tablet {
+    &__bottom {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 24px;
+      padding: 120px 72px;
+    }
+  }
+
+  @include mixins.on-desktop {
+    &__image-container {
+      height: 460px;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__bottom {
+      display: grid;
+      column-gap: 111px;
+      padding: 120px 134px;
+    }
+  }
+}

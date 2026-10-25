@@ -1,0 +1,119 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.recommended {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  @include mixins.on-tablet {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  &__title {
+    font-family: $font-family;
+    width: $recommended-size;
+    margin: 64px 20px 48px;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+
+    @include mixins.on-tablet {
+      width: 496px;
+      height: 40px;
+      margin: 120px 176px 56px 72px;
+    }
+
+    @include mixins.on-desktop {
+      margin: 120px 642px 56px 120px;
+    }
+  }
+
+  &__card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: $font-family;
+    width: auto;
+    margin: 0;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px 20px;
+    margin-inline: 20px;
+
+    @include mixins.on-tablet {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      width: 600px;
+      margin-inline: 72px;
+      gap: 56px 24px;
+    }
+
+    @include mixins.on-desktop {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-inline: 120px;
+      width: auto;
+      gap: 56px 24px;
+    }
+  }
+
+  &__image {
+    height: $recommended-size;
+    width: $recommended-size;
+
+    @include mixins.on-tablet {
+      width: 600px;
+      height: 600px;
+    }
+
+    @include mixins.on-desktop {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+
+    @include mixins.on-tablet {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__product-title {
+    margin: 0;
+    font-weight: 700;
+    line-height: $line-height;
+    font-size: 18px;
+  }
+
+  &__product-text {
+    margin: 0;
+    font-weight: 400px;
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: 0.15px;
+  }
+  &__price {
+    font-weight: 700;
+    margin-top: 12px;
+
+    @include mixins.on-tablet {
+      margin-top: 34px;
+    }
+
+    @include mixins.on-desktop {
+      margin-top: 12px;
+    }
+  }
+}

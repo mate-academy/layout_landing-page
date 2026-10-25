@@ -1,0 +1,186 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.contact-us {
+  box-sizing: border-box;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.on-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 111px;
+    }
+  }
+
+  &__title {
+    max-width: 280px;
+    height: 32px;
+    margin: 64px 20px 0;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+
+    @include mixins.on-tablet {
+      max-width: 496px;
+      height: 40px;
+      margin: 120px 176px 0 74px;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: 1/ -1;
+    }
+  }
+
+  &__form {
+    margin-top: 48px;
+
+    @include mixins.on-tablet {
+      margin-top: 56px;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 6;
+      margin-top: 56px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 0 20px;
+
+    @include mixins.on-tablet {
+      padding: 0 72px;
+    }
+  }
+
+  &__input,
+  &__input-2 {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 48px;
+
+    padding: 14px 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #f9f9f9;
+
+    &:hover {
+      border: 1px solid #dbdbdb;
+    }
+    &:focus {
+      outline: none;
+      border: 2px solid #f98921;
+    }
+  }
+
+  &__textarea {
+    box-sizing: border-box;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: $line-height;
+    letter-spacing: 0.15px;
+
+    &:focus {
+      outline: none;
+      border: 2px solid #f98921;
+    }
+
+    width: 100%;
+    height: $contact-us-height;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #f9f9f9;
+
+    resize: none;
+  }
+
+  &__button {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 56px;
+    margin-top: 16px;
+
+    background-color: #1b2129;
+    color: #fff;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: #1b2129;
+    }
+    &:active {
+      background-color: #010810;
+    }
+
+    @include mixins.on-desktop {
+      margin-bottom: 120px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    margin: 48px 20px 64px;
+
+    @include mixins.on-tablet {
+      margin: 80px 280px 120px 72px;
+    }
+
+    @include mixins.on-desktop {
+      max-width: 411px;
+      height: 244px;
+      grid-column: span 6;
+      margin: 56px 0 120px;
+    }
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: 14px;
+    line-height: $line-height;
+    color: #9393a3;
+    font-family: $font-family;
+    font-weight: 400;
+  }
+
+  &__value {
+    font-size: $font-size;
+    line-height: $line-height;
+
+    color: $basics-text-color;
+    text-decoration: none;
+    font-style: normal;
+    letter-spacing: 0.15px;
+    font-weight: 400;
+  }
+
+  &__value--address {
+    font-style: normal;
+  }
+}
