@@ -1,24 +1,49 @@
-# Landing Page
+# MyBike — Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=flat-square&logo=sass&logoColor=white)
+![BEM](https://img.shields.io/badge/BEM-000000?style=flat-square&logo=bem&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
 
-Choose a design for your landing page:
+A responsive landing page for the MyBike electric bicycles brand. Built from a Figma design using semantic HTML and SCSS, following the BEM methodology.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+**[Live Demo](https://insomniaorno.github.io/layout_landing-page/)** | **[Figma Design](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)**
 
-Follow the instructions in this and next lessons to implement the page block by block:
+## Overview & Features
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- **Responsive layout:** Mobile-first approach with breakpoints for tablet (`576px`) and desktop (`1024px`).
+- **Navigation:** Slide-in burger menu with scroll lock and smooth anchor navigation.
+- **UI & Layout:** Custom grid system using CSS Grid and Flexbox, sticky footer with a reveal effect, and smooth hover states on interactive elements.
+- **Contact Form:** Native HTML5 validation with auto-reset on submit.
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+## Tech Stack
+
+- **Markup:** HTML5
+- **Styling:** SCSS (variables, mixins, nesting), BEM architecture
+- **Bundler:** Vite
+- **Linters:** Stylelint, LintHTML, BEMLint
+
+## Local Setup
+
+Requires [Node.js](https://nodejs.org/) (v20 or higher recommended)..
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/insomniaorno/layout_landing-page.git
+   cd layout_landing-page
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
