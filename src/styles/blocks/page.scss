@@ -1,0 +1,77 @@
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    background-color: #f9f9f9;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-duration;
+
+    &:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.content-container {
+  max-width: 1260px;
+  margin-inline: auto;
+
+  @include content-padding-inline;
+}
+
+.section-title {
+  margin: 0 0 40px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+
+  @include on-desktop {
+    font-size: 40px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
