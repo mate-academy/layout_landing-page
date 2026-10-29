@@ -1,0 +1,129 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins' as *;
+
+.details {
+  &__wrapper {
+    @include pageGrid;
+    row-gap: 40px;
+
+    @include onTablet {
+      row-gap: 48px;
+    }
+  }
+
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto 0;
+    width: 100%;
+    max-width: 324px;
+    height: 56px;
+    color: $main-text-color;
+    border-radius: 40px;
+    border: 0;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 27px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+      box-shadow: 1px 4px 16px 0 rgba(232, 232, 240, 1);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 1px 2px 8px 0 rgba(232, 232, 240, 1);
+    }
+
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: 2 / span 4;
+    }
+
+    @include onDesktop {
+      grid-column: 5 / span 4;
+    }
+  }
+}
+
+.detail {
+  grid-column: 1 / -1;
+
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+    overflow: hidden;
+
+    &--wide {
+      @include onTablet {
+        grid-column: span 4;
+      }
+
+      @include onDesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      @include onTablet {
+        grid-column: span 2;
+      }
+
+      @include onDesktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+    @include hover(transform, scale(1.1));
+  }
+
+
+  &__content {
+    @include pageGrid;
+    row-gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    grid-column: 1 / -1;
+  }
+
+  &__description {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+}
