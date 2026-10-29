@@ -1,3 +1,644 @@
+// ---------- Variables ----------
+$color-text: #000;
+$color-white: #fff;
+$color-bg-menu: #e5eefc;
+$color-field: #f0f0f0;
+$color-muted: #757575;
+$color-accent: #1d4ed8;
+$transition: 0.3s;
+$header-height: 56px;
+$tablet: 744px;
+$desktop: 1260px;
+
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+// ---------- Base ----------
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: $color-text;
+  background-color: $color-white;
+  overflow-x: hidden;
+
+  @include tablet {
+    font-size: 14px;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.page:has(.page__menu:target) {
+  overflow: hidden; // not to scroll the page
+}
+
+// ---------- Shared blocks ----------
+.section {
+  padding: 40px 16px;
+
+  @include tablet {
+    padding: 56px 32px;
+  }
+
+  @include desktop {
+    max-width: $desktop;
+    margin: 0 auto;
+    padding: 64px 60px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+
+    @include tablet {
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+  }
+}
+
+.logo {
+  display: block;
+
+  &__img {
+    width: 80px;
+    height: auto;
+
+    @include tablet {
+      width: 96px;
+    }
+  }
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: transform $transition;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 40px;
+  border: 1px solid $color-text;
+  border-radius: 20px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-white;
+  background-color: $color-text;
+  cursor: pointer;
+  transition:
+    color $transition,
+    background-color $transition;
+
+  &:hover {
+    color: $color-text;
+    background-color: $color-white;
+  }
+}
+
+// ---------- Header ----------
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height;
+  padding: 0 16px;
+
+  @include tablet {
+    height: 72px;
+    padding: 0 32px;
+  }
+
+  @include desktop {
+    padding: 0 60px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+// ---------- Menu ----------
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 100%;
+  overflow: auto; // to scroll the menu if needed
+  background-color: $color-bg-menu;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition:
+    transform $transition,
+    visibility $transition;
+
+  @include tablet {
+    height: auto;
+    max-height: 100%;
+  }
+
+  &:target {
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &__top {
+    position: sticky; // to keep cross always visible
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $header-height;
+    padding: 0 16px;
+    background-color: $color-bg-menu;
+
+    @include tablet {
+      height: 72px;
+      padding: 0 32px;
+    }
+
+    @include desktop {
+      padding: 0 60px;
+    }
+  }
+
+  &__nav {
+    padding: 16px;
+
+    @include tablet {
+      padding: 16px 32px;
+    }
+
+    @include desktop {
+      padding: 16px 60px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 16px 32px;
+
+    @include tablet {
+      padding: 16px 32px 40px;
+    }
+
+    @include desktop {
+      padding: 16px 60px 40px;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color $transition;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+.contact-link {
+  width: fit-content;
+  font-size: 12px;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+// ---------- Hero ----------
+.hero {
+  position: relative;
+  height: 270px;
+  color: $color-text;
+
+  @include tablet {
+    height: 440px;
+  }
+
+  @include desktop {
+    height: 560px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% 20%;
+  }
+
+  &__content {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include tablet {
+      left: 32px;
+      bottom: 32px;
+    }
+
+    @include desktop {
+      left: 60px;
+      bottom: 48px;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: auto;
+
+    @include tablet {
+      width: 32px;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 1.2;
+
+    @include tablet {
+      font-size: 28px;
+    }
+
+    @include desktop {
+      font-size: 36px;
+    }
+  }
+}
+
+// ---------- Recommended ----------
+.recommended {
+  &__list {
+    display: grid;
+    gap: 32px;
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+  }
+}
+
+.product {
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include tablet {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    @include desktop {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__img-wrapper {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 12px;
+    overflow: hidden;
+
+    @include tablet {
+      max-width: 240px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    transition: transform $transition;
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.1);
+  }
+
+  &__name {
+    font-size: 12px;
+    font-weight: 700;
+    transition: color $transition;
+  }
+
+  &__link:hover &__name {
+    color: $color-accent;
+  }
+
+  &__type {
+    color: $color-muted;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-weight: 700;
+  }
+}
+
+// ---------- Categories ----------
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px 12px;
+    width: 100%;
+
+    @include tablet {
+      gap: 24px 16px;
+    }
+
+    @include desktop {
+      gap: 32px 20px;
+    }
+  }
+
+  &__button {
+    margin-top: 32px;
+
+    @include tablet {
+      margin-top: 40px;
+    }
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  grid-column: span 3;
+  min-width: 0;
+
+  &--2,
+  &--4,
+  &--5 {
+    grid-column: span 2;
+  }
+
+  &__img-wrapper {
+    height: 90px;
+    overflow: hidden;
+
+    @include tablet {
+      height: 180px;
+    }
+
+    @include desktop {
+      height: 220px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition;
+  }
+
+  &:hover &__img {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    font-size: 12px;
+    font-weight: 700;
+    transition: color $transition;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+
+  &:hover &__title {
+    color: $color-accent;
+  }
+}
+
+// ---------- Why buy direct ----------
+.why {
+  display: grid;
+  gap: 16px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: 700;
+  }
+
+  &__text {
+    color: $color-muted;
+  }
+}
+
+// ---------- Contact ----------
+.contact {
+  &__content {
+    display: grid;
+    gap: 32px;
+
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font: inherit;
+    background-color: $color-field;
+    transition: border-color $transition;
+
+    &:hover,
+    &:focus {
+      border-color: $color-text;
+      outline: none;
+    }
+
+    &--textarea {
+      height: 96px;
+      resize: vertical;
+    }
+  }
+
+  &__button {
+    align-self: center;
+    margin-top: 16px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    font-size: 10px;
+    color: $color-muted;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    width: fit-content;
+    transition: color $transition;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+// ---------- Page layout / sticky footer ----------
+.page__main {
+  position: relative;
+  z-index: 1;
+  background-color: $color-white;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  height: 240px;
+  overflow: hidden;
+
+  @include tablet {
+    height: 360px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
