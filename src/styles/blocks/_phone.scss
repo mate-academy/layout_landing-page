@@ -1,0 +1,68 @@
+@use '../variables' as *;
+
+.phone {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__number {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0;
+    visibility: hidden;
+    white-space: nowrap;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white;
+
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
+  }
+
+  &:hover &__number {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%);
+  }
+
+  &__icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    background-image: url('../images/icons/icon-phone.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+@media (min-width: 744px) {
+  .phone {
+    &__number {
+      top: 50%;
+      right: 44px;
+      left: auto;
+      transform: translateY(-50%);
+    }
+
+    &:hover &__number {
+      transform: translateY(-50%);
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

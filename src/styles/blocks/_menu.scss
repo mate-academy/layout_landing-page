@@ -1,0 +1,104 @@
+@use '../variables' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  background: $menu-background-color;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 20px;
+  }
+
+  &__nav {
+    padding: 24px 0 0 20px;
+  }
+
+  &__close {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: auto 0;
+    outline: none;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+
+      width: 0;
+      height: 2px;
+
+      background-color: $main-bg-color;
+      transition: width 0.3s ease;
+    }
+
+    &:focus-visible::after {
+      width: 100%;
+    }
+  }
+
+  &__logo:focus-visible {
+    outline: none;
+    box-shadow: 0 2px 0 $main-bg-color;
+  }
+}
+
+@media (min-width: 744px) {
+  .menu {
+    &__top {
+      padding: 36px 72px;
+    }
+
+    &__nav {
+      padding: 24px 0 0 72px;
+    }
+
+    &__close {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+@media (min-width: 1260px) {
+  .menu {
+    &__top {
+      padding: 36px 120px;
+    }
+
+    &__nav {
+      padding: 24px 0 0 121px;
+    }
+  }
+}
