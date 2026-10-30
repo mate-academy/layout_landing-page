@@ -1,0 +1,60 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.page {
+  font-family: Cinzel, serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 100%;
+  color: $main-dark-color;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+    background-color: #fff;
+    z-index: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: all $transition-duration;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__phone-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: opacity $transition-duration;
+    pointer-events: none;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &:has(.page__phone-menu:target) {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,62 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.top-bar {
+  padding-block: 25px;
+
+  @include content-padding-inline;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 46px;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      width: 87px;
+      height: 65px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 55px;
+    }
+  }
+
+  &__phone-numbers {
+    position: absolute;
+    top: 0;
+    right: 72px;
+
+    @include on-desktop {
+      right: 120px;
+    }
+
+    opacity: 1;
+    transition: all $transition-duration;
+    transform: translateX(-119px);
+    pointer-events: all;
+  }
+
+  &__phone-numbers--hidden {
+    opacity: 0;
+    transform: translateX(0);
+    pointer-events: none;
+  }
+}
