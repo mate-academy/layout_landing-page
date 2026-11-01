@@ -1,0 +1,168 @@
+@use 'sass:color';
+@use '../variables' as *;
+@use '../mixin' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  height: 100vh;
+  height: 100dvh;
+  padding: 0 120px 80px;
+  background-color: $color-menu-bg;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition:
+    transform $transition,
+    opacity $transition,
+    visibility $transition;
+
+  &:target {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  @include on-tablet {
+    padding: 0 72px 80px;
+  }
+
+  @include on-mobile {
+    padding: 0 20px 48px;
+  }
+
+  &__top {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px 0 24px;
+    margin-bottom: 36px;
+    background-color: $color-menu-bg;
+
+    @include on-tablet {
+      padding-top: 39px;
+      margin-bottom: 24px;
+    }
+
+    @include on-mobile {
+      padding-top: 24px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__icon--close {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url(../images/logo/Icon-Close.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform $transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-mobile {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+
+    @include on-mobile {
+      gap: 24px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $color-menu;
+    text-decoration: none;
+    transition:
+      transform $transition,
+      color $transition;
+
+    &:hover {
+      color: color.adjust($color-menu, $lightness: 15%);
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    &:focus {
+      color: color.adjust($color-menu, $lightness: -10%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background-color: currentcolor;
+      transition: width $transition;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__phone {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $color-menu;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__call {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-menu;
+    text-decoration: underline;
+    transition: opacity $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

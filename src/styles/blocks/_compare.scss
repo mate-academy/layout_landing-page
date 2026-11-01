@@ -1,0 +1,96 @@
+@use '../variables' as *;
+@use '../mixin' as *;
+
+.compare {
+  padding-bottom: 144px;
+  color: $color-text;
+
+  @include on-tablet {
+    padding-bottom: 120px;
+  }
+
+  @include on-mobile {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    margin: 0 0 56px;
+    text-align: center;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -1.5px;
+
+    @include on-tablet {
+      font-size: 48px;
+      margin-bottom: 48px;
+    }
+
+    @include on-mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    @include on-tablet {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 48px;
+      max-width: 392px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.bike-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  &__link {
+    display: block;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 256px;
+    object-fit: contain;
+    transition: transform $transition;
+  }
+
+  &__link:hover &__image {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__description {
+    max-width: 320px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    color: $color-text;
+    margin: 0 0 16px;
+
+    @include on-tablet {
+      max-width: none;
+    }
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: auto;
+  }
+}
