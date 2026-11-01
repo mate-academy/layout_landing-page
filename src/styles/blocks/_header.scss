@@ -3,8 +3,7 @@
 
 .header {
   aspect-ratio: 1260 / 711;
-  height: 100%;
-  margin: 0 auto;
+  width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -15,39 +14,22 @@
   background-size: cover;
   background-position: center;
 
-  @include on-desktop {
-    background-image: url(/src/images/header-bc-1280.png);
-    padding-bottom: 203px;
-  }
-
   @include on-tablet {
-    background-image: url(/src/images/header-bc-744.png);
-    padding-bottom: 130px;
     aspect-ratio: 744 / 628;
+    padding-bottom: 130px;
+    background-image: url(../images/header-bc-744.png);
   }
 
   @include on-mobile {
-    background-image: url(/src/images/header-bc-320.png);
-    padding-bottom: 88px;
     aspect-ratio: 320 / 480;
+    padding: 24px 0 88px;
+    background-image: url(../images/header-bc-320.png);
   }
 
   &__top {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding-inline: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include on-tablet {
-      padding-inline: 72px;
-    }
-
-    @include on-mobile {
-      padding-inline: 20px;
-    }
   }
 
   &__logo {
@@ -82,8 +64,10 @@
     opacity: 0;
     visibility: hidden;
     transform: translateX(10px);
-    transition: all 0.3s ease;
-    white-space: nowrap;
+    transition:
+      opacity $transition,
+      visibility $transition,
+      transform $transition;
 
     @include on-tablet {
       display: none;
@@ -106,7 +90,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-      transition: transform 0.3s ease;
+      transition: transform $transition;
 
       @include on-mobile {
         width: 24px;
@@ -135,7 +119,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    transition: background-image 0.3s ease;
 
     &:hover {
       background-image: url(/src/images/logo/Icon-Burger-menu-hover.svg);
@@ -148,17 +131,7 @@
   }
 
   &__footer {
-    max-width: 1260px;
-    margin: 0 auto;
     text-align: center;
-
-    @include on-tablet {
-      padding-inline: 72px;
-    }
-
-    @include on-mobile {
-      padding-inline: 20px;
-    }
   }
 
   &__title {

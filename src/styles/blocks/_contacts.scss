@@ -3,24 +3,21 @@
 
 .contacts {
   padding-bottom: 164px;
+  color: $color-text;
 
   @include on-tablet {
     padding-bottom: 120px;
   }
 
   &__title {
-    margin: 0 auto 48px;
-    width: 324px;
+    margin: 0 0 48px;
     font-size: 48px;
     font-weight: 500;
     line-height: 100%;
     text-align: center;
 
     @include on-mobile {
-      width: 100%;
       font-size: 32px;
-      line-height: 100%;
-      margin-bottom: 48px;
     }
   }
 
@@ -29,37 +26,47 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 198px;
-    max-width: 1020px;
-    margin: 0 auto;
 
     @include on-tablet {
       gap: 24px;
       max-width: 600px;
+      margin: 0 auto;
     }
 
     @include on-mobile {
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       gap: 48px;
+      max-width: none;
+    }
+  }
+
+  &__form,
+  &__info {
+    min-width: 0;
+
+    @include on-tablet {
+      flex: 1 1 0;
+    }
+
+    @include on-mobile {
+      flex: none;
       width: 100%;
     }
   }
 
   &__form {
-    width: 411px;
     display: flex;
+    flex: 0 1 411px;
     flex-direction: column;
-
-    @include on-tablet {
-      width: 288px;
-    }
-
-    @include on-mobile {
-      width: 100%;
-      max-width: 280px;
-    }
   }
 
+  &__info {
+    display: flex;
+    flex: 0 1 237px;
+    flex-direction: column;
+    gap: 24px;
+  }
   &__field {
     margin-bottom: 16px;
   }
@@ -79,23 +86,25 @@
 
   &__input,
   &__textarea {
+    display: block;
+    box-sizing: border-box;
     width: 100%;
     padding: 14px 16px;
-    border-radius: 16px;
     border: none;
+    border-radius: 16px;
     outline: none;
-    background-color: #f8f8fa;
+    background-color: $color-field;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 400;
     line-height: 140%;
-    color: #1d1d1d;
-    box-sizing: border-box;
+    color: $color-menu;
     transition:
-      box-shadow 0.3s ease,
-      background-color 0.3s ease;
+      box-shadow $transition,
+      background-color $transition;
 
     &::placeholder {
-      color: #7e7e83;
+      color: $color-placeholder;
     }
 
     &:hover {
@@ -109,20 +118,20 @@
   }
 
   &__button {
-    margin-top: 16px;
-    width: 411px;
+    width: 100%;
     height: 56px;
-    border-radius: 40px;
+    margin-top: 16px;
     border: none;
+    border-radius: 40px;
     background-color: #fff;
-    color: #1d1d1d;
+    color: $color-menu;
     font-family: Poppins, sans-serif;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition:
-      box-shadow 0.3s ease,
-      transform 0.1s ease;
+      box-shadow $transition,
+      transform $transition;
 
     &:hover {
       box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
@@ -132,61 +141,34 @@
       box-shadow: 0 0 25px 4px rgba(255, 255, 255, 0.8);
       transform: translateY(1px);
     }
-
-    @include on-tablet {
-      margin-top: 32px;
-      width: 288px;
-    }
-
-    @include on-mobile {
-      width: 100%;
-      max-width: 280px;
-    }
-  }
-
-  &__info {
-    width: 237px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    @include on-tablet {
-      width: 288px;
-    }
-
-    @include on-mobile {
-      width: 100%;
-      max-width: 280px;
-    }
   }
 
   &__label {
+    display: block;
     font-size: 14px;
     font-weight: 400;
     line-height: 140%;
-    color: $color-text;
+  }
+
+  &__address {
+    font-style: normal;
   }
 
   &__value,
-  &__address {
+  &__address-link {
     font-size: 14px;
     font-weight: 700;
     line-height: 140%;
     color: $color-text;
     text-decoration: none;
-    font-style: normal;
+    transition: color $transition;
 
-    &-link {
-      text-decoration: none;
-      color: $color-text;
+    &:hover {
+      color: $color-hover;
     }
   }
 
   &__value {
-    transition: opacity 0.3s ease;
-
-    &:hover {
-      opacity: 0.8;
-    }
+    display: inline-block;
   }
 }

@@ -5,86 +5,87 @@
   padding-bottom: 144px;
   color: $color-text;
 
-  &__container {
-    margin: 0 auto;
-    padding-inline: 120px;
+  @include on-tablet {
+    padding-bottom: 120px;
+  }
+
+  @include on-mobile {
+    padding-bottom: 80px;
   }
 
   &__title {
+    margin: 0 0 56px;
     text-align: center;
     font-size: 64px;
     font-weight: 500;
     line-height: 1;
     letter-spacing: -1.5px;
-    margin-top: 0;
-    margin-bottom: 56px;
 
     @include on-tablet {
       font-size: 48px;
       margin-bottom: 48px;
-      text-align: center;
     }
 
     @include on-mobile {
       font-size: 32px;
-      margin-bottom: 48px;
     }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(3, 324px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
-    justify-content: flex-start;
 
     @include on-tablet {
-      grid-template-columns: 392px;
-      justify-content: center;
+      grid-template-columns: minmax(0, 1fr);
       gap: 48px;
-    }
-
-    @include on-mobile {
-      grid-template-columns: 100%;
-      gap: 48px;
+      max-width: 392px;
+      margin: 0 auto;
     }
   }
 }
 
 .bike-card {
-  width: 324px;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 
-  @include on-tablet {
-    width: 392px;
-  }
-
-  @include on-mobile {
-    width: 100%;
+  &__link {
+    display: block;
+    margin-bottom: 32px;
+    overflow: hidden;
   }
 
   &__image {
-    width: 324px;
+    display: block;
+    width: 100%;
     height: 256px;
     object-fit: contain;
-    margin-bottom: 32px;
+    transition: transform $transition;
+  }
+
+  &__link:hover &__image {
+    transform: scale(1.1);
   }
 
   &__title {
+    margin: 0 0 8px;
     font-size: 24px;
     font-weight: 700;
     line-height: 140%;
-    margin-top: 0;
-    margin-bottom: 8px;
   }
 
   &__description {
+    max-width: 320px;
     font-size: 16px;
     font-weight: 400;
     line-height: 140%;
     color: $color-text;
-    margin-top: 0;
-    margin-bottom: 16px;
+    margin: 0 0 16px;
+
+    @include on-tablet {
+      max-width: none;
+    }
   }
 
   &__price {

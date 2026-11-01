@@ -2,8 +2,8 @@
 @use '../mixin' as *;
 
 .details {
-  padding-top: 0;
   padding-bottom: 180px;
+  color: $color-text;
 
   @include on-tablet {
     padding-bottom: 120px;
@@ -13,30 +13,16 @@
     padding-bottom: 80px;
   }
 
-  &__container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 64px;
-    padding-inline: 120px;
-
-    @include on-mobile {
-      gap: 48px;
-      padding-inline: 20px;
-    }
-  }
-
   &__title {
-    margin: 0;
+    margin: 0 0 64px;
     font-size: 48px;
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -1.5px;
     text-align: center;
-    color: $color-text;
 
     @include on-mobile {
+      margin-bottom: 48px;
       font-size: 32px;
     }
   }
@@ -45,7 +31,6 @@
     display: flex;
     flex-direction: column;
     gap: 64px;
-    width: 100%;
 
     @include on-mobile {
       gap: 48px;
@@ -53,21 +38,13 @@
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    @include on-mobile {
-      gap: 16px;
-    }
+    min-width: 0;
 
     &-title {
-      margin-top: 24px;
-      margin-bottom: 16px;
+      margin: 0 0 16px;
       font-size: 24px;
       font-weight: 700;
       line-height: 140%;
-      color: $color-text;
     }
 
     &-text {
@@ -76,77 +53,90 @@
       font-size: 16px;
       font-weight: 400;
       line-height: 140%;
-      color: $color-text;
     }
   }
 
   &__image {
-    width: 100%;
     display: flex;
     gap: 24px;
+    margin-bottom: 24px;
 
     @include on-mobile {
       gap: 20px;
     }
   }
 
-  &__img {
+  &__link {
     display: block;
-    object-fit: cover;
+    min-width: 0;
     height: 340px;
+    overflow: hidden;
 
     &--wide {
-      width: 672px;
+      flex: 671 1 0;
     }
 
     &--narrow {
-      width: 324px;
+      flex: 323 1 0;
     }
 
     @include on-tablet {
       height: 187px;
 
       &--wide {
-        width: 392px;
+        flex: 392 1 0;
       }
 
       &--narrow {
-        width: 184px;
+        flex: 184 1 0;
       }
     }
 
     @include on-mobile {
-      width: calc(50% - 10px);
       height: 130px;
+
+      &--wide,
+      &--narrow {
+        flex: 1 1 0;
+      }
     }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition;
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.1);
   }
 
   &__action {
     display: flex;
     justify-content: center;
-    width: 100%;
+    margin-top: 48px;
 
     .button {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      width: 324px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 324px;
       height: 56px;
-      margin-top: 48px;
-      margin-left: auto;
-      margin-right: auto;
       border-radius: 100px;
       background-color: #fff;
-      color: #1d1d1d;
-      border: none;
-      font-weight: 700;
+      color: $color-menu;
       font-size: 16px;
+      font-weight: 700;
       line-height: 27px;
-      cursor: pointer;
       text-decoration: none;
       transition:
-        box-shadow 0.3s ease,
-        transform 0.1s ease;
+        box-shadow $transition,
+        transform $transition;
 
       &:hover {
         box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
@@ -158,11 +148,11 @@
       }
 
       @include on-tablet {
-        width: 392px;
+        max-width: 392px;
       }
 
       @include on-mobile {
-        width: 278px;
+        max-width: none;
       }
     }
   }
