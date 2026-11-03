@@ -1,0 +1,65 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.page {
+  font-family: Inter, sans-serif;
+  line-height: 140%;
+  font-size: 16px;
+  color: $main-text-color;
+
+  // display: flex;
+  // додаю, щоб футер у разі, якщо контенту мало, залишався внизу сторінки
+  // flex-direction: column;
+  // елементи розташовуються вертикально.
+  // min-height: 100vh;
+  // сторінка займає щонайменше всю висоту екрана
+
+  scroll-behavior: smooth;
+
+  // щоб скролінг за навігацією (напр, до секції recommended чи how-to-buy) відбувався плавно
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+
+    // щоб при відкритому меню не можна було скролити сторінку
+  }
+
+  &__body {
+    margin: 0;
+    min-width: 320px;
+
+    // щоб на дуже вузьких екранах сторінка не ламалась, а просто масштабувалась
+  }
+
+  // до html додаю клас page, до body додаю клас page__body, а до блоку меню page__menu, щоб
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    // щоб меню було зверху додаю position і top; а щоб вона була розтягнута додаю left i right
+    opacity: 0;
+    pointer-events: none;
+
+    // щоб воно не заважало взаємодіяти з елементами
+    transition: all $effectDuration;
+
+    // у мене змінюються властивості transform та opacity, тому я можу просто поставити all
+    transform: translateX(-100%);
+
+    // щоб меню виїжджало з правої сторони;% вираховуються відносно самого елемента, а не батьківського; translateX(-100%) ознаяає, що елемент поїхав ліворуч на 100%
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+
+      // для того, щоб відкривати цей елемент
+      transform: translateX(0);
+
+      // скидаю до 0, коли показую це меню
+    }
+  }
+
+  // означає, ід співпадає з тим, що стоїться після # в адресному рядку;
+}

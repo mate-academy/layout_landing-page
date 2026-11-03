@@ -1,0 +1,103 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+    max-width: 1020px;
+
+    // макс ширина мого контенту
+    margin-inline: auto;
+
+    // відцентровую весь контент
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+
+  // щоб масштабування відбувалось плавно
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+// створюю міксин, щоб не було дублювання коду для наведення; додаю параметри, тому що змінюю властивість $property і додаю значення, яке втановлюю $toValue
+
+@mixin page-grid {
+  --columns: 2;
+
+  // створюю css-змінну, яка вказує на к-сть колонок у сітці
+
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  // параметри сітки - 2 колонки однакового розміру
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+// щоб використовувати дану сітку там, де потрібно (напр, у секціях) створюю міксин, щоб не дублювати код
+
+@mixin button {
+  display: grid;
+  grid-column: 1 / -1;
+  align-content: center;
+  text-align: center;
+
+  background-color: $main-text-color;
+  padding-block: 0;
+  padding-inline: 48px;
+  border-radius: 40px;
+  border: none;
+  height: 56px;
+
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    background-color $effectDuration $transitionTimingFunction,
+    color $effectDuration $transitionTimingFunction,
+    border-color $effectDuration $transitionTimingFunction;
+
+  &:hover {
+    border: 3px solid $main-text-color;
+    background-color: initial;
+    color: $main-text-color;
+  }
+
+  &:active {
+    background-color: #111;
+    color: #fff;
+  }
+}

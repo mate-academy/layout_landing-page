@@ -1,0 +1,48 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    // щоб дати відступи до списку навігації
+  }
+
+  &__link {
+    position: relative;
+    color: inherit;
+
+    // успадквовую колір для навігації
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $main-text-color;
+
+      // лінія буде шириною, як і сам контент (секції);
+
+      transition: transform $effectDuration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    // &::after має 0 значення, тобто лінія виникає при наведенні з лівої сторони
+  }
+}

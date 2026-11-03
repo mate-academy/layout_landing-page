@@ -1,0 +1,47 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.top-bar {
+  padding-block: 24px;
+
+  // @include content-padding-inline; - видаляю, бо додала стилі до обгортки хедеру - header__content
+
+  display: flex;
+
+  // flex-direction: column;
+  // для того, щоб елементи розташувались горизонтально
+  justify-content: space-between;
+  align-items: center;
+
+  // логотип відцентровується з іконками
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo-link {
+    display: flex;
+
+    // для того, щоб логотип вирівнявся з іконками
+  }
+
+  &__logo {
+    height: 16px;
+    transition: transform $effectDuration $transitionTimingFunction;
+
+    @include hover(transform, scale(1.2));
+
+    // збільшую на 20% при наведенні
+
+    @include on-tablet {
+      height: 24px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+}
+
+// в index.html змінюю класи header__top i menu__top на top-bar, щоб уникнути дублювання коду і ризику створення помилки

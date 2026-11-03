@@ -1,0 +1,68 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.category {
+  &__photos {
+    @include page-grid;
+
+    // додаю міксин, щоб кожне зобр займало лише свою колонку/колонки
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    position: relative;
+
+    &--wide {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+
+    // я маю прописувати певні стилі як для планшету , так і для десктопа
+
+    &--square {
+      height: 0;
+      padding-bottom: 100%;
+
+      // щоб мої картинки точно були квадартними я додаю 0 висоту і п-б у % (бо п-б = ширині елемента), а також до лінку та фото позиціонування
+
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desktop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+
+    // щоб зображення не розтягувалось більше ніж на ширину екрану
+    height: 100%;
+    object-fit: cover;
+
+    // щоб картинка не деформувалась після додавання height: 100%; до стилів
+
+    @include hover(transform, scale(1.2));
+
+    // збільшую на 20% при наведенні
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+}

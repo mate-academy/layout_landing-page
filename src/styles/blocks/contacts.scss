@@ -1,0 +1,139 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.contacts {
+  @include page-grid;
+
+  & > .section-title {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  // & > .section-title - щоб стилі застосовувались лише до заголовку, який знаходиться безпосередньо у блоці contacts, а не до всіх заголовків h2 на сторінці
+
+  &__wrapper {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+
+      // займає перші 3 колонки
+    }
+
+    @include on-desktop {
+      grid-column: span 5;
+
+      // позначаю на скільки колонок має розтягуватись заголовок
+    }
+  }
+
+  &__form {
+    display: grid;
+
+    row-gap: 16px;
+    margin: 0;
+    margin-bottom: 48px;
+  }
+
+  &__input {
+    padding: 0;
+    padding-left: 16px;
+    padding-block: 14px;
+    height: 48px;
+    border-radius: 40px;
+    background-color: #f8f8fa;
+    border: none;
+
+    color: #7e7e83;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+
+    &:focus {
+      outline: 1px solid #d5d7de;
+      outline-offset: 1px;
+      color: $main-text-color;
+    }
+
+    &:active {
+      outline: 1px solid #292929;
+      outline-offset: 1px;
+      color: $main-text-color;
+    }
+  }
+
+  &__message {
+    font-family: inherit;
+    margin-bottom: 16px;
+    height: 148px;
+    border: none;
+    border-radius: 16px;
+    padding-inline: 16px;
+    padding-block: 14px;
+    background-color: #f8f8fa;
+    color: $main-text-color;
+    resize: none;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: 1px solid #d5d7de;
+      outline-offset: 1px;
+      color: $main-text-color;
+    }
+
+    &:active {
+      outline: 1px solid #292929;
+      outline-offset: 1px;
+      color: $main-text-color;
+    }
+  }
+
+  &__button {
+    @include button;
+
+    // width: 100%;
+  }
+
+  &__description {
+    display: grid;
+    margin-bottom: 96px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 4 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 11;
+    }
+  }
+
+  &__item {
+    display: grid;
+    margin-bottom: 24px;
+    row-gap: 8px;
+  }
+
+  &__name {
+    margin: 0;
+    color: #9fadc2;
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  &__content {
+    margin: 0;
+    color: #3e3e3e;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 140%;
+    transition: color $effectDuration $transitionTimingFunction;
+
+    &:hover {
+      color: #292929;
+    }
+  }
+}

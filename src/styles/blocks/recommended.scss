@@ -1,0 +1,35 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.recommended {
+  &__products {
+    @include page-grid;
+
+    // перемістила сюди, бо просто у .recommended сітка застосовується не до всієї секції, а тільки для продуктів
+    row-gap: 40px;
+
+    // @include on-tablet {
+    //   justify-items: center;
+    //   // щоб елемент не розтягувався
+    // }
+
+    // @include on-desktop {
+    //   grid-template-columns: repeat(3, 1fr);
+    //   column-gap: 24px;
+    //   justify-items: stretch;
+    // }
+    // видаляю це, бо розміщую зп головною сіткою
+  }
+
+  &__product {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
