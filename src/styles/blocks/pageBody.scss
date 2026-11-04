@@ -2,9 +2,32 @@
   &__body {
     display: grid;
 
-    --page-grid-columns: [full-start] minmax(96px, 1fr) [content-start]
-      repeat(12, minmax(0, 1fr)) [content-end] minmax(96px, 1fr) [full-end];
-    --page-grid-gap: 24px;
+    @media (min-width: 1260px) {
+      --page-grid-columns:
+      [full-start] minmax(96px, 1fr)
+      [content-start] repeat(12, minmax(0, 1fr))
+      [content-end] minmax(96px, 1fr)
+      [full-end];
+      --page-grid-gap: 24px;
+    }
+
+    @media (max-width: 1259px) and (min-width: 744px) {
+      --page-grid-columns:
+      [full-start] minmax(0, 1fr)
+      [content-start] repeat(6, minmax(0, 1fr))
+      [content-end] minmax(0, 1fr)
+      [full-end];
+      --page-grid-gap: 24px;
+    }
+
+    @media (max-width: 743px) {
+      --page-grid-columns:
+      [full-start] minmax(0, 0)
+      [content-start] repeat(2, minmax(0, 1fr))
+      [content-end] minmax(0, 0)
+      [full-end];
+      --page-grid-gap: 20px;
+    }
 
     grid-template-columns: var(--page-grid-columns);
     column-gap: var(--page-grid-gap);
