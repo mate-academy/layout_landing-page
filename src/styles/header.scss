@@ -1,8 +1,9 @@
 .header {
   position: relative;
+
   background-image: url('../image/header-bike.png');
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto;
+  background-position: center top;
   background-repeat: no-repeat;
 
   height: 480px;
@@ -19,23 +20,39 @@
   padding-block: 24px;
 @include contentPaddingInline;
 
- @include onTablet {
-  height: 628px;
- padding-block: 36px;
-}
-
-  @include onDesktop {
-     width: 100%;
-  
-
-    height: 711px;
-  padding-block: 36px 120px;
-
-  background-image: url('../image/header-bike-desktop.png');
+@media (max-width: 320px) {
+  background-image: url('../image/header-bike-mobile.png');
   background-size: cover;
   background-position: center;
-  }
+}
+@media (min-width: 321px) and (max-width: 743px) {
+  height: calc(100vw * 480 / 743);
+}
+@include onTablet {
+  height: 628px;
+  padding-block: 36px;
 
+  background-image: url('../image/header-bike.png');
+  background-size: cover;
+  background-position: center;
+}
+
+ @include onDesktop {
+  width: 100%;
+  height: 711px;
+  padding-block: 36px 120px;
+
+  background-image: url('../image/header-bike-figma.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+@media (min-width: 1261px) {
+  height: calc(100vw * 711 / 1260);
+}
 
   &__logo {
     display: block;
@@ -112,6 +129,10 @@
     letter-spacing: -1.5px;
     color: #fff;
 
+    @media (min-width: 321px) and (max-width: 743px) {
+  bottom: clamp(12px, 3vw, 24px);
+}
+
     @include onTablet {
       font-size: 64px;
       left: 72px;
@@ -122,7 +143,7 @@
     @include onDesktop {
       font-size: 80px;
 
-      top: 428px;
+      top: 60.2%;
       bottom: auto;
 
       left: 294px;
@@ -132,3 +153,5 @@
     }
   }
 }
+
+
