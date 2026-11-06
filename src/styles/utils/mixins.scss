@@ -1,0 +1,93 @@
+@use '../utils/variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1260px;
+    margin-inline: auto;
+
+    // вирівнюю весь контент по центру
+    padding-inline: 120px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effectDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  display: grid;
+  grid-column: 1 / -1;
+  align-content: center;
+
+  text-align: center;
+
+  padding-block: 0;
+  background-color: #f98921;
+
+  padding-inline: 48px;
+  height: 56px;
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 27px;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  transition:
+    background-color $effectDuration $transitionFunction,
+    color $effectDuration $transitionFunction,
+    border-color $effectDuration $transitionFunction;
+
+  &:hover {
+    color: #fff;
+    background-color: $main-text-color;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #010810;
+  }
+}

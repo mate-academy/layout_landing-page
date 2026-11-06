@@ -1,0 +1,47 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+.category {
+  &__photos {
+    @include page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 16px;
+
+    // щоб фото не розтягувалось не більше ні на всю ширину екрану
+    object-fit: cover;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+}

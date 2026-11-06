@@ -1,0 +1,46 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+
+.top-bar {
+  display: flex;
+  padding-block: 24px;
+
+  /* padding-top and padding-bottom - 24; вертикальні відступи */
+  // @include content-padding-inline;
+
+  /* padding-left and padding-right - 20px; горизонтальні відступи */
+
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  &__logo-link {
+    display: flex;
+  }
+
+  &__logo {
+    width: 152px;
+    height: 16px;
+
+    transition: transform $effectDuration $transitionFunction;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      width: 228px;
+      height: 24px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+  }
+}

@@ -1,0 +1,43 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+
+.recommended {
+  &__products {
+    @include page-grid;
+
+    // переставляю сюди, щоб грід використовувався для всієї секції; page-grid - це сітка для всього сайту, тому дісплей: грід можна забрати
+    row-gap: 40px;
+
+    @include on-tablet {
+      row-gap: 56px;
+    }
+
+    // @include on-tablet {
+    //   justify-items: center;
+    //   // додаю, щоб елемент у розмірі планшету не розтягувався
+    // }
+
+    // @include on-desktop {
+    //   grid-template-columns: repeat(3, 1fr);
+    //   // на десктопі додаю 3 колонки однакової ширини
+    //   column-gap: 24px;
+    //   justify-items: stretch;
+    //   // розтягує елемент
+    // }
+    // додавши &__product {grid-column: 1 / -1;}, стилі @include on-tablet та @include on-desktop можна видалити, бо розміри елементів будуть визначатися грідом, який розташований у батьківському елементі .recommended__products
+  }
+
+  &__product {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 4;
+
+      // на десктопі кожен елемент займає 4 колонки
+    }
+  }
+}
