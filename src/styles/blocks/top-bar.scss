@@ -1,0 +1,69 @@
+@import '../utils/variables';
+
+.top-bar {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    display: flex;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__phone-number {
+    font-family:
+      Inter,
+      Manrope,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      'Open Sans',
+      'Helvetica Neue',
+      sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-align: right;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1b2129;
+    opacity: 0;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 24px;
+    cursor: url(/src/images/icons/icon-cursor.png), auto;
+    align-items: center;
+  }
+
+  @include on-tablet() {
+    padding: 36px 72px;
+  }
+
+  @include on-desktop() {
+  padding: 36px 120px;
+  }
+
+  @include on-tablet(){
+    &__icons {
+      display: flex;
+      gap: 32px;
+    }
+  }
+
+  @include on-desktop(){
+    &__icons:has(.icon--phone:hover) &__phone-number {
+      opacity: 1;
+    }
+  }
+}
