@@ -14,9 +14,8 @@
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
   &__category {
     display: flex;
@@ -68,22 +67,23 @@
 
   &--recommended {
     margin-bottom: 48px;
+    align-self: flex-start;
   }
 
   &--about-us {
     margin-top: 48px;
   }
 
-  @include on-tablet() {
-      &--about-us {
-    margin: 0;
-    font-size: 40px;
-    line-height: 40px;
-    width: 50%;
-  }
+  @media (min-width: $tablet-min-width) {
+    &--about-us {
+      margin: 0;
+      font-size: 40px;
+      line-height: 40px;
+      width: 50%;
+    }
   }
 
-  @include on-desktop() {
+  @media (min-width: $desktop-min-width) {
     &--about-us {
       margin: 0;
       font-size: 48px;
@@ -96,7 +96,7 @@
     margin: 0;
   }
 
-  @include on-tablet() {
+  @media (min-width: $tablet-min-width) {
     &--category {
       font-size: 24px;
     }
@@ -117,7 +117,7 @@
     flex-direction: column;
   }
 
-  @include on-tablet() {
+  @media (min-width: $tablet-min-width) {
     &__container {
       flex-direction: row;
       padding: 72px 120px;
@@ -125,7 +125,7 @@
     }
   }
 
-  @include on-desktop() {
+  @media (min-width: $desktop-min-width) {
     &__container {
       flex-direction: row;
       justify-content: space-around;
@@ -142,7 +142,7 @@
     background-size: cover;
   }
 
-  @include on-tablet() {
+  @media (min-width: $tablet-min-width) {
     &__image {
       height: 400px;
       background-image: url(/src/images/about-us_tablet.png);
@@ -152,18 +152,21 @@
     }
   }
 
-  @include on-desktop() {
+  @media (min-width: $desktop-min-width) {
     &__image {
-    height: 460px;
-    background-image: url(/src/images/about-us_desktop.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
+      height: 460px;
+      background-image: url(/src/images/about-us_desktop.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }
 
 .recommended {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 &__products {
 display: grid;
 row-gap: 40px;
@@ -171,7 +174,11 @@ justify-content: center;
   @include on-desktop {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 24px;
+    justify-items: stretch;
     }
+  }
+  @include on-tablet {
+    justify-items: center;
   }
 }
 
@@ -192,13 +199,12 @@ justify-content: center;
     letter-spacing: 0;
   }
 
-  @include on-tablet() {
-      &--about-us {
+  @media (min-width: $tablet-min-width) {
+    &--about-us {
       margin: 0;
       flex-grow: 1;
     }
   }
-
 }
 
 .link {
@@ -210,7 +216,7 @@ justify-content: center;
     width: 100%;
   }
 
-  @include on-tablet(){
+  @media (min-width: $tablet-min-width) {
     &--about-us {
       width: 50%;
     }
@@ -245,7 +251,7 @@ justify-content: center;
   gap: 24px;
   padding: 0;
 
-  @include on-desktop(){
+  @media (min-width: $desktop-min-width) {
     & {
       flex-grow: 1;
     }
@@ -276,8 +282,8 @@ justify-content: center;
     gap: 48px;
   }
 
-  @include on-desktop() {
-   &__container {
+  @media (min-width: $desktop-min-width) {
+    &-container {
       flex-direction: row;
       justify-content: space-between;
     }
@@ -289,7 +295,7 @@ justify-content: center;
     gap: 48px;
   }
 
-  @include on-tablet() {
+  @media (min-width: $tablet-min-width) {
     &__contact-form {
       gap: 56px;
       flex-grow: 1;
