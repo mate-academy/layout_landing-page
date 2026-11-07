@@ -1,0 +1,157 @@
+.header {
+  position: relative;
+
+  background-image: url('../image/header-bike.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  height: 480px;
+
+  box-sizing: border-box;
+
+  background-color: #1d1d1d;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+
+  padding-block: 24px;
+@include contentPaddingInline;
+
+@media (max-width: 320px) {
+  background-image: url('../image/header-bike-mobile.png');
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 321px) and (max-width: 743px) {
+  height: calc(100vw * 480 / 743);
+}
+@include onTablet {
+  height: 628px;
+  padding-block: 36px;
+
+  background-image: url('../image/header-bike.png');
+  background-size: cover;
+  background-position: center;
+}
+
+ @include onDesktop {
+  width: 100%;
+  height: 711px;
+  padding-block: 36px 120px;
+
+  background-image: url('../image/header-bike-figma.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+@media (min-width: 1261px) {
+  height: calc(100vw * 711 / 1260);
+}
+
+  &__logo {
+    display: block;
+
+    img {
+      display: block;
+      width: 130px;
+      height: auto;
+
+     @include onTablet {
+        width: 187px;
+      }
+    }
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  &__phone {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+
+    &-number {
+      position: absolute;
+      right: calc(100% + 20px);
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16px;
+      letter-spacing: 2px;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    &:hover .header__phone-number,
+    &:focus-within .header__phone-number {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  &__phone-icon,
+  &__menu {
+    display: block;
+
+    img {
+      display: block;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 88px;
+    left: 20px;
+    right: 20px;
+
+    margin: 0;
+    text-align: center;
+
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.5px;
+    color: #fff;
+
+    @media (min-width: 321px) and (max-width: 743px) {
+  bottom: clamp(12px, 3vw, 24px);
+}
+
+    @include onTablet {
+      font-size: 64px;
+      left: 72px;
+      right: 72px;
+      bottom: 130px;
+    }
+
+    @include onDesktop {
+      font-size: 80px;
+
+      top: 60.2%;
+      bottom: auto;
+
+      left: 294px;
+      right: 294px;
+
+      transform: none;
+    }
+  }
+}
+
+
