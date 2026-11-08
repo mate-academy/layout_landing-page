@@ -157,4 +157,15 @@ describe('index.html static checks', () => {
     expect(queryAll('.detail')).toHaveLength(3);
     expect(queryAll('.detail__photo')).toHaveLength(6);
   });
+
+  it('should wrap every product photo in a link for hover effects', () => {
+    const photoLinks = queryAll('.product__link');
+
+    expect(photoLinks).toHaveLength(3);
+
+    photoLinks.forEach((link) => {
+      expect(link.querySelector('.product__photo')).not.toBeNull();
+      expect(link.getAttribute('href')).toBe('#');
+    });
+  });
 });
