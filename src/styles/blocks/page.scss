@@ -1,0 +1,46 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+
+.page {
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  color: $main-text-color;
+  scroll-behavior: smooth;
+  line-height: 140%;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+
+    // щоб при відкритому меню не можна було скролити сторінку
+  }
+
+  &__body {
+    min-width: 320px;
+    margin: 0;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    pointer-events: none;
+    opacity: 0;
+
+    transform: translateX(-100%);
+
+    transition: all $effectDuration;
+
+    &:target {
+      pointer-events: all;
+      opacity: 1;
+
+      transform: translateX(0);
+    }
+  }
+}

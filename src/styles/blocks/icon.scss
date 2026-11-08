@@ -1,0 +1,69 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__phone-number {
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-50%);
+    transition:
+      opacity $effectDuration ease-in-out,
+      visibility $effectDuration ease-in-out;
+    white-space: nowrap;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $main-text-color;
+    letter-spacing: 2px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/icon-phone.png);
+    position: relative;
+
+    &:hover,
+    &:focus-visible {
+      .icon__phone-number {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.png);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.png);
+  }
+}

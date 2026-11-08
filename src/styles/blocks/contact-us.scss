@@ -1,0 +1,151 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+.contact-us {
+  @include page-grid;
+
+  & > .section-title {
+    grid-column: 1 / -1;
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__form {
+    display: grid;
+    row-gap: 16px;
+    margin: 0;
+    margin-bottom: 48px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__input {
+    height: 48px;
+    padding: 0;
+    padding-left: 16px;
+    padding-block: 14px;
+
+    border: none;
+    border-radius: 8px;
+    color: #7e7e83;
+    background-color: #f9f9f9;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0.15px;
+
+    &:focus {
+      outline: 1px solid #dbdbdb;
+      color: $main-text-color;
+      outline-offset: 1px;
+    }
+
+    &:active {
+      outline: 2px solid #f98921;
+      color: $main-text-color;
+      outline-offset: 2px;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset;
+      box-shadow: 0 0 0 1000px #f9f9f9 inset;
+
+      -webkit-text-fill-color: #7e7e83;
+      caret-color: #7e7e83;
+    }
+  }
+
+  &__message {
+    font-family: inherit;
+
+    height: 148px;
+    border: none;
+    margin-bottom: 16px;
+    border-radius: 8px;
+
+    // row-gap (16px) + margin-bottom (16px) = 32px - gap from message to button
+    padding-block: 14px;
+    resize: none;
+    padding-inline: 16px;
+
+    color: #7e7e83;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+
+    &:focus {
+      color: $main-text-color;
+      outline: 1px solid #dbdbdb;
+      outline-offset: 1px;
+    }
+
+    &:active {
+      color: $main-text-color;
+      outline: 2px solid #f98921;
+      outline-offset: 2px;
+    }
+  }
+
+  &__button {
+    @include button;
+  }
+
+  &__description {
+    display: grid;
+    grid-column: 1 / -1;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      grid-column: 1 / 5;
+      margin-bottom: 120px;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+    }
+  }
+
+  &__item {
+    display: grid;
+    row-gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 140%;
+    color: #9393a3;
+    letter-spacing: 0.15px;
+  }
+
+  &__content {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 140%;
+    color: #191919;
+    letter-spacing: 0.15px;
+    text-decoration: none;
+
+    transition: color $effectDuration $transitionFunction;
+
+    &:hover {
+      color: #1b2129;
+    }
+  }
+}

@@ -1,24 +1,32 @@
-# Landing Page
+Bang & Olufsen Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+- Project Description
+  A responsive landing page for Bang & Olufsen, inspired by the provided Figma design. The page presents Bang & Olufsen's Beosystems – a limited edition music system with a clean, modern layout, high-quality imagery, and a focus on user experience. The goal is to recreate the original design as closely as possible while ensuring usability across different screen sizes.
 
-Choose a design for your landing page:
+- Technologies Used
+  HTML5 - provides the semantic structure of the page.
+  CSS3 / Sass (SCSS) - handles styling, layout, responsive design, and reusable style rules.
+  BEM methodology - helps organize CSS class names and maintainable styles.
+  Git and GitHub - version control and project hosting.
+  GitHub Pages - deploys the landing page and makes it available online.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+- Live Preview
+  DEMO LINK - https://snizhana-snwflk.github.io/layout_landing-page/
 
-Follow the instructions in this and next lessons to implement the page block by block:
+- Design
+  https://www.figma.com/design/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?node-id=6703-88&p=f&t=gtBwhJDHD6bO1pn5-0
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+- Instructions For Launching
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+  1. Clone the repository:
+     git clone <YOUR_REPOSITORY_URL>
+  2. Navigate to the project directory:
+     cd layout_landing-page
+  3. Install dependencies:
+     npm install
+  4. Start the development server:
+     npm start
+  5. Open the local URL shown in the terminal to view the page.
+
+- Additional Notes
+  The project uses Sass/SCSS for styling and Parcel as a development server and build tool. Make sure all dependencies are installed before starting the development server. The live demo is hosted on GitHub Pages.

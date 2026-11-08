@@ -1,0 +1,74 @@
+@use '../utils/mixins' as *;
+
+/* підключаю файл, де лежать всі міксини, а потім через @include додаю потрібні */
+@use '../utils/variables' as *;
+
+/* підключаю файл, де лежать всі змінні, а потім через @include додаю потрібні */
+
+.menu {
+  box-sizing: border-box;
+  height: 100vh;
+
+  font-weight: 700;
+
+  background-color: #fff;
+  overflow: auto;
+  text-transform: uppercase;
+
+  &__top {
+    @include content-padding-inline;
+
+    position: sticky;
+    margin-bottom: 32px;
+    margin-inline: -20px;
+
+    // to keep cross always visible
+    z-index: 1;
+    top: 0;
+
+    background-color: #e5e5e5;
+
+    @include on-tablet {
+      width: calc(100% + 144px);
+      margin-bottom: 56px;
+      margin-inline: -72px;
+    }
+
+    @include on-desktop {
+      width: calc(100% + 240px);
+      margin-inline: -120px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 48px;
+  }
+
+  &__phone-number {
+    color: inherit;
+
+    display: block;
+    text-decoration: none;
+
+    margin-bottom: 16px;
+
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
+  &__call-to-order {
+    color: inherit;
+
+    display: block;
+    text-decoration: none;
+
+    padding-bottom: 3px;
+    width: fit-content;
+    border-bottom: 1px solid $main-text-color;
+
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+}
