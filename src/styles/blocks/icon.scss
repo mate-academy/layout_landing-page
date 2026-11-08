@@ -8,7 +8,6 @@
 .icon {
   display: block;
   width: 24px;
-
   height: 24px;
 
   background-repeat: no-repeat;
@@ -22,8 +21,38 @@
     height: 32px;
   }
 
+  &__phone-number {
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-50%);
+    transition:
+      opacity $effectDuration ease-in-out,
+      visibility $effectDuration ease-in-out;
+    white-space: nowrap;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $main-text-color;
+    letter-spacing: 2px;
+  }
+
   &--phone {
     background-image: url(../images/icons/icon-phone.png);
+    position: relative;
+
+    &:hover,
+    &:focus-visible {
+      .icon__phone-number {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 
   &--menu {
