@@ -1,3 +1,740 @@
-body {
+$color-red: #d12d35;
+$color-red-dark: #ae1c23;
+$color-dark: #161616;
+$color-text: #3e3e3e;
+$color-white: #fff;
+$color-input: #f8f8fa;
+$color-placeholder: #7e7e83;
+$font-main: 'Cinzel', serif;
+$font-secondary: 'Roboto', sans-serif;
+$transition-duration: 0.3s;
+$hover-scale: 1.1;
+$tablet-min-width: 640px;
+$desktop-min-width: 1024px;
+$content-max-width: 1200px;
+$content-narrow-width: 1020px;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $value) {
+  transition: #{$property} $transition-duration;
+
+  &:hover,
+  &:focus-visible {
+    #{$property}: $value;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd {
   margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+address {
+  font-style: normal;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+  }
+}
+
+.page {
+  scroll-behavior: smooth;
+  font-family: $font-main;
+  color: $color-dark;
+
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
+  &__body {
+    min-width: 320px;
+    margin: 0;
+    background-color: $color-white;
+  }
+
+  &__content {
+    background-color: $color-white;
+  }
+
+  &__footer {
+    position: sticky;
+    z-index: -1;
+    bottom: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: calc(#{$content-max-width} + 240px);
+  margin-inline: auto;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    padding-inline: clamp(32px, 8.33vw, 120px);
+  }
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  color: $color-white;
+  text-transform: uppercase;
+  letter-spacing: -1.5px;
+
+  @include on-tablet {
+    font-size: 40px;
+  }
+}
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  @include hover(transform, scale($hover-scale));
+}
+
+.zoom {
+  position: relative;
+  overflow: hidden;
+  display: block;
+
+  &__image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform $transition-duration;
+  }
+
+  &:hover &__image,
+  &:focus-visible &__image {
+    transform: scale($hover-scale);
+  }
+}
+
+.button {
+  cursor: pointer;
+
+  display: block;
+
+  padding: 15px 24px;
+  border: none;
+
+  font-weight: 700;
+  line-height: 27px;
+  color: $color-white;
+  text-align: center;
+
+  background-color: $color-red;
+
+  @include hover(background-color, $color-red-dark);
+}
+
+.section {
+  padding-top: 80px;
+
+  @include on-desktop {
+    padding-top: 140px;
+  }
+
+  &__header {
+    max-width: 450px;
+    margin: 0 auto 32px;
+    text-align: center;
+
+    @include on-desktop {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 1;
+    }
+  }
+
+  &__text {
+    margin-top: 8px;
+    line-height: 27px;
+  }
+}
+
+.phones {
+  --phones-hover-color: #{$color-red};
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-weight: 700;
+  line-height: 27px;
+  color: $color-white;
+  text-transform: uppercase;
+
+  &--align-end {
+    text-align: end;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    @include hover(color, var(--phones-hover-color));
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: 2;
+  inset: 0;
+  transform: translateX(-100%);
+
+  overflow: auto;
+
+  font-weight: 700;
+  color: $color-white;
+  text-transform: uppercase;
+
+  visibility: hidden;
+  background-color: $color-red;
+
+  transition:
+    transform $transition-duration,
+    visibility $transition-duration;
+
+  &:target {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  &__top {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+
+    padding-block: 24px;
+
+    background-color: $color-red;
+
+    @include on-desktop {
+      padding-block: 50px 32px;
+    }
+  }
+
+  &__top-content {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-block: 24px 48px;
+
+    @include on-desktop {
+      gap: 80px;
+      padding-top: 48px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  &__phones {
+    --phones-hover-color: #{$color-dark};
+  }
+
+  &__order {
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    letter-spacing: 2px;
+
+    @include hover(color, $color-dark);
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-desktop {
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    font-size: 22px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 8px;
+    letter-spacing: 2px;
+
+    @include hover(text-decoration-color, currentcolor);
+  }
+}
+
+.header {
+  padding-top: 24px;
+
+  @include on-desktop {
+    padding-top: 50px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__contacts {
+    position: relative;
+  }
+
+  &__phones {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+
+    display: none;
+
+    width: max-content;
+    padding-right: 24px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      opacity $transition-duration,
+      visibility $transition-duration;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__contacts:hover &__phones,
+  &__contacts:focus-within &__phones {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: url('../images/hero.png') center / cover no-repeat;
+
+  &__content {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+
+    padding-block: 48px;
+  }
+
+  &__title {
+    max-width: 520px;
+
+    font-size: 40px;
+    line-height: 1;
+    color: $color-white;
+    text-align: center;
+    letter-spacing: -1.5px;
+
+    @include on-tablet {
+      font-size: 64px;
+    }
+
+    @include on-desktop {
+      font-size: 80px;
+    }
+  }
+}
+
+.hours {
+  &__content {
+    display: grid;
+    gap: 32px;
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+
+  &__intro {
+    @include on-desktop {
+      grid-column: 2 / 6;
+    }
+  }
+
+  &__label {
+    margin-bottom: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: $color-red;
+  }
+
+  &__schedules {
+    display: grid;
+    gap: 40px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      grid-column: 7 / 13;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+  }
+}
+
+.schedule {
+  &__name {
+    margin-bottom: 16px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px 24px;
+    line-height: 27px;
+  }
+
+  &__time {
+    font-weight: 700;
+  }
+
+  &__days--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.exhibitions {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    max-width: $content-narrow-width;
+    margin-inline: auto;
+  }
+
+  &__button {
+    max-width: 324px;
+    margin: 40px auto 0;
+  }
+}
+
+.exhibition {
+  &__photos {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+
+  &__photo {
+    aspect-ratio: 324 / 320;
+
+    &--wide {
+      aspect-ratio: 672 / 320;
+
+      @include on-tablet {
+        grid-column: span 2;
+        aspect-ratio: auto;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 27px;
+    color: $color-red;
+  }
+
+  &__dates {
+    line-height: 27px;
+  }
+}
+
+.explore {
+  &__cards {
+    display: grid;
+    gap: 40px;
+    max-width: 420px;
+    margin-inline: auto;
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      max-width: $content-narrow-width;
+    }
+  }
+}
+
+.card {
+  text-align: center;
+
+  &__photo {
+    aspect-ratio: 324 / 320;
+  }
+
+  &__title {
+    margin: 24px 0 4px;
+    font-size: 24px;
+    line-height: 1.4;
+    color: $color-red;
+
+    @include on-desktop {
+      margin-top: 32px;
+    }
+  }
+
+  &__text {
+    font-family: $font-secondary;
+    line-height: 27px;
+  }
+}
+
+.contacts {
+  padding-bottom: 80px;
+
+  @include on-desktop {
+    padding-bottom: 150px;
+  }
+
+  &__content {
+    display: grid;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 24px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    text-align: center;
+
+    @include on-desktop {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__location {
+    @include on-desktop {
+      grid-column: span 3;
+    }
+  }
+
+  &__form {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 8 / 13;
+    }
+  }
+}
+
+.location {
+  &__name {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  &__label {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 27px;
+  }
+
+  &__link {
+    font-weight: 700;
+    line-height: 1.4;
+    color: $color-text;
+
+    @include hover(color, $color-red);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__field {
+    display: block;
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+
+  &__input {
+    display: block;
+
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid transparent;
+
+    font-family: $font-secondary;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-dark;
+
+    background-color: $color-input;
+    outline: none;
+
+    &::placeholder {
+      color: $color-placeholder;
+    }
+
+    &:focus {
+      border-color: $color-red;
+    }
+
+    &--textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    @include hover(border-color, $color-red);
+  }
+}
+
+.footer {
+  &__image {
+    aspect-ratio: 1260 / 359;
+    width: 100%;
+    object-fit: cover;
+  }
 }
