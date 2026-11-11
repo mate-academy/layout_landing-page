@@ -1,0 +1,117 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  width: 100%;
+  max-width: 1260px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-time;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include on-tablet {
+    --columns: 6;
+
+    column-gap: 24px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+
+    column-gap: 24px;
+  }
+}
+
+@mixin button-styles {
+  height: 56px;
+  border: none;
+
+  color: $color-white;
+  background-color: $color-red;
+
+  font-family: Cinzel, serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: background-color $transition-time;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+
+  &:active {
+    background-color: $button-active-color;
+  }
+}
+
+@mixin input-styles {
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid transparent;
+  background-color: $input-background-color;
+
+  font-family: Cinzel, serif;
+  font-size: 14px;
+  line-height: 20px;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:hover {
+    border-color: $input-border-color;
+
+    &::placeholder {
+      color: $color-dark;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-dark;
+
+    &::placeholder {
+      color: $color-dark;
+    }
+  }
+}
