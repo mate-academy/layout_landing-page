@@ -1,0 +1,78 @@
+@use '../utils/mixins';
+
+.categories {
+  @include mixins.page-grid;
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+
+    display: grid;
+    row-gap: 40px;
+
+    @include mixins.on-tablet {
+      row-gap: 56px;
+    }
+  }
+
+  &__button {
+    margin-top: 40px;
+    grid-column: 1 / -1;
+
+    @include mixins.on-tablet {
+      margin-top: 56px;
+      grid-column: 1 / -1;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 4;
+    }
+  }
+}
+
+.category {
+  @include mixins.hover(transform, scale(1.05));
+
+  &__photos {
+    @include mixins.page-grid;
+
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    text-decoration: none;
+    grid-column: span 1;
+
+    @include mixins.on-tablet {
+      grid-column: span 3;
+    }
+
+    @include mixins.on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    @include mixins.on-tablet {
+      aspect-ratio: auto;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+
+    @include mixins.on-tablet {
+      font-size: 24px;
+    }
+  }
+}
