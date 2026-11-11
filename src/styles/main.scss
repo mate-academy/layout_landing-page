@@ -9,28 +9,28 @@ $font-title: 'Cinzel', 'Times New Roman', serif;
 $font-text: 'Roboto', Arial, sans-serif;
 $duration: 0.3s;
 $ease: ease;
-
+ 
 // Grid from the design: 1260 / 120 margin, 744 / 72 margin, 320 / 20 margin
 $container: 1020px;
 $tablet: 1059px;
 $mobile: 743px;
-
+ 
 :root {
   --margin: 120px;
   --gap: 24px;
   --header-height: 96px;
 }
-
+ 
 // ---------- Base ----------
 * {
   box-sizing: border-box;
 }
-
+ 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 0;
 }
-
+ 
 body {
   margin: 0;
   font-family: $font-title;
@@ -39,17 +39,17 @@ body {
   color: $ink;
   background: $paper;
 }
-
+ 
 img {
   display: block;
   max-width: 100%;
 }
-
+ 
 a {
   color: inherit;
   text-decoration: none;
 }
-
+ 
 h1,
 h2,
 h3,
@@ -60,32 +60,34 @@ dd {
   margin: 0;
   padding: 0;
 }
-
+ 
 ul {
   list-style: none;
 }
-
+ 
 :focus-visible {
   outline: 2px solid $red;
   outline-offset: 3px;
 }
-
+ 
 // ---------- Page ----------
+// clip (not hidden) so .page does not become a scroll container
+// and the sticky footer keeps sticking to the viewport
 .page {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
-
+ 
 .page__content {
   position: relative;
   background: $paper;
 }
-
+ 
 // Stop page scrolling while the menu is open
 html:has(.menu:target),
 body:has(.menu:target) {
   overflow: hidden;
 }
-
+ 
 // ---------- Logo ----------
 .logo {
   display: inline-block;
@@ -96,15 +98,15 @@ body:has(.menu:target) {
   letter-spacing: 0.02em;
   transition: opacity $duration $ease;
 }
-
+ 
 .logo:hover {
   opacity: 0.75;
 }
-
+ 
 .logo__line {
   display: block;
 }
-
+ 
 // ---------- Header ----------
 .header {
   position: absolute;
@@ -119,36 +121,36 @@ body:has(.menu:target) {
   padding: 0 var(--margin);
   color: $paper;
 }
-
+ 
 .header__actions {
   display: flex;
   align-items: center;
   gap: 32px;
 }
-
+ 
 .header__phone {
   position: relative;
   display: flex;
   align-items: center;
 }
-
+ 
 .icon-link {
   display: block;
   width: 24px;
   height: 24px;
 }
-
+ 
 .icon-link__svg {
   width: 100%;
   height: 100%;
   fill: $paper;
   transition: fill $duration $ease;
 }
-
+ 
 .icon-link:hover .icon-link__svg {
   fill: $red-pressed;
 }
-
+ 
 // Phone numbers that slide out on hover
 .phone-popup {
   position: absolute;
@@ -167,14 +169,14 @@ body:has(.menu:target) {
     transform $duration $ease,
     visibility $duration $ease;
 }
-
+ 
 .header__phone:hover .phone-popup,
 .header__phone:focus-within .phone-popup {
   opacity: 1;
   visibility: visible;
   transform: translate(0, -50%);
 }
-
+ 
 .phone-popup__item {
   display: flex;
   flex-direction: column;
@@ -183,15 +185,15 @@ body:has(.menu:target) {
   line-height: 1.3;
   text-transform: uppercase;
 }
-
+ 
 .phone-popup__link {
   transition: color $duration $ease;
 }
-
+ 
 .phone-popup__link:hover {
   color: $red-pressed;
 }
-
+ 
 // ---------- Burger ----------
 .burger {
   display: flex;
@@ -200,7 +202,7 @@ body:has(.menu:target) {
   width: 24px;
   padding: 4px 0;
 }
-
+ 
 .burger__bar {
   display: block;
   height: 2px;
@@ -209,19 +211,19 @@ body:has(.menu:target) {
     width $duration $ease,
     background-color $duration $ease;
 }
-
+ 
 .burger:hover .burger__bar {
   background: $red-pressed;
 }
-
+ 
 .burger:hover .burger__bar:nth-child(2) {
   width: 70%;
 }
-
+ 
 .burger:hover .burger__bar:nth-child(3) {
   width: 45%;
 }
-
+ 
 // ---------- Menu overlay ----------
 .menu {
   position: fixed;
@@ -236,12 +238,12 @@ body:has(.menu:target) {
     opacity $duration $ease,
     visibility $duration $ease;
 }
-
+ 
 .menu:target {
   visibility: visible;
   opacity: 1;
 }
-
+ 
 .menu__top {
   position: sticky; // keep the cross always visible
   top: 0;
@@ -253,13 +255,13 @@ body:has(.menu:target) {
   padding: 0 var(--margin);
   background: $red;
 }
-
+ 
 .menu__close {
   position: relative;
   width: 24px;
   height: 24px;
 }
-
+ 
 .menu__close::before,
 .menu__close::after {
   content: '';
@@ -271,33 +273,33 @@ body:has(.menu:target) {
   background: $paper;
   transition: transform $duration $ease;
 }
-
+ 
 .menu__close::before {
   transform: rotate(45deg);
 }
-
+ 
 .menu__close::after {
   transform: rotate(-45deg);
 }
-
+ 
 .menu__close:hover::before {
   transform: rotate(135deg);
 }
-
+ 
 .menu__close:hover::after {
   transform: rotate(45deg);
 }
-
+ 
 .menu__nav {
   padding: 32px var(--margin) 64px;
 }
-
+ 
 .menu__list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
+ 
 .menu__link {
   font-size: 20px;
   font-weight: 700;
@@ -305,18 +307,18 @@ body:has(.menu:target) {
   text-transform: uppercase;
   transition: opacity $duration $ease;
 }
-
+ 
 .menu__link:hover {
   opacity: 0.7;
 }
-
+ 
 .menu__contacts {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 40px;
 }
-
+ 
 .menu__place {
   display: flex;
   flex-direction: column;
@@ -324,15 +326,15 @@ body:has(.menu:target) {
   font-weight: 700;
   text-transform: uppercase;
 }
-
+ 
 .menu__phone {
   transition: opacity $duration $ease;
 }
-
+ 
 .menu__phone:hover {
   opacity: 0.7;
 }
-
+ 
 .menu__order {
   align-self: flex-start;
   padding-bottom: 2px;
@@ -342,11 +344,11 @@ body:has(.menu:target) {
   text-transform: uppercase;
   transition: opacity $duration $ease;
 }
-
+ 
 .menu__order:hover {
   opacity: 0.7;
 }
-
+ 
 // ---------- Hero ----------
 .hero {
   display: flex;
@@ -355,7 +357,7 @@ body:has(.menu:target) {
   padding-top: 190px;
   background: #1c1410 url('../images/hero.webp') center / cover no-repeat;
 }
-
+ 
 .hero__title {
   font-size: 72px;
   font-weight: 700;
@@ -364,31 +366,31 @@ body:has(.menu:target) {
   text-align: center;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
-
+ 
 // ---------- Sections ----------
 .section {
   padding: 140px var(--margin) 0;
 }
-
+ 
 .section__title {
   font-size: 40px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
 }
-
+ 
 .section__title--narrow {
   max-width: 360px;
   margin: 0 auto;
 }
-
+ 
 .section__subtitle {
   max-width: 320px;
   margin: 12px auto 48px;
   font-size: 14px;
   text-align: center;
 }
-
+ 
 // ---------- Button ----------
 .button {
   display: block;
@@ -405,15 +407,15 @@ body:has(.menu:target) {
   cursor: pointer;
   transition: background-color $duration $ease;
 }
-
+ 
 .button:hover {
   background: $red-dark;
 }
-
+ 
 .button:active {
   background: $red-pressed;
 }
-
+ 
 // ---------- Museum hours ----------
 .hours {
   display: grid;
@@ -421,129 +423,134 @@ body:has(.menu:target) {
   gap: var(--gap);
   padding-top: 140px;
 }
-
+ 
 .hours__label {
   font-size: 11px;
   font-weight: 700;
   color: $red;
 }
-
+ 
 .hours__title {
   font-size: 40px;
   font-weight: 700;
   line-height: 1.2;
 }
-
+ 
 .hours__body {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
-
+ 
 .place__name {
   font-size: 18px;
   font-weight: 700;
 }
-
+ 
 .place__rows {
   display: grid;
   grid-template-columns: 112px 1fr;
   gap: 8px 0;
   margin-top: 12px;
 }
-
+ 
 .place__time {
   font-size: 13px;
   font-weight: 700;
 }
-
+ 
 .place__days {
   font-size: 13px;
   color: $muted;
 }
-
+ 
 .place__closed {
   margin-top: 16px;
   font-size: 13px;
   font-weight: 700;
 }
-
+ 
 .place__note {
   font-size: 13px;
   color: $muted;
 }
-
+ 
 // ---------- Tiles ----------
 .tile {
+  position: relative;
   display: block;
   overflow: hidden;
   background: $ink;
 }
-
+ 
+// The image is taken out of the flow so it never affects the tile height
 .tile__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform $duration $ease;
 }
-
+ 
+// Anchor the crop to the top of the photo
+.tile__img--top {
+  object-position: 50% 0;
+}
+ 
 .tile:hover .tile__img {
   transform: scale(1.1);
 }
-
+ 
 // ---------- Now on view ----------
 .exhibit {
   margin-bottom: 48px;
 }
-
+ 
 .exhibit__images {
   display: grid;
   gap: var(--gap);
   margin-bottom: 16px;
-  aspect-ratio: auto;
 }
-
+ 
 .exhibit__images--wide-first {
   grid-template-columns: 672fr 324fr;
 }
-
+ 
 .exhibit__images--wide-last {
   grid-template-columns: 324fr 672fr;
 }
-
+ 
 .exhibit__images--three {
   grid-template-columns: repeat(3, 1fr);
 }
-
+ 
+// Every tile is 324 / 320 by default
 .exhibit__images .tile,
 .card .tile {
   aspect-ratio: 324 / 320;
 }
-
-.exhibit__images--wide-first .tile,
-.exhibit__images--wide-last .tile {
-  aspect-ratio: auto;
-}
-
+ 
+// The wide tile has no ratio: it stretches to the height of the row
 .exhibit__images--wide-first .tile:first-child,
 .exhibit__images--wide-last .tile:last-child {
-  aspect-ratio: 672 / 320;
+  aspect-ratio: auto;
 }
-
+ 
 .exhibit__title {
   font-size: 14px;
   font-weight: 700;
   color: $red;
 }
-
+ 
 .exhibit__date {
   font-size: 13px;
 }
-
+ 
 .view__button {
   margin: 64px auto 0;
 }
-
+ 
 // ---------- Explore ----------
 .explore__grid {
   display: grid;
@@ -551,18 +558,18 @@ body:has(.menu:target) {
   gap: var(--gap);
   margin-top: 48px;
 }
-
+ 
 .card {
   text-align: center;
 }
-
+ 
 .card__title {
   margin-top: 24px;
   font-size: 18px;
   font-weight: 700;
   color: $red;
 }
-
+ 
 .card__text {
   max-width: 280px;
   margin: 8px auto 0;
@@ -570,37 +577,37 @@ body:has(.menu:target) {
   font-size: 14px;
   line-height: 1.5;
 }
-
+ 
 // ---------- Contact ----------
 .contact {
   padding-bottom: 140px;
 }
-
+ 
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1.6fr;
   gap: var(--gap);
   margin-top: 48px;
 }
-
+ 
 .contact__place {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-
+ 
 .contact__name {
   margin-bottom: 12px;
   font-size: 14px;
   font-weight: 700;
 }
-
+ 
 .contact__label {
   margin-top: 8px;
   font-size: 12px;
   color: $muted;
 }
-
+ 
 .contact__link {
   width: max-content;
   max-width: 100%;
@@ -608,18 +615,18 @@ body:has(.menu:target) {
   font-weight: 700;
   transition: color $duration $ease;
 }
-
+ 
 .contact__link:hover {
   color: $red;
 }
-
+ 
 // ---------- Form ----------
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
+ 
 .form__field {
   width: 100%;
   height: 48px;
@@ -631,31 +638,31 @@ body:has(.menu:target) {
   font-size: 13px;
   transition: border-color $duration $ease;
 }
-
+ 
 .form__field::placeholder {
   color: #9a9a9a;
 }
-
+ 
 .form__field:hover {
   border-color: #dcdce0;
 }
-
+ 
 .form__field:focus {
   border-color: $ink;
   outline: none;
 }
-
+ 
 .form__field--text {
   height: 144px;
   padding: 14px 16px;
   resize: none;
 }
-
+ 
 .form__button {
   width: 100%;
   margin-top: 8px;
 }
-
+ 
 // ---------- Footer: sticky, revealed from under the content ----------
 .footer {
   position: sticky;
@@ -664,7 +671,7 @@ body:has(.menu:target) {
   height: 360px;
   background: #15110f url('../images/footer.webp') center / cover no-repeat;
 }
-
+ 
 // ---------- Scroll reveal (JS adds .reveal, then .reveal--visible) ----------
 .reveal {
   opacity: 0;
@@ -673,94 +680,94 @@ body:has(.menu:target) {
     opacity $duration $ease,
     transform $duration $ease;
 }
-
+ 
 .reveal--visible {
   opacity: 1;
   transform: none;
 }
-
+ 
 // ---------- Tablet (744, 6 columns, 72px margins) ----------
 @media (max-width: $tablet) {
   :root {
     --margin: 72px;
     --header-height: 88px;
   }
-
+ 
   .logo {
     font-size: 28px;
   }
-
+ 
   .hero {
     padding-top: 190px;
   }
-
+ 
   .hero__title {
     font-size: 56px;
   }
-
+ 
   .section {
     padding-top: 100px;
   }
-
+ 
   .section__title,
   .hours__title {
     font-size: 36px;
   }
-
+ 
   .hours {
     grid-template-columns: 1fr 1.5fr;
     padding-top: 100px;
   }
-
+ 
   .hours__title {
     max-width: 260px;
   }
-
+ 
   .exhibit__images--wide-first {
     grid-template-columns: 392fr 184fr;
   }
-
+ 
   .exhibit__images--wide-last {
     grid-template-columns: 184fr 392fr;
   }
-
+ 
   .exhibit__images--three {
     grid-template-columns: repeat(2, 1fr);
   }
-
+ 
   .tile--hide-tablet {
     display: none;
   }
-
+ 
   .explore__grid {
     grid-template-columns: minmax(0, 392px);
     justify-content: center;
     gap: 48px;
   }
-
+ 
   .contact {
     padding-bottom: 100px;
   }
-
+ 
   .contact__grid {
     grid-template-columns: 1fr 1fr;
   }
-
+ 
   .contact__place:nth-child(2) {
     grid-column: 1;
     grid-row: 2;
   }
-
+ 
   .form {
     grid-column: 2;
     grid-row: 1 / span 2;
   }
-
+ 
   .footer {
     height: 360px;
   }
 }
-
+ 
 // ---------- Mobile (320, 2 columns, 20px margins) ----------
 @media (max-width: $mobile) {
   :root {
@@ -768,116 +775,116 @@ body:has(.menu:target) {
     --gap: 8px;
     --header-height: 72px;
   }
-
+ 
   .logo {
     font-size: 24px;
   }
-
+ 
   .header__actions {
     gap: 20px;
   }
-
+ 
   .phone-popup {
     display: none;
   }
-
+ 
   .menu__nav {
     padding-top: 24px;
   }
-
+ 
   .hero {
     height: 568px;
     padding-top: 160px;
   }
-
+ 
   .hero__title {
     font-size: 36px;
   }
-
+ 
   .section {
     padding-top: 56px;
   }
-
+ 
   .section__title,
   .hours__title {
     font-size: 28px;
   }
-
+ 
   .section__subtitle {
     margin-bottom: 28px;
   }
-
+ 
   .hours {
     grid-template-columns: 1fr;
     gap: 20px;
     padding-top: 40px;
   }
-
+ 
   .hours__title {
     max-width: none;
   }
-
+ 
   .place__rows {
     grid-template-columns: 96px 1fr;
   }
-
+ 
   .exhibit {
     margin-bottom: 24px;
   }
-
+ 
   .exhibit__images--three {
     grid-template-columns: repeat(3, 1fr);
   }
-
+ 
   .tile--hide-tablet {
     display: block;
   }
-
+ 
   .exhibit__title {
     font-size: 13px;
   }
-
+ 
   .view__button,
   .button {
     width: 100%;
   }
-
+ 
   .view__button {
     margin-top: 32px;
   }
-
+ 
   .explore__grid {
     grid-template-columns: 1fr;
     gap: 32px;
     margin-top: 28px;
   }
-
+ 
   .contact {
     padding-bottom: 56px;
   }
-
+ 
   .contact__grid {
     grid-template-columns: 1fr;
     gap: 24px;
     margin-top: 28px;
   }
-
+ 
   .contact__place:nth-child(2),
   .form {
     grid-column: auto;
     grid-row: auto;
   }
-
+ 
   .footer {
     height: 180px;
   }
 }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-
+ 
   .reveal,
   .tile__img,
   .menu,
@@ -885,3 +892,4 @@ body:has(.menu:target) {
     transition: none;
   }
 }
+ 
