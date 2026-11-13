@@ -1,41 +1,107 @@
-.now-on-view__article {
+.now-on-view__wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);   /* дві рівні колонки для фото */
-  column-gap: 20px;
-}
+  row-gap: 48px;
 
-.now-on-view__link {
-  display: block;
-}
 
-.now-on-view__photo {
-  display: block;
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-}
+.card {
 
-/* Заголовок і дата займають обидві колонки */
-.now-on-view__title-photos {
-  grid-column: 1 / -1;
+  &__photos {
+    @include pageGrid;
+    margin-bottom: 24px;
 
-  margin: 16px 0 0;
+    &-3 {
+      display: grid;
+     grid-template-columns: repeat(3, 1fr);
 
-  font-size: 14px;
+      @include on-tablet {
+        .card__photos-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card__photos-3 a   img:last-child {
+          display: none;
+        }
+
+      }
+
+      @include on-desctop {
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+  }
+
+
+
+  &__link {
+    &-wide{
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desctop {
+        grid-column: span 8;
+      }
+    }
+
+    &-square{
+      @include on-tablet {
+        grid-column: span 2;
+      }
+
+      @include on-desctop {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-right-position {
+    object-position: right;
+  }
+
+  .photo-left-position {
+    object-position: 30%;
+
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 169%;
+    color: $title-color;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__date {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 169%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__button {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  width: 280px;
+  background-color: #d12b33;
+  color: $header-text-color;
   font-weight: 700;
-  line-height: 1.5;
-  color: #d22b3a;
-  text-transform: capitalize;
-  letter-spacing: 0.03em;
+  font-size: 16px;
+    }
+  }
 }
 
-.now-on-view__category {
-  grid-column: 1 / -1;
 
-  margin: 0;
-
-  font-size: 14px;
-  line-height: 1.5;
-  color: #222;
-  letter-spacing: 0.03em;
+.section-description {
+  text-align: center;
 }
