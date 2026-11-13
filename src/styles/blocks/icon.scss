@@ -1,0 +1,60 @@
+@use '../utils/mixins' as *;
+@use '../utils/variables' as *;
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../image/icons/phone-number.png);
+
+    @include on-desktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        padding-right: 12px;
+        transform: translateY(-50%);
+
+        white-space: nowrap;
+        color: $main-text-color;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $effectDuration;
+      }
+
+      &:hover::before,
+      &:focus-visible::before {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../image/icons/burger-menu.png);
+
+    &:hover {
+      background-image: url(../image/icons/burger-menu-hover.png);
+    }
+  }
+
+  &--close {
+    background-image: url(../image/icons/icon-close.png);
+  }
+}
