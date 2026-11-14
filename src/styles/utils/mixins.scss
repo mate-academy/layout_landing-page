@@ -1,0 +1,89 @@
+@use './variables.scss' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @include on-desktop {
+    max-width: 1024px;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 2;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 6;
+
+    row-gap: 48px;
+  }
+
+  @include on-desktop {
+    --columns: 12;
+  }
+}
+
+@mixin button {
+  background-color: $white-color;
+  padding-inline: 48px;
+  padding-block: 14.5px;
+  border: 0;
+  border-radius: 40px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 27px;
+  cursor: pointer;
+  transition: box-shadow $effect-duration;
+
+  &:hover {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+  }
+  &:active {
+    box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.6);
+  }
+}
+
+@mixin form-field-base {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  background-color: $white-color;
+  border: none;
+
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: $main-text-color;
+
+  &::placeholder {
+    color: $placeholder-color;
+    opacity: 1;
+  }
+}
