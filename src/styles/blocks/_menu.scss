@@ -1,104 +1,68 @@
-@use '../variables' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/utils/mixins' as *;
+@use 'logo';
+@use 'icon';
+@use 'nav';
+@use 'top-bar';
 
 .menu {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
+  box-sizing: border-box;
+  background-color: $color-menu;
+  height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-
-  background: $menu-background-color;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-100%);
-
-  transition:
-    opacity 0.3s,
-    transform 0.3s;
-
-  &:target {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
+  a:focus-visible {
+    outline: none;
   }
 
-  &__top {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  &__content {
+    position: relative;
+    padding-inline: 20px;
+    color: $color-black;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 20px;
+    @include on-tablet {
+      padding-inline: 72px;
+    }
+
+    @include on-desktop {
+      padding-inline: 120px;
+    }
+  }
+
+  &__numbers {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__phone-number {
+    color: inherit;
+    display: block;
+    width: fit-content;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 27px;
+
+    @include hover(transform, scale(1.05), 0.3s);
+  }
+
+  &__book-a-test-ride {
+    color: inherit;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    display: block;
+    width: fit-content;
+    border-bottom: 1px solid $color-black;
+
+    @include hover(transform, scale(1.05), 0.3s);
   }
 
   &__nav {
-    padding: 24px 0 0 20px;
-  }
+    padding-top: fluidclamp(24px, 8px, $min-width, $middle-width);
+    padding-bottom: 40px;
 
-  &__close {
-    position: relative;
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin: auto 0;
-    outline: none;
-    text-decoration: none;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-
-      width: 0;
-      height: 2px;
-
-      background-color: $main-bg-color;
-      transition: width 0.3s ease;
-    }
-
-    &:focus-visible::after {
-      width: 100%;
-    }
-  }
-
-  &__logo:focus-visible {
-    outline: none;
-    box-shadow: 0 2px 0 $main-bg-color;
-  }
-}
-
-@media (min-width: 744px) {
-  .menu {
-    &__top {
-      padding: 36px 72px;
-    }
-
-    &__nav {
-      padding: 24px 0 0 72px;
-    }
-
-    &__close {
-      width: 32px;
-      height: 32px;
-    }
-  }
-}
-
-@media (min-width: 1260px) {
-  .menu {
-    &__top {
-      padding: 36px 120px;
-    }
-
-    &__nav {
-      padding: 24px 0 0 121px;
+    @include on-tablet {
+      padding-top: fluidclamp(8px, 24px, $middle-width, $max-width);
     }
   }
 }
