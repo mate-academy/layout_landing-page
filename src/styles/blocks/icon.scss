@@ -1,0 +1,63 @@
+@use '../utils/variables.scss' as *;
+@use '../utils/mixins' as *;
+
+.icon {
+  position: relative;
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: background-image $effect-duration;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    background-image: url(../images/icons/Icon-Phone-Call.svg);
+
+    .icon__phone-number {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      margin-right: 24px;
+
+      color: $white-color;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      text-decoration: none;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-50%) translateX(10px);
+      transition: all $effect-duration;
+
+    }
+
+    &:hover {
+      .icon__phone-number {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(0);
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/Icon-Burger-menu.svg);
+    &:hover {
+      background-image: url(../images/icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/Icon-Close.svg);
+  }
+}
