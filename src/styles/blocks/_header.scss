@@ -1,0 +1,75 @@
+.header {
+  &__content {
+    @include content-padding;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+
+    @include on-tablet {
+      height: 96px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__phone,
+  &__icon {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__phone {
+    background-image: url('../images/icon-phone.svg');
+    text-decoration: none;
+  }
+
+  &__phone-number {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 8px);
+    font-family: $font-accent;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2px;
+    color: $color-main;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: opacity $transition;
+  }
+
+  &__phone:hover &__phone-number {
+    opacity: 1;
+  }
+
+  &__icon--menu {
+    background-image: url('../images/icon-menu.svg');
+
+    &:hover {
+      background-image: url('../images/icon-menu-hover.svg');
+    }
+  }
+}
