@@ -1,24 +1,68 @@
-# Landing Page
+# My Bike - Landing Page
 
-> ❗❗ You will complete this task in the **Landing** topic.
-> Now just choose a design and do the parts from the videos.
-> Note: in the first task of this topic you will find 4 examples of landing pages. Choose **only one** of them and create your page.
+[DEMO LINK](https://dimononon.github.io/layout_landing-page/)
 
-Choose a design for your landing page:
+A responsive and modern landing page for a fictional bicycle brand called "My Bike". The website showcases different bike models, highlights key features through detailed product descriptions, and provides a contact form for user inquiries.
 
-- [MET landing](https://www.figma.com/file/lSR1m42L9YwzQwzzxKwHpw/THE-MET)
-- [MYBIKE landing](https://www.figma.com/file/NZQAIydtHo5QkINyGLHNcq/BIKE-New-Version?node-id=0%3A1)
-- [B&O](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
-- [Nothing](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6802-139&t=L7eKz5YKLN0m5WxR-0)
+## Features
 
-Follow the instructions in this and next lessons to implement the page block by block:
+- **Responsive Design**: Adapts seamlessly to various screen sizes (Mobile, Tablet, Desktop) without horizontal scrolling.
+- **Product Catalog**: A dedicated section to browse and compare different bike models (Sporty 4, Ride in town ST, Agile ride 3) with prices.
+- **Interactive Details**: Smooth hover effects to explore features like Auto Unlock, Integrated lights, and Hydraulic disc brakes.
+- **Mobile Menu**: A slide-out responsive menu that supports smooth navigation to different sections.
+- **Contact Form**: A form with required fields (name, email, message) that prevents page reloads and clears upon submission.
+- **Smart Formatting**: Addresses are linked to Google Maps, and phone numbers have functional `tel:` links.
 
-- Here is [the design from the video](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6703-88&t=L7eKz5YKLN0m5WxR-0) (❗❗ DO NOT implement this design ❗❗ choose one of the options above ❗❗ ☝️)
-- Start writing styles in the `main.scss` file. It is be explained in the `Sass` lesson.
-- **DON'T** try to do it `Pixel Perfect` - implement it the most `simple` way so it looks similar.
-- When done check yourself using the [CHECKLIST](./checklist.md) when finished.
-- Deploy and create a Pull Request with a [DEMO LINK](https://<your_account>.github.io/layout_landing-page/).
+## Technologies Used
 
-# Tips & Hints
-- Check `background-image: url()` to be relative to the `main.scss`. So should start with `../images`.
-- If some points from the checklist are not relevant to your design, just skip it.
+- **HTML5** & **SCSS** (BEM Methodology)
+- **JavaScript** (Vanilla)
+- **Vite** (Build Tool)
+- **Prettier**, **Stylelint**, and **Linthtml** (for code formatting and consistent styling)
+
+## Setup and Installation
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd layout_landing-page
+   ```
+
+3. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**:
+
+   ```bash
+   npm start
+   ```
+
+   _This command will launch the project in your default browser._
+
+5. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## Available Scripts
+
+- `npm start`: Starts the local development server.
+- `npm run lint`: Runs both HTML and Style linters to ensure code quality.
+- `npm run style-format`: Automatically fixes formatting issues in SCSS files.
+- `npm run format`: Formats the codebase (HTML, CSS, SCSS) using Prettier.
+- `npm run test`: Runs Cypress tests and linters.
+
+## License
+
+This project is licensed under the GPL-3.0 License.
