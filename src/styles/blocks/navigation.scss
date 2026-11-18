@@ -1,0 +1,156 @@
+.menu {
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 100%;
+  overflow: auto;
+
+  &__top {
+    margin-bottom: 32px;
+    position: sticky; /* to keep cross always visible */
+    top: 0;
+    z-index: 1;
+    background-color: #f9f9f9;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__phone-number {
+    text-decoration: none;
+    color: inherit;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+  }
+
+  &__call-to-order {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    width: fit-content;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $main-text-color;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-size: cover;
+  background-position: center;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 24px;
+    width: 24px;
+  }
+
+  &--phone {
+    background-image: url('/src/img/icons/icon-phone.svg');
+    position: relative;
+
+    @include on-tablet {
+      &:hover::after {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        width: 140px;
+        left: -140px;
+        top: 0;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 200%;
+        letter-spacing: 2px;
+        color: $main-text-color;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &--burgermenu {
+    background-image: url('/src/img/icons/icon-burgermenu.svg');
+
+    &:hover {
+      background-image: url('/src/img/icons/icon-burgermenu-hover.svg');
+    }
+  }
+
+  &--closemenu {
+    background-image: url('/src/img/icons/close-menu.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+  }
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    bottom: -8px;
+    background-color: $main-text-color;
+    transform: scale(0);
+    transition: transform $effectDuration;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateX(-100%);
+  transition:
+    transform $effectDuration,
+    opacity $effectDuration;
+
+  &:target {
+    pointer-events: all;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
