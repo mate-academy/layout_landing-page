@@ -1,0 +1,92 @@
+.header {
+  position: fixed;
+  z-index: 10;
+
+  width: 100%;
+
+  box-shadow: none;
+
+  transition-timing-function: ease-in;
+  transition-duration: $transition-duration;
+  transition-property: background-color, box-shadow;
+
+  &__content {
+    @include container;
+
+    display: flex;
+    gap: $icon-size-sm;
+    align-items: center;
+
+    padding-top: $header-padding-y-sm;
+    padding-bottom: $header-padding-y-sm;
+
+    transition-timing-function: ease-in;
+    transition-duration: $transition-duration;
+    transition-property: padding-top, padding-bottom;
+
+    @include md-and-up {
+      gap: $icon-size-md;
+      padding-top: $header-padding-y-md;
+      padding-bottom: $header-padding-y-md;
+    }
+  }
+
+  &--scrolled {
+    background-color: $black;
+    box-shadow: $header-shadow;
+
+    .header__content {
+      padding-top: calc($header-padding-y-sm / 2);
+      padding-bottom: calc($header-padding-y-sm / 2);
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+
+    &-image {
+      display: block;
+      width: auto;
+      height: $header-logo-height-sm;
+
+      @include md-and-up {
+        height: $header-logo-height-md;
+      }
+    }
+  }
+
+  &__phone {
+    position: relative;
+
+    display: flex;
+    gap: $header-phone-gap;
+    align-items: center;
+
+    font-size: $header-phone-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: $header-phone-letter-spacing;
+
+    &-value {
+      position: absolute;
+      right: calc(100% + $header-phone-gap);
+
+      display: block;
+
+      width: max-content;
+
+      color: $white;
+
+      opacity: 0;
+
+      transition-timing-function: ease-in-out;
+      transition-duration: $transition-duration;
+      transition-property: opacity;
+    }
+
+    &:hover .header__phone-value {
+      pointer-events: none;
+      opacity: 1;
+    }
+  }
+}

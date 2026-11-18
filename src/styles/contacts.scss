@@ -1,0 +1,92 @@
+.contacts {
+  @include container;
+
+  margin: $contacts-margin-sm;
+  padding-bottom: $contacts-padding-sm;
+
+  @include md-and-up {
+    margin: $contacts-margin-md;
+    padding-bottom: $contacts-padding-md;
+  }
+
+  &__title {
+    @include title;
+
+    margin-bottom: $contacts-offset;
+    text-align: center;
+  }
+
+  &__info {
+    @include grid;
+
+    @include sm-only {
+      gap: $contacts-offset;
+    }
+
+    @include md-and-up {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include lg-and-up {
+      grid-template-columns: 5fr 2fr 5fr;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $contacts-list-gap;
+
+    @include lg-and-up {
+      grid-column: 3 / 4;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: calc($contacts-list-gap / 3);
+    align-items: start;
+
+    &-label,
+    &-value {
+      margin: 0;
+    }
+
+    &-label {
+      font-size: $text-font-size;
+      letter-spacing: $text-letter-spacing;
+    }
+
+    &-value {
+      position: relative;
+
+      font-size: $btn-font-size;
+      font-weight: 500;
+      color: $white;
+      letter-spacing: $text-letter-spacing;
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 1px;
+
+        opacity: 0;
+        background: $white;
+
+        transition-timing-function: ease-in-out;
+        transition-duration: $transition-duration;
+        transition-property: opacity;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+}

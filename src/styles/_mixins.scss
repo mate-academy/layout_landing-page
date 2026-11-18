@@ -1,0 +1,81 @@
+@mixin sm-only {
+  @media (max-width: $bp-md - 0.5) {
+    @content;
+  }
+}
+
+@mixin md-and-up {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+
+@mixin lg-and-up {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+
+@mixin container {
+  scroll-margin-top: ($title-font-size-lg * 2);
+  width: 100%;
+  margin: 0 auto;
+  padding: $container-padding-sm;
+
+  @include md-and-up {
+    max-width: $bp-md;
+    padding: $container-padding-md;
+  }
+
+  @include lg-and-up {
+    max-width: $bp-lg;
+    padding: $container-padding-lg;
+  }
+}
+
+@mixin title {
+  margin: 0;
+
+  font-size: $title-font-size-sm;
+  font-weight: 500;
+  line-height: $title-line-height;
+  text-transform: capitalize;
+  letter-spacing: $title-letter-spacing;
+
+  @include md-and-up {
+    font-size: $title-font-size-md;
+  }
+
+  @include lg-and-up {
+    font-size: $title-font-size-lg;
+  }
+}
+
+@mixin subtitle {
+  margin: 0;
+
+  font-size: $subtitle-font-size;
+  font-weight: 700;
+  line-height: $subtitle-line-height;
+  letter-spacing: $subtitle-letter-spacing;
+}
+
+@mixin text {
+  margin: 0;
+  font-size: $text-font-size;
+  line-height: $text-line-height;
+  letter-spacing: $text-letter-spacing;
+}
+
+@mixin grid {
+  display: grid;
+  gap: $grid-gap-sm;
+
+  @include md-and-up {
+    gap: $grid-gap-md;
+  }
+
+  @include lg-and-up {
+    gap: $grid-gap-lg;
+  }
+}
