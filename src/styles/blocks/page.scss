@@ -1,0 +1,49 @@
+.page {
+  font-family: Poppins, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 400;
+  color: $main-text-color;
+  size: 16px;
+  line-height: 140%;
+  position: relative;
+
+  scroll-behavior: smooth;
+
+  &:has(.page__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+
+  &__body {
+    --padding-for-sticky-footer: 200px;
+
+    @include on-tablet {
+      --padding-for-sticky-footer: 480px;
+    }
+
+    @include on-desktop {
+      --padding-for-sticky-footer: 555px;
+    }
+
+    padding-bottom: var(--padding-for-sticky-footer);
+    margin: 0;
+    min-width: 320px;
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    transition: all $translition-duration;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &:target {
+      pointer-events: all;
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
