@@ -1,3 +1,6 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
 .header {
   height: 100vh;
   box-sizing: border-box;
@@ -8,21 +11,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
 
-.header__icons {
-  display: flex;
-  gap: 20px;
-}
+  &__title {
+    font-family: variables.$accent-font-family;
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: 700;
+    margin: 0;
 
-.header__title {
-  font-family: var(--font-accent);
-  font-size: 36px;
-  line-height: 100%;
-  font-weight: 700;
-  margin: 0;
-}
+    @include mixins.on-tablet {
+      font-size: 48px;
+    }
+  }
 
-.header__bottom {
-  padding: 0 20px 40px;
+  &__bottom {
+    padding-bottom: 40px;
+
+    @include mixins.content-padding-inline;
+
+    @include mixins.on-tablet {
+      padding-bottom: 65px;
+    }
+  }
 }
