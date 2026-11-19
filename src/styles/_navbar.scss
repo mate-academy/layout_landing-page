@@ -1,0 +1,90 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 20px;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  position: absolute;
+
+  transition: $transition;
+
+  &__logo {
+    width: 152px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__icons {
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: none;
+
+    &--phone {
+      @include image-cover('../images/Icon-Phone-call.svg');
+    }
+
+    &--menu {
+      @include image-cover('../images/Icon-Burger-menu.svg');
+
+      transition: $transition;
+      &:hover {
+        @include image-cover('../images/Icon-Burger-menu-hover.svg');
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    &__logo {
+      width: 228px;
+      height: 24px;
+    }
+
+    &__icons {
+      gap: $space-4;
+    }
+
+    &__icon {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 36px 120px;
+
+    &__icon--phone {
+      position: relative;
+
+      &::before {
+        content: '+1 234 555-55-55';
+        font-size: 16px;
+        font-weight: $font-weight-bold;
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 16px;
+        white-space: nowrap;
+        letter-spacing: 2px;
+        color: $color-charcoal;
+        opacity: 0;
+        transition: $transition;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+  }
+}
