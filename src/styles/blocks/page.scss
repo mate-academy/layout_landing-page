@@ -9,8 +9,13 @@
 
   scroll-behavior: smooth;
 
+  &:has(.page__menu:target) {
+    overflow: hidden;
+  }
+
   &__body {
     margin: 0;
+    min-width: 320px;
   }
 
   &__menu {
@@ -20,11 +25,17 @@
     right: 0;
 
     opacity: 0;
+    transform: translateX(-100%);
+    transition:
+      opacity variables.$transition-duration,
+      transform variables.$transition-duration;
+
     pointer-events: none;
 
     &:target {
       opacity: 1;
       pointer-events: all;
+      transform: translateX(0);
     }
   }
 }

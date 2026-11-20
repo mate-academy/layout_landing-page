@@ -6,10 +6,28 @@
   }
 }
 
+@mixin on-desktop {
+  @media (min-width: variables.$desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin content-padding-inline() {
-  padding-inline: 20px;
+  padding-inline: variables.$content-padding-inline-mobile;
 
   @include on-tablet {
-    padding-inline: 72px;
+    padding-inline: variables.$content-padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: variables.$content-padding-inline-desktop;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} variables.$transition-duration;
+
+  &:hover {
+    #{$property}: $toValue;
   }
 }
