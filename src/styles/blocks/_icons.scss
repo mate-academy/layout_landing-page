@@ -1,0 +1,70 @@
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  transition:
+    transform $anim-delay ease,
+    filter $anim-delay ease;
+
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  @include on-tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  @include on-laptop {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--phone {
+    background-image: url(../icons/Icon-Phone-call.svg);
+    position: relative;
+
+    @include on-laptop {
+      &::after {
+        display: block;
+        content: '+1 234 555-55-55';
+        position: absolute;
+        left: -148px;
+        width: 155px;
+        top: 25%;
+        height: 24px;
+        opacity: 0;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        pointer-events: none;
+        font-family: $main-font;
+        transition: opacity $anim-delay;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../icons/Icon-Burger-menu.svg);
+    transition: background-image $anim-delay;
+
+    &:hover {
+      background-image: url(../icons/Icon-Burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../icons/Icon-Close.svg);
+  }
+}
