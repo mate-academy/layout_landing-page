@@ -4,35 +4,49 @@
 .category {
   &__images {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: variables.$store-item-mobile-gap;
-    height: variables.$category-images-height-mobile;
 
     @include mixins.on-tablet {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: variables.$store-item-tablet-gap;
-      grid-template-columns: 2fr 1fr;
-    }
-
-    @include mixins.on-desktop {
-      height: variables.$category-images-height-desktop;
-    }
-  }
-
-  &--reverse &__images {
-    @include mixins.on-tablet {
-      grid-template-columns: 1fr 2fr;
     }
   }
 
   &__image-link {
     display: block;
+    aspect-ratio: 1;
     overflow: hidden;
+
+    &:first-child {
+      @include mixins.on-tablet {
+        grid-column: span 2;
+        aspect-ratio: auto;
+      }
+    }
+  }
+
+  &--reverse &__image-link {
+    &:first-child {
+      @include mixins.on-tablet {
+        grid-column: auto;
+        aspect-ratio: 1;
+      }
+    }
+
+    &:last-child {
+      @include mixins.on-tablet {
+        grid-column: span 2;
+        aspect-ratio: auto;
+      }
+    }
   }
 
   &__image {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 0;
+    min-height: 100%;
     object-fit: cover;
 
     @include mixins.hover(transform, scale(1.2));
@@ -40,22 +54,14 @@
 
   &__title {
     display: block;
-    text-decoration: none;
-    color: inherit;
+    padding-block: 16px;
     font-family: variables.$accent-font-family;
     font-weight: 700;
     font-size: 24px;
     line-height: 140%;
-    padding-block: 16px;
+    text-decoration: none;
+    color: variables.$main-text-color;
 
     @include mixins.hover(color, variables.$accent-text-color);
-  }
-
-  &__link {
-    @include mixins.button;
-
-    @include mixins.on-desktop {
-      width: 324px;
-    }
   }
 }
