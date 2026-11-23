@@ -24,10 +24,68 @@
   }
 }
 
+@mixin section-padding-block() {
+  padding-block: 0 variables.$section-padding-block-mobile;
+
+  @include on-tablet {
+    padding-block: 0 variables.$section-padding-block-tablet;
+  }
+
+  @include on-desktop {
+    padding-block: 0 variables.$section-padding-block-desktop;
+  }
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} variables.$transition-duration;
 
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin block-title {
+  font-family: variables.$accent-font-family;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  margin: 0 0 24px;
+
+  @include on-tablet {
+    font-size: 40px;
+    line-height: 40px;
+    margin: 0 0 56px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+@mixin button {
+  display: block;
+  height: variables.$button-height;
+  border: 2px solid variables.$button-border-color;
+  border-radius: variables.$button-border-radius;
+  background-color: variables.$button-bg-color;
+
+  font-family: variables.$accent-font-family;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: variables.$button-height;
+  text-align: center;
+  text-decoration: none;
+  color: variables.$button-text-color;
+
+  transition:
+    color variables.$transition-duration,
+    background-color variables.$transition-duration,
+    border-color variables.$transition-duration;
+
+  &:hover {
+    border-color: variables.$button-border-color-hover;
+    background-color: variables.$button-bg-color-hover;
+    color: variables.$button-text-color-hover;
   }
 }
