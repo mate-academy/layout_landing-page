@@ -1,4 +1,4 @@
-@use '../utils/variables';
+@use '../utils/mixins';
 
 .nav {
   &__link {
@@ -7,24 +7,9 @@
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
-    position: relative;
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      display: block;
-      height: 1px;
-      width: 100%;
-      background-color: variables.$main-text-color;
-      transition: transform variables.$transition-duration;
-      transform: scale(0);
-      transform-origin: left;
-    }
-
-    &:hover::after {
-      transform: scale(1);
-    }
+    @include mixins.underline-on-hover;
+    @include mixins.focus-outline;
   }
 
   &__list {

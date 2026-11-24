@@ -28,23 +28,43 @@
   }
 }
 
-@mixin section-padding-block() {
-  padding-block: 0 variables.$section-padding-block-mobile;
-
-  @include on-tablet {
-    padding-block: 0 variables.$section-padding-block-tablet;
-  }
-
-  @include on-desktop {
-    padding-block: 0 variables.$section-padding-block-desktop;
-  }
-}
-
 @mixin hover($property, $toValue) {
   transition: #{$property} variables.$transition-duration;
 
   &:hover {
     #{$property}: $toValue;
+  }
+}
+
+@mixin underline-on-hover($offset: 8px) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -$offset;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentcolor;
+    transform: scale(0);
+    transform-origin: left;
+    transition: transform variables.$transition-duration;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin bold-hover {
+  transition:
+    color variables.$transition-duration,
+    text-shadow variables.$transition-duration;
+
+  &:hover {
+    color: variables.$main-dark-color;
+    text-shadow: 1px 0 currentcolor;
   }
 }
 
@@ -71,6 +91,13 @@
   }
 }
 
+@mixin focus-outline {
+  &:focus-visible {
+    outline: 1px solid variables.$focus-outline-color;
+    outline-offset: 2px;
+  }
+}
+
 @mixin button {
   box-sizing: border-box;
   padding: 0;
@@ -94,9 +121,7 @@
     background-color variables.$transition-duration,
     border-color variables.$transition-duration;
 
-  &:hover,
-  &:focus-visible {
-    outline: none;
+  &:hover {
     border-color: variables.$button-border-color-hover;
     background-color: variables.$button-bg-color-hover;
     color: variables.$button-text-color-hover;
@@ -107,4 +132,6 @@
     border-color: variables.$button-border-color-active;
     background-color: variables.$button-bg-color-active;
   }
+
+  @include focus-outline;
 }
