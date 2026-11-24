@@ -1,0 +1,146 @@
+@use './vars' as *;
+
+.details {
+  padding-top: to-rem(144px);
+  background-color: $darkRed;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heading {
+    margin-bottom: to-rem(48px);
+    text-align: center;
+  }
+
+  &__block:not(:last-child) {
+    margin-bottom: to-rem(48px);
+  }
+
+  &__link {
+    align-self: center;
+    min-width: to-rem(324px);
+  }
+}
+
+.block-details {
+  &__images {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__image {
+    width: to-percent(324px, $container);
+  }
+  &__image--bigger {
+    width: to-percent(672px, $container);
+  }
+  &__image--bigger,
+  &__image {
+    position: relative;
+    z-index: 1;
+    height: 0;
+    padding-bottom: to-percent(320px, $container);
+    img {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      font-size: to-rem(16px);
+      font-weight: 500;
+      color: $darkRed;
+      text-align: center;
+
+      object-fit: cover;
+      background-color: $gray;
+    }
+  }
+
+  &__subimages {
+    margin-top: to-rem(16px);
+  }
+
+  &__title {
+    margin-bottom: to-rem(8px);
+
+    font-size: to-rem(24px);
+    font-weight: 700;
+    line-height: to-em(34px, 24px);
+    color: $white;
+  }
+
+  &__description {
+    font-size: to-rem(16px);
+    line-height: to-em(22px, 16px);
+    color: $white;
+  }
+}
+
+@media (max-width: 1200px) {
+  .details {
+    padding-top: to-rem(120px);
+  }
+}
+
+@media (max-width: 992px) {
+  .details {
+    padding-top: to-rem(100px);
+
+    &__heading,
+    &__block:not(:last-child) {
+      margin-bottom: to-rem(40px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    padding-top: to-rem(80px);
+
+    &__heading,
+    &__block:not(:last-child) {
+      margin-bottom: to-rem(32px);
+    }
+
+    &__link {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+  .block-details {
+    &__subimages {
+      margin-top: to-rem(10px);
+    }
+
+    &__title {
+      font-size: to-rem(20px);
+    }
+
+    &__description {
+      font-size: to-rem(14px);
+    }
+  }
+}
+
+@media (max-width: 468px) {
+  .details {
+    padding-top: to-rem(60px);
+
+    &__heading,
+    &__block:not(:last-child) {
+      margin-bottom: to-rem(24px);
+    }
+  }
+
+  .block-details {
+    &__title {
+      margin-bottom: to-rem(4px);
+      font-size: to-rem(18px);
+    }
+  }
+}
