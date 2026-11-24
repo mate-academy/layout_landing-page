@@ -53,13 +53,14 @@
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
-  margin: 0 0 24px;
+  margin: 0;
+  margin-bottom: 24px;
   max-width: 280px;
 
   @include on-tablet {
     font-size: 40px;
     line-height: 40px;
-    margin: 0 0 56px;
+    margin-bottom: 56px;
     max-width: 496px;
   }
 
@@ -72,6 +73,7 @@
 
 @mixin button {
   box-sizing: border-box;
+  padding: 0;
   display: block;
   height: variables.$button-height;
   border: 2px solid variables.$button-border-color;
@@ -85,15 +87,24 @@
   text-align: center;
   text-decoration: none;
   color: variables.$button-text-color;
+  cursor: pointer;
 
   transition:
     color variables.$transition-duration,
     background-color variables.$transition-duration,
     border-color variables.$transition-duration;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
+    outline: none;
     border-color: variables.$button-border-color-hover;
     background-color: variables.$button-bg-color-hover;
     color: variables.$button-text-color-hover;
+  }
+
+  &:active {
+    color: variables.$button-text-color-active;
+    border-color: variables.$button-border-color-active;
+    background-color: variables.$button-bg-color-active;
   }
 }

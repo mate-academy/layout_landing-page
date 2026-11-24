@@ -1,0 +1,63 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.about {
+  &__bg-img {
+    height: 200px;
+    margin-bottom: 48px;
+    background-image: url(../images/about-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include mixins.on-tablet {
+      height: 400px;
+      margin-bottom: 56px;
+    }
+
+    @include mixins.on-desktop {
+      height: 460px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    margin-bottom: 104px;
+
+    @include mixins.content-padding-inline;
+
+    @include mixins.on-tablet {
+      flex-direction: row;
+      column-gap: 111px;
+      margin-bottom: 120px;
+    }
+  }
+
+  &__title,
+  &__description {
+    @include mixins.on-tablet {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  &__title {
+    @include mixins.block-title;
+
+    margin: 0;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    & > p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 140%;
+    }
+  }
+}
