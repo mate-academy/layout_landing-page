@@ -1,2 +1,2 @@
-[DEMO LINK]([https://<your_account>.github.io/layout_landing-page/](https://khassan-d.github.io/layout_landing-page/))
-[DESIGN](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
+- [DEMO LINK](https://khassan-d.github.io/layout_landing-page)
+- [DESIGN](https://www.figma.com/file/DtkQmQ797hk0nI4KfMi2Uq/BOSE-New-Version?type=design&node-id=6817-212&t=ZTV6Gl8NzaWkJ4FK-0)
