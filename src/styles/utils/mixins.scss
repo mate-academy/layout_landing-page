@@ -1,0 +1,137 @@
+@use '../utils/variables';
+
+@mixin on-tablet {
+  @media (min-width: variables.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: variables.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline() {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: variables.$desktop-max-width;
+  margin-inline: auto;
+  padding-inline: variables.$content-padding-inline-mobile;
+
+  @include on-tablet {
+    padding-inline: variables.$content-padding-inline-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: variables.$content-padding-inline-desktop;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} variables.$transition-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin underline-on-hover($offset: 8px) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -$offset;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentcolor;
+    transform: scale(0);
+    transform-origin: left;
+    transition: transform variables.$transition-duration;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin bold-hover {
+  transition:
+    color variables.$transition-duration,
+    text-shadow variables.$transition-duration;
+
+  &:hover {
+    color: variables.$main-dark-color;
+    text-shadow: 1px 0 currentcolor;
+  }
+}
+
+@mixin block-title {
+  font-family: variables.$accent-font-family;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  margin: 0;
+  margin-bottom: 24px;
+  max-width: 280px;
+
+  @include on-tablet {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 56px;
+    max-width: 496px;
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 48px;
+    max-width: 585px;
+  }
+}
+
+@mixin focus-outline {
+  &:focus-visible {
+    outline: 1px solid variables.$focus-outline-color;
+    outline-offset: 2px;
+  }
+}
+
+@mixin button {
+  box-sizing: border-box;
+  padding: 0;
+  display: block;
+  height: variables.$button-height;
+  border: 2px solid variables.$button-border-color;
+  border-radius: variables.$button-border-radius;
+  background-color: variables.$button-bg-color;
+
+  font-family: variables.$accent-font-family;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: variables.$button-height;
+  text-align: center;
+  text-decoration: none;
+  color: variables.$button-text-color;
+  cursor: pointer;
+
+  transition:
+    color variables.$transition-duration,
+    background-color variables.$transition-duration,
+    border-color variables.$transition-duration;
+
+  &:hover {
+    border-color: variables.$button-border-color-hover;
+    background-color: variables.$button-bg-color-hover;
+    color: variables.$button-text-color-hover;
+  }
+
+  &:active {
+    color: variables.$button-text-color-active;
+    border-color: variables.$button-border-color-active;
+    background-color: variables.$button-bg-color-active;
+  }
+
+  @include focus-outline;
+}

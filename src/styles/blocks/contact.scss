@@ -1,0 +1,67 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.contact {
+  @include mixins.content-padding-inline;
+
+  &__title {
+    @include mixins.block-title;
+
+    margin-bottom: 48px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 48px;
+    margin-bottom: 64px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 120px;
+    }
+
+    @include mixins.on-desktop {
+      flex-direction: row;
+      column-gap: 111px;
+    }
+  }
+
+  &__form,
+  &__info {
+    @include mixins.on-desktop {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  &__info-title {
+    margin: 0 0 8px;
+    font-family: variables.$accent-font-family;
+    font-size: 14px;
+    line-height: 140%;
+    color: variables.$contact-info-title-color;
+  }
+
+  &__info-phone,
+  &__info-email,
+  &__info-address {
+    display: block;
+    width: fit-content;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 140%;
+    color: variables.$contact-info-color;
+    text-decoration: none;
+
+    @include mixins.bold-hover;
+    @include mixins.focus-outline;
+  }
+
+  &__info-address {
+    margin-bottom: 0;
+  }
+}

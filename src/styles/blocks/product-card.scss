@@ -1,0 +1,61 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.product-card {
+  &__image-link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    @include mixins.focus-outline;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: variables.$main-light-color;
+    object-fit: cover;
+
+    @include mixins.hover(transform, scale(1.2));
+  }
+
+  &__title {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    font-family: variables.$accent-font-family;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    margin: 0;
+    margin-bottom: 8px;
+    color: inherit;
+
+    @include mixins.underline-on-hover(2px);
+    @include mixins.focus-outline;
+  }
+
+  &__description {
+    font-family: variables.$main-font-family;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    margin: 0;
+    margin-bottom: 12px;
+
+    @include mixins.on-desktop {
+      max-width: variables.$product-card-description-width;
+    }
+  }
+
+  &__price {
+    font-family: variables.$accent-font-family;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    margin: 0;
+  }
+}

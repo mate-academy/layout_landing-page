@@ -1,0 +1,38 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.store {
+  padding-block: 0 96px;
+
+  @include mixins.content-padding-inline;
+
+  @include mixins.on-tablet {
+    padding-block: 0 120px;
+  }
+
+  &__title {
+    @include mixins.block-title;
+  }
+
+  &__list {
+    display: grid;
+    gap: variables.$store-item-mobile-gap;
+    margin-bottom: 40px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 56px;
+    }
+
+    @include mixins.on-desktop {
+      gap: variables.$store-item-tablet-gap;
+    }
+  }
+
+  &__link {
+    @include mixins.button;
+
+    @include mixins.on-desktop {
+      width: variables.$button-desktop-width;
+    }
+  }
+}

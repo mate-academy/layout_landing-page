@@ -1,0 +1,35 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.recommended {
+  padding-block: 64px 96px;
+
+  @include mixins.content-padding-inline;
+
+  @include mixins.on-tablet {
+    padding-block: 120px;
+  }
+
+  @include mixins.on-desktop {
+    padding-block: 120px 128px;
+  }
+
+  &__title {
+    @include mixins.block-title;
+  }
+
+  &__list {
+    display: grid;
+    gap: variables.$recommended-item-gap;
+    grid-template-columns: variables.$recommended-card-mobile-width;
+    justify-content: center;
+
+    @include mixins.on-tablet {
+      grid-template-columns: variables.$recommended-card-tablet-width;
+    }
+
+    @include mixins.on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

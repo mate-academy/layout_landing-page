@@ -1,0 +1,64 @@
+@use '../utils/variables';
+@use '../utils/mixins';
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+  background-size: cover;
+
+  @include mixins.hover(transform, scale(1.2));
+  @include mixins.focus-outline;
+
+  @include mixins.on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--phone {
+    position: relative;
+    background-image: url(../images/icons/icon-phone.svg);
+
+    @include mixins.on-desktop {
+      &::after {
+        content: variables.$phone-number;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: variables.$main-text-color;
+
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        width: max-content;
+        padding-right: 8px;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translate(8px, -50%);
+        transition:
+          opacity variables.$transition-duration,
+          transform variables.$transition-duration;
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        opacity: 1;
+        transform: translate(0, -50%);
+      }
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/icon-burger-menu.svg);
+
+    &:hover {
+      background-image: url(../images/icons/icon-burger-menu-hover.svg);
+    }
+  }
+
+  &--close {
+    background-image: url(../images/icons/icon-close.svg);
+  }
+}
