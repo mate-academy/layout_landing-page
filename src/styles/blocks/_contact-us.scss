@@ -5,40 +5,75 @@
   @include container;
   @include section-spacing;
 
+  @include on-desktop {
+    padding-bottom: 160px;
+  }
+
   &__title {
-    font-size: 28px;
-    margin-bottom: 32px;
+    @include section-title;
+  }
+
+  // Form on the left, contacts on the right
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      gap: 198px;
+    }
   }
 
   &__form {
     display: flex;
+    flex: 0 1 412px;
     flex-direction: column;
     gap: 16px;
-    max-width: 400px;
   }
 
-  &__input,
-  &__textarea {
-    padding: 12px;
-    border: 1px solid $color-gray;
-    font-size: 14px;
-  }
+  &__field {
+    height: 40px;
+    padding-inline: 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: $color-black;
+    background-color: $color-white;
 
-  &__textarea {
-    min-height: 100px;
-    resize: vertical;
+    &::placeholder {
+      color: $color-gray;
+    }
+
+    &--textarea {
+      height: 144px;
+      padding-block: 12px;
+      border-radius: 8px;
+      resize: vertical;
+    }
   }
 
   &__button {
-    padding: 12px;
-    background-color: $color-dark;
-    color: $color-white;
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: background-color 0.3s;
+    margin-top: 8px;
+  }
 
-    &:hover {
-      background-color: $color-accent;
-    }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__label {
+    font-size: 10px;
+    color: $color-gray;
+  }
+
+  &__value {
+    font-size: 12px;
+
+    @include hover-color;
   }
 }

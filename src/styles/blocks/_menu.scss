@@ -1,0 +1,77 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: auto; // to scroll the menu if needed
+  color: $color-dark;
+  background-color: $color-menu;
+  transform: translateX(100%);
+  transition: transform $transition-duration;
+
+  &:target {
+    transform: translateX(0);
+  }
+
+  &__top {
+    position: sticky; // to keep the cross always visible
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px $container-padding;
+    background-color: $color-menu;
+
+    @include on-desktop {
+      padding: 24px 120px;
+    }
+  }
+
+  // The logo is white in the header, here it must be dark
+  &__logo {
+    filter: invert(1);
+  }
+
+  &__close {
+    @include hover-color;
+  }
+
+  &__nav {
+    padding: 24px $container-padding;
+
+    @include on-desktop {
+      padding-inline: 120px;
+    }
+  }
+
+  &__phone,
+  &__book {
+    display: block;
+    margin-inline: $container-padding;
+    font-size: 12px;
+    font-weight: 500;
+
+    @include hover-color;
+
+    @include on-desktop {
+      margin-inline: 120px;
+    }
+  }
+
+  &__phone {
+    margin-bottom: 16px;
+  }
+
+  &__book {
+    width: max-content;
+    margin-bottom: 40px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid currentcolor;
+  }
+}

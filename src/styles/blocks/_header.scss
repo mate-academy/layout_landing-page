@@ -1,78 +1,63 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
+// The header sits on top of the hero image, like in Figma
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px $container-padding;
-  background-color: $color-dark;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
   color: $color-white;
 
-  &__logo {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 1px;
+  &__content {
+    @include container;
 
-    &:hover {
-      color: $color-accent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 16px;
+
+    @include on-tablet {
+      padding-block: 24px;
     }
   }
 
-  &__nav {
-    @include desktop-only;
-  }
-
-  &__list {
+  &__actions {
     display: flex;
+    align-items: center;
     gap: 24px;
-  }
 
-  &__link {
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-
-    &:hover {
-      color: $color-accent;
+    @include on-tablet {
+      gap: 40px;
     }
   }
 
   &__phone {
-    @include desktop-only;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    font-size: 14px;
+    @include hover-color;
+  }
 
-    &:hover {
-      color: $color-accent;
+  // The number appears on hover (Figma "Header Hovers")
+  &__phone-number {
+    display: none;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity $transition-duration;
+
+    @include on-tablet {
+      display: block;
     }
   }
 
+  &__phone:hover &__phone-number {
+    opacity: 1;
+  }
+
   &__burger {
-    width: 24px;
-    height: 18px;
-    position: relative;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: $color-white;
-    }
-
-    &::before {
-      top: 0;
-    }
-
-    &::after {
-      bottom: 0;
-    }
+    @include hover-color;
   }
 }

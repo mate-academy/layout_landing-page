@@ -1,9 +1,29 @@
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
+// Sticky footer under the page = "fixed background" effect
 .footer {
-  background-color: $color-dark;
-  color: $color-gray;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+  display: flex;
+  align-items: flex-end;
+  height: 320px;
+  padding: 24px $container-padding;
+  background-image: url('../images/footer/riders.png');
+  background-position: center;
+  background-size: cover;
+
+  @include on-tablet {
+    height: 480px;
+  }
+
+  @include on-desktop {
+    height: 560px;
+  }
+
+  &__text {
+    font-size: 12px;
+    color: $color-white;
+  }
 }

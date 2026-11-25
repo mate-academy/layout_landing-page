@@ -1,72 +1,72 @@
-@use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
 .details {
   @include container;
   @include section-spacing;
 
+  text-align: center;
+
   &__title {
-    font-size: 28px;
-    margin-bottom: 32px;
+    @include section-title;
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-bottom: 48px;
+    text-align: left;
+
+    @include on-desktop {
+      gap: 56px;
+      margin-bottom: 64px;
+    }
   }
 
+  // Two photos side by side: wide (672px) + narrow (324px), like in Figma
   &__photos {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 672fr 324fr;
     gap: 8px;
     margin-bottom: 16px;
 
-    @media (min-width: 768px) {
-      flex-direction: row;
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &--reversed {
+      grid-template-columns: 324fr 672fr;
     }
   }
 
   &__link {
     display: block;
     overflow: hidden;
-    border-radius: 4px;
   }
 
   &__image {
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-
-    &:hover {
-      transform: scale(1.05);
+    &--wide {
+      @include image-cover(672, 320);
     }
 
     &--narrow {
-      aspect-ratio: 324 / 320;
-
-      @media (min-width: 768px) {
-        flex: 0 0 32%;
-      }
-    }
-
-    &--wide {
-      aspect-ratio: 672 / 320;
-
-      @media (min-width: 768px) {
-        flex: 1;
-      }
+      @include image-cover(324, 320);
     }
   }
 
   &__name {
-    font-size: 18px;
     margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   &__description {
-    color: $color-gray;
-    font-size: 14px;
-    max-width: 700px;
+    max-width: 660px;
+    font-size: 12px;
+  }
+
+  &__button {
+    width: 100%;
+    max-width: 324px;
   }
 }
