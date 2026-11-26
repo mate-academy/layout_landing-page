@@ -6,7 +6,16 @@ const phoneLink = document.querySelector('.phone-block__link');
 const phoneContainer = document.querySelector('.phone-block');
 
 if (phoneContainer && phoneOpener && phoneContent && phoneLink) {
-  const togglePhone = () => {
+  const toggleHeightPhone = () => {
+    phoneContainer.classList.toggle('phone-block--opened');
+
+    if (phoneContainer.classList.contains('phone-block--opened')) {
+      phoneContent.style.height = phoneLink.offsetHeight + 'px';
+    } else {
+      phoneContent.style.height = '';
+    }
+  };
+  const toggleWidthPhone = () => {
     phoneContainer.classList.toggle('phone-block--opened');
 
     if (phoneContainer.classList.contains('phone-block--opened')) {
@@ -16,24 +25,45 @@ if (phoneContainer && phoneOpener && phoneContent && phoneLink) {
     }
   };
 
-  const showPhone = () => {
+  const showHeightPhone = () => {
+    phoneContainer.classList.add('phone-block--opened');
+    phoneContent.style.height = phoneLink.offsetHeight + 'px';
+  };
+  const showWidthPhone = () => {
     phoneContainer.classList.add('phone-block--opened');
     phoneContent.style.width = phoneLink.offsetWidth + 'px';
   };
 
-  const hidePhone = () => {
+  const hideHeightPhone = () => {
+    phoneContainer.classList.remove('phone-block--opened');
+    phoneContent.style.height = '';
+  };
+  const hideWidthPhone = () => {
     phoneContainer.classList.remove('phone-block--opened');
     phoneContent.style.width = '';
   };
 
-  document.body.addEventListener('click', (e) => {
-    if (e.target.closest('.phone-block__opener')) {
-      togglePhone();
-    } else {
-      hidePhone();
-    }
-  });
+  if (window.innerWidth <= 768) {
+    document.body.addEventListener('click', (e) => {
+      if (e.target.closest('.phone-block__opener')) {
+        toggleHeightPhone();
+      } else {
+        hideHeightPhone();
+      }
+    });
 
-  phoneOpener.addEventListener('blur', showPhone);
-  phoneLink.addEventListener('blur', hidePhone);
+    phoneOpener.addEventListener('blur', showHeightPhone);
+    phoneLink.addEventListener('blur', hideHeightPhone);
+  } else {
+    document.body.addEventListener('click', (e) => {
+      if (e.target.closest('.phone-block__opener')) {
+        toggleWidthPhone();
+      } else {
+        hideWidthPhone();
+      }
+    });
+
+    phoneOpener.addEventListener('blur', showWidthPhone);
+    phoneLink.addEventListener('blur', hideWidthPhone);
+  }
 }

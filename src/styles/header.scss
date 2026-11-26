@@ -7,6 +7,7 @@
 .header {
   position: fixed;
   z-index: 3;
+  top: 0;
   left: 0;
 
   width: 100%;
@@ -42,6 +43,7 @@
   }
 
   &__container {
+    min-height: to-rem($header - 20px);
     display: flex;
     column-gap: to-rem(32px);
     align-items: center;
@@ -226,14 +228,6 @@
 
   &__content {
     overflow: hidden;
-    width: 0;
-    transition:
-      width 0.3s $animStyle,
-      margin-right 0.3s $animStyle;
-  }
-
-  &--opened &__content {
-    margin-right: to-rem(16px);
   }
 
   &__opener {
@@ -246,6 +240,11 @@
     border-radius: to-rem(4px);
 
     transition: background-color 0.3s $animStyle;
+
+    svg{
+      width: to-rem(24px);
+      height: to-rem(24px);
+    }
   }
 
   &__opener:hover,
@@ -280,7 +279,7 @@
     transform: translateX(-50%) translateY(-100%);
     transition:
       transform 0.3s $animStyle,
-      color 0.3s $animStyle,
+      background-color 0.3s $animStyle,
       top 0.3s $animStyle;
   }
 
@@ -290,7 +289,7 @@
     transform: translateX(-50%) translateY(-100%);
     transition:
       transform 0.3s $animStyle,
-      color 0.3s $animStyle,
+      background-color 0.3s $animStyle,
       top 0.3s $animStyle;
   }
 
@@ -299,7 +298,7 @@
     transform: translateX(-50%) translateY(-50%);
     transition:
       transform 0.3s $animStyle,
-      color 0.3s $animStyle;
+      background-color 0.3s $animStyle;
   }
 
   &:hover span,
@@ -358,92 +357,101 @@
     transform: rotate(0deg) translateX(-50%) translateY(-100%);
   }
 }
-
 @media (min-width: 769px) {
-  .header__container {
-    min-height: calc($header - 20px);
-  }
-
-  @media (max-width: 1200px) {
-    .header__container {
-      min-height: calc($header1200px - 20px);
-    }
-  }
-}
-
-@media (max-width: 1200px) {
-  .menu__container {
-    padding-top: calc($header1200px + to-rem(24px));
-  }
-}
-
-@media (max-width: 992px) {
-  .header {
-    &__symb {
-      width: to-rem(160px);
-      height: to-rem(48px);
+  .phone-block{
+    &__content {
+      width: 0;
+      transition:
+        width 0.3s $animStyle,
+        margin-right 0.3s $animStyle;
     }
 
-    &__interaction {
-      column-gap: to-rem(24px);
-    }
-  }
-  .menu {
-    &__punkt:not(:last-child) {
-      margin-bottom: to-rem(24px);
-    }
-
-    &__list {
-      margin-bottom: to-rem(32px);
+    &--opened &__content {
+      margin-right: to-rem(16px);
     }
   }
 }
 
 @media (max-width: 768px) {
-  .header {
-    &__container {
-      column-gap: to-rem(24px);
-    }
-
-    &__symb {
-      width: to-rem(140px);
-      height: to-rem(42px);
-    }
-
-    &__interaction {
-      column-gap: to-rem(16px);
-    }
+  .header__container {
+    column-gap: to-rem(24px);
   }
   .phone-block {
+    position: relative;
+
     &__link {
+      display: block;
       font-size: to-rem(14px);
     }
 
-    &--opened &__content {
-      margin-right: to-rem(10px);
-    }
-  }
-  .menu {
-    &__container {
-      padding-top: calc($header768px + to-rem(24px));
-    }
+    &__content{
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      transform: translateX(-50%) translateY(100%);
 
-    &__punkt:not(:last-child) {
-      margin-bottom: to-rem(16px);
-    }
-
-    &__phone {
-      margin-bottom: to-rem(10px);
-    }
-
-    &__list {
-      margin-bottom: to-rem(24px);
+      height: 0;
+      transition: height 0.3s $animStyle;
     }
   }
 }
 
 @media (max-width: 468px) {
-  .header__phone {
-    display: none;
+  .header {
+    &__container{
+      min-height: to-rem($header468px - 20px);
+    }
+
+    &__symb {
+      width: to-rem(130px);
+      height: to-rem(38px);
+    }
+
+    &__interaction{
+      column-gap: to-rem(24px);
+    }
+
+    &__burger {
+      flex: 0 0 to-rem(24px);
+      height: to-rem(24px);
+    }
+  }
+
+  .phone-block{
+    &__link{
+      font-size: to-rem(12px);
+    }
+
+    &__opener{
+      flex: 0 0 to-rem(24px);
+      height: to-rem(24px);
+
+      svg{
+        width: to-rem(18px);
+        height: to-rem(18px);
+      }
+    }
+  }
+
+  .menu{
+    &__container{
+      padding-top: calc($header468px + to-rem(24px));
+    }
+  }
+
+  .burger {
+    &::before,
+    &::after,
+    span {
+      min-width: to-rem(18px);
+    }
+
+    &::before {
+      top: to-rem(8px);
+    }
+
+    &::after {
+      top: to-rem(18px);
+    }
   }
 }

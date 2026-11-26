@@ -14,7 +14,8 @@
     text-align: center;
   }
 
-  &__block:not(:last-child) {
+  &__block:not(:last-child),
+  &__blocks {
     margin-bottom: to-rem(48px);
   }
 
@@ -26,22 +27,17 @@
 
 .block-details {
   &__images {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: to-rem(24px);
   }
 
-  &__image {
-    width: to-percent(324px, $container);
-  }
-  &__image--bigger {
-    width: to-percent(672px, $container);
-  }
   &__image--bigger,
   &__image {
     position: relative;
     z-index: 1;
     height: 0;
-    padding-bottom: to-percent(320px, $container);
+    padding-bottom: to-percent(320px, 324px);
     img {
       position: absolute;
       z-index: 1;
@@ -80,67 +76,46 @@
     color: $white;
   }
 }
-
-@media (max-width: 1200px) {
-  .details {
-    padding-top: to-rem(120px);
-  }
-}
-
-@media (max-width: 992px) {
-  .details {
-    padding-top: to-rem(100px);
-
-    &__heading,
-    &__block:not(:last-child) {
-      margin-bottom: to-rem(40px);
-    }
+@media (min-width: 469px) {
+  .block-details__image--bigger {
+    grid-column: span 2;
+    padding-bottom: to-percent(320px, 672px);
   }
 }
 
 @media (max-width: 768px) {
   .details {
-    padding-top: to-rem(80px);
-
-    &__heading,
-    &__block:not(:last-child) {
-      margin-bottom: to-rem(32px);
-    }
-
-    &__link {
-      width: 100%;
-      min-width: 0;
-    }
-  }
-  .block-details {
-    &__subimages {
-      margin-top: to-rem(10px);
-    }
-
-    &__title {
-      font-size: to-rem(20px);
-    }
-
-    &__description {
-      font-size: to-rem(14px);
-    }
+    padding-top: to-rem(120px);
   }
 }
 
 @media (max-width: 468px) {
   .details {
-    padding-top: to-rem(60px);
+    padding-top: to-rem(92px);
 
-    &__heading,
-    &__block:not(:last-child) {
-      margin-bottom: to-rem(24px);
+
+    &__block:not(:last-child),
+    &__blocks {
+      margin-bottom: to-rem(40px);
     }
   }
 
   .block-details {
-    &__title {
-      margin-bottom: to-rem(4px);
-      font-size: to-rem(18px);
+    &__images{
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: to-rem(20px);
     }
+
+    &__image,
+    &__image--bigger{
+      padding-bottom: 100%;
+    }
+  }
+}
+
+@media (max-width: calc(324px + $containerPadding * 2)) {
+  .details__link{
+    min-width: unset;
+    width: 100%;
   }
 }
