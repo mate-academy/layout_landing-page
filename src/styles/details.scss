@@ -1,0 +1,129 @@
+@use './vars' as *;
+
+.details {
+  padding-top: to-rem(144px);
+  background-color: $darkRed;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heading {
+    margin-bottom: to-rem(48px);
+    text-align: center;
+  }
+
+  &__block:not(:last-child),
+  &__blocks {
+    margin-bottom: to-rem(48px);
+  }
+
+  &__link {
+    align-self: center;
+    min-width: to-rem(324px);
+  }
+}
+
+.block-details {
+  &__images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: to-rem(24px);
+  }
+
+  &__image--bigger,
+  &__image {
+    position: relative;
+    z-index: 1;
+    height: 0;
+    padding-bottom: to-percent(320px, 324px);
+    img {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      font-size: to-rem(16px);
+      font-weight: 500;
+      color: $darkRed;
+      text-align: center;
+
+      object-fit: cover;
+      background-color: $gray;
+    }
+  }
+
+  &__image {
+    transition: transform 0.3s $animStyle;
+  }
+
+  &__image:hover {
+    transform: scale(1.05);
+  }
+
+  &__subimages {
+    margin-top: to-rem(16px);
+  }
+
+  &__title {
+    margin-bottom: to-rem(8px);
+
+    font-size: to-rem(24px);
+    font-weight: 700;
+    line-height: to-em(34px, 24px);
+    color: $white;
+  }
+
+  &__description {
+    font-size: to-rem(16px);
+    line-height: to-em(22px, 16px);
+    color: $white;
+  }
+}
+
+@media (min-width: 469px) {
+  .block-details__image--bigger {
+    grid-column: span 2;
+    padding-bottom: to-percent(320px, 672px);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    padding-top: to-rem(120px);
+  }
+}
+
+@media (max-width: 468px) {
+  .details {
+    padding-top: to-rem(92px);
+
+    &__block:not(:last-child),
+    &__blocks {
+      margin-bottom: to-rem(40px);
+    }
+  }
+
+  .block-details {
+    &__images {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: to-rem(20px);
+    }
+
+    &__image,
+    &__image--bigger {
+      padding-bottom: 100%;
+    }
+  }
+}
+
+@media (max-width: calc(324px + $containerPadding * 2)) {
+  .details__link {
+    width: 100%;
+    min-width: unset;
+  }
+}

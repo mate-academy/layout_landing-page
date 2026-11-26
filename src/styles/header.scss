@@ -1,0 +1,460 @@
+@use './vars' as *;
+
+.phone-block__opener path {
+  transition: fill 0.3s $animStyle;
+}
+
+.header {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 10px 0;
+
+  transition:
+    background-color 0.3s $animStyle,
+    box-shadow 0.3s $animStyle;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $gray;
+
+    transition: left 0.3s $animStyle;
+  }
+
+  &--scroll {
+    background-color: $darkRed;
+    box-shadow: 0 0 15px $shadow;
+  }
+
+  &--active::after {
+    left: 0;
+  }
+
+  &__container {
+    display: flex;
+    column-gap: to-rem(32px);
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: to-rem($header - 20px);
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 3;
+    transition: filter 0.3s $animStyle;
+  }
+
+  &__logo:hover,
+  &__logo:focus {
+    filter: drop-shadow(0 0 5px $white);
+  }
+
+  &__symb {
+    width: to-rem(187px);
+    height: to-rem(56px);
+  }
+
+  &__symb path {
+    fill: $white;
+    transition: fill 0.3s $animStyle;
+  }
+
+  &--active &__symb path {
+    fill: $darkRed;
+  }
+
+  &__interaction {
+    display: flex;
+    column-gap: to-rem(32px);
+    align-items: center;
+  }
+
+  &__phone {
+    display: flex;
+    align-items: center;
+  }
+
+  &__burger {
+    position: relative;
+    z-index: 3;
+    flex: 0 0 to-rem(32px);
+    height: to-rem(32px);
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -100%;
+
+    overflow-y: auto;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $gray;
+
+    transition: left 0.3s $animStyle;
+  }
+
+  &--active &__menu {
+    left: 0;
+  }
+}
+
+.menu {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding-top: calc($header + to-rem(24px));
+    padding-bottom: to-rem(48px);
+  }
+
+  &__punkt:not(:last-child) {
+    margin-bottom: to-rem(32px);
+  }
+
+  &__link {
+    font-size: to-rem(22px);
+    font-weight: 700;
+    line-height: 1em;
+    color: $darkRed;
+    text-transform: uppercase;
+    letter-spacing: to-em(2, 22);
+
+    transition: text-shadow 0.3s $animStyle;
+  }
+
+  &__link:hover,
+  &__link:focus {
+    text-shadow: 0 0 to-em(5px, 22px) $darkRed;
+  }
+
+  &__list {
+    margin-bottom: to-rem(40px);
+  }
+
+  &__phone {
+    margin-bottom: to-em(16, 16);
+    font-weight: 700;
+    line-height: to-em(27px, 16px);
+    color: $darkRed;
+  }
+
+  &__phone::after {
+    background-color: $darkRed;
+  }
+
+  &__order {
+    position: relative;
+
+    font-size: to-rem(12px);
+    font-weight: 700;
+    line-height: to-em(16px, 12px);
+    color: $darkRed;
+    text-transform: uppercase;
+    letter-spacing: to-em(2, 12);
+
+    transition: letter-spacing 0.3s $animStyle;
+  }
+
+  &__order span {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-bottom: to-em(8px, 12px);
+  }
+
+  &__order::after {
+    content: '';
+
+    position: absolute;
+    z-index: 1;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    height: 1px;
+
+    background-color: $darkRed;
+
+    transition: all 0.3s $animStyle;
+  }
+
+  &__order:hover,
+  &__order:focus {
+    letter-spacing: 0;
+  }
+
+  &__order:hover::after,
+  &__order:focus::after {
+    height: calc(100% + to-rem(8px));
+    border: 1px solid $darkRed;
+    background-color: $gray;
+  }
+}
+
+.phone-block {
+  &__link {
+    font-weight: 700;
+    line-height: to-em(22px, 16px);
+    color: $white;
+    letter-spacing: to-em(2px, 12px);
+  }
+
+  &__link::after {
+    background-color: $white;
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+
+  &__opener {
+    display: flex;
+    flex: 0 0 to-rem(32px);
+    align-items: center;
+    justify-content: center;
+
+    height: to-rem(32px);
+    border-radius: to-rem(4px);
+
+    transition: background-color 0.3s $animStyle;
+
+    svg {
+      width: to-rem(24px);
+      height: to-rem(24px);
+    }
+  }
+
+  &__opener:hover,
+  &__opener:focus {
+    background-color: $white;
+
+    path {
+      fill: $darkRed;
+    }
+  }
+}
+
+.burger {
+  &::before,
+  &::after,
+  span {
+    content: '';
+
+    position: absolute;
+    left: 50%;
+
+    min-width: to-rem(24px);
+    height: to-rem(2px);
+    border-radius: to-rem(1px);
+
+    background-color: $white;
+  }
+
+  &::before {
+    top: to-rem(10px);
+    transform-origin: center left;
+    transform: translateX(-50%) translateY(-100%);
+    transition:
+      transform 0.3s $animStyle,
+      background-color 0.3s $animStyle,
+      top 0.3s $animStyle;
+  }
+
+  &::after {
+    top: to-rem(24px);
+    transform-origin: center left;
+    transform: translateX(-50%) translateY(-100%);
+    transition:
+      transform 0.3s $animStyle,
+      background-color 0.3s $animStyle,
+      top 0.3s $animStyle;
+  }
+
+  span {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition:
+      transform 0.3s $animStyle,
+      background-color 0.3s $animStyle;
+  }
+
+  &:hover span,
+  &:focus span {
+    transform: translateX(-50%) translateY(-50%) scale(0);
+  }
+
+  &:hover::before,
+  &:focus::before {
+    top: 50%;
+    transform: rotate(45deg) translateX(-50%) translateY(55%);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    top: 50%;
+    transform: rotate(-45deg) translateX(-55%) translateY(50%);
+  }
+}
+
+.header--active .burger {
+  &::before,
+  &::after {
+    background-color: $darkRed;
+  }
+
+  &::before {
+    top: 50%;
+    transform: rotate(45deg) translateX(-50%) translateY(55%);
+  }
+
+  &::after {
+    top: 50%;
+    transform: rotate(-45deg) translateX(-55%) translateY(50%);
+  }
+
+  span {
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    background-color: $darkRed;
+  }
+
+  &:hover span,
+  &:focus span {
+    transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+
+  &:hover::before,
+  &:focus::before {
+    top: to-rem(10px);
+    transform: rotate(0deg) translateX(-50%) translateY(-100%);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    top: to-rem(24px);
+    transform: rotate(0deg) translateX(-50%) translateY(-100%);
+  }
+}
+
+@media (min-width: 769px) {
+  .phone-block {
+    &__content {
+      width: 0;
+      transition:
+        width 0.3s $animStyle,
+        margin-right 0.3s $animStyle;
+    }
+
+    &--opened &__content {
+      margin-right: to-rem(16px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header__container {
+    column-gap: to-rem(24px);
+  }
+  .phone-block {
+    position: relative;
+
+    &__link {
+      display: block;
+      font-size: to-rem(14px);
+    }
+
+    &__content {
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100%);
+
+      height: 0;
+
+      transition: height 0.3s $animStyle;
+    }
+  }
+}
+
+@media (max-width: 468px) {
+  .header {
+    &__container {
+      min-height: to-rem($header468px - 20px);
+    }
+
+    &__symb {
+      width: to-rem(130px);
+      height: to-rem(38px);
+    }
+
+    &__interaction {
+      column-gap: to-rem(24px);
+    }
+
+    &__burger {
+      flex: 0 0 to-rem(24px);
+      height: to-rem(24px);
+    }
+  }
+
+  .phone-block {
+    &__link {
+      font-size: to-rem(12px);
+    }
+
+    &__opener {
+      flex: 0 0 to-rem(24px);
+      height: to-rem(24px);
+
+      svg {
+        width: to-rem(18px);
+        height: to-rem(18px);
+      }
+    }
+  }
+
+  .menu {
+    &__container {
+      padding-top: calc($header468px + to-rem(24px));
+    }
+  }
+
+  .burger {
+    &::before,
+    &::after,
+    span {
+      min-width: to-rem(18px);
+    }
+
+    &::before {
+      top: to-rem(8px);
+    }
+
+    &::after {
+      top: to-rem(18px);
+    }
+  }
+}
