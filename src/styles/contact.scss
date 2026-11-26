@@ -32,19 +32,25 @@
     font-family: Poppins, sans-serif;
     font-size: to-rem(14px);
     line-height: to-em(20px, 14px);
+    color: $grayText;
 
     background-color: $blueWhite;
 
-    transition: box-shadow 0.3s $animStyle;
+    transition:
+      box-shadow 0.3s $animStyle,
+      color 0.3s $animStyle;
   }
 
   &__input::placeholder {
     color: $grayText;
+    transition: color 0.3s $animStyle;
   }
 
   &__input:hover,
-  &__input:focus {
-    box-shadow: inset 0 0 15px $darkRed;
+  &__input:focus,
+  &__input:hover::placeholder,
+  &__input:focus::placeholder {
+    color: $lighterDarkRed;
   }
 
   &__input.error {
@@ -65,13 +71,6 @@
 
   &__send {
     width: 100%;
-    box-shadow: to-em(1px, 16px) to-em(4px, 16px) to-em(16px, 16px) 0 $shadow;
-  }
-  &__send:hover,
-  &__send:focus {
-    box-shadow:
-      to-em(1px, 16px) to-em(4px, 16px) to-em(16px, 16px) 0 $shadow,
-      inset 0 0 5px $white;
   }
 }
 

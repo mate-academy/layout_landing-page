@@ -2,29 +2,10 @@
 
 const phoneOpener = document.querySelector('.phone-block__opener');
 const phoneContent = document.querySelector('.phone-block__content');
-const phoneLink = document.querySelector('.phone-block__link');
+const phoneLink = document.querySelector('.phone-block__link span');
 const phoneContainer = document.querySelector('.phone-block');
 
 if (phoneContainer && phoneOpener && phoneContent && phoneLink) {
-  const toggleHeightPhone = () => {
-    phoneContainer.classList.toggle('phone-block--opened');
-
-    if (phoneContainer.classList.contains('phone-block--opened')) {
-      phoneContent.style.height = phoneLink.offsetHeight + 'px';
-    } else {
-      phoneContent.style.height = '';
-    }
-  };
-  const toggleWidthPhone = () => {
-    phoneContainer.classList.toggle('phone-block--opened');
-
-    if (phoneContainer.classList.contains('phone-block--opened')) {
-      phoneContent.style.width = phoneLink.offsetWidth + 'px';
-    } else {
-      phoneContent.style.width = '';
-    }
-  };
-
   const showHeightPhone = () => {
     phoneContainer.classList.add('phone-block--opened');
     phoneContent.style.height = phoneLink.offsetHeight + 'px';
@@ -44,26 +25,16 @@ if (phoneContainer && phoneOpener && phoneContent && phoneLink) {
   };
 
   if (window.innerWidth <= 768) {
-    document.body.addEventListener('click', (e) => {
-      if (e.target.closest('.phone-block__opener')) {
-        toggleHeightPhone();
-      } else {
-        hideHeightPhone();
-      }
-    });
+    phoneOpener.addEventListener('mouseenter', showHeightPhone);
+    phoneOpener.addEventListener('mouseleave', hideHeightPhone);
 
-    phoneOpener.addEventListener('blur', showHeightPhone);
-    phoneLink.addEventListener('blur', hideHeightPhone);
+    phoneOpener.addEventListener('focus', showHeightPhone);
+    phoneOpener.addEventListener('blur', hideHeightPhone);
   } else {
-    document.body.addEventListener('click', (e) => {
-      if (e.target.closest('.phone-block__opener')) {
-        toggleWidthPhone();
-      } else {
-        hideWidthPhone();
-      }
-    });
+    phoneOpener.addEventListener('mouseenter', showWidthPhone);
+    phoneOpener.addEventListener('mouseleave', hideWidthPhone);
 
-    phoneOpener.addEventListener('blur', showWidthPhone);
-    phoneLink.addEventListener('blur', hideWidthPhone);
+    phoneOpener.addEventListener('focus', showWidthPhone);
+    phoneOpener.addEventListener('blur', hideWidthPhone);
   }
 }
