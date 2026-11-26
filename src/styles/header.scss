@@ -1,0 +1,91 @@
+.header {
+  height: $header-height;
+  background: url('../images/bg/header-bg.png') 50% 50% / cover no-repeat;
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    @include top-block-style;
+  }
+
+  &__logo {
+    width: 152px;
+
+    @include respond-to('tablet') {
+      width: 228px;
+    }
+  }
+
+  &__phone {
+    margin: 0 $mobile-icon-size 0 auto;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    @include header-icon-style(url('../images/icons/icon-phone.svg'));
+
+    @include respond-to('tablet') {
+      margin: 0 $tablet-icon-size 0 auto;
+    }
+
+    @include respond-to('desktop') {
+      &:hover .header__phone-number {
+        opacity: 1;
+        transform: translateX(-110%);
+      }
+    }
+  }
+
+  &__phone-number {
+    opacity: 0;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: $text-color;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform 0.3s $animation-timing-function;
+  }
+
+  &__burger {
+    @include header-icon-style(url('../images/icons/icon-burger.svg'));
+    &:hover {
+      background-image: url('../images/icons/icon-burger-hover.svg');
+    }
+  }
+
+  &__title {
+    margin: auto 0 40px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+    color: $title-color;
+
+    @include respond-to('tablet') {
+      margin-bottom: 64px;
+      font-size: 48px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+
+    &--active {
+      transform: translateX(0);
+    }
+  }
+}

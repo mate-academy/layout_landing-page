@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+$breakpoints: (
+  'mobile': 576px,
+  'tablet': 768px,
+  'desktop': 1024px,
+);
+
+@mixin respond-to($breakpoint) {
+  $breakpoint-value: map.get($breakpoints, $breakpoint);
+
+  @media screen and (min-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+@mixin top-block-style {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include respond-to('tablet') {
+    padding: 32px 0;
+  }
+}
+
+@mixin header-icon-style($bg-url) {
+  width: $mobile-icon-size;
+  height: $mobile-icon-size;
+  background: $bg-url 50% 50% / contain no-repeat;
+  cursor: pointer;
+
+  @include respond-to('tablet') {
+    width: $tablet-icon-size;
+    height: $tablet-icon-size;
+  }
+}
+
+@mixin section-title-style() {
+  margin-bottom: 48px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0;
+
+  @include respond-to('tablet') {
+    margin-bottom: 56px;
+    font-size: 40px;
+  }
+}
+
+@mixin button-style($text-color, $bg-color) {
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $text-color;
+  background-color: $bg-color;
+  border: 1px solid $bg-color;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    color $transition-duration ease,
+    background-color $transition-duration ease;
+
+  @include respond-to('desktop') {
+    width: 324px;
+  }
+
+  &:hover {
+    background-color: $text-color;
+    color: $bg-color;
+  }
+}
+
+@mixin input-text-style {
+  font-size: 14px;
+  line-height: 1.4;
+}
